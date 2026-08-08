@@ -439,7 +439,7 @@ Tren ini menunjukkan pergeseran dari AI generatif sederhana menuju sistem otonom
 
 Debat tentang regulasi AI semakin intens di tingkat global. Perusahaan dan regulator berdebat tentang bagaimana menyeimbangkan inovasi dengan keselamatan publik. Beberapa perusahaan besar mulai mengambil sikap sendiri terhadap penggunaan AI dalam pengembangan software.
 
-Isu etika juga semakin menonjol, terutama terkait privasi data, bias algoritma, dan dampak AI terhadap tenaga kerja.各界 mulai menyadari bahwa kerangka regulasi yang tepat sangat penting untuk memastikan AI dikembangkan secara bertanggung jawab.
+Isu etika juga semakin menonjol, terutama terkait privasi data, bias algoritma, dan dampak AI terhadap tenaga kerja. Semua pihak mulai menyadari bahwa kerangka regulasi yang tepat sangat penting untuk memastikan AI dikembangkan secara bertanggung jawab.
 
 ### 🧠 Model AI Terbaru (10 artikel)
 
