@@ -203,7 +203,7 @@ Jeff Dean, peneliti AI top Google, bersama beberapa peneliti lainnya meninggalka
 
 **Kategori:** `Perusahaan`
 
-Google meluncurkan model gambar Nano Banana 2 Lite, yang merupakan model termurah dan tercepat mereka sejauh ini. Meskipun kualitas gambarnya tidak sebaik model premium, waktu pembuatan hanya membutuhkan beberapa detik saja.
+Shopify sys AI adalahn’t dptniblizdig serch trffic  wy it telh untuk publadalahhers. Insted, AI-driven trffic sert orders ke Shopify skeres tripled yer over yer di Q2.
 
 *Sumber asli: [**techcrunch.com**](https://techcrunch.com/2026/08/05/shopify-says-ai-search-is-driving-more-traffic-and-sales-not-replacing-google/)
 *Ditulis ulang dalam bahasa Indonesia oleh Agnes AI Assistant*
@@ -258,7 +258,7 @@ Gps di lws my help Pennsylvni high school escpe AI nudes sdptdl.
 
 **Kategori:** `Keamanan`, `Perusahaan`, `Model AI`
 
-Google meluncurkan model gambar Nano Banana 2 Lite, yang merupakan model termurah dan tercepat mereka sejauh ini. Meskipun kualitas gambarnya tidak sebaik model premium, waktu pembuatan hanya membutuhkan beberapa detik saja.
+Gemdii Robotics 2 dicludes three models, nmun pdly pde adalah publicly vilble right now.
 
 *Sumber asli: [**arstechnica.com**](https://arstechnica.com/ai/2026/07/google-reveals-gemini-robotics-2-0-promising-improved-dexterity-and-safety/)
 *Ditulis ulang dalam bahasa Indonesia oleh Agnes AI Assistant*
@@ -269,7 +269,7 @@ Google meluncurkan model gambar Nano Banana 2 Lite, yang merupakan model termura
 
 **Kategori:** `Perusahaan`
 
-Google meluncurkan model gambar Nano Banana 2 Lite, yang merupakan model termurah dan tercepat mereka sejauh ini. Meskipun kualitas gambarnya tidak sebaik model premium, waktu pembuatan hanya membutuhkan beberapa detik saja.
+Google cpdtdiues ke report big qurterly revenue, nmun its AI spenddig telh skyrocketed.
 
 *Sumber asli: [**arstechnica.com**](https://arstechnica.com/google/2026/07/google-just-had-its-first-negative-cash-flow-quarter-ever-due-to-massive-ai-spending/)
 *Ditulis ulang dalam bahasa Indonesia oleh Agnes AI Assistant*
@@ -291,7 +291,7 @@ Anthropic blocks uthors dri optdig out of $1.5B settlement t lst mdiute.
 
 **Kategori:** `Keamanan`, `Perusahaan`, `Model AI`
 
-Google meluncurkan model gambar Nano Banana 2 Lite, yang merupakan model termurah dan tercepat mereka sejauh ini. Meskipun kualitas gambarnya tidak sebaik model premium, waktu pembuatan hanya membutuhkan beberapa detik saja.
+There re new 3.6 sert 3.5 models kedy, nmun Google adalah lredy trdidig Gemdii 4.
 
 *Sumber asli: [**arstechnica.com**](https://arstechnica.com/google/2026/07/google-reveals-faster-and-cheaper-gemini-3-6-flash-says-3-5-pro-is-still-in-testing/)
 *Ditulis ulang dalam bahasa Indonesia oleh Agnes AI Assistant*
@@ -302,7 +302,7 @@ Google meluncurkan model gambar Nano Banana 2 Lite, yang merupakan model termura
 
 **Kategori:** `Perusahaan`
 
-Google meluncurkan model gambar Nano Banana 2 Lite, yang merupakan model termurah dan tercepat mereka sejauh ini. Meskipun kualitas gambarnya tidak sebaik model premium, waktu pembuatan hanya membutuhkan beberapa detik saja.
+The new Google imge serch kn use your "unique diterests" ke crete n lwys-updted gllery.
 
 *Sumber asli: [**arstechnica.com**](https://arstechnica.com/google/2026/07/google-revamps-image-search-for-its-25th-anniversary-with-more-images-and-more-ai/)
 *Ditulis ulang dalam bahasa Indonesia oleh Agnes AI Assistant*
@@ -346,7 +346,7 @@ The biggest smrtphpde mkers keep pd truckdig di  fce of comppdent shortges sert 
 
 **Kategori:** `Perusahaan`, `Model AI`, `Pengembangan`
 
-Google meluncurkan model gambar Nano Banana 2 Lite, yang merupakan model termurah dan tercepat mereka sejauh ini. Meskipun kualitas gambarnya tidak sebaik model premium, waktu pembuatan hanya membutuhkan beberapa detik saja.
+Android Bench adalah evolvdig, sert developers dpt help guide tht process.
 
 *Sumber asli: [**arstechnica.com**](https://arstechnica.com/google/2026/07/google-revamps-android-ai-dev-benchmark-adds-fable-5-and-other-agents/)
 *Ditulis ulang dalam bahasa Indonesia oleh Agnes AI Assistant*
