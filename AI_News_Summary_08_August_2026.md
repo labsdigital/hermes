@@ -82,7 +82,7 @@ Meta dikenakan denda tambahan sebesar $567 juta oleh pengadilan New Mexico dalam
 
 **Kategori:** `Perusahaan`
 
-OpenAI unveiled perangkat keras AI terbaru mereka yang diperkirakan akan tersedia di pasaran dengan harga antara $300-$400. Langkah ini menunjukkan ambisi OpenAI untuk masuk ke pasar perangkat konsumen.
+OpenAI mengumumkan perangkat keras AI terbaru mereka yang diperkirakan akan tersedia di pasaran dengan harga antara $300-$400. Langkah ini menunjukkan ambisi OpenAI untuk masuk ke pasar perangkat konsumen.
 
 *Sumber asli: [**techcrunch.com**](https://techcrunch.com/2026/08/06/openais-new-ai-smart-speaker-will-reportedly-sell-for-between-300-and-400/)
 *Ditulis ulang dalam bahasa Indonesia oleh Agnes AI Assistant*
