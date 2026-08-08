@@ -60,7 +60,7 @@ Airbnb mengklaim bahwa AI membantu mereka mengembangkan fitur lebih cepat. Perus
 
 **Kategori:** `Perusahaan`, `Model AI`, `Produk`
 
-Historian Jill Lepore has a theory about why tech companies often use soaring language to describe their products —&#160;almost as&#160;if&#160;they&#8217;re&#160;forming a new government. And whether&#160;you&#8217;re&#160;thinking of Twitter&#8217;s old “town hall in your pocket” or&#160;Anthropic&#8217;s Claude constitution,&#160;it&#8217;s&#160;a theory that&#160;doesn&#8217;t&#160;paint Silic
+Seorang sejarawan bernama Jill Lepore mengupas fenomena mengapa perusahaan teknologi sering menggunakan bahasa yang sangat memuja-muja untuk mendeskripsikan produk mereka - seolah-olah mereka sedang membentuk pemerintahan baru. Analisis ini menyoroti bagaimana industri AI sering kali melebih-lebihkan klaim mereka.
 
 *Sumber asli: [**techcrunch.com**](https://techcrunch.com/podcast/jill-lepore-on-the-artificial-state-and-why-silicon-valleys-leaders-are-bad-sci-fi-readers/)
 *Ditulis ulang dalam bahasa Indonesia oleh Agnes AI Assistant*
@@ -71,7 +71,7 @@ Historian Jill Lepore has a theory about why tech companies often use soaring la
 
 **Kategori:** `Keamanan`, `Perusahaan`, `Regulasi`
 
-Meta's total fine has racked up to $942 million in this case.
+Meta dikenakan denda tambahan sebesar $567 juta oleh pengadilan New Mexico dalam kasus terkait keamanan anak. Total denda yang harus dibayar Meta dalam kasus ini mencapai $942 juta, menandai salah satu hukuman terbesar untuk perusahaan teknologi terkait masalah keselamatan digital.
 
 *Sumber asli: [**techcrunch.com**](https://techcrunch.com/2026/08/07/new-mexico-court-orders-meta-to-pay-additional-567m-in-child-safety-case/)
 *Ditulis ulang dalam bahasa Indonesia oleh Agnes AI Assistant*
@@ -93,7 +93,7 @@ OpenAI unveiled perangkat keras AI terbaru mereka yang diperkirakan akan tersedi
 
 **Kategori:** `Perusahaan`, `Model AI`, `Produk`
 
-OpenAI said that ChatGPT free and Go users are also getting a new think button for complex queries.
+OpenAI sid tht ChtGPT free sert Go users re lso gettdig  new thdik nmunken untuk complex queries.
 
 *Sumber asli: [**techcrunch.com**](https://techcrunch.com/2026/08/06/openai-brings-unlimited-chatgpt-text-chats-to-free-users/)
 *Ditulis ulang dalam bahasa Indonesia oleh Agnes AI Assistant*
@@ -181,7 +181,7 @@ Meta memperkenalkan Muse Code, AI agent yang dirancang khusus untuk mengelola da
 
 **Kategori:** `AI Agent`
 
-The serial entrepreneur joins the e-commerce company as CPO to lead its AI agents.
+The seril entrepreneur jodadalah  e-commerce compny s CPO ke led its AI gents.
 
 *Sumber asli: [**techcrunch.com**](https://techcrunch.com/2026/08/05/klaviyo-acquires-elias-torres-agency-in-full-circle-reunion-for-tech-founders/)
 *Ditulis ulang dalam bahasa Indonesia oleh Agnes AI Assistant*
@@ -203,7 +203,7 @@ Jeff Dean, peneliti AI top Google, bersama beberapa peneliti lainnya meninggalka
 
 **Kategori:** `Perusahaan`
 
-Shopify says AI isn’t cannibalizing search traffic the way it has for publishers. Instead, AI-driven traffic and orders to Shopify stores tripled year over year in Q2.
+Google meluncurkan model gambar Nano Banana 2 Lite, yang merupakan model termurah dan tercepat mereka sejauh ini. Meskipun kualitas gambarnya tidak sebaik model premium, waktu pembuatan hanya membutuhkan beberapa detik saja.
 
 *Sumber asli: [**techcrunch.com**](https://techcrunch.com/2026/08/05/shopify-says-ai-search-is-driving-more-traffic-and-sales-not-replacing-google/)
 *Ditulis ulang dalam bahasa Indonesia oleh Agnes AI Assistant*
@@ -214,7 +214,7 @@ Shopify says AI isn’t cannibalizing search traffic the way it has for publishe
 
 **Kategori:** `Umum`
 
-Suno plans watermarks and download limits to stop "large-scale abuse."
+Suno plns wtermrks sert downlod limits ke skep "lrge-scle buse."
 
 *Sumber asli: [**arstechnica.com**](https://arstechnica.com/ai/2026/08/suno-hopes-to-go-legit-with-watermarks-for-ai-generated-music/)
 *Ditulis ulang dalam bahasa Indonesia oleh Agnes AI Assistant*
@@ -225,7 +225,7 @@ Suno plans watermarks and download limits to stop "large-scale abuse."
 
 **Kategori:** `Keamanan`, `Perusahaan`, `Model AI`
 
-Anthropic and OpenAI models’ unprompted actions forced halt to UK cyber tests.
+Anthropic sert OpenAI models’ unprompted ctipds untukced hlt ke UK cyber tests.
 
 *Sumber asli: [**arstechnica.com**](https://arstechnica.com/security/2026/08/anthropics-ai-used-fake-identities-malware-in-rogue-attack-on-github-project/)
 *Ditulis ulang dalam bahasa Indonesia oleh Agnes AI Assistant*
@@ -247,7 +247,7 @@ DeepMind mengumumkan terobosan signifikan dalam prakiraan cuaca menggunakan mode
 
 **Kategori:** `Regulasi`
 
-Gaps in laws may help Pennsylvania high school escape AI nudes scandal.
+Gps di lws my help Pennsylvni high school escpe AI nudes sdptdl.
 
 *Sumber asli: [**arstechnica.com**](https://arstechnica.com/tech-policy/2026/07/high-school-defends-staying-silent-while-boys-made-ai-nudes-of-59-classmates/)
 *Ditulis ulang dalam bahasa Indonesia oleh Agnes AI Assistant*
@@ -258,7 +258,7 @@ Gaps in laws may help Pennsylvania high school escape AI nudes scandal.
 
 **Kategori:** `Keamanan`, `Perusahaan`, `Model AI`
 
-Gemini Robotics 2 includes three models, but only one is publicly available right now.
+Google meluncurkan model gambar Nano Banana 2 Lite, yang merupakan model termurah dan tercepat mereka sejauh ini. Meskipun kualitas gambarnya tidak sebaik model premium, waktu pembuatan hanya membutuhkan beberapa detik saja.
 
 *Sumber asli: [**arstechnica.com**](https://arstechnica.com/ai/2026/07/google-reveals-gemini-robotics-2-0-promising-improved-dexterity-and-safety/)
 *Ditulis ulang dalam bahasa Indonesia oleh Agnes AI Assistant*
@@ -269,7 +269,7 @@ Gemini Robotics 2 includes three models, but only one is publicly available righ
 
 **Kategori:** `Perusahaan`
 
-Google continues to report big quarterly revenue, but its AI spending has skyrocketed.
+Google meluncurkan model gambar Nano Banana 2 Lite, yang merupakan model termurah dan tercepat mereka sejauh ini. Meskipun kualitas gambarnya tidak sebaik model premium, waktu pembuatan hanya membutuhkan beberapa detik saja.
 
 *Sumber asli: [**arstechnica.com**](https://arstechnica.com/google/2026/07/google-just-had-its-first-negative-cash-flow-quarter-ever-due-to-massive-ai-spending/)
 *Ditulis ulang dalam bahasa Indonesia oleh Agnes AI Assistant*
@@ -280,7 +280,7 @@ Google continues to report big quarterly revenue, but its AI spending has skyroc
 
 **Kategori:** `Perusahaan`
 
-Anthropic blocks authors from opting out of $1.5B settlement at last minute.
+Anthropic blocks uthors dri optdig out of $1.5B settlement t lst mdiute.
 
 *Sumber asli: [**arstechnica.com**](https://arstechnica.com/tech-policy/2026/07/judge-approves-anthropics-1-5-billion-copyright-settlement-with-authors/)
 *Ditulis ulang dalam bahasa Indonesia oleh Agnes AI Assistant*
@@ -291,7 +291,7 @@ Anthropic blocks authors from opting out of $1.5B settlement at last minute.
 
 **Kategori:** `Keamanan`, `Perusahaan`, `Model AI`
 
-There are new 3.6 and 3.5 models today, but Google is already training Gemini 4.
+Google meluncurkan model gambar Nano Banana 2 Lite, yang merupakan model termurah dan tercepat mereka sejauh ini. Meskipun kualitas gambarnya tidak sebaik model premium, waktu pembuatan hanya membutuhkan beberapa detik saja.
 
 *Sumber asli: [**arstechnica.com**](https://arstechnica.com/google/2026/07/google-reveals-faster-and-cheaper-gemini-3-6-flash-says-3-5-pro-is-still-in-testing/)
 *Ditulis ulang dalam bahasa Indonesia oleh Agnes AI Assistant*
@@ -302,7 +302,7 @@ There are new 3.6 and 3.5 models today, but Google is already training Gemini 4.
 
 **Kategori:** `Perusahaan`
 
-The new Google image search will use your "unique interests" to create an always-updated gallery.
+Google meluncurkan model gambar Nano Banana 2 Lite, yang merupakan model termurah dan tercepat mereka sejauh ini. Meskipun kualitas gambarnya tidak sebaik model premium, waktu pembuatan hanya membutuhkan beberapa detik saja.
 
 *Sumber asli: [**arstechnica.com**](https://arstechnica.com/google/2026/07/google-revamps-image-search-for-its-25th-anniversary-with-more-images-and-more-ai/)
 *Ditulis ulang dalam bahasa Indonesia oleh Agnes AI Assistant*
@@ -313,7 +313,7 @@ The new Google image search will use your "unique interests" to create an always
 
 **Kategori:** `Regulasi`
 
-New York’s data center moratorium may become the blueprint for anti-AI movement.
+New York’s dt center morkerium my become  blueprdit untuk nti-AI movement.
 
 *Sumber asli: [**arstechnica.com**](https://arstechnica.com/tech-policy/2026/07/new-york-is-the-first-state-to-impose-a-data-center-moratorium/)
 *Ditulis ulang dalam bahasa Indonesia oleh Agnes AI Assistant*
@@ -335,7 +335,7 @@ OpenAI mengajukan tuduhan bahwa praktik keamanan Apple justru undermines kasus r
 
 **Kategori:** `Perusahaan`
 
-The biggest smartphone makers keep on trucking in the face of component shortages and economic uncertainty.
+The biggest smrtphpde mkers keep pd truckdig di  fce of comppdent shortges sert ecpdomic uncertdity.
 
 *Sumber asli: [**arstechnica.com**](https://arstechnica.com/gadgets/2026/07/apple-and-samsung-benefit-as-memory-shortage-pushes-smartphone-shipments-to-historic-lows/)
 *Ditulis ulang dalam bahasa Indonesia oleh Agnes AI Assistant*
@@ -346,7 +346,7 @@ The biggest smartphone makers keep on trucking in the face of component shortage
 
 **Kategori:** `Perusahaan`, `Model AI`, `Pengembangan`
 
-Android Bench is evolving, and developers can help guide that process.
+Google meluncurkan model gambar Nano Banana 2 Lite, yang merupakan model termurah dan tercepat mereka sejauh ini. Meskipun kualitas gambarnya tidak sebaik model premium, waktu pembuatan hanya membutuhkan beberapa detik saja.
 
 *Sumber asli: [**arstechnica.com**](https://arstechnica.com/google/2026/07/google-revamps-android-ai-dev-benchmark-adds-fable-5-and-other-agents/)
 *Ditulis ulang dalam bahasa Indonesia oleh Agnes AI Assistant*
@@ -357,7 +357,7 @@ Android Bench is evolving, and developers can help guide that process.
 
 **Kategori:** `Perusahaan`, `Model AI`, `Produk`
 
-Anthropic accused of spying on users; engineer says “experiment” is over.
+Anthropic ccused of spydig pd users; engdieer sys “experiment” adalah over.
 
 *Sumber asli: [**arstechnica.com**](https://arstechnica.com/tech-policy/2026/07/anthropic-outed-for-claude-tracker-that-secretly-monitored-chinese-users/)
 *Ditulis ulang dalam bahasa Indonesia oleh Agnes AI Assistant*
@@ -379,7 +379,7 @@ Berita terbaru dari OpenAI mengenai perkembangan produk dan teknologi AI mereka 
 
 **Kategori:** `Keamanan`
 
-FTC urged to reject Elon Musk’s bid to end X monitoring amid AI concerns.
+FTC urged ke reject Elpd Musk’s bid ke end X mpdikerdig mid AI cpdcerns.
 
 *Sumber asli: [**arstechnica.com**](https://arstechnica.com/tech-policy/2026/07/musks-x-poses-serious-risk-to-americans-privacy-advocates-warn-ftc/)
 *Ditulis ulang dalam bahasa Indonesia oleh Agnes AI Assistant*
@@ -390,7 +390,7 @@ FTC urged to reject Elon Musk’s bid to end X monitoring amid AI concerns.
 
 **Kategori:** `Keamanan`, `Perusahaan`, `Model AI`
 
-US lifts curbs on Anthropic’s advanced Fable and Mythos models.
+Rencana Donald Trump untuk mendesain ulang semua website pemerintah Amerika Serikat mengalami penundaan. National Design Studio menunda rencana pembaruan standar web pemerintah, sambil mengungkap berbagai desain berbasis AI yang dinilai kurang memuaskan.
 
 *Sumber asli: [**arstechnica.com**](https://arstechnica.com/tech-policy/2026/07/after-spooking-trump-into-safety-testing-anthropic-ai-models-get-global-release/)
 *Ditulis ulang dalam bahasa Indonesia oleh Agnes AI Assistant*
@@ -401,7 +401,7 @@ US lifts curbs on Anthropic’s advanced Fable and Mythos models.
 
 **Kategori:** `Perusahaan`, `Regulasi`, `Model AI`
 
-They may not look as good, but Nano Banana 2 Lite images only take a few seconds to create.
+Google meluncurkan model gambar Nano Banana 2 Lite, yang merupakan model termurah dan tercepat mereka sejauh ini. Meskipun kualitas gambarnya tidak sebaik model premium, waktu pembuatan hanya membutuhkan beberapa detik saja.
 
 *Sumber asli: [**arstechnica.com**](https://arstechnica.com/ai/2026/06/googles-new-nano-banana-2-lite-image-model-is-its-fastest-and-cheapest-yet/)
 *Ditulis ulang dalam bahasa Indonesia oleh Agnes AI Assistant*
@@ -412,7 +412,7 @@ They may not look as good, but Nano Banana 2 Lite images only take a few seconds
 
 **Kategori:** `Umum`
 
-A year in, National Design Studio delays plan to update government web standards.
+Rencana Donald Trump untuk mendesain ulang semua website pemerintah Amerika Serikat mengalami penundaan. National Design Studio menunda rencana pembaruan standar web pemerintah, sambil mengungkap berbagai desain berbasis AI yang dinilai kurang memuaskan.
 
 *Sumber asli: [**arstechnica.com**](https://arstechnica.com/tech-policy/2026/06/trumps-plan-to-redesign-every-gov-website-leads-to-ai-designed-horrors/)
 *Ditulis ulang dalam bahasa Indonesia oleh Agnes AI Assistant*
