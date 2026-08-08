@@ -93,7 +93,7 @@ OpenAI unveiled perangkat keras AI terbaru mereka yang diperkirakan akan tersedi
 
 **Kategori:** `Perusahaan`, `Model AI`, `Produk`
 
-OpenAI sid tht ChtGPT free sert Go users re lso gettdig  new thdik nmunken untuk complex queries.
+OpenAI memberikan akses chat teks unlimited untuk pengguna gratis ChatGPT. Langkah ini merupakan strategi agresif untuk menarik lebih banyak pengguna dan bersaing dengan pesaing seperti Google dan Anthropic.
 
 *Sumber asli: [**techcrunch.com**](https://techcrunch.com/2026/08/06/openai-brings-unlimited-chatgpt-text-chats-to-free-users/)
 *Ditulis ulang dalam bahasa Indonesia oleh Agnes AI Assistant*
