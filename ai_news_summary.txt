@@ -1,0 +1,41 @@
+Ringkasan Berita AI — 10 August 2026 (Pagi)
+==================================================
+* Embattled hedge fund Situational Awareness invests $400M in chip startup Source Foundry
+  The AI-focused hedge fund is still making some big bets.
+  Kategori: ��⚡ Hardware AI
+  Link: https://techcrunch.com/2026/08/09/embattled-hedge-fund-situational-awareness-invests-400m-in-chip-startup-source-foundry/
+
+* Anthropic is turning Claude Code’s auto mode on by default
+  Programming with Claude Code will soon require even less human oversight.
+  Kategori: ���🏢 Perusahaan ���🧠 Model AI
+  Link: https://techcrunch.com/2026/08/09/anthropic-is-turning-claude-codes-auto-mode-on-by-default/
+
+* Historian Jill Lepore says Silicon Valley misreads science fiction and undermines democracy
+  On the latest episode of Equity, we spoke to Jill Lepore about "government by machines" and why Elon Musk is a bad science fiction reader.
+  Kategori: ��⚡ Hardware AI
+  Link: https://techcrunch.com/2026/08/09/historian-jill-lepore-says-the-tech-industry-is-led-by-bad-readers-who-are-undermining-democracy/
+
+* The AI safety test is becoming a safety risk
+  AI agents are escaping cybersecurity testing environments and reaching real-world systems, raising questions about whether safety infrastructure, industry standards and regulation can keep pace with i
+  Kategori: ���🔒 Keamanan AI ���🤖 AI Agent ��⚖��️ Regulasi ���🧠 Model AI
+  Link: https://techcrunch.com/2026/08/09/the-ai-safety-test-is-becoming-a-safety-risk/
+
+* OpenAI acquires presentation startup NextSlide
+  NextSlide says its team members are now working on ChatGPT.
+  Kategori: ���🏢 Perusahaan ���🧠 Model AI
+  Link: https://techcrunch.com/2026/08/08/openai-acquires-presentation-startup-nextslide/
+
+* OpenAI says it slowed Astra model development over security concerns
+  OpenAI dikabarkan menghentikan pengembangan model Astra karena kekhawatiran keamanan siber yang serius.
+  Kategori: ���🔒 Keamanan AI ���🏢 Perusahaan ���🧠 Model AI
+  Link: https://techcrunch.com/2026/08/07/openai-says-it-slowed-astra-model-development-over-security-concerns/
+
+* After Rippling blew millions on AI in months, it built an employee ROI tool
+  Rippling bangun tidur setelah pengeluaran jutaan dolar untuk AI dan kini membangun sistem pelacakan ROI internal.
+  Kategori: ���💰 Bisnis & Investasi
+  Link: https://techcrunch.com/2026/08/07/after-rippling-blew-millions-on-ai-in-months-it-built-an-employee-roi-tool/
+
+* Cloudflare launches Kitesurf, a browser built for AI agents
+  Cloudflare lança Kitesurf, browser khusus untuk AI agent yang lebih hemat resource dibanding Chromium tradisional.
+  Kategori: ���🤖 AI Agent
+  Link: https://techcrunch.com/2026/08/07/cloudflare-launches-kitesurf-a-browser-built-for-ai-agents/
