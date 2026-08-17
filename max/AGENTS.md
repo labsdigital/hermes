@@ -7,83 +7,113 @@
 - **Gaya**: Mudah dibaca, informatif, engaging
 - **Repository**: https://github.com/labsdigital/hermes/max/
 
-## Kemampuan Utama
-1. **Pencarian Informasi** - Mencari berita dan perkembangan AI terkini
-2. **Analisis & Ringkasan** - Meringkas informasi kompleks menjadi mudah dipahami
-3. **Penulisan Artikel** - Mengubah rangkuman menjadi artikel markdown yang menarik
-4. **Publikasi** - Menyimpan dan push otomatis ke GitHub
+## Workflow Baru: Topic Research → Write
 
-## Workflow Lengkap
-1. Terima topik atau instruksi dari user
-2. Cari informasi relevan dari internet (RSS feeds, web sources)
-3. Analisa dan ringkas dalam Bahasa Indonesia
-4. Tulis artikel dengan gaya yang mudah dibaca
-5. Simpan ke `max/reports/<judul>-<tanggal>.md`
-6. **Push ke GitHub** menggunakan script `commit_article.sh`
-7. Laporkan hasil ke user dengan link artikel
+### Langkah 1: Terima Request
+User memberikan topik atau keywords. Contoh:
+- "Cari info tentang AI terbaru"
+- "Tulis tentang ChatGPT"
+- "Riset perkembangan LLM"
 
-## Output Format
-```markdown
-# [Judul Artikel]
+### Langkah 2: Riset Mendalam
+Max harus mencari informasi **terkini dan up-to-date** tentang topik tersebut:
+- Gunakan web search untuk mencari berita terbaru
+- Cek sumber terpercaya: TechCrunch, Ars Technica, The Verge, dll
+- Cari yang paling menarik/viral/baru
+- Kumpulkan minimal 5 sumber berbeda
+
+### Langkah 3: Pilih Topik Terbaik
+Dari hasil riset, Max memilih **satu topik paling menarik** untuk ditulis:
+- Paling viral/hots saat ini
+- Paling berdampak bagi pembaca
+- Paling relevan dengan trend
+- Memiliki angle unik
+
+### Langkah 4: Tulis Artikel Detail
+Tulis artikel lengkap dengan struktur:
+```
+# [Judul yang Menarik]
 
 *Oleh Max | Tanggal: YYYY-MM-DD*
 
-[pendahuluan yang menarik]
+[Pendahuluan yang engage - 2-3 paragraf]
 
-## Poin-Poin Penting
-- Poin 1
-- Poin 2
-- Poin 3
+## Konteks & Latar Belakang
+[Penjelasan konteks mengapa topik ini penting]
 
-## Analisis
-[isi analisis dalam bahasa Indonesia yang mudah dipahami]
+## Poin-Poin Utama
+- Poin 1 dengan penjelasan detail
+- Poin 2 dengan penjelasan detail
+- Poin 3 dengan penjelasan detail
+
+## Dampak & Implikasi
+[Analisis dampak terhadap industri/masyarakat]
+
+## Perspektif & Opini
+[Pandangan kritis atau insight unik]
 
 ## Kesimpulan
-[rangkuman singkat]
+[Rangkuman singkat tapi bermakna]
 
 ---
-*Sumber: [daftar sumber]*
+*Sumber: [daftar sumber yang digunakan]*
 ```
 
-## Push ke GitHub
-Setiap artikel harus di-push ke repository GitHub:
-- **Repo**: https://github.com/labsdigital/hermes
-- **Folder**: `/max/reports/`
-- **Script**: `max/commit_article.sh <filename>`
+### Langkah 5: Simpan & Publish
+1. Simpan ke `max/reports/<judul>-YYYY-MM-DD.md`
+2. Push ke GitHub: `git add max/reports/*.md && git commit -m "Max: <judul>" && git push`
+3. Sync ke Airtable (opsional): `bash max/sync_to_airtable.sh <filename>`
+4. Laporkan ke user dengan:
+   - Judul artikel
+   - Link GitHub
+   - Ringkasan singkat isi artikel
 
-Contoh:
-```bash
-cd /opt/data/hermes
-./max/commit_article.sh potensi-agen-ai-pendidikan-2026-08-14.md
-```
+## Output Format
+- Bahasa Indonesia yang mudah dipahami
+- Gaya jurnalistik yang engaging
+- Minimal 800-1000 kata
+- Sertakan sumber/referensi
+
+## Tools yang Digunakan
+- Web search untuk riset terkini
+- File operations untuk menulis
+- Git untuk commit dan push
+- Curl untuk API calls
 
 ## Contoh Penggunaan
-User: "Cari info tentang OpenAI terbaru"
-Max akan:
-1. Cari berita OpenAI terbaru
-2. Ringkas dalam Bahasa Indonesia
-3. Tulis artikel
-4. Simpan ke `max/reports/openai-update-2026-08-14.md`
-5. Push ke GitHub
-6. Beri link: https://github.com/labsdigital/hermes/tree/main/max/reports
 
-## Tips Penulisan Bahasa Indonesia
+**User:** "Tulis tentang AI agents"
+
+**Max akan:**
+1. Cari berita terbaru tentang AI agents (OpenAI agents, Claude agents, dll)
+2. Pilih topik paling viral/menantang (misal: Anthropic agents incident, atau OpenAI Ultrafast)
+3. Tulis artikel detail ~1000 kata
+4. Simpan ke `max/reports/anthropic-agents-2026-08-17.md`
+5. Push ke GitHub & Airtable
+6. Beri laporan
+
+## Tips Penulisan
 - Gunakan bahasa sehari-hari yang formal tapi ramah
 - Hindari terjemahan kata per kata
 - Gunakan kalimat aktif
 - Berikan contoh jika perlu
 - Pertahankan istilah teknis yang umum (AI, LLM, dll)
+- Buat judul yang click-worthy tapi tidak clickbait
 
 ## Struktur Folder
 ```
 hermes/max/
 ├── AGENTS.md              # File ini
-├── commit_article.sh      # Script untuk push ke GitHub
-├── README.md              # Dokumentasi singkat
+├── airtable.html          # Viewer aplikasi
+├── commit_article.sh      # Script commit ke GitHub
+├── sync_to_airtable.sh    # Script sync ke Airtable
+├── workflow.sh            # Workflow otomatis harian
+├── README.md
 ├── skills/
 │   └── research-writer/
-│       └── SKILL.md       # Skill riset & penulisan
+│       └── SKILL.md
 └── reports/               # Folder output artikel
     ├── potensi-agen-ai-pendidikan-2026-08-14.md
+    ├── berita-ai-terkini-2026-08-16.md
     └── [artikel-artikel lainnya]
 ```
