@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Max Articles - Airtable Viewer</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+        header { text-align: center; padding: 40px 20px; color: white; }
+        header h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        header p { font-size: 1.1rem; opacity: 0.9; }
+        .controls {
+            background: white; padding: 20px; border-radius: 12px;
+            margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: flex; gap: 15px; align-items: center; flex-wrap: wrap;
+        }
+        .controls input, .controls select {
+            flex: 1; min-width: 200px; padding: 12px 16px;
+            border: 2px solid #e0e0e0; border-radius: 8px; font-size: 14px;
+        }
+        .controls input:focus, .controls select:focus { outline: none; border-color: #667eea; }
+        .controls button {
+            padding: 12px 24px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer;
+        }
+        .stats {
+            background: white; padding: 15px 20px; border-radius: 12px;
+            margin-bottom: 20px; display: flex; justify-content: space-between; gap: 10px;
+        }
+        .articles { display: grid; gap: 20px; }
+        .article-card {
+            background: white; border-radius: 12px; overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s;
+        }
+        .article-card:hover { transform: translateY(-4px); }
+        .article-header { padding: 25px; border-bottom: 1px solid #f0f0f0; }
+        .article-id {
+            display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white; padding: 4px 12px; border-radius: 20px; font-size: 12px; margin-bottom: 12px;
+        }
+        .article-title { font-size: 1.5rem; color: #333; margin-bottom: 8px; }
+        .article-meta { color: #888; font-size: 13px; display: flex; gap: 15px; }
+        .article-content { padding: 25px; line-height: 1.8; color: #444; }
+        .article-content h2 { border-bottom: 2px solid #667eea; padding-bottom: 8px; margin: 25px 0 15px; }
+        .article-content p { margin-bottom: 15px; }
+        .article-content ul { margin: 15px 0; padding-left: 25px; }
+        .article-content blockquote { border-left: 4px solid #667eea; padding-left: 20px; margin: 15px 0; }
+        .article-content hr { border: none; border-top: 2px solid #f0f0f0; margin: 25px 0; }
+        .loading { text-align: center; padding: 60px 20px; color: white; }
+        .loading .spinner {
+            width: 50px; height: 50px; border: 4px solid rgba(255,255,255,0.3);
+            border-top-color: white; border-radius: 50%; animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        footer { text-align: center; padding: 40px 20px; color: rgba(255,255,255,0.8); font-size: 14px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 Max Articles</h1>
+            <p>Koleksi artikel AI dari Subagent Max</p>
+        </header>
+        <div class="controls">
+            <input type="text" id="searchInput" placeholder="🔍 Cari artikel...">
+            <select id="sortSelect">
+                <option value="newest">Terbaru</option>
+                <option value="oldest">Terlama</option>
+            </select>
+            <button onclick="loadArticles()">Muat Ulang</button>
+        </div>
+        <div class="stats" id="statsBar" style="display: none;">
+            <span>Menampilkan <strong id="articleCount">0</strong> artikel</span>
+            <span>Last updated: <strong id="lastUpdated">-</strong></span>
+        </div>
+        <div id="articlesContainer" class="articles">
+            <div class="loading"><div class="spinner"></div><p>Memuat...</p></div>
+        </div>
+        <footer>
+            <p>Dikembangkan oleh <strong>Max Subagent</strong></p>
+        </footer>
+    </div>
+    <script>
+        const CONFIG = {
+            apiKey: localStorage.getItem('airtable_token') || '',
+            baseId: 'appHDwcERrnRH02YS',
+            tableId: 'tbl9TvJ9QztbHeyaY'
+        };
+        let allArticles = [];
+
+        if (!CONFIG.apiKey) showTokenPrompt();
+
+        function showTokenPrompt() {
+            const modal = document.createElement('div');
+            modal.innerHTML = `
+                <div style="position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.7);display:flex;align-items:center;justify-content:center;z-index:1000;">
+                    <div style="background:white;padding:30px;border-radius:12px;max-width:500px;width:90%;">
+                        <h2 style="margin-bottom:15px;">🔐 Masukkan Airtable Token</h2>
+                        <p style="color:#666;margin-bottom:20px;font-size:14px;">Token disimpan di browser (localStorage)</p>
+                        <input type="text" id="tokenInput" placeholder="pat..." style="width:100%;padding:12px;border:2px solid #e0e0e0;border-radius:8px;margin-bottom:15px;">
+                        <div style="display:flex;gap:10px;">
+                            <button onclick="submitToken()" style="flex:1;padding:12px;background:linear-gradient(135deg,#667eea,#764ba2);color:white;border:none;border-radius:8px;font-weight:600;cursor:pointer;">Simpan</button>
+                            <button onclick="closeModal()" style="flex:1;padding:12px;background:#f0f0f0;color:#666;border:none;border-radius:8px;font-weight:600;cursor:pointer;">Batal</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+
+        function submitToken() {
+            const token = document.getElementById('tokenInput').value.trim();
+            if (token) {
+                localStorage.setItem('airtable_token', token);
+                CONFIG.apiKey = token;
+                closeModal();
+                loadArticles();
+            }
+        }
+
+        function closeModal() {
+            const m = document.getElementById('tokenModal');
+            if (m) m.remove();
+        }
+
+        function parseMarkdown(md) {
+            if (!md) return '';
+            md = md.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            md = md.replace(/^## (.*$)/gim, '<h2>$1</h2>');
+            md = md.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            md = md.replace(/\*(.*?)\*/g, '<em>$1</em>');
+            md = md.replace(/^\- (.*$)/gim, '<li>$1</li>');
+            md = md.replace(/\n\n/g, '</p><p>');
+            md = md.replace(/\n/g, '<br>');
+            return md.startsWith('<') ? md : '<p>' + md + '</p>';
+        }
+
+        function extractDate(record) {
+            const id = record.fields.id || '';
+            const match = id.match(/(\d{4}-\d{2}-\d{2})/);
+            return match ? new Date(match[1]) : new Date(record.createdTime);
+        }
+
+        function extractTitle(content) {
+            if (!content) return 'Tanpa Judul';
+            const match = content.match(/^#\s+(.+)$/m);
+            return match ? match[1].trim() : content.split('\n')[0].substring(0, 60);
+        }
+
+        async function loadArticles() {
+            const container = document.getElementById('articlesContainer');
+            const statsBar = document.getElementById('statsBar');
+
+            if (!CONFIG.apiKey) { showTokenPrompt(); return; }
+
+            container.innerHTML = '<div class="loading"><div class="spinner"></div><p>Memuat...</p></div>';
+            statsBar.style.display = 'none';
+
+            try {
+                const resp = await fetch(`https://api.airtable.com/v0/${CONFIG.baseId}/${CONFIG.tableId}?maxRecords=100`, {
+                    headers: { 'Authorization': `Bearer ${CONFIG.apiKey}` }
+                });
+                if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+                const data = await resp.json();
+                allArticles = data.records || [];
+                document.getElementById('lastUpdated').textContent = new Date().toLocaleString('id-ID');
+                renderArticles();
+            } catch (e) {
+                container.innerHTML = `<div class="error" style="background:#ff6b6b;color:white;padding:20px;border-radius:12px;text-align:center;">❌ ${e.message}</div>`;
+            }
+        }
+
+        function renderArticles() {
+            const container = document.getElementById('articlesContainer');
+            const statsBar = document.getElementById('statsBar');
+            const search = document.getElementById('searchInput').value.toLowerCase();
+            const sort = document.getElementById('sortSelect').value;
+
+            let filtered = allArticles.filter(r => {
+                const c = (r.fields.content || '').toLowerCase();
+                const id = (r.fields.id || '').toLowerCase();
+                return c.includes(search) || id.includes(search);
+            });
+
+            filtered.sort((a, b) => {
+                const dA = extractDate(a), dB = extractDate(b);
+                return sort === 'newest' ? dB - dA : dA - dB;
+            });
+
+            statsBar.style.display = 'flex';
+            document.getElementById('articleCount').textContent = filtered.length;
+
+            if (filtered.length === 0) {
+                container.innerHTML = '<div class="empty" style="background:white;padding:60px 20px;border-radius:12px;text-align:center;color:#888;"><h3>Tidak ada artikel</h3></div>';
+                return;
+            }
+
+            container.innerHTML = filtered.map(r => {
+                const title = extractTitle(r.fields.content);
+                const date = extractDate(r).toLocaleDateString('id-ID', { day: '2-digit', month: 'long', year: 'numeric' });
+                return `
+                    <article class="article-card">
+                        <div class="article-header">
+                            <span class="article-id">${r.fields.id || 'N/A'}</span>
+                            <h2 class="article-title">${title}</h2>
+                            <div class="article-meta"><span>📅 ${date}</span><span>🆔 ${r.id}</span></div>
+                        </div>
+                        <div class="article-content">${parseMarkdown(r.fields.content || '')}</div>
+                    </article>
+                `;
+            }).join('');
+        }
+
+        document.getElementById('searchInput').addEventListener('input', renderArticles);
+        document.getElementById('sortSelect').addEventListener('change', renderArticles);
+        loadArticles();
+    </script>
+</body>
+</html>
