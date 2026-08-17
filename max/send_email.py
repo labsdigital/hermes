@@ -7,6 +7,7 @@ Usage: python3 send_email.py <recipient> <subject> <body>
 
 import smtplib
 import sys
+import re
 from email.message import EmailMessage
 from pathlib import Path
 
@@ -16,13 +17,78 @@ SMTP_PORT = 465  # SSL
 SMTP_USER = "blog@taraka.id"
 SMTP_PASS = "Blog.215"
 
-def send_email(recipient, subject, body):
-    """Kirim email melalui SMTP SSL"""
+def md_to_html(md_text):
+    """Convert markdown to HTML"""
+    lines = md_text.split('\n')
+    html_lines = []
+    in_code_block = False
+    in_list = False
+    
+    for line in lines:
+        # Code blocks
+        if line.startswith('```'):
+            if in_code_block:
+                html_lines.append('</code></pre>')
+                in_code_block = False
+            else:
+                html_lines.append('<pre><code>')
+                in_code_block = True
+            continue
+        
+        if in_code_block:
+            html_lines.append(line.replace('<', '&lt;').replace('>', '&gt;'))
+            continue
+        
+        # Headers
+        if line.startswith('### '):
+            html_lines.append(f'<h3>{line[4:]}</h3>')
+        elif line.startswith('## '):
+            html_lines.append(f'<h2>{line[3:]}</h2>')
+        elif line.startswith('# '):
+            html_lines.append(f'<h1>{line[2:]}</h1>')
+        # Horizontal rule
+        elif line == '---':
+            html_lines.append('<hr>')
+        # Bold
+        elif '**' in line:
+            line = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', line)
+            line = re.sub(r'\*(.+?)\*', r'<em>\1</em>', line)
+            html_lines.append(f'<p>{line}</p>')
+        # Lists
+        elif line.startswith('- '):
+            if not in_list:
+                html_lines.append('<ul>')
+                in_list = True
+            html_lines.append(f'<li>{line[2:]}</li>')
+        elif line.strip() == '':
+            if in_list:
+                html_lines.append('</ul>')
+                in_list = False
+            continue
+        # Regular paragraph
+        else:
+            html_lines.append(f'<p>{line}</p>')
+    
+    if in_list:
+        html_lines.append('</ul>')
+    
+    return '\n'.join(html_lines)
+
+def send_email(recipient, subject, body_html):
+    """Kirim email melalui SMTP SSL dengan HTML body"""
     msg = EmailMessage()
     msg['From'] = SMTP_USER
     msg['To'] = recipient
     msg['Subject'] = subject
-    msg.set_content(body)
+    msg.add_alternative(f"""\
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body style="font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.6;">
+{body_html}
+</body>
+</html>
+""", subtype='html')
     
     try:
         with smtplib.SMTP_SSL(SMTP_HOST, SMTP_PORT) as server:
@@ -48,7 +114,7 @@ def send_article_notification(article_path, recipient="tamimnasa@gmail.com"):
             title = line[2:].strip()
             break
     
-    # Remove title from body (judul sudah di subjek)
+    # Remove title from content
     body_lines = []
     skipped_title = False
     for line in lines:
@@ -57,9 +123,10 @@ def send_article_notification(article_path, recipient="tamimnasa@gmail.com"):
             continue
         body_lines.append(line)
     
-    body = '\n'.join(body_lines).strip()
+    body_md = '\n'.join(body_lines).strip()
+    body_html = md_to_html(body_md)
     
-    return send_email(recipient, title, body)
+    return send_email(recipient, title, body_html)
 
 if __name__ == "__main__":
     if len(sys.argv) < 4:
