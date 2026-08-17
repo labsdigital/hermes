@@ -1,5 +1,5 @@
 #!/bin/bash
-# Max AI News Workflow - Generate, push to GitHub & Airtable
+# Max AI News Workflow - Generate, push to GitHub, Airtable & Email
 # This script should be run from /opt/data/hermes
 
 set -e
@@ -77,7 +77,13 @@ except Exception as e:
     print(f"⚠️  Airtable sync failed: {e}")
 PYEOF
 fi
-
 echo ""
+
+# Step 5: Send email notification
+echo "📧 Step 5: Sending email notification..."
+python3 /opt/data/hermes/max/send_email.py --article "/opt/data/hermes/max/reports/$NEWS_FILE" --recipient "tamimnasa@gmail.com" 2>&1 || echo "⚠️  Email send failed"
+echo ""
+
 echo "🎉 Workflow complete!"
 echo "   GitHub: https://github.com/labsdigital/hermes/tree/main/max/reports"
+echo "   Airtable: https://airtable.com/appHDwcERrnRH02YS/tbl9TvJ9QztbHeyaY"
