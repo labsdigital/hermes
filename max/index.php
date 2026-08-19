@@ -72,10 +72,24 @@ function fetchArticles() {
     $data = json_decode($response, true);
     $records = $data['records'] ?? [];
     
-    // Sort by published_at or createdTime (newest first)
+    // Sort by date (published_at > ID date > createdTime), newest first
     usort($records, function($a, $b) {
-        $dateA = $a['fields']['published_at'] ?? $a['createdTime'];
-        $dateB = $b['fields']['published_at'] ?? $b['createdTime'];
+        // Get date from published_at field
+        $dateA = $a['fields']['published_at'] ?? null;
+        $dateB = $b['fields']['published_at'] ?? null;
+        
+        // If not available, extract from ID
+        if (!$dateA) {
+            $idA = $a['fields']['id'] ?? '';
+            preg_match('/(\d{4}-\d{2}-\d{2})/', $idA, $m);
+            $dateA = $m[1] ?? $a['createdTime'];
+        }
+        if (!$dateB) {
+            $idB = $b['fields']['id'] ?? '';
+            preg_match('/(\d{4}-\d{2}-\d{2})/', $idB, $m);
+            $dateB = $m[1] ?? $b['createdTime'];
+        }
+        
         return strtotime($dateB) - strtotime($dateA);
     });
     
@@ -127,15 +141,20 @@ function extractTitle($content) {
 }
 
 function extractDate($record) {
+    // Try published_at field first
     $published = $record['fields']['published_at'] ?? '';
     if ($published) {
         return date('d M Y', strtotime($published));
     }
+    
+    // Fallback: extract from ID (format: max-article-name-YYYY-MM-DD)
     $id = $record['fields']['id'] ?? '';
     $match = preg_match('/(\d{4}-\d{2}-\d{2})/', $id, $matches);
     if ($match) {
         return date('d M Y', strtotime($matches[1]));
     }
+    
+    // Last resort: use createdTime
     return date('d M Y', strtotime($record['createdTime']));
 }
 
