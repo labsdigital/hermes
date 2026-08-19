@@ -45,38 +45,9 @@ else
 fi
 echo ""
 
-# Step 4: Sync to Airtable (optional)
-if [ -n "$AIRTABLE_API_KEY" ]; then
-    echo "📊 Step 4: Syncing to Airtable..."
-    python3 << PYEOF
-import json, urllib.request, os
-
-news_file = "$NEWS_FILE"
-base_id = "$BASE_ID"
-table_id = "$TABLE_ID"
-article_id = "max-$TIMESTAMP"
-token = os.environ.get("AIRTABLE_API_KEY", "")
-
-with open(news_file, "r") as f:
-    content = f.read()
-
-data = {"records": [{"fields": {"id": article_id, "content": content}}]}
-payload = json.dumps(data).encode()
-
-req = urllib.request.Request(
-    f"https://api.airtable.com/v0/{base_id}/{table_id}",
-    data=payload,
-    headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json"},
-    method="POST"
-)
-
-try:
-    resp = urllib.request.urlopen(req).read()
-    print("✅ Synced to Airtable")
-except Exception as e:
-    print(f"⚠️  Airtable sync failed: {e}")
-PYEOF
-fi
+# Step 4: Sync to Airtable
+echo "📊 Step 4: Syncing to Airtable..."
+bash /opt/data/hermes/max/sync_to_airtable.sh "$NEWS_FILE" 2>&1 || echo "⚠️  Airtable sync skipped"
 echo ""
 
 # Step 5: Send email notification
