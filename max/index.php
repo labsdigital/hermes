@@ -297,10 +297,20 @@ if ($articleId) {
             color: inherit;
             display: block;
         }
-
+        
         .article-card:hover {
             transform: translateY(-4px);
             box-shadow: var(--shadow-lg);
+        }
+        
+        /* Prevent any link styling inside card */
+        .article-card a,
+        .article-card h2,
+        .article-card h3,
+        .article-card p,
+        .article-card span {
+            text-decoration: none;
+            color: inherit;
         }
 
         /* Prevent any link styling on cards */
