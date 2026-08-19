@@ -333,6 +333,11 @@ if ($articleId) {
             color: var(--text);
         }
         
+        /* Prevent title from changing on hover */
+        .article-card:hover .card-title {
+            color: var(--text) !important;
+        }
+        
         .card-excerpt {
             color: var(--text-muted);
             font-size: 0.9375rem;
