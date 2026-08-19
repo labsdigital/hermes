@@ -330,6 +330,7 @@ if ($articleId) {
             line-height: 1.3;
             margin-bottom: 0.75rem;
             letter-spacing: -0.3px;
+            color: var(--text);
         }
         
         .card-excerpt {
