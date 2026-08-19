@@ -13,7 +13,7 @@
 // Konfigurasi - GANTI dengan table ID baru Anda
 $AIRTABLE_API_KEY = getenv('AIRTABLE_API_KEY') ?: (file_exists(__DIR__ . '/../.env') ? parse_env_file(__DIR__ . '/../.env')['AIRTABLE_API_KEY'] : '');
 $AIRTABLE_BASE_ID = 'appHDwcERrnRH02YS';
-$AIRTABLE_TABLE_ID = 'tblArticles'; // <-- GANTI DENGAN TABLE ID BARU ANDA
+$AIRTABLE_TABLE_ID = 'tblExdQkNbL9bZbgQ'; // tblArticles
 
 function parse_env_file($path) {
     $vars = [];
