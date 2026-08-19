@@ -312,11 +312,6 @@ if ($articleId) {
             text-decoration: none;
             color: inherit;
         }
-
-        /* Prevent any link styling on cards */
-        .article-card * {
-            text-decoration: none;
-        }
         
         .card-accent {
             height: 4px;
