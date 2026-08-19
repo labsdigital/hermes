@@ -297,10 +297,15 @@ if ($articleId) {
             color: inherit;
             display: block;
         }
-        
+
         .article-card:hover {
             transform: translateY(-4px);
             box-shadow: var(--shadow-lg);
+        }
+
+        /* Prevent any link styling on cards */
+        .article-card * {
+            text-decoration: none;
         }
         
         .card-accent {
@@ -336,6 +341,15 @@ if ($articleId) {
         /* Prevent title from changing on hover */
         .article-card:hover .card-title {
             color: var(--text) !important;
+            text-decoration: none !important;
+        }
+
+        /* Override any link styles inside card */
+        .article-card h2,
+        .article-card h3,
+        .article-card p,
+        .article-card span {
+            color: inherit;
         }
         
         .card-excerpt {
