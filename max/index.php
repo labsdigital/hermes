@@ -304,7 +304,14 @@ if ($articleId) {
         }
         
         /* Prevent any link styling inside card */
-        .article-card a,
+        .article-card:link,
+        .article-card:visited,
+        .article-card:hover,
+        .article-card:active {
+            text-decoration: none;
+            color: inherit;
+        }
+        
         .article-card h2,
         .article-card h3,
         .article-card p,
@@ -345,6 +352,12 @@ if ($articleId) {
         
         /* Prevent title from changing on hover */
         .article-card:hover .card-title {
+            color: var(--text) !important;
+            text-decoration: none !important;
+        }
+        
+        .article-card:link .card-title,
+        .article-card:visited .card-title {
             color: var(--text) !important;
             text-decoration: none !important;
         }
