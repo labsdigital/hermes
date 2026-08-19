@@ -43,7 +43,7 @@ CONTENT_JSON=$(python3 -c "import json,sys; print(json.dumps(sys.stdin.read()))"
 TITLE_JSON=$(python3 -c "import json,sys; print(json.dumps(sys.stdin.read()))" <<< "$TITLE")
 
 # Target table - GANTI TABLE_ID sesuai tabel baru yang dibuat
-TABLE_ID="${AIRTABLE_TABLE_ID:-tbl9TvJ9QztbHeyaY}"
+TABLE_ID="tblExdQkNbL9bZbgQ"
 BASE_ID="${AIRTABLE_BASE_ID:-appHDwcERrnRH02YS}"
 
 # Kirim ke Airtable dengan field title
