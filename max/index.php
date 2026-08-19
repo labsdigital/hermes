@@ -349,14 +349,6 @@ if ($articleId) {
             text-decoration: none !important;
         }
 
-        /* Override any link styles inside card */
-        .article-card h2,
-        .article-card h3,
-        .article-card p,
-        .article-card span {
-            color: inherit;
-        }
-        
         .card-excerpt {
             color: var(--text-muted);
             font-size: 0.9375rem;
