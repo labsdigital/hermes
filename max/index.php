@@ -2,14 +2,14 @@
 /**
  * Max Articles Blog - Reader dari Airtable
  * Modern Minimalist Blog Style
+ * Sorted by published_at (newest first)
  */
 
-// Konfigurasi - Token diambil dari environment atau file .env
+// Konfigurasi
 $AIRTABLE_API_KEY = getenv('AIRTABLE_API_KEY') ?: (file_exists(__DIR__ . '/../.env') ? parse_env_file(__DIR__ . '/../.env')['AIRTABLE_API_KEY'] : '');
 $AIRTABLE_BASE_ID = 'appHDwcERrnRH02YS';
 $AIRTABLE_TABLE_ID = 'tbl9TvJ9QztbHeyaY';
 
-// Helper function untuk parse .env
 function parse_env_file($path) {
     $vars = [];
     if (file_exists($path)) {
@@ -26,7 +26,6 @@ function parse_env_file($path) {
     return $vars;
 }
 
-// Fungsi fetch data dari Airtable
 function fetchArticles() {
     global $AIRTABLE_API_KEY, $AIRTABLE_BASE_ID, $AIRTABLE_TABLE_ID;
     
@@ -34,7 +33,11 @@ function fetchArticles() {
         return ['error' => 'Airtable API key tidak dikonfigurasi'];
     }
     
-    $url = "https://api.airtable.com/v0/{$AIRTABLE_BASE_ID}/{$AIRTABLE_TABLE_ID}?maxRecords=50";
+    // Sort by published_at descending, then createdTime
+    $url = "https://api.airtable.com/v0/{$AIRTABLE_BASE_ID}/{$AIRTABLE_TABLE_ID}"
+         . "?maxRecords=50"
+         . "&sort[]=fieldName&sort[0]=published_at&sort[1]=desc"
+         . "&filterByFormula=RECORD_ID()<>''";
     
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -49,47 +52,59 @@ function fetchArticles() {
     curl_close($ch);
     
     if ($httpCode !== 200 || !$response) {
+        // Fallback: fetch without sort
+        $url = "https://api.airtable.com/v0/{$AIRTABLE_BASE_ID}/{$AIRTABLE_TABLE_ID}?maxRecords=50";
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            "Authorization: Bearer {$AIRTABLE_API_KEY}",
+            "Content-Type: application/json"
+        ]);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+        $response = curl_exec($ch);
+        curl_close($ch);
+    }
+    
+    if (!$response) {
         return ['error' => 'Gagal mengambil data dari Airtable'];
     }
     
     $data = json_decode($response, true);
-    return $data['records'] ?? [];
+    $records = $data['records'] ?? [];
+    
+    // Sort by published_at or createdTime (newest first)
+    usort($records, function($a, $b) {
+        $dateA = $a['fields']['published_at'] ?? $a['createdTime'];
+        $dateB = $b['fields']['published_at'] ?? $b['createdTime'];
+        return strtotime($dateB) - strtotime($dateA);
+    });
+    
+    return $records;
 }
 
-// Fungsi convert markdown ke HTML
 function mdToHtml($md) {
     if (!$md) return '';
     
-    // Escape HTML
     $md = htmlspecialchars($md, ENT_QUOTES, 'UTF-8');
     
-    // Headers
     $md = preg_replace('/^### (.+)$/m', '<h3>$1</h3>', $md);
     $md = preg_replace('/^## (.+)$/m', '<h2>$1</h2>', $md);
     $md = preg_replace('/^# (.+)$/m', '<h1>$1</h1>', $md);
     
-    // Bold & Italic
     $md = preg_replace('/\*\*(.+?)\*\*/', '<strong>$1</strong>', $md);
     $md = preg_replace('/\*(.+?)\*/', '<em>$1</em>', $md);
     
-    // Links
     $md = preg_replace('/\[([^\]]+)\]\(([^)]+)\)/', '<a href="$2">$1</a>', $md);
     
-    // Code blocks
     $md = preg_replace('/```(\w+)?\n([\s\S]*?)```/', '<pre><code>$2</code></pre>', $md);
     $md = preg_replace('/`([^`]+)`/', '<code>$1</code>', $md);
     
-    // Blockquote
     $md = preg_replace('/^\> (.+)$/m', '<blockquote>$1</blockquote>', $md);
-    
-    // Horizontal rule
     $md = preg_replace('/^---$/m', '<hr>', $md);
     
-    // Lists
     $md = preg_replace('/^- (.+)$/m', '<li>$1</li>', $md);
     $md = preg_replace('/(<li>.*<\/li>\n?)+/', '<ul>$0</ul>', $md);
     
-    // Paragraphs
     $md = preg_replace('/\n\n/', '</p><p>', $md);
     $md = preg_replace('/\n/', '<br>', $md);
     
@@ -100,7 +115,6 @@ function mdToHtml($md) {
     return $md;
 }
 
-// Extract title from content
 function extractTitle($content) {
     if (!$content) return 'Untitled';
     $lines = explode("\n", $content);
@@ -112,21 +126,33 @@ function extractTitle($content) {
     return substr(html_entity_decode($lines[0]), 0, 60) . '...';
 }
 
-// Extract date from ID or content
 function extractDate($record) {
+    $published = $record['fields']['published_at'] ?? '';
+    if ($published) {
+        return date('d M Y', strtotime($published));
+    }
     $id = $record['fields']['id'] ?? '';
     $match = preg_match('/(\d{4}-\d{2}-\d{2})/', $id, $matches);
     if ($match) {
-        return $matches[1];
+        return date('d M Y', strtotime($matches[1]));
     }
-    return date('Y-m-d', strtotime($record['createdTime']));
+    return date('d M Y', strtotime($record['createdTime']));
 }
 
-// Get articles
+function getReadingTime($content) {
+    return max(1, round(strlen($content) / 500));
+}
+
+function getExcerpt($content, $len = 150) {
+    $text = preg_replace('/^#+.+/m', '', $content);
+    $text = strip_tags($text);
+    return mb_substr($text, 0, $len) . (mb_strlen($text) > $len ? '...' : '');
+}
+
 $articles = fetchArticles();
 
-// Check for single article view
 $articleId = $_GET['id'] ?? null;
+$currentArticle = null;
 if ($articleId) {
     foreach ($articles as $article) {
         if ($article['id'] === $articleId) {
@@ -168,7 +194,6 @@ if ($articleId) {
             min-height: 100vh;
         }
         
-        /* Header */
         header {
             background: var(--surface);
             border-bottom: 1px solid var(--border);
@@ -208,14 +233,12 @@ if ($articleId) {
         
         nav a:hover { color: var(--accent); }
         
-        /* Main Layout */
         main {
             max-width: 1200px;
             margin: 0 auto;
             padding: 3rem 2rem;
         }
         
-        /* Hero Section */
         .hero {
             text-align: center;
             padding: 4rem 0;
@@ -238,14 +261,12 @@ if ($articleId) {
             margin: 0 auto;
         }
         
-        /* Article Grid */
         .articles-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
             gap: 2rem;
         }
         
-        /* Article Card */
         .article-card {
             background: var(--surface);
             border-radius: 12px;
@@ -329,7 +350,6 @@ if ($articleId) {
             transform: translateX(4px);
         }
         
-        /* Single Article View */
         .article-view {
             max-width: 760px;
             margin: 0 auto;
@@ -430,7 +450,6 @@ if ($articleId) {
         }
         
         .article-content strong { color: var(--text); }
-        
         .article-content em { color: var(--text-muted); }
         
         .article-content a {
@@ -440,7 +459,6 @@ if ($articleId) {
         
         .article-content a:hover { text-decoration: underline; }
         
-        /* Loading & Error States */
         .state-message {
             text-align: center;
             padding: 4rem 2rem;
@@ -454,7 +472,6 @@ if ($articleId) {
             opacity: 0.5;
         }
         
-        /* Footer */
         footer {
             border-top: 1px solid var(--border);
             padding: 2rem;
@@ -466,7 +483,6 @@ if ($articleId) {
         
         footer a { color: var(--accent); text-decoration: none; }
         
-        /* Responsive */
         @media (max-width: 768px) {
             .header-inner { padding: 1rem; }
             main { padding: 2rem 1rem; }
@@ -488,15 +504,14 @@ if ($articleId) {
     </header>
 
     <main>
-        <?php if (isset($currentArticle)): ?>
-            <!-- Single Article View -->
+        <?php if ($currentArticle): ?>
             <article class="article-view">
                 <a href="index.php" class="back-link">← Kembali ke semua artikel</a>
                 
                 <header class="article-header">
                     <div class="card-meta">
                         <span><?php echo extractDate($currentArticle); ?></span>
-                        <span><?php echo round(strlen($currentArticle['fields']['content'] ?? '') / 500); ?> min read</span>
+                        <span><?php echo getReadingTime($currentArticle['fields']['content'] ?? ''); ?> min read</span>
                     </div>
                     <h1><?php echo extractTitle($currentArticle['fields']['content'] ?? ''); ?></h1>
                 </header>
@@ -506,7 +521,6 @@ if ($articleId) {
                 </div>
             </article>
         <?php else: ?>
-            <!-- Articles List View -->
             <section class="hero">
                 <h1>Koleksi Artikel</h1>
                 <p>Kumpulan tulisan dari subagent Max tentang AI, teknologi, dan masa depan</p>
@@ -532,15 +546,15 @@ if ($articleId) {
                         $title = extractTitle($article['fields']['content'] ?? '');
                         $date = extractDate($article);
                         $content = $article['fields']['content'] ?? '';
-                        $excerpt = strip_tags(preg_replace('/^#.+/m', '', $content));
-                        $excerpt = mb_substr(strip_tags($excerpt), 0, 150) . '...';
+                        $excerpt = getExcerpt($content);
+                        $readTime = getReadingTime($content);
                     ?>
                         <a href="index.php?id=<?php echo $article['id']; ?>" class="article-card">
                             <div class="card-accent"></div>
                             <div class="card-body">
                                 <div class="card-meta">
                                     <span><?php echo $date; ?></span>
-                                    <span><?php echo round(strlen($content) / 500); ?> min</span>
+                                    <span><?php echo $readTime; ?> min</span>
                                 </div>
                                 <h2 class="card-title"><?php echo htmlspecialchars($title); ?></h2>
                                 <p class="card-excerpt"><?php echo htmlspecialchars($excerpt); ?></p>
