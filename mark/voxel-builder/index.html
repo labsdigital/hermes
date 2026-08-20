@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voxel Builder - Editor untuk Anak-anak</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #8b5cf6;
+            --accent: #f59e0b;
+            --success: #10b981;
+            --danger: #ef4444;
+            --bg: #0f172a;
+            --surface: #1e293b;
+            --surface2: #334155;
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        .logo i {
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 12px;
+            font-family: inherit;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #000;
+        }
+
+        .btn-success {
+            background: var(--success);
+            color: white;
+        }
+
+        .btn-danger {
+            background: var(--danger);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: var(--surface2);
+            color: var(--text);
+        }
+
+        /* Main Layout */
+        .main {
+            display: grid;
+            grid-template-columns: 280px 1fr 280px;
+            gap: 1rem;
+            padding: 1rem;
+            max-width: 1600px;
+            margin: 0 auto;
+            height: calc(100vh - 80px);
+        }
+
+        /* Panels */
+        .panel {
+            background: var(--surface);
+            border-radius: 20px;
+            padding: 1.5rem;
+            overflow-y: auto;
+        }
+
+        .panel-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent);
+        }
+
+        /* Color Palette */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .color-btn {
+            width: 100%;
+            aspect-ratio: 1;
+            border: 3px solid transparent;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .color-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .color-btn.active {
+            border-color: white;
+            box-shadow: 0 0 15px currentColor;
+        }
+
+        .color-btn.red { background: #ef4444; }
+        .color-btn.orange { background: #f97316; }
+        .color-btn.yellow { background: #eab308; }
+        .color-btn.green { background: #22c55e; }
+        .color-btn.blue { background: #3b82f6; }
+        .color-btn.purple { background: #8b5cf6; }
+        .color-btn.pink { background: #ec4899; }
+        .color-btn.brown { background: #92400e; }
+        .color-btn.gray { background: #6b7280; }
+        .color-btn.white { background: #f3f4f6; }
+        .color-btn.cyan { background: #06b6d4; }
+        .color-btn.lime { background: #84cc16; }
+
+        /* Block Types */
+        .block-types {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .block-type-btn {
+            padding: 0.75rem 1rem;
+            background: var(--surface2);
+            border: 2px solid transparent;
+            border-radius: 12px;
+            color: var(--text);
+            font-family: inherit;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: all 0.2s ease;
+        }
+
+        .block-type-btn:hover {
+            background: var(--primary);
+        }
+
+        .block-type-btn.active {
+            border-color: var(--accent);
+            background: var(--primary);
+        }
+
+        .block-type-btn i {
+            font-size: 1.2rem;
+            width: 24px;
+            text-align: center;
+        }
+
+        /* 3D Viewport */
+        .viewport {
+            background: linear-gradient(180deg, #1e1b4b 0%, #0f172a 100%);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .viewport-info {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: rgba(0,0,0,0.6);
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .viewport-controls {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+            background: rgba(0,0,0,0.6);
+            padding: 0.5rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .control-btn {
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: var(--surface2);
+            color: var(--text);
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: all 0.2s ease;
+        }
+
+        .control-btn:hover {
+            background: var(--primary);
+        }
+
+        /* 3D Scene */
+        .scene {
+            width: 400px;
+            height: 400px;
+            perspective: 1000px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .world {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: rotateX(-25deg) rotateY(45deg);
+            transition: transform 0.1s ease;
+        }
+
+        .voxel-grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+        }
+
+        .voxel {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            transform-style: preserve-3d;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .voxel:hover {
+            transform: scale(1.05);
+        }
+
+        .voxel-face {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(0,0,0,0.2);
+            transition: all 0.2s ease;
+        }
+
+        .voxel-face.front { transform: translateZ(20px); }
+        .voxel-face.back { transform: translateZ(-20px) rotateY(180deg); }
+        .voxel-face.left { transform: translateX(-20px) rotateY(-90deg); }
+        .voxel-face.right { transform: translateX(20px) rotateY(90deg); }
+        .voxel-face.top { transform: translateY(-20px) rotateX(90deg); }
+        .voxel-face.bottom { transform: translateY(20px) rotateX(-90deg); }
+
+        /* Grid lines */
+        .grid-plane {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+            transform: rotateX(90deg) translateZ(-2px);
+        }
+
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .stat-card {
+            background: var(--surface2);
+            padding: 1rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        /* Instructions */
+        .instructions {
+            background: linear-gradient(135deg, rgba(99,102,241,0.2), rgba(139,92,246,0.2));
+            border: 1px solid rgba(99,102,241,0.3);
+            border-radius: 15px;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+
+        .instructions h4 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .instructions ul {
+            list-style: none;
+            font-size: 0.85rem;
+        }
+
+        .instructions li {
+            padding: 0.25rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .instructions i {
+            color: var(--success);
+        }
+
+        /* Saved Projects */
+        .projects-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .project-item {
+            background: var(--surface2);
+            padding: 0.75rem;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .project-item:hover {
+            background: var(--primary);
+        }
+
+        .project-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .project-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .project-btn {
+            width: 28px;
+            height: 28px;
+            border: none;
+            background: var(--surface);
+            color: var(--text);
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .project-btn:hover {
+            background: var(--accent);
+            color: #000;
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: var(--surface);
+            padding: 2rem;
+            border-radius: 20px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+        }
+
+        .modal h3 {
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .modal input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--surface2);
+            border-radius: 10px;
+            background: var(--bg);
+            color: var(--text);
+            font-family: inherit;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--success);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 2000;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast.error {
+            background: var(--danger);
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .main {
+                grid-template-columns: 1fr;
+                height: auto;
+            }
+            
+            .viewport {
+                min-height: 500px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .voxel {
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(99,102,241,0.4); }
+            50% { box-shadow: 0 0 0 10px rgba(99,102,241,0); }
+        }
+
+        .pulse {
+            animation: pulse 1s infinite;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <i class="fas fa-cube"></i>
+            <span>Voxel Builder</span>
+        </div>
+        <div class="header-actions">
+            <button class="btn btn-secondary" onclick="app.clearWorld()">
+                <i class="fas fa-trash"></i> Bersih
+            </button>
+            <button class="btn btn-primary" onclick="app.saveProject()">
+                <i class="fas fa-save"></i> Simpan
+            </button>
+            <button class="btn btn-success" onclick="app.exportProject()">
+                <i class="fas fa-download"></i> Ekspor
+            </button>
+        </div>
+    </header>
+
+    <main class="main">
+        <!-- Left Panel: Tools -->
+        <aside class="panel">
+            <h3 class="panel-title">
+                <i class="fas fa-palette"></i> Warna
+            </h3>
+            <div class="color-grid">
+                <button class="color-btn red active" data-color="#ef4444" onclick="app.setColor(this)"></button>
+                <button class="color-btn orange" data-color="#f97316" onclick="app.setColor(this)"></button>
+                <button class="color-btn yellow" data-color="#eab308" onclick="app.setColor(this)"></button>
+                <button class="color-btn green" data-color="#22c55e" onclick="app.setColor(this)"></button>
+                <button class="color-btn blue" data-color="#3b82f6" onclick="app.setColor(this)"></button>
+                <button class="color-btn purple" data-color="#8b5cf6" onclick="app.setColor(this)"></button>
+                <button class="color-btn pink" data-color="#ec4899" onclick="app.setColor(this)"></button>
+                <button class="color-btn brown" data-color="#92400e" onclick="app.setColor(this)"></button>
+                <button class="color-btn gray" data-color="#6b7280" onclick="app.setColor(this)"></button>
+                <button class="color-btn white" data-color="#f3f4f6" onclick="app.setColor(this)"></button>
+                <button class="color-btn cyan" data-color="#06b6d4" onclick="app.setColor(this)"></button>
+                <button class="color-btn lime" data-color="#84cc16" onclick="app.setColor(this)"></button>
+            </div>
+
+            <h3 class="panel-title">
+                <i class="fas fa-cube"></i> Mode
+            </h3>
+            <div class="block-types">
+                <button class="block-type-btn active" data-mode="add" onclick="app.setMode(this)">
+                    <i class="fas fa-plus-circle"></i> Tambah Blok
+                </button>
+                <button class="block-type-btn" data-mode="remove" onclick="app.setMode(this)">
+                    <i class="fas fa-minus-circle"></i> Hapus Blok
+                </button>
+                <button class="block-type-btn" data-mode="move" onclick="app.setMode(this)">
+                    <i class="fas fa-arrows-alt"></i> Pindah Blok
+                </button>
+            </div>
+
+            <div class="instructions">
+                <h4><i class="fas fa-info-circle"></i> Cara Main</h4>
+                <ul>
+                    <li><i class="fas fa-mouse"></i> Klik blok untuk tambah/hapus</li>
+                    <li><i class="fas fa-hand-pointer"></i> Drag untuk putar dunia</li>
+                    <li><i class="fas fa-search-plus"></i> Scroll untuk zoom</li>
+                    <li><i class="fas fa-keyboard"></i> Panah untuk gerakkan kamera</li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Center: 3D Viewport -->
+        <section class="viewport">
+            <div class="viewport-info">
+                <span id="coords">Posisi: (0, 0, 0)</span> | 
+                <span id="block-count">Blok: 0</span>
+            </div>
+            
+            <div class="scene" id="scene">
+                <div class="world" id="world">
+                    <div class="grid-plane"></div>
+                    <div class="voxel-grid" id="voxelGrid"></div>
+                </div>
+            </div>
+
+            <div class="viewport-controls">
+                <button class="control-btn" onclick="app.rotateWorld(-15, 0)" title="Putar Kiri">
+                    <i class="fas fa-step-backward"></i>
+                </button>
+                <button class="control-btn" onclick="app.rotateWorld(0, -15)" title="Putar Bawah">
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <button class="control-btn" onclick="app.rotateWorld(0, 15)" title="Putar Atas">
+                    <i class="fas fa-chevron-up"></i>
+                </button>
+                <button class="control-btn" onclick="app.rotateWorld(15, 0)" title="Putar Kanan">
+                    <i class="fas fa-step-forward"></i>
+                </button>
+                <button class="control-btn" onclick="app.resetView()" title="Reset View">
+                    <i class="fas fa-home"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- Right Panel: Stats & Projects -->
+        <aside class="panel">
+            <h3 class="panel-title">
+                <i class="fas fa-chart-bar"></i> Statistik
+            </h3>
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-value" id="total-blocks">0</div>
+                    <div class="stat-label">Total Blok</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="total-colors">0</div>
+                    <div class="stat-label">Warna</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="max-height">0</div>
+                    <div class="stat-label">Tinggi Max</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="edit-count">0</div>
+                    <div class="stat-label">Editan</div>
+                </div>
+            </div>
+
+            <h3 class="panel-title">
+                <i class="fas fa-folder-open"></i> Proyek Tersimpan
+            </h3>
+            <div class="projects-list" id="projectsList">
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Belum ada proyek tersimpan</p>
+            </div>
+
+            <button class="btn btn-secondary" style="width: 100%; margin-top: 1rem;" onclick="app.loadSample()">
+                <i class="fas fa-magic"></i> Muat Contoh
+            </button>
+        </aside>
+    </main>
+
+    <!-- Save Modal -->
+    <div class="modal-overlay" id="saveModal">
+        <div class="modal">
+            <h3><i class="fas fa-save"></i> Simpan Proyek</h3>
+            <input type="text" id="projectName" placeholder="Nama proyek..." maxlength="30">
+            <div class="modal-actions">
+                <button class="btn btn-secondary" onclick="app.closeModal()">Batal</button>
+                <button class="btn btn-success" onclick="app.confirmSave()">Simpan</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">Berhasil!</span>
+    </div>
+
+    <script>
+        class VoxelApp {
+            constructor() {
+                this.gridSize = 5;
+                this.blockSize = 40;
+                this.voxels = new Map();
+                this.colors = new Set();
+                this.selectedColor = '#ef4444';
+                this.mode = 'add';
+                this.rotationX = -25;
+                this.rotationY = 45;
+                this.editCount = 0;
+                this.projects = JSON.parse(localStorage.getItem('voxel_projects') || '[]');
+                
+                this.world = document.getElementById('world');
+                this.grid = document.getElementById('voxelGrid');
+                
+                this.init();
+            }
+
+            init() {
+                this.renderWorld();
+                this.updateStats();
+                this.loadProjectsList();
+                this.setupKeyboard();
+                this.setupMouse();
+            }
+
+            // Create voxel HTML
+            createVoxelElement(x, y, z, color) {
+                const voxel = document.createElement('div');
+                voxel.className = 'voxel';
+                voxel.style.transform = `translate3d(${x * this.blockSize}px, ${-z * this.blockSize}px, ${y * this.blockSize}px)`;
+                voxel.dataset.x = x;
+                voxel.dataset.y = y;
+                voxel.dataset.z = z;
+                
+                const faces = ['front', 'back', 'left', 'right', 'top', 'bottom'];
+                const brightness = {
+                    top: 'brightness(1.2)',
+                    front: 'brightness(1)',
+                    back: 'brightness(0.8)',
+                    left: 'brightness(0.9)',
+                    right: 'brightness(0.7)',
+                    bottom: 'brightness(0.6)'
+                };
+                
+                faces.forEach(face => {
+                    const faceEl = document.createElement('div');
+                    faceEl.className = `voxel-face ${face}`;
+                    faceEl.style.background = color;
+                    faceEl.style.filter = brightness[face];
+                    voxel.appendChild(faceEl);
+                });
+                
+                voxel.addEventListener('click', (e) => this.handleVoxelClick(x, y, z, e));
+                return voxel;
+            }
+
+            // Handle voxel click
+            handleVoxelClick(x, y, z, e) {
+                e.stopPropagation();
+                const key = `${x},${y},${z}`;
+                
+                if (this.mode === 'add') {
+                    // Add adjacent block
+                    const face = this.getClickedFace(e);
+                    const newX = x + face.x;
+                    const newY = y + face.y;
+                    const newZ = z + face.z;
+                    
+                    if (this.isValidPosition(newX, newY, newZ) && !this.voxels.has(key)) {
+                        this.addVoxel(newX, newY, newZ, this.selectedColor);
+                    }
+                } else if (this.mode === 'remove') {
+                    if (this.voxels.has(key)) {
+                        this.removeVoxel(x, y, z);
+                    }
+                } else if (this.mode === 'move') {
+                    // Move voxel to new position
+                    const newX = Math.round((e.clientX - this.world.getBoundingClientRect().left) / this.blockSize);
+                    const newY = Math.round((e.clientY - this.world.getBoundingClientRect().top) / this.blockSize);
+                    if (this.isValidPosition(newX, newY, z) && !(newX === x && newY === y)) {
+                        this.removeVoxel(x, y, z);
+                        this.addVoxel(newX, newY, z, this.selectedColor);
+                    }
+                }
+            }
+
+            getClickedFace(e) {
+                const rect = e.currentTarget.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                if (Math.abs(x) > Math.abs(y)) {
+                    return x > 0 ? { x: 1, y: 0, z: 0 } : { x: -1, y: 0, z: 0 };
+                }
+                return y > 0 ? { x: 0, y: 1, z: 0 } : { x: 0, y: -1, z: 0 };
+            }
+
+            isValidPosition(x, y, z) {
+                return x >= 0 && x < this.gridSize && 
+                       y >= 0 && y < this.gridSize && 
+                       z >= 0 && z < this.gridSize;
+            }
+
+            addVoxel(x, y, z, color) {
+                const key = `${x},${y},${z}`;
+                if (this.voxels.has(key)) return;
+                
+                const voxel = this.createVoxelElement(x, y, z, color);
+                this.grid.appendChild(voxel);
+                this.voxels.set(key, { x, y, z, color, element: voxel });
+                this.colors.add(color);
+                this.editCount++;
+                this.updateStats();
+            }
+
+            removeVoxel(x, y, z) {
+                const key = `${x},${y},${z}`;
+                const voxel = this.voxels.get(key);
+                if (!voxel) return;
+                
+                voxel.element.remove();
+                this.voxels.delete(key);
+                this.colors.delete(voxel.color);
+                this.editCount++;
+                this.updateStats();
+            }
+
+            renderWorld() {
+                this.grid.innerHTML = '<div class="grid-plane"></div>';
+                this.voxels.clear();
+                this.colors.clear();
+                this.editCount = 0;
+                
+                // Add some default blocks
+                this.addVoxel(0, 0, 0, '#3b82f6');
+                this.addVoxel(1, 0, 0, '#ef4444');
+                this.addVoxel(0, 1, 0, '#22c55e');
+                this.addVoxel(1, 1, 0, '#eab308');
+                this.addVoxel(0, 0, 1, '#8b5cf6');
+                
+                this.updateStats();
+            }
+
+            updateStats() {
+                document.getElementById('total-blocks').textContent = this.voxels.size;
+                document.getElementById('total-colors').textContent = this.colors.size;
+                document.getElementById('edit-count').textContent = this.editCount;
+                
+                let maxHeight = 0;
+                this.voxels.forEach(v => {
+                    if (v.z > maxHeight) maxHeight = v.z;
+                });
+                document.getElementById('max-height').textContent = maxHeight + 1;
+            }
+
+            setColor(btn) {
+                document.querySelectorAll('.color-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                this.selectedColor = btn.dataset.color;
+            }
+
+            setMode(btn) {
+                document.querySelectorAll('.block-type-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                this.mode = btn.dataset.mode;
+            }
+
+            rotateWorld(dx, dy) {
+                this.rotationY += dx;
+                this.rotationX += dy;
+                this.world.style.transform = `rotateX(${this.rotationX}deg) rotateY(${this.rotationY}deg)`;
+            }
+
+            resetView() {
+                this.rotationX = -25;
+                this.rotationY = 45;
+                this.world.style.transform = `rotateX(${this.rotationX}deg) rotateY(${this.rotationY}deg)`;
+            }
+
+            setupKeyboard() {
+                document.addEventListener('keydown', (e) => {
+                    switch(e.key) {
+                        case 'ArrowLeft': this.rotateWorld(-5, 0); break;
+                        case 'ArrowRight': this.rotateWorld(5, 0); break;
+                        case 'ArrowUp': this.rotateWorld(0, -5); break;
+                        case 'ArrowDown': this.rotateWorld(0, 5); break;
+                        case 'r': case 'R': this.resetView(); break;
+                        case 'Delete': case 'Backspace': 
+                            if (this.mode === 'remove') this.showToast('Mode hapus aktif!');
+                            break;
+                    }
+                });
+            }
+
+            setupMouse() {
+                let isDragging = false;
+                let lastX, lastY;
+                
+                this.world.addEventListener('mousedown', (e) => {
+                    if (e.target === this.world || e.target.classList.contains('grid-plane')) {
+                        isDragging = true;
+                        lastX = e.clientX;
+                        lastY = e.clientY;
+                    }
+                });
+                
+                document.addEventListener('mousemove', (e) => {
+                    if (!isDragging) return;
+                    const deltaX = e.clientX - lastX;
+                    const deltaY = e.clientY - lastY;
+                    this.rotateWorld(deltaX * 0.5, -deltaY * 0.5);
+                    lastX = e.clientX;
+                    lastY = e.clientY;
+                });
+                
+                document.addEventListener('mouseup', () => {
+                    isDragging = false;
+                });
+
+                // Zoom with scroll
+                this.world.addEventListener('wheel', (e) => {
+                    e.preventDefault();
+                    const scene = document.getElementById('scene');
+                    const currentScale = parseFloat(scene.style.transform?.match(/scale\(([\d.]+)\)/)?.[1] || 1);
+                    const newScale = Math.max(0.5, Math.min(2, currentScale - e.deltaY * 0.001));
+                    scene.style.transform = `scale(${newScale})`;
+                });
+            }
+
+            clearWorld() {
+                if (confirm('Yakin ingin menghapus semua blok?')) {
+                    this.renderWorld();
+                    this.showToast('Dunia dibersihkan!');
+                }
+            }
+
+            saveProject() {
+                document.getElementById('saveModal').classList.add('active');
+                document.getElementById('projectName').focus();
+            }
+
+            closeModal() {
+                document.getElementById('saveModal').classList.remove('active');
+            }
+
+            confirmSave() {
+                const name = document.getElementById('projectName').value.trim() || 'Proyek Tanpa Nama';
+                const data = {
+                    name,
+                    voxels: Array.from(this.voxels.values()).map(v => ({
+                        x: v.x, y: v.y, z: v.z, color: v.color
+                    })),
+                    date: new Date().toISOString()
+                };
+                
+                this.projects.unshift(data);
+                localStorage.setItem('voxel_projects', JSON.stringify(this.projects));
+                this.loadProjectsList();
+                this.closeModal();
+                this.showToast(`Proyek "${name}" tersimpan!`);
+                document.getElementById('projectName').value = '';
+            }
+
+            loadProjectsList() {
+                const list = document.getElementById('projectsList');
+                if (this.projects.length === 0) {
+                    list.innerHTML = '<p style="color: var(--text-muted); font-size: 0.9rem;">Belum ada proyek tersimpan</p>';
+                    return;
+                }
+                
+                list.innerHTML = this.projects.map((p, i) => `
+                    <div class="project-item" onclick="app.loadProject(${i})">
+                        <span class="project-name">${p.name}</span>
+                        <div class="project-actions" onclick="event.stopPropagation()">
+                            <button class="project-btn" onclick="app.loadProject(${i})" title="Muat">
+                                <i class="fas fa-upload"></i>
+                            </button>
+                            <button class="project-btn" onclick="app.deleteProject(${i})" title="Hapus">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            loadProject(index) {
+                const project = this.projects[index];
+                this.renderWorld();
+                project.voxels.forEach(v => {
+                    this.addVoxel(v.x, v.y, v.z, v.color);
+                });
+                this.showToast(`Proyek "${project.name}" dimuat!`);
+            }
+
+            deleteProject(index) {
+                if (confirm('Hapus proyek ini?')) {
+                    this.projects.splice(index, 1);
+                    localStorage.setItem('voxel_projects', JSON.stringify(this.projects));
+                    this.loadProjectsList();
+                    this.showToast('Proyek dihapus!');
+                }
+            }
+
+            exportProject() {
+                const data = {
+                    voxels: Array.from(this.voxels.values()).map(v => ({
+                        x: v.x, y: v.y, z: v.z, color: v.color
+                    })),
+                    date: new Date().toISOString(),
+                    blockCount: this.voxels.size
+                };
+                
+                const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `voxel-project-${Date.now()}.json`;
+                a.click();
+                URL.revokeObjectURL(url);
+                this.showToast('Proyek diekspor!');
+            }
+
+            loadSample() {
+                this.renderWorld();
+                
+                // Build a little house
+                // Base
+                for (let x = 0; x < 3; x++) {
+                    for (let y = 0; y < 3; y++) {
+                        this.addVoxel(x, y, 0, '#92400e');
+                    }
+                }
+                // Walls
+                for (let z = 1; z < 3; z++) {
+                    for (let x = 0; x < 3; x++) {
+                        this.addVoxel(x, 0, z, '#f3f4f6');
+                        this.addVoxel(x, 2, z, '#f3f4f6');
+                    }
+                    for (let y = 1; y < 2; y++) {
+                        this.addVoxel(0, y, z, '#f3f4f6');
+                        this.addVoxel(2, y, z, '#f3f4f6');
+                    }
+                }
+                // Door
+                this.addVoxel(1, 0, 2, '#92400e');
+                // Roof
+                for (let x = 0; x < 3; x++) {
+                    this.addVoxel(x, 3, 1, '#ef4444');
+                    this.addVoxel(x, 3, 2, '#ef4444');
+                }
+                this.addVoxel(1, 4, 1, '#ef4444');
+                
+                this.showToast('Rumah contoh dibuat!');
+            }
+
+            showToast(message, isError = false) {
+                const toast = document.getElementById('toast');
+                const toastMsg = document.getElementById('toastMessage');
+                toastMsg.textContent = message;
+                toast.className = 'toast' + (isError ? ' error' : '');
+                toast.classList.add('show');
+                setTimeout(() => toast.classList.remove('show'), 3000);
+            }
+        }
+
+        // Initialize app
+        const app = new VoxelApp();
+    </script>
+</body>
+</html>
