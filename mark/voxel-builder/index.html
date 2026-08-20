@@ -325,12 +325,54 @@
             position: absolute;
             width: 200px;
             height: 200px;
-            background-image: 
+            background-image:
                 linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
             background-size: 40px 40px;
             transform: rotateX(90deg) translateZ(-2px);
             cursor: crosshair;
+        }
+
+        /* Ghost block preview */
+        .ghost-block {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            transform-style: preserve-3d;
+            pointer-events: none;
+            opacity: 0.5;
+            display: none;
+        }
+
+        .ghost-block.visible {
+            display: block;
+        }
+
+        .ghost-face {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border: 2px dashed rgba(255,255,255,0.8);
+            background: rgba(255,255,255,0.2);
+        }
+
+        .ghost-face.front { transform: translateZ(20px); }
+        .ghost-face.back { transform: translateZ(-20px) rotateY(180deg); }
+        .ghost-face.left { transform: translateX(-20px) rotateY(-90deg); }
+        .ghost-face.right { transform: translateX(20px) rotateY(90deg); }
+        .ghost-face.top { transform: translateY(-20px) rotateX(90deg); }
+        .ghost-face.bottom { transform: translateY(20px) rotateX(-90deg); }
+
+        /* Highlight for hover */
+        .grid-cell-hover {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.5);
+            transform: rotateX(90deg) translateZ(1px);
+            pointer-events: none;
+            display: none;
         }
 
         /* Directional Controls */
@@ -757,7 +799,9 @@
                 this.world = document.getElementById('world');
                 this.grid = document.getElementById('voxelGrid');
                 this.gridPlane = document.getElementById('gridPlane');
-                
+                this.ghostBlock = null;
+                this.hoverCell = null;
+
                 this.init();
             }
 
@@ -768,6 +812,7 @@
                 this.setupKeyboard();
                 this.setupMouse();
                 this.setupGridClick();
+                this.setupGhostBlock();
             }
 
             // Create voxel HTML element
@@ -805,11 +850,11 @@
             setupGridClick() {
                 this.gridPlane.addEventListener('click', (e) => {
                     if (this.mode !== 'add') return;
-                    
+
                     const rect = this.gridPlane.getBoundingClientRect();
                     const x = Math.floor((e.clientX - rect.left) / this.blockSize);
                     const z = Math.floor((e.clientY - rect.top) / this.blockSize);
-                    
+
                     // Check if position is valid and not occupied
                     if (x >= 0 && x < this.gridSize && z >= 0 && z < this.gridSize) {
                         // Find the height at this position
@@ -820,7 +865,7 @@
                                 maxY = y;
                             }
                         }
-                        
+
                         // Add block on top
                         const newY = maxY + 1;
                         if (newY < this.gridSize) {
@@ -829,6 +874,88 @@
                         }
                     }
                 });
+
+                // Add hover effect
+                this.gridPlane.addEventListener('mousemove', (e) => {
+                    const rect = this.gridPlane.getBoundingClientRect();
+                    const x = Math.floor((e.clientX - rect.left) / this.blockSize);
+                    const z = Math.floor((e.clientY - rect.top) / this.blockSize);
+
+                    if (x >= 0 && x < this.gridSize && z >= 0 && z < this.gridSize) {
+                        // Find the height at this position
+                        let maxY = -1;
+                        for (let y = 0; y < this.gridSize; y++) {
+                            const key = `${x},${y},${z}`;
+                            if (this.voxels.has(key)) {
+                                maxY = y;
+                            }
+                        }
+
+                        const newY = maxY + 1;
+                        if (newY < this.gridSize && !this.voxels.has(`${x},${newY},${z}`)) {
+                            this.updateGhostBlock(x, newY, z);
+                            this.updateHoverCell(x, z);
+                            this.updateCoords(x, newY, z);
+                        } else {
+                            this.hideGhostBlock();
+                            this.hideHoverCell();
+                        }
+                    } else {
+                        this.hideGhostBlock();
+                        this.hideHoverCell();
+                    }
+                });
+
+                this.gridPlane.addEventListener('mouseleave', () => {
+                    this.hideGhostBlock();
+                    this.hideHoverCell();
+                });
+            }
+
+            // Create and manage ghost block
+            setupGhostBlock() {
+                this.ghostBlock = document.createElement('div');
+                this.ghostBlock.className = 'ghost-block';
+                this.world.appendChild(this.ghostBlock);
+
+                const faces = ['front', 'back', 'left', 'right', 'top', 'bottom'];
+                faces.forEach(face => {
+                    const faceEl = document.createElement('div');
+                    faceEl.className = `ghost-face ${face}`;
+                    this.ghostBlock.appendChild(faceEl);
+                });
+
+                this.hoverCell = document.createElement('div');
+                this.hoverCell.className = 'grid-cell-hover';
+                this.gridPlane.appendChild(this.hoverCell);
+            }
+
+            updateGhostBlock(x, y, z) {
+                this.ghostBlock.style.transform = `translate3d(${x * this.blockSize}px, ${-z * this.blockSize}px, ${y * this.blockSize}px)`;
+                this.ghostBlock.classList.add('visible');
+
+                // Color the ghost block based on selected color
+                const ghostFaces = this.ghostBlock.querySelectorAll('.ghost-face');
+                ghostFaces.forEach(face => {
+                    face.style.background = this.selectedColor;
+                });
+            }
+
+            hideGhostBlock() {
+                this.ghostBlock.classList.remove('visible');
+            }
+
+            updateHoverCell(x, z) {
+                this.hoverCell.style.transform = `translate(${x * this.blockSize}px, ${z * this.blockSize}px)`;
+                this.hoverCell.style.display = 'block';
+            }
+
+            hideHoverCell() {
+                this.hoverCell.style.display = 'none';
+            }
+
+            updateCoords(x, y, z) {
+                document.getElementById('coords').textContent = `Posisi: (${x}, ${y}, ${z})`;
             }
 
             // Handle voxel click for removal
