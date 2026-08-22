@@ -22,8 +22,8 @@ Gunakan skill ini ketika user meminta:
 
 ### 2. Architecture Planning
 ```
-Folder Structure:
-mark/[project-name]/
+|Folder Structure:
+|elon/[project-name]/
 ├── index.html
 ├── css/
 │   └── styles.css (optional)
@@ -93,9 +93,9 @@ Buat reusable components:
 - [ ] Accessible (keyboard navigation, ARIA)
 
 ### 6. Deployment
-- Push ke GitHub: `mark/` folder
+|- Push ke GitHub: `elon/` folder
 - Enable GitHub Pages di settings
-- Provide URL: `https://labsdigital.github.io/hermes/mark/[project-name]/`
+|- Provide URL: `https://labsdigital.github.io/hermes/elon/[project-name]/`
 
 ### 7. Documentation
 Write README.md dengan:
@@ -113,7 +113,7 @@ Single comprehensive HTML file dengan embedded CSS & JS (untuk simple apps), ata
 
 ### Simple App (Single File)
 ```
-mark/todo-app/index.html
+|elon/todo-app/index.html
 - Embedded CSS in <style>
 - Embedded JS in <script>
 - CDN for libraries
@@ -122,7 +122,7 @@ mark/todo-app/index.html
 
 ### Complex App (Multi File)
 ```
-mark/dashboard/
+|elon/dashboard/
 ├── index.html
 ├── css/
 │   └── styles.css
