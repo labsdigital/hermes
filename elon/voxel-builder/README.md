@@ -49,4 +49,4 @@ Aplikasi ini dirancang agar:
 MIT License - Bebas digunakan dan dimodifikasi
 
 ---
-Dibuat oleh @mark untuk labsdigital/hermes
+Dibuat oleh @elon untuk labsdigital/hermes
