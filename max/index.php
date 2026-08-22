@@ -1,14 +1,20 @@
 <?php
 /**
- * Max Articles Blog - Reader dari Airtable
+ * Reader dari Airtable (Table Baru)
  * Modern Minimalist Blog Style
- * Sorted by published_at (newest first)
+ * 
+ * Struktur Tabel Baru: tblArticles
+ * - id: Text (Unique ID)
+ * - title: Text (Judul terpisah!)
+ * - content: Long Text (Full artikel Markdown)
+ * - published_at: Date (Tanggal publikasi)
  */
 
-// Konfigurasi
-$AIRTABLE_API_KEY = getenv('AIRTABLE_API_KEY') ?: (file_exists(__DIR__ . '/../.env') ? parse_env_file(__DIR__ . '/../.env')['AIRTABLE_API_KEY'] : '');
+// Konfigurasi - Token diambil dari environment atau file .env
+$AIRTABLE_API_KEY = '';
+
 $AIRTABLE_BASE_ID = 'appHDwcERrnRH02YS';
-$AIRTABLE_TABLE_ID = 'tbl9TvJ9QztbHeyaY';
+$AIRTABLE_TABLE_ID = 'tblExdQkNbL9bZbgQ'; // tblArticles
 
 function parse_env_file($path) {
     $vars = [];
@@ -33,11 +39,10 @@ function fetchArticles() {
         return ['error' => 'Airtable API key tidak dikonfigurasi'];
     }
     
-    // Sort by published_at descending, then createdTime
+    // Sort by published_at descending
     $url = "https://api.airtable.com/v0/{$AIRTABLE_BASE_ID}/{$AIRTABLE_TABLE_ID}"
          . "?maxRecords=50"
-         . "&sort[]=fieldName&sort[0]=published_at&sort[1]=desc"
-         . "&filterByFormula=RECORD_ID()<>''";
+         . "&sort[]=fieldName&sort[0]=published_at&sort[1]=desc";
     
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -52,7 +57,7 @@ function fetchArticles() {
     curl_close($ch);
     
     if ($httpCode !== 200 || !$response) {
-        // Fallback: fetch without sort
+        // Fallback tanpa sort
         $url = "https://api.airtable.com/v0/{$AIRTABLE_BASE_ID}/{$AIRTABLE_TABLE_ID}?maxRecords=50";
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -74,11 +79,9 @@ function fetchArticles() {
     
     // Sort by date (published_at > ID date > createdTime), newest first
     usort($records, function($a, $b) {
-        // Get date from published_at field
         $dateA = $a['fields']['published_at'] ?? null;
         $dateB = $b['fields']['published_at'] ?? null;
         
-        // If not available, extract from ID
         if (!$dateA) {
             $idA = $a['fields']['id'] ?? '';
             preg_match('/(\d{4}-\d{2}-\d{2})/', $idA, $m);
@@ -129,17 +132,6 @@ function mdToHtml($md) {
     return $md;
 }
 
-function extractTitle($content) {
-    if (!$content) return 'Untitled';
-    $lines = explode("\n", $content);
-    foreach ($lines as $line) {
-        if (preg_match('/^# (.+)$/', trim($line), $matches)) {
-            return html_entity_decode($matches[1]);
-        }
-    }
-    return substr(html_entity_decode($lines[0]), 0, 60) . '...';
-}
-
 function extractDate($record) {
     // Try published_at field first
     $published = $record['fields']['published_at'] ?? '';
@@ -147,14 +139,13 @@ function extractDate($record) {
         return date('d M Y', strtotime($published));
     }
     
-    // Fallback: extract from ID (format: max-article-name-YYYY-MM-DD)
+    // Fallback: extract from ID
     $id = $record['fields']['id'] ?? '';
     $match = preg_match('/(\d{4}-\d{2}-\d{2})/', $id, $matches);
     if ($match) {
         return date('d M Y', strtotime($matches[1]));
     }
     
-    // Last resort: use createdTime
     return date('d M Y', strtotime($record['createdTime']));
 }
 
@@ -168,8 +159,10 @@ function getExcerpt($content, $len = 150) {
     return mb_substr($text, 0, $len) . (mb_strlen($text) > $len ? '...' : '');
 }
 
+// Get articles
 $articles = fetchArticles();
 
+// Check for single article view
 $articleId = $_GET['id'] ?? null;
 $currentArticle = null;
 if ($articleId) {
@@ -216,9 +209,7 @@ if ($articleId) {
         header {
             background: var(--surface);
             border-bottom: 1px solid var(--border);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            /* Hapus sticky */
         }
         
         .header-inner {
@@ -292,7 +283,6 @@ if ($articleId) {
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
             text-decoration: none;
             color: inherit;
             display: block;
@@ -303,7 +293,7 @@ if ($articleId) {
             box-shadow: var(--shadow-lg);
         }
         
-        /* Prevent any link styling inside card */
+        /* Prevent link styling inside card */
         .article-card:link,
         .article-card:visited,
         .article-card:hover,
@@ -361,7 +351,7 @@ if ($articleId) {
             color: var(--text) !important;
             text-decoration: none !important;
         }
-
+        
         .card-excerpt {
             color: var(--text-muted);
             font-size: 0.9375rem;
@@ -544,7 +534,7 @@ if ($articleId) {
 <body>
     <header>
         <div class="header-inner">
-            <a href="index.php" class="logo">Max<span>Articles</span></a>
+            <a href="index.php" class="logo">My<span>Reading</span></a>
             <nav>
                 <a href="index.php">Semua</a>
                 <a href="https://github.com/labsdigital/hermes" target="_blank">GitHub</a>
@@ -553,7 +543,8 @@ if ($articleId) {
     </header>
 
     <main>
-        <?php if ($currentArticle): ?>
+        <?php if (isset($currentArticle)): ?>
+            <!-- Single Article View -->
             <article class="article-view">
                 <a href="index.php" class="back-link">← Kembali ke semua artikel</a>
                 
@@ -562,7 +553,7 @@ if ($articleId) {
                         <span><?php echo extractDate($currentArticle); ?></span>
                         <span><?php echo getReadingTime($currentArticle['fields']['content'] ?? ''); ?> min read</span>
                     </div>
-                    <h1><?php echo extractTitle($currentArticle['fields']['content'] ?? ''); ?></h1>
+                    <h1><?php echo htmlspecialchars($currentArticle['fields']['title'] ?? 'Untitled'); ?></h1>
                 </header>
                 
                 <div class="article-content">
@@ -570,9 +561,10 @@ if ($articleId) {
                 </div>
             </article>
         <?php else: ?>
+            <!-- Article List View -->
             <section class="hero">
-                <h1>Koleksi Artikel</h1>
-                <p>Kumpulan tulisan dari subagent Max tentang AI, teknologi, dan masa depan</p>
+                <h1>My Reading List</h1>
+                <p>Kumpulan tulisan dari agents tentang AI, teknologi, dunia, dan masa depan</p>
             </section>
             
             <?php if (isset($articles['error'])): ?>
@@ -592,7 +584,7 @@ if ($articleId) {
             <?php else: ?>
                 <div class="articles-grid">
                     <?php foreach ($articles as $article): 
-                        $title = extractTitle($article['fields']['content'] ?? '');
+                        $title = $article['fields']['title'] ?? extractTitleFromContent($article['fields']['content'] ?? '');
                         $date = extractDate($article);
                         $content = $article['fields']['content'] ?? '';
                         $excerpt = getExcerpt($content);
@@ -620,7 +612,21 @@ if ($articleId) {
     </main>
 
     <footer>
-        <p>Max Articles Blog &copy; 2026 | Data dari <a href="https://airtable.com/appHDwcERrnRH02YS/tbl9TvJ9QztbHeyaY" target="_blank">Airtable</a> | <a href="https://github.com/labsdigital/hermes" target="_blank">GitHub</a></p>
+        <p>My Reading Blog &copy; 2026 | Data dari <a href="https://airtable.com" target="_blank">Airtable</a> | <a href="https://github.com/labsdigital/hermes" target="_blank">GitHub</a></p>
     </footer>
 </body>
 </html>
+
+<?php
+// Helper function untuk ekstrak title dari content (fallback)
+function extractTitleFromContent($content) {
+    if (!$content) return 'Untitled';
+    $lines = explode("\n", $content);
+    foreach ($lines as $line) {
+        if (preg_match('/^# (.+)$/', trim($line), $matches)) {
+            return html_entity_decode($matches[1]);
+        }
+    }
+    return substr(html_entity_decode($lines[0]), 0, 60) . '...';
+}
+?>
