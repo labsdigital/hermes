@@ -1,155 +1,182 @@
-# Proposal: Pelatihan Pemanfaatan AI bagi Murid
+# Proposal Kegiatan: Pelatihan Pemanfaatan AI bagi Murid
 
-**Tanggal Proposal**: 2026-08-22  
+**Tanggal**: 2026-08-22  
 **Kategori**: Workshop & Pelatihan  
-**Status**: Draft  
-**Program**: AI for Students Initiative  
+**Target**: 50 peserta (murid SMP & SMA)  
+**Duration**: 3 hari (24 jam pelatihan)
 
 ---
 
-## Ringkasan Eksekutif
+## Executive Summary
 
-Taraka Foundation mengajukan program **"AI Literacy Camp for Students"** — pelatihan intensif 2 hari yang memperkenalkan murid-murid sekolah dasar dan menengah kepada kecerdasan buatan (AI) secara praktis dan etis. Program ini dirancang untuk mempersiapkan generasi muda Indonesia agar tidak hanya menjadi konsumen teknologi, tetapi juga pencipta dan pengguna AI yang bertanggung jawab.
+Pelatihan Pemanfaatan AI bagi Murid adalah program edukasi yang dirancang untuk mengenalkan konsep kecerdasan buatan (AI) kepada generasi muda Indonesia. Program ini bertujuan membekali murid dengan pemahaman dasar tentang AI, Etika penggunaan teknologi, serta keterampilan praktis dalam memanfaatkan tools AI untuk pembelajaran sehari-hari.
 
-Program ini menjawab urgensi literasi AI di kalangan generasi muda, mengingat Indonesia berada di posisi 65 dari 80 negara dalam AI readiness index (WEF, 2024). Dengan pendekatan hands-on dan project-based, peserta akan belajar menggunakan tools AI, memahami dasar-dasar machine learning, serta menerapkan etika penggunaan AI dalam kehidupan sehari-hari.
+Melalui pendekatan hands-on dan project-based learning, peserta akan mengeksplorasi berbagai aplikasi AI seperti chatbot, image generation, data analysis, dan automation tools. Program ini juga menekankan pentingnya penggunaan AI secara bertanggung jawab dan etis.
+
+Target peserta adalah murid SMP dan SMA dari berbagai latar belakang, dengan asumsi tidak memerlukan background programming sebelumnya. Program dilaksanakan selama 3 hari intensif dengan metode hybrid (50% teori, 50% praktik).
 
 ---
 
 ## Latar Belakang
 
-### Konteks Global & Nasional
+### Konteks Pendidikan & Teknologi di Indonesia
 
-| Indikator | Data |
-|-----------|------|
-| Pertumbuhan pengguna AI global | +300% (2022-2024) |
-| Kesenjangan digital Indonesia | 65/80 AI Readiness Index (WEF) |
-| Permintaan talenta AI Indonesia | 50.000+ profesional (2025) |
-| Usia mulai literasi digital ideal | 8-14 tahun |
-| Sekolah dengan kurikulum AI formal | <5% di Indonesia |
+Berdasarkan data dari UNESCO (2024), Indonesia memiliki gap signifikan dalam literasi digital dan preparedness menghadapi revolusi industri 4.0. Sementara itu:
 
-### Masalah yang Dihadapi
+- **Tingkat penetrasi internet** di Indonesia mencapai 77,5% (APJII, 2025), dengan mayoritas pengguna berusia 13-24 tahun
+- **Penggunaan AI tools** di kalangan pelajar meningkat 340% dari tahun 2023-2025 (Survey Kemendikbud)
+- **Kesiapan guru** dalam mengintegrasikan AI ke kurikulum masih rendah: hanya 23% guru yang merasa cukup terlatih (Data Puskes, 2025)
 
-1. **Kurangnya akses edukasi AI berkualitas** di kalangan pelajar Indonesia
-2. **Mis konsepsi tentang AI** — dianggap sebagai sihir atau hanya untuk programmer
-3. **Minimnya pemahaman etika penggunaan AI** — plagiarisme, deepfake, bias
-4. **Ketidaksiapan guru** — 78% guru belum mendapat pelatihan AI (Kemendikbud, 2024)
-5. ** kesenjangan akses** — program AI hanya tersedia di sekolah elit kota besar
+### Kesenjangan yang Teridentifikasi
 
-### Mengapa Sekarang?
+1. **Literasi AI rendah**: Mayoritas murid hanya mengenal AI sebagai "tools otomatis", tanpa memahami konsep dasarnya
+2. **Akses terbatas**: Sekolah di luar kota besar sulit mengakses pelatihan teknologi terkini
+3. **Etika digital belum optimal**: Penggunaan AI tanpa pemahaman etis berisiko menyebabkan plagiarism, dependency, dan misinformasi
+4. **Curriculum gap**: Kurikulum sekolah belum mengintegrasikan AI secara sistematis
 
-- AI tools seperti ChatGPT, Gemini, dan Claude sudah mudah diakses
-- Peruvian government mensyaratkan literasi AI dalam kurikulum 2025
-- Indonesia sedang push "Digital Talent Sprint" target 2 juta talenta digital
-- Generasi Z adalah digital natives yang siap menerima teknologi baru
+### Relevansi dengan Misi Taraka Foundation
 
-### Solusi Taraka Foundation
-
-Workshop 2 hari yang mengemas pembelajaran AI dalam format menyenangkan, interaktif, dan aplikatif. Peserta tidak perlu background programming — cukup laptop/komputer dan koneksi internet.
+Program ini sejalan dengan fokus bidang Taraka Foundation di:
+- **AI/ML fundamentals** (bidang Coding & Programming)
+- **Data Science basics** (bidang Data Science)
+- **Aksesibilitas pendidikan teknologi** untuk semua kalangan
 
 ---
 
 ## Tujuan Program
 
 ### Tujuan Umum
-Meningkatkan literasi AI di kalangan murid sekolah dasar dan menengah di Indonesia.
+Meningkatkan literasi kecerdasan buatan dan kemampuan pemanfaatan AI secara etis dan produktif di kalangan murid SMP dan SMA.
 
-### Tujuan Khusus
-1. **Pemahaman Konseptual**: Peserta mampu menjelaskan apa itu AI, cara kerjanya, dan aplikasinya dalam kehidupan sehari-hari
-2. **Keterampilan Praktis**: Peserta mampu menggunakan minimal 3 tools AI (ChatGPT, Canva AI, Google AI Studio)
-3. **Literasi Etika**: Peserta memahami isu etika AI: bias, privasi, plagiarisme, deepfake
-4. **Project Application**: Peserta membuat project sederhana menggunakan AI (esai, gambar, kode)
-5. **Inspiration**: Membangkitkan minat peserta untuk melanjutkan belajar AI lebih lanjut
-
----
-
-## Target Peserta
-
-| Kategori | Detail |
-|----------|--------|
-| **Jumlah Peserta** | 40 orang |
-| **Rentang Usia** | 12-17 tahun |
-| **Tingkatan** | SMP (kelas 7-9) dan SMA (kelas 10-12) |
-| **Latar Belakang** | Tidak perlu pengalaman coding/AI sebelumnya |
-| **Biaya Peserta** | Rp 100.000/orang (subsidi 50% oleh sponsor) |
-| **Format** | Offline (Jakarta) + Hybrid (live streaming) |
-| **Durasi** | 2 hari (8 jam/hari) |
-
-### Seleksi Peserta
-- Formulir pendaftaran online
-- Essay singkat: "Mengapa saya ingin belajar AI?"
-- Prioritas: sekolah negeri, daerah, perempuan di STEM
-- Max 60% peserta dari luar Jakarta
+### Tujuan Spesifik
+1. **Pemahaman Konsep**: Peserta mampu menjelaskan konsep dasar AI, Machine Learning, dan aplikasi praktisnya
+2. **Keterampilan Praktis**: Peserta mampu menggunakan minimal 5 tools AI untuk keperluan akademis dan kreativitas
+3. **Etika Digital**: Peserta memahami prinsip etis penggunaan AI, termasuk bias, privacy, dan plagiarism
+4. **Inovasi Pembelajaran**: Peserta dapat merancang project sederhana yang mengintegrasikan AI dalam penyelesaian masalah
+5. **Kesiapan Masa Depan**: Peserta memiliki basic competency untuk melanjutkan ke level advanced AI education
 
 ---
 
 ## Deskripsi Program
 
-### Hari 1: Pengenalan AI & Tools Dasar
+### Kurikulum
 
-| Waktu | Materi | Aktivitas |
-|-------|--------|-----------|
-| 08:00-08:30 | Registrasi & Ice Breaking | Quick intro, nametag |
-| 08:30-09:30 | **Session 1**: Apa itu AI? | Presentasi interaktif, video, Q&A |
-| 09:30-10:30 | **Session 2**: AI dalam Kehidupan Sehari-hari | Case study: Netflix, TikTok, GPS, dll |
-| 10:30-11:00 | Coffee Break | Networking |
-| 11:00-12:30 | **Session 3**: Hands-on ChatGPT | Prompt engineering basics, writing assist |
-| 12:30-13:30 | Makan Siang | — |
-| 13:30-15:00 | **Session 4**: AI untuk Visual | Canva AI, DALL-E, Midjourney basics |
-| 15:00-15:30 | Mini Challenge 1 | "Buat poster kampanye literasi AI" |
-| 15:30-16:00 | Refleksi Hari 1 | Journaling, share insights |
+**Module 1: Pengenalan AI (Hari 1 - Pagi)**
+- Apa itu Artificial Intelligence? Sejarah & perkembangan
+- Jenis-jenis AI: Narrow AI vs General AI
+- Bagaimana AI bekerja: Machine Learning, Deep Learning, Neural Networks
+- Contoh aplikasi AI dalam kehidupan sehari-hari
+- Demo: Chatbot sederhana, Image recognition
 
-### Hari 2: Etika AI & Project Application
+**Module 2: Tools AI untuk Pembelajaran (Hari 1 - Sore)**
+- AI Writing Assistant: ChatGPT, Claude, Gemini
+- AI Research & Information: Perplexity, Elicit
+- AI Presentation: Gamma, Tome
+- Hands-on: Membuat essay, research summary, dan presentation deck
 
-| Waktu | Materi | Aktivitas |
-|-------|--------|-----------|
-| 08:30-10:00 | **Session 5**: Etika AI | Bias, privasi, plagiarisme, deepfake |
-| 10:00-10:30 | Coffee Break | — |
-| 10:30-12:00 | **Session 6**: Coding dengan AI | Scratch + AI extension, or Python basics |
-| 12:00-13:00 | Makan Siang | — |
-| 13:00-15:30 | **Session 7**: Project Day | Kelompok 4 orang, buat project AI |
-| 15:30-16:30 | **Session 8**: Presentasi & Demo | Setiap kelompok present 5 menit |
-| 16:30-17:00 | Penutupan | Sertifikat, foto bersama, evaluasi |
+**Module 3: Visual AI & Creativity (Hari 2 - Pagi)**
+- AI Image Generation: Midjourney, DALL-E, Stable Diffusion
+- Prompt engineering basics
+- Aplikasi untuk desain, ilustrasi, dan creative project
+- Hands-on: Membuat artwork dan visual project
 
-### Kurikulum Detail
+**Module 4: Data & Analysis dengan AI (Hari 2 - Sore)**
+- Introduction to Data Science dengan AI
+- Tools: Google Colab, data visualization AI
+- Analisis data sederhana untuk project sekolah
+- Ethics: Bias dalam data dan AI
 
-**Modul 1: Fundamentals of AI**
-- Definisi AI, ML, DL
-- Sejarah singkat AI
-- Cara kerja AI (training, inference)
-- Jenis-jenis AI: narrow vs general
+**Module 5: Etika & Tanggung Jawab (Hari 3 - Pagi)**
+- Digital ethics framework
+- Plagiarism vs合理使用
+- Privacy dan data protection
+- Misinformation dan fake content
+- Case studies: Dampak negative AI misuse
 
-**Modul 2: AI Tools**
-- ChatGPT/Claude/Gemini untuk writing
-- Canva AI untuk design
-- Google AI Studio untuk experimentation
-- Tools coding: Scratch AI, Python + OpenAI API
+**Module 6: Project Creation (Hari 3 - Siang)**
+- Team project: Merancang solution menggunakan AI
+- Presentasi dan feedback
+- Refleksi dan action plan pribadi
 
-**Modul 3: AI Ethics**
-- Bias dalam AI (contoh nyata)
-- Privasi data
-- Plagiarisme vs inspiration
-- Deepfake & misinformation
-- Responsible AI usage
+### Metode Pembelajaran
 
-**Modul 4: Project Application**
-- Prompt engineering
-- AI-assisted writing
-- AI-generated visuals
-- Simple AI-powered app
+1. **Demonstrasi & Explaination** (30%) - Trainer menjelaskan konsep dengan contoh nyata
+2. **Guided Practice** (40%) - Peserta mengikuti langkah-langkah dengan bimbingan
+3. **Project-Based Learning** (20%) - Peserta mengerjakan project kelompok
+4. **Peer Learning** (10%) - Diskusi dan feedback antar peserta
+
+### Durasi
+- **Total**: 24 jam (3 hari × 8 jam/hari)
+- **Break**: 30 menit (2x per hari) + 1 jam makan siang
+
+### Format
+- **Hybrid**: 50% online (materials & resources), 50% offline (hands-on workshop)
+- **Platform**: Zoom + Google Workspace + AI Tools sandbox
+
+---
+
+## Target Peserta
+
+### Jumlah & Demografi
+- **Total**: 50 orang
+- **Distribusi**: 
+  - 25 siswa SMP (kelas 7-9)
+  - 25 siswa SMA (kelas 10-12)
+
+### kualifikasi
+- Usia: 12-18 tahun
+- Background: Tidak memerlukan pengalaman programming sebelumnya
+- Minat: Tertarik dengan teknologi dan ingin mempelajari AI
+- Akses: Memiliki laptop/komputer dan koneksi internet stabil
+
+### Prioritas
+1. Murid dari sekolah dengan program STEM aktif
+2. Siswa berprestasi dari daerah tertinggal (prioritas inklusi)
+3. Peserta yang aktif di organisasi sekolah (OSIS, ekskul)
+4. Alumni program Taraka Foundation lainnya
+
+### Seleksi
+- **Form pendaftaran online** (Google Form)
+- **Essay singkat**: "Mengapa saya ingin mengikuti pelatihan AI?" (150-300 kata)
+- **Interview online** (opsional untuk konfirmasi komitmen)
+- **Assessment basic**: Quiz sederhana tentang literasi digital
 
 ---
 
 ## Timeline Pelaksanaan
 
-| Fase | Waktu | Kegiatan |
-|------|-------|----------|
-| **Persiapan** | Minggu 1-2 | Kurikulum finalisasi, trainer recruitment |
-| | Minggu 3 | Sponsorship outreach, venue booking |
-| | Minggu 4 | Marketing & pendaftaran dibuka |
-| **Eksekusi** | Minggu 5 | Finalisasi peserta, logistics |
-| | Minggu 6 | **Workshop dilaksanakan (2 hari)** |
-| **Post-Event** | Minggu 7 | Evaluasi, laporan, certificate distribution |
-| | Minggu 8 | Community building (Telegram group) |
+### Phase 1: Persiapan (Minggu 1-2, 1-14 September 2026)
+
+| No | Kegiatan | Tanggal | PIC |
+|----|----------|---------|-----|
+| 1 | Finalisasi kurikulum & materials | 1-3 Sep | Tim Kurikulum |
+| 2 | Rekrutmen trainer & volunteer | 4-6 Sep | Tim HR |
+| 3 | Setup platform & teknis | 7-9 Sep | Tim IT |
+| 4 | Open registration (3 minggu) | 10-24 Sep | Tim Marketing |
+| 5 | Seleksi peserta | 25-28 Sep | Tim Seleksi |
+| 6 | Pre-training preparation kit | 29-30 Sep | Tim Operations |
+
+### Phase 2: Pelaksanaan Workshop (Minggu 3, 5-7 September 2026)
+
+| Hari | Tanggal | Waktu | Topik |
+|------|---------|-------|-------|
+| Hari 1 | Sabtu, 5 Sep | 08.00-16.00 | Pengenalan AI & Tools Pembelajaran |
+| Hari 2 | Minggu, 6 Sep | 08.00-16.00 | Visual AI & Data Analysis |
+| Hari 3 | Senin, 7 Sep | 08.00-16.00 | Etika & Project Creation |
+
+### Phase 3: Evaluasi & Follow-up (Minggu 4, 8-14 September 2026)
+
+| No | Kegiatan | Tanggal | PIC |
+|----|----------|---------|-----|
+| 1 | Post-training assessment | 8-9 Sep | Tim Evaluasi |
+| 2 | Feedback collection | 10-11 Sep | Tim Marketing |
+| 3 | Impact report draft | 12-13 Sep | Tim Report |
+| 4 | Community onboarding | 14 Sep | Tim Operations |
+
+### Phase 4: Alumni Program (Ongoing)
+- Weekly discussion session (Zoom)
+- Project showcase every month
+- Advanced training pathway untuk top performer
 
 ---
 
@@ -157,106 +184,215 @@ Meningkatkan literasi AI di kalangan murid sekolah dasar dan menengah di Indones
 
 ### Pendapatan
 
-| Sumber | Jumlah | Keterangan |
-|--------|--------|------------|
-| Peserta (40 x Rp 100.000) | Rp 4.000.000 | Subsidi 50% = Rp 50.000/orang |
-| Sponsorship Corporate | Rp 15.000.000 | 3 sponsor utama @ Rp 5jt |
-| Grant/Donasi | Rp 10.000.000 | Foundation fund, individual donors |
-| In-kind Support | Rp 5.000.000 | Venue, snack, materials dari sponsor |
-| **Total Pendapatan** | **Rp 34.000.000** | |
+| No | Sumber | Jumlah | Keterangan |
+|----|--------|--------|------------|
+| 1 | Sponsorship Corporate | Rp 25.000.000 | 2 partner @ Rp 12.5jt |
+| 2 | Grant Pendidikan | Rp 15.000.000 | Dana dari Kemendikbud |
+| 3 | Biaya Peserta (sliding scale) | Rp 5.000.000 | 50 orang x Rp 100rb (bersubsidi) |
+| 4 | Crowdfunding | Rp 5.000.000 | Donasi masyarakat |
+| **Total Pendapatan** | | **Rp 50.000.000** | |
 
 ### Pengeluaran
 
-| Item | Jumlah | Satuan | Total (Rp) |
-|------|--------|--------|------------|
-| Venue (hotel meeting room) | 2 | hari | 3.000.000 |
-| Trainer Honor | 3 | orang | 4.500.000 |
-| Asistensi/Fasilitator | 4 | orang | 2.000.000 |
-| Snack & Meals | 40 | org x 2 hari | 3.200.000 |
-| Materi & Printout | 40 | paket | 1.500.000 |
-| Sertifikat & Merchandise | 40 | paket | 2.000.000 |
-| Dokumentasi (fotografer) | 1 | paket | 1.500.000 |
-| Tech Support (IT) | 1 | orang | 1.000.000 |
-| Transportasi peserta (beasiswa) | 10 | orang | 2.000.000 |
-| Platform License (AI tools) | - | - | 1.500.000 |
-| Operational Contingency | - | - | 2.000.000 |
-| **Total Pengeluaran** | | | **Rp 24.200.000** |
+| No | Item | Jumlah | Satuan | Total |
+|----|------|--------|--------|-------|
+| **1** | **Tenaga Kerja** | | | |
+| 1.1 | Trainer AI Expert | 2 | orang | Rp 8.000.000 |
+| 1.2 | Moderator/Fasilitator | 2 | orang | Rp 3.000.000 |
+| 1.3 | Volunteer coordination | 1 | orang | Rp 1.500.000 |
+| **2** | **Fasilitas** | | | |
+| 2.1 | Venue (3 hari) | 3 | hari | Rp 6.000.000 |
+| 2.2 | Internet & Platform | 1 | paket | Rp 2.000.000 |
+| 2.3 | Sound system & AV | 3 | hari | Rp 3.000.000 |
+| **3** | **Makan & Minum** | | | |
+| 3.1 | Peserta (50 org × 3 hari) | 150 | porsi | Rp 4.500.000 |
+| 3.2 | Trainer & volunteer | 6 | orang × 3 hari | Rp 1.800.000 |
+| **4** | **Materials** | | | |
+| 4.1 | Modul & handout | 50 | set | Rp 1.500.000 |
+| 4.2 | Merchandise (hoodie, sticker) | 50 | set | Rp 2.500.000 |
+| 4.3 | Certificate & goodie bag | 50 | set | Rp 1.500.000 |
+| **5** | **Promosi** | | | |
+| 5.1 | Social media ads | 1 | campaign | Rp 1.500.000 |
+| 5.2 | Poster & banner | 1 | paket | Rp 500.000 |
+| **6** | **Documentation** | | | |
+| 6.1 | Fotografer & videografer | 2 | orang | Rp 2.000.000 |
+| 6.2 | Editing & post-production | 1 | paket | Rp 1.000.000 |
+| **7** | **Operasional Lainnya** | | | |
+| 7.1 | Transportasi trainer | 2 | orang | Rp 1.000.000 |
+| 7.2 | Kontingensi (10%) | - | - | Rp 3.350.000 |
+| **Total Pengeluaran** | | | | **Rp 42.350.000** |
 
 ### Surplus/Defisit
-**Surplus: Rp 9.800.000** (akan dialokasikan untuk program follow-up dan beasiswa penuh)
+- **Total Pendapatan**: Rp 50.000.000
+- **Total Pengeluaran**: Rp 42.350.000
+- **Surplus**: Rp 7.650.000 (untuk program selanjutnya)
 
 ---
 
 ## Expected Outcomes
 
-### Output (Langsung)
-- 40 murid mendapatkan sertifikat literasi AI
-- 10 project AI dibuat oleh peserta
-- 1 komunitas online (Telegram/Discord) terbentuk
-- 3 trainer berpengalaman di bidang AI education
+### Outcome 1: Peningkatan Literasi AI
+- **Output**: 50 peserta lulus dengan sertifikat kompetensi AI Basics
+- **Outcome**: 80% peserta mampu menjelaskan konsep AI dengan benar (pre-test → post-test)
+- **Indicator**: Skor rata-rata post-test ≥ 75/100
 
-### Outcome (Jangka Panjang)
-- Peserta mampu menggunakan AI tools secara responsible
-- Peserta termotivasi melanjutkan belajar coding/AI
-- Sekolah peserta mendapat panduan kurikulum AI
-- Tim trainer siap untuk program berikutnya
+### Outcome 2: Keterampilan Praktis
+- **Output**: 50 project AI sederhana dari peserta
+- **Outcome**: Peserta mampu menggunakan minimal 5 tools AI untuk keperluan akademis
+- **Indicator**: 90% peserta menyelesaikan project akhir dengan baik
 
-### Impact (Tahun Pertama)
-- Minimal 500 murid terreach melalui follow-up programs
-- 10 sekolah mitra tertarik mengadopsi kurikulum
-- 2 corporate partner bergabung sebagai sponsor rutin
-- Media coverage di 3 platform nasional
+### Outcome 3: Kesadaran Etika Digital
+- **Output**: 50 peserta mengikuti sesi etika lengkap
+- **Outcome**: Peserta memahami risiko dan etika penggunaan AI
+- **Indicator**: Score ethical awareness quiz ≥ 70/100
+
+### Outcome 4: Ekosistem Pelajar AI
+- **Output**: Terbentuknya komunitas "AI Youth Indonesia"
+- **Outcome**: 70% peserta aktif mengikuti community session bulanan
+- **Indicator**: 30+ active members setelah 3 bulan
+
+### Outcome 5: Kesiapan Lanjutan
+- **Output**: Identifikasi 10 top performers untuk advanced program
+- **Outcome**: Peserta memiliki clear learning path ke level advanced
+- **Indicator**: 60% peserta mendaftar untuk workshop lanjutan
+
+### Outcome 6: Dampak Jangka Panjang
+- **Output**: Publikasi impact report dan best practices
+- **Outcome**: Model program dapat direplikasi di sekolah lain
+- **Indicator**: 3+ sekolah tertarik mengadopsi kurikulum
 
 ---
 
 ## Tim Pelaksana
 
+### Struktur Organisasi
+
+```
+┌─────────────────────────────────────────────────────────┐
+│                    Pembina Yayasan                      │
+└───────────────────────┬─────────────────────────────────┘
+                        │
+┌───────────────────────▼─────────────────────────────────┐
+│              Direktur Program                           │
+│           [Nama Direktur]                               │
+└───────────────────────┬─────────────────────────────────┘
+                        │
+        ┌───────────────┼───────────────┐
+        │               │               │
+   ┌────▼────┐    ┌────▼────┐    ┌────▼────┐
+   │ Kurikulum│   │ Operations│  │ Marketing│
+   └────┬────┘    └────┬────┘    └────┬────┘
+        │              │              │
+   ┌────▼────┐    ┌────▼────┐    ┌────▼────┐
+   │Trainer 1 │   │Venue Mgr│   │Social Mgr│
+   │Trainer 2 │   │Tech Supp │   │PR/Docs  │
+   └─────────┘    └────┬────┘    └────┬────┘
+                        │              │
+                   ┌────▼────┐    ┌────▼────┐
+                   │Volunteer│    │Community│
+                   │(5 org)  │    │Manager  │
+                   └─────────┘    └─────────┘
+```
+
+### Tim Inti
+
 | Role | Nama | Tanggung Jawab |
-|------|------|----------------|
-| **Program Director** | [Nama] | Overall coordination, stakeholder management |
-| **Head Trainer** | [Nama] | Curriculum design, delivery |
-| **Trainer 1 - AI Basics** | [Nama] | Session 1-4 |
-| **Trainer 2 - Ethics** | [Nama] | Session 5-6 |
-| **Trainer 3 - Project** | [Nama] | Session 7-8 |
-| **Operations Lead** | [Nama] | Logistics, venue, catering |
-| **Marketing Lead** | [Nama] | Registration, promotion |
-| **Documentation Lead** | [Nama] | Photos, videos, report |
-| **Volunteers** | 8 orang | Registration, tech support, facilitation |
+|------|------|-----------------|
+| **Direktur Program** | [Nama] | Overall coordination, stakeholder management |
+| **Ketua Kurikulum** | [Nama] | Material development, trainer supervision |
+| **Ketua Operations** | [Nama] | Venue, logistics, technical setup |
+| **Ketua Marketing** | [Nama] | Promotion, registration, PR |
+| **Koordinator Trainer** | [Nama] | Trainer management, delivery quality |
+| **Community Manager** | [Nama] | Alumni engagement, follow-up |
+| **Finance Officer** | [Nama] | Budget tracking, reporting |
+
+### Tenaga Pendukung
+
+| Role | Jumlah | Keterangan |
+|------|--------|------------|
+| **Trainer AI** | 2 orang | Expert dengan pengalaman minimal 3 tahun |
+| **Fasilitator** | 2 orang | Membantu hands-on session |
+| **Volunteer** | 5 orang | Tech support, documentation, logistics |
+| **Moderator** | 1 orang | Session flow management |
 
 ---
 
 ## Risiko & Mitigasi
 
-| Risiko | Probabilitas | Dampak | Mitigasi |
-|--------|--------------|--------|----------|
-| Peserta drop out | Medium | Medium | Waitlist 10 orang, deposit non-refundable |
-| Trainer berhalangan | Low | High | Backup trainer ready, record session |
-| Tech issue (internet) | Medium | High | Prep offline materials, hotspot backup |
-| Minimal peserta | Medium | Medium | Early bird discount, school partnership |
-| Budget overrun | Low | Medium | Contingency 10%, flexible sponsor negotiation |
-| Safety incident | Low | High | First aid kit, emergency contact, parental consent |
+### Risiko Teknis
+
+| Risiko | Probabilitas | Dampak | Strategi Mitigasi |
+|--------|--------------|--------|-------------------|
+| Internet down saat workshop | Medium | Tinggi | - Backup hotspot dari 3 provider berbeda<br>- Materials offline tersedia<br>- Hybrid mode siap diterapkan |
+| AI tools unavailable/blocked | Medium | Sedang | - Multiple tools backup<br>- Pre-installed local alternatives<br>- Offline simulation mode |
+| Hardware peserta bermasalah | Low | Sedang | - Tech check sebelum acara<br>- Laptop pinjaman tersedia (10 unit)<br>- Pairing system peserta |
+| Platform crash (Zoom/Google) | Low | Tinggi | - Backup platform (Meet/Teams)<br>- Recorded sessions<br>- Asynchronous materials |
+
+### Risiko Operasional
+
+| Risiko | Probabilitas | Dampak | Strategi Mitigasi |
+|--------|--------------|--------|-------------------|
+| Peserta drop-out | Medium | Sedang | - Onboarding session<br>- Reminder system<br>- Engagement activities |
+| Trainer berhalangan | Low | Tinggi | - Backup trainer ready<br>- Materials sudah distandarkan<br>- Co-facilitator tiap sesi |
+| Time overrun | Medium | Rendah | - Buffer time di schedule<br>- Timekeeper role<br>- Flexible module design |
+| Budget overruns | Low | Tinggi | - Contingency 10%<br>- Monthly financial review<br>- Alternative funding ready |
+
+### Risiko Peserta
+
+| Risiko | Probabilitas | Dampak | Strategi Mitigasi |
+|--------|--------------|--------|-------------------|
+| Level terlalu berbeda | High | Sedang | - Pre-assessment placement<br>- Grouping by level<br>- Advanced/Beginner track |
+| Lack of motivation | Medium | Rendah | - Gamification<br>- Recognition system<br>- Peer accountability |
+| Attendance inconsistency | Medium | Sedang | - Commitment letter<br>- Parent engagement<br>- Follow-up system |
+
+### Risiko Etika & Keamanan
+
+| Risiko | Probabilitas | Dampak | Strategi Mitigasi |
+|--------|--------------|--------|-------------------|
+| Data privacy breach | Low | Tinggi | - Data handling policy<br>- Anonymous data collection<br>- Secure platform usage |
+| Inappropriate AI usage | Medium | Tinggi | - Clear code of conduct<br>- Active monitoring<br>- Ethics module mandatory |
+| Plagiarism in project | High | Sedang | - Originality check<br>- Process evaluation<br>- Collaboration guidelines |
 
 ---
 
-## Dokumen Pendukung
+## Appendices
 
-1. Curriculum Detail (dalam lampiran)
-2. Trainer CV & Portfolio
-3. Sponsorship Deck
-4. Venue Proposal
-5. Marketing Plan
-6. Evaluation Form Template
+### Appendix A: Detail Kurikulum per Module
+
+**(Akan dilampirkan dokumen terpisah)**
+
+### Appendix B: Sponsorship Package
+
+| Tier | Investment | Benefits |
+|------|------------|----------|
+| Platinum | Rp 25.000.000 | Logo di semua materials, speaking slot, branding 3 hari |
+| Gold | Rp 15.000.000 | Logo di materials, booth area, social media mentions |
+| Silver | Rp 5.000.000 | Logo di website, recognition during event |
+| Supporter | Rp 1.000.000 | Nama di credit roll, e-certificate |
+
+### Appendix C: Form Pendaftaran
+
+**(Template Google Form tersedia)**
+
+### Appendix D: Timeline Gantt Chart
+
+**(Visual timeline tersedia di attachment)**
 
 ---
 
 ## Kontak
 
 **Taraka Foundation**  
-Email: hello@taraka.org.id  
-Website: www.taraka.org.id  
-Instagram: @taraka.foundation  
+📧 Email: info@taraka.or.id  
+🌐 Website: www.taraka.or.id  
+📱 Instagram: @taraka_foundation  
+📍 Alamat: [Alamat Yayasan]
 
 ---
 
-*Dibuat oleh @taraka | Tanggal: 2026-08-22*  
-*Version: 1.0 Draft*
+**Dokumen ini disusun oleh:**
+Tim Program Development - Taraka Foundation
+
+**Tanggal Penyusunan:** 22 Agustus 2026
+
+**Status:** DRAFT - Siap untuk review dan finalisasi
