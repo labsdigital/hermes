@@ -1,1 +1,35 @@
-{"cpu":{"usage":2,"cores":40},"memory":{"total":126,"free":75,"used":51},"uptime":9,"lastUpdate":"2026-08-22T16:07:47.478Z"}
+{
+  "generatedAt": "2026-08-23T04:22:49Z",
+  "system": {
+    "hostname": "hermes-vps",
+    "cpu": {
+      "usagePercent": 2,
+      "cores": 40,
+      "loadAvg1m": 0.85
+    },
+    "memory": {
+      "totalGb": 126,
+      "usedGb": 54,
+      "freeGb": 72,
+      "usedPercent": 43
+    },
+    "uptimeHours": 21,
+    "uptimeText": "21 jam"
+  },
+  "airtable": {
+    "baseId": "appHDwcERrnRH02YS",
+    "tableName": "tblArticles",
+    "totalRecords": 18,
+    "lastSync": "2026-08-23T04:22:49Z",
+    "syncStatus": "healthy",
+    "note": "20 artikel ditulis (Max 14 + Chalbi 6), 18+ sudah tersinkron ke Airtable"
+  },
+  "quickStats": {
+    "totalAgents": 5,
+    "totalArticles": 20,
+    "totalProposals": 2,
+    "totalProjects": 2,
+    "totalCommits": 95
+  },
+  "lastUpdate": "2026-08-23T04:22:49Z"
+}

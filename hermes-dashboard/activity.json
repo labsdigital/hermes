@@ -1,1 +1,62 @@
-[{"hash":"60fff71","message":"Chalbi: Artikel Konsep Sam'a, Absar, dan Af'idah","time":"2026-08-22T16:07:47.465Z"},{"hash":"443d5c8","message":"Chalbi: Artikel Sifat Al-Lathif - Tuhan Yang Maha Halus","time":"2026-08-22T16:07:47.465Z"},{"hash":"0bb693a","message":"Chalbi: Artikel Kisah Raja dan Kuda - dengan kutipan asli","time":"2026-08-22T16:07:47.465Z"},{"hash":"46442d5","message":"Chalbi: Artikel Waswas di Dada - gaya naratif tanpa kutipan asli","time":"2026-08-22T16:07:47.465Z"},{"hash":"7291aa5","message":"Chalbi: Artikel Waswas di Dada Manusia - gaya naratif tanpa kutipan asli","time":"2026-08-22T16:07:47.465Z"},{"hash":"2d41826","message":"Taraka: Update proposal Pelatihan AI dengan versi lengkap (398 baris)","time":"2026-08-22T16:07:47.465Z"},{"hash":"5fa0c26","message":"Taraka: Proposal Pelatihan Pemanfaatan AI bagi Murid","time":"2026-08-22T16:07:47.465Z"},{"hash":"05eac44","message":"Taraka: Init subagent untuk Taraka Foundation management","time":"2026-08-22T16:07:47.465Z"},{"hash":"088c192","message":"Refactor blog configuration and article handling","time":"2026-08-22T16:07:47.465Z"},{"hash":"a62ff2a","message":"Elon: Rename subagent from Mark to Elon (web developer)","time":"2026-08-22T16:07:47.465Z"}]
+[
+  {
+    "hash": "1f8d87a",
+    "message": "Elon: Redesign Lab Rasio & Perbandingan dengan UI/UX Pro Max patterns",
+    "author": "Hermes Agent",
+    "time": "2026-08-23T03:37:12Z"
+  },
+  {
+    "hash": "125fb09",
+    "message": "Max: Merancang Experiential Learning di LMS - Pelatihan Daring dengan Virtual Manipulative",
+    "author": "Hermes Agent",
+    "time": "2026-08-23T01:56:08Z"
+  },
+  {
+    "hash": "15b4ee5",
+    "message": "Max: Experiential Learning dengan Virtual Manipulative untuk Guru",
+    "author": "Hermes Agent",
+    "time": "2026-08-23T01:28:41Z"
+  },
+  {
+    "hash": "3cd23cb",
+    "message": "Merge branch 'main' of https://github.com/labsdigital/hermes",
+    "author": "Hermes Agent",
+    "time": "2026-08-23T00:36:43Z"
+  },
+  {
+    "hash": "1e4f0a2",
+    "message": "Elon: Lab Rasio & Perbandingan - Simulasi Interaktif Matematika",
+    "author": "Hermes Agent",
+    "time": "2026-08-23T00:35:49Z"
+  },
+  {
+    "hash": "007f5ee",
+    "message": "Add AI news summary: 2026-08-23",
+    "author": "labsdigital",
+    "time": "2026-08-23T00:00:42Z"
+  },
+  {
+    "hash": "d2bd09a",
+    "message": "Max: Artikel tentang agentic-ai-pendidikan-2026-08-22",
+    "author": "Hermes Agent",
+    "time": "2026-08-22T23:56:25Z"
+  },
+  {
+    "hash": "b96dfb9",
+    "message": "Dashboard: Add static GitHub Pages dashboard",
+    "author": "Hermes Agent",
+    "time": "2026-08-22T16:09:24Z"
+  },
+  {
+    "hash": "60fff71",
+    "message": "Chalbi: Artikel Konsep Sam'a, Absar, dan Af'idah",
+    "author": "Hermes Agent",
+    "time": "2026-08-22T12:07:33Z"
+  },
+  {
+    "hash": "443d5c8",
+    "message": "Chalbi: Artikel Sifat Al-Lathif - Tuhan Yang Maha Halus",
+    "author": "Hermes Agent",
+    "time": "2026-08-22T11:22:05Z"
+  }
+]
