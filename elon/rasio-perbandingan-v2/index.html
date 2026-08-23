@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Simulasi pembelajaran interaktif Perbandingan Senilai dan Berbalik Nilai — matematika SD/SMP dengan visualisasi grafik dan quiz undakan.">
+<title>Lab Rasio &amp; Perbandingan — Simulasi Interaktif</title>
+
+<!-- Fonts: Kids/Education pairing (UI Pro Max typography.csv) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;0,6..12,800&display=swap" rel="stylesheet">
+
+<!-- Icons + Charts (CDN) -->
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+<style>
+/* ============================================================
+   DESIGN TOKENS — UI/UX Pro Max (LMS palette + glassmorphism)
+   ============================================================ */
+:root{
+  --font-head:"Baloo 2",cursive;
+  --font-body:"Nunito Sans",sans-serif;
+  --radius:20px;
+  --radius-sm:12px;
+  --blur:16px;
+  --gap:22px;
+  --maxw:1180px;
+  --tr:.32s cubic-bezier(.4,0,.2,1);
+  /* spacing scale — 4px base */
+  --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px;
+}
+html[data-theme="dark"]{
+  --bg:#070d19;
+  --bg-glow1:rgba(45,212,191,.16);
+  --bg-glow2:rgba(129,140,248,.15);
+  --bg-glow3:rgba(251,191,36,.10);
+  --text:#e9eff7;
+  --muted:#93a6c0;
+  --card:rgba(255,255,255,.055);
+  --card-strong:rgba(255,255,255,.09);
+  --border:rgba(255,255,255,.12);
+  --border-strong:rgba(255,255,255,.22);
+  --primary:#2dd4bf;
+  --primary-deep:#0d9488;
+  --primary-ink:#032b26;
+  --primary-soft:rgba(45,212,191,.14);
+  --accent:#fbbf24;
+  --accent-soft:rgba(251,191,36,.15);
+  --indigo:#818cf8;
+  --indigo-soft:rgba(129,140,248,.16);
+  --ok:#34d399;
+  --ok-soft:rgba(52,211,153,.14);
+  --danger:#fb7185;
+  --danger-soft:rgba(251,113,133,.14);
+  --shadow:0 24px 60px rgba(1,6,17,.55);
+  --grid-line:rgba(148,163,184,.14);
+  --tick:#93a6c0;
+  --track:rgba(255,255,255,.10);
+}
+html[data-theme="light"]{
+  --bg:#eafaf5;
+  --bg-glow1:rgba(13,148,136,.18);
+  --bg-glow2:rgba(99,102,241,.14);
+  --bg-glow3:rgba(217,119,6,.14);
+  --text:#0f3a35;
+  --muted:#587a74;
+  --card:rgba(255,255,255,.72);
+  --card-strong:rgba(255,255,255,.92);
+  --border:rgba(13,148,136,.16);
+  --border-strong:rgba(13,148,136,.32);
+  --primary:#0d9488;
+  --primary-deep:#0f766e;
+  --primary-ink:#ffffff;
+  --primary-soft:rgba(13,148,136,.10);
+  --accent:#d97706;
+  --accent-soft:rgba(217,119,6,.12);
+  --indigo:#6366f1;
+  --indigo-soft:rgba(99,102,241,.12);
+  --ok:#059669;
+  --ok-soft:rgba(5,150,105,.12);
+  --danger:#dc2626;
+  --danger-soft:rgba(220,38,38,.10);
+  --shadow:0 18px 44px rgba(15,74,66,.12);
+  --grid-line:rgba(15,58,53,.10);
+  --tick:#587a74;
+  --track:rgba(15,58,53,.10);
+}
+
+/* ============ BASE ============ */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font-body);
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  line-height:1.6;
+  overflow-x:hidden;
+  transition:background var(--tr),color var(--tr);
+}
+h1,h2,h3,h4{font-family:var(--font-head);line-height:1.25;font-weight:700}
+::selection{background:var(--primary);color:var(--primary-ink)}
+
+/* Decorative aurora blobs */
+.bg-decor{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:1;animation:float 20s ease-in-out infinite alternate}
+.blob.b1{width:520px;height:520px;background:var(--bg-glow1);top:-160px;left:-120px}
+.blob.b2{width:460px;height:460px;background:var(--bg-glow2);top:30%;right:-160px;animation-delay:-6s}
+.blob.b3{width:420px;height:420px;background:var(--bg-glow3);bottom:-140px;left:32%;animation-delay:-12s}
+@keyframes float{from{transform:translate(0,0) scale(1)}to{transform:translate(40px,-34px) scale(1.08)}}
+
+.container{max-width:var(--maxw);margin:0 auto;padding:0 var(--s5)}
+
+/* ============ GLASS COMPONENTS ============ */
+.glass{
+  background:var(--card);
+  -webkit-backdrop-filter:blur(var(--blur));
+  backdrop-filter:blur(var(--blur));
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  transition:transform var(--tr),box-shadow var(--tr),background var(--tr),border-color var(--tr);
+}
+.glass.hoverable:hover{transform:translateY(-4px);border-color:var(--border-strong)}
+
+.badge{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:4px 14px;border-radius:999px;
+  font-size:.78rem;font-weight:800;letter-spacing:.4px;text-transform:uppercase;
+}
+.badge.teal{background:var(--primary-soft);color:var(--primary)}
+.badge.amber{background:var(--accent-soft);color:var(--accent)}
+.badge.indigo{background:var(--indigo-soft);color:var(--indigo)}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:12px 26px;border-radius:999px;border:1px solid transparent;
+  font-family:var(--font-body);font-weight:800;font-size:.95rem;cursor:pointer;
+  transition:transform var(--tr),box-shadow var(--tr),background var(--tr);
+}
+.btn:focus-visible,.chip:focus-visible,.nav-btn:focus-visible,.theme-toggle:focus-visible,.opt:focus-visible{
+  outline:2px solid var(--primary);outline-offset:3px;
+}
+.btn-primary{background:linear-gradient(135deg,var(--primary),var(--primary-deep));color:var(--primary-ink);box-shadow:0 10px 28px rgba(13,148,136,.35)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(13,148,136,.45)}
+.btn-ghost{background:var(--card-strong);color:var(--text);border-color:var(--border)}
+.btn-ghost:hover{border-color:var(--border-strong);transform:translateY(-2px)}
+.btn svg{width:18px;height:18px}
+
+/* ============ NAVBAR ============ */
+.navbar{
+  position:sticky;top:14px;z-index:50;
+  margin:14px auto 0;max-width:var(--maxw);
+  display:flex;align-items:center;gap:var(--s4);
+  padding:10px 18px;border-radius:999px;
+}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--font-head);font-weight:800;font-size:1.08rem;white-space:nowrap}
+.brand .logo{
+  width:38px;height:38px;border-radius:12px;display:grid;place-items:center;flex-shrink:0;
+  background:linear-gradient(135deg,var(--primary),var(--indigo));
+  color:#fff;box-shadow:0 8px 20px rgba(13,148,136,.4);
+}
+.brand .logo svg{width:20px;height:20px}
+.brand small{display:block;font-family:var(--font-body);font-weight:700;font-size:.68rem;color:var(--muted);letter-spacing:.5px;line-height:1}
+.nav-tabs{display:flex;gap:6px;margin-left:auto;overflow-x:auto;scrollbar-width:none;padding:4px}
+.nav-tabs::-webkit-scrollbar{display:none}
+.nav-btn{
+  border:none;cursor:pointer;font-family:var(--font-body);font-weight:800;font-size:.88rem;
+  padding:10px 18px;border-radius:999px;color:var(--muted);background:transparent;
+  display:inline-flex;align-items:center;gap:8px;white-space:nowrap;
+  transition:all var(--tr);
+}
+.nav-btn svg{width:16px;height:16px}
+.nav-btn:hover{color:var(--text);background:var(--card-strong)}
+.nav-btn.active{background:linear-gradient(135deg,var(--primary),var(--primary-deep));color:var(--primary-ink);box-shadow:0 8px 22px rgba(13,148,136,.35)}
+.theme-toggle{
+  flex-shrink:0;width:42px;height:42px;border-radius:50%;cursor:pointer;
+  border:1px solid var(--border);background:var(--card-strong);color:var(--accent);
+  display:grid;place-items:center;transition:all var(--tr);
+}
+.theme-toggle:hover{transform:rotate(18deg) scale(1.06);border-color:var(--border-strong)}
+.theme-toggle svg{width:19px;height:19px}
+
+/* ============ HERO ============ */
+.hero{padding:64px 0 34px;text-align:center}
+.hero h1{font-size:clamp(2rem,5vw,3.3rem);font-weight:800;letter-spacing:-.5px}
+.hero h1 .grad{background:linear-gradient(120deg,var(--primary),var(--indigo),var(--accent));background-size:200%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shift 8s ease-in-out infinite alternate}
+@keyframes shift{from{background-position:0%}to{background-position:100%}}
+.hero p{max-width:640px;margin:14px auto 0;color:var(--muted);font-size:1.05rem}
+.hero-cta{display:flex;gap:14px;justify-content:center;margin-top:28px;flex-wrap:wrap}
+.concept-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--gap);margin-top:44px}
+.concept-card{padding:26px;text-align:left;position:relative;overflow:hidden}
+.concept-card .cc-icon{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;margin-bottom:14px}
+.cc-icon.teal{background:var(--primary-soft);color:var(--primary)}
+.cc-icon.amber{background:var(--accent-soft);color:var(--accent)}
+.cc-icon svg{width:26px;height:26px}
+.concept-card h3{font-size:1.15rem;margin-bottom:6px}
+.concept-card p{color:var(--muted);font-size:.93rem}
+.formula-pill{
+  margin-top:14px;display:inline-block;padding:7px 16px;border-radius:10px;
+  background:var(--track);font-family:ui-monospace,Menlo,monospace;font-size:.95rem;font-weight:700;color:var(--text);
+}
+
+/* ============ TAB PANELS ============ */
+.tab-panel{display:none;padding-bottom:56px}
+.tab-panel.active{display:block;animation:fadeUp .5s cubic-bezier(.4,0,.2,1)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.panel-head{margin:34px 0 22px;display:flex;flex-direction:column;gap:8px}
+.panel-head h2{font-size:clamp(1.5rem,3vw,2.1rem)}
+.panel-head p{color:var(--muted);max-width:720px}
+
+.sim-grid{display:grid;grid-template-columns:minmax(320px,5fr) 7fr;gap:var(--gap);align-items:start}
+.sim-grid .full{grid-column:1/-1}
+@media(max-width:900px){.sim-grid{grid-template-columns:1fr}.navbar{top:8px}}
+
+/* Control card */
+.control-card{padding:26px}
+.chip-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.chip{
+  border:1px solid var(--border);background:transparent;color:var(--muted);
+  padding:8px 16px;border-radius:999px;font-family:var(--font-body);font-weight:800;font-size:.84rem;
+  cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:all var(--tr);
+}
+.chip svg{width:15px;height:15px}
+.chip:hover{border-color:var(--border-strong);color:var(--text)}
+.chip.active{background:linear-gradient(135deg,var(--primary),var(--primary-deep));border-color:transparent;color:var(--primary-ink);box-shadow:0 8px 20px rgba(13,148,136,.35)}
+.field-label{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;font-weight:800;font-size:.92rem}
+.field-label .val{font-family:var(--font-head);font-size:1.25rem;color:var(--primary)}
+input[type=range]{
+  -webkit-appearance:none;appearance:none;width:100%;height:10px;border-radius:999px;
+  background:var(--track);outline-offset:6px;cursor:pointer;
+}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;width:26px;height:26px;border-radius:50%;
+  background:linear-gradient(135deg,var(--primary),var(--primary-deep));
+  border:3px solid var(--bg);box-shadow:0 4px 14px rgba(13,148,136,.55);
+  transition:transform .2s;
+}
+input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.15)}
+input[type=range]::-moz-range-thumb{
+  width:22px;height:22px;border-radius:50%;border:3px solid var(--bg);
+  background:var(--primary);box-shadow:0 4px 14px rgba(13,148,136,.55);
+}
+.slider-scale{display:flex;justify-content:space-between;color:var(--muted);font-size:.75rem;font-weight:700;margin-top:6px}
+
+.readouts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}
+.readout{padding:16px;border-radius:var(--radius-sm);text-align:center;border:1px dashed var(--border)}
+.readout.x{background:var(--indigo-soft)}
+.readout.y{background:var(--primary-soft)}
+.readout .lab{font-size:.75rem;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--muted)}
+.readout .num{font-family:var(--font-head);font-size:clamp(1.3rem,2.4vw,1.7rem);font-weight:800;margin-top:2px}
+.readout.y .num{color:var(--primary)}
+.readout.x .num{color:var(--indigo)}
+
+.formula-box{
+  margin-top:18px;padding:16px 18px;border-radius:var(--radius-sm);
+  background:var(--track);border-left:4px solid var(--accent);
+  font-family:ui-monospace,Menlo,monospace;font-size:.98rem;font-weight:700;
+}
+.formula-box .fx{color:var(--accent)}
+.const-chip{margin-top:12px;display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-weight:800;font-size:.83rem}
+.const-chip svg{width:15px;height:15px}
+.hint-text{margin-top:14px;color:var(--muted);font-size:.87rem}
+
+/* Table card */
+.table-card{padding:26px}
+.table-card h3{display:flex;align-items:center;gap:10px;margin-bottom:14px;font-size:1.12rem}
+.table-card h3 svg{width:19px;height:19px;color:var(--primary)}
+.tbl-scroll{overflow:auto;max-height:330px;border-radius:var(--radius-sm)}
+table{width:100%;border-collapse:collapse;font-size:.92rem}
+thead th{
+  position:sticky;top:0;z-index:2;text-align:left;padding:11px 14px;
+  background:var(--card-strong);backdrop-filter:blur(8px);
+  font-size:.76rem;letter-spacing:.6px;text-transform:uppercase;color:var(--muted);
+  border-bottom:1px solid var(--border);
+}
+tbody td{padding:10px 14px;border-bottom:1px solid var(--border);font-weight:700}
+tbody tr{transition:background var(--tr)}
+tbody tr:hover{background:var(--primary-soft)}
+tbody tr.row-active{background:var(--primary-soft);box-shadow:inset 4px 0 0 var(--primary)}
+td.ratio{color:var(--muted);font-family:ui-monospace,monospace;font-size:.82rem}
+
+/* Chart card */
+.chart-card{padding:26px}
+.chart-card h3{display:flex;align-items:center;gap:10px;margin-bottom:4px;font-size:1.12rem}
+.chart-card h3 svg{width:19px;height:19px;color:var(--indigo)}
+.chart-sub{color:var(--muted);font-size:.86rem;margin-bottom:16px}
+.chart-wrap{position:relative;height:340px}
+@media(max-width:600px){.chart-wrap{height:270px}}
+
+/* Real-life examples strip */
+.example-strip{margin-top:var(--gap);padding:22px 26px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.example-strip h4{display:flex;align-items:center;gap:9px;font-size:1rem;margin-right:6px}
+.example-strip h4 svg{width:18px;height:18px;color:var(--accent)}
+.ex-item{
+  display:inline-flex;align-items:center;gap:7px;padding:8px 15px;border-radius:999px;
+  background:var(--track);border:1px solid var(--border);font-size:.85rem;font-weight:700;color:var(--text);
+  transition:all var(--tr);cursor:default;
+}
+.ex-item:hover{transform:translateY(-2px);border-color:var(--accent)}
+.ex-item svg{width:14px;height:14px;color:var(--accent)}
+
+/* ============ QUIZ ============ */
+.quiz-shell{max-width:760px;margin:34px auto 0}
+.quiz-card{padding:34px}
+@media(max-width:600px){.quiz-card{padding:22px}}
+.quiz-topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px;flex-wrap:wrap}
+.score-chip{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-weight:800;font-size:.9rem}
+.score-chip svg{width:16px;height:16px}
+.progress-track{height:10px;border-radius:999px;background:var(--track);overflow:hidden;margin-bottom:26px}
+.progress-fill{
+  height:100%;width:0%;border-radius:999px;
+  background:linear-gradient(90deg,var(--primary),var(--indigo));
+  transition:width .5s cubic-bezier(.4,0,.2,1);
+  box-shadow:0 0 12px rgba(45,212,191,.6);
+}
+.q-counter{color:var(--muted);font-weight:800;font-size:.85rem;letter-spacing:.5px}
+.question-text{font-family:var(--font-head);font-size:clamp(1.15rem,2.6vw,1.45rem);margin-bottom:22px}
+.opts{display:grid;gap:12px}
+.opt{
+  display:flex;align-items:center;gap:14px;width:100%;text-align:left;
+  padding:15px 18px;border-radius:var(--radius-sm);cursor:pointer;
+  background:var(--card-strong);border:1.5px solid var(--border);color:var(--text);
+  font-family:var(--font-body);font-size:.97rem;font-weight:700;
+  transition:all .25s cubic-bezier(.4,0,.2,1);
+}
+.opt:hover:not(:disabled){border-color:var(--primary);transform:translateX(6px)}
+.opt:disabled{cursor:default}
+.opt .key{
+  flex-shrink:0;width:32px;height:32px;border-radius:10px;display:grid;place-items:center;
+  background:var(--track);font-weight:800;font-size:.9rem;transition:all .25s;
+}
+.opt.correct{background:var(--ok-soft);border-color:var(--ok);animation:pop .4s cubic-bezier(.34,1.56,.64,1)}
+.opt.correct .key{background:var(--ok);color:#fff}
+.opt.wrong{background:var(--danger-soft);border-color:var(--danger);animation:shake .45s}
+.opt.wrong .key{background:var(--danger);color:#fff}
+.opt.dim{opacity:.45}
+@keyframes pop{0%{transform:scale(.96)}60%{transform:scale(1.03)}100%{transform:scale(1)}}
+@keyframes shake{0%,100%{transform:none}25%{transform:translateX(-7px)}50%{transform:translateX(7px)}75%{transform:translateX(-4px)}}
+.feedback{
+  display:none;margin-top:20px;padding:16px 18px;border-radius:var(--radius-sm);
+  font-size:.93rem;font-weight:700;line-height:1.55;
+}
+.feedback.show{display:block;animation:fadeUp .4s}
+.feedback.good{background:var(--ok-soft);border:1px solid var(--ok);color:var(--ok)}
+.feedback.bad{background:var(--danger-soft);border:1px solid var(--danger);color:var(--danger)}
+.feedback strong{display:flex;align-items:center;gap:8px;margin-bottom:4px}
+.feedback svg{width:18px;height:18px;flex-shrink:0}
+.quiz-actions{display:flex;justify-content:flex-end;margin-top:24px}
+
+/* Quiz start & result screens */
+.quiz-center{text-align:center;padding:26px 6px}
+.quiz-center .big-icon{
+  width:88px;height:88px;border-radius:26px;margin:0 auto 22px;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--primary-soft),var(--indigo-soft));color:var(--primary);
+  animation:bob 3s ease-in-out infinite;
+}
+.big-icon svg{width:42px;height:42px}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.quiz-center h3{font-size:1.6rem;margin-bottom:10px}
+.quiz-center p{color:var(--muted);max-width:440px;margin:0 auto 24px}
+.quiz-meta{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:26px}
+.meta-pill{padding:9px 18px;border-radius:999px;background:var(--track);border:1px solid var(--border);font-weight:800;font-size:.86rem;display:inline-flex;gap:8px;align-items:center}
+.meta-pill svg{width:15px;height:16px;color:var(--primary)}
+.ring-wrap{position:relative;width:170px;height:170px;margin:0 auto 20px}
+.ring-wrap .pct{
+  position:absolute;inset:0;display:grid;place-items:center;
+  font-family:var(--font-head);font-size:2.3rem;font-weight:800;
+}
+#quiz-result-msg{font-size:1.15rem;margin-bottom:26px}
+
+/* ============ FOOTER ============ */
+footer{border-top:1px solid var(--border);padding:26px 0 34px;margin-top:20px}
+footer .container{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;color:var(--muted);font-size:.86rem;font-weight:600}
+footer b{color:var(--primary)}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+
+<div class="bg-decor" aria-hidden="true">
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+</div>
+
+<!-- ================= NAVBAR ================= -->
+<header class="navbar glass">
+  <div class="brand">
+    <span class="logo"><i data-lucide="scale-3d"></i></span>
+    <span>Lab Rasio<small>MATEMATIKA INTERAKTIF</small></span>
+  </div>
+  <nav class="nav-tabs" role="tablist" aria-label="Navigasi simulasi">
+    <button class="nav-btn active" data-tab="senilai" role="tab" aria-selected="true"><i data-lucide="trending-up"></i> Senilai</button>
+    <button class="nav-btn" data-tab="berbalik" role="tab" aria-selected="false"><i data-lucide="trending-down"></i> Berbalik Nilai</button>
+    <button class="nav-btn" data-tab="quiz" role="tab" aria-selected="false"><i data-lucide="trophy"></i> Quiz Undakan</button>
+  </nav>
+  <button class="theme-toggle" id="theme-toggle" aria-label="Ganti tema terang/gelap" title="Ganti tema">
+    <i data-lucide="sun" id="icon-sun"></i>
+    <i data-lucide="moon" id="icon-moon" style="display:none"></i>
+  </button>
+</header>
+
+<main class="container">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <span class="badge indigo"><i data-lucide="sparkles"></i> Simulasi Pembelajaran Interaktif</span>
+    <h1>Jelajahi Dunia <span class="grad">Rasio &amp; Perbandingan</span></h1>
+    <p>Geser slider-nya, lihat tabel &amp; grafiknya berubah secara langsung. Pahami perbandingan senilai dan berbalik nilai lewat eksperimen — lalu uji pemahamanmu di quiz!</p>
+    <div class="hero-cta">
+      <button class="btn btn-primary" data-goto="senilai"><i data-lucide="play"></i> Mulai Eksperimen Senilai</button>
+      <button class="btn btn-ghost" data-goto="berbalik"><i data-lucide="git-compare-arrows"></i> Coba Berbalik Nilai</button>
+    </div>
+
+    <div class="concept-grid">
+      <article class="glass hoverable concept-card">
+        <span class="cc-icon teal"><i data-lucide="arrow-up-narrow-wide"></i></span>
+        <span class="badge teal">Perbandingan Senilai</span>
+        <h3>Searah — Naik Bersama</h3>
+        <p>Jika satu besaran membesar, besaran lain ikut membesar dengan pola tetap. Grafiknya selalu berupa <b>garis lurus</b>.</p>
+        <span class="formula-pill">y = k · x</span>
+      </article>
+      <article class="glass hoverable concept-card">
+        <span class="cc-icon amber"><i data-lucide="arrow-down-wide-narrow"></i></span>
+        <span class="badge amber">Perbandingan Berbalik Nilai</span>
+        <h3>Berlawanan — Naik–Turun</h3>
+        <p>Jika satu besaran membesar, besaran lain justru mengecil. Hasil kalinya selalu tetap, grafiknya berupa <b>hiperbola</b>.</p>
+        <span class="formula-pill">x · y = k</span>
+      </article>
+      <article class="glass hoverable concept-card">
+        <span class="cc-icon teal" style="background:var(--indigo-soft);color:var(--indigo)"><i data-lucide="medal"></i></span>
+        <span class="badge indigo">Quiz Undakan</span>
+        <h3>Uji Kemampuanmu</h3>
+        <p>10 soal pilihan ganda dengan feedback langsung, skor, progress bar, dan pembahasan singkat tiap jawaban.</p>
+        <span class="formula-pill">Skor tertinggi = juara undakan 🏆</span>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================= TAB: PERBANDINGAN SENILAI ================= -->
+  <section class="tab-panel active" id="panel-senilai" role="tabpanel">
+    <div class="panel-head">
+      <span class="badge teal"><i data-lucide="trending-up"></i> Simulasi 1</span>
+      <h2>Perbandingan Senilai <em style="color:var(--primary);font-style:normal">(y = kx)</em></h2>
+      <p>Dua besaran berubah <b>searah</b>: jika jumlah bertambah, nilainya juga bertambah dengan pengali tetap <b>k</b>. Geser slider dan amati grafik garis lurusnya!</p>
+    </div>
+
+    <div class="sim-grid">
+      <!-- Kontrol -->
+      <div class="glass hoverable control-card">
+        <h3 style="margin-bottom:14px;display:flex;align-items:center;gap:10px"><i data-lucide="sliders-horizontal" style="width:19px;height:19px;color:var(--primary)"></i> Panel Eksperimen</h3>
+        <div class="chip-row" id="sen-scenarios" role="group" aria-label="Pilih contoh kasus"></div>
+
+        <div class="field-label">
+          <label for="sen-slider" id="sen-x-label">Jumlah Buku</label>
+          <span class="val" id="sen-slider-val">7 buku</span>
+        </div>
+        <input type="range" id="sen-slider" min="1" max="20" step="1" value="7" aria-describedby="sen-formula-live">
+        <div class="slider-scale"><span id="sen-min-lab">1</span><span id="sen-max-lab">20</span></div>
+
+        <div class="readouts">
+          <div class="readout x"><div class="lab" id="sen-readx-lab">Jumlah (x)</div><div class="num" id="sen-x-display">7</div></div>
+          <div class="readout y"><div class="lab" id="sen-ready-lab">Hasil (y)</div><div class="num" id="sen-y-display">Rp35.000</div></div>
+        </div>
+
+        <div class="formula-box" id="sen-formula-live" aria-live="polite">
+          <span class="fx">y</span> = k · x &nbsp;→&nbsp; <span class="fx">Rp35.000</span> = 5.000 × 7
+        </div>
+        <span class="const-chip"><i data-lucide="lock"></i> Konstanta k = <b id="sen-k-display" style="margin-left:4px">5.000</b> <span id="sen-k-unit">(per buku)</span></span>
+        <p class="hint-text" id="sen-desc">Setiap tambah 1 buku, total harga selalu naik Rp5.000 — itulah makna konstanta k.</p>
+      </div>
+
+      <!-- Tabel -->
+      <div class="glass hoverable table-card">
+        <h3><i data-lucide="table-2"></i> Tabel Nilai Otomatis</h3>
+        <div class="tbl-scroll">
+          <table aria-label="Tabel nilai perbandingan senilai">
+            <thead><tr><th>x</th><th>y</th><th>Rasio y : x</th></tr></thead>
+            <tbody id="sen-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Grafik -->
+      <div class="glass hoverable chart-card full">
+        <h3><i data-lucide="chart-line"></i> Grafik Garis Lurus</h3>
+        <p class="chart-sub">Titik terang mengikuti posisi slider. Semua titik segaris karena rasio y : x selalu tetap.</p>
+        <div class="chart-wrap"><canvas id="sen-chart" aria-label="Grafik perbandingan senilai"></canvas></div>
+      </div>
+
+      <!-- Contoh nyata -->
+      <div class="glass hoverable example-strip full">
+        <h4><i data-lucide="lightbulb"></i> Contoh di Kehidupan Nyata:</h4>
+        <span class="ex-item"><i data-lucide="book-open"></i> Harga buku — makin banyak buku, makin besar total harga</span>
+        <span class="ex-item"><i data-lucide="car-front"></i> Kecepatan tetap — makin lama menempuh, makin jauh jaraknya</span>
+        <span class="ex-item"><i data-lucide="wallet"></i> Upah harian — makin banyak hari kerja, makin besar gajinya</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TAB: PERBANDINGAN BERBALIK NILAI ================= -->
+  <section class="tab-panel" id="panel-berbalik" role="tabpanel">
+    <div class="panel-head">
+      <span class="badge amber"><i data-lucide="trending-down"></i> Simulasi 2</span>
+      <h2>Perbandingan Berbalik Nilai <em style="color:var(--accent);font-style:normal">(xy = k)</em></h2>
+      <p>Dua besaran berubah <b>berlawanan arah</b>: jika satu naik, yang lain turun — namun hasil kalinya selalu tetap <b>k</b>. Geser slider dan saksikan kurva hiperbolanya!</p>
+    </div>
+
+    <div class="sim-grid">
+      <!-- Kontrol -->
+      <div class="glass hoverable control-card">
+        <h3 style="margin-bottom:14px;display:flex;align-items:center;gap:10px"><i data-lucide="sliders-horizontal" style="width:19px;height:19px;color:var(--accent)"></i> Panel Eksperimen</h3>
+        <div class="chip-row" id="inv-scenarios" role="group" aria-label="Pilih contoh kasus"></div>
+
+        <div class="field-label">
+          <label for="inv-slider" id="inv-x-label">Kecepatan</label>
+          <span class="val" id="inv-slider-val">60 km/jam</span>
+        </div>
+        <input type="range" id="inv-slider" min="20" max="120" step="10" value="60" aria-describedby="inv-formula-live">
+        <div class="slider-scale"><span id="inv-min-lab">20</span><span id="inv-max-lab">120</span></div>
+
+        <div class="readouts">
+          <div class="readout x"><div class="lab" id="inv-readx-lab">Kecepatan (x)</div><div class="num" id="inv-x-display">60</div></div>
+          <div class="readout y"><div class="lab" id="inv-ready-lab">Hasil (y)</div><div class="num" id="inv-y-display">4 jam</div></div>
+        </div>
+
+        <div class="formula-box" id="inv-formula-live" aria-live="polite">
+          <span class="fx">y</span> = k ÷ x &nbsp;→&nbsp; <span class="fx">4 jam</span> = 240 ÷ 60
+        </div>
+        <span class="const-chip"><i data-lucide="lock"></i> Konstanta k = <b id="inv-k-display" style="margin-left:4px">240</b> <span id="inv-k-unit">(km jarak tetap)</span></span>
+        <p class="hint-text" id="inv-desc">Mobil melaju 2× lebih cepat? Waktu tempuh tinggal setengahnya — hasil kali kecepatan × waktu selalu 240.</p>
+      </div>
+
+      <!-- Tabel -->
+      <div class="glass hoverable table-card">
+        <h3><i data-lucide="table-2"></i> Tabel Nilai Otomatis</h3>
+        <div class="tbl-scroll">
+          <table aria-label="Tabel nilai perbandingan berbalik nilai">
+            <thead><tr><th>x</th><th>y</th><th>Hasil kali x · y</th></tr></thead>
+            <tbody id="inv-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Grafik -->
+      <div class="glass hoverable chart-card full">
+        <h3><i data-lucide="chart-spline"></i> Grafik Hiperbola</h3>
+        <p class="chart-sub">Kurva turun tajam lalu mendatar — ciri khas perbandingan berbalik nilai. Titik terang mengikuti slider.</p>
+        <div class="chart-wrap"><canvas id="inv-chart" aria-label="Grafik perbandingan berbalik nilai"></canvas></div>
+      </div>
+
+      <!-- Contoh nyata -->
+      <div class="glass hoverable example-strip full">
+        <h4><i data-lucide="lightbulb"></i> Contoh di Kehidupan Nyata:</h4>
+        <span class="ex-item"><i data-lucide="gauge"></i> Makin cepat berkendara, makin cepat sampai tujuan</span>
+        <span class="ex-item"><i data-lucide="users"></i> Makin banyak pekerja, makin singkat waktu penyelesaian</span>
+        <span class="ex-item"><i data-lucide="cake"></i> Makin banyak penerima bagian, makin kecil bagian tiap orang</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TAB: QUIZ ================= -->
+  <section class="tab-panel" id="panel-quiz" role="tabpanel">
+    <div class="panel-head" style="text-align:center;align-items:center">
+      <span class="badge indigo"><i data-lucide="trophy"></i> Level Undakan</span>
+      <h2>Quiz: Uji Pemahamanmu!</h2>
+      <p style="margin:0 auto">10 soal pilihan ganda • feedback langsung • skor tersimpan otomatis selama sesi.</p>
+    </div>
+
+    <div class="quiz-shell">
+      <div class="glass hoverable quiz-card">
+
+        <!-- START SCREEN -->
+        <div id="quiz-start" class="quiz-center">
+          <span class="big-icon"><i data-lucide="graduation-cap"></i></span>
+          <h3>Siap Naik Undakan?</h3>
+          <p>Jawab 10 soal tentang perbandingan senilai &amp; berbalik nilai. Kamu langsung tahu benar/salah, lengkap dengan pembahasannya!</p>
+          <div class="quiz-meta">
+            <span class="meta-pill"><i data-lucide="list-checks"></i> 10 Soal</span>
+            <span class="meta-pill"><i data-lucide="target"></i> Feedback Instan</span>
+            <span class="meta-pill"><i data-lucide="timer"></i> Tanpa Batas Waktu</span>
+          </div>
+          <button class="btn btn-primary" id="btn-start"><i data-lucide="rocket"></i> Mulai Quiz</button>
+        </div>
+
+        <!-- QUESTION SCREEN -->
+        <div id="quiz-play" style="display:none">
+          <div class="quiz-topbar">
+            <span class="q-counter" id="q-counter">Soal 1 / 10</span>
+            <span class="score-chip"><i data-lucide="star"></i> Skor: <span id="score-live">0</span></span>
+          </div>
+          <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+
+          <p class="question-text" id="question-text"></p>
+          <div class="opts" id="opts"></div>
+
+          <div class="feedback" id="feedback" aria-live="polite"></div>
+
+          <div class="quiz-actions">
+            <button class="btn btn-primary" id="btn-next" style="visibility:hidden">Soal Berikutnya <i data-lucide="arrow-right"></i></button>
+          </div>
+        </div>
+
+        <!-- RESULT SCREEN -->
+        <div id="quiz-result" class="quiz-center" style="display:none">
+          <span class="big-icon" id="result-icon"><i data-lucide="crown"></i></span>
+          <h3>Quiz Selesai!</h3>
+          <div class="ring-wrap">
+            <svg viewBox="0 0 120 120" width="170" height="170" aria-hidden="true">
+              <circle cx="60" cy="60" r="52" fill="none" stroke="var(--track)" stroke-width="12"/>
+              <circle id="result-ring" cx="60" cy="60" r="52" fill="none" stroke="url(#ringGrad)" stroke-width="12"
+                stroke-linecap="round" transform="rotate(-90 60 60)"
+                stroke-dasharray="326.7" stroke-dashoffset="326.7" style="transition:stroke-dashoffset 1.2s cubic-bezier(.4,0,.2,1)"/>
+              <defs><linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#2dd4bf"/><stop offset="100%" stop-color="#818cf8"/>
+              </linearGradient></defs>
+            </svg>
+            <span class="pct" id="result-pct">0%</span>
+          </div>
+          <p id="quiz-result-msg"></p>
+          <p style="margin:-14px 0 26px;font-weight:800;color:var(--text)">Benar <span id="result-score" style="color:var(--primary)">0</span> dari 10 soal</p>
+          <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+            <button class="btn btn-primary" id="btn-retry"><i data-lucide="rotate-ccw"></i> Coba Lagi</button>
+            <button class="btn btn-ghost" data-goto="senilai"><i data-lucide="book-open"></i> Pelajari Materi Lagi</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <span>Dibuat oleh <b>@elon</b> • Lab Rasio &amp; Perbandingan v2</span>
+    <span>Design: UI/UX Pro Max — Glassmorphism • Chart.js • Lucide</span>
+  </div>
+</footer>
+
+<script>
+"use strict";
+/* =====================================================
+   LAB RASIO & PERBANDINGAN v2 — vanilla JS
+   ===================================================== */
+
+/* ---------- Helpers ---------- */
+const $  = (s, c=document) => c.querySelector(s);
+const $$ = (s, c=document) => [...c.querySelectorAll(s)];
+const rupiah = n => "Rp" + n.toLocaleString("id-ID");
+const numID  = n => n.toLocaleString("id-ID");
+function fmtJam(h){
+  const whole = Math.floor(h + 1e-9);
+  const m = Math.round((h - whole) * 60);
+  if (m === 0) return whole + " jam";
+  if (whole === 0) return m + " mnt";
+  return whole + " jam " + m + " mnt";
+}
+
+/* ---------- Theme ---------- */
+const rootEl = document.documentElement;
+function applyTheme(t){
+  rootEl.setAttribute("data-theme", t);
+  $("#icon-sun").style.display  = t === "dark" ? "" : "none";
+  $("#icon-moon").style.display = t === "dark" ? "none" : "";
+  try{ localStorage.setItem("rasio-theme", t); }catch(e){}
+  refreshChartTheme();
+}
+$("#theme-toggle").addEventListener("click", () => {
+  applyTheme(rootEl.getAttribute("data-theme") === "dark" ? "light" : "dark");
+});
+
+/* ---------- Tabs ---------- */
+let currentTab = "senilai";
+const chartBuilt = { senilai:false, berbalik:false };
+function switchTab(name){
+  currentTab = name;
+  $$(".nav-btn").forEach(b => {
+    const on = b.dataset.tab === name;
+    b.classList.toggle("active", on);
+    b.setAttribute("aria-selected", on);
+  });
+  $$(".tab-panel").forEach(p => {
+    p.classList.remove("active");
+    if (p.id === "panel-" + name){ void p.offsetWidth; p.classList.add("active"); }
+  });
+  // lazy-build chart saat panel pertama kali terlihat (hindari canvas 0-px)
+  if ((name === "senilai" || name === "berbalik") && !chartBuilt[name]){
+    requestAnimationFrame(() => { buildChart(name); });
+  } else if (charts[name]){
+    requestAnimationFrame(() => charts[name].resize());
+  }
+}
+$$(".nav-btn").forEach(b => b.addEventListener("click", () => switchTab(b.dataset.tab)));
+$$("[data-goto]").forEach(b => b.addEventListener("click", () => {
+  switchTab(b.dataset.goto);
+  window.scrollTo({ top: $("#panel-" + b.dataset.goto).offsetTop - 110, behavior:"smooth" });
+}));
+
+/* =====================================================
+   SIMULASI 1 — PERBANDINGAN SENILAI (y = k·x)
+   ===================================================== */
+const SEN = {
+  buku: {
+    label:"Harga Buku", icon:"book-open",
+    k:5000, kUnit:"(rupiah per buku)", max:20,
+    xLab:"Jumlah Buku", xUnit:"buku", yUnitFmt:rupiah,
+    readXL:"Jumlah buku (x)", readYL:"Total harga (y)",
+    desc:"Setiap tambah 1 buku, total harga selalu naik Rp5.000 — itulah makna konstanta k.",
+    fx:(x)=>`${rupiah(SEN.buku.k)} × ${x}`
+  },
+  jarak: {
+    label:"Jarak Tempuh", icon:"car-front",
+    k:60, kUnit:"(km per jam)", max:12,
+    xLab:"Waktu Tempuh (jam)", xUnit:"jam", yUnitFmt:n=>numID(n)+" km",
+    readXL:"Waktu (x)", readYL:"Jarak (y)",
+    desc:"Dengan kecepatan tetap 60 km/jam, setiap tambah 1 jam perjalanan, jarak bertambah 60 km.",
+    fx:(x)=>`${x} jam × 60`
+  },
+  upah: {
+    label:"Upah Harian", icon:"wallet",
+    k:150000, kUnit:"(rupiah per hari)", max:24,
+    xLab:"Hari Kerja", xUnit:"hari", yUnitFmt:rupiah,
+    readXL:"Hari kerja (x)", readYL:"Total upah (y)",
+    desc:"Upah harian tetap Rp150.000 — makin lama bekerja, total upah makin besar secara linier.",
+    fx:(x)=>`${rupiah(SEN.upah.k)} × ${x}`
+  }
+};
+let senKey = "buku";
+
+function senRows(){
+  const sc = SEN[senKey];
+  const max = sc.max;
+  const step = max >= 18 ? 2 : 1;
+  const rows = [];
+  for (let x = step; x <= max; x += step){
+    rows.push({ x, y: sc.k * x, exact:true });
+  }
+  const sv = +$("#sen-slider").value;
+  if (!rows.some(r => r.x === sv)){
+    rows.push({ x:sv, y:sc.k*sv, exact:false });
+    rows.sort((a,b)=>a.x-b.x);
+  }
+  return rows;
+}
+
+function renderSen(){
+  const sc  = SEN[senKey];
+  const x   = +$("#sen-slider").value;
+  const y   = sc.k * x;
+
+  $("#sen-x-label").textContent  = sc.xLab;
+  $("#sen-slider-val").textContent = numID(x) + " " + sc.xUnit;
+  $("#sen-min-lab").textContent  = numID(1);
+  $("#sen-max-lab").textContent  = numID(sc.max);
+  $("#sen-readx-lab").textContent = sc.readXL;
+  $("#sen-ready-lab").textContent = sc.readYL;
+  $("#sen-x-display").textContent = numID(x);
+  $("#sen-y-display").textContent = sc.yUnitFmt(y);
+  $("#sen-k-display").textContent = numID(sc.k);
+  $("#sen-k-unit").textContent    = sc.kUnit;
+  $("#sen-desc").textContent      = sc.desc;
+  $("#sen-formula-live").innerHTML =
+    `<span class="fx">y</span> = k · x &nbsp;→&nbsp; <span class="fx">${sc.yUnitFmt(y)}</span> = ${sc.fx(x)}`;
+
+  // tabel
+  const rows = senRows();
+  const activeIdx = rows.reduce((best,r,i,arr)=> r.x<=x ? i : best, 0);
+  $("#sen-tbody").innerHTML = rows.map((r,i)=>`
+    <tr class="${i===activeIdx?"row-active":""}">
+      <td>${numID(r.x)}</td>
+      <td>${sc.yUnitFmt(r.y)}</td>
+      <td class="ratio">${numID(sc.k)}</td>
+    </tr>`).join("");
+
+  updateChart("senilai", rows.map(r=>r.x), rows.map(r=>r.y), activeIdx);
+}
+
+function buildSenChips(){
+  $("#sen-scenarios").innerHTML = Object.entries(SEN).map(([key,s])=>`
+    <button class="chip ${key===senKey?"active":""}" data-key="${key}">
+      <i data-lucide="${s.icon}"></i>${s.label}
+    </button>`).join("");
+  $$("#sen-scenarios .chip").forEach(c => c.addEventListener("click", () => {
+    senKey = c.dataset.key;
+    const sc = SEN[senKey];
+    const sl = $("#sen-slider");
+    sl.max = sc.max;
+    sl.value = Math.min(+sl.value, sc.max) || Math.round(sc.max/3);
+    buildSenChips(); renderSen();
+  }));
+  if (window.lucide) lucide.createIcons();
+}
+$("#sen-slider").addEventListener("input", renderSen);
+
+/* =====================================================
+   SIMULASI 2 — PERBANDINGAN BERBALIK NILAI (x·y = k)
+   ===================================================== */
+const INV = {
+  mobil: {
+    label:"Kecepatan vs Waktu", icon:"gauge",
+    k:240, kUnit:"(km — jarak tetap)", min:20, max:120, step:10,
+    xLab:"Kecepatan", xUnit:"km/jam", xFmt:x=>numID(x)+" km/jam",
+    yUnitFmt:fmtJam, readXL:"Kecepatan (x)", readYL:"Waktu tempuh (y)",
+    desc:"Mobil melaju 2× lebih cepat? Waktu tempuh tinggal setengahnya — hasil kali kecepatan × waktu selalu 240.",
+    fx:x=>`240 ÷ ${numID(x)}`, kShow:()=>numID(240), prodFmt:v=>numID(v)+" km"
+  },
+  pekerja: {
+    label:"Pekerja vs Hari", icon:"users",
+    k:360, kUnit:"(pekerja·hari — total tugas tetap)", min:4, max:24, step:2,
+    xLab:"Jumlah Pekerja", xUnit:"pekerja", xFmt:x=>numID(x)+" pekerja",
+    yUnitFmt:h=>Math.round(h*10)/10===h ? numID(h)+" hari" : numID(Math.round(h*10)/10)+" hari",
+    readXL:"Pekerja (x)", readYL:"Hari selesai (y)",
+    desc:"Tugas totalnya tetap 360 pekerja·hari. Tambah pekerja, waktu penyelesaian memendek.",
+    fx:x=>`360 ÷ ${numID(x)}`, kShow:()=>numID(360), prodFmt:()=>numID(360)
+  },
+  kue: {
+    label:"Bagi Kue", icon:"cake",
+    k:60, kUnit:"(potong kue — jumlah tetap)", min:2, max:24, step:2,
+    xLab:"Jumlah Anak", xUnit:"anak", xFmt:x=>numID(x)+" anak",
+    yUnitFmt:n=>"⌀ "+numID(n)+" potong", readXL:"Anak (x)", readYL:"Bagian tiap anak (y)",
+    desc:"60 potong kue dibagi rata. Makin banyak penerima, makin kecil bagian masing-masing.",
+    fx:x=>`60 ÷ ${numID(x)}`, kShow:()=>numID(60), prodFmt:()=>numID(60)
+  }
+};
+const INV_TABLE_SETS = {
+  mobil:   [20,30,40,50,60,80,100,120],
+  pekerja: [4,6,8,10,12,16,20,24],
+  kue:     [2,3,4,5,6,10,12,15,20]
+};
+let invKey = "mobil";
+
+function invCalc(key,x){ return INV[key].k / x; }
+
+function renderInv(){
+  const sc = INV[invKey];
+  const x  = +$("#inv-slider").value;
+  const y  = invCalc(invKey, x);
+
+  $("#inv-x-label").textContent  = sc.xLab;
+  $("#inv-slider-val").textContent = sc.xFmt(x);
+  $("#inv-min-lab").textContent  = numID(sc.min);
+  $("#inv-max-lab").textContent  = numID(sc.max);
+  $("#inv-readx-lab").textContent = sc.readXL;
+  $("#inv-ready-lab").textContent = sc.readYL;
+  $("#inv-x-display").textContent = sc.xFmt(x);
+  $("#inv-y-display").textContent = sc.yUnitFmt(y);
+  $("#inv-k-display").textContent = sc.kShow();
+  $("#inv-k-unit").textContent    = sc.kUnit;
+  $("#inv-desc").textContent      = sc.desc;
+  $("#inv-formula-live").innerHTML =
+    `<span class="fx">y</span> = k ÷ x &nbsp;→&nbsp; <span class="fx">${sc.yUnitFmt(y)}</span> = ${sc.fx(x)}`;
+
+  // tabel — kolom ketik menegaskan x·y selalu tetap
+  const xs = INV_TABLE_SETS[invKey];
+  const nearIdx = xs.reduce((best,v,i)=> v<=x ? i : best, 0);
+  $("#inv-tbody").innerHTML = xs.map((v,i)=>{
+    const yy = invCalc(invKey,v);
+    const yTxt = invKey==="pekerja"
+      ? (Number.isInteger(yy) ? yy+" hari" : (Math.round(yy*10)/10+" hari"))
+      : sc.yUnitFmt(yy);
+    return `<tr class="${i===nearIdx?"row-active":""}">
+      <td>${sc.xFmt(v).replace(/ (km\/jam|pekerja|anak)$/,"")}</td>
+      <td>${yTxt}</td>
+      <td class="ratio">${sc.prodFmt(v)}</td>
+    </tr>`;
+  }).join("");
+
+  updateChart("berbalik", xs, xs.map(v=>invCalc(invKey,v)), nearIdx);
+}
+
+function buildInvChips(){
+  $("#inv-scenarios").innerHTML = Object.entries(INV).map(([key,s])=>`
+    <button class="chip ${key===invKey?"active":""}" data-key="${key}">
+      <i data-lucide="${s.icon}"></i>${s.label}
+    </button>`).join("");
+  $$("#inv-scenarios .chip").forEach(c => c.addEventListener("click", () => {
+    invKey = c.dataset.key;
+    const sc = INV[invKey];
+    const sl = $("#inv-slider");
+    sl.min = sc.min; sl.max = sc.max; sl.step = sc.step;
+    sl.value = Math.min(Math.max(+sl.value, sc.min), sc.max);
+    buildInvChips(); renderInv();
+  }));
+  if (window.lucide) lucide.createIcons();
+}
+$("#inv-slider").addEventListener("input", renderInv);
+
+/* =====================================================
+   CHART.JS — lazy build + theme-aware
+   ===================================================== */
+const charts = {};
+function cssVar(v){ return getComputedStyle(rootEl).getPropertyValue(v).trim(); }
+
+function chartOptions(kind, xTitle, yTitle){
+  const grid = cssVar("--grid-line"), tick = cssVar("--tick");
+  return {
+    responsive:true, maintainAspectRatio:false,
+    interaction:{ mode:"nearest", intersect:false },
+    animation:{ duration:450, easing:"easeOutQuart" },
+    plugins:{
+      legend:{ display:false },
+      tooltip:{
+        backgroundColor:"rgba(10,16,30,.92)", padding:12, cornerRadius:10,
+        titleFont:{ family:"'Baloo 2'", size:14 }, bodyFont:{ family:"'Nunito Sans'", weight:"700" },
+        displayColors:false,
+        callbacks:{ label:c => `${kind==="senilai"?"":"≈ "}(${numID(c.parsed.x)}, ${Math.round(c.parsed.y*100)/100})` }
+      }
+    },
+    scales:{
+      x:{ title:{ display:true, text:xTitle, color:tick, font:{ weight:"800", size:12 } },
+          grid:{ color:grid }, ticks:{ color:tick, font:{ weight:"700" } }, border:{ color:grid } },
+      y:{ title:{ display:true, text:yTitle, color:tick, font:{ weight:"800", size:12 } },
+          beginAtZero:true, grid:{ color:grid }, ticks:{ color:tick, font:{ weight:"700" } }, border:{ color:grid } }
+    }
+  };
+}
+
+function buildChart(which){
+  if (!window.Chart) return;               // CDN gagal — halaman tetap hidup tanpa grafik
+  chartBuilt[which] = true;
+  const isSen = which === "senilai";
+  const cv = $("#" + (isSen ? "sen-chart" : "inv-chart"));
+  const ctx = cv.getContext("2d");
+
+  const grad = ctx.createLinearGradient(0,0,0,340);
+  const c1 = isSen ? cssVar("--primary") : cssVar("--accent");
+  grad.addColorStop(0, c1 + "55"); grad.addColorStop(1, c1 + "00");
+
+  const opts = isSen
+    ? chartOptions("senilai","Jumlah (x)","Nilai y")
+    : chartOptions("berbalik","Besaran x","Nilai y");
+  opts.elements = { point:{ hoverRadius:8 } };
+
+  charts[which] = new Chart(ctx, {
+    type:"line",
+    data:{ labels:[], datasets:[{
+      data:[],
+      borderColor: isSen ? cssVar("--primary") : cssVar("--accent"),
+      backgroundColor: grad,
+      fill: isSen,                    // area di bawah garis lurus saja
+      borderWidth:3, tension:isSen ? 0 : .38,
+      pointRadius:[], pointBackgroundColor:[], pointBorderColor:cssVar("--bg"), pointBorderWidth:2,
+      pointHoverRadius:9
+    }]},
+    options:opts
+  });
+
+  // gambar data awal
+  if (isSen) renderSen(); else renderInv();
+}
+
+function updateChart(which, labels, data, activeIdx){
+  const ch = charts[which];
+  if (!ch) return;
+  const ds = ch.data.datasets[0];
+  ch.data.labels = labels;
+  ds.data = data;
+  ds.pointRadius = data.map((_,i)=> i===activeIdx ? 8 : 3.5);
+  ds.pointBackgroundColor = data.map((_,i)=> i===activeIdx ? cssVar("--indigo")
+    : (which==="senilai" ? cssVar("--primary") : cssVar("--accent")));
+  ch.update();
+}
+
+function refreshChartTheme(){
+  if (!window.Chart) return;
+  Object.entries(charts).forEach(([name,ch])=>{
+    if(!ch) return;
+    const o = chartOptions(name==="senilai"?"senilai":"berbalik","Besaran x","Nilai y");
+    ch.options.scales.x.grid.color = o.scales.x.grid.color;
+    ch.options.scales.y.grid.color = o.scales.y.grid.color;
+    ch.options.scales.x.ticks.color = o.scales.x.ticks.color;
+    ch.options.scales.y.ticks.color = o.scales.y.ticks.color;
+    ch.options.scales.x.title.color = o.scales.x.title.color;
+    ch.options.scales.y.title.color = o.scales.y.title.color;
+    ch.update();
+  });
+}
+
+/* =====================================================
+   QUIZ UNDAKAN
+   ===================================================== */
+const QUESTIONS = [
+  { q:"Satu buku harganya Rp5.000. Menurut perbandingan senilai, berapa harga 7 buku?",
+    opts:["Rp30.000","Rp35.000","Rp40.000","Rp12.000"], a:1,
+    why:"y = k·x → 5.000 × 7 = Rp35.000. Setiap buku menambah tepat Rp5.000." },
+  { q:"Mobil menempuh 240 km dengan kecepatan tetap 60 km/jam. Berapa lama waktu tempuhnya?",
+    opts:["3 jam","5 jam","4 jam","6 jam"], a:2,
+    why:"t = jarak ÷ kecepatan = 240 ÷ 60 = 4 jam. Ini contoh perbandingan berbalik nilai." },
+  { q:"Pada perbandingan senilai y = kx, jika x menjadi 2 kali lipat maka y menjadi…",
+    opts:["Setengahnya","2 kali lipat","Tetap sama","Tidak dapat ditentukan"], a:1,
+    why:"Searah! x naik 2× → y ikut naik 2×, karena k tetap." },
+  { q:"Empat pekerja menyelesaikan suatu tugas dalam 12 hari. Jika pekerjanya 6 orang (kemampuan sama), berapa hari selesai?",
+    opts:["8 hari","9 hari","10 hari","16 hari"], a:0,
+    why:"Berbalik nilai: 4 × 12 = 48 pekerja·hari. 48 ÷ 6 = 8 hari." },
+  { q:"Bagaimana bentuk grafik perbandingan SENILAI?",
+    opts:["Kurva hiperbola","Garis lurus melalui titik asal (0,0)","Garis putus-putus","Lingkaran"], a:1,
+    why:"Rasio y:x selalu tetap = k, sehingga semua titik segaris dan melewati (0,0)." },
+  { q:"Bagaimana bentuk grafik perbandingan BERBALIK NILAI?",
+    opts:["Garis lurus naik","Garis vertikal","Hiperbola (kurva turun mendekati sumbu)","Segitiga"], a:2,
+    why:"Karena x·y = k, saat x membesar y mengecil — membentuk kurva hiperbola." },
+  { q:"5 kg apel harganya Rp75.000. Berapa harga 8 kg apel yang sama?",
+    opts:["Rp100.000","Rp110.000","Rp125.000","Rp120.000"], a:3,
+    why:"k = 75.000 ÷ 5 = 15.000/kg. Maka 8 kg = 15.000 × 8 = Rp120.000." },
+  { q:"Untuk jarak tempuh yang sama, jika kecepatan rata-rata dinaikkan 2×, waktu tempuh menjadi…",
+    opts:["2 kali lebih lama","Tetap","Setengahnya","Empat kali"], a:2,
+    why:"Kecepatan × waktu = jarak (tetap). Kecepatan 2× → waktu ÷ 2." },
+  { q:"Pasangan nilai (x, y) = (3, 12) adalah perbandingan senilai. Berapa konstanta k-nya?",
+    opts:["36","9","4","15"], a:2,
+    why:"k = y ÷ x = 12 ÷ 3 = 4. Cek: 3×4=12 ✓ dan misal x=6 → y=24 ✓." },
+  { q:"Manakah situasi yang merupakan perbandingan BERBALIK NILAI?",
+    opts:["Jumlah buku vs total harga","Jumlah pekerja vs waktu penyelesaian","Banyak lembar vs tebal tumpukan","Umur vs tinggi badan"], a:1,
+    why:"Makin banyak pekerja → makin singkat waktu. Naik–turun berlawanan = berbalik nilai." }
+];
+
+let qIndex = 0, qScore = 0, qLocked = false;
+const LETTERS = ["A","B","C","D"];
+
+function quizStart(){
+  qIndex = 0; qScore = 0;
+  $("#quiz-start").style.display = "none";
+  $("#quiz-result").style.display = "none";
+  $("#quiz-play").style.display = "block";
+  renderQuestion();
+}
+
+function renderQuestion(){
+  qLocked = false;
+  const q = QUESTIONS[qIndex];
+  $("#q-counter").textContent = `Soal ${qIndex+1} / ${QUESTIONS.length}`;
+  $("#score-live").textContent = qScore;
+  $("#progress-fill").style.width = (qIndex / QUESTIONS.length * 100) + "%";
+  $("#question-text").textContent = q.q;
+  $("#feedback").className = "feedback";
+  $("#feedback").innerHTML = "";
+  $("#btn-next").style.visibility = "hidden";
+  $("#opts").innerHTML = q.opts.map((o,i)=>
+    `<button class="opt" data-i="${i}"><span class="key">${LETTERS[i]}</span><span>${o}</span></button>`).join("");
+  $$("#opts .opt").forEach(btn => btn.addEventListener("click", () => pickAnswer(+btn.dataset.i)));
+}
+
+function pickAnswer(i){
+  if (qLocked) return;
+  qLocked = true;
+  const q = QUESTIONS[qIndex];
+  const btns = $$("#opts .opt");
+  btns.forEach((b,idx)=>{
+    b.disabled = true;
+    if (idx === q.a) b.classList.add("correct");
+    else if (idx === i) b.classList.add("wrong");
+    else b.classList.add("dim");
+  });
+  const good = i === q.a;
+  if (good){ qScore++; $("#score-live").textContent = qScore; }
+  const fb = $("#feedback");
+  fb.className = "feedback show " + (good ? "good" : "bad");
+  fb.innerHTML = good
+    ? `<strong><i data-lucide="check-circle-2"></i> Benar! Mantap!</strong>${q.why}`
+    : `<strong><i data-lucide="circle-x"></i> Belum tepat — jawaban benarnya: ${LETTERS[q.a]}. ${q.opts[q.a]}</strong>${q.why}`;
+  if (window.lucide) lucide.createIcons();
+  const nb = $("#btn-next");
+  nb.style.visibility = "visible";
+  nb.innerHTML = (qIndex === QUESTIONS.length-1 ? "Lihat Hasil" : "Soal Berikutnya") +
+    ' <i data-lucide="arrow-right"></i>';
+  if (window.lucide) lucide.createIcons();
+}
+
+function quizNext(){
+  if (!qLocked) return;
+  qIndex++;
+  if (qIndex < QUESTIONS.length) renderQuestion();
+  else showResult();
+}
+
+function showResult(){
+  $("#quiz-play").style.display = "none";
+  $("#quiz-result").style.display = "block";
+  $("#progress-fill").style.width = "100%";
+  const pct = Math.round(qScore / QUESTIONS.length * 100);
+  $("#result-score").textContent = qScore;
+  $("#result-pct").textContent = pct + "%";
+  const ring = $("#result-ring");
+  ring.style.strokeDashoffset = 326.7;
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    ring.style.strokeDashoffset = 326.7 * (1 - pct/100);
+  }));
+  let msg, icon;
+  if (pct >= 90){ msg = "Luar biasa! 🏆 Kamu sudah menguasai perbandingan senilai & berbalik nilai!"; icon="crown"; }
+  else if (pct >= 70){ msg = "Bagus sekali! 🌟 Sedikit lagi menuju sempurna — coba lagi ya!"; icon="medal"; }
+  else if (pct >= 50){ msg = "Lumayan! 💪 Pelajari lagi simulasi di atas, lalu taklukkan quiz ini!"; icon="target"; }
+  else { msg = "Jangan menyerah! 🚀 Eksperimen dulu dua simulasi di atas — grafiknya akan membantumu paham."; icon="rocket"; }
+  $("#quiz-result-msg").textContent = msg;
+  $(".big-icon").innerHTML = `<i data-lucide="${icon}"></i>`;
+  if (window.lucide) lucide.createIcons();
+}
+
+$("#btn-start").addEventListener("click", quizStart);
+$("#btn-next").addEventListener("click", quizNext);
+$("#btn-retry").addEventListener("click", () => {
+  $("#quiz-result").style.display = "none";
+  quizStart();
+});
+
+/* ---------- Init ---------- */
+(function init(){
+  let saved = "dark";
+  try{ saved = localStorage.getItem("rasio-theme") || "dark"; }catch(e){}
+  applyTheme(saved);
+
+  buildSenChips();
+  buildInvChips();
+  renderSen();     // tabel & angka siap meski chart belum dibangun
+  renderInv();
+
+  // bangun chart tab aktif setelah layout siap
+  window.addEventListener("load", ()=>{
+    if (window.lucide) lucide.createIcons();
+    if (currentTab === "senilai" || currentTab === "berbalik") buildChart(currentTab);
+  });
+  if (window.lucide) lucide.createIcons();
+})();
+</script>
+</body>
+</html>
