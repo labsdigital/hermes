@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hermes Agent Dashboard</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f7; color: #1d1d1f; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 16px; margin-bottom: 24px; }
+        h1 { font-size: 28px; font-weight: 600; }
+        .subtitle { opacity: 0.9; margin-top: 8px; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 24px; }
+        .stat-card { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .stat-card h3 { font-size: 14px; color: #6e6e73; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+        .stat-card .value { font-size: 32px; font-weight: 700; color: #007aff; }
+        .stat-card .label { font-size: 13px; color: #86868b; margin-top: 4px; }
+        .agents-section { background: white; padding: 24px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 24px; }
+        .agents-section h2 { font-size: 18px; margin-bottom: 16px; }
+        .agent-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+        .agent-card { padding: 16px; border-radius: 10px; border: 2px solid #e5e5ea; }
+        .agent-card.max { border-color: #34c759; }
+        .agent-card.elon { border-color: #007aff; }
+        .agent-card.chalbi { border-color: #ff9500; }
+        .agent-card.taraka { border-color: #af52de; }
+        .agent-name { font-weight: 600; font-size: 16px; margin-bottom: 4px; }
+        .agent-role { font-size: 13px; color: #86868b; }
+        .agent-stat { font-size: 24px; font-weight: 700; margin-top: 8px; }
+        .activity-section { background: white; padding: 24px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .activity-section h2 { font-size: 18px; margin-bottom: 16px; }
+        .activity-list { list-style: none; }
+        .activity-item { padding: 12px 0; border-bottom: 1px solid #e5e5ea; display: flex; justify-content: space-between; align-items: center; }
+        .activity-item:last-child { border-bottom: none; }
+        .activity-msg { font-size: 14px; }
+        .activity-time { font-size: 12px; color: #86868b; }
+        .refresh-btn { background: #007aff; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: 14px; }
+        .refresh-btn:hover { background: #0056cc; }
+        .status-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .last-update { font-size: 13px; color: #86868b; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🤖 Hermes Agent Dashboard</h1>
+            <div class="subtitle">Multi-Agent System Real-Time Monitor</div>
+        </header>
+        
+        <div class="status-bar">
+            <button class="refresh-btn" onclick="loadData()">🔄 Refresh</button>
+            <span class="last-update" id="lastUpdate">Loading...</span>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>Total Subagents</h3>
+                <div class="value">4</div>
+                <div class="label">@max, @elon, @chalbi, @taraka</div>
+            </div>
+            <div class="stat-card">
+                <h3>Total Articles</h3>
+                <div class="value" id="totalArticles">-</div>
+                <div class="label">GitHub + Airtable synced</div>
+            </div>
+            <div class="stat-card">
+                <h3>Total Proposals</h3>
+                <div class="value" id="totalProposals">-</div>
+                <div class="label">Taraka Foundation</div>
+            </div>
+            <div class="stat-card">
+                <h3>Last Activity</h3>
+                <div class="value" id="lastActivity">-</div>
+                <div class="label">Minutes ago</div>
+            </div>
+        </div>
+        
+        <div class="agents-section">
+            <h2>📊 Agent Status</h2>
+            <div class="agent-grid" id="agentGrid">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+        
+        <div class="activity-section">
+            <h2>📝 Recent Activity</h2>
+            <ul class="activity-list" id="activityList">
+                <!-- Populated by JS -->
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        const agents = [
+            { id: 'max', name: '@max', role: 'AI News Researcher', color: '#34c759', path: 'max/reports' },
+            { id: 'elon', name: '@elon', role: 'Web Developer', color: '#007aff', path: 'elon' },
+            { id: 'chalbi', name: '@chalbi', role: 'Rumi Scholar', color: '#ff9500', path: 'chalbi/reports' },
+            { id: 'taraka', name: '@taraka', role: 'Foundation Manager', color: '#af52de', path: 'taraka/proposals' }
+        ];
+        
+        async function loadData() {
+            try {
+                const [agentsRes, activityRes] = await Promise.all([
+                    fetch('/api/agents').then(r => r.json()),
+                    fetch('/api/activity').then(r => r.json())
+                ]);
+                
+                renderAgents(agentsRes);
+                renderActivity(activityRes);
+                updateLastUpdate();
+            } catch (e) {
+                console.error('Load error:', e);
+            }
+        }
+        
+        function renderAgents(stats) {
+            const grid = document.getElementById('agentGrid');
+            let totalArticles = 0;
+            let totalProposals = 0;
+            
+            grid.innerHTML = agents.map(a => {
+                const count = stats[a.id]?.articles || stats[a.id]?.proposals || 0;
+                if (a.id === 'taraka') totalProposals += count;
+                else totalArticles += count;
+                
+                return `
+                    <div class="agent-card ${a.id}">
+                        <div class="agent-name">${a.name}</div>
+                        <div class="agent-role">${a.role}</div>
+                        <div class="agent-stat">${count}</div>
+                        <div class="label">${a.id === 'taraka' ? 'proposals' : 'articles'}</div>
+                    </div>
+                `;
+            }).join('');
+            
+            document.getElementById('totalArticles').textContent = totalArticles;
+            document.getElementById('totalProposals').textContent = totalProposals;
+        }
+        
+        function renderActivity(commits) {
+            const list = document.getElementById('activityList');
+            list.innerHTML = commits.slice(0, 10).map(c => `
+                <li class="activity-item">
+                    <span class="activity-msg">${c.message}</span>
+                    <span class="activity-time">${c.hash}</span>
+                </li>
+            `).join('');
+        }
+        
+        function updateLastUpdate() {
+            const now = new Date();
+            document.getElementById('lastUpdate').textContent = 
+                `Updated: ${now.toLocaleTimeString('zh-CN')}`;
+        }
+        
+        // Auto-refresh every 3 seconds
+        loadData();
+        setInterval(loadData, 3000);
+    </script>
+</body>
+</html>

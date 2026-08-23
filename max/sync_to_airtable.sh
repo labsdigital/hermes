@@ -30,7 +30,7 @@ echo "   Date: $DATE"
 CONTENT=$(python3 -c "import json,sys; print(json.dumps(sys.stdin.read()))" < "$ARTICLE_FILE")
 
 # Kirim ke Airtable dengan field published_at
-RESPONSE=$(curl -s -X POST "https://api.airtable.com/v0/appHDwcERrnRH02YS/tbl9TvJ9QztbHeyaY" \
+RESPONSE=$(curl -s -X POST "https://api.airtable.com/v0/appHDwcERrnRH02YS/tblExdQkNbL9bZbgQ" \
     -H "Authorization: Bearer $AIRTABLE_TOKEN" \
     -H "Content-Type: application/json" \
     -d "{\"records\":[{\"fields\":{\"id\":\"$ARTICLE_ID\",\"content\":$CONTENT,\"published_at\":\"$DATETIME\"}}]}")
@@ -47,7 +47,7 @@ else
         echo "   Setelah itu jalankan ulang script ini"
         
         # Coba tanpa published_at
-        RESPONSE=$(curl -s -X POST "https://api.airtable.com/v0/appHDwcERrnRH02YS/tbl9TvJ9QztbHeyaY" \
+        RESPONSE=$(curl -s -X POST "https://api.airtable.com/v0/appHDwcERrnRH02YS/tblExdQkNbL9bZbgQ" \
             -H "Authorization: Bearer $AIRTABLE_TOKEN" \
             -H "Content-Type: application/json" \
             -d "{\"records\":[{\"fields\":{\"id\":\"$ARTICLE_ID\",\"content\":$CONTENT}}]}")
