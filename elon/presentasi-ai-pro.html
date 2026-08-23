@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Memahami AI — Cara Kerja, Strategi, Etika</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>">
+<style>
+  /* ============================================================
+     DESIGN TOKENS — UI/UX Pro Max
+     ============================================================ */
+  :root{
+    /* palette (light) */
+    --bg:#f4f6fc;
+    --text:#0f172a;
+    --muted:#5b6577;
+    --line:#e4e8f3;
+    --glass-bg:rgba(255,255,255,.68);
+    --glass-line:rgba(255,255,255,.75);
+    --pill-bg:rgba(255,255,255,.88);
+
+    /* gradients */
+    --grad-vb:linear-gradient(135deg,#7c3aed,#2563eb); /* violet → blue  */
+    --grad-op:linear-gradient(135deg,#f97316,#ec4899); /* orange → pink  */
+    --grad-ci:linear-gradient(135deg,#06b6d4,#6366f1); /* cyan → indigo  */
+
+    /* typography scale — sized for projection (PPT) */
+    --fs-hero:clamp(52px,8vw,92px);    /* cover / divider titles  (≈92px) */
+    --fs-title:clamp(38px,4.4vw,60px); /* content slide titles    (≈60px) */
+    --fs-h3:clamp(22px,1.95vw,28px);   /* card headings           (≈28px) */
+    --fs-body:clamp(19px,1.8vw,26px);  /* body copy               (≈26px) */
+    --fs-cap:clamp(15px,1.4vw,20px);   /* captions / card text    (≈20px) */
+    --fs-icon:clamp(38px,3.4vw,56px);  /* large emoji icons       (≈56px) */
+
+    /* spacing scale */
+    --sp-1:8px; --sp-2:16px; --sp-3:24px; --sp-4:36px; --sp-5:56px; --sp-6:76px;
+
+    /* radius 20px+ */
+    --r-sm:14px; --r-md:20px; --r-lg:28px;
+
+    /* layered soft shadows */
+    --sh-1:0 1px 2px rgba(15,23,42,.04),0 6px 18px rgba(15,23,42,.07);
+    --sh-2:0 2px 4px rgba(15,23,42,.04),0 14px 34px rgba(15,23,42,.11),0 34px 70px rgba(15,23,42,.09);
+
+    --accent:#7c3aed;
+  }
+  body.dark{
+    --bg:#0a0f1e;
+    --text:#e8ecf8;
+    --muted:#98a4bd;
+    --line:#232c47;
+    --glass-bg:rgba(17,25,48,.58);
+    --glass-line:rgba(148,163,184,.17);
+    --pill-bg:rgba(15,22,44,.82);
+    --sh-1:0 1px 2px rgba(0,0,0,.35),0 6px 18px rgba(0,0,0,.35);
+    --sh-2:0 2px 4px rgba(0,0,0,.35),0 14px 34px rgba(0,0,0,.45),0 34px 70px rgba(0,0,0,.4);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Inter",Arial,sans-serif;
+    background:var(--bg);color:var(--text);overflow:hidden;
+    -webkit-font-smoothing:antialiased;transition:background .4s ease,color .4s ease}
+
+  /* ambient background blobs */
+  .bg-blob{position:fixed;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:0;opacity:.55}
+  .b1{width:480px;height:480px;background:#ddd6fe;top:-140px;right:-110px}
+  .b2{width:420px;height:420px;background:#cffafe;bottom:-160px;left:-120px}
+  .b3{width:360px;height:360px;background:#fce7f3;top:34%;left:38%;opacity:.35}
+  body.dark .bg-blob{opacity:.16}
+
+  /* ============================================================
+     CHROME — progress bar, HUD, nav
+     ============================================================ */
+  .progress{position:fixed;top:0;left:0;height:4px;width:0;z-index:60;border-radius:0 4px 4px 0;
+    background:var(--grad-vb);transition:width .45s ease,background .35s ease}
+  .hud-top{position:fixed;top:14px;left:0;right:0;display:flex;justify-content:space-between;
+    align-items:center;padding:0 20px;z-index:50;pointer-events:none}
+  .hud-right{display:flex;gap:10px;align-items:center}
+  .pill{pointer-events:auto;background:var(--pill-bg);-webkit-backdrop-filter:blur(12px);
+    backdrop-filter:blur(12px);border:1px solid var(--glass-line);box-shadow:var(--sh-1);
+    border-radius:999px;padding:8px 16px;font-size:13.5px;font-weight:700;color:var(--muted)}
+  #chip{letter-spacing:.02em}
+  #theme-toggle{cursor:pointer;font-size:15px;line-height:1;color:var(--text)}
+  .nav-bar{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:50;
+    display:flex;align-items:center;gap:12px}
+  .nav-btn{width:48px;height:48px;border-radius:50%;background:var(--pill-bg);
+    -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+    border:1px solid var(--glass-line);box-shadow:var(--sh-1);font-size:19px;cursor:pointer;
+    color:var(--text);display:grid;place-items:center;transition:transform .2s ease,box-shadow .2s ease}
+  .nav-btn:hover:not(:disabled){transform:translateY(-3px);box-shadow:var(--sh-2)}
+  .nav-btn:disabled{opacity:.32;cursor:default}
+  .dots{display:flex;gap:6px;align-items:center;background:var(--pill-bg);
+    -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+    padding:10px 14px;border-radius:999px;border:1px solid var(--glass-line);box-shadow:var(--sh-1)}
+  .dot{width:8px;height:8px;border-radius:999px;background:#c3cadb;border:none;cursor:pointer;
+    padding:0;transition:all .3s cubic-bezier(.22,.61,.36,1)}
+  body.dark .dot{background:#33405f}
+  .dot.active{width:22px;background:var(--accent)}
+
+  /* ============================================================
+     DECK CORE
+     ============================================================ */
+  .deck{position:fixed;inset:0;z-index:1}
+  .slide{position:absolute;inset:0;overflow-y:auto;opacity:0;visibility:hidden;
+    transform:translateY(26px) scale(.99);z-index:1;
+    transition:opacity .5s ease,transform .5s cubic-bezier(.22,.61,.36,1),visibility 0s linear .5s}
+  .slide.active{opacity:1;visibility:visible;transform:none;z-index:2;
+    transition:opacity .55s ease .06s,transform .55s cubic-bezier(.22,.61,.36,1) .06s}
+  .inner{max-width:1180px;margin:0 auto;min-height:100%;display:flex;flex-direction:column;
+    justify-content:center;padding:90px 34px 112px}
+  .center{text-align:center}
+
+  /* staggered reveal */
+  .reveal{opacity:0}
+  .slide.active .reveal{animation:rise .6s cubic-bezier(.22,.61,.36,1) forwards;animation-delay:var(--d,0s)}
+  @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+  /* typography helpers */
+  .eyebrow{font-size:14px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .eyechip{display:inline-block;align-self:center;font-size:14px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
+    color:#fff;background:var(--grad-vb);border-radius:999px;padding:10px 22px;box-shadow:var(--sh-1)}
+  .slide-head{text-align:center;margin-bottom:var(--sp-3)}
+  .slide-title{font-size:var(--fs-title);font-weight:800;letter-spacing:-.025em;line-height:1.08;margin-top:12px}
+  .hero-title{font-size:var(--fs-hero);font-weight:850;letter-spacing:-.03em;line-height:1.04;margin-top:22px}
+  .lead{font-size:var(--fs-body);color:var(--muted);line-height:1.6}
+  .cap{font-size:var(--fs-cap);color:var(--muted);line-height:1.55}
+  .subtitle{font-size:var(--fs-body);color:var(--muted);line-height:1.65;max-width:820px}
+  .grad-text{background:var(--grad-vb);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .grad-text-op{background:var(--grad-op);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .grad-text-ci{background:var(--grad-ci);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lead-in{margin-top:var(--sp-3)}
+
+  /* glassmorphism card */
+  .card{
+    position:relative;background:var(--glass-bg);
+    -webkit-backdrop-filter:blur(20px) saturate(160%);backdrop-filter:blur(20px) saturate(160%);
+    border:1px solid var(--glass-line);border-radius:var(--r-md);
+    box-shadow:var(--sh-1);padding:clamp(22px,2.4vw,34px);
+    transition:transform .25s ease,box-shadow .25s ease}
+  .card.hoverable{cursor:pointer}
+  .card.hoverable:hover{transform:translateY(-5px);box-shadow:var(--sh-2)}
+
+  .grid{display:grid;gap:clamp(16px,1.8vw,24px);margin-top:var(--sp-4)}
+  .cols-2{grid-template-columns:repeat(2,1fr)}
+  .cols-3{grid-template-columns:repeat(3,1fr)}
+  .cols-4{grid-template-columns:repeat(4,1fr)}
+
+  .icon{font-size:var(--fs-icon);line-height:1;display:block}
+  .card h3{font-size:var(--fs-h3);font-weight:800;margin:12px 0 8px;letter-spacing:-.01em}
+  .card p{font-size:var(--fs-cap);color:var(--muted);line-height:1.6}
+
+  .strip{margin-top:var(--sp-4);border-radius:var(--r-md);padding:20px 28px;
+    font-size:clamp(17px,1.6vw,24px);font-weight:650;color:var(--text);text-align:center;line-height:1.5;
+    background:rgba(127,127,127,.06);
+    background:color-mix(in srgb,var(--accent) 8%,transparent);
+    border:1px solid rgba(127,127,127,.16);
+    border:1px solid color-mix(in srgb,var(--accent) 24%,transparent)}
+
+  .num-badge{position:absolute;top:-14px;left:-10px;width:44px;height:44px;border-radius:14px;
+    display:grid;place-items:center;font-size:16px;font-weight:800;color:#fff;
+    background:var(--grad-vb);box-shadow:var(--sh-1)}
+
+  /* split layout */
+  .split{display:grid;grid-template-columns:1.04fr .96fr;gap:clamp(28px,4vw,60px);
+    align-items:center;margin-top:var(--sp-4)}
+  .split.rev{grid-template-columns:.96fr 1.04fr}
+
+  .factlist{list-style:none;display:flex;flex-direction:column;gap:18px;margin-top:var(--sp-3)}
+  .factlist li{display:flex;gap:16px;align-items:flex-start;
+    background:var(--glass-bg);-webkit-backdrop-filter:blur(18px) saturate(150%);
+    backdrop-filter:blur(18px) saturate(150%);
+    border:1px solid var(--glass-line);border-radius:var(--r-md);box-shadow:var(--sh-1);
+    padding:18px 22px}
+  .factlist .fi{font-size:clamp(26px,2.4vw,38px);line-height:1.15}
+  .factlist strong{display:block;font-size:var(--fs-h3);font-weight:750;letter-spacing:-.01em}
+  .factlist span.d{font-size:var(--fs-cap);color:var(--muted);line-height:1.55}
+
+  /* nested rings (AI ⊃ ML ⊃ DL) */
+  .rings{display:flex;flex-direction:column;justify-content:center;min-height:420px}
+  .ring{border-radius:var(--r-lg);padding:22px;border:2px solid transparent}
+  .rg1{background:rgba(124,58,237,.07);background:color-mix(in srgb,var(--accent) 8%,transparent);
+    border-color:rgba(124,58,237,.35);padding:26px}
+  .rg2{background:rgba(37,99,235,.08);background:color-mix(in srgb,#2563eb 10%,transparent);
+    border-color:rgba(37,99,235,.4);margin-top:14px;border-radius:calc(var(--r-lg) - 4px)}
+  .rg3{background:rgba(6,182,212,.1);background:color-mix(in srgb,#06b6d4 12%,transparent);
+    border-color:rgba(6,182,212,.45);margin-top:14px;border-radius:var(--r-md)}
+  .rlab{display:block;font-size:var(--fs-h3);font-weight:800;letter-spacing:-.01em}
+  .rlab small{display:block;font-size:var(--fs-cap);font-weight:500;color:var(--muted);margin-top:4px}
+  .rg3 .rlab{margin-bottom:6px}
+
+  /* pipeline (training flow) */
+  .pipe{display:flex;align-items:stretch;gap:10px;margin-top:var(--sp-4)}
+  .pipe .step{flex:1;display:flex;flex-direction:column;gap:10px;text-align:left}
+  .pipe .arrow{align-self:center;font-size:clamp(22px,2.2vw,32px);color:var(--accent);flex:none;
+    font-weight:800}
+  .mini-badge{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:12px;
+    background:rgba(127,127,127,.08);background:color-mix(in srgb,var(--accent) 12%,transparent);
+    color:var(--accent);font-size:15px;font-weight:800}
+
+  /* prompt anatomy rows */
+  .anatomy{display:flex;flex-direction:column;gap:14px}
+  .arow{display:flex;align-items:center;gap:18px;background:var(--glass-bg);
+    -webkit-backdrop-filter:blur(18px) saturate(150%);backdrop-filter:blur(18px) saturate(150%);
+    border:1px solid var(--glass-line);border-radius:var(--r-md);box-shadow:var(--sh-1);padding:16px 22px}
+  .arow .ai-e{font-size:clamp(28px,2.6vw,40px);line-height:1;flex:none}
+  .arow b{font-size:clamp(19px,1.7vw,25px);font-weight:750;white-space:nowrap}
+  .arow span{font-size:var(--fs-cap);color:var(--muted);line-height:1.5}
+
+  .prompt-card{border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--glass-line);
+    box-shadow:var(--sh-2)}
+  .prompt-card header{padding:14px 24px;font-size:var(--fs-cap);font-weight:800;color:#fff;
+    background:var(--grad-vb);display:flex;align-items:center;gap:10px}
+  .prompt-card pre{white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,"SF Mono",
+    Menlo,Consolas,monospace;font-size:clamp(15px,1.35vw,19px);line-height:1.7;color:var(--text);
+    padding:26px 28px;background:var(--glass-bg);
+    -webkit-backdrop-filter:blur(20px) saturate(160%);backdrop-filter:blur(20px) saturate(160%)}
+
+  /* comparison slides */
+  .versus{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,2.4vw,32px);margin-top:var(--sp-4)}
+  .vcard{border-radius:var(--r-lg);padding:clamp(24px,2.6vw,38px);
+    background:var(--glass-bg);-webkit-backdrop-filter:blur(20px) saturate(160%);
+    backdrop-filter:blur(20px) saturate(160%);box-shadow:var(--sh-1);
+    border:2px solid rgba(127,127,127,.18)}
+  .vcard.bad{border-color:rgba(239,68,68,.45);background:rgba(239,68,68,.05)}
+  .vcard.good{border-color:rgba(16,185,129,.5);background:rgba(16,185,129,.05)}
+  .vtag{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:8px 18px;
+    font-size:var(--fs-cap);font-weight:800;margin-bottom:18px}
+  .bad .vtag{background:rgba(239,68,68,.14);color:#dc2626}
+  .good .vtag{background:rgba(16,185,129,.15);color:#059669}
+  body.dark .bad .vtag{color:#f87171}
+  body.dark .good .vtag{color:#34d399}
+  .quote{font-size:clamp(18px,1.75vw,25px);line-height:1.55;font-weight:600;letter-spacing:-.01em}
+  .quote::before{content:"“"} .quote::after{content:"”"}
+  .vresult{margin-top:18px;padding-top:16px;border-top:1px dashed rgba(127,127,127,.3);
+    font-size:var(--fs-cap);color:var(--muted);line-height:1.55}
+  .vresult b{color:var(--text)}
+
+  /* human-in-the-loop meter */
+  .meter{display:flex;height:64px;border-radius:var(--r-md);overflow:hidden;margin-top:var(--sp-3);
+    box-shadow:var(--sh-1);border:1px solid var(--glass-line)}
+  .meter .seg{display:flex;align-items:center;padding-left:22px;color:#fff;font-weight:750;
+    font-size:clamp(15px,1.4vw,20px);white-space:nowrap;overflow:hidden;width:0;
+    transition:width 1s cubic-bezier(.22,.61,.36,1) .5s}
+  .seg.ai{background:var(--grad-vb)}
+  .seg.hu{background:#0f172a;justify-content:flex-end;padding-right:22px;padding-left:12px}
+  body.dark .seg.hu{background:#e2e8f0;color:#0f172a}
+  .slide.active .seg.ai{width:70%}
+  .slide.active .seg.hu{width:30%}
+  .meter-legend{display:flex;gap:26px;margin-top:14px;flex-wrap:wrap}
+
+  /* divider slides */
+  .divider-num{font-size:clamp(130px,17vw,210px);font-weight:900;line-height:1;letter-spacing:-.04em;
+    color:transparent;-webkit-text-stroke:2.5px rgba(127,127,127,.28);user-select:none}
+  .divider-title{font-size:var(--fs-hero);font-weight:850;letter-spacing:-.03em;line-height:1.05;margin-top:10px}
+
+  /* full-bleed cover & closing */
+  .bleed{color:#fff}
+  .bleed.cover{background:linear-gradient(135deg,#3b1470 0%,#7c3aed 38%,#2563eb 78%,#0ea5e9 115%)}
+  .bleed.closing{background:linear-gradient(135deg,#0ea5e9 -12%,#2563eb 30%,#7c3aed 72%,#db2777 118%)}
+  .bleed .glow{position:absolute;border-radius:50%;filter:blur(70px);pointer-events:none}
+  .g1{width:520px;height:520px;background:rgba(255,255,255,.14);top:-160px;left:-140px}
+  .g2{width:460px;height:460px;background:rgba(236,72,153,.32);bottom:-170px;right:-120px}
+  .g3{width:300px;height:300px;background:rgba(14,165,233,.35);top:30%;right:22%;opacity:.7}
+  .bleed .inner{position:relative;z-index:1}
+  .bleed .eyechip{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);
+    -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:none}
+  .bleed .subtitle{color:rgba(255,255,255,.86)}
+  .bleed .cap{color:rgba(255,255,255,.72)}
+  .glass-chips{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:34px}
+  .gchip{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.32);
+    -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+    border-radius:999px;padding:11px 22px;font-size:clamp(15px,1.35vw,19px);font-weight:650}
+  .cta{border:none;cursor:pointer;font:inherit;font-weight:800;font-size:clamp(17px,1.6vw,23px);
+    color:#7c3aed;background:#fff;border-radius:999px;padding:18px 42px;margin-top:38px;
+    box-shadow:0 18px 44px rgba(2,6,23,.35);transition:transform .2s ease,box-shadow .2s ease}
+  .cta:hover{transform:translateY(-3px);box-shadow:0 24px 56px rgba(2,6,23,.45)}
+  .scroll-hint{margin-top:44px;font-size:var(--fs-cap);color:rgba(255,255,255,.65);
+    animation:bob 2.2s ease-in-out infinite}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
+
+  /* neural net svg */
+  .nn-wrap{background:var(--glass-bg);-webkit-backdrop-filter:blur(20px) saturate(160%);
+    backdrop-filter:blur(20px) saturate(160%);border:1px solid var(--glass-line);
+    border-radius:var(--r-lg);box-shadow:var(--sh-1);padding:clamp(18px,2.2vw,30px)}
+  .halo{animation:halo 1.8s ease-in-out infinite alternate}
+  @keyframes halo{from{opacity:.12}to{opacity:.6}}
+
+  .agenda-chev{position:absolute;right:22px;top:50%;transform:translateY(-50%);
+    font-size:clamp(26px,2.6vw,38px);color:var(--accent);font-weight:800;opacity:.55}
+  .agenda-num{font-size:var(--fs-cap);font-weight:800;color:var(--accent);letter-spacing:.14em}
+
+  .kbd{display:inline-block;padding:2px 9px;border-radius:8px;border:1px solid var(--glass-line);
+    background:var(--glass-bg);font-family:inherit;font-size:.85em;font-weight:700}
+
+  /* ============================================================
+     RESPONSIVE
+     ============================================================ */
+  @media (max-width:1020px){
+    .cols-4{grid-template-columns:1fr 1fr}
+    .split,.split.rev{grid-template-columns:1fr;gap:26px}
+    .rings{min-height:0}
+  }
+  @media (max-width:760px){
+    .cols-2,.cols-3,.cols-4{grid-template-columns:1fr}
+    .dots{display:none}
+    .inner{padding:78px 20px 104px}
+    .pipe{flex-direction:column}
+    .pipe .arrow{transform:rotate(90deg);align-self:center}
+    .versus{grid-template-columns:1fr}
+    .divider-num{font-size:clamp(96px,22vw,150px)}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *,.slide,.slide.active .reveal,.seg,.halo,.scroll-hint{
+      animation:none!important;transition:none!important;opacity:1!important}
+    .seg.ai{width:70%!important}.seg.hu{width:30%!important}
+  }
+  @media print{
+    body{overflow:visible;background:#fff}
+    .slide{position:relative;inset:auto;opacity:1!important;visibility:visible!important;
+      transform:none!important;min-height:100vh;page-break-after:always;overflow:visible}
+    .reveal{opacity:1!important;animation:none!important}
+    .progress,.hud-top,.nav-bar,.bg-blob{display:none}
+  }
+</style>
+</head>
+<body>
+<div class="bg-blob b1"></div>
+<div class="bg-blob b2"></div>
+<div class="bg-blob b3"></div>
+<div class="progress" id="progress"></div>
+
+<header class="hud-top">
+  <span class="pill" id="chip">Pembuka</span>
+  <span class="hud-right">
+    <button class="pill" id="theme-toggle" type="button" aria-label="Ganti tema gelap/terang">🌙</button>
+    <span class="pill" id="counter">1 / 14</span>
+  </span>
+</header>
+
+<main class="deck">
+
+  <!-- ═══════════ SLIDE 1 · COVER (full-bleed gradient) ═══════════ -->
+  <section class="slide bleed cover active" style="--accent:#a78bfa" data-accent="#a78bfa"
+    data-grad="#a78bfa,#60a5fa" data-label="Pembuka">
+    <div class="glow g1"></div><div class="glow g2"></div><div class="glow g3"></div>
+    <div class="inner center">
+      <span class="eyechip reveal">Presentasi · Teknologi</span>
+      <h1 class="hero-title reveal" style="--d:.1s">Memahami<br><span style="background:linear-gradient(92deg,#fbbf24,#fb7185,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent">Kecerdasan Artifisial</span></h1>
+      <p class="subtitle lead-in reveal" style="--d:.2s;margin-inline:auto">Cara kerja AI, strategi memakainya secara efektif,
+        dan batas etis yang harus kita jaga — dari dasar sampai praktik.</p>
+      <div class="glass-chips reveal" style="--d:.32s">
+        <span class="gchip">🧠 Bab 1 · Cara Kerja</span>
+        <span class="gchip">🎯 Bab 2 · Strategi</span>
+        <span class="gchip">⚖️ Bab 3 · Etika</span>
+      </div>
+      <p class="scroll-hint reveal" style="--d:.45s">▾ Gunakan ← → atau geser untuk navigasi</p>
+    </div>
+  </section>
+
+  <!-- ═══════════ SLIDE 2 · AGENDA (grid cards, clickable) ═══════════ -->
+  <section class="slide" style="--accent:#7c3aed" data-accent="#7c3aed"
+    data-grad="#7c3aed,#2563eb" data-label="Agenda">
+    <div class="inner">
+      <header class="slide-head">
+        <p class="eyebrow reveal">Agenda</p>
+        <h2 class="slide-title reveal" style="--d:.08s">Tiga Bab, Satu <span class="grad-text">Peta Besar</span></h2>
+      </header>
+      <div class="grid cols-3">
+        <div class="card hoverable reveal" style="--d:.16s" data-goto="2" role="link" tabindex="0">
+          <span class="agenda-num">BAB 01</span>
+          <h3>🧠 Cara Kerja AI</h3>
+          <p>Apa itu AI, bedanya Machine Learning &amp; Deep Learning, dan bagaimana model dilatih dari data.</p>
+        </div>
+        <div class="card hoverable reveal" style="--d:.26s" data-goto="6" role="link" tabindex="0">
+          <span class="agenda-num">BAB 02</span>
+          <h3>🎯 Strategi Penggunaan</h3>
+          <p>Anatomi prompt yang efektif, perbandingan prompt lemah vs tajam, dan cara mengevaluasi output.</p>
+        </div>
+        <div class="card hoverable reveal" style="--d:.36s" data-goto="10" role="link" tabindex="0">
+          <span class="agenda-num">BAB 03</span>
+          <h3>⚖️ Etika AI</h3>
+          <p>Bias algoritma, privasi data, dan prinsip <em>human-in-the-loop</em> untuk penggunaan yang bertanggung jawab.</p>
+        </div>
+      </div>
+      <div class="strip reveal" style="--d:.46s">👆 Klik kartu untuk melompat langsung ke babnya</div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SLIDE 3 · DIVIDER BAB 1 ═══════════ -->
+  <section class="slide" style="--accent:#7c3aed" data-accent="#7c3aed"
+    data-grad="#7c3aed,#2563eb" data-label="Bab 1 · Cara Kerja AI">
+    <div class="inner center">
+      <p class="divider-num reveal">01</p>
+      <span class="eyechip reveal" style="--d:.1s">Bab Satu</span>
+      <h2 class="divider-title reveal" style="--d:.18s">Cara Kerja <span class="grad-text">AI</span></h2>
+      <p class="subtitle lead-in reveal" style="--d:.28s;margin-inline:auto">Definisi · Machine &amp; Deep Learning · Proses pelatihan</p>
+    </div>
+  </section>
+
+  <!-- ═══════════ SLIDE 4 · DEFINISI (split: teks + nested rings) ═══════════ -->
+  <section class="slide" style="--accent:#7c3aed" data-accent="#7c3aed"
+    data-grad="#7c3aed,#2563eb" data-label="Bab 1 · Definisi">
+    <div class="inner">
+      <header class="slide-head">
+        <p class="eyebrow reveal">Bab 1 · Fondasi</p>
+        <h2 class="slide-title reveal" style="--d:.08s">Apa Itu <span class="grad-text">AI?</span></h2>
+      </header>
+      <div class="split">
+        <div>
+          <p class="lead reveal" style="--d:.14s"><strong style="color:var(--text)">Kecerdasan Artifisial (AI)</strong> adalah kemampuan komputer melakukan tugas yang biasanya butuh kecerdasan manusia — memahami bahasa, mengenali pola, dan mengambil keputusan.</p>
+          <ul class="factlist">
+            <li class="reveal" style="--d:.22s"><span class="fi">🗣️</span>
+              <div><strong>Paham Bahasa</strong><span class="d">Menerjemahkan, merangkum, dan menjawab pertanyaan secara natural.</span></div></li>
+            <li class="reveal" style="--d:.3s"><span class="fi">👁️</span>
+              <div><strong>Kenali Pola</strong><span class="d">Mendeteksi wajah, suara, penyakit dari citra medis, hingga fraud.</span></div></li>
+            <li class="reveal" style="--d:.38s"><span class="fi">🎯</span>
+              <div><strong>Ambil Keputusan</strong><span class="d">Rekomendasi film, rute tercepat, prediksi permintaan pasar.</span></div></li>
+          </ul>
+        </div>
+        <div class="rings reveal" style="--d:.24s">
+          <div class="ring rg1">
+            <span class="rlab">🧠 Artificial Intelligence<small>Payung besar: semua mesin yang "terasa cerdas"</small></span>
+            <div class="ring rg2">
+              <span class="rlab">📈 Machine Learning<small>Belajar pola dari data, tanpa diprogram aturan eksplisit</small></span>
+              <div class="ring rg3">
+                <span class="rlab">🔗 Deep Learning<small>Jaringan saraf tiruan banyak lapisan</small></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SLIDE 5 · ML/DL (split: SVG neural net + kartu) ═══════════ -->
+  <section class="slide" style="--accent:#2563eb" data-accent="#2563eb"
+    data-grad="#2563eb,#06b6d4" data-label="Bab 1 · ML & DL">
+    <div class="inner">
+      <header class="slide-head">
+        <p class="eyebrow reveal">Bab 1 · Di Dalamnya</p>
+        <h2 class="slide-title reveal" style="--d:.08s">Mesin yang <span class="grad-text">Belajar dari Data</span></h2>
+      </header>
+      <div class="split rev">
+        <div class="nn-wrap reveal" style="--d:.14s">
+          <svg viewBox="0 0 340 250" role="img" aria-label="Diagram jaringan saraf tiruan" style="width:100%;height:auto;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif">
+            <!-- edges input→hidden -->
+            <g stroke="#7c3aed" stroke-width="1" opacity=".22">
+              <line x1="52" y1="45" x2="168" y2="35"/><line x1="52" y1="45" x2="168" y2="90"/><line x1="52" y1="45" x2="168" y2="145"/><line x1="52" y1="45" x2="168" y2="200"/>
+              <line x1="52" y1="105" x2="168" y2="35"/><line x1="52" y1="105" x2="168" y2="90"/><line x1="52" y1="105" x2="168" y2="145"/><line x1="52" y1="105" x2="168" y2="200"/>
+              <line x1="52" y1="165" x2="168" y2="35"/><line x1="52" y1="165" x2="168" y2="90"/><line x1="52" y1="165" x2="168" y2="145"/><line x1="52" y1="165" x2="168" y2="200"/>
+              <line x1="52" y1="225" x2="168" y2="35"/><line x1="52" y1="225" x2="168" y2="90"/><line x1="52" y1="225" x2="168" y2="145"/><line x1="52" y1="225" x2="168" y2="200"/>
+            </g>
+            <!-- edges hidden→output -->
+            <g stroke="#2563eb" stroke-width="1.4" opacity=".3">
+              <line x1="168" y1="35" x2="288" y2="90"/><line x1="168" y1="35" x2="288" y2="155"/>
+              <line x1="168" y1="90" x2="288" y2="90"/><line x1="168" y1="90" x2="288" y2="155"/>
+              <line x1="168" y1="145" x2="288" y2="90"/><line x1="168" y1="145" x2="288" y2="155"/>
+              <line x1="168" y1="200" x2="288" y2="90"/><line x1="168" y1="200" x2="288" y2="155"/>
+            </g>
+            <!-- input layer -->
+            <g fill="#ede9fe" stroke="#7c3aed" stroke-width="2">
+              <circle cx="52" cy="45" r="15"/><circle cx="52" cy="105" r="15"/>
+              <circle cx="52" cy="165" r="15"/><circle cx="52" cy="225" r="15"/>
+            </g>
+            <!-- hidden layer -->
+            <g fill="#dbeafe" stroke="#2563eb" stroke-width="2">
+              <circle cx="168" cy="35" r="15"/><circle cx="168" cy="90" r="15"/>
+              <circle cx="168" cy="145" r="15"/><circle cx="168" cy="200" r="15"/>
+            </g>
+            <!-- output layer dengan pulse -->
+            <circle class="halo" cx="288" cy="90" r="26" fill="#06b6d4"/>
+            <circle class="halo" cx="288" cy="155" r="26" fill="#ec4899" style="animation-delay:.9s"/>
+            <g fill="#cffafe" stroke="#06b6d4" stroke-width="2.5">
+              <circle cx="288" cy="90" r="16"/>
+            </g>
+            <g fill="#fce7f3" stroke="#ec4899" stroke-width="2.5">
+              <circle cx="288" cy="155" r="16"/>
+            </g>
+            <text x="52" y="245" text-anchor="middle" font-size="13" font-weight="700" fill="#7c3aed">Input</text>
+            <text x="168" y="245" text-anchor="middle" font-size="13" font-weight="700" fill="#2563eb">Hidden</text>
+            <text x="288" y="205" text-anchor="middle" font-size="13" font-weight="700" fill="#0891b2">Output</text>
+          </svg>
+          <p class="cap" style="text-align:center;margin-top:10px">Semakin banyak lapisan → semakin kompleks pola yang bisa dipelajari.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:18px">
+          <div class="card reveal" style="--d:.22s">
+            <span class="icon">📈</span>
+            <h3>Machine Learning</h3>
+            <p>Mesin menemukan pola sendiri dari contoh. Filter spam email belajar dari jutaan pesan yang ditandai pengguna — bukan dari aturan yang ditulis manual.</p>
+          </div>
+          <div class="card reveal" style="--d:.32s">
+            <span class="icon">🔗</span>
+            <h3>Deep Learning</h3>
+            <p>Jaringan saraf tiruan bertumpuk mengenali hal rumit: wajah di foto, perintah suara, hingga menghasilkan teks seperti chatbot modern (GPT, Gemini, Claude).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SLIDE 6 · TRAINING PIPELINE (grid cards + panah) ═══════════ -->
+  <section class="slide" style="--accent:#06b6d4" data-accent="#06b6d4"
+    data-grad="#06b6d4,#2563eb" data-label="Bab 1 · Proses Training">
+    <div class="inner">
+      <header class="slide-head">
+        <p class="eyebrow reveal">Bab 1 · Siklus Hidup Model</p>
+        <h2 class="slide-title reveal" style="--d:.08s">Bagaimana AI <span class="grad-text">Dilatih?</span></h2>
+      </header>
+      <div class="pipe">
+        <div class="card step reveal" style="--d:.14s">
+          <span class="mini-badge">1</span>
+          <span class="icon">📊</span>
+          <h3>Kumpulkan Data</h3>
+          <p>Jutaan contoh: teks, gambar, suara. Kualitas data = kualitas model.</p>
+        </div>
+        <span class="arrow reveal" style="--d:.2s">➜</span>
+        <div class="card step reveal" style="--d:.26s">
+          <span class="mini-badge">2</span>
+          <span class="icon">⚙️</span>
+          <h3>Pelatihan</h3>
+          <p>Model menebak, kesalahan diukur, bobot disesuaikan — berulang jutaan kali.</p>
+        </div>
+        <span class="arrow reveal" style="--d:.32s">➜</span>
+        <div class="card step reveal" style="--d:.38s">
+          <span class="mini-badge">3</span>
+          <span class="icon">📏</span>
+          <h3>Evaluasi</h3>
+          <p>Diuji dengan data yang belum pernah dilihat untuk mengukur kemampuan nyata.</p>
+        </div>
+        <span class="arrow reveal" style="--d:.44s">➜</span>
+        <div class="card step reveal" style="--d:.5s">
+          <span class="mini-badge">4</span>
+          <span class="icon">🚀</span>
+          <h3>Deployment</h3>
+          <p>Dipakai di dunia nyata, dipantau, dan terus disempurnakan.</p>
+        </div>
+      </div>
+      <div class="strip reveal" style="--d:.6s">💡 Intinya: AI belajar <strong>pola statistik</strong> dari data — bukan memahami makna seperti manusia.</div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SLIDE 7 · DIVIDER BAB 2 ═══════════ -->
+  <section class="slide" style="--accent:#ec4899" data-accent="#ec4899"
+    data-grad="#f97316,#ec4899" data-label="Bab 2 · Strategi Penggunaan">
+    <div class="inner center">
+      <p class="divider-num reveal">02</p>
+      <span class="eyechip reveal" style="--d:.1s;background:var(--grad-op)">Bab Dua</span>
+      <h2 class="divider-title reveal" style="--d:.18s">Strategi <span class="grad-text-op">Penggunaan</span></h2>
+      <p class="subtitle lead-in reveal" style="--d:.28s;margin-inline:auto">Prompt Engineering · Evaluasi output</p>
+    </div>
+  </section>
+
+  <!-- ═══════════ SLIDE 8 · ANATOMI PROMPT (split: rows + contoh) ═══════════ -->
+  <section class="slide" style="--accent:#f97316" data-accent="#f97316"
+    data-grad="#f97316,#ec4899" data-label="Bab 2 · Prompt Engineering">
+    <div class="inner">
+      <header class="slide-head">
+        <p class="eyebrow reveal" >Bab 2 · Prompt Engineering</p>
+        <h2 class="slide-title reveal" style="--d:.08s">Anatomi <span class="grad-text-op">Prompt Efektif</span></h2>
+      </header>
+      <div class="split">
+        <div class="anatomy">
+          <div class="arow reveal" style="--d:.14s"><span class="ai-e">🎭</span><b>Peran</b><span>"Kamu adalah editor senior…" — memberi konteks keahlian.</span></div>
+          <div class="arow reveal" style="--d:.2s"><span class="ai-e">🎯</span><b>Tugas</b><span>Instruksi spesifik: ringkas? terjemahkan? analisis?</span></div>
+          <div class="arow reveal" style="--d:.26s"><span class="ai-e">📚</span><b>Konteks</b><span>Untuk siapa, situasinya apa, batasannya apa.</span></div>
+          <div class="arow reveal" style="--d:.32s"><span class="ai-e">📐</span><b>Format</b><span>Bullet? tabel? jumlah kata? struktur tertentu?</span></div>
+          <div class="arow reveal" style="--d:.38s"><span class="ai-e">💡</span><b>Contoh</b><span>Tunjukkan satu sampel output yang Anda inginkan.</span></div>
+        </div>
+        <div>
+          <div class="prompt-card reveal" style="--d:.24s">
+            <header>💬 Contoh Nyata</header>
+            <pre>Kamu adalah editor senior.
+Ringkas artikel berikut menjadi
+<b>3 poin utama</b> untuk pembaca awam.
+
+Format: bullet, maks. 15 kata/poin.
+
+[tempel teks artikel di sini]</pre>
+          </div>
+          <p class="cap reveal" style="--d:.34s;text-align:center;margin-top:16px">Peran + Tugas + Konteks + Format + Contoh = <strong>Output Presisi</strong> 🎯</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SLIDE 9 · COMPARISON: PROMPT LEMAH VS TAJAM ═══════════ -->
+  <section class="slide" style="--accent:#ec4899" data-accent="#ec4899"
+    data-grad="#f43f5e,#ec4899" data-label="Bab 2 · Before / After">
+    <div class="inner">
+      <header class="slide-head">
+        <p class="eyebrow reveal">Bab 2 · Studi Kasus</p>
+        <h2 class="slide-title reveal" style="--d:.08s">Prompt Biasa vs <span class="grad-text-op">Prompt Terarah</span></h2>
+      </header>
+      <div class="versus">
+        <div class="vcard bad reveal" style="--d:.16s">
+          <span class="vtag">❌ Kurang Spesifik</span>
+          <p class="quote">Buatkan tulisan tentang marketing.</p>
+          <p class="vresult"><b>Hasil:</b> generik, panjang, meleset dari tujuan — perlu sunting ulang dari nol.</p>
+        </div>
+        <div class="vcard good reveal" style="--d:.28s">
+          <span class="vtag">✅ Terarah</span>
+          <p class="quote">Bertindak sebagai social media strategist, buat 5 ide konten Instagram untuk kedai kopi lokal, gaya santai, tiap ide sertakan hook 1 kalimat.</p>
+          <p class="vresult"><b>Hasil:</b> langsung bisa dipakai, sesuai brand, hemat waktu revisi.</p>
+        </div>
+      </div>
+      <div class="strip reveal" style="--d:.4s">⚡ Semakin spesifik prompt Anda, semakin sedikit waktu buang untuk merevisi.</div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SLIDE 10 · EVALUASI OUTPUT (grid cards) ═══════════ -->
+  <section class="slide" style="--accent:#ec4899" data-accent="#ec4899"
+    data-grad="#ec4899,#f97316" data-label="Bab 2 · Evaluasi Output">
+    <div class="inner">
+      <header class="slide-head">
+        <p class="eyebrow reveal">Bab 2 · Jangan Langsung Percaya</p>
+        <h2 class="slide-title reveal" style="--d:.08s">Evaluasi Setiap <span class="grad-text-op">Output AI</span></h2>
+      </header>
+      <div class="grid cols-4">
+        <div class="card reveal" style="--d:.14s">
+          <span class="icon">🔍</span>
+          <h3>Verifikasi Fakta</h3>
+          <p>AI bisa "berhalusinasi" — mencetuskan fakta, angka, atau kutipan yang terdengar benar tapi salah.</p>
+        </div>
+        <div class="card reveal" style="--d:.24s">
+          <span class="icon">⚖️</span>
+          <h3>Cek Keseimbangan</h3>
+          <p>Perhatikan sudut pandang yang terlewat. Bandingkan dengan sumber independen.</p>
+        </div>
+        <div class="card reveal" style="--d:.34s">
+          <span class="icon">🎯</span>
+          <h3>Cocokkan Tujuan</h3>
+          <p>Apakah hasilnya benar-benar menjawab kebutuhan Anda, atau sekadar terdengar bagus?</p>
+        </div>
+        <div class="card reveal" style="--d:.44s">
+          <span class="icon">🔁</span>
+          <h3>Iterasi</h3>
+          <p>Hasil pertama jarang sempurna. Minta revisi: "lebih singkat", "nada formal", "tambah data".</p>
+        </div>
+      </div>
+      <div class="strip reveal" style="--d:.54s">💡 Perlakukan AI sebagai <strong>asisten penyusun draf</strong> — bukan sumber kebenaran akhir.</div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SLIDE 11 · DIVIDER BAB 3 ═══════════ -->
+  <section class="slide" style="--accent:#06b6d4" data-accent="#06b6d4"
+    data-grad="#06b6d4,#6366f1" data-label="Bab 3 · Etika AI">
+    <div class="inner center">
+      <p class="divider-num reveal">03</p>
+      <span class="eyechip reveal" style="--d:.1s;background:var(--grad-ci)">Bab Tiga</span>
+      <h2 class="divider-title reveal" style="--d:.18s">Etika <span class="grad-text-ci">AI</span></h2>
+      <p class="subtitle lead-in reveal" style="--d:.28s;margin-inline:auto">Bias · Privasi · Human-in-the-Loop</p>
+    </div>
+  </section>
+
+  <!-- ═══════════ SLIDE 12 · BIAS & PRIVASI (split cards) ═══════════ -->
+  <section class="slide" style="--accent:#06b6d4" data-accent="#06b6d4"
+    data-grad="#06b6d4,#6366f1" data-label="Bab 3 · Bias & Privasi">
+    <div class="inner">
+      <header class="slide-head">
+        <p class="eyebrow reveal">Bab 3 · Dua Risiko Utama</p>
+        <h2 class="slide-title reveal" style="--d:.08s">Bias <span class="grad-text-ci">&amp;</span> Privasi</h2>
+      </header>
+      <div class="versus" style="margin-top:var(--sp-4)">
+        <div class="card reveal" style="--d:.16s;border-radius:var(--r-lg)">
+          <span class="icon">⚖️</span>
+          <h3>Bias Algoritma</h3>
+          <p style="margin-bottom:12px">Model mewarisi bias dari data historisnya — kasus nyata: sistem rekrutmen yang diskriminatif karena belajar dari data lama yang timpang.</p>
+          <p><strong>✅ Mitigasi:</strong> audit output berkala, gunakan data representatif, uji hasil pada berbagai kelompok.</p>
+        </div>
+        <div class="card reveal" style="--d:.3s;border-radius:var(--r-lg)">
+          <span class="icon">🔒</span>
+          <h3>Privasi Data</h3>
+          <p style="margin-bottom:12px">Setiap prompt = data yang dikirim ke server pihak lain. Data sensitif bisa tersimpan, atau tanpa sadar ikut melatih model berikutnya.</p>
+          <p><strong>✅ Mitigasi:</strong> anonimkan nama/NIM/kode rahasia, cek kebijakan retensi, jangan tempel rahasia perusahaan.</p>
+        </div>
+      </div>
+      <div class="strip reveal" style="--d:.44s">🛡️ Aturan praktis: jika Anda tak rela data itu dibaca orang asing — jangan dimasukkan ke prompt.</div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SLIDE 13 · HUMAN-IN-THE-LOOP (meter + comparison) ═══════════ -->
+  <section class="slide" style="--accent:#6366f1" data-accent="#6366f1"
+    data-grad="#6366f1,#06b6d4" data-label="Bab 3 · Human-in-the-Loop">
+    <div class="inner">
+      <header class="slide-head">
+        <p class="eyebrow reveal">Bab 3 · Prinsip Kunci</p>
+        <h2 class="slide-title reveal" style="--d:.08s">Human-in-the-<span class="grad-text-ci">Loop</span></h2>
+        <p class="lead reveal" style="--d:.14s;margin-top:10px"><strong style="color:var(--text)">AI menyusun, manusia memutuskan.</strong> Otomasi boleh — tetapi titik keputusan akhir selalu milik manusia.</p>
+      </header>
+      <div class="meter reveal" style="--d:.2s" role="img" aria-label="Pembagian peran: AI 70 persen menyusun, manusia 30 persen memverifikasi dan memutuskan">
+        <div class="seg ai">🤖 AI — draf, riset, otomasi</div>
+        <div class="seg hu">Verifikasi &amp; keputusan — 🧠</div>
+      </div>
+      <div class="versus">
+        <div class="vcard good reveal" style="--d:.3s">
+          <span class="vtag">✅ Aman Diotomasi</span>
+          <p class="cap" style="font-size:clamp(17px,1.6vw,23px)">Draf email &amp; dokumen · ringkasan bahan bacaan · terjemahan kasar · brainstorm ide · perapian format &amp; tata bahasa.</p>
+        </div>
+        <div class="vcard bad reveal" style="--d:.42s">
+          <span class="vtag">🧠 Tetap di Tangan Manusia</span>
+          <p class="cap" style="font-size:clamp(17px,1.6vw,23px)">Keputusan hukum / medis / finansial · publikasi atas nama Anda · data sensitif · penilaian akhir kualitas &amp; etika.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SLIDE 14 · CLOSING (full-bleed gradient) ═══════════ -->
+  <section class="slide bleed closing" style="--accent:#f472b6" data-accent="#f472b6"
+    data-grad="#f472b6,#a78bfa" data-label="Penutup">
+    <div class="glow g1"></div><div class="glow g2"></div><div class="glow g3"></div>
+    <div class="inner center">
+      <span class="eyechip reveal">Satu Kalimat Untuk Dibawa Pulang</span>
+      <h2 class="hero-title reveal" style="--d:.12s">Manusia Memutuskan.<br><span style="background:linear-gradient(92deg,#67e8f9,#c4b5fd,#f9a8d4);-webkit-background-clip:text;background-clip:text;color:transparent">AI Membantu.</span></h2>
+      <p class="subtitle lead-in reveal" style="--d:.24s;margin-inline:auto">Gunakan AI sebagai asisten paling cepat yang pernah Anda punya —
+        bukan pengganti nalar, tanggung jawab, dan judgment Anda.</p>
+      <button class="cta reveal" style="--d:.36s" type="button" data-goto="0">🔄 Mulai Lagi dari Awal</button>
+      <p class="cap reveal" style="--d:.46s;margin-top:26px"><span class="kbd">←</span> <span class="kbd">→</span> navigasi · <span class="kbd">Space</span> lanjut · geser di layar sentuh</p>
+    </div>
+  </section>
+
+</main>
+
+<nav class="nav-bar" aria-label="Navigasi slide">
+  <button class="nav-btn" id="btn-prev" type="button" aria-label="Slide sebelumnya">←</button>
+  <div class="dots" id="dots" aria-label="Indeks slide"></div>
+  <button class="nav-btn" id="btn-next" type="button" aria-label="Slide berikutnya">→</button>
+</nav>
+
+<script>
+(function(){
+  "use strict";
+  var slides = Array.prototype.slice.call(document.querySelectorAll(".slide"));
+  var dotsWrap = document.getElementById("dots");
+  var chip = document.getElementById("chip");
+  var counter = document.getElementById("counter");
+  var bar = document.getElementById("progress");
+  var prevBtn = document.getElementById("btn-prev");
+  var nextBtn = document.getElementById("btn-next");
+  var themeBtn = document.getElementById("theme-toggle");
+  var cur = 0;
+
+  /* dots */
+  slides.forEach(function(s, i){
+    var d = document.createElement("button");
+    d.className = "dot"; d.type = "button"; d.title = "Slide " + (i + 1);
+    d.setAttribute("aria-label", "Ke slide " + (i + 1));
+    d.addEventListener("click", function(){ go(i); });
+    dotsWrap.appendChild(d);
+  });
+  var dots = Array.prototype.slice.call(dotsWrap.children);
+
+  function go(n){
+    n = Math.max(0, Math.min(slides.length - 1, n));
+    if (n !== cur){
+      slides[cur].classList.remove("active");
+      slides[n].classList.add("active");
+      cur = n;
+      slides[n].scrollTop = 0;
+    }
+    paint();
+  }
+
+  function paint(){
+    var s = slides[cur];
+    var accent = s.getAttribute("data-accent") || "#7c3aed";
+    var grad = (s.getAttribute("data-grad") || "#7c3aed,#2563eb").split(",");
+    /* recolor chrome dari tema slide */
+    document.documentElement.style.setProperty("--accent", accent);
+    bar.style.width = ((cur + 1) / slides.length * 100) + "%";
+    bar.style.background = "linear-gradient(90deg," + grad[0] + "," + grad[1] + ")";
+    chip.textContent = s.getAttribute("data-label") || "";
+    chip.style.color = accent;
+    chip.style.borderColor = accent + "55";
+    chip.style.background = accent + "14";
+    counter.textContent = (cur + 1) + " / " + slides.length;
+    prevBtn.disabled = (cur === 0);
+    nextBtn.disabled = (cur === slides.length - 1);
+    dots.forEach(function(d, i){ d.classList.toggle("active", i === cur); });
+    var h = "#" + (cur + 1);
+    if (location.hash !== h){ try { history.replaceState(null, "", h); } catch(e){} }
+  }
+
+  prevBtn.addEventListener("click", function(){ go(cur - 1); });
+  nextBtn.addEventListener("click", function(){ go(cur + 1); });
+
+  /* keyboard */
+  document.addEventListener("keydown", function(e){
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+    if (e.key === "ArrowRight" || e.key === "PageDown" || e.key === " "){ e.preventDefault(); go(cur + 1); }
+    else if (e.key === "ArrowLeft" || e.key === "PageUp"){ e.preventDefault(); go(cur - 1); }
+    else if (e.key === "Home"){ e.preventDefault(); go(0); }
+    else if (e.key === "End"){ e.preventDefault(); go(slides.length - 1); }
+  });
+
+  /* touch swipe */
+  var tx = 0, ty = 0;
+  document.addEventListener("touchstart", function(e){
+    tx = e.touches[0].clientX; ty = e.touches[0].clientY;
+  }, {passive:true});
+  document.addEventListener("touchend", function(e){
+    var dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty;
+    if (Math.abs(dx) > 56 && Math.abs(dx) > Math.abs(dy)){ if (dx < 0) go(cur + 1); else go(cur - 1); }
+  }, {passive:true});
+
+  /* jump targets (kartu agenda, tombol restart) + dukungan Enter/Space saat fokus */
+  Array.prototype.forEach.call(document.querySelectorAll("[data-goto]"), function(el){
+    el.addEventListener("click", function(){ go(parseInt(el.getAttribute("data-goto"), 10) || 0); });
+    el.addEventListener("keydown", function(e){
+      if (e.key === "Enter" || e.key === " "){ e.preventDefault(); go(parseInt(el.getAttribute("data-goto"), 10) || 0); }
+    });
+  });
+
+  /* theme toggle — persist di localStorage */
+  function applyTheme(t){
+    document.body.classList.toggle("dark", t === "dark");
+    themeBtn.textContent = (t === "dark") ? "☀️" : "🌙";
+    try { localStorage.setItem("deck-theme", t); } catch(e){}
+  }
+  var saved = null;
+  try { saved = localStorage.getItem("deck-theme"); } catch(e){}
+  var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+  applyTheme(saved || (prefersDark ? "dark" : "light"));
+  themeBtn.addEventListener("click", function(){
+    applyTheme(document.body.classList.contains("dark") ? "light" : "dark");
+  });
+
+  /* deep link: deck.html#7 membuka slide 7 */
+  var start = parseInt(location.hash.replace("#", ""), 10);
+  if (!isNaN(start) && start >= 1 && start <= slides.length && start !== 1){
+    slides[0].classList.remove("active");
+    slides[start - 1].classList.add("active");
+    cur = start - 1;
+  }
+  paint();
+})();
+</script>
+</body>
+</html>
