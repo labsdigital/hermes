@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pengenalan AI - Presentasi Interaktif</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f8f9fc;
+      --card: #ffffff;
+      --text: #1a1d26;
+      --muted: #6b7280;
+      --accent: #4f46e5;
+      --accent-soft: #eef2ff;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --shadow: 0 4px 24px rgba(0,0,0,0.06);
+      --shadow-lg: 0 12px 48px rgba(0,0,0,0.1);
+      --radius: 16px;
+      --radius-sm: 10px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow: hidden;
+    }
+    .deck {
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+    }
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 60px 80px;
+      opacity: 0;
+      transform: translateX(60px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      pointer-events: none;
+    }
+    .slide.active {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+    .slide.prev {
+      transform: translateX(-60px);
+    }
+    /* Title slide */
+    .slide-title {
+      text-align: center;
+    }
+    .slide-title .emoji {
+      font-size: 72px;
+      margin-bottom: 24px;
+      display: block;
+    }
+    .slide-title h1 {
+      font-size: 52px;
+      font-weight: 700;
+      letter-spacing: -1.5px;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, var(--accent), #7c3aed);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .slide-title .subtitle {
+      font-size: 20px;
+      color: var(--muted);
+      font-weight: 400;
+    }
+    /* Section header */
+    .section-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      padding: 8px 16px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    h2 {
+      font-size: 40px;
+      font-weight: 700;
+      letter-spacing: -1px;
+      margin-bottom: 32px;
+      text-align: center;
+    }
+    /* Content layout */
+    .content {
+      max-width: 1100px;
+      width: 100%;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 10px;
+    }
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0,0,0,0.04);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+    .card .icon {
+      font-size: 32px;
+      margin-bottom: 14px;
+      display: block;
+    }
+    .card h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .card p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    /* List style */
+    .list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      background: var(--card);
+      padding: 18px 22px;
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+    .list li .bullet {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--accent-soft);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .list li .text {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--text);
+    }
+    .list li .text strong {
+      color: var(--accent);
+    }
+    /* Two column */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      width: 100%;
+      margin-top: 10px;
+    }
+    .col {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 30px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+    .col h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .col ul li {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+      padding-left: 18px;
+      position: relative;
+    }
+    .col ul li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 600;
+    }
+    /* Code/prompt style */
+    .code-block {
+      background: #1e1e2e;
+      color: #cdd6f4;
+      border-radius: var(--radius-sm);
+      padding: 20px 24px;
+      font-family: 'JetBrains Mono', 'Fira Code', monospace;
+      font-size: 13px;
+      line-height: 1.8;
+      margin: 10px 0;
+      position: relative;
+    }
+    .code-block .label {
+      position: absolute;
+      top: -10px;
+      left: 16px;
+      background: var(--accent);
+      color: white;
+      font-size: 11px;
+      padding: 2px 10px;
+      border-radius: 100px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+    }
+    .code-block.good { border-left: 4px solid var(--success); }
+    .code-block.bad { border-left: 4px solid var(--danger); }
+    /* Evaluation table */
+    .eval-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 10px;
+    }
+    .eval-item {
+      background: var(--card);
+      border-radius: var(--radius-sm);
+      padding: 22px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+    .eval-item .num {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+    .eval-item .label {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    /* Ethics cards */
+    .ethics-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-top: 10px;
+    }
+    .ethics-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0,0,0,0.04);
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .ethics-card .e-icon {
+      font-size: 28px;
+      flex-shrink: 0;
+    }
+    .ethics-card h4 {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .ethics-card p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    /* End slide */
+    .end-slide {
+      text-align: center;
+    }
+    .end-slide .emoji { font-size: 80px; margin-bottom: 24px; display: block; }
+    .end-slide h2 { font-size: 44px; margin-bottom: 16px; }
+    .end-slide p { font-size: 18px; color: var(--muted); }
+    /* Navigation */
+    .nav {
+      position: fixed;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--card);
+      padding: 12px 20px;
+      border-radius: 100px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid rgba(0,0,0,0.06);
+      z-index: 100;
+    }
+    .nav button {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: none;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 18px;
+      cursor: pointer;
+      transition: background 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .nav button:hover { background: var(--accent); color: white; }
+    .nav button:disabled { opacity: 0.3; cursor: not-allowed; }
+    .dots {
+      display: flex;
+      gap: 6px;
+    }
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #e5e7eb;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .dot.active {
+      background: var(--accent);
+      width: 24px;
+      border-radius: 4px;
+    }
+    /* Slide counter */
+    .counter {
+      position: fixed;
+      top: 28px;
+      right: 36px;
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 500;
+      z-index: 100;
+    }
+    /* Keyboard hint */
+    .hint {
+      position: fixed;
+      top: 28px;
+      left: 36px;
+      font-size: 12px;
+      color: var(--muted);
+      z-index: 100;
+    }
+    .hint kbd {
+      background: var(--card);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0,0,0,0.08);
+    }
+    /* Responsive */
+    @media (max-width: 768px) {
+      .slide { padding: 40px 24px; }
+      h2 { font-size: 28px; }
+      .two-col { grid-template-columns: 1fr; }
+      .eval-grid { grid-template-columns: 1fr; }
+      .ethics-grid { grid-template-columns: 1fr; }
+      .slide-title h1 { font-size: 32px; }
+      .cards { grid-template-columns: 1fr; }
+    }
+    /* Animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .slide.active .card,
+    .slide.active .list li,
+    .slide.active .col,
+    .slide.active .ethics-card,
+    .slide.active .eval-item {
+      animation: fadeUp 0.5s ease forwards;
+      opacity: 0;
+    }
+    .slide.active .card:nth-child(1) { animation-delay: 0.1s; }
+    .slide.active .card:nth-child(2) { animation-delay: 0.2s; }
+    .slide.active .card:nth-child(3) { animation-delay: 0.3s; }
+    .slide.active .list li:nth-child(1) { animation-delay: 0.1s; }
+    .slide.active .list li:nth-child(2) { animation-delay: 0.2s; }
+    .slide.active .list li:nth-child(3) { animation-delay: 0.3s; }
+    .slide.active .list li:nth-child(4) { animation-delay: 0.4s; }
+    .slide.active .col:nth-child(1) { animation-delay: 0.1s; }
+    .slide.active .col:nth-child(2) { animation-delay: 0.2s; }
+    .slide.active .ethics-card:nth-child(1) { animation-delay: 0.1s; }
+    .slide.active .ethics-card:nth-child(2) { animation-delay: 0.2s; }
+    .slide.active .ethics-card:nth-child(3) { animation-delay: 0.3s; }
+    .slide.active .ethics-card:nth-child(4) { animation-delay: 0.4s; }
+  </style>
+</head>
+<body>
+  <div class="counter" id="counter">1 / 12</div>
+  <div class="hint"><kbd>←</kbd> <kbd>→</kbd> navigasi</div>
+
+  <div class="deck" id="deck">
+
+    <!-- Slide 1: Title -->
+    <div class="slide slide-title active">
+      <span class="emoji">🤖</span>
+      <h1>Pengenalan Artificial Intelligence</h1>
+      <p class="subtitle">Cara Kerja, Strategi Penggunaan & Etika AI</p>
+    </div>
+
+    <!-- Slide 2: Agenda -->
+    <div class="slide">
+      <div class="content">
+        <div class="section-badge">📋 Agenda</div>
+        <h2>Akan Kita Bahas</h2>
+        <div class="cards">
+          <div class="card">
+            <span class="icon">🧠</span>
+            <h3>Bab 1: Cara Kerja AI</h3>
+            <p>Memahami bagaimana mesin belajar dari data, arsitektur neural network, dan proses training model.</p>
+          </div>
+          <div class="card">
+            <span class="icon">⚡</span>
+            <h3>Bab 2: Strategi Penggunaan</h3>
+            <p>Teknik prompt engineering efektif, cara mengevaluasi hasil AI, dan iterasi untuk hasil optimal.</p>
+          </div>
+          <div class="card">
+            <span class="icon">⚖️</span>
+            <h3>Bab 3: Etika AI</h3>
+            <p>Bias, privasi, akuntabilitas, dan prinsip human-in-the-loop dalam penggunaan AI.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 3: Apa itu AI -->
+    <div class="slide">
+      <div class="content">
+        <div class="section-badge">🧠 Bab 1</div>
+        <h2>Apa Itu AI, ML, & Deep Learning?</h2>
+        <div class="cards">
+          <div class="card">
+            <span class="icon">🤖</span>
+            <h3>Artificial Intelligence (AI)</h3>
+            <p>Konsep luas tentang mesin yang dapat meniru kecerdasan manusia — berpikir, belajar, dan memecahkan masalah.</p>
+          </div>
+          <div class="card">
+            <span class="icon">📊</span>
+            <h3>Machine Learning (ML)</h3>
+            <p>Sub-bidang AI di mana mesin <strong>belajar dari data</strong> tanpa diprogram secara eksplisit untuk setiap aturan.</p>
+          </div>
+          <div class="card">
+            <span class="icon">🔬</span>
+            <h3>Deep Learning (DL)</h3>
+            <p>ML dengan <strong>neural network berlapis</strong> yang meniru cara kerja otak manusia untuk pola kompleks.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 4: Cara AI Belajar -->
+    <div class="slide">
+      <div class="content">
+        <div class="section-badge">🧠 Bab 1</div>
+        <h2>Bagaimana AI Belajar?</h2>
+        <ul class="list">
+          <li>
+            <span class="bullet">1</span>
+            <span class="text"><strong>Training Data:</strong> AI "membaca" jutaan contoh — gambar, teks, atau angka — untuk menemukan pola.</span>
+          </li>
+          <li>
+            <span class="bullet">2</span>
+            <span class="text"><strong>Model:</strong> Struktur matematika (neural network) yang menyimpan semua pola yang dipelajari.</span>
+          </li>
+          <li>
+            <span class="bullet">3</span>
+            <span class="text"><strong>Loss Function:</strong> Mengukur seberapa <em>salah</em> prediksi AI. Semakin kecil, semakin baik.</span>
+          </li>
+          <li>
+            <span class="bullet">4</span>
+            <span class="text"><strong>Optimisasi:</strong> AI memperbaiki dirinya sendiri berulang kali hingga error mínimo.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Slide 5: Arsitektur Neural Network -->
+    <div class="slide">
+      <div class="content">
+        <div class="section-badge">🧠 Bab 1</div>
+        <h2>Arsitektur Dasar Neural Network</h2>
+        <div class="two-col">
+          <div class="col">
+            <h3>🔵 Input Layer</h3>
+            <ul>
+              <li>Menerima data mentah (gambar, teks, angka)</li>
+              <li>Setiap neuron = satu fitur input</li>
+              <li>Contoh: pixel gambar 28×28 = 784 neuron</li>
+            </ul>
+          </div>
+          <div class="col">
+            <h3>🟣 Hidden Layers</h3>
+            <ul>
+              <li>Memproses & mengekstrak pola</li>
+              <li>Makin dalam = makin kompleks</li>
+              <li>Deep Learning = banyak hidden layer</li>
+            </ul>
+          </div>
+        </div>
+        <div class="two-col" style="margin-top:16px">
+          <div class="col">
+            <h3>🟢 Output Layer</h3>
+            <ul>
+              <li>Hasil akhir prediksi</li>
+              <li>Contoh: "kucing" atau "anjing"</li>
+              <li>Bisa juga: skor, teks, atau nilai numerik</li>
+            </ul>
+          </div>
+          <div class="col">
+            <h3>⚙️ Proses</h3>
+            <ul>
+              <li>Forward pass: input → output</li>
+              <li>Loss calculation: bandingkan dengan jawaban benar</li>
+              <li>Backpropagation: perbaiki bobot neuron</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 6: Contoh Input-Processing-Output -->
+    <div class="slide">
+      <div class="content">
+        <div class="section-badge">🧠 Bab 1</div>
+        <h2>Alur: Input → Processing → Output</h2>
+        <div class="cards">
+          <div class="card" style="text-align:center">
+            <span class="icon">📥</span>
+            <h3>Input</h3>
+            <p>"Apa itu neural network?"<br>→ Teks diubah jadi token numerik</p>
+          </div>
+          <div class="card" style="text-align:center">
+            <span class="icon">⚙️</span>
+            <h3>Processing</h3>
+            <p>Milliaran parameter menghitung<br>pola & konteks dalam teks</p>
+          </div>
+          <div class="card" style="text-align:center">
+            <span class="icon">📤</span>
+            <h3>Output</h3>
+            <p>"Neural network adalah sistem<br>terinspirasi otak manusia..."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 7: Prompt Engineering -->
+    <div class="slide">
+      <div class="content">
+        <div class="section-badge">⚡ Bab 2</div>
+        <h2>Strategi Prompt yang Efektif</h2>
+        <div class="two-col">
+          <div class="col">
+            <h3>❌ Buruk</h3>
+            <div class="code-block bad">
+              <span class="label">Prompt</span>
+              "Jelaskan AI"
+            </div>
+            <p style="font-size:13px;color:var(--muted);margin-top:10px">Terlalu umum, hasil tidak terarah</p>
+          </div>
+          <div class="col">
+            <h3>✅ Baik</h3>
+            <div class="code-block good">
+              <span class="label">Prompt</span>
+              "Jelaskan AI seperti kepada anak 10 tahun. Gunakan analogi sederhana. Batas 3 paragraf."
+            </div>
+            <p style="font-size:13px;color:var(--muted);margin-top:10px">Spesifik, ada konteks, format jelas</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 8: Framework Prompt -->
+    <div class="slide">
+      <div class="content">
+        <div class="section-badge">⚡ Bab 2</div>
+        <h2>Framework Prompt: CRISPE</h2>
+        <div class="cards">
+          <div class="card">
+            <span class="icon">👤</span>
+            <h3>C — Capacity & Persona</h3>
+            <p>Tentukan peran AI: "Kamu adalah ahli pendidikan..."</p>
+          </div>
+          <div class="card">
+            <span class="icon">🎯</span>
+            <h3>R — Request</h3>
+            <p>Pesanan spesifik: "Jelaskan konsep X dengan..."</p>
+          </div>
+          <div class="card">
+            <span class="icon">📋</span>
+            <h3>I — Intent</h3>
+            <p>Tujuan: "Untuk bahan presentasi..."</p>
+          </div>
+          <div class="card">
+            <span class="icon">📐</span>
+            <h3>S — Structure</h3>
+            <p>Format output: bullet points, tabel, paragraf...</p>
+          </div>
+          <div class="card">
+            <span class="icon">👥</span>
+            <h3>P — Person</h3>
+            <p>Audience: "Untuk mahasiswa semester 2..."</p>
+          </div>
+          <div class="card">
+            <span class="icon">🔍</span>
+            <h3>E — Example</h3>
+            <p>Berikan contoh agar AI paham ekspektasi</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 9: Evaluasi Hasil AI -->
+    <div class="slide">
+      <div class="content">
+        <div class="section-badge">⚡ Bab 2</div>
+        <h2>Cara Mengevaluasi Hasil AI</h2>
+        <div class="eval-grid">
+          <div class="eval-item">
+            <div class="num">✅</div>
+            <div class="label">Fakta Benar<br>Cek ke sumber primer</div>
+          </div>
+          <div class="eval-item">
+            <div class="num">🔄</div>
+            <div class="label">Logika Konsisten<br>Tidak kontradiktif</div>
+          </div>
+          <div class="eval-item">
+            <div class="num">📝</div>
+            <div class="label">Kelengkapan<br>Mencakup semua aspek</div>
+          </div>
+          <div class="eval-item">
+            <div class="num">⚖️</div>
+            <div class="label">Tanpa Bias<br>Adil & objektif</div>
+          </div>
+          <div class="eval-item">
+            <div class="num">🎯</div>
+            <div class="label">Relevan<br>Sesuai konteks</div>
+          </div>
+          <div class="eval-item">
+            <div class="num">💡</div>
+            <div class="label">Berguna<br>Bisa ditindaklanjuti</div>
+          </div>
+        </div>
+        <p style="text-align:center;margin-top:20px;font-size:14px;color:var(--muted)">💡 Tip: Selalu verifikasi fakta penting ke sumber primer</p>
+      </div>
+    </div>
+
+    <!-- Slide 10: Iterasi Prompt -->
+    <div class="slide">
+      <div class="content">
+        <div class="section-badge">⚡ Bab 2</div>
+        <h2>Iterasi & Refinement</h2>
+        <ul class="list">
+          <li>
+            <span class="bullet">1</span>
+            <span class="text"><strong>Berikan prompt pertama</strong> — jangan berharap sempurna di awal</span>
+          </li>
+          <li>
+            <span class="bullet">2</span>
+            <span class="text"><strong>Evaluasi hasilnya</strong> — apa yang kurang? Terlalu umum? Salah fakta?</span>
+          </li>
+          <li>
+            <span class="bullet">3</span>
+            <span class="text"><strong>Perbaiki prompt</strong> — tambahkan konteks, batasan, atau contoh</span>
+          </li>
+          <li>
+            <span class="bullet">4</span>
+            <span class="text"><strong>Ulangi</strong> — iterasi hingga hasil memuaskan</span>
+          </li>
+        </ul>
+        <div style="margin-top:20px;padding:16px;background:var(--accent-soft);border-radius:var(--radius-sm);text-align:center">
+          <p style="font-size:15px;font-weight:600;color:var(--accent)">🔄 Prompt Engineering = Seni Iterasi</p>
+          <p style="font-size:13px;color:var(--muted);margin-top:6px">Semakin spesifik prompt, semakin berkualitas output</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 11: Etika AI -->
+    <div class="slide">
+      <div class="content">
+        <div class="section-badge">⚖️ Bab 3</div>
+        <h2>Etika Penggunaan AI</h2>
+        <div class="ethics-grid">
+          <div class="ethics-card">
+            <span class="e-icon">⚖️</span>
+            <div>
+              <h4>Bias & Fairness</h4>
+              <p>AI bisa mewarisi bias dari data pelatihan. Selalu audit hasil untuk diskriminasi.</p>
+            </div>
+          </div>
+          <div class="ethics-card">
+            <span class="e-icon">🔒</span>
+            <div>
+              <h4>Privasi & Data</h4>
+              <p>Jangan masukkan data sensitif ( KTP, password, rahasia dagang ) ke AI publik.</p>
+            </div>
+          </div>
+          <div class="ethics-card">
+            <span class="e-icon">👁️</span>
+            <div>
+              <h4>Transparansi</h4>
+              <p>Beri tahu orang saat berinteraksi dengan AI. Jangan pura-pura manusia.</p>
+            </div>
+          </div>
+          <div class="ethics-card">
+            <span class="e-icon">🤝</span>
+            <div>
+              <h4>Human-in-the-Loop</h4>
+              <p>AI sebagai alat bantu, bukan pengganti keputusan manusia. Tetap review & approve.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 12: Dampak & Penutup -->
+    <div class="slide">
+      <div class="content end-slide">
+        <span class="emoji">🌍</span>
+        <h2>Dampak AI terhadap Masyarakat</h2>
+        <div class="cards" style="margin-top:20px">
+          <div class="card" style="text-align:center">
+            <span class="icon">💼</span>
+            <h3>Pekerjaan</h3>
+            <p>Otomatisasi tugas rutin, tapi membuka peran baru di bidang teknologi.</p>
+          </div>
+          <div class="card" style="text-align:center">
+            <span class="icon">📚</span>
+            <h3>Pendidikan</h3>
+            <p>Pembelajaran personal, tapi perlu literasi digital untuk evaluasi.</p>
+          </div>
+          <div class="card" style="text-align:center">
+            <span class="icon">🏥</span>
+            <h3>Kesehatan</h3>
+            <p>Diagnosis lebih cepat, tapi tetap butuh dokter untuk keputusan final.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 13: Closing -->
+    <div class="slide end-slide">
+      <span class="emoji">✨</span>
+      <h2>Terima Kasih!</h2>
+      <p>AI adalah alat — gunakan dengan bijak & bertanggung jawab.</p>
+      <p style="margin-top:20px;font-size:14px;color:var(--muted)">🤖📚⚖️</p>
+    </div>
+
+  </div>
+
+  <!-- Navigation -->
+  <div class="nav">
+    <button id="prevBtn" onclick="changeSlide(-1)">‹</button>
+    <div class="dots" id="dots"></div>
+    <button id="nextBtn" onclick="changeSlide(1)">›</button>
+  </div>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const total = slides.length;
+    let current = 0;
+
+    // Build dots
+    const dotsContainer = document.getElementById('dots');
+    for (let i = 0; i < total; i++) {
+      const dot = document.createElement('div');
+      dot.className = 'dot' + (i === 0 ? ' active' : '');
+      dot.onclick = () => goToSlide(i);
+      dotsContainer.appendChild(dot);
+    }
+
+    function updateUI() {
+      slides.forEach((s, i) => {
+        s.classList.remove('active', 'prev');
+        if (i === current) s.classList.add('active');
+        else if (i < current) s.classList.add('prev');
+      });
+      document.querySelectorAll('.dot').forEach((d, i) => {
+        d.classList.toggle('active', i === current);
+      });
+      document.getElementById('counter').textContent = `${current + 1} / ${total}`;
+      document.getElementById('prevBtn').disabled = current === 0;
+      document.getElementById('nextBtn').disabled = current === total - 1;
+    }
+
+    function changeSlide(dir) {
+      const next = current + dir;
+      if (next >= 0 && next < total) {
+        current = next;
+        updateUI();
+      }
+    }
+
+    function goToSlide(index) {
+      current = index;
+      updateUI();
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') changeSlide(1);
+      if (e.key === 'ArrowLeft') changeSlide(-1);
+      if (e.key === 'Home') goToSlide(0);
+      if (e.key === 'End') goToSlide(total - 1);
+    });
+
+    // Touch/swipe support
+    let touchStartX = 0;
+    document.addEventListener('touchstart', e => touchStartX = e.touches[0].clientX);
+    document.addEventListener('touchend', e => {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) changeSlide(diff > 0 ? 1 : -1);
+    });
+
+    updateUI();
+  </script>
+</body>
+</html>
