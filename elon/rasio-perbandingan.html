@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rasio &amp; Perbandingan — Matematika Interaktif</title>
+<meta name="description" content="Slide presentasi interaktif materi Rasio & Perbandingan: materi, lab simulasi, latihan, dan misi dunia nyata.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧮</text></svg>">
+<style>
+  :root{
+    --bg:#f6f8fc; --text:#0f172a; --muted:#5b6577;
+    --glass-bg:rgba(255,255,255,.66);
+    --glass-line:rgba(255,255,255,.78);
+    --pill-bg:rgba(255,255,255,.9);
+    --grad-vb:linear-gradient(135deg,#7c3aed,#2563eb);
+    --r-sm:14px; --r-md:20px; --r-lg:28px;
+    /* Type scale untuk proyeksi (judul 56-72px, body 24-32px di desktop) */
+    --fs-hero:clamp(44px,6vw,72px);
+    --fs-title:clamp(36px,4.4vw,62px);
+    --fs-h3:clamp(21px,2vw,28px);
+    --fs-body:clamp(19px,1.75vw,27px);
+    --fs-cap:clamp(15px,1.35vw,20px);
+    --sp-2:16px; --sp-3:24px; --sp-4:36px; --sp-5:56px;
+    --sh-1:0 1px 2px rgba(15,23,42,.04),0 6px 18px rgba(15,23,42,.07);
+    --sh-2:0 2px 4px rgba(15,23,42,.04),0 14px 34px rgba(15,23,42,.11),0 34px 70px rgba(15,23,42,.09);
+    --accent:#4f46e5;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Inter",Arial,sans-serif;
+    background:var(--bg);color:var(--text);overflow:hidden;-webkit-font-smoothing:antialiased}
+
+  /* ---- Latar blob lembut ---- */
+  .bg-blob{position:fixed;border-radius:50%;filter:blur(95px);pointer-events:none;z-index:0}
+  .b1{width:460px;height:460px;background:#e0e7ff;top:-140px;right:-100px;opacity:.55}
+  .b2{width:420px;height:420px;background:#cffafe;bottom:-160px;left:-120px;opacity:.5}
+  .b3{width:360px;height:360px;background:#fce7f3;top:38%;left:52%;opacity:.35}
+
+  /* ---- Chrome ---- */
+  .progress{position:fixed;top:0;left:0;height:4px;width:0;z-index:60;border-radius:0 4px 4px 0;
+    background:var(--grad-vb);transition:width .45s ease,background .35s ease}
+  .hud-top{position:fixed;top:14px;left:0;right:0;display:flex;justify-content:space-between;
+    align-items:center;padding:0 20px;z-index:50;pointer-events:none}
+  .pill{pointer-events:auto;background:var(--pill-bg);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+    border:1px solid rgba(15,23,42,.08);box-shadow:var(--sh-1);border-radius:999px;padding:8px 16px;
+    font-size:14px;font-weight:650;color:#475569}
+  .nav-bar{position:fixed;right:22px;bottom:22px;z-index:50;display:flex;gap:10px}
+  .nav-btn{width:52px;height:52px;border-radius:50%;background:var(--pill-bg);
+    -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+    border:1px solid rgba(15,23,42,.09);box-shadow:var(--sh-1);font-size:19px;cursor:pointer;color:#334155;
+    display:grid;place-items:center;transition:transform .2s ease,box-shadow .2s ease,opacity .2s ease}
+  .nav-btn:hover:not(:disabled){transform:translateY(-3px);box-shadow:var(--sh-2)}
+  .nav-btn:disabled{opacity:.32;cursor:default}
+
+  /* ---- Slide dasar ---- */
+  .deck{position:fixed;inset:0;z-index:1}
+  .slide{position:absolute;inset:0;overflow-y:auto;opacity:0;visibility:hidden;
+    transform:translateY(26px) scale(.99);z-index:1;
+    transition:opacity .5s ease,transform .5s cubic-bezier(.22,.61,.36,1),visibility 0s linear .5s}
+  .slide.active{opacity:1;visibility:visible;transform:none;z-index:2;
+    transition:opacity .55s ease .06s,transform .55s cubic-bezier(.22,.61,.36,1) .06s}
+  .inner{max-width:1150px;margin:0 auto;min-height:100%;display:flex;flex-direction:column;
+    justify-content:center;padding:92px 30px 110px;position:relative;z-index:1}
+  .wash::before{content:"";position:absolute;inset:0;pointer-events:none;background:none;
+    background:radial-gradient(840px 500px at 88% -8%,color-mix(in srgb,var(--accent) 15%,transparent),transparent 62%),
+      radial-gradient(740px 440px at -6% 106%,color-mix(in srgb,var(--accent) 11%,transparent),transparent 60%)}
+  .clean{background:#fbfcfe}
+  .clean.wash::before{background:none}
+
+  /* ---- Reveal stagger ---- */
+  .reveal{opacity:0}
+  .slide.active .reveal{animation:rise .6s cubic-bezier(.22,.61,.36,1) forwards;animation-delay:var(--d,0s)}
+  @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+  /* ---- Tipografi ---- */
+  .eyebrow{font-size:14px;font-weight:800;letter-spacing:.17em;text-transform:uppercase;color:var(--accent)}
+  .slide-head{text-align:left;margin-bottom:var(--sp-3)}
+  .center{text-align:center}
+  .slide-title{font-size:var(--fs-title);font-weight:800;letter-spacing:-.025em;line-height:1.12;margin-top:10px}
+  .subtitle{font-size:var(--fs-body);color:var(--muted);line-height:1.6;max-width:820px}
+  .lead{margin-top:14px}
+  .grad-text{background:var(--grad-vb);-webkit-background-clip:text;background-clip:text;color:transparent}
+  h3{font-size:var(--fs-h3);font-weight:750;letter-spacing:-.01em}
+  p,li{font-size:var(--fs-body);line-height:1.6}
+
+  /* ---- Kartu glassmorphism ---- */
+  .grid{display:grid;gap:18px;margin-top:var(--sp-3)}
+  .cols-2{grid-template-columns:repeat(2,1fr)}
+  .cols-3{grid-template-columns:repeat(3,1fr)}
+  .cols-4{grid-template-columns:repeat(4,1fr)}
+  .card{position:relative;background:var(--glass-bg);
+    -webkit-backdrop-filter:blur(20px) saturate(160%);backdrop-filter:blur(20px) saturate(160%);
+    border:1px solid var(--glass-line);border-radius:var(--r-md);box-shadow:var(--sh-1);
+    padding:clamp(20px,2.2vw,30px)}
+  .card.hoverable:hover{transform:translateY(-4px);box-shadow:var(--sh-2);cursor:pointer}
+  .card.hoverable{transition:transform .25s ease,box-shadow .25s ease}
+  .card p{color:var(--muted)}
+  .strip{margin-top:var(--sp-3);border-radius:var(--r-sm);padding:14px 20px;font-size:var(--fs-body);
+    font-weight:600;color:#334155;text-align:center;background:color-mix(in srgb,var(--accent) 8%,#fff);
+    border:1px solid color-mix(in srgb,var(--accent) 22%,#fff)}
+
+  /* ---- Komponen visual materi ---- */
+  .fruit-row{display:flex;align-items:center;gap:12px;font-size:clamp(26px,2.6vw,38px);margin-top:12px}
+  .fruit-tag{font-size:var(--fs-cap);font-weight:700;color:var(--muted);min-width:118px}
+  .fruit-box{background:color-mix(in srgb,var(--accent) 9%,#fff);border:1px solid color-mix(in srgb,var(--accent) 20%,#fff);
+    border-radius:var(--r-sm);padding:8px 16px}
+  .formula{font-size:clamp(34px,3.8vw,54px);font-weight:800;letter-spacing:.01em;text-align:center}
+  .formula small{display:block;font-size:var(--fs-cap);font-weight:600;color:var(--muted);letter-spacing:0;margin-top:8px}
+  .chain{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px;
+    font-size:clamp(24px,2.6vw,36px);font-weight:750}
+  .chain .sep{color:var(--accent);font-weight:800}
+
+  /* ---- Lab / kontrol interaktif ---- */
+  .ctrl{margin-top:18px}
+  .ctrl label{display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+    font-size:var(--fs-body);font-weight:700}
+  .ctrl output{font-size:clamp(24px,2.4vw,34px);font-weight:800;color:var(--accent)}
+  input[type=range]{width:100%;margin-top:10px;height:30px;cursor:pointer;accent-color:var(--accent)}
+  .bars{display:flex;gap:38px;align-items:stretch;justify-content:center;height:290px;padding-top:6px}
+  .bar-col{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:8px;height:100%}
+  .bar-val{font-size:var(--fs-h3);font-weight:800}
+  .bar{width:88px;border-radius:14px 14px 6px 6px;background:linear-gradient(180deg,var(--accent),color-mix(in srgb,var(--accent) 62%,#94a3b8));
+    transition:height .35s cubic-bezier(.22,.61,.36,1);min-height:8px}
+  .bar.alt{background:linear-gradient(180deg,#64748b,#94a3b8)}
+  .bar-name{font-size:var(--fs-cap);font-weight:750;color:var(--muted);letter-spacing:.08em}
+  .readout{margin-top:18px;font-size:var(--fs-body)}
+  .swatch-wrap{display:flex;align-items:center;gap:26px;justify-content:center;flex-wrap:wrap}
+  .swatch{width:150px;height:150px;border-radius:24px;border:4px solid #fff;box-shadow:var(--sh-2);
+    transition:background .3s ease}
+  .btn{border:none;cursor:pointer;font:inherit;font-weight:750;font-size:var(--fs-cap);color:#fff;
+    background:linear-gradient(135deg,var(--accent),color-mix(in srgb,var(--accent) 55%,#0ea5e9));
+    border-radius:999px;padding:13px 26px;box-shadow:var(--sh-1);transition:transform .2s ease,box-shadow .2s ease}
+  .btn:hover:not(:disabled){transform:translateY(-2px);box-shadow:var(--sh-2)}
+  .btn:disabled{opacity:.55;cursor:default}
+  .field{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+  .field input[type=text]{flex:1;min-width:170px;font:inherit;font-size:var(--fs-body);font-weight:700;
+    padding:12px 16px;border-radius:var(--r-sm);border:2px solid color-mix(in srgb,var(--accent) 30%,#fff);
+    background:#fff;outline:none}
+  .field input[type=text]:focus{border-color:var(--accent)}
+  .feedback{display:inline-block;margin-top:14px;padding:10px 18px;border-radius:999px;
+    font-size:var(--fs-cap);font-weight:750}
+  .feedback.ok{color:#15803d;background:#dcfce7}
+  .feedback.no{color:#b91c1c;background:#fee2e2}
+
+  /* Stepper latihan (langkah tersembunyi -> tampil satu per satu) */
+  .stepper .step{opacity:0;max-height:0;overflow:hidden;transition:opacity .5s ease,max-height .55s ease}
+  .stepper .step.on{opacity:1;max-height:340px}
+  .step-card{margin-top:14px;background:color-mix(in srgb,var(--accent) 7%,#fff);
+    border:1px solid color-mix(in srgb,var(--accent) 22%,#fff);border-radius:var(--r-sm);
+    padding:14px 18px;font-size:var(--fs-body)}
+  .answer-chip{display:inline-block;margin-top:12px;padding:10px 22px;border-radius:999px;color:#fff;
+    font-weight:800;font-size:var(--fs-h3);background:var(--grad-vb)}
+
+  /* Stat tile misi */
+  .stat{text-align:center;padding:18px 12px}
+  .stat .num{font-size:clamp(26px,2.8vw,40px);font-weight:800;color:var(--accent)}
+  .stat .lbl{font-size:var(--fs-cap);color:var(--muted);font-weight:650;margin-top:4px}
+
+  /* Meter campuran cat */
+  .meter{display:flex;height:74px;border-radius:var(--r-md);overflow:hidden;box-shadow:var(--sh-1);margin-top:18px}
+  .meter .seg{display:flex;align-items:center;justify-content:center;gap:8px;color:#fff;
+    font-weight:800;font-size:var(--fs-body)}
+  .seg.biru{width:60%;background:linear-gradient(135deg,#2563eb,#3b82f6)}
+  .seg.kuning{width:40%;background:linear-gradient(135deg,#ca8a04,#eab308);color:#422006}
+
+  /* Peta misi 2 */
+  .road{margin-top:20px;padding:22px 18px 10px}
+  .road-track{position:relative;height:10px;border-radius:999px;background:#e2e8f0;overflow:hidden}
+  .road-fill{position:absolute;inset:0 auto 0 0;width:33%;border-radius:999px;
+    background:linear-gradient(90deg,color-mix(in srgb,var(--accent) 55%,#fff),var(--accent));
+    transition:width .3s ease}
+  .road-labels{display:flex;justify-content:space-between;margin-top:10px;font-weight:750;color:var(--muted);font-size:var(--fs-cap)}
+
+  /* Refleksi & penutup */
+  .reflect-item{display:flex;gap:18px;align-items:flex-start;text-align:left}
+  .reflect-num{flex:none;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;
+    font-size:var(--fs-h3);font-weight:800;color:var(--accent);
+    background:color-mix(in srgb,var(--accent) 10%,#fff);border:1px solid color-mix(in srgb,var(--accent) 25%,#fff)}
+  .agenda-num{font-size:var(--fs-h3);font-weight:800;color:var(--accent)}
+  .hint-chip{display:inline-block;margin-top:26px;padding:10px 20px;border-radius:999px;font-size:var(--fs-cap);
+    font-weight:650;color:var(--muted);background:#fff;border:1px solid #e2e8f0;box-shadow:var(--sh-1)}
+
+  @media (max-width:960px){
+    .cols-3,.cols-4{grid-template-columns:repeat(2,1fr)}
+    .bars{height:230px}
+  }
+  @media (max-width:700px){
+    .cols-2,.cols-3,.cols-4{grid-template-columns:1fr}
+    .inner{padding:78px 18px 104px}
+    .nav-bar{right:14px;bottom:14px}
+    .nav-btn{width:47px;height:47px}
+    .bars{height:190px;gap:22px}
+    .bar{width:64px}
+    .pill{font-size:12px;padding:6px 12px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *,.slide,.slide.active .reveal,.bar,.road-fill,.swatch{animation:none!important;transition:none!important}
+    .reveal{opacity:1!important}
+  }
+  @media print{
+    body{overflow:visible;background:#fff}
+    .slide{position:relative;inset:auto;opacity:1!important;visibility:visible!important;
+      transform:none!important;min-height:100vh;page-break-after:always;overflow:visible}
+    .reveal{opacity:1!important;animation:none!important}
+    .progress,.hud-top,.nav-bar,.bg-blob{display:none}
+  }
+</style>
+</head>
+<body>
+<div class="bg-blob b1"></div>
+<div class="bg-blob b2"></div>
+<div class="bg-blob b3"></div>
+<div class="progress" id="progress"></div>
+<header class="hud-top">
+  <span class="pill" id="chip">Pembuka</span>
+  <span class="pill" id="counter">1 / 15</span>
+</header>
+
+<main class="deck">
+
+  <!-- ═══════════ SLIDE 1 · JUDUL (clean) ═══════════ -->
+  <section class="slide clean active" style="--accent:#334155" data-accent="#334155" data-grad="#334155,#64748b" data-label="Pembuka · Judul">
+    <div class="inner center">
+      <p class="eyebrow reveal">Matematika · Kelas Interaktif</p>
+      <h1 class="reveal" style="--d:.1s;font-size:var(--fs-hero);letter-spacing:-.03em;margin-top:16px">
+        Rasio &amp;<br>Perbandingan</h1>
+      <p class="subtitle lead reveal" style="--d:.22s;margin-inline:auto">Membandingkan dua hal dengan adil — dari dapur, peta, sampai cat dinding.</p>
+      <span class="hint-chip reveal" style="--d:.34s">← ➜ Gunakan tombol panah atau tombol di kanan bawah</span>
+    </div>
+  </section>
+
+  <!-- ═══════════ SLIDE 2 · AGENDA (clean) ═══════════ -->
+  <section class="slide clean" style="--accent:#4f46e5" data-accent="#4f46e5" data-grad="#6366f1,#8b5cf6" data-label="Pembuka · Tujuan">
+    <div class="inner">
+      <header class="slide-head center">
+        <p class="eyebrow reveal">Agenda</p>
+        <h2 class="slide-title reveal" style="--d:.08s">Tujuan Pembelajaran</h2>
+      </header>
+      <div class="grid cols-2">
+        <div class="card hoverable reveal" style="--d:.16s" data-goto="2" role="button" tabindex="0">
+          <p class="agenda-num">01 · Materi</p>
+          <h3>Memahami konsep rasio &amp; perbandingan</h3>
+          <p>Definisi, rumus, sifat ekuivalen, dan penyederhanaan.</p>
+        </div>
+        <div class="card hoverable reveal" style="--d:.26s" data-goto="6" role="button" tabindex="0">
+          <p class="agenda-num">02 · Lab Simulasi</p>
+          <h3>Bereksperimen langsung</h3>
+          <p>Geser slider, bandingkan nilai, dan campur warna.</p>
+        </div>
+        <div class="card hoverable reveal" style="--d:.36s" data-goto="8" role="button" tabindex="0">
+          <p class="agenda-num">03 · Latihan</p>
+          <h3>Menyelesaikan soal bertahap</h3>
+          <p>Step by step dengan jawaban yang bisa dibuka.</p>
+        </div>
+        <div class="card hoverable reveal" style="--d:.46s" data-goto="10" role="button" tabindex="0">
+          <p class="agenda-num">04 · Misi Dunia Nyata</p>
+          <h3>Menerapkan di kehidupan</h3>
+          <p>Skala resep, membaca peta, dan mencampur cat.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SLIDE 3 · APA ITU RASIO ═══════════ -->
+  <section class="slide wash" style="--accent:#7c3aed" data-accent="#7c3aed" data-grad="#7c3aed,#6366f1" data-label="Bab 1 · Apa itu Rasio">
+    <div class="inner">
+      <header class="slide-head">
+        <p class="eyebrow reveal">Bab 1 · Materi Penting</p>
+        <h2 class="slide-title reveal" style="--d:.08s">🍎 Apa itu Rasio?</h2>
+      </header>
+      <div class="grid cols-2">
+        <div class="card reveal" style="--d:.16s">
+          <h3>Definisi</h3>
+          <p>Rasio adalah cara membandingkan <b>dua besaran</b> — menunjukkan <b>berapa kali</b> besaran pertama dibanding besaran kedua.</p>
+          <p style="margin-top:12px">Ditulis dengan titik dua, misalnya <b>3 : 2</b>, dibaca <i>"tiga banding dua"</i>.</p>
+        </div>
+        <div class="card reveal" style="--d:.28s">
+          <h3>Contoh visual: buah di piring</h3>
+          <div class="fruit-row"><span class="fruit-tag">🍎 Apel</span><span class="fruit-box">🍎🍎🍎</span><b>3</b></div>
+          <div class="fruit-row"><span class="fruit-tag">🍊 Jeruk</span><span class="fruit-box">🍊🍊</span><b>2</b></div>
+          <div class="strip" style="text-align:left;margin-top:18px">Rasio apel : jeruk = <b>3 : 2</b></div>
+        </div>
+      </div>
+      <div class="strip reveal" style="--d:.4s">💡 Rasio <b>membandingkan</b>, bukan mengurangi — jumlah benda tidak berubah!</div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SLIDE 4 · APA ITU PERBANDINGAN ═══════════ -->
+  <section class="slide wash" style="--accent:#2563eb" data-accent="#2563eb" data-grad="#2563eb,#0ea5e9" data-label="Bab 1 · Konsep Dasar">
+    <div class="inner">
+      <header class="slide-head">
+        <p class="eyebrow reveal">Bab 1 · Materi Penting</p>
+        <h2 class="slide-title reveal" style="--d:.08s">📐 Konsep Dasar Perbandingan</h2>
+      </header>
+      <div class="grid cols-2">
+        <div class="card reveal" style="--d:.16s">
+          <h3>Dua cara menulis</h3>
+          <div class="formula" style="margin-top:16px">a : b<span>atau sebagai pecahan</span></div>
+          <div class="formula" style="margin-top:10px">a⁄b<small>dengan b ≠ 0</small></div>
+        </div>
+        <div class="card reveal" style="--d:.28s">
+          <h3>Cara membaca &amp; memakai</h3>
+          <ul style="list-style:none;display:grid;gap:12px;margin-top:6px">
+            <li>🔹 <b>a : b</b> → "a banding b"</li>
+            <li>🔹 Nilai perbandingan: <b>a ÷ b</b></li>
+            <li>🔹 Contoh: 6 : 3 → nilai = 6 ÷ 3 = <b>2</b></li>
+          </ul>
+          <div class="strip" style="text-align:left;margin-top:16px">Perbandingan menyatakan hubungan <b>berbanding senilai / berbanding balik</b> antara dua besaran.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SLIDE 5 · SIFAT-SIFAT RASIO ═══════════ -->
+  <section class="slide wash" style="--accent:#0d9488" data-accent="#0d9488" data-grad="#0d9488,#0891b2" data-label="Bab 1 · Sifat Rasio">
+    <div class="inner">
+      <header class="slide-head">
+        <p class="eyebrow reveal">Bab 1 · Materi Penting</p>
+        <h2 class="slide-title reveal" style="--d:.08s">⚖️ Sifat-sifat Rasio</h2>
+      </header>
+      <div class="grid cols-3">
+        <div class="card reveal" style="--d:.16s">
+          <h3>♻️ Ekuivalen</h3>
+          <p>Kedua suatu rasio dikalikan angka yang sama, nilainya tidak berubah:</p>
+          <div class="chain" style="margin-top:14px">2 : 3 <span class="sep">=</span> 4 : 6 <span class="sep">=</span> 6 : 9</div>
+        </div>
+        <div class="card reveal" style="--d:.28s">
+          <h3>✂️ Penyederhanaan</h3>
+          <p>Bagi kedua suku dengan <b>FPB</b>-nya:</p>
+          <div class="chain" style="margin-top:14px">18 : 24 <span class="sep">→</span> (÷6) <span class="sep">→</span> 3 : 4</div>
+        </div>
+        <div class="card reveal" style="--d:.4s">
+          <h3>🔁 Urutan Penting</h3>
+          <p>Rasio punya arah — suku pertama dan kedua tidak boleh ditukar:</p>
+          <div class="chain" style="margin-top:14px">2 : 5 <span class="sep">≠</span> 5 : 2</div>
+        </div>
+      </div>
+      <div class="strip reveal" style="--d:.5s">🎯 Bentuk paling sederhana didapat dengan membagi kedua suku oleh FPB keduanya.</div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SLIDE 6 · RASIO SEHARI-HARI ═══════════ -->
+  <section class="slide wash" style="--accent:#059669" data-accent="#059669" data-grad="#059669,#14b8a6" data-label="Bab 1 · Kehidupan Sehari-hari">
+    <div class="inner">
+      <header class="slide-head">
+        <p class="eyebrow reveal">Bab 1 · Materi Penting</p>
+        <h2 class="slide-title reveal" style="--d:.08s">🌍 Rasio di Sekitar Kita</h2>
+      </header>
+      <div class="grid cols-4">
+        <div class="card reveal" style="--d:.16s"><h3>🍚 Memasak nasi</h3><p>Beras : air<br><b>= 1 : 2</b><br>1 cup beras, 2 cup air.</p></div>
+        <div class="card reveal" style="--d:.26s"><h3>🗺️ Skala peta</h3><p>Peta 1 : 100.000<br>1 cm di peta<br>= 1 km sebenarnya.</p></div>
+        <div class="card reveal" style="--d:.36s"><h3>⚽ Skor pertandingan</h3><p>Tim A : Tim B<br><b>= 3 : 2</b><br>menang 3 – 2.</p></div>
+        <div class="card reveal" style="--d:.46s"><h3>🍋 Jus jeruk</h3><p>Jeruk : air : gula<br><b>= 3 : 2 : 1</b><br>resep segelas.</p></div>
+      </div>
+      <div class="strip reveal" style="--d:.56s">🔍 Coba temukan: rasio apa yang kamu temui hari ini?</div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SLIDE 7 · LAB 1: RASIO ═══════════ -->
+  <section class="slide wash" style="--accent:#f97316" data-accent="#f97316" data-grad="#f97316,#f59e0b" data-label="Bab 2 · Lab Rasio">
+    <div class="inner">
+      <header class="slide-head">
+        <p class="eyebrow reveal">Bab 2 · Lab Interaktif 1</p>
+        <h2 class="slide-title reveal" style="--d:.08s">🧪 Studio Rasio: Geser &amp; Bandingkan</h2>
+        <p class="subtitle lead reveal" style="--d:.14s">Geser kedua slider — perhatikan batang, rasio, dan bentuk paling sederhananya.</p>
+      </header>
+      <div class="grid cols-2">
+        <div class="card reveal" style="--d:.22s">
+          <h3>🎚️ Kontrol Nilai</h3>
+          <div class="ctrl">
+            <label for="lab-a">Nilai A <output id="lab-av">4</output></label>
+            <input type="range" id="lab-a" min="1" max="12" value="4" aria-label="Nilai A">
+          </div>
+          <div class="ctrl">
+            <label for="lab-b">Nilai B <output id="lab-bv">6</output></label>
+            <input type="range" id="lab-b" min="1" max="12" value="6" aria-label="Nilai B">
+          </div>
+          <div class="readout">Rasio <b>A : B</b> = <b id="lab-ratio">4 : 6</b></div>
+          <div class="strip" style="margin-top:14px">✨ Bentuk paling sederhana: <b id="lab-simple">2 : 3</b></div>
+        </div>
+        <div class="card reveal" style="--d:.32s">
+          <h3>📊 Perbandingan Visual</h3>
+          <div class="bars">
+            <div class="bar-col"><span class="bar-val" id="bar-av">4</span><div class="bar" id="bar-a"></div><span class="bar-name">A</span></div>
+            <div class="bar-col"><span class="bar-val" id="bar-bv">6</span><div class="bar alt" id="bar-b"></div><span class="bar-name">B</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SLIDE 8 · LAB 2: MIXING WARNA ═══════════ -->
+  <section class="slide wash" style="--accent:#ec4899" data-accent="#ec4899" data-grad="#ec4899,#f97316" data-label="Bab 2 · Lab Campuran">
+    <div class="inner">
+      <header class="slide-head">
+        <p class="eyebrow reveal">Bab 2 · Lab Interaktif 2</p>
+        <h2 class="slide-title reveal" style="--d:.08s">🎨 Lab Warna: Takaran Merah × Biru</h2>
+        <p class="subtitle lead reveal" style="--d:.14s">Rasio takaran menentukan warna hasil. Coba geser dan bandingkan!</p>
+      </header>
+      <div class="grid cols-2">
+        <div class="card reveal" style="--d:.22s">
+          <h3>🎚️ Takaran (sendok)</h3>
+          <div class="ctrl">
+            <label for="mix-r">🔴 Merah <output id="mix-rv">3</output></label>
+            <input type="range" id="mix-r" min="0" max="10" value="3" aria-label="Takaran merah">
+          </div>
+          <div class="ctrl">
+            <label for="mix-b">🔵 Biru <output id="mix-bv">3</output></label>
+            <input type="range" id="mix-b" min="0" max="10" value="3" aria-label="Takaran biru">
+          </div>
+          <div class="readout">Rasio merah : biru = <b id="mix-ratio">3 : 3</b></div>
+          <div class="readout" id="mix-pct-line">Proporsi: <b id="mix-pct">50% : 50%</b></div>
+        </div>
+        <div class="card reveal" style="--d:.32s">
+          <h3>🖌️ Hasil Campuran</h3>
+          <div class="swatch-wrap" style="margin-top:20px">
+            <div class="swatch" id="swatch"></div>
+            <div>
+              <p><b id="mix-verdict">Ungu seimbang!</b></p>
+              <p style="margin-top:6px" id="mix-note">Merah dan biru sama banyak.</p>
+            </div>
+          </div>
+          <div class="strip" style="margin-top:20px">⚠️ Jangan biarkan kedua takaran 0 — belum ada yang dicampur!</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SLIDE 9 · LATIHAN 1 ═══════════ -->
+  <section class="slide wash" style="--accent:#e11d48" data-accent="#e11d48" data-grad="#e11d48,#ec4899" data-label="Bab 3 · Latihan 1">
+    <div class="inner">
+      <header class="slide-head">
+        <p class="eyebrow reveal">Bab 3 · Soal Latihan</p>
+        <h2 class="slide-title reveal" style="--d:.08s">📝 Latihan 1 — Sederhanakan Rasio</h2>
+      </header>
+      <div class="card stepper reveal" style="--d:.2s">
+        <p style="font-size:var(--fs-h3);font-weight:700">Di kelas VI-B ada <b>12 siswa laki-laki</b> dan <b>18 siswa perempuan</b>. Tentukan rasio laki-laki : perempuan dalam bentuk paling sederhana!</p>
+        <button class="btn step-btn" type="button" style="margin-top:18px">➜ Tampilkan langkah 1</button>
+        <div class="step">
+          <div class="step-card"><b>Langkah 1 — Tulis rasionya.</b><br>Laki-laki : Perempuan = 12 : 18</div>
+        </div>
+        <div class="step">
+          <div class="step-card"><b>Langkah 2 — Cari FPB dari 12 dan 18.</b><br>Faktor 12 = 1,2,3,4,6,12 · Faktor 18 = 1,2,3,6,9,18 → FPB = <b>6</b></div>
+        </div>
+        <div class="step">
+          <div class="step-card"><b>Langkah 3 — Bagi kedua suku dengan FPB.</b><br>(12 ÷ 6) : (18 ÷ 6) = 2 : 3
+            <br><span class="answer-chip">✅ Jawaban: 2 : 3</span></div>
+        </div>
+      </div>
+      <div class="strip reveal" style="--d:.32s">💡 Selalu akhiri dengan rasio yang FPB kedua sukunya = 1.</div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SLIDE 10 · LATIHAN 2 ═══════════ -->
+  <section class="slide wash" style="--accent:#ea580c" data-accent="#ea580c" data-grad="#ea580c,#e11d48" data-label="Bab 3 · Latihan 2">
+    <div class="inner">
+      <header class="slide-head">
+        <p class="eyebrow reveal">Bab 3 · Soal Latihan</p>
+        <h2 class="slide-title reveal" style="--d:.08s">📖 Latihan 2 — Soal Cerita</h2>
+      </header>
+      <div class="card reveal" style="--d:.18s">
+        <p style="font-size:var(--fs-h3);font-weight:700">🛒 Ayah membeli <b>5 buku tulis</b> seharga <b>Rp20.000</b>. Berapa harga <b>8 buku tulis</b> yang sama?</p>
+        <div class="field" style="margin-top:20px">
+          <input type="text" id="ex2-input" inputmode="numeric" placeholder="Ketik jawabanmu (angka saja)…" aria-label="Jawaban harga 8 buku dalam rupiah">
+          <button class="btn" type="button" id="ex2-check">Periksa ✓</button>
+        </div>
+        <span class="feedback" id="ex2-fb" hidden></span>
+      </div>
+      <div class="card stepper reveal" style="--d:.3s;margin-top:18px">
+        <h3>🔑 Butuh bantuan? Buka solusinya bertahap</h3>
+        <button class="btn step-btn" type="button" style="margin-top:14px">➜ Tampilkan langkah 1</button>
+        <div class="step">
+          <div class="step-card"><b>Langkah 1 — Harga 1 buku.</b><br>20.000 ÷ 5 = Rp4.000 per buku</div>
+        </div>
+        <div class="step">
+          <div class="step-card"><b>Langkah 2 — Kalikan dengan 8.</b><br>8 × 4.000 = …</div>
+        </div>
+        <div class="step">
+          <div class="step-card"><b>Langkah 3 — Kesimpulan.</b><br>Harga 8 buku = Rp32.000 <span class="answer-chip">✅ Rp32.000</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SLIDE 11 · MISI 1: RESEP ═══════════ -->
+  <section class="slide wash" style="--accent:#059669" data-accent="#059669" data-grad="#059669,#10b981" data-label="Bab 4 · Misi Resep">
+    <div class="inner">
+      <header class="slide-head">
+        <p class="eyebrow reveal">Bab 4 · Misi Dunia Nyata 1</p>
+        <h2 class="slide-title reveal" style="--d:.08s">👩‍🍳 Misi Dapur: Skala Resep Pancake</h2>
+        <p class="subtitle lead reveal" style="--d:.14s">Resep asli untuk 4 porsi. Ubah jumlah porsi — rasio bahan harus tetap sama!</p>
+      </header>
+      <div class="card reveal" style="--d:.22s">
+        <div class="ctrl" style="margin-top:0">
+          <label for="mis-porsi">🍽️ Jumlah porsi <output id="mis-porsi-v">4</output></label>
+          <input type="range" id="mis-porsi" min="2" max="16" step="2" value="4" aria-label="Jumlah porsi">
+        </div>
+        <div class="grid cols-4" style="margin-top:20px">
+          <div class="card stat"><div class="num"><span id="m1-tepung">200</span> g</div><div class="lbl">🌾 Tepung</div></div>
+          <div class="card stat"><div class="num"><span id="m1-susu">240</span> ml</div><div class="lbl">🥛 Susu</div></div>
+          <div class="card stat"><div class="num"><span id="m1-gula">40</span> g</div><div class="lbl">🍬 Gula</div></div>
+          <div class="card stat"><div class="num"><span id="m1-telur">2</span> butir</div><div class="lbl">🥚 Telur</div></div>
+        </div>
+        <div class="strip">📏 Rasio resep selalu <b>50 g : 60 ml : 10 g : ½ butir</b> per porsi — hanya skalanya yang berubah.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SLIDE 12 · MISI 2: PETA ═══════════ -->
+  <section class="slide wash" style="--accent:#0d9488" data-accent="#0d9488" data-grad="#0d9488,#059669" data-label="Bab 4 · Misi Peta">
+    <div class="inner">
+      <header class="slide-head">
+        <p class="eyebrow reveal">Bab 4 · Misi Dunia Nyata 2</p>
+        <h2 class="slide-title reveal" style="--d:.08s">🗺️ Misi Kartografer: Peta &amp; Skala</h2>
+        <p class="subtitle lead reveal" style="--d:.14s">Skala peta <b>1 : 500.000</b> artinya 1 cm di peta = 5 km sebenarnya.</p>
+      </header>
+      <div class="card reveal" style="--d:.22s">
+        <div class="ctrl" style="margin-top:0">
+          <label for="m2-cm">📏 Jarak di peta <output><span id="m2-cm-v">8</span> cm</output></label>
+          <input type="range" id="m2-cm" min="1" max="24" value="8" aria-label="Jarak di peta dalam sentimeter">
+        </div>
+        <div class="road">
+          <div class="road-track"><div class="road-fill" id="m2-fill"></div></div>
+          <div class="road-labels"><span>📍 Kota A</span><span>Kota B 📍</span></div>
+        </div>
+        <div class="strip" style="margin-top:18px">🧭 Rumus: jarak sebenarnya = jarak peta × skala → <b><span id="m2-cm-eq">8</span> cm × 5 km = <span id="m2-km">40</span> km</b></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SLIDE 13 · MISI 3: CAT ═══════════ -->
+  <section class="slide wash" style="--accent:#65a30d" data-accent="#65a30d" data-grad="#65a30d,#059669" data-label="Bab 4 · Misi Cat">
+    <div class="inner">
+      <header class="slide-head">
+        <p class="eyebrow reveal">Bab 4 · Misi Dunia Nyata 3</p>
+        <h2 class="slide-title reveal" style="--d:.08s">🎨 Misi Pelukis: Campuran Cat Hijau</h2>
+        <p class="subtitle lead reveal" style="--d:.14s">Cat hijau dibuat dari <b>biru : kuning = 3 : 2</b>. Berapa liternya untuk setiap pesanan?</p>
+      </header>
+      <div class="card reveal" style="--d:.22s">
+        <div class="ctrl" style="margin-top:0">
+          <label for="m3-total">🪣 Total cat hijau yang dipesan <output><span id="m3-total-v">10</span> liter</output></label>
+          <input type="range" id="m3-total" min="1" max="25" value="10" aria-label="Total liter cat hijau">
+        </div>
+        <div class="meter" aria-hidden="true">
+          <div class="seg biru">🔵 Biru <span id="m3-biru">6</span> L</div>
+          <div class="seg kuning">🟡 Kuning <span id="m3-kuning">4</span> L</div>
+        </div>
+        <div class="strip">🧮 Biru = 3⁄5 × total = <b><span id="m3-biru2">6</span> L</b> · Kuning = 2⁄5 × total = <b><span id="m3-kuning2">4</span> L</b> — rasionya selalu 3 : 2!</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SLIDE 14 · REFLEKSI (clean) ═══════════ -->
+  <section class="slide clean" style="--accent:#334155" data-accent="#334155" data-grad="#475569,#334155" data-label="Penutup · Refleksi">
+    <div class="inner">
+      <header class="slide-head center">
+        <p class="eyebrow reveal">Penutup</p>
+        <h2 class="slide-title reveal" style="--d:.08s">Renungan Singkat</h2>
+      </header>
+      <div class="grid" style="gap:14px">
+        <div class="card reflect-item reveal" style="--d:.18s">
+          <span class="reflect-num">1</span>
+          <p>Rasio apa yang kamu temui <b>hari ini</b> — di dapur, layar HP, atau halaman olahraga?</p>
+        </div>
+        <div class="card reflect-item reveal" style="--d:.28s">
+          <span class="reflect-num">2</span>
+          <p>Mengapa <b>2 : 3</b> dan <b>4 : 6</b> disebut setara, padahal angkanya berbeda?</p>
+        </div>
+        <div class="card reflect-item reveal" style="--d:.38s">
+          <span class="reflect-num">3</span>
+          <p>Kapan perbandingan membantumu <b>mengambil keputusan</b> yang lebih adil?</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SLIDE 15 · TERIMA KASIH (clean) ═══════════ -->
+  <section class="slide clean" style="--accent:#1e293b" data-accent="#1e293b" data-grad="#1e293b,#334155" data-label="Penutup · Terima Kasih">
+    <div class="inner center">
+      <p class="eyebrow reveal">Selesai</p>
+      <h2 class="reveal" style="--d:.1s;font-size:var(--fs-hero);letter-spacing:-.03em;margin-top:14px">Terima Kasih 🙏</h2>
+      <p class="subtitle lead reveal" style="--d:.22s;margin-inline:auto">Selamat bereksperimen dengan rasio di dunia nyata — sampai jumpa di materi berikutnya!</p>
+      <button class="btn reveal" style="--d:.34s;margin-top:28px;background:#334155" type="button" data-goto="0">↺ Mulai Lagi</button>
+    </div>
+  </section>
+
+</main>
+
+<nav class="nav-bar" aria-label="Navigasi slide">
+  <button class="nav-btn" id="btn-prev" type="button" aria-label="Slide sebelumnya">←</button>
+  <button class="nav-btn" id="btn-next" type="button" aria-label="Slide berikutnya">→</button>
+</nav>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ══════════ NAVIGASI DECK ══════════ */
+  var slides = Array.prototype.slice.call(document.querySelectorAll(".slide"));
+  var chip = document.getElementById("chip");
+  var counter = document.getElementById("counter");
+  var bar = document.getElementById("progress");
+  var prevBtn = document.getElementById("btn-prev");
+  var nextBtn = document.getElementById("btn-next");
+  var cur = 0;
+
+  function go(n){
+    n = Math.max(0, Math.min(slides.length - 1, n));
+    if (n !== cur){
+      slides[cur].classList.remove("active");
+      slides[n].classList.add("active");
+      cur = n;
+      slides[n].scrollTop = 0;
+    }
+    paint();
+  }
+  function paint(){
+    var s = slides[cur];
+    var accent = s.getAttribute("data-accent") || "#4f46e5";
+    var grad = (s.getAttribute("data-grad") || "#7c3aed,#2563eb").split(",");
+    /* Chrome ada DI LUAR <section>, dorong --accent ke root */
+    document.documentElement.style.setProperty("--accent", accent);
+    bar.style.width = ((cur + 1) / slides.length * 100) + "%";
+    bar.style.background = "linear-gradient(90deg," + grad[0] + "," + grad[1] + ")";
+    chip.textContent = s.getAttribute("data-label") || "";
+    chip.style.color = accent;
+    chip.style.borderColor = accent + "40";
+    chip.style.background = accent + "12";
+    counter.textContent = (cur + 1) + " / " + slides.length;
+    prevBtn.disabled = (cur === 0);
+    nextBtn.disabled = (cur === slides.length - 1);
+    var h = "#" + (cur + 1);
+    if (location.hash !== h){ try { history.replaceState(null, "", h); } catch(e){} }
+  }
+  prevBtn.addEventListener("click", function(){ go(cur - 1); });
+  nextBtn.addEventListener("click", function(){ go(cur + 1); });
+
+  document.addEventListener("keydown", function(e){
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+    var t = e.target, tag = (t && t.tagName) || "";
+    /* Jangan curi tombol panah/spasi saat fokus di kontrol interaktif */
+    if (tag === "INPUT" || tag === "BUTTON" || tag === "TEXTAREA" || tag === "SELECT") return;
+    if (e.key === "ArrowRight" || e.key === "PageDown" || e.key === " "){ e.preventDefault(); go(cur + 1); }
+    else if (e.key === "ArrowLeft" || e.key === "PageUp"){ e.preventDefault(); go(cur - 1); }
+    else if (e.key === "Home"){ e.preventDefault(); go(0); }
+    else if (e.key === "End"){ e.preventDefault(); go(slides.length - 1); }
+  });
+
+  var tx = 0, ty = 0;
+  document.addEventListener("touchstart", function(e){ tx = e.touches[0].clientX; ty = e.touches[0].clientY; }, {passive:true});
+  document.addEventListener("touchend", function(e){
+    var dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty;
+    if (Math.abs(dx) > 56 && Math.abs(dx) > Math.abs(dy)){ if (dx < 0) go(cur + 1); else go(cur - 1); }
+  }, {passive:true});
+
+  Array.prototype.forEach.call(document.querySelectorAll("[data-goto]"), function(el){
+    el.addEventListener("click", function(){ go(parseInt(el.getAttribute("data-goto"), 10) || 0); });
+    el.addEventListener("keydown", function(e){
+      if (e.key === "Enter" || e.key === " "){ e.preventDefault(); go(parseInt(el.getAttribute("data-goto"), 10) || 0); }
+    });
+  });
+
+  var start = parseInt(location.hash.replace("#", ""), 10);
+  if (!isNaN(start) && start >= 1 && start <= slides.length && start !== 1){
+    slides[0].classList.remove("active");
+    slides[start - 1].classList.add("active");
+    cur = start - 1;
+  }
+  paint();
+
+  /* ══════════ UTILITAS ══════════ */
+  function gcd(a, b){ a = Math.abs(a); b = Math.abs(b); while (b){ var t = b; b = a % b; a = t; } return a || 1; }
+  function fmt(x){
+    var r = Math.round(x * 10) / 10;
+    return (r % 1 === 0) ? String(r) : String(r).replace(".", ",");
+  }
+
+  /* ══════════ LAB 1 · STUDIO RASIO ══════════ */
+  var la = document.getElementById("lab-a"), lb = document.getElementById("lab-b");
+  function labUpdate(){
+    var a = parseInt(la.value, 10), b = parseInt(lb.value, 10);
+    var g = gcd(a, b);
+    document.getElementById("lab-av").textContent = a;
+    document.getElementById("lab-bv").textContent = b;
+    document.getElementById("bar-av").textContent = a;
+    document.getElementById("bar-bv").textContent = b;
+    document.getElementById("bar-a").style.height = (a / 12 * 100) + "%";
+    document.getElementById("bar-b").style.height = (b / 12 * 100) + "%";
+    document.getElementById("lab-ratio").textContent = a + " : " + b;
+    document.getElementById("lab-simple").textContent = (a / g) + " : " + (b / g);
+  }
+  la.addEventListener("input", labUpdate);
+  lb.addEventListener("input", labUpdate);
+  labUpdate();
+
+  /* ══════════ LAB 2 · MIXING WARNA ══════════ */
+  var mr = document.getElementById("mix-r"), mb = document.getElementById("mix-b");
+  var RED = [239, 68, 68], BLUE = [59, 130, 246];
+  function mixUpdate(){
+    var r = parseInt(mr.value, 10), b = parseInt(mb.value, 10);
+    var sum = r + b;
+    document.getElementById("mix-rv").textContent = r;
+    document.getElementById("mix-bv").textContent = b;
+    var sw = document.getElementById("swatch");
+    var verdict = document.getElementById("mix-verdict");
+    var note = document.getElementById("mix-note");
+    if (sum === 0){
+      sw.style.background = "#e2e8f0";
+      document.getElementById("mix-ratio").textContent = "—";
+      document.getElementById("mix-pct").textContent = "—";
+      verdict.textContent = "Kosong…";
+      note.textContent = "Geser salah satu slider untuk mulai mencampur.";
+      return;
+    }
+    var rw = r / sum, bw = b / sum;
+    var c = [
+      Math.round(RED[0] * rw + BLUE[0] * bw),
+      Math.round(RED[1] * rw + BLUE[1] * bw),
+      Math.round(RED[2] * rw + BLUE[2] * bw)
+    ];
+    sw.style.background = "rgb(" + c.join(",") + ")";
+    document.getElementById("mix-ratio").textContent = r + " : " + b;
+    document.getElementById("mix-pct").textContent =
+      Math.round(rw * 100) + "% : " + Math.round(bw * 100) + "%";
+    if (r === 0){ verdict.textContent = "Biru murni 💙"; note.textContent = "Tanpa merah sama sekali."; }
+    else if (b === 0){ verdict.textContent = "Merah murni ❤️"; note.textContent = "Tanpa biru sama sekali."; }
+    else if (r === b){ verdict.textContent = "Ungu seimbang 💜"; note.textContent = "Merah dan biru sama banyak."; }
+    else if (r > b){ verdict.textContent = "Ungu kemerahan 🍇"; note.textContent = "Merah lebih dominan (" + fmt(rw * 100) + "%)."; }
+    else { verdict.textContent = "Ungu kebiruan 🫐"; note.textContent = "Biru lebih dominan (" + fmt(bw * 100) + "%)."; }
+  }
+  mr.addEventListener("input", mixUpdate);
+  mb.addEventListener("input", mixUpdate);
+  mixUpdate();
+
+  /* ══════════ STEPPER LATIHAN (reveal bertahap) ══════════ */
+  Array.prototype.forEach.call(document.querySelectorAll(".stepper"), function(st){
+    var btn = st.querySelector(".step-btn");
+    var steps = st.querySelectorAll(".step");
+    var i = 0;
+    if (!btn || steps.length === 0) return;
+    btn.addEventListener("click", function(){
+      if (i < steps.length){
+        steps[i].classList.add("on");
+        i++;
+      }
+      if (i >= steps.length){
+        btn.textContent = "✓ Semua langkah sudah ditampilkan";
+        btn.disabled = true;
+      } else {
+        btn.textContent = "➜ Tampilkan langkah " + (i + 1);
+      }
+    });
+  });
+
+  /* ══════════ LATIHAN 2 · PERIKSA JAWABAN ══════════ */
+  var ex2In = document.getElementById("ex2-input");
+  var ex2Btn = document.getElementById("ex2-check");
+  var ex2Fb = document.getElementById("ex2-fb");
+  function ex2Check(){
+    var v = parseInt(String(ex2In.value).replace(/[^0-9]/g, ""), 10);
+    ex2Fb.hidden = false;
+    if (isNaN(v)){
+      ex2Fb.className = "feedback no";
+      ex2Fb.textContent = "⚠️ Ketik dulu jawabanmu dengan angka, ya!";
+    } else if (v === 32000){
+      ex2Fb.className = "feedback ok";
+      ex2Fb.textContent = "🎉 Benar sekali! 8 × Rp4.000 = Rp32.000";
+    } else {
+      ex2Fb.className = "feedback no";
+      ex2Fb.textContent = "❌ Belum tepat. Petunjuk: cari dulu harga 1 buku, lalu buka solusinya.";
+    }
+  }
+  ex2Btn.addEventListener("click", ex2Check);
+  ex2In.addEventListener("keydown", function(e){ if (e.key === "Enter") ex2Check(); });
+
+  /* ══════════ MISI 1 · SKALA RESEP ══════════ */
+  var mp = document.getElementById("mis-porsi");
+  function misi1(){
+    var p = parseInt(mp.value, 10);
+    document.getElementById("mis-porsi-v").textContent = p;
+    document.getElementById("m1-tepung").textContent = 50 * p;
+    document.getElementById("m1-susu").textContent = 60 * p;
+    document.getElementById("m1-gula").textContent = 10 * p;
+    document.getElementById("m1-telur").textContent = p / 2;
+  }
+  mp.addEventListener("input", misi1);
+  misi1();
+
+  /* ══════════ MISI 2 · PETA & SKALA ══════════ */
+  var mc = document.getElementById("m2-cm");
+  function misi2(){
+    var cm = parseInt(mc.value, 10);
+    var km = cm * 5;
+    document.getElementById("m2-cm-v").textContent = cm;
+    document.getElementById("m2-cm-eq").textContent = cm;
+    document.getElementById("m2-km").textContent = km.toLocaleString("id-ID");
+    document.getElementById("m2-fill").style.width = (cm / 24 * 100) + "%";
+  }
+  mc.addEventListener("input", misi2);
+  misi2();
+
+  /* ══════════ MISI 3 · CAMPURAN CAT ══════════ */
+  var mt = document.getElementById("m3-total");
+  function misi3(){
+    var t = parseInt(mt.value, 10);
+    var biru = t * 3 / 5, kuning = t * 2 / 5;
+    document.getElementById("m3-total-v").textContent = t;
+    document.getElementById("m3-biru").textContent = fmt(biru);
+    document.getElementById("m3-kuning").textContent = fmt(kuning);
+    document.getElementById("m3-biru2").textContent = fmt(biru);
+    document.getElementById("m3-kuning2").textContent = fmt(kuning);
+  }
+  mt.addEventListener("input", misi3);
+  misi3();
+})();
+</script>
+</body>
+</html>
