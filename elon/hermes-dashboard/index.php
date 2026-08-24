@@ -5,7 +5,7 @@
  */
 
 // Configuration
-define('HERMES_API_URL', 'http://localhost:9119');
+require_once 'config.php';
 define('DATA_DIR', __DIR__ . '/data');
 define('SESSION_LIFETIME', 1800); // 30 minutes
 
@@ -247,7 +247,7 @@ include 'includes/header.php';
 </div>
 
 <script>
-const HERMES_API = '<?= HERMES_API_URL ?>';
+const HERMES_API = '<?= HERMES_API_URL ?? "http://localhost:9119" ?>';
 
 async function loadAgents() {
     const response = await fetch('api/agents.php');
