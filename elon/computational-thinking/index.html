@@ -1,0 +1,1533 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computational Thinking - Aplikasi Pembelajaran Interaktif</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-base: #09090b;
+            --dark-surface: #18181b;
+            --dark-border: #27272a;
+            --light-base: #fafafa;
+            --light-card: #ffffff;
+            --light-border: #e4e4e7;
+            --accent-orange: #f97316;
+            --accent-teal: #14b8a6;
+            --text-primary: #18181b;
+            --text-muted: #52525b;
+        }
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: var(--light-base);
+        }
+        
+        .app-layout {
+            display: flex;
+            height: 100vh;
+            width: 100vw;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            width: 300px;
+            background: var(--dark-base);
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid var(--dark-border);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 100;
+        }
+        
+        .sidebar-header {
+            padding: 24px 20px;
+            background: var(--dark-surface);
+            border-bottom: 1px solid var(--dark-border);
+        }
+        
+        .sidebar-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent-orange), #fb923c);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo-text {
+            color: #f4f4f5;
+            font-size: 18px;
+            font-weight: 700;
+        }
+        
+        .sidebar-nav {
+            flex: 1;
+            overflow-y: auto;
+            padding: 16px 12px;
+        }
+        
+        .nav-group {
+            margin-bottom: 8px;
+        }
+        
+        .nav-group-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 12px;
+            color: #71717a;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+        
+        .nav-group-header:hover {
+            background: rgba(255,255,255,0.05);
+            color: #a1a1aa;
+        }
+        
+        .nav-group-content {
+            padding-left: 8px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .nav-group.open .nav-group-content {
+            max-height: 500px;
+        }
+        
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 12px;
+            color: #a1a1aa;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border-left: 3px solid transparent;
+        }
+        
+        .nav-item:hover {
+            background: rgba(255,255,255,0.05);
+            color: #f4f4f5;
+        }
+        
+        .nav-item.active {
+            background: rgba(249, 115, 22, 0.1);
+            color: var(--accent-orange);
+            border-left-color: var(--accent-orange);
+        }
+        
+        .nav-item i {
+            width: 18px;
+            height: 18px;
+        }
+        
+        /* Main Workspace */
+        .workspace {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: var(--light-base);
+            overflow: hidden;
+        }
+        
+        .window-header {
+            height: 56px;
+            background: var(--dark-surface);
+            border-bottom: 1px solid var(--dark-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+        }
+        
+        .window-title {
+            color: #f4f4f5;
+            font-size: 15px;
+            font-weight: 600;
+        }
+        
+        .window-controls {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .window-btn {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #3f3f46;
+        }
+        
+        .content-area {
+            flex: 1;
+            overflow-y: auto;
+            padding: 32px;
+            scroll-behavior: smooth;
+        }
+        
+        .content-area::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .content-area::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        
+        .content-area::-webkit-scrollbar-thumb {
+            background: #d4d4d8;
+            border-radius: 4px;
+        }
+        
+        .content-area::-webkit-scrollbar-thumb:hover {
+            background: #a1a1aa;
+        }
+        
+        /* Slide Container */
+        .slide-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .slide {
+            display: none;
+            animation: slideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .slide.active {
+            display: block;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Desktop Card */
+        .desktop-card {
+            background: var(--light-card);
+            border: 1px solid var(--light-border);
+            border-radius: 24px;
+            box-shadow: 0 12px 30px -5px rgba(0,0,0,0.05);
+            padding: 32px;
+            margin-bottom: 24px;
+            transition: all 0.3s;
+        }
+        
+        .desktop-card:hover {
+            border-color: rgba(249, 115, 22, 0.3);
+            box-shadow: 0 20px 40px -10px rgba(249, 115, 22, 0.1);
+        }
+        
+        /* Typography */
+        .section-heading {
+            font-size: clamp(28px, 4vw, 48px);
+            font-weight: 800;
+            color: var(--text-primary);
+            line-height: 1.2;
+            margin-bottom: 24px;
+        }
+        
+        .text-orange {
+            color: var(--accent-orange);
+        }
+        
+        .body-text {
+            font-size: clamp(16px, 2vw, 20px);
+            line-height: 1.8;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+        
+        /* FAB Buttons */
+        .fab-container {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            display: flex;
+            gap: 12px;
+            z-index: 50;
+        }
+        
+        .fab-btn {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: white;
+            border: 2px solid var(--light-border);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            color: var(--text-primary);
+        }
+        
+        .fab-btn:hover {
+            background: var(--accent-orange);
+            border-color: var(--accent-orange);
+            color: white;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(249, 115, 22, 0.3);
+        }
+        
+        .fab-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .fab-btn i {
+            width: 24px;
+            height: 24px;
+        }
+        
+        /* Progress Bar */
+        .progress-bar {
+            height: 4px;
+            background: var(--light-border);
+            border-radius: 2px;
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-orange), #fb923c);
+            border-radius: 2px;
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Interactive Elements */
+        .interactive-box {
+            background: var(--light-base);
+            border: 2px dashed var(--light-border);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 16px 0;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .interactive-box:hover {
+            border-color: var(--accent-orange);
+            background: rgba(249, 115, 22, 0.05);
+        }
+        
+        .interactive-box.selected {
+            border-color: var(--accent-orange);
+            background: rgba(249, 115, 22, 0.1);
+            border-style: solid;
+        }
+        
+        .interactive-box.correct {
+            border-color: var(--accent-teal);
+            background: rgba(20, 184, 166, 0.1);
+            border-style: solid;
+        }
+        
+        /* Grid for Pattern Lab */
+        .pattern-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            max-width: 400px;
+            margin: 20px auto;
+        }
+        
+        .pattern-cell {
+            aspect-ratio: 1;
+            background: white;
+            border: 2px solid var(--light-border);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .pattern-cell:hover {
+            border-color: var(--accent-orange);
+            transform: scale(1.05);
+        }
+        
+        .pattern-cell.matched {
+            background: var(--accent-teal);
+            border-color: var(--accent-teal);
+            color: white;
+        }
+        
+        /* Quiz Styles */
+        .quiz-option {
+            display: block;
+            width: 100%;
+            padding: 16px 20px;
+            margin: 12px 0;
+            background: white;
+            border: 2px solid var(--light-border);
+            border-radius: 16px;
+            text-align: left;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .quiz-option:hover {
+            border-color: var(--accent-orange);
+            background: rgba(249, 115, 22, 0.05);
+        }
+        
+        .quiz-option.selected {
+            border-color: var(--accent-orange);
+            background: rgba(249, 115, 22, 0.1);
+        }
+        
+        .quiz-option.correct {
+            border-color: var(--accent-teal);
+            background: rgba(20, 184, 166, 0.1);
+        }
+        
+        .quiz-option.wrong {
+            border-color: #ef4444;
+            background: rgba(239, 68, 68, 0.1);
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                position: fixed;
+                left: 0;
+                top: 0;
+                height: 100vh;
+                transform: translateX(-100%);
+            }
+            
+            .sidebar.open {
+                transform: translateX(0);
+                box-shadow: 10px 0 30px rgba(0,0,0,0.5);
+            }
+            
+            .content-area {
+                padding: 20px;
+            }
+            
+            .fab-container {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .fab-btn {
+                width: 48px;
+                height: 48px;
+            }
+            
+            .pattern-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        /* Step Ordering */
+        .step-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .step-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px;
+            margin: 8px 0;
+            background: white;
+            border: 2px solid var(--light-border);
+            border-radius: 12px;
+            cursor: grab;
+            transition: all 0.2s;
+        }
+        
+        .step-item:hover {
+            border-color: var(--accent-orange);
+        }
+        
+        .step-item.dragging {
+            opacity: 0.5;
+            cursor: grabbing;
+        }
+        
+        .step-number {
+            width: 32px;
+            height: 32px;
+            background: var(--accent-orange);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+        
+        /* Score Display */
+        .score-display {
+            text-align: center;
+            padding: 40px;
+        }
+        
+        .score-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-orange), #fb923c);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            color: white;
+            font-size: 36px;
+            font-weight: 800;
+        }
+        
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            color: #f4f4f5;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <div class="logo-icon">
+                        <i data-lucide="brain" class="text-white" style="width: 24px; height: 24px;"></i>
+                    </div>
+                    <span class="logo-text">Computational<br>Thinking</span>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <div class="nav-group open">
+                    <div class="nav-group-header" onclick="toggleGroup(this)">
+                        <span>Materi Dasar</span>
+                        <i data-lucide="chevron-down" style="width: 16px; height: 16px;"></i>
+                    </div>
+                    <div class="nav-group-content">
+                        <div class="nav-item active" onclick="goToSlide(0)" data-slide="0">
+                            <i data-lucide="home"></i>
+                            <span>Pengenalan</span>
+                        </div>
+                        <div class="nav-item" onclick="goToSlide(1)" data-slide="1">
+                            <i data-lucide="split"></i>
+                            <span>Dekomposisi</span>
+                        </div>
+                        <div class="nav-item" onclick="goToSlide(2)" data-slide="2">
+                            <i data-lucide="layers"></i>
+                            <span>Pengenalan Pola</span>
+                        </div>
+                        <div class="nav-item" onclick="goToSlide(3)" data-slide="3">
+                            <i data-lucide="filter"></i>
+                            <span>Abstraksi</span>
+                        </div>
+                        <div class="nav-item" onclick="goToSlide(4)" data-slide="4">
+                            <i data-lucide="list-ordered"></i>
+                            <span>Desain Algoritma</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="nav-group open">
+                    <div class="nav-group-header" onclick="toggleGroup(this)">
+                        <span>Lab Interaktif</span>
+                        <i data-lucide="chevron-down" style="width: 16px; height: 16px;"></i>
+                    </div>
+                    <div class="nav-group-content">
+                        <div class="nav-item" onclick="goToSlide(5)" data-slide="5">
+                            <i data-lucide="puzzle"></i>
+                            <span>Lab: Dekomposisi</span>
+                        </div>
+                        <div class="nav-item" onclick="goToSlide(6)" data-slide="6">
+                            <i data-lucide="grid-3x3"></i>
+                            <span>Lab: Pola</span>
+                        </div>
+                        <div class="nav-item" onclick="goToSlide(7)" data-slide="7">
+                            <i data-lucide="minimize-2"></i>
+                            <span>Lab: Abstraksi</span>
+                        </div>
+                        <div class="nav-item" onclick="goToSlide(8)" data-slide="8">
+                            <i data-lucide="shuffle"></i>
+                            <span>Lab: Algoritma</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="nav-group">
+                    <div class="nav-group-header" onclick="toggleGroup(this)">
+                        <span>Evaluasi</span>
+                        <i data-lucide="chevron-down" style="width: 16px; height: 16px;"></i>
+                    </div>
+                    <div class="nav-group-content">
+                        <div class="nav-item" onclick="goToSlide(9)" data-slide="9">
+                            <i data-lucide="check-circle"></i>
+                            <span>Kuis Penutup</span>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        
+        <!-- Main Workspace -->
+        <main class="workspace">
+            <header class="window-header">
+                <div class="flex items-center gap-4">
+                    <button class="hamburger" onclick="toggleSidebar()">
+                        <i data-lucide="menu" style="width: 24px; height: 24px;"></i>
+                    </button>
+                    <span class="window-title" id="windowTitle">Pengenalan Computational Thinking</span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="flex items-center gap-2 text-sm text-gray-400">
+                        <span id="slideCounter">01 / 10</span>
+                    </div>
+                    <div class="window-controls">
+                        <div class="window-btn" style="background: #ef4444;"></div>
+                        <div class="window-btn" style="background: #eab308;"></div>
+                        <div class="window-btn" style="background: #22c55e;"></div>
+                    </div>
+                </div>
+            </header>
+            
+            <div class="content-area" id="contentArea">
+                <div class="slide-container">
+                    <!-- Slide 1: Pengenalan -->
+                    <div class="slide active" id="slide-0">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 10%;"></div>
+                        </div>
+                        
+                        <div class="desktop-card">
+                            <h1 class="section-heading">
+                                Apa itu <span class="text-orange">Computational Thinking</span>?
+                            </h1>
+                            <p class="body-text mb-6">
+                                Computational Thinking adalah cara berpikir untuk menyelesaikan masalah secara sistematis, 
+                                seperti yang dilakukan oleh komputer. Ini bukan hanya untuk programmer, tapi keterampilan 
+                                yang berguna untuk semua orang di era digital.
+                            </p>
+                            
+                            <div class="grid grid-cols-2 gap-4 mt-8">
+                                <div class="interactive-box text-center">
+                                    <i data-lucide="cpu" style="width: 40px; height: 40px; color: var(--accent-orange); margin: 0 auto 12px;"></i>
+                                    <h3 class="font-bold text-lg mb-2">Problem Solving</h3>
+                                    <p class="text-sm text-gray-600">Menyelesaikan masalah kompleks dengan langkah sederhana</p>
+                                </div>
+                                <div class="interactive-box text-center">
+                                    <i data-lucide="zap" style="width: 40px; height: 40px; color: var(--accent-teal); margin: 0 auto 12px;"></i>
+                                    <h3 class="font-bold text-lg mb-2">Efisiensi</h3>
+                                    <p class="text-sm text-gray-600">Mencari cara paling efektif dan efisien</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="desktop-card">
+                            <h2 class="text-2xl font-bold mb-4">4 Pilar Computational Thinking</h2>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="flex items-start gap-3 p-4 bg-orange-50 rounded-2xl">
+                                    <span class="text-3xl font-bold text-orange-500">01</span>
+                                    <div>
+                                        <h3 class="font-bold">Dekomposisi</h3>
+                                        <p class="text-sm text-gray-600">Memecah masalah besar menjadi bagian kecil</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3 p-4 bg-teal-50 rounded-2xl">
+                                    <span class="text-3xl font-bold text-teal-500">02</span>
+                                    <div>
+                                        <h3 class="font-bold">Pengenalan Pola</h3>
+                                        <p class="text-sm text-gray-600">Mengidentifikasi kesamaan atau pola</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3 p-4 bg-purple-50 rounded-2xl">
+                                    <span class="text-3xl font-bold text-purple-500">03</span>
+                                    <div>
+                                        <h3 class="font-bold">Abstraksi</h3>
+                                        <p class="text-sm text-gray-600">Fokus pada informasi penting, abaikan yang tidak perlu</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3 p-4 bg-blue-50 rounded-2xl">
+                                    <span class="text-3xl font-bold text-blue-500">04</span>
+                                    <div>
+                                        <h3 class="font-bold">Algoritma</h3>
+                                        <p class="text-sm text-gray-600">Membuat langkah-langkah solusi</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 2: Dekomposisi -->
+                    <div class="slide" id="slide-1">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 20%;"></div>
+                        </div>
+                        
+                        <div class="desktop-card">
+                            <h1 class="section-heading">
+                                <span class="text-orange">Dekomposisi</span>: Memecah Masalah
+                            </h1>
+                            <p class="body-text mb-6">
+                                Dekomposisi adalah teknik memecah masalah kompleks menjadi bagian-bagian kecil yang lebih 
+                                mudah dikelola. Bayangkan kamu ingin membangun rumah — kamu akan memecahnya menjadi: 
+                                pondasi, dinding, atap, instalasi listrik, dan lain sebagainya.
+                            </p>
+                            
+                            <div class="bg-gray-50 rounded-2xl p-6">
+                                <h3 class="font-bold mb-4">Contoh: Merencanakan Acara Ulang Tahun</h3>
+                                <div class="space-y-3">
+                                    <div class="flex items-center gap-3 p-3 bg-white rounded-xl">
+                                        <i data-lucide="circle" style="width: 16px; height: 16px; color: var(--accent-orange);"></i>
+                                        <span class="font-medium">Merencanakan tema & konsep</span>
+                                    </div>
+                                    <div class="flex items-center gap-3 p-3 bg-white rounded-xl">
+                                        <i data-lucide="circle" style="width: 16px; height: 16px; color: var(--accent-orange);"></i>
+                                        <span class="font-medium">Menyiapkan daftar tamu</span>
+                                    </div>
+                                    <div class="flex items-center gap-3 p-3 bg-white rounded-xl">
+                                        <i data-lucide="circle" style="width: 16px; height: 16px; color: var(--accent-orange);"></i>
+                                        <span class="font-medium"> Memesan kue & makanan</span>
+                                    </div>
+                                    <div class="flex items-center gap-3 p-3 bg-white rounded-xl">
+                                        <i data-lucide="circle" style="width: 16px; height: 16px; color: var(--accent-orange);"></i>
+                                        <span class="font-medium">Menyiapkan dekorasi</span>
+                                    </div>
+                                    <div class="flex items-center gap-3 p-3 bg-white rounded-xl">
+                                        <i data-lucide="circle" style="width: 16px; height: 16px; color: var(--accent-orange);"></i>
+                                        <span class="font-medium">Mengatur acara & hiburan</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 3: Pengenalan Pola -->
+                    <div class="slide" id="slide-2">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 30%;"></div>
+                        </div>
+                        
+                        <div class="desktop-card">
+                            <h1 class="section-heading">
+                                <span class="text-orange">Pengenalan Pola</span>: Mencari Kesamaan
+                            </h1>
+                            <p class="body-text mb-6">
+                                Pengenalan pola adalah kemampuan mengenali kesamaan, kecenderungan, atau pola berulang 
+                                dari masalah yang berbeda. Dengan mengenali pola, kita bisa menggunakan solusi yang sudah 
+                                ada untuk masalah baru.
+                            </p>
+                            
+                            <div class="grid grid-cols-3 gap-4">
+                                <div class="text-center p-4 bg-orange-50 rounded-2xl">
+                                    <div class="text-4xl mb-2">🌅🌇🌆🌅🌇</div>
+                                    <p class="text-sm font-medium">Pola Warna Senja</p>
+                                </div>
+                                <div class="text-center p-4 bg-teal-50 rounded-2xl">
+                                    <div class="text-4xl mb-2">🍎🍊🍋🍎🍊</div>
+                                    <p class="text-sm font-medium">Pola Buah</p>
+                                </div>
+                                <div class="text-center p-4 bg-purple-50 rounded-2xl">
+                                    <div class="text-4xl mb-2">1️⃣2️⃣3️⃣1️⃣2️⃣</div>
+                                    <p class="text-sm font-medium">Pola Angka</p>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-6 p-4 bg-yellow-50 rounded-2xl">
+                                <h3 class="font-bold mb-2">💡 Mengapa Penting?</h3>
+                                <p class="text-sm text-gray-600">
+                                    Dengan mengenali pola, kita tidak perlu memikirkan solusi dari nol setiap kali. 
+                                    Kita bisa menggunakan pengetahuan sebelumnya untuk mempercepat proses pemecahan masalah.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 4: Abstraksi -->
+                    <div class="slide" id="slide-3">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 40%;"></div>
+                        </div>
+                        
+                        <div class="desktop-card">
+                            <h1 class="section-heading">
+                                <span class="text-orange">Abstraksi</span>: Fokus pada yang Penting
+                            </h1>
+                            <p class="body-text mb-6">
+                                Abstraksi adalah kemampuan memfokuskan pada informasi penting saja, 
+                                sambil mengabaikan detail yang tidak relevan. Seperti peta — kita tidak melihat 
+                                setiap pohon, tapi hanya jalan utama.
+                            </p>
+                            
+                            <div class="grid grid-cols-2 gap-6">
+                                <div class="p-4 bg-gray-100 rounded-2xl">
+                                    <h3 class="font-bold mb-3">❌ Terlalu Banyak Detail</h3>
+                                    <ul class="text-sm text-gray-600 space-y-1">
+                                        <li>• Nama lengkap: Ahmad Fauzi</li>
+                                        <li>• Tanggal lahir: 15 Maret 1990</li>
+                                        <li>• Tinggi: 170 cm</li>
+                                        <li>• Berat: 65 kg</li>
+                                        <li>• Warna mata: Coklat</li>
+                                        <li>• Dan 50 detail lainnya...</li>
+                                    </ul>
+                                </div>
+                                <div class="p-4 bg-orange-50 rounded-2xl">
+                                    <h3 class="font-bold mb-3">✅ Abstraksi yang Tepat</h3>
+                                    <ul class="text-sm text-gray-600 space-y-1">
+                                        <li>• Nama: Ahmad Fauzi</li>
+                                        <li>• Usia: 34 tahun</li>
+                                        <li>• Asal: Jakarta</li>
+                                        <li>• Pekerjaan: Guru</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 5: Desain Algoritma -->
+                    <div class="slide" id="slide-4">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 50%;"></div>
+                        </div>
+                        
+                        <div class="desktop-card">
+                            <h1 class="section-heading">
+                                <span class="text-orange">Desain Algoritma</span>: Langkah-Langkah Solusi
+                            </h1>
+                            <p class="body-text mb-6">
+                                Algoritma adalah serangkaian langkah-langkah urutan yang jelas dan logis untuk menyelesaikan 
+                                suatu masalah. Setiap langkah harus spesifik dan dapat diukur.
+                            </p>
+                            
+                            <div class="bg-gray-50 rounded-2xl p-6">
+                                <h3 class="font-bold mb-4">Contoh: Algoritma Membuat Teh manis</h3>
+                                <ol class="space-y-3">
+                                    <li class="flex items-start gap-3">
+                                        <span class="step-number flex-shrink-0">1</span>
+                                        <span class="pt-1">Siapkan gelas, teh, gula, dan air panas</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="step-number flex-shrink-0">2</span>
+                                        <span class="pt-1">Masukkan sachet teh ke dalam gelas</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="step-number flex-shrink-0">3</span>
+                                        <span class="pt-1">Tuang air panas secukupnya</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="step-number flex-shrink-0">4</span>
+                                        <span class="pt-1">Tambahkan gula sesuai selera</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="step-number flex-shrink-0">5</span>
+                                        <span class="pt-1">Aduk hingga larut</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="step-number flex-shrink-0">6</span>
+                                        <span class="pt-1">Teh manis siap diminum</span>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 6: Lab Dekomposisi -->
+                    <div class="slide" id="slide-5">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 60%;"></div>
+                        </div>
+                        
+                        <div class="desktop-card">
+                            <h1 class="section-heading">
+                                🧪 Lab: <span class="text-orange">Dekomposisi</span>
+                            </h1>
+                            <p class="body-text mb-6">
+                                Pecahkan masalah "Membangun Aplikasi Mobile" menjadi bagian-bagian kecil! 
+                                Klik pada kotak untuk menandai bagian yang sudah kamu identifikasi.
+                            </p>
+                            
+                            <div class="grid grid-cols-2 gap-4" id="decompGrid">
+                                <div class="interactive-box" onclick="toggleBox(this)">
+                                    <div class="font-bold mb-1">🎨 Desain UI/UX</div>
+                                    <div class="text-sm text-gray-500">Merancang tampilan aplikasi</div>
+                                </div>
+                                <div class="interactive-box" onclick="toggleBox(this)">
+                                    <div class="font-bold mb-1">💻 Backend Development</div>
+                                    <div class="text-sm text-gray-500">Server dan database</div>
+                                </div>
+                                <div class="interactive-box" onclick="toggleBox(this)">
+                                    <div class="font-bold mb-1">📱 Frontend Development</div>
+                                    <div class="text-sm text-gray-500">Kode aplikasi mobile</div>
+                                </div>
+                                <div class="interactive-box" onclick="toggleBox(this)">
+                                    <div class="font-bold mb-1">🧪 Testing</div>
+                                    <div class="text-sm text-gray-500">Uji coba aplikasi</div>
+                                </div>
+                                <div class="interactive-box" onclick="toggleBox(this)">
+                                    <div class="font-bold mb-1">🚀 Deployment</div>
+                                    <div class="text-sm text-gray-500">Publikasi ke store</div>
+                                </div>
+                                <div class="interactive-box" onclick="toggleBox(this)">
+                                    <div class="font-bold mb-1">📊 Marketing</div>
+                                    <div class="text-sm text-gray-500">Promosi aplikasi</div>
+                                </div>
+                            </div>
+                            
+                            <div id="decompFeedback" class="mt-4 p-4 rounded-xl hidden"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 7: Lab Pola -->
+                    <div class="slide" id="slide-6">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 70%;"></div>
+                        </div>
+                        
+                        <div class="desktop-card">
+                            <h1 class="section-heading">
+                                🧪 Lab: <span class="text-orange">Pengenalan Pola</span>
+                            </h1>
+                            <p class="body-text mb-6">
+                                Temukan pasangan yang sama! Klik dua kartu yang memiliki pola atau simbol yang sama.
+                            </p>
+                            
+                            <div class="pattern-grid" id="patternGrid">
+                                <div class="pattern-cell" onclick="flipCard(this)" data-value="🍎">🍎</div>
+                                <div class="pattern-cell" onclick="flipCard(this)" data-value="🍊">🍊</div>
+                                <div class="pattern-cell" onclick="flipCard(this)" data-value="🍋">🍋</div>
+                                <div class="pattern-cell" onclick="flipCard(this)" data-value="🍇">🍇</div>
+                                <div class="pattern-cell" onclick="flipCard(this)" data-value="🍎">🍎</div>
+                                <div class="pattern-cell" onclick="flipCard(this)" data-value="🍊">🍊</div>
+                                <div class="pattern-cell" onclick="flipCard(this)" data-value="🍋">🍋</div>
+                                <div class="pattern-cell" onclick="flipCard(this)" data-value="🍇">🍇</div>
+                                <div class="pattern-cell" onclick="flipCard(this)" data-value="🍌">🍌</div>
+                                <div class="pattern-cell" onclick="flipCard(this)" data-value="🍒">🍒</div>
+                                <div class="pattern-cell" onclick="flipCard(this)" data-value="🍌">🍌</div>
+                                <div class="pattern-cell" onclick="flipCard(this)" data-value="🍒">🍒</div>
+                            </div>
+                            
+                            <div id="patternScore" class="text-center mt-4 font-bold text-lg"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 8: Lab Abstraksi -->
+                    <div class="slide" id="slide-7">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 80%;"></div>
+                        </div>
+                        
+                        <div class="desktop-card">
+                            <h1 class="section-heading">
+                                🧪 Lab: <span class="text-orange">Abstraksi</span>
+                            </h1>
+                            <p class="body-text mb-6">
+                                Pilih informasi yang PENTING saja untuk menjawab pertanyaan: 
+                                "Apakah Ahmad bisa naik mobil bersama?"
+                            </p>
+                            
+                            <div class="mb-6 p-4 bg-gray-50 rounded-xl">
+                                <p class="font-bold mb-2">Data Lengkap:</p>
+                                <ul class="text-sm text-gray-600 space-y-1">
+                                    <li>• Nama: Ahmad Fauzi</li>
+                                    <li>• Tanggal lahir: 15 Maret 1990</li>
+                                    <li>• Tinggi: 170 cm</li>
+                                    <li>• Berat: 65 kg</li>
+                                    <li>• Warna mata: Coklat</li>
+                                    <li>• Hobi: Membaca</li>
+                                    <li>• Punya SIM C: Ya</li>
+                                    <li>• Umur: 34 tahun</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="space-y-3" id="abstrakOptions">
+                                <button class="quiz-option" onclick="selectAbstrak(this, true)">
+                                    Ahmad punya SIM C
+                                </button>
+                                <button class="quiz-option" onclick="selectAbstrak(this, false)">
+                                    Ahmad lahir pada bulan Maret
+                                </button>
+                                <button class="quiz-option" onclick="selectAbstrak(this, true)">
+                                    Ahmad berumur 34 tahun (dewasa)
+                                </button>
+                                <button class="quiz-option" onclick="selectAbstrak(this, false)">
+                                    Ahmad punya hobi membaca
+                                </button>
+                                <button class="quiz-option" onclick="selectAbstrak(this, true)">
+                                    Ahmad tinggi 170 cm
+                                </button>
+                            </div>
+                            
+                            <div id="abstrakFeedback" class="mt-4 p-4 rounded-xl hidden"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 9: Lab Algoritma -->
+                    <div class="slide" id="slide-8">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 90%;"></div>
+                        </div>
+                        
+                        <div class="desktop-card">
+                            <h1 class="section-heading">
+                                🧪 Lab: <span class="text-orange">Desain Algoritma</span>
+                            </h1>
+                            <p class="body-text mb-6">
+                                Susun langkah-langkah berikut menjadi algoritma yang benar untuk "Menyiram Tanaman":
+                            </p>
+                            
+                            <div class="space-y-3" id="algorithmSteps">
+                                <div class="step-item" draggable="true" data-correct="3">
+                                    <span class="step-number">?</span>
+                                    <span>Siram tanaman dengan air secukupnya</span>
+                                </div>
+                                <div class="step-item" draggable="true" data-correct="1">
+                                    <span class="step-number">?</span>
+                                    <span>Siapkan古eng dan air</span>
+                                </div>
+                                <div class="step-item" draggable="true" data-correct="2">
+                                    <span class="step-number">?</span>
+                                    <span>Cek kelembaban tanah</span>
+                                </div>
+                                <div class="step-item" draggable="true" data-correct="4">
+                                    <span class="step-number">?</span>
+                                    <span>Bersihkanรอบๆ tanaman</span>
+                                </div>
+                            </div>
+                            
+                            <button class="mt-6 px-6 py-3 bg-orange-500 text-white rounded-xl font-bold hover:bg-orange-600 transition" onclick="checkAlgorithm()">
+                                Periksa Urutan
+                            </button>
+                            
+                            <div id="algorithmFeedback" class="mt-4 p-4 rounded-xl hidden"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 10: Kuis -->
+                    <div class="slide" id="slide-9">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%;"></div>
+                        </div>
+                        
+                        <div class="desktop-card">
+                            <h1 class="section-heading">
+                                📝 <span class="text-orange">Kuis</span> Penutup
+                            </h1>
+                            <p class="body-text mb-6">
+                                Uji pemahamanmu tentang Computational Thinking!
+                            </p>
+                            
+                            <div id="quizContainer">
+                                <!-- Quiz questions will be loaded here -->
+                            </div>
+                            
+                            <div id="quizResult" class="hidden score-display">
+                                <div class="score-circle" id="scoreCircle">0</div>
+                                <h2 class="text-2xl font-bold mb-2">Kuis Selesai!</h2>
+                                <p class="text-gray-600 mb-6" id="scoreMessage"></p>
+                                <button class="px-8 py-3 bg-orange-500 text-white rounded-xl font-bold hover:bg-orange-600 transition" onclick="resetQuiz()">
+                                    Ulangi Kuis
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FAB Navigation -->
+            <div class="fab-container">
+                <button class="fab-btn" id="homeBtn" onclick="goToSlide(0)" title="Home">
+                    <i data-lucide="home"></i>
+                </button>
+                <button class="fab-btn" id="prevBtn" onclick="prevSlide()" title="Sebelumnya">
+                    <i data-lucide="chevron-left"></i>
+                </button>
+                <button class="fab-btn" id="nextBtn" onclick="nextSlide()" title="Selanjutnya">
+                    <i data-lucide="chevron-right"></i>
+                </button>
+            </div>
+        </main>
+    </div>
+    
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // State management
+        let currentSlide = 0;
+        const totalSlides = 10;
+        const slideTitles = [
+            'Pengenalan Computational Thinking',
+            'Dekomposisi: Memecah Masalah',
+            'Pengenalan Pola',
+            'Abstraksi: Fokus pada yang Penting',
+            'Desain Algoritma',
+            'Lab: Dekomposisi',
+            'Lab: Pengenalan Pola',
+            'Lab: Abstraksi',
+            'Lab: Desain Algoritma',
+            'Kuis Penutup'
+        ];
+        
+        // Quiz data
+        const quizData = [
+            {
+                question: 'Apa itu dekomposisi dalam Computational Thinking?',
+                options: [
+                    'Menggabungkan masalah menjadi lebih besar',
+                    'Memecah masalah besar menjadi bagian-bagian kecil',
+                    'Mengabaikan detail yang tidak penting',
+                    'Membuat langkah-langkah solusi'
+                ],
+                correct: 1
+            },
+            {
+                question: 'Pengenalan pola membantu kita untuk...',
+                options: [
+                    'Menghafal semua detail',
+                    'Membuat masalah menjadi lebih rumit',
+                    'Menggunakan solusi yang sudah ada untuk masalah baru',
+                    'Mengabaikan informasi penting'
+                ],
+                correct: 2
+            },
+            {
+                question: 'Abstraksi berarti...',
+                options: [
+                    'Fokus pada semua detail',
+                    'Memilih informasi penting dan mengabaikan yang tidak relevan',
+                    'Membuat masalah menjadi lebih kompleks',
+                    'Menghitung semua kemungkinan'
+                ],
+                correct: 1
+            },
+            {
+                question: 'Algoritma adalah...',
+                options: [
+                    'Langkah-langkah acak tanpa urutan',
+                    'Hanya untuk programmer komputer',
+                    'Serangkaian langkah urutan yang jelas untuk menyelesaikan masalah',
+                    'Cara membingungkan masalah'
+                ],
+                correct: 2
+            },
+            {
+                question: 'Manakah yang merupakan contoh dekomposisi?',
+                options: [
+                    'Membeli seluruh restoran sekaligus',
+                    'Memecah proyek menjadi: riset, desain,开发, testing',
+                    'Mengabaikan semua detail',
+                    'Membuat satu langkah besar tanpa rencana'
+                ],
+                correct: 1
+            }
+        ];
+        
+        let quizScore = 0;
+        let currentQuestion = 0;
+        let answeredQuestions = [];
+        
+        // Navigation functions
+        function goToSlide(index) {
+            if (index < 0 || index >= totalSlides) return;
+            
+            // Hide current slide
+            document.getElementById(`slide-${currentSlide}`).classList.remove('active');
+            
+            // Show new slide
+            currentSlide = index;
+            document.getElementById(`slide-${currentSlide}`).classList.add('active');
+            
+            // Update UI
+            updateNavigation();
+            updateWindowTitle();
+            updateSidebar();
+            
+            // Load quiz if on quiz slide
+            if (currentSlide === 9) {
+                loadQuiz();
+            }
+            
+            // Close mobile sidebar
+            if (window.innerWidth <= 768) {
+                document.getElementById('sidebar').classList.remove('open');
+            }
+            
+            // Scroll to top
+            document.getElementById('contentArea').scrollTop = 0;
+        }
+        
+        function nextSlide() {
+            goToSlide(currentSlide + 1);
+        }
+        
+        function prevSlide() {
+            goToSlide(currentSlide - 1);
+        }
+        
+        function updateNavigation() {
+            document.getElementById('prevBtn').disabled = currentSlide === 0;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+            document.getElementById('homeBtn').classList.toggle('disabled', currentSlide === 0);
+            document.getElementById('slideCounter').textContent = 
+                String(currentSlide + 1).padStart(2, '0') + ' / ' + String(totalSlides).padStart(2, '0');
+        }
+        
+        function updateWindowTitle() {
+            document.getElementById('windowTitle').textContent = slideTitles[currentSlide];
+        }
+        
+        function updateSidebar() {
+            document.querySelectorAll('.nav-item').forEach((item, index) => {
+                item.classList.toggle('active', index === currentSlide);
+            });
+        }
+        
+        function toggleGroup(header) {
+            const group = header.parentElement;
+            group.classList.toggle('open');
+            const icon = header.querySelector('i');
+            icon.style.transform = group.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0)';
+        }
+        
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('open');
+        }
+        
+        // Interactive lab functions
+        function toggleBox(element) {
+            element.classList.toggle('selected');
+            
+            // Check if all boxes are selected
+            const allBoxes = document.querySelectorAll('#decompGrid .interactive-box');
+            const selectedBoxes = document.querySelectorAll('#decompGrid .interactive-box.selected');
+            const feedback = document.getElementById('decompFeedback');
+            
+            if (selectedBoxes.length === allBoxes.length) {
+                feedback.textContent = '✅ Hebat! Kamu berhasil mengidentifikasi semua bagian dari pembangunan aplikasi!';
+                feedback.className = 'mt-4 p-4 rounded-xl bg-green-100 text-green-800';
+                feedback.classList.remove('hidden');
+            } else {
+                feedback.classList.add('hidden');
+            }
+        }
+        
+        // Pattern matching game
+        let flippedCards = [];
+        let matchedPairs = 0;
+        
+        function flipCard(card) {
+            if (card.classList.contains('matched') || flippedCards.length >= 2) return;
+            
+            card.classList.add('selected');
+            flippedCards.push(card);
+            
+            if (flippedCards.length === 2) {
+                setTimeout(checkMatch, 500);
+            }
+        }
+        
+        function checkMatch() {
+            const [card1, card2] = flippedCards;
+            
+            if (card1.dataset.value === card2.dataset.value) {
+                card1.classList.add('matched');
+                card2.classList.add('matched');
+                matchedPairs++;
+                
+                if (matchedPairs === 6) {
+                    document.getElementById('patternScore').textContent = '🎉 Selamat! Kamu menemukan semua pasangan!';
+                }
+            } else {
+                card1.classList.remove('selected');
+                card2.classList.remove('selected');
+            }
+            
+            flippedCards = [];
+        }
+        
+        // Abstraction lab
+        function selectAbstrak(btn, isImportant) {
+            btn.classList.add('selected');
+            
+            if (isImportant) {
+                btn.classList.add('correct');
+            } else {
+                btn.style.borderColor = '#ef4444';
+                btn.style.background = 'rgba(239, 68, 68, 0.1)';
+            }
+            
+            const feedback = document.getElementById('abstrakFeedback');
+            const selected = document.querySelectorAll('#abstrakOptions .quiz-option.selected');
+            
+            if (selected.length >= 3) {
+                feedback.textContent = '✅ Bagus! Kamu sudah memilih informasi yang relevan.';
+                feedback.className = 'mt-4 p-4 rounded-xl bg-green-100 text-green-800';
+                feedback.classList.remove('hidden');
+            }
+        }
+        
+        // Algorithm lab
+        let draggedItem = null;
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const steps = document.querySelectorAll('#algorithmSteps .step-item');
+            
+            steps.forEach(step => {
+                step.addEventListener('dragstart', function(e) {
+                    draggedItem = this;
+                    this.classList.add('dragging');
+                });
+                
+                step.addEventListener('dragend', function() {
+                    this.classList.remove('dragging');
+                    draggedItem = null;
+                    updateStepNumbers();
+                });
+                
+                step.addEventListener('dragover', function(e) {
+                    e.preventDefault();
+                    if (this !== draggedItem) {
+                        const rect = this.getBoundingClientRect();
+                        const midY = rect.top + rect.height / 2;
+                        if (e.clientY < midY) {
+                            this.parentNode.insertBefore(draggedItem, this);
+                        } else {
+                            this.parentNode.insertBefore(draggedItem, this.nextSibling);
+                        }
+                    }
+                });
+            });
+        });
+        
+        function updateStepNumbers() {
+            const steps = document.querySelectorAll('#algorithmSteps .step-item');
+            steps.forEach((step, index) => {
+                step.querySelector('.step-number').textContent = index + 1;
+            });
+        }
+        
+        function checkAlgorithm() {
+            const steps = document.querySelectorAll('#algorithmSteps .step-item');
+            let correct = 0;
+            
+            steps.forEach((step, index) => {
+                const correctOrder = parseInt(step.dataset.correct);
+                if (index + 1 === correctOrder) {
+                    correct++;
+                    step.style.borderColor = '#22c55e';
+                    step.style.background = 'rgba(34, 197, 94, 0.1)';
+                } else {
+                    step.style.borderColor = '#ef4444';
+                    step.style.background = 'rgba(239, 68, 68, 0.1)';
+                }
+            });
+            
+            const feedback = document.getElementById('algorithmFeedback');
+            if (correct === 4) {
+                feedback.textContent = '🎉 Sempurna! Urutan algoritma sudah benar!';
+                feedback.className = 'mt-4 p-4 rounded-xl bg-green-100 text-green-800';
+            } else {
+                feedback.textContent = `❌ Kamu benar ${correct} dari 4 langkah. Coba lagi!`;
+                feedback.className = 'mt-4 p-4 rounded-xl bg-red-100 text-red-800';
+            }
+            feedback.classList.remove('hidden');
+        }
+        
+        // Quiz functions
+        function loadQuiz() {
+            if (document.getElementById('quizContainer').children.length > 0) return;
+            
+            const container = document.getElementById('quizContainer');
+            
+            quizData.forEach((q, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'mb-8';
+                questionDiv.innerHTML = `
+                    <p class="font-bold text-lg mb-4">${index + 1}. ${q.question}</p>
+                    <div class="space-y-2">
+                        ${q.options.map((opt, optIndex) => `
+                            <button class="quiz-option" onclick="answerQuiz(${index}, ${optIndex}, this)">
+                                ${opt}
+                            </button>
+                        `).join('')}
+                    </div>
+                `;
+                container.appendChild(questionDiv);
+            });
+        }
+        
+        function answerQuiz(questionIndex, optionIndex, btn) {
+            if (answeredQuestions.includes(questionIndex)) return;
+            answeredQuestions.push(questionIndex);
+            
+            const question = quizData[questionIndex];
+            const buttons = btn.parentElement.querySelectorAll('.quiz-option');
+            
+            buttons.forEach((b, index) => {
+                b.disabled = true;
+                if (index === question.correct) {
+                    b.classList.add('correct');
+                } else if (index === optionIndex && index !== question.correct) {
+                    b.classList.add('wrong');
+                }
+            });
+            
+            if (optionIndex === question.correct) {
+                quizScore++;
+            }
+            
+            // Check if all answered
+            if (answeredQuestions.length === quizData.length) {
+                setTimeout(showQuizResult, 1000);
+            }
+        }
+        
+        function showQuizResult() {
+            document.getElementById('quizContainer').classList.add('hidden');
+            document.getElementById('quizResult').classList.remove('hidden');
+            
+            const percentage = Math.round((quizScore / quizData.length) * 100);
+            document.getElementById('scoreCircle').textContent = percentage + '%';
+            
+            let message = '';
+            if (percentage === 100) {
+                message = '🎉 Sempurna! Kamu menguasai Computational Thinking!';
+            } elif (percentage >= 80) {
+                message = '👏 Hebat! Pemahaman yang sangat baik!';
+            } elif (percentage >= 60) {
+                message = '👍 Bagus! Terus tingkatkan!';
+            } else {
+                message = '💪 Jangan menyerah! Coba pelajari lagi materinya.';
+            }
+            document.getElementById('scoreMessage').textContent = message;
+        }
+        
+        function resetQuiz() {
+            quizScore = 0;
+            currentQuestion = 0;
+            answeredQuestions = [];
+            
+            document.getElementById('quizContainer').innerHTML = '';
+            document.getElementById('quizContainer').classList.remove('hidden');
+            document.getElementById('quizResult').classList.add('hidden');
+            
+            loadQuiz();
+        }
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                prevSlide();
+            } else if (e.key === 'Home') {
+                goToSlide(0);
+            }
+        });
+        
+        // Touch swipe support
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        document.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+        
+        document.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+        
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+            
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    nextSlide();
+                } else {
+                    prevSlide();
+                }
+            }
+        }
+        
+        // Hash linking
+        function updateHash() {
+            history.replaceState(null, null, `#slide-${currentSlide}`);
+        }
+        
+        function handleHash() {
+            const hash = window.location.hash;
+            if (hash) {
+                const slideNum = parseInt(hash.replace('#slide-', ''));
+                if (!isNaN(slideNum) && slideNum >= 0 && slideNum < totalSlides) {
+                    goToSlide(slideNum);
+                }
+            }
+        }
+        
+        // Override goToSlide to update hash
+        const originalGoToSlide = goToSlide;
+        goToSlide = function(index) {
+            originalGoToSlide(index);
+            updateHash();
+        };
+        
+        // Initialize
+        handleHash();
+        updateNavigation();
+        updateWindowTitle();
+    </script>
+</body>
+</html>
