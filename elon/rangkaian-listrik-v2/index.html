@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rangkaian Listrik v2 — EduApp2 · Desktop Learning App</title>
-<meta name="description" content="EduApp2 — aplikasi belajar Rangkaian Listrik (Seri & Paralel) bergaya desktop dengan sidebar, lab interaktif, dan quiz.">
+<title>Rangkaian Listrik v2 — Desktop Learning App</title>
+<meta name="description" content="Aplikasi belajar Rangkaian Listrik (Seri & Paralel) bergaya desktop dengan sidebar, lab interaktif, dan quiz.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💡</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
-   EDUAPP2 · DESIGN TOKENS — desktop app style
+   DESIGN TOKENS — desktop app style
    ============================================================ */
 :root{
   /* sidebar */
@@ -20,28 +20,30 @@
   --sidebar-active:#f97316;
   --sidebar-hover:#1e293b;
   /* topbar */
-  --topbar-bg:#ffffff;
-  --topbar-border:#e2e8f0;
+  --topbar-bg:#0f172a;
+  --topbar-border:#1e293b;
   /* content */
-  --content-bg:#f1f5f9;
-  --card-bg:#ffffff;
-  --card-border:#e2e8f0;
+  --content-bg:#0f172a;
+  --card-bg:#1e293b;
+  --card-border:#334155;
+  --frame-bg:#0f172a;
   /* text */
-  --text-primary:#0f172a;
-  --text-secondary:#475569;
-  --text-muted:#94a3b8;
+  --text-primary:#f8fafc;
+  --text-secondary:#94a3b8;
+  --text-muted:#64748b;
   /* accent */
   --accent:#f97316;
-  --accent-hover:#ea580c;
+  --accent-hover:#fb923c;
   /* semantic */
-  --ok:#16a34a;--ok-bg:#dcfce7;--ok-ink:#14532d;
-  --bad:#dc2626;--bad-bg:#fee2e2;--bad-ink:#7f1d1d;
+  --ok:#22c55e;--ok-bg:rgba(34,197,94,.15);--ok-ink:#86efac;
+  --bad:#ef4444;--bad-bg:rgba(239,68,68,.15);--bad-ink:#fca5a5;
   --yellow:#facc15;
-  --blue:#2563eb;
-  --tint:#fff7ed;
-  --sh:0 1px 2px rgba(15,23,42,.06),0 4px 12px -4px rgba(15,23,42,.08);
-  --sh-lift:0 12px 24px -8px rgba(15,23,42,.22),0 4px 8px -4px rgba(15,23,42,.12);
-  /* typography — small modern desktop scale (12–28px) */
+  --blue:#3b82f6;
+  --tint:rgba(249,115,22,.1);
+  --sh:0 1px 2px rgba(0,0,0,.3),0 4px 12px -4px rgba(0,0,0,.4);
+  --sh-lift:0 20px 40px -12px rgba(0,0,0,.5),0 8px 16px -8px rgba(0,0,0,.3);
+  --sh-window:0 25px 60px -12px rgba(0,0,0,.6),0 12px 24px -8px rgba(0,0,0,.4);
+  /* typography */
   --t-topbar:14px;
   --t-h2:clamp(22px,2.1vw,26px);
   --t-h3:17px;
@@ -63,21 +65,22 @@ button,input{font-family:inherit}
 ::selection{background:rgba(249,115,22,.25)}
 
 /* ============================================================
-   TOPBAR — 56px, minimal, white
+   TOPBAR — dark theme, cohesive with sidebar
    ============================================================ */
 .topbar{
   position:fixed;top:0;left:0;right:0;height:var(--topbar-h);z-index:60;
   background:var(--topbar-bg);border-bottom:1px solid var(--topbar-border);
   display:flex;align-items:center;gap:14px;padding:0 16px;
+  box-shadow:0 1px 0 rgba(255,255,255,.05);
 }
 .tb-btn{
-  flex:0 0 auto;width:36px;height:36px;border-radius:9px;border:1px solid var(--topbar-border);
-  background:#fff;color:var(--text-secondary);cursor:pointer;
+  flex:0 0 auto;width:36px;height:36px;border-radius:8px;border:1px solid var(--topbar-border);
+  background:var(--card-bg);color:var(--text-secondary);cursor:pointer;
   display:flex;align-items:center;justify-content:center;
   transition:background .18s,color .18s,border-color .18s,transform .18s;
 }
 .tb-btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-.tb-btn:hover{background:#f1f5f9;color:var(--accent-hover);border-color:#fdba74;transform:translateY(-1px)}
+.tb-btn:hover{background:var(--sidebar-hover);color:var(--accent-hover);border-color:var(--accent);transform:translateY(-1px)}
 .tb-btn:active{transform:scale(.94)}
 .tb-title{
   font-size:var(--t-topbar);font-weight:800;letter-spacing:.08em;text-transform:uppercase;
@@ -85,16 +88,16 @@ button,input{font-family:inherit}
 }
 .tb-badge{
   display:inline-block;vertical-align:2px;margin-left:8px;
-  background:var(--accent);color:#fff;font-size:10px;font-weight:700;
+  background:var(--accent);color:#0f172a;font-size:10px;font-weight:700;
   letter-spacing:.12em;padding:3px 9px;border-radius:999px;
 }
 .tb-right{margin-left:auto;display:flex;align-items:center;gap:10px}
 .tb-count{font-size:12px;font-weight:500;color:var(--text-muted);white-space:nowrap}
 .tb-count b{color:var(--accent-hover);font-weight:700}
-.tb-avatar{background:linear-gradient(135deg,#fb923c,var(--accent));border:none;color:#fff}
-.tb-avatar:hover{background:linear-gradient(135deg,var(--accent),var(--accent-hover));color:#fff;border-color:transparent}
+.tb-avatar{background:linear-gradient(135deg,#fb923c,var(--accent));border:none;color:#0f172a;font-weight:700;font-size:12px}
+.tb-avatar:hover{background:linear-gradient(135deg,var(--accent),var(--accent-hover));color:#0f172a;border-color:transparent}
 /* thin progress under topbar */
-.tb-progress{position:absolute;left:0;right:0;bottom:-1px;height:3px;background:rgba(148,163,184,.18)}
+.tb-progress{position:absolute;left:0;right:0;bottom:-1px;height:3px;background:rgba(255,255,255,.05)}
 #tbFill{height:100%;width:0;background:var(--accent);transition:width .4s cubic-bezier(.22,.61,.36,1)}
 
 /* ============================================================
@@ -160,17 +163,68 @@ button,input{font-family:inherit}
 body.sb-open .backdrop{opacity:1;pointer-events:auto}
 
 /* ============================================================
-   CONTENT AREA + MODERN TECH FRAME
+   CONTENT AREA — desktop app frame with depth
    ============================================================ */
 .content{
   position:fixed;top:var(--topbar-h);bottom:0;left:var(--sb-w);right:0;z-index:10;
   background:var(--content-bg);
-  background-image:radial-gradient(circle,rgba(148,163,184,.22) 1px,transparent 1px);
+  background-image:radial-gradient(circle,rgba(51,65,85,.4) 1px,transparent 1px);
   background-size:24px 24px;
   transition:left .3s ease;
 }
 body.sb-collapsed .content{left:0}
-.stage-area{position:relative;height:100%}
+.stage-area{
+  position:relative;height:100%;
+  display:flex;align-items:center;justify-content:center;
+  padding:20px;
+}
+
+/* desktop window frame */
+.window-frame{
+  position:relative;width:100%;max-width:1100px;height:100%;
+  background:var(--frame-bg);
+  border-radius:16px;
+  border:1px solid var(--card-border);
+  box-shadow:var(--sh-window),inset 0 1px 0 rgba(255,255,255,.05);
+  overflow:hidden;
+  display:flex;flex-direction:column;
+}
+.window-frame::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.1),transparent);
+  z-index:1;
+}
+
+/* traffic light dots */
+.window-dots{
+  position:absolute;top:14px;left:16px;display:flex;gap:8px;z-index:10;
+}
+.window-dots span{
+  width:12px;height:12px;border-radius:50%;
+  box-shadow:0 1px 2px rgba(0,0,0,.3);
+}
+.dot-red{background:#ef4444}
+.dot-yellow{background:#facc15}
+.dot-green{background:#22c55e}
+
+/* window title bar */
+.window-titlebar{
+  position:relative;padding:16px 20px 12px;
+  border-bottom:1px solid var(--card-border);
+  background:linear-gradient(180deg,rgba(30,41,59,.5),transparent);
+  flex-shrink:0;
+}
+.window-title{
+  font-size:13px;font-weight:600;color:var(--text-muted);
+  letter-spacing:.05em;text-transform:uppercase;
+  display:flex;align-items:center;gap:10px;
+}
+.window-title .kicker{color:var(--accent-hover)}
+.window-counter{
+  margin-left:auto;font-size:12px;font-weight:500;color:var(--text-muted);
+  font-variant-numeric:tabular-nums;
+}
+.window-counter b{color:var(--accent-hover);font-weight:700}
 
 /* slides: fade + directional slide (0.4s) */
 .slide{
@@ -190,31 +244,40 @@ body.sb-collapsed .content{left:0}
 .slide.active::-webkit-scrollbar-thumb{background:#fdba74;border-radius:3px}
 .slide.active::-webkit-scrollbar-thumb:hover{background:var(--accent)}
 
-.inner{max-width:960px;margin:0 auto;padding:22px 26px 92px}
+.inner{
+  max-width:100%;height:100%;
+  display:flex;flex-direction:column;
+}
 .frame{
-  position:relative;background:var(--card-bg);border:1px solid var(--card-border);
-  border-radius:14px;overflow:hidden;
-  box-shadow:0 1px 2px rgba(15,23,42,.05),0 10px 28px -14px rgba(15,23,42,.14);
+  position:relative;flex:1;
+  background:var(--card-bg);
+  border:none;border-radius:0;
+  overflow:hidden;
+  box-shadow:none;
+  display:flex;flex-direction:column;
 }
-.frame::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:3px;z-index:2;
-  background:linear-gradient(90deg,var(--accent),#fb923c 55%,rgba(251,146,60,0));
-}
+.frame::before{display:none}
 .frame-top{
   display:flex;align-items:center;justify-content:space-between;gap:12px;
-  padding:11px 20px;border-bottom:1px solid var(--card-border);background:#f8fafc;
+  padding:10px 20px;
+  border-bottom:1px solid var(--card-border);
+  background:rgba(15,23,42,.6);
+  flex-shrink:0;
 }
 .kicker{
   font-size:var(--t-mini);font-weight:700;letter-spacing:.14em;text-transform:uppercase;
   color:var(--accent-hover);
 }
 .fcount{font-size:var(--t-cap);font-weight:600;color:var(--text-muted)}
-.frame-body{padding:24px 28px 28px}
+.frame-body{
+  padding:28px 32px 32px;
+  flex:1;overflow-y:auto;
+}
 
 /* reveal stagger */
-.reveal{opacity:0}
-.slide.active .reveal{animation:rise .5s cubic-bezier(.22,.61,.36,1) forwards;animation-delay:var(--d,0s)}
-@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.reveal{opacity:0;transform:translateY(10px)}
+.slide.active .reveal{animation:rise .45s cubic-bezier(.22,.61,.36,1) forwards;animation-delay:var(--d,0s)}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
 /* typography helpers */
 h2.st{font-size:var(--t-h2);font-weight:700;letter-spacing:-.015em;line-height:1.18;margin-bottom:10px;color:var(--text-primary)}
@@ -541,7 +604,7 @@ g.lit .halo{opacity:.38}
   <button class="tb-btn" id="sbToggle" aria-label="Buka atau tutup sidebar" title="Toggle sidebar" type="button">
     <svg viewBox="0 0 24 24"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
   </button>
-  <div class="tb-title">Rangkaian Listrik<span class="tb-badge">EDUAPP2</span></div>
+  <div class="tb-title">Rangkaian Listrik</div>
   <div class="tb-right">
     <span class="tb-count num"><b id="tbCur">01</b> / <span id="tbTot">17</span></span>
     <button class="tb-btn" id="bellBtn" aria-label="Notifikasi" title="Notifikasi" type="button">
@@ -563,7 +626,7 @@ g.lit .halo{opacity:.38}
       </div>
       <div>
         <div class="sb-title">Rangkaian Listrik</div>
-        <div class="sb-sub">EduApp2 · Desktop</div>
+        <div class="sb-sub">Desktop App</div>
       </div>
     </div>
     <div class="sb-label">Daftar Materi</div>
@@ -588,7 +651,7 @@ g.lit .halo{opacity:.38}
     </nav>
     <div class="sb-foot">
       <div class="sb-progress"><div id="sbFill"></div></div>
-      <div class="sb-meta num"><span><b id="sbCur">01</b> / 17 slide</span><span>EDUAPP2</span></div>
+      <div class="sb-meta num"><span><b id="sbCur">01</b> / 17 slide</span><span>v2.0</span></div>
     </div>
   </div>
 </aside>
@@ -597,9 +660,23 @@ g.lit .halo{opacity:.38}
 <!-- ============ CONTENT AREA ============ -->
 <main class="content">
   <div class="stage-area">
+    <div class="window-frame">
+      <!-- Traffic light dots -->
+      <div class="window-dots" aria-hidden="true">
+        <span class="dot-red"></span>
+        <span class="dot-yellow"></span>
+        <span class="dot-green"></span>
+      </div>
+      <!-- Window title bar -->
+      <div class="window-titlebar">
+        <div class="window-title">
+          <span class="kicker" id="windowChapter">Pembuka</span>
+          <span class="window-counter num"><b id="windowCur">01</b> / <span id="windowTot">17</span></span>
+        </div>
+      </div>
 
-  <!-- ============ 1 · PEMBUKA ============ -->
-  <section class="slide" data-label="Pembuka">
+      <!-- ============ 1 · PEMBUKA ============ -->
+      <section class="slide" data-label="Pembuka">
     <div class="inner">
       <div class="frame hero">
         <div class="dotgrid" aria-hidden="true"></div>
@@ -1201,7 +1278,7 @@ g.lit .halo{opacity:.38}
   <section class="slide closing" data-label="Penutup">
     <div class="inner">
       <div class="frame">
-        <div class="frame-top"><span class="kicker">EduApp2</span><span class="fcount num">17 / 17</span></div>
+        <div class="frame-top"><span class="kicker">Penutup</span><span class="fcount num">17 / 17</span></div>
         <div class="frame-body">
           <span class="dv-kick reveal">Misi Selesai</span>
           <div class="big-word reveal" style="--d:.06s">Terima Kasih!</div>
@@ -1216,7 +1293,8 @@ g.lit .halo{opacity:.38}
     </div>
   </section>
 
-  </div>
+  </div><!-- /.window-frame -->
+  </div><!-- /.stage-area -->
 </main>
 
 <!-- ============ BOTTOM-RIGHT PAGER (no dots) ============ -->
@@ -1273,7 +1351,7 @@ function toast(msg){
   toastT=setTimeout(function(){toastEl.classList.remove('show');},2200);
 }
 $('bellBtn').addEventListener('click',function(){toast('Tidak ada notifikasi baru.');});
-$('userBtn').addEventListener('click',function(){toast('EduApp2 · Masuk sebagai: Siswa');});
+$('userBtn').addEventListener('click',function(){toast('Masuk sebagai: Siswa');});
 
 /* ================= DECK CORE ================= */
 var slides=[].slice.call(document.querySelectorAll('.slide'));
@@ -1331,6 +1409,11 @@ function paint(){
   sbFill.style.width=pct;
   tbCur.textContent=pad(cur+1);
   sbCur.textContent=pad(cur+1);
+  // Update window title bar
+  var wc=$('windowChapter'),wwc=$('windowCur'),wwt=$('windowTot');
+  if(wc)wc.textContent=s?s.getAttribute('data-label')||'Pembuka':'Pembuka';
+  if(wwc)wwc.textContent=pad(cur+1);
+  if(wwt)wwt.textContent=tot;
   prevB.disabled=(cur===0);
   nextB.disabled=(cur===tot-1);
   navItems.forEach(function(b,i){
