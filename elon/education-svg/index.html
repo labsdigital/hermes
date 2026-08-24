@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ilustrasi Edukasi SVG — Sains &amp; Matematika</title>
+  <meta name="description" content="Koleksi 6 ilustrasi SVG edukatif untuk pembelajaran sains dan matematika: siklus air, sistem pencernaan, tata surya, fotosintesis, perbandingan pecahan, dan teorema Pythagoras.">
+  <style>
+    :root {
+      --biru: #3B82F6;
+      --hijau: #10B981;
+      --kuning: #F59E0B;
+      --merah: #EF4444;
+      --abu: #6B7280;
+      --gelap: #1F2937;
+      --bg: #F8FAFC;
+      --border: #E5E7EB;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--gelap);
+      line-height: 1.6;
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 2rem 1.25rem; }
+    header { text-align: center; margin-bottom: 2.5rem; }
+    header h1 { font-size: 2rem; font-weight: 800; }
+    header h1 span { color: var(--biru); }
+    header p { color: var(--abu); max-width: 640px; margin: 0.5rem auto 0; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .card {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: box-shadow .2s ease, transform .2s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .card:hover { box-shadow: 0 10px 24px rgba(31,41,55,.10); transform: translateY(-3px); }
+    .card .preview {
+      display: flex; align-items: center; justify-content: center;
+      padding: 1rem;
+      background:
+        linear-gradient(45deg, #f8fafc 25%, transparent 25%) -10px 0 / 20px 20px,
+        linear-gradient(-45deg, #f8fafc 25%, transparent 25%) -10px 0 / 20px 20px,
+        linear-gradient(45deg, transparent 75%, #f8fafc 75%) 0 0 / 20px 20px,
+        linear-gradient(-45deg, transparent 75%, #f8fafc 75%) 0 0 / 20px 20px,
+        #ffffff;
+      border-bottom: 1px solid var(--border);
+    }
+    .card img { width: 100%; height: auto; max-height: 300px; object-fit: contain; }
+    .card .body { padding: 1rem 1.1rem 1.2rem; display: flex; flex-direction: column; gap: .35rem; flex: 1; }
+    .badge {
+      align-self: flex-start;
+      font-size: .68rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+      padding: .18rem .55rem; border-radius: 999px; color: #fff;
+    }
+    .badge.sains { background: var(--hijau); }
+    .badge.matematika { background: var(--biru); }
+    .card h2 { font-size: 1.05rem; font-weight: 700; }
+    .card p { font-size: .88rem; color: var(--abu); flex: 1; }
+    .card a {
+      align-self: flex-start; margin-top: .5rem;
+      font-size: .85rem; font-weight: 600; color: var(--biru); text-decoration: none;
+    }
+    .card a:hover { text-decoration: underline; }
+    footer {
+      margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border);
+      font-size: .85rem; color: var(--abu); text-align: center;
+    }
+    .palet { display: inline-flex; gap: .35rem; vertical-align: middle; margin-left: .4rem; }
+    .palet i { width: 14px; height: 14px; border-radius: 4px; display: inline-block; }
+    @media (max-width: 480px) {
+      header h1 { font-size: 1.5rem; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Ilustrasi Edukasi <span>SVG</span></h1>
+      <p>Koleksi 6 ilustrasi vektor flat-design untuk pembelajaran sains dan matematika.
+         Ringan, skalabel, dan siap dipakai di media ajar, LMS, maupun presentasi.</p>
+    </header>
+
+    <main class="grid">
+      <article class="card">
+        <div class="preview"><img src="siklus-air.svg" alt="Diagram siklus air: evaporasi, kondensasi, presipitasi, dan aliran air" loading="lazy"></div>
+        <div class="body">
+          <span class="badge sains">Sains</span>
+          <h2>Siklus Air</h2>
+          <p>Siklus hidrologi: evaporasi dari laut, kondensasi menjadi awan, presipitasi sebagai hujan, dan aliran air kembali ke laut.</p>
+          <a href="siklus-air.svg">Buka SVG →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="preview"><img src="pencernaan.svg" alt="Diagram sistem pencernaan manusia dari mulut sampai anus" loading="lazy"></div>
+        <div class="body">
+          <span class="badge sains">Sains</span>
+          <h2>Sistem Pencernaan</h2>
+          <p>Organ pencernaan manusia: mulut, kerongkongan, lambung, usus halus, usus besar, rektum, dan anus.</p>
+          <a href="pencernaan.svg">Buka SVG →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="preview"><img src="tata-surya.svg" alt="Diagram tata surya dengan matahari dan delapan planet" loading="lazy"></div>
+        <div class="body">
+          <span class="badge sains">Sains</span>
+          <h2>Tata Surya</h2>
+          <p>Matahari dan delapan planet pada garis orbitnya: Merkurius, Venus, Bumi, Mars, Jupiter, Saturnus, Uranus, Neptunus.</p>
+          <a href="tata-surya.svg">Buka SVG →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="preview"><img src="fotosintesis.svg" alt="Diagram fotosintesis pada daun dengan reaksi kimianya" loading="lazy"></div>
+        <div class="body">
+          <span class="badge sains">Sains</span>
+          <h2>Fotosintesis</h2>
+          <p>Daun mengolah cahaya matahari, CO₂, dan air menjadi glukosa serta oksigen, lengkap dengan persamaan reaksinya.</p>
+          <a href="fotosintesis.svg">Buka SVG →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="preview"><img src="pecahan.svg" alt="Diagram lingkaran perbandingan pecahan satu per dua, satu per empat, dan tiga per empat" loading="lazy"></div>
+        <div class="body">
+          <span class="badge matematika">Matematika</span>
+          <h2>Perbandingan Pecahan</h2>
+          <p>Visualisasi pecahan 1/2, 1/4, dan 3/4 dalam diagram lingkaran untuk membandingkan besar pecahan secara intuitif.</p>
+          <a href="pecahan.svg">Buka SVG →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="preview"><img src="pythagoras.svg" alt="Segitiga siku-siku dengan persegi pada tiap sisi untuk teorema Pythagoras" loading="lazy"></div>
+        <div class="body">
+          <span class="badge matematika">Matematika</span>
+          <h2>Teorema Pythagoras</h2>
+          <p>Bukti visual a² + b² = c² dengan persegi pada setiap sisi segitiga siku-siku, memakai tripel Pythagoras 3-4-5.</p>
+          <a href="pythagoras.svg">Buka SVG →</a>
+        </div>
+      </article>
+    </main>
+
+    <footer>
+      <p>Dibuat oleh Elon (Hermes Agent) · Flat design · Maksimal 4 warna per ilustrasi
+        <span class="palet" aria-hidden="true">
+          <i style="background:#3B82F6"></i><i style="background:#10B981"></i><i style="background:#F59E0B"></i><i style="background:#EF4444"></i><i style="background:#6B7280"></i><i style="background:#1F2937"></i>
+        </span>
+      </p>
+    </footer>
+  </div>
+</body>
+</html>

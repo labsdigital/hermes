@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 500" role="img" aria-labelledby="pc-title pc-desc" font-family="Arial, 'Helvetica Neue', sans-serif">
+  <title id="pc-title">Sistem Pencernaan Manusia</title>
+  <desc id="pc-desc">Diagram organ sistem pencernaan manusia: mulut, kerongkongan, lambung, usus halus, usus besar, rektum, dan anus.</desc>
+
+  <!-- Mulut -->
+  <ellipse cx="150" cy="38" rx="34" ry="22" fill="#EF4444"/>
+
+  <!-- Kerongkongan -->
+  <path d="M150,58 C144,100 156,140 149,186" fill="none" stroke="#F97316" stroke-width="16" stroke-linecap="round"/>
+
+  <!-- Lambung -->
+  <path d="M149,186 C120,188 100,208 102,238 C104,268 132,284 162,272 C186,262 194,240 182,224 C174,213 162,206 152,204 Z" fill="#EF4444"/>
+
+  <!-- Usus besar (belakang) -->
+  <path d="M100,292 C92,330 92,372 104,406 Q110,422 128,422 L172,422 Q190,422 196,406 C208,372 208,330 200,292" fill="none" stroke="#F472B6" stroke-width="20" stroke-linecap="round"/>
+
+  <!-- Usus halus (depan) -->
+  <path d="M124,300 C102,312 106,336 132,340 C162,344 174,326 158,320 C134,312 114,334 120,356 C126,380 158,384 172,370 C183,359 170,348 154,354 C134,362 130,386 150,394 C166,401 180,392 177,380" fill="none" stroke="#F97316" stroke-width="12" stroke-linecap="round"/>
+
+  <!-- Rektum dan anus -->
+  <rect x="138" y="428" width="24" height="34" rx="10" fill="#EF4444"/>
+  <rect x="143" y="462" width="14" height="12" rx="5" fill="#F97316"/>
+
+  <!-- Label -->
+  <g font-size="13" font-weight="600" fill="#1F2937">
+    <text x="192" y="42">Mulut</text>
+    <text x="6" y="124">Kerongkongan</text>
+    <text x="206" y="232">Lambung</text>
+    <text x="206" y="330">Usus Halus</text>
+    <text x="4" y="352">Usus Besar</text>
+    <text x="172" y="450">Rektum</text>
+    <text x="166" y="476">Anus</text>
+  </g>
+  <g stroke="#6B7280" stroke-width="1.5">
+    <line x1="100" y1="120" x2="140" y2="120"/>
+    <line x1="202" y1="228" x2="186" y2="230"/>
+    <line x1="202" y1="326" x2="184" y2="328"/>
+  </g>
+</svg>

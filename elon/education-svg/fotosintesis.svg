@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-labelledby="fs-title fs-desc" font-family="Arial, 'Helvetica Neue', sans-serif">
+  <title id="fs-title">Fotosintesis</title>
+  <desc id="fs-desc">Diagram fotosintesis: daun menerima cahaya matahari, menyerap karbon dioksida dan air, lalu melepaskan oksigen dan menghasilkan glukosa.</desc>
+
+  <defs>
+    <marker id="fs-arr-gray" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6B7280"/>
+    </marker>
+    <marker id="fs-arr-amber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#F59E0B"/>
+    </marker>
+  </defs>
+
+  <!-- Matahari -->
+  <circle cx="338" cy="52" r="24" fill="#F59E0B"/>
+  <g stroke="#F59E0B" stroke-width="3" stroke-linecap="round">
+    <line x1="338" y1="16" x2="338" y2="24"/>
+    <line x1="338" y1="80" x2="338" y2="88"/>
+    <line x1="304" y1="52" x2="312" y2="52"/>
+    <line x1="364" y1="52" x2="372" y2="52"/>
+    <line x1="319" y1="33" x2="313" y2="27"/>
+    <line x1="357" y1="71" x2="363" y2="77"/>
+    <line x1="357" y1="33" x2="363" y2="27"/>
+    <line x1="319" y1="71" x2="313" y2="77"/>
+  </g>
+
+  <!-- Sinar matahari menuju daun -->
+  <g stroke="#F59E0B" stroke-width="3" stroke-linecap="round">
+    <path d="M312,74 L262,104" marker-end="url(#fs-arr-amber)"/>
+    <path d="M296,88 L252,126" marker-end="url(#fs-arr-amber)"/>
+    <path d="M280,102 L240,146" marker-end="url(#fs-arr-amber)"/>
+  </g>
+  <text x="306" y="140" text-anchor="middle" font-size="11" font-weight="600" fill="#1F2937">Cahaya Matahari</text>
+
+  <!-- Daun -->
+  <path d="M150,210 C100,180 90,120 130,88 C165,60 225,70 245,110 C265,150 245,205 195,222 C180,227 163,222 150,210 Z" fill="#10B981"/>
+  <path d="M195,222 C205,240 215,252 230,262" fill="none" stroke="#10B981" stroke-width="6" stroke-linecap="round"/>
+  <path d="M134,92 C140,140 165,190 193,218" fill="none" stroke="#FFFFFF" stroke-width="3"/>
+  <g fill="none" stroke="#FFFFFF" stroke-width="2">
+    <path d="M142,120 C160,124 175,132 188,144"/>
+    <path d="M154,158 C168,160 180,168 190,178"/>
+    <path d="M162,190 C172,190 182,196 188,202"/>
+  </g>
+
+  <!-- Label klorofil -->
+  <text x="14" y="66" font-size="12" font-weight="600" fill="#1F2937">Klorofil</text>
+  <line x1="58" y1="62" x2="98" y2="82" stroke="#6B7280" stroke-width="1.5"/>
+
+  <!-- CO2 masuk -->
+  <rect x="14" y="112" width="58" height="26" rx="13" fill="#3B82F6"/>
+  <text x="43" y="129" text-anchor="middle" font-size="13" font-weight="700" fill="#FFFFFF">CO₂</text>
+  <path d="M78,125 L108,138" fill="none" stroke="#6B7280" stroke-width="2.5" marker-end="url(#fs-arr-gray)"/>
+
+  <!-- H2O masuk -->
+  <rect x="14" y="196" width="58" height="26" rx="13" fill="#3B82F6"/>
+  <text x="43" y="213" text-anchor="middle" font-size="13" font-weight="700" fill="#FFFFFF">H₂O</text>
+  <path d="M78,209 L140,238" fill="none" stroke="#6B7280" stroke-width="2.5" marker-end="url(#fs-arr-gray)"/>
+
+  <!-- O2 keluar -->
+  <path d="M262,168 L296,186" fill="none" stroke="#6B7280" stroke-width="2.5" marker-end="url(#fs-arr-gray)"/>
+  <rect x="300" y="180" width="52" height="26" rx="13" fill="#10B981"/>
+  <text x="326" y="197" text-anchor="middle" font-size="13" font-weight="700" fill="#FFFFFF">O₂</text>
+
+  <!-- Glukosa keluar -->
+  <path d="M212,240 L250,256" fill="none" stroke="#6B7280" stroke-width="2.5" marker-end="url(#fs-arr-gray)"/>
+  <rect x="254" y="246" width="84" height="26" rx="13" fill="#F59E0B"/>
+  <text x="296" y="263" text-anchor="middle" font-size="13" font-weight="700" fill="#1F2937">Glukosa</text>
+
+  <!-- Persamaan -->
+  <text x="200" y="294" text-anchor="middle" font-size="13" font-weight="700" fill="#1F2937">6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂</text>
+</svg>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-labelledby="sa-title sa-desc" font-family="Arial, 'Helvetica Neue', sans-serif">
+  <title id="sa-title">Siklus Air</title>
+  <desc id="sa-desc">Diagram siklus hidrologi: air laut menguap karena panas matahari (evaporasi), membentuk awan (kondensasi), turun sebagai hujan (presipitasi), lalu mengalir kembali ke laut (aliran air).</desc>
+
+  <defs>
+    <marker id="sa-arr-amber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#F59E0B"/>
+    </marker>
+    <marker id="sa-arr-gray" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6B7280"/>
+    </marker>
+  </defs>
+
+  <!-- Matahari -->
+  <circle cx="338" cy="52" r="22" fill="#F59E0B"/>
+  <g stroke="#F59E0B" stroke-width="3" stroke-linecap="round">
+    <line x1="338" y1="18" x2="338" y2="26"/>
+    <line x1="338" y1="78" x2="338" y2="86"/>
+    <line x1="304" y1="52" x2="312" y2="52"/>
+    <line x1="364" y1="52" x2="372" y2="52"/>
+    <line x1="314" y1="28" x2="320" y2="34"/>
+    <line x1="356" y1="70" x2="362" y2="76"/>
+    <line x1="362" y1="28" x2="356" y2="34"/>
+    <line x1="320" y1="70" x2="314" y2="76"/>
+  </g>
+  <text x="338" y="106" text-anchor="middle" font-size="12" font-weight="600" fill="#1F2937">Matahari</text>
+
+  <!-- Awan -->
+  <g fill="#6B7280">
+    <circle cx="100" cy="66" r="16"/>
+    <circle cx="122" cy="54" r="21"/>
+    <circle cx="146" cy="64" r="15"/>
+    <rect x="92" y="60" width="62" height="22" rx="11"/>
+  </g>
+  <text x="118" y="30" text-anchor="middle" font-size="12" font-weight="600" fill="#1F2937">Kondensasi</text>
+
+  <!-- Hujan -->
+  <g stroke="#3B82F6" stroke-width="3" stroke-linecap="round">
+    <line x1="120" y1="88" x2="120" y2="116"/>
+    <line x1="136" y1="88" x2="136" y2="116"/>
+    <line x1="152" y1="88" x2="152" y2="116"/>
+  </g>
+  <text x="162" y="108" font-size="12" font-weight="600" fill="#1F2937">Presipitasi</text>
+
+  <!-- Evaporasi -->
+  <g fill="none" stroke="#F59E0B" stroke-width="3" stroke-dasharray="6 5" stroke-linecap="round">
+    <path d="M78,232 C72,192 82,152 100,98" marker-end="url(#sa-arr-amber)"/>
+    <path d="M104,234 C100,198 112,164 122,106" marker-end="url(#sa-arr-amber)"/>
+  </g>
+  <text x="6" y="170" font-size="12" font-weight="600" fill="#1F2937">Evaporasi</text>
+
+  <!-- Aliran air -->
+  <path d="M300,256 C250,276 225,272 206,264" fill="none" stroke="#6B7280" stroke-width="3" stroke-linecap="round" marker-end="url(#sa-arr-gray)"/>
+  <text x="300" y="244" font-size="11" font-weight="600" fill="#1F2937">Aliran Air</text>
+
+  <!-- Gunung dan daratan -->
+  <rect x="200" y="240" width="200" height="60" fill="#10B981"/>
+  <polygon points="210,240 290,140 370,240" fill="#10B981"/>
+  <text x="290" y="200" text-anchor="middle" font-size="13" font-weight="700" fill="#FFFFFF">Gunung</text>
+
+  <!-- Laut -->
+  <rect x="0" y="240" width="200" height="60" fill="#3B82F6"/>
+  <path d="M24,254 q8,-6 16,0 q8,6 16,0" fill="none" stroke="#FFFFFF" stroke-width="2" opacity="0.7"/>
+  <path d="M60,266 q8,-6 16,0 q8,6 16,0" fill="none" stroke="#FFFFFF" stroke-width="2" opacity="0.7"/>
+  <text x="95" y="272" text-anchor="middle" font-size="13" font-weight="700" fill="#FFFFFF">Laut</text>
+</svg>
