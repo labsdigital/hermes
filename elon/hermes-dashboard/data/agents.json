@@ -1,0 +1,54 @@
+{
+  "agents": [
+    {
+      "id": "zetta",
+      "name": "Zetta",
+      "role": "Main Agent",
+      "model": "agnes-2.5-flash",
+      "status": "online",
+      "last_seen": "2026-08-24T01:30:00Z",
+      "tasks": 12,
+      "articles": 14
+    },
+    {
+      "id": "max",
+      "name": "Max",
+      "role": "Research Writer",
+      "model": "stealth/ox-alpha",
+      "status": "online",
+      "last_seen": "2026-08-24T01:28:00Z",
+      "tasks": 8,
+      "articles": 14
+    },
+    {
+      "id": "elon",
+      "name": "Elon",
+      "role": "Web Developer",
+      "model": "stealth/ox-alpha",
+      "status": "idle",
+      "last_seen": "2026-08-24T01:25:00Z",
+      "tasks": 6,
+      "presentations": 5
+    },
+    {
+      "id": "chalbi",
+      "name": "Chalbi",
+      "role": "Rumi Scholar",
+      "model": "stealth/ox-alpha",
+      "status": "online",
+      "last_seen": "2026-08-24T01:20:00Z",
+      "tasks": 4,
+      "articles": 7
+    },
+    {
+      "id": "taraka",
+      "name": "Taraka",
+      "role": "Foundation Writer",
+      "model": "stealth/ox-alpha",
+      "status": "offline",
+      "last_seen": "2026-08-24T08:00:00Z",
+      "tasks": 2,
+      "proposals": 2
+    }
+  ]
+}
