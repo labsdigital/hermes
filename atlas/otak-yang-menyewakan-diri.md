@@ -8,7 +8,7 @@ Setiap pagi, miliaran manusia melakukan hal yang sama. Mereka membuka ponsel, me
 
 Ini bukan cerita tentang mesin yang mengambil alih dunia. Mesin tidak perlu merebut apa pun. Cukup dengan menjadi lebih nyaman daripada alternatifnya.
 
-## I. Kemunduran yang Tidak Terasa
+## Kemunduran yang Tidak Terasa
 
 Ketika tulisan ditemukan, Plato — melalui mulut Raja Thamus dalam dialog *Phaedrus* — memperingatkan bahwa tulisan akan menciptakan lupa: manusia akan bergantung pada tanda-tanda luar, bukan pada ingatan batiniah. Peringatan itu benar secara teknis. Manusia modern tidak bisa lagi menghafal epik sepanjang malam seperti seorang penyair Yunani; kita menyerahkan ingatan kepada kertas, lalu kepada hard drive, dan merasa diuntungkan.
 
@@ -24,7 +24,7 @@ Pertanyaan yang jarang diajukan: kalau GPS menyerahkan navigasi, dan mesin penca
 
 Jawabannya bukan sekadar ingatan. Yang diserahkan adalah *berpikir itu sendiri*: menyusun pemahaman dari nol, bertahan dalam ketidakpastian, memilih kata, menahan impuls menuju jawaban instan. Fungsi-fungsi inilah yang kini sedang dialihdayakan — bukan oleh keputusan, tetapi oleh kenyamanan.
 
-## II. Anatomi Penyerahan
+## Anatomi Penyerahan
 
 Bagaimana sesuatu sebesar itu bisa terjadi tanpa pernah diputuskan?
 
@@ -44,7 +44,7 @@ Empat penyerahan ini memiliki pola yang sama, dan polanya bisa dirumuskan dalam 
 
 Perhatikan bahwa di setiap tahap, individu yang bersangkutan merasa lebih produktif, lebih cepat, lebih pintar. Itulah ironinya: kemunduran kognitif tidak terasa seperti kemunduran. Ia terasa seperti efisiensi.
 
-## III. Ilusi Kompeten Berpikir
+## Ilusi Kompeten Berpikir
 
 Ada kebingungan psikologis yang membuat semua ini sulit dicegah: manusia sulit membedakan antara memiliki kemampuan dan memiliki akses ke kemampuan.
 
@@ -58,7 +58,7 @@ Tiga ilusi ini saling mengunci. Rasa paham tanpa paham membuat manusia tidak sad
 
 Bahkan metakognisi — kemampuan memantau kualitas pikiran sendiri — ikut dialihdayakan. "Apa yang saya pikirkan tentang X?" kini adalah pertanyaan yang bisa diketik. Dan ketika penilai terakhir atas pikiranmu adalah mesin, timbul pertanyaan yang tidak nyaman: siapa yang masih mengawasi mesin?
 
-## IV. Ekonomi Atrofi
+## Ekonomi Atrofi
 
 Kalau ini begitu buruk, mengapa tidak ada yang berhenti?
 
@@ -79,7 +79,7 @@ Ekonomi juga menjelaskan mengapa dampaknya tidak akan merata. Kapasitas kognitif
 
 Ada ironi terakhir di sini: AI tidak perlu menjadi lebih pintar dari manusia untuk mendominasi. Cukup menjadi lebih nyaman.
 
-## V. Yang Tidak Bisa Dibeli Kembali
+## Yang Tidak Bisa Dibeli Kembali
 
 Ada satu fakta aneh tentang kapasitas kognitif: ia tidak bisa dibeli kembali begitu hilang.
 
@@ -93,7 +93,7 @@ Sepanjang sejarah, kapasitas kognitif berkembang karena lingkungan menuntutnya. 
 
 Inilah yang membuat momen ini berbeda dari kisah GPS dan kalkulator. GPS menyerahkan fungsi yang sudah terbentuk. AI yang dipakai sejak dini mencegah fungsi itu terbentuk. Yang pertama bisa dipulihkan dengan latihan. Yang kedua tidak — karena tidak ada yang sadar ada yang hilang.
 
-## VI. Kontrak Baru dengan Mesin
+## Kontrak Baru dengan Mesin
 
 Diagnosis tanpa jalan keluar hanyalah keluhan. Tetapi jalan keluarnya bukan larangan — larangan telah kalah di hadapan setiap teknologi komunikasi, dari tulisan sampai ponsel. Jalan keluarnya adalah kontrak.
 
