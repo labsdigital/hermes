@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeri Ilustrasi Edukasi SVG</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f8fafc;
+            color: #0f172a;
+            line-height: 1.6;
+        }
+        header {
+            background: #0f172a;
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+        header p {
+            color: #94a3b8;
+            font-size: 1rem;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        .stats {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        .stat {
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #f97316;
+        }
+        .stat-label {
+            font-size: 0.875rem;
+            color: #64748b;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        .card-preview {
+            height: 180px;
+            background: #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .card-content {
+            padding: 1.25rem;
+        }
+        .card-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #0f172a;
+        }
+        .card-desc {
+            font-size: 0.875rem;
+            color: #64748b;
+            margin-bottom: 1rem;
+        }
+        .card-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .tag {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 9999px;
+            font-weight: 500;
+        }
+        .tag-sains { background: #d1fae5; color: #065f46; }
+        .tag-matematika { background: #dbeafe; color: #1e40af; }
+        .tag-ipa { background: #fef3c7; color: #92400e; }
+        .tag-ips { background: #fce7f3; color: #9d174d; }
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+        .footer a {
+            color: #f97316;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🎨 Galeri Ilustrasi Edukasi SVG</h1>
+        <p>8 ilustrasi interaktif untuk pembelajaran Sains & Matematika</p>
+    </header>
+
+    <div class="container">
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-value">8</div>
+                <div class="stat-label">Ilustrasi</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">Inline</div>
+                <div class="stat-label">SVG di HTML</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">65KB</div>
+                <div class="stat-label">Total Ukuran</div>
+            </div>
+        </div>
+
+        <div class="grid">
+            <a href="sel-tumbuhan.html" class="card">
+                <div class="card-preview">🌿</div>
+                <div class="card-content">
+                    <h2 class="card-title">Sel Tumbuhan</h2>
+                    <p class="card-desc">Struktur sel tumbuhan: dinding sel, membran, inti, kloroplas, vakuola, mitokondria</p>
+                    <div class="card-tags">
+                        <span class="tag tag-sains">Sains</span>
+                        <span class="tag tag-ipa">Biologi</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="sel-hewan.html" class="card">
+                <div class="card-preview">🧬</div>
+                <div class="card-content">
+                    <h2 class="card-title">Sel Hewan</h2>
+                    <p class="card-desc">Struktur sel hewan: membran, inti, mitokondria, ribosom, retikulum endoplasma</p>
+                    <div class="card-tags">
+                        <span class="tag tag-sains">Sains</span>
+                        <span class="tag tag-ipa">Biologi</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="listrik-sederhana.html" class="card">
+                <div class="card-preview">⚡</div>
+                <div class="card-content">
+                    <h2 class="card-title">Rangkaian Listrik</h2>
+                    <p class="card-desc">Rangkaian listrik sederhana: baterai, kabel, lampu, saklar</p>
+                    <div class="card-tags">
+                        <span class="tag tag-sains">Sains</span>
+                        <span class="tag tag-ipa">Fisika</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="bangun-datar.html" class="card">
+                <div class="card-preview">📐</div>
+                <div class="card-content">
+                    <h2 class="card-title">Bangun Datar</h2>
+                    <p class="card-desc">Lingkaran, segitiga, persegi, persegi panjang dengan rumus luas</p>
+                    <div class="card-tags">
+                        <span class="tag tag-matematika">Matematika</span>
+                        <span class="tag tag-ipa">Geometri</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="sistem-ekskresi.html" class="card">
+                <div class="card-preview">🫘</div>
+                <div class="card-content">
+                    <h2 class="card-title">Sistem Ekskresi</h2>
+                    <p class="card-desc">Organ ekskresi manusia: ginjal, kulit, paru-paru, hati</p>
+                    <div class="card-tags">
+                        <span class="tag tag-sains">Sains</span>
+                        <span class="tag tag-ipa">Biologi</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="perkotaan-desa.html" class="card">
+                <div class="card-preview">🏙️</div>
+                <div class="card-content">
+                    <h2 class="card-title">Perkotaan vs Desa</h2>
+                    <p class="card-desc">Perbandingan kehidupan perkotaan dan desa</p>
+                    <div class="card-tags">
+                        <span class="tag tag-ips">IPS</span>
+                        <span class="tag tag-ipa">Geografi</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="fase-bulan.html" class="card">
+                <div class="card-preview">🌙</div>
+                <div class="card-content">
+                    <h2 class="card-title">Fase-fase Bulan</h2>
+                    <p class="card-desc">8 fase bulan: new, crescent, quarter, gibbous, full</p>
+                    <div class="card-tags">
+                        <span class="tag tag-sains">Sains</span>
+                        <span class="tag tag-ipa">Astronomi</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="tulang-tubuh.html" class="card">
+                <div class="card-preview">🦴</div>
+                <div class="card-content">
+                    <h2 class="card-title">Tulang Tubuh</h2>
+                    <p class="card-desc">Rangka manusia: tengkorak, tulang rusuk, tangan, kaki</p>
+                    <div class="card-tags">
+                        <span class="tag tag-sains">Sains</span>
+                        <span class="tag tag-ipa">Anatomi</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>Dibuat dengan <strong>svg-skill</strong> · <a href="https://github.com/labsdigital/hermes">GitHub</a></p>
+    </footer>
+</body>
+</html>
