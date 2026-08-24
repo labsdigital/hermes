@@ -378,13 +378,13 @@ td .s{color:var(--accent-hover);font-weight:700}
 td .p{color:var(--blue);font-weight:700}
 
 /* ============================================================
-   HERO (Pembuka) & DIVIDER frames — dark slate tech
+   HERO (Pembuka) & DIVIDER frames — light modern style
    ============================================================ */
-.hero{background:var(--sidebar-bg);border-color:#1e293b}
-.hero::before{background:linear-gradient(90deg,var(--sidebar-active),#fb923c 55%,rgba(251,146,60,0))}
+.hero{background:linear-gradient(135deg,#ffffff 0%,#f8fafc 100%);border-color:var(--card-border)}
+.hero::before{background:linear-gradient(90deg,var(--accent),#fb923c 55%,rgba(251,146,60,0))}
 .dotgrid{
   position:absolute;right:-30px;top:-30px;width:55%;height:130%;z-index:0;pointer-events:none;
-  background-image:radial-gradient(circle,rgba(148,163,184,.35) 1.4px,transparent 1.4px);
+  background-image:radial-gradient(circle,rgba(148,163,184,.25) 1.4px,transparent 1.4px);
   background-size:22px 22px;
   -webkit-mask-image:radial-gradient(ellipse at 70% 30%,#000 25%,transparent 65%);
   mask-image:radial-gradient(ellipse at 70% 30%,#000 25%,transparent 65%);
@@ -392,17 +392,17 @@ td .p{color:var(--blue);font-weight:700}
 .hero-body{position:relative;z-index:1;padding:34px 34px 38px}
 .hero-kick{
   display:inline-flex;align-items:center;gap:10px;font-size:var(--t-mini);font-weight:700;
-  letter-spacing:.16em;text-transform:uppercase;color:#fdba74;margin-bottom:14px;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--accent-hover);margin-bottom:14px;
 }
-.hero-kick::before{content:'';width:22px;height:3px;background:var(--sidebar-active);border-radius:2px}
-.hero-title{font-size:clamp(30px,4.4vw,44px);font-weight:800;letter-spacing:-.02em;line-height:1.05;color:#fff}
-.hero-tag{font-size:16px;font-weight:600;color:#fdba74;margin-top:10px}
-.hero .stat-chip{background:rgba(255,255,255,.06);border-color:rgba(148,163,184,.3)}
-.hero .stat-chip b{color:#fff}
-.hero .stat-chip span{color:#94a3b8}
+.hero-kick::before{content:'';width:22px;height:3px;background:var(--accent);border-radius:2px}
+.hero-title{font-size:clamp(30px,4.4vw,44px);font-weight:800;letter-spacing:-.02em;line-height:1.05;color:var(--text-primary)}
+.hero-tag{font-size:16px;font-weight:600;color:var(--text-secondary);margin-top:10px}
+.hero .stat-chip{background:#fff;border-color:var(--card-border)}
+.hero .stat-chip b{color:var(--accent-hover)}
+.hero .stat-chip span{color:var(--text-muted)}
 
-.divider-frame{background:var(--sidebar-bg);border-color:#1e293b}
-.divider-frame::before{background:linear-gradient(90deg,var(--sidebar-active),#fb923c 55%,rgba(251,146,60,0))}
+.divider-frame{background:linear-gradient(135deg,var(--accent) 0%,#ea580c 100%);border-color:#ea580c}
+.divider-frame::before{background:linear-gradient(90deg,rgba(255,255,255,.4),transparent 60%)}
 .div-body{position:relative;padding:30px 34px;overflow:hidden}
 .ghostnum{
   position:absolute;right:6px;bottom:-38px;font-size:clamp(120px,16vw,170px);font-weight:800;
