@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent Comparison — SVG Showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0f172a; --paper:#ffffff; --accent:#f97316; --bg:#f8fafc;
+  --text-secondary:#475569; --muted:#94a3b8;
+  --border:rgba(15,23,42,.12); --border-strong:rgba(15,23,42,.24);
+  --radius-md:8px; --radius-lg:12px;
+  --bg-accent:#fff7ed; --text-accent:#c2410c;
+}
+*{box-sizing:border-box}
+body{margin:0;padding:24px;font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--ink);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:720px;margin:0 auto}
+.back{font-size:12px;color:var(--muted);text-decoration:none;display:inline-block;margin-bottom:16px}
+.back:hover{color:var(--accent)}
+h1{font-size:18px;font-weight:500;margin:0 0 4px}
+.lede{margin:0 0 20px;color:var(--text-secondary)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.card{background:var(--paper);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:1rem 1.25rem}
+.card.recommended{border:2px solid var(--accent)}
+.card h2{font-weight:500;font-size:15px;margin:0;color:var(--ink)}
+.card .sub{font-size:12px;color:var(--muted);margin:2px 0 12px}
+.badge{display:inline-block;background:var(--bg-accent);color:var(--text-accent);font-size:12px;padding:4px 12px;border-radius:999px;margin-bottom:10px}
+.row{display:flex;justify-content:space-between;padding:8px 0;border-top:0.5px solid var(--border);font-size:13px}
+.row dt{color:var(--text-secondary);margin:0}
+.row dd{margin:0;font-weight:500}
+@media (max-width:520px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">&larr; Showcase</a>
+  <h1>Agent comparison</h1>
+  <p class="lede">Side-by-side benchmark of two agent configurations over a 30-day workload.</p>
+
+  <div class="grid">
+    <div class="card recommended">
+      <span class="badge">Recommended</span>
+      <h2>ox-alpha + Hermes tools</h2>
+      <p class="sub">Full tool access</p>
+      <dl style="margin:0">
+        <div class="row"><dt>Tasks / day</dt><dd>142</dd></div>
+        <div class="row"><dt>Success rate</dt><dd>96%</dd></div>
+        <div class="row"><dt>Median latency</dt><dd>380 ms</dd></div>
+        <div class="row"><dt>Cost / task</dt><dd>$0.04</dd></div>
+        <div class="row"><dt>Tool calls / task</dt><dd>6.2</dd></div>
+      </dl>
+    </div>
+    <div class="card">
+      <h2>Baseline LLM only</h2>
+      <p class="sub">No tools, single shot</p>
+      <dl style="margin:0">
+        <div class="row"><dt>Tasks / day</dt><dd>96</dd></div>
+        <div class="row"><dt>Success rate</dt><dd>89%</dd></div>
+        <div class="row"><dt>Median latency</dt><dd>520 ms</dd></div>
+        <div class="row"><dt>Cost / task</dt><dd>$0.07</dd></div>
+        <div class="row"><dt>Tool calls / task</dt><dd>0</dd></div>
+      </dl>
+    </div>
+  </div>
+</div>
+</body>
+</html>

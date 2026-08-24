@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 175" role="img" aria-labelledby="pr-t pr-d" font-family="Inter, -apple-system, 'Segoe UI', sans-serif">
+  <title id="pr-t">Progress rings</title>
+  <desc id="pr-d">Four circular progress indicators at 25, 50, 75 and 100 percent, labelled init, build, test and done.</desc>
+  <g fill="none" stroke-linecap="round">
+    <circle cx="85" cy="75" r="30" stroke="#e2e8f0" stroke-width="7"/>
+    <circle cx="85" cy="75" r="30" stroke="#f97316" stroke-width="7" stroke-dasharray="47.12 188.5" transform="rotate(-90 85 75)"/>
+    <circle cx="255" cy="75" r="30" stroke="#e2e8f0" stroke-width="7"/>
+    <circle cx="255" cy="75" r="30" stroke="#f97316" stroke-width="7" stroke-dasharray="94.25 188.5" transform="rotate(-90 255 75)"/>
+    <circle cx="425" cy="75" r="30" stroke="#e2e8f0" stroke-width="7"/>
+    <circle cx="425" cy="75" r="30" stroke="#f97316" stroke-width="7" stroke-dasharray="141.37 188.5" transform="rotate(-90 425 75)"/>
+    <circle cx="595" cy="75" r="30" stroke="#e2e8f0" stroke-width="7"/>
+    <circle cx="595" cy="75" r="30" stroke="#f97316" stroke-width="7" stroke-dasharray="188.5 188.5" transform="rotate(-90 595 75)"/>
+  </g>
+  <g fill="#0f172a" font-size="14" font-weight="500" text-anchor="middle">
+    <text x="85" y="75" dominant-baseline="central">25%</text>
+    <text x="255" y="75" dominant-baseline="central">50%</text>
+    <text x="425" y="75" dominant-baseline="central">75%</text>
+    <text x="595" y="75" dominant-baseline="central">100%</text>
+  </g>
+  <g fill="#64748b" font-size="12" text-anchor="middle">
+    <text x="85" y="143">Init</text>
+    <text x="255" y="143">Build</text>
+    <text x="425" y="143">Test</text>
+    <text x="595" y="143">Done</text>
+  </g>
+</svg>

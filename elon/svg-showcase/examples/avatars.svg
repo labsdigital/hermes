@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 175" role="img" aria-labelledby="av-t av-d" font-family="Inter, -apple-system, 'Segoe UI', sans-serif">
+  <title id="av-t">Avatar placeholders</title>
+  <desc id="av-d">Four circular avatar placeholders with initials ZH, MX, EL and CH on alternating dark and orange fills.</desc>
+  <g fill="none" stroke="#e2e8f0" stroke-width="1">
+    <circle cx="85" cy="78" r="39"/>
+    <circle cx="255" cy="78" r="39"/>
+    <circle cx="425" cy="78" r="39"/>
+    <circle cx="595" cy="78" r="39"/>
+  </g>
+  <g>
+    <circle cx="85" cy="78" r="32" fill="#0f172a"/>
+    <circle cx="255" cy="78" r="32" fill="#f97316"/>
+    <circle cx="425" cy="78" r="32" fill="#0f172a"/>
+    <circle cx="595" cy="78" r="32" fill="#f97316"/>
+  </g>
+  <g fill="#ffffff" font-size="18" font-weight="500" text-anchor="middle">
+    <text x="85" y="78" dominant-baseline="central">ZH</text>
+    <text x="255" y="78" dominant-baseline="central">MX</text>
+    <text x="425" y="78" dominant-baseline="central">EL</text>
+    <text x="595" y="78" dominant-baseline="central">CH</text>
+  </g>
+  <g fill="#64748b" font-size="12" text-anchor="middle">
+    <text x="85" y="142">Zara Hale</text>
+    <text x="255" y="142">Max Xiao</text>
+    <text x="425" y="142">Elena Lopez</text>
+    <text x="595" y="142">Chen Hao</text>
+  </g>
+</svg>

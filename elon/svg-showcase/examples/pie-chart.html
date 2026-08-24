@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Donut Chart — SVG Showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0f172a; --paper:#ffffff; --accent:#f97316; --bg:#f8fafc;
+  --text-secondary:#475569; --muted:#94a3b8;
+  --border:rgba(15,23,42,.12);
+  --radius-md:8px; --radius-lg:12px;
+}
+*{box-sizing:border-box}
+body{margin:0;padding:24px;font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--ink);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:720px;margin:0 auto}
+.back{font-size:12px;color:var(--muted);text-decoration:none;display:inline-block;margin-bottom:16px}
+.back:hover{color:var(--accent)}
+h1{font-size:18px;font-weight:500;margin:0 0 4px}
+.lede{margin:0 0 20px;color:var(--text-secondary)}
+.card{background:var(--paper);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:1rem 1.25rem}
+.chart-box{position:relative;height:280px}
+.fallback{display:none;text-align:center;color:var(--muted);padding:80px 0;font-size:13px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">&larr; Showcase</a>
+  <h1>Donut chart — token spend by phase</h1>
+  <p class="lede">Where a typical agent run spends its context budget.</p>
+
+  <div class="card">
+    <div class="chart-box">
+      <canvas id="donut" aria-label="Donut chart of token spend by phase" role="img"></canvas>
+    </div>
+    <p class="fallback" id="fallback">Chart.js could not load (offline?). Data: Planning 22%, Tool execution 41%, Verification 19%, Reporting 18%.</p>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+(function () {
+  if (typeof Chart === 'undefined') {
+    document.getElementById('fallback').style.display = 'block';
+    return;
+  }
+  var ctx = document.getElementById('donut').getContext('2d');
+  new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: ['Tool execution', 'Planning', 'Verification', 'Reporting'],
+      datasets: [{
+        data: [41, 22, 19, 18],
+        backgroundColor: ['#f97316', '#0f172a', '#fb923c', '#94a3b8'],
+        borderWidth: 2,
+        borderColor: '#ffffff'
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      cutout: '62%',
+      plugins: {
+        legend: {
+          position: 'bottom',
+          labels: { color: '#475569', font: { family: 'Inter', size: 12 }, boxWidth: 10, usePointStyle: true }
+        },
+        tooltip: {
+          callbacks: {
+            label: function (item) { return item.label + ': ' + item.parsed + '%'; }
+          }
+        }
+      }
+    }
+  });
+})();
+</script>
+</body>
+</html>

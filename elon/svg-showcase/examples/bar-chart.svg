@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 280" role="img" aria-labelledby="bc-t bc-d" font-family="Inter, -apple-system, 'Segoe UI', sans-serif">
+  <title id="bc-t">Top 5 agent skills by success rate</title>
+  <desc id="bc-d">Horizontal bar chart: tool use 92 percent, code generation 87 percent, web research 78 percent, long-context reasoning 71 percent, multi-agent orchestration 64 percent.</desc>
+  <g stroke="#f1f5f9" stroke-width="1">
+    <line x1="278" y1="50" x2="278" y2="246"/>
+    <line x1="378" y1="50" x2="378" y2="246"/>
+    <line x1="478" y1="50" x2="478" y2="246"/>
+    <line x1="578" y1="50" x2="578" y2="246"/>
+  </g>
+  <line x1="178" y1="50" x2="178" y2="246" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="40" y="32" fill="#0f172a" font-size="14" font-weight="500">Top 5 skills — success rate</text>
+  <g>
+    <rect x="178" y="58" width="368" height="20" rx="4" fill="#f97316"/>
+    <rect x="178" y="100" width="348" height="20" rx="4" fill="#f97316"/>
+    <rect x="178" y="142" width="312" height="20" rx="4" fill="#f97316"/>
+    <rect x="178" y="184" width="284" height="20" rx="4" fill="#f97316"/>
+    <rect x="178" y="226" width="256" height="20" rx="4" fill="#f97316"/>
+  </g>
+  <g fill="#334155" font-size="13" text-anchor="end">
+    <text x="170" y="68" dominant-baseline="central">Tool use</text>
+    <text x="170" y="110" dominant-baseline="central">Code generation</text>
+    <text x="170" y="152" dominant-baseline="central">Web research</text>
+    <text x="170" y="194" dominant-baseline="central">Reasoning</text>
+    <text x="170" y="236" dominant-baseline="central">Orchestration</text>
+  </g>
+  <g fill="#64748b" font-size="12">
+    <text x="554" y="68" dominant-baseline="central">92%</text>
+    <text x="534" y="110" dominant-baseline="central">87%</text>
+    <text x="498" y="152" dominant-baseline="central">78%</text>
+    <text x="470" y="194" dominant-baseline="central">71%</text>
+    <text x="442" y="236" dominant-baseline="central">64%</text>
+  </g>
+  <g fill="#94a3b8" font-size="11" text-anchor="middle">
+    <text x="178" y="266">0</text>
+    <text x="278" y="266">25</text>
+    <text x="378" y="266">50</text>
+    <text x="478" y="266">75</text>
+    <text x="578" y="266">100%</text>
+  </g>
+</svg>

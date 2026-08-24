@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Data Record — SVG Showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0f172a; --paper:#ffffff; --accent:#f97316; --bg:#f8fafc;
+  --text-secondary:#475569; --muted:#94a3b8;
+  --border:rgba(15,23,42,.12);
+  --radius-md:8px; --radius-lg:12px;
+  --bg-accent:#fff7ed; --text-accent:#c2410c;
+}
+*{box-sizing:border-box}
+body{margin:0;padding:24px;font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--ink);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:720px;margin:0 auto}
+.back{font-size:12px;color:var(--muted);text-decoration:none;display:inline-block;margin-bottom:16px}
+.back:hover{color:var(--accent)}
+h1{font-size:18px;font-weight:500;margin:0 0 4px}
+.lede{margin:0 0 20px;color:var(--text-secondary)}
+.card{background:var(--paper);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:1rem 1.25rem}
+.head{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.avatar{width:44px;height:44px;border-radius:50%;background:var(--bg-accent);display:flex;align-items:center;justify-content:center;font-weight:500;font-size:14px;color:var(--text-accent);flex-shrink:0}
+.head h2{font-weight:500;font-size:15px;margin:0}
+.head p{font-size:13px;color:var(--text-secondary);margin:0}
+.pill{margin-left:auto;background:var(--bg-accent);color:var(--text-accent);font-size:12px;padding:4px 12px;border-radius:999px;white-space:nowrap}
+.kv{display:flex;justify-content:space-between;padding:9px 0;border-top:0.5px solid var(--border);font-size:13px}
+.kv dt{color:var(--text-secondary);margin:0}
+.kv dd{margin:0;font-weight:500}
+dl{margin:0}
+.foot{margin-top:14px;font-size:12px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">&larr; Showcase</a>
+  <h1>Data record</h1>
+  <p class="lede">A single agent run rendered as a styled record card.</p>
+
+  <div class="card">
+    <div class="head">
+      <div class="avatar" aria-hidden="true">OR</div>
+      <div>
+        <h2>Run #4821 — research brief</h2>
+        <p>orchestrator · ox-alpha</p>
+      </div>
+      <span class="pill">Completed</span>
+    </div>
+    <dl>
+      <div class="kv"><dt>Started</dt><dd>Today, 09:14</dd></div>
+      <div class="kv"><dt>Duration</dt><dd>4 m 12 s</dd></div>
+      <div class="kv"><dt>Tool calls</dt><dd>37</dd></div>
+      <div class="kv"><dt>Tokens</dt><dd>128,400</dd></div>
+      <div class="kv"><dt>Cost</dt><dd>$0.42</dd></div>
+      <div class="kv"><dt>Subagents spawned</dt><dd>3</dd></div>
+    </dl>
+    <p class="foot">Record id 9f3c…e21b · stored in state.db</p>
+  </div>
+</div>
+</body>
+</html>

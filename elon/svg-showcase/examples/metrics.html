@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Metric Cards — SVG Showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0f172a; --paper:#ffffff; --accent:#f97316; --bg:#f8fafc;
+  --text-secondary:#475569; --muted:#94a3b8;
+  --border:rgba(15,23,42,.12);
+  --radius-md:8px; --radius-lg:12px;
+  --bg-accent:#fff7ed; --text-accent:#c2410c;
+}
+*{box-sizing:border-box}
+body{margin:0;padding:24px;font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--ink);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:720px;margin:0 auto}
+.back{font-size:12px;color:var(--muted);text-decoration:none;display:inline-block;margin-bottom:16px}
+.back:hover{color:var(--accent)}
+h1{font-size:18px;font-weight:500;margin:0 0 4px}
+.lede{margin:0 0 20px;color:var(--text-secondary)}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.metric{background:var(--paper);border-radius:var(--radius-md);padding:1rem;border:0.5px solid var(--border)}
+.metric p{margin:0}
+.label{font-size:13px;color:var(--text-secondary);margin-bottom:2px !important}
+.value{font-size:24px;font-weight:500}
+.delta{font-size:12px;color:var(--text-accent);background:var(--bg-accent);border-radius:999px;padding:2px 8px;display:inline-block;margin-top:8px}
+.neutral{color:var(--muted);background:transparent;padding:2px 0}
+@media (max-width:640px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">&larr; Showcase</a>
+  <h1>Metric cards</h1>
+  <p class="lede">Rolling 7-day snapshot of agent fleet activity.</p>
+
+  <div class="grid">
+    <div class="metric">
+      <p class="label">Tasks completed</p>
+      <p class="value">1,284</p>
+      <p class="delta">+12% vs last week</p>
+    </div>
+    <div class="metric">
+      <p class="label">Success rate</p>
+      <p class="value">94.2%</p>
+      <p class="delta">+1.8 pts</p>
+    </div>
+    <div class="metric">
+      <p class="label">Avg latency</p>
+      <p class="value">420 ms</p>
+      <p class="delta">&minus;60 ms</p>
+    </div>
+    <div class="metric">
+      <p class="label">Tokens saved</p>
+      <p class="value">38.4k</p>
+      <p class="delta neutral">via prompt cache</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

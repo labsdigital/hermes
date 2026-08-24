@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SVG Showcase — svg-skill &amp; visualise</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0f172a; --paper:#ffffff; --accent:#f97316; --bg:#f8fafc;
+  --text-secondary:#475569; --muted:#94a3b8;
+  --border:rgba(15,23,42,.12);
+  --radius-md:8px; --radius-lg:12px;
+  --bg-accent:#fff7ed; --text-accent:#c2410c;
+}
+*{box-sizing:border-box}
+body{margin:0;padding:32px 24px;font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--ink);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:960px;margin:0 auto}
+header{margin-bottom:28px}
+.brand{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.mark{width:36px;height:36px;border-radius:8px;background:var(--ink);display:flex;align-items:center;justify-content:center}
+h1{font-size:22px;font-weight:500;margin:0}
+.lede{color:var(--text-secondary);max-width:60ch;margin:0 0 16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:var(--paper);border:0.5px solid var(--border);border-radius:999px;font-size:12px;color:var(--text-accent);padding:4px 12px}
+h2{font-size:18px;font-weight:500;margin:36px 0 6px}
+.section-note{color:var(--text-secondary);font-size:13px;margin:0 0 16px}
+.grid-svgs{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+figure{margin:0;background:var(--paper);border:0.5px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;transition:transform .15s ease,border-color .15s ease}
+figure:hover{transform:translateY(-2px);border-color:rgba(15,23,42,.24)}
+.frame{height:200px;display:flex;align-items:center;justify-content:center;padding:12px;background:var(--paper)}
+.frame img{max-width:100%;max-height:100%;width:auto;height:auto;display:block}
+figcaption{border-top:0.5px solid var(--border);padding:10px 14px}
+figcaption strong{display:block;font-weight:500;font-size:14px}
+figcaption span{font-size:12px;color:var(--muted)}
+.grid-links{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+a.widget{display:block;background:var(--paper);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:1rem 1.25rem;text-decoration:none;color:inherit;transition:transform .15s ease,border-color .15s ease}
+a.widget:hover{transform:translateY(-2px);border-color:var(--accent)}
+a.widget h3{font-size:14px;font-weight:500;margin:0 0 4px;color:var(--accent)}
+a.widget p{margin:0;font-size:13px;color:var(--text-secondary)}
+footer{margin-top:40px;padding-top:20px;border-top:0.5px solid var(--border);display:flex;flex-wrap:wrap;align-items:center;gap:16px}
+.swatches{display:flex;gap:10px}
+.swatch{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-secondary)}
+.dot{width:16px;height:16px;border-radius:4px;border:0.5px solid var(--border)}
+footer p{margin:0;font-size:12px;color:var(--muted)}
+@media (max-width:520px){.grid-svgs,.grid-links{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <span class="mark" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round"><path d="M7 4v16M17 4v16M7 12h10"/></svg>
+      </span>
+      <h1>SVG Showcase</h1>
+    </div>
+    <p class="lede">Twelve examples produced with the <strong>svg-skill</strong> markup patterns (static SVG) and the <strong>visualise</strong> component patterns (interactive HTML). All assets follow MyStyle1: Inter, flat fills, no gradients.</p>
+    <div class="chips">
+      <span class="chip">Inter</span>
+      <span class="chip">#0f172a</span>
+      <span class="chip">#f97316</span>
+      <span class="chip">#f8fafc</span>
+      <span class="chip">flat · no gradients</span>
+    </div>
+  </header>
+
+  <h2>Static SVG — svg-skill</h2>
+  <p class="section-note">Six standalone SVG files in <code>examples/</code>, each with xmlns, viewBox and aria attributes.</p>
+  <div class="grid-svgs">
+    <figure>
+      <div class="frame"><img src="examples/icons.svg" alt="Six outline UI icons: home, search, settings, user, bell, heart" loading="lazy"></div>
+      <figcaption><strong>UI icon set</strong><span>icons.svg · 24-grid outline icons</span></figcaption>
+    </figure>
+    <figure>
+      <div class="frame"><img src="examples/progress-rings.svg" alt="Four circular progress rings at 25, 50, 75 and 100 percent" loading="lazy"></div>
+      <figcaption><strong>Progress rings</strong><span>progress-rings.svg · stroke-dasharray arcs</span></figcaption>
+    </figure>
+    <figure>
+      <div class="frame"><img src="examples/bar-chart.svg" alt="Horizontal bar chart of top five agent skills by success rate" loading="lazy"></div>
+      <figcaption><strong>Bar chart</strong><span>bar-chart.svg · scaled coordinates + title/desc</span></figcaption>
+    </figure>
+    <figure>
+      <div class="frame"><img src="examples/flowchart.svg" alt="Five step process flow from receive to deliver connected by arrows" loading="lazy"></div>
+      <figcaption><strong>Flowchart</strong><span>flowchart.svg · marker arrows, grid aligned</span></figcaption>
+    </figure>
+    <figure>
+      <div class="frame"><img src="examples/logo.svg" alt="Hermes logo lockup with orange winged emblem on dark square" loading="lazy"></div>
+      <figcaption><strong>Brand logo</strong><span>logo.svg · mark + wordmark lockup</span></figcaption>
+    </figure>
+    <figure>
+      <div class="frame"><img src="examples/avatars.svg" alt="Four circular avatar placeholders with initials ZH, MX, EL, CH" loading="lazy"></div>
+      <figcaption><strong>Avatar placeholders</strong><span>avatars.svg · initials on flat fills</span></figcaption>
+    </figure>
+  </div>
+
+  <h2>Interactive widgets — visualise</h2>
+  <p class="section-note">Six standalone HTML pages demonstrating the visualise component library. Open each in a new tab.</p>
+  <div class="grid-links">
+    <a class="widget" href="examples/comparison.html" target="_blank" rel="noopener">
+      <h3>Agent comparison &nearr;</h3>
+      <p>Side-by-side cards with metrics, recommended-option accent border and badge.</p>
+    </a>
+    <a class="widget" href="examples/metrics.html" target="_blank" rel="noopener">
+      <h3>Metric cards &nearr;</h3>
+      <p>Four-card KPI grid with deltas, responsive down to two columns.</p>
+    </a>
+    <a class="widget" href="examples/explainer.html" target="_blank" rel="noopener">
+      <h3>Interactive explainer &nearr;</h3>
+      <p>Slider that models parallel subagents against coordination overhead, live output.</p>
+    </a>
+    <a class="widget" href="examples/pie-chart.html" target="_blank" rel="noopener">
+      <h3>Donut chart &nearr;</h3>
+      <p>Chart.js doughnut of token spend by phase, flat palette, offline fallback text.</p>
+    </a>
+    <a class="widget" href="examples/architecture.html" target="_blank" rel="noopener">
+      <h3>System architecture &nearr;</h3>
+      <p>Structural SVG diagram, 680px viewBox, context-stroke arrow markers.</p>
+    </a>
+    <a class="widget" href="examples/data-table.html" target="_blank" rel="noopener">
+      <h3>Data record &nearr;</h3>
+      <p>Styled run record card with avatar, status pill and key-value rows.</p>
+    </a>
+  </div>
+
+  <footer>
+    <div class="swatches" aria-label="Design tokens">
+      <span class="swatch"><span class="dot" style="background:#0f172a"></span>#0f172a</span>
+      <span class="swatch"><span class="dot" style="background:#f97316"></span>#f97316</span>
+      <span class="swatch"><span class="dot" style="background:#ffffff"></span>#ffffff</span>
+      <span class="swatch"><span class="dot" style="background:#f8fafc"></span>#f8fafc</span>
+    </div>
+    <p>Validated with svg-skill validate.sh · inline JS checked with node --check</p>
+  </footer>
+</div>
+</body>
+</html>
