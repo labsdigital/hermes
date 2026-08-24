@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rangkaian Listrik — Belajar Seri &amp; Paralel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ============ MyStyle1 Design Tokens ============ */
+:root{
+  --primary-dark:#0f172a;
+  --primary-white:#ffffff;
+  --accent:#f97316;
+  --accent-dark:#ea580c;
+  --bg-light:#f8fafc;
+  --line:#e2e8f0;
+  --muted:#475569;
+  --ok:#16a34a;
+  --bad:#dc2626;
+  --yellow:#facc15;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  background:var(--bg-light);
+  color:var(--primary-dark);
+  font-size:clamp(20px,2.2vw,26px);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+section{scroll-margin-top:76px}
+
+/* ============ Nav ============ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  background:var(--primary-dark);
+  display:flex;align-items:center;gap:4px;
+  padding:0 20px;height:64px;
+  overflow-x:auto;white-space:nowrap;
+}
+nav .brand{
+  color:var(--accent);font-weight:800;font-size:17px;
+  letter-spacing:.06em;text-transform:uppercase;margin-right:16px;
+}
+nav a{
+  color:var(--primary-white);text-decoration:none;
+  font-size:15px;font-weight:600;padding:8px 14px;border-radius:999px;
+}
+nav a:hover{background:#1e293b;color:var(--accent)}
+
+/* ============ Typography helpers ============ */
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+.caption{font-size:clamp(17px,1.6vw,20px);font-weight:500;color:var(--muted)}
+h2.sec{
+  font-size:clamp(48px,6vw,64px);font-weight:700;line-height:1.08;
+  letter-spacing:-0.02em;margin-bottom:20px;text-transform:none;
+}
+h3.sub{
+  font-size:clamp(30px,3.4vw,38px);font-weight:600;line-height:1.2;
+  margin:44px 0 16px;
+}
+p.body{max-width:46em;margin-bottom:14px}
+.accent{color:var(--accent)}
+
+/* ============ Title Page ============ */
+.hero{
+  background:var(--primary-dark);color:var(--primary-white);
+  min-height:100svh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;
+  padding:100px 24px 60px;
+}
+.hero .eyebrow{
+  color:var(--accent);font-weight:700;letter-spacing:.28em;
+  text-transform:uppercase;font-size:clamp(15px,1.6vw,19px);margin-bottom:22px;
+}
+.hero h1{
+  font-size:clamp(56px,10vw,72px);font-weight:800;line-height:1.02;
+  text-transform:uppercase;letter-spacing:-0.02em;max-width:12ch;
+}
+.hero .tagline{margin-top:22px;color:#cbd5e1;font-size:clamp(22px,2.6vw,30px);font-weight:500}
+.hero .cta{
+  margin-top:44px;display:inline-block;background:var(--accent);color:#fff;
+  text-decoration:none;font-weight:700;font-size:clamp(18px,2vw,23px);
+  padding:18px 44px;border-radius:999px;
+}
+.hero .cta:hover{background:var(--accent-dark)}
+
+/* ============ Chapter Divider (full-bleed orange) ============ */
+.divider{
+  background:var(--accent);color:var(--primary-dark);
+  padding:48px 0;width:100%;
+}
+.divider .inner{display:flex;align-items:baseline;gap:24px}
+.divider .num{
+  font-weight:900;font-size:clamp(28px,4vw,44px);opacity:.55;letter-spacing:-0.02em;
+}
+.divider .name{
+  font-weight:900;font-size:clamp(58px,11.5vw,116px);line-height:.95;
+  text-transform:uppercase;letter-spacing:-0.03em;
+}
+
+/* ============ Sections / Cards ============ */
+.sect{padding:72px 0}
+.sect.white{background:var(--primary-white)}
+.sect.grey{background:var(--bg-light)}
+.card{
+  background:var(--primary-white);border:2px solid var(--line);
+  border-radius:24px;padding:30px 32px;
+}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+.grid4{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}
+.comp-card{text-align:center;padding:26px 18px}
+.comp-card svg{width:88px;height:88px;margin-bottom:12px}
+.comp-card .cname{font-weight:700;font-size:clamp(21px,2vw,25px);margin-bottom:6px}
+ul.sifat{list-style:none;margin-top:8px}
+ul.sifat li{
+  position:relative;padding:10px 0 10px 42px;border-bottom:1.5px solid var(--line);
+}
+ul.sifat li:last-child{border-bottom:none}
+ul.sifat li::before{
+  content:"";position:absolute;left:6px;top:50%;transform:translateY(-50%);
+  width:16px;height:16px;border-radius:50%;background:var(--accent);
+}
+.formula{
+  background:var(--primary-dark);color:var(--primary-white);
+  border-radius:24px;padding:36px 32px;text-align:center;margin-top:28px;
+}
+.formula .fx{
+  font-size:clamp(26px,4vw,42px);font-weight:700;letter-spacing:.01em;
+}
+.formula .fx b{color:var(--accent);font-weight:800}
+.formula .ex{margin-top:14px;color:#cbd5e1;font-size:clamp(18px,1.9vw,23px)}
+.analogy{
+  border-left:10px solid var(--accent);background:var(--primary-white);
+  border-top:2px solid var(--line);border-right:2px solid var(--line);
+  border-bottom:2px solid var(--line);border-radius:20px;padding:26px 30px;margin-top:28px;
+}
+.analogy .atitle{font-weight:700;font-size:clamp(24px,2.6vw,31px);margin-bottom:10px}
+figure.diagram{margin:30px 0 6px;background:var(--primary-white);border:2px solid var(--line);border-radius:24px;padding:22px}
+figure.diagram svg{width:100%;height:auto;display:block}
+figcaption{margin-top:12px;text-align:center}
+
+/* ============ Table ============ */
+.tablewrap{overflow-x:auto;border:2px solid var(--line);border-radius:20px;background:#fff;margin-top:24px}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:clamp(17px,1.8vw,21px)}
+th,td{padding:16px 20px;text-align:left;border-bottom:1.5px solid var(--line);vertical-align:top}
+thead th{background:var(--primary-dark);color:#fff;font-weight:700;font-size:clamp(18px,1.9vw,22px)}
+tbody tr:nth-child(even){background:var(--bg-light)}
+td.aspek{font-weight:700;white-space:nowrap}
+td .s{color:var(--accent-dark);font-weight:700}
+td .p{color:#2563eb;font-weight:700}
+
+/* ============ Labs ============ */
+.lab-head{display:flex;align-items:center;gap:14px;margin-bottom:8px;flex-wrap:wrap}
+.lab-badge{
+  background:var(--accent);color:#fff;font-weight:800;font-size:16px;
+  letter-spacing:.08em;padding:8px 18px;border-radius:999px;text-transform:uppercase;
+}
+.stage{
+  background:var(--primary-white);border:2px solid var(--line);
+  border-radius:24px;padding:20px;margin:22px 0;
+}
+.stage svg{width:100%;height:auto;display:block}
+.statusbar{
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:6px;
+}
+.status{
+  display:inline-flex;align-items:center;font-weight:600;
+  font-size:clamp(17px,1.8vw,21px);padding:10px 22px;border-radius:999px;
+  border:2px solid var(--line);background:var(--bg-light);color:var(--muted);
+}
+.status.ok{background:#dcfce7;border-color:var(--ok);color:#14532d}
+.status.off{background:#f1f5f9;border-color:#94a3b8;color:#334155}
+.status.warn{background:#ffedd5;border-color:var(--accent-dark);color:#7c2d12}
+.hint{font-size:clamp(15px,1.5vw,18px);font-weight:500;color:var(--muted)}
+
+/* SVG interactive bits */
+.clickable{cursor:pointer;outline:none}
+.clickable:focus-visible{stroke:var(--accent);stroke-width:3px}
+.wire{stroke:#334155;stroke-width:4.5;fill:none;stroke-linecap:round}
+.node{fill:#334155}
+.flow{
+  stroke:var(--accent);stroke-width:4.5;fill:none;stroke-linecap:round;
+  stroke-dasharray:3 17;opacity:0;transition:opacity .25s;
+  animation:dash 1.1s linear infinite;
+}
+@keyframes dash{to{stroke-dashoffset:-20}}
+.lever{stroke:#0f172a;stroke-width:5;stroke-linecap:round;transition:transform .25s ease}
+.dot-big{fill:#0f172a}
+.hit{fill:transparent}
+svg text{font-family:'Inter',sans-serif;font-weight:600}
+.lbl{font-size:19px;fill:#334155}
+.lbl-sm{font-size:15px;fill:#64748b}
+.bulb{fill:#e2e8f0;stroke:#0f172a;stroke-width:3.5;transition:fill .25s}
+.filament{stroke:#0f172a;stroke-width:3;stroke-linecap:round;transition:stroke .25s}
+.halo{fill:#fde047;opacity:0;transition:opacity .25s}
+.crack{opacity:0;transition:opacity .2s}
+.crack line{stroke:var(--bad);stroke-width:4;stroke-linecap:round}
+g.dead .bulb{fill:#94a3b8}
+g.dead .halo{opacity:0!important}
+g.dead .crack{opacity:1}
+g.lit .bulb{fill:var(--yellow)}
+g.lit .filament{stroke:#b45309}
+g.lit .halo{opacity:.38}
+.bat-long{stroke:#0f172a;stroke-width:4;stroke-linecap:round}
+.bat-short{stroke:#0f172a;stroke-width:9;stroke-linecap:round}
+
+/* ============ Quiz ============ */
+.quiz-box{max-width:820px;margin:26px auto 0}
+.qprogress{height:14px;background:var(--line);border-radius:999px;overflow:hidden;margin-bottom:8px}
+.qprogress .fill{height:100%;width:0%;background:var(--accent);border-radius:999px;transition:width .3s}
+.qcount{margin-bottom:20px}
+.qq{
+  font-size:clamp(26px,3vw,34px);font-weight:700;line-height:1.3;margin-bottom:26px;
+}
+.opts{display:flex;gap:16px;flex-wrap:wrap}
+.opt{
+  flex:1;min-width:180px;background:#fff;border:3px solid var(--primary-dark);
+  border-radius:20px;padding:22px 10px;font-family:inherit;font-size:clamp(20px,2.2vw,26px);
+  font-weight:800;letter-spacing:.06em;cursor:pointer;color:var(--primary-dark);
+}
+.opt:hover:not(:disabled){border-color:var(--accent);color:var(--accent-dark)}
+.opt:disabled{cursor:default;opacity:.55}
+.opt.correct{background:#dcfce7;border-color:var(--ok);color:#14532d;opacity:1}
+.opt.wrong{background:#fee2e2;border-color:var(--bad);color:#7f1d1d;opacity:1}
+.fb{border-radius:18px;padding:20px 24px;margin-top:22px;display:none}
+.fb.show{display:block}
+.fb.good{background:#dcfce7;border:2px solid var(--ok)}
+.fb.badf{background:#fee2e2;border:2px solid var(--bad)}
+.fb .verdikt{font-weight:800;font-size:clamp(20px,2.2vw,25px);margin-bottom:6px}
+.nextbtn,.restart{
+  margin-top:22px;display:none;background:var(--primary-dark);color:#fff;border:none;
+  font-family:inherit;font-weight:700;font-size:clamp(17px,1.9vw,21px);
+  padding:14px 34px;border-radius:999px;cursor:pointer;
+}
+.nextbtn.show,.restart.show{display:inline-block}
+.restart{background:var(--accent)}
+.restart:hover{background:var(--accent-dark)}
+.qend{text-align:center;display:none;padding:20px 0}
+.qend .bigscore{font-size:clamp(64px,9vw,110px);font-weight:900;color:var(--accent);line-height:1}
+.qend .msg{font-size:clamp(22px,2.4vw,28px);font-weight:600;margin:14px 0 6px}
+
+/* ============ Footer ============ */
+footer{
+  background:var(--primary-dark);color:#94a3b8;text-align:center;
+  padding:44px 24px;font-size:clamp(15px,1.6vw,19px);
+}
+footer .fname{color:#fff;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+
+@media (max-width:640px){
+  .sect{padding:54px 0}
+  .divider .inner{flex-direction:column;gap:4px}
+  .card{padding:24px 20px;border-radius:20px}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<nav>
+  <span class="brand">Rangkaian Listrik</span>
+  <a href="#materi">Materi</a>
+  <a href="#seri">Seri</a>
+  <a href="#paralel">Paralel</a>
+  <a href="#banding">Banding</a>
+  <a href="#lab">Lab</a>
+</nav>
+
+<!-- ================= TITLE PAGE ================= -->
+<header class="hero" id="top">
+  <div class="eyebrow">Belajar Fisika &middot; Interaktif</div>
+  <h1>Rangkaian Listrik</h1>
+  <div class="tagline">Belajar Seri &amp; Paralel dengan cara mudah ⚡</div>
+  <a class="cta" href="#materi">Mulai Belajar</a>
+</header>
+
+<!-- ================= DIVIDER 01 ================= -->
+<div class="divider" id="materi">
+  <div class="wrap inner">
+    <span class="num">01</span>
+    <span class="name">Materi Dasar</span>
+  </div>
+</div>
+
+<!-- ================= MATERI ================= -->
+<section class="sect white">
+  <div class="wrap">
+    <h2 class="sec">Apa Itu Rangkaian Listrik?</h2>
+    <p class="body">Rangkaian listrik adalah jalur tertutup bagi arus listrik.</p>
+    <p class="body">Arus mengalir dari baterai, melalui kabel, menuju lampu.</p>
+    <p class="body">Jalur harus tersambung penuh agar lampu bisa menyala.</p>
+
+    <h3 class="sub">Komponen Dasar</h3>
+    <div class="grid4">
+      <div class="card comp-card">
+        <svg viewBox="0 0 96 96" aria-hidden="true">
+          <rect x="18" y="36" width="60" height="26" rx="5" fill="#0f172a"/>
+          <rect x="78" y="43" width="7" height="12" rx="2" fill="#0f172a"/>
+          <rect x="11" y="43" width="7" height="12" rx="2" fill="#f97316"/>
+          <text x="30" y="55" font-size="16" fill="#fff" font-weight="700">+</text>
+        </svg>
+        <div class="cname">Baterai</div>
+        <div class="caption">Sumber energi listrik.</div>
+      </div>
+      <div class="card comp-card">
+        <svg viewBox="0 0 96 96" aria-hidden="true">
+          <path d="M8 62 C 28 62, 30 30, 48 30 S 68 62, 88 62" fill="none" stroke="#f97316" stroke-width="7" stroke-linecap="round"/>
+        </svg>
+        <div class="cname">Kabel</div>
+        <div class="caption">Jalur tempat arus mengalir.</div>
+      </div>
+      <div class="card comp-card">
+        <svg viewBox="0 0 96 96" aria-hidden="true">
+          <circle cx="48" cy="40" r="20" fill="#facc15" stroke="#0f172a" stroke-width="4"/>
+          <path d="M41 34 L55 47 M55 34 L41 47" stroke="#0f172a" stroke-width="3.5" stroke-linecap="round"/>
+          <rect x="41" y="61" width="14" height="7" rx="2" fill="#0f172a"/>
+        </svg>
+        <div class="cname">Lampu</div>
+        <div class="caption">Mengubah listrik menjadi cahaya.</div>
+      </div>
+      <div class="card comp-card">
+        <svg viewBox="0 0 96 96" aria-hidden="true">
+          <circle cx="20" cy="58" r="6" fill="#0f172a"/>
+          <circle cx="76" cy="58" r="6" fill="#0f172a"/>
+          <line x1="20" y1="58" x2="66" y2="30" stroke="#0f172a" stroke-width="6" stroke-linecap="round"/>
+          <line x1="8" y1="58" x2="14" y2="58" stroke="#0f172a" stroke-width="6" stroke-linecap="round"/>
+          <line x1="82" y1="58" x2="90" y2="58" stroke="#0f172a" stroke-width="6" stroke-linecap="round"/>
+        </svg>
+        <div class="cname">Saklar</div>
+        <div class="caption">Membuka dan menutup jalur.</div>
+      </div>
+    </div>
+
+    <h3 class="sub">Syarat Lampu Menyala</h3>
+    <div class="card">
+      <ul class="sifat">
+        <li>Rangkaian harus tertutup sempurna.</li>
+        <li>Harus ada sumber tegangan, misalnya baterai.</li>
+        <li>Tidak boleh ada kabel atau komponen yang putus.</li>
+      </ul>
+    </div>
+
+    <h3 class="sub">Contoh Sehari-hari</h3>
+    <div class="grid2">
+      <div class="card"><strong>Senter</strong><div class="caption">Baterai menyuplai satu lampu kecil.</div></div>
+      <div class="card"><strong>Lampu rumah</strong><div class="caption">Setiap ruangan punya saklar sendiri.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DIVIDER 02 ================= -->
+<div class="divider" id="seri">
+  <div class="wrap inner">
+    <span class="num">02</span>
+    <span class="name">Rangkaian Seri</span>
+  </div>
+</div>
+
+<!-- ================= SERI ================= -->
+<section class="sect grey">
+  <div class="wrap">
+    <h2 class="sec">Rangkaian Seri</h2>
+    <p class="body">Pada rangkaian seri, komponen disusun berderet.</p>
+    <p class="body">Semua komponen berada di satu jalur yang sama.</p>
+    <p class="body">Arus hanya punya satu jalan untuk kembali ke baterai.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 640 300" role="img" aria-label="Skema rangkaian seri dengan dua lampu">
+        <!-- wires -->
+        <path class="wire" d="M300 250 H90 Q70 250 70 230 V90 Q70 70 90 70 H550 Q570 70 570 90 V230 Q570 250 550 250 H340"/>
+        <!-- flow -->
+        <path class="flow" style="opacity:1;animation-duration:2.2s" d="M340 250 H550 Q570 250 570 230 V90 Q570 70 550 70 H90 Q70 70 70 90 V230 Q70 250 90 250 H300"/>
+        <!-- battery -->
+        <line class="bat-long" x1="310" y1="222" x2="310" y2="278"/>
+        <line class="bat-short" x1="330" y1="236" x2="330" y2="264"/>
+        <text class="lbl" x="296" y="216">+</text>
+        <text class="lbl" x="336" y="216">&minus;</text>
+        <!-- lamps -->
+        <g>
+          <circle cx="200" cy="70" r="24" fill="#facc15" stroke="#0f172a" stroke-width="3.5"/>
+          <path d="M192 62 L208 79 M208 62 L192 79" stroke="#0f172a" stroke-width="3" stroke-linecap="round"/>
+          <text class="lbl" x="186" y="30">R&#8321;</text>
+        </g>
+        <g>
+          <circle cx="440" cy="70" r="24" fill="#facc15" stroke="#0f172a" stroke-width="3.5"/>
+          <path d="M432 62 L448 79 M448 62 L432 79" stroke="#0f172a" stroke-width="3" stroke-linecap="round"/>
+          <text class="lbl" x="426" y="30">R&#8322;</text>
+        </g>
+      </svg>
+      <figcaption class="caption">Dua lampu berderet di satu jalur tanpa cabang.</figcaption>
+    </figure>
+
+    <h3 class="sub">Sifat-Sifat Rangkaian Seri</h3>
+    <div class="card">
+      <ul class="sifat">
+        <li>Arus mengalir di satu jalur saja.</li>
+        <li>Jika satu lampu putus, semua lampu mati.</li>
+        <li>Semakin banyak lampu, cahayanya semakin redup.</li>
+        <li>Satu saklar mengontrol semua lampu sekaligus.</li>
+      </ul>
+    </div>
+
+    <h3 class="sub">Rumus Hambatan Total</h3>
+    <div class="formula">
+      <div class="fx">R<sub>total</sub> = R&#8321; + R&#8322; + R&#8323;</div>
+      <div class="ex">Contoh: R&#8321; = 2 &Omega;, R&#8322; = 3 &Omega;, R&#8323; = 5 &Omega;. Maka R<sub>total</sub> = 10 &Omega;.</div>
+    </div>
+
+    <div class="analogy">
+      <div class="atitle">Analogi: Antrean Satu Baris</div>
+      <p class="body">Bayangkan antrean tunggal di kantin sekolah.</p>
+      <p class="body">Jika satu orang keluar, barisan langsung terputus.</p>
+      <p class="body">Semua orang di belakang tidak bisa maju lagi.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DIVIDER 03 ================= -->
+<div class="divider" id="paralel">
+  <div class="wrap inner">
+    <span class="num">03</span>
+    <span class="name">Rangkaian Paralel</span>
+  </div>
+</div>
+
+<!-- ================= PARALEL ================= -->
+<section class="sect white">
+  <div class="wrap">
+    <h2 class="sec">Rangkaian Paralel</h2>
+    <p class="body">Pada rangkaian paralel, komponen disusun bercabang.</p>
+    <p class="body">Setiap lampu mendapat jalurnya sendiri.</p>
+    <p class="body">Arus terbagi menjadi beberapa jalur sekaligus.</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 640 340" role="img" aria-label="Skema rangkaian paralel dengan dua lampu">
+        <!-- wires -->
+        <path class="wire" d="M300 290 H90 Q70 290 70 270 V110 Q70 90 90 90 H550 Q570 90 570 110 V270 Q570 290 550 290 H340"/>
+        <path class="wire" d="M70 90 V190 Q70 210 90 210 H550 Q570 210 570 190 V90"/>
+        <!-- flows -->
+        <path class="flow" style="opacity:1;animation-duration:2s" d="M340 290 H550 Q570 290 570 270 V110 Q570 90 550 90 H90 Q70 90 70 110 V270 Q70 290 90 290 H300"/>
+        <path class="flow" style="opacity:1;animation-duration:2s" d="M340 290 H550 Q570 290 570 270 V230 Q570 210 550 210 H90 Q70 210 70 230 V270 Q70 290 90 290 H300"/>
+        <!-- nodes -->
+        <circle class="node" cx="70" cy="90" r="6"/><circle class="node" cx="570" cy="90" r="6"/>
+        <circle class="node" cx="70" cy="210" r="6"/><circle class="node" cx="570" cy="210" r="6"/>
+        <!-- battery -->
+        <line class="bat-long" x1="310" y1="262" x2="310" y2="318"/>
+        <line class="bat-short" x1="330" y1="276" x2="330" y2="304"/>
+        <text class="lbl" x="296" y="256">+</text>
+        <text class="lbl" x="336" y="256">&minus;</text>
+        <!-- lamps -->
+        <g>
+          <circle cx="320" cy="90" r="24" fill="#facc15" stroke="#0f172a" stroke-width="3.5"/>
+          <path d="M312 82 L328 99 M328 82 L312 99" stroke="#0f172a" stroke-width="3" stroke-linecap="round"/>
+          <text class="lbl" x="306" y="50">R&#8321;</text>
+        </g>
+        <g>
+          <circle cx="320" cy="210" r="24" fill="#facc15" stroke="#0f172a" stroke-width="3.5"/>
+          <path d="M312 202 L328 219 M328 202 L312 219" stroke="#0f172a" stroke-width="3" stroke-linecap="round"/>
+          <text class="lbl" x="306" y="170">R&#8322;</text>
+        </g>
+      </svg>
+      <figcaption class="caption">Dua lampu bercabang, masing-masing punya jalur sendiri.</figcaption>
+    </figure>
+
+    <h3 class="sub">Sifat-Sifat Rangkaian Paralel</h3>
+    <div class="card">
+      <ul class="sifat">
+        <li>Arus terbagi mengalir di beberapa jalur.</li>
+        <li>Jika satu lampu putus, lampu lain tetap nyala.</li>
+        <li>Cahaya lampu tetap terang walau banyak lampu.</li>
+        <li>Setiap lampu bisa punya saklar masing-masing.</li>
+      </ul>
+    </div>
+
+    <h3 class="sub">Rumus Hambatan Total</h3>
+    <div class="formula">
+      <div class="fx">1/R<sub>total</sub> = 1/R&#8321; + 1/R&#8322; + 1/R&#8323;</div>
+      <div class="ex">Contoh: R&#8321; = 4 &Omega; dan R&#8322; = 4 &Omega;. Maka 1/R<sub>total</sub> = 2/4, sehingga R<sub>total</sub> = 2 &Omega;.</div>
+      <div class="ex">R<sub>total</sub> paralel selalu lebih kecil dari hambatan terkecil.</div>
+    </div>
+
+    <div class="analogy">
+      <div class="atitle">Analogi: Jalan Tol Banyak Lajur</div>
+      <p class="body">Anggap arus listrik seperti mobil di jalan tol.</p>
+      <p class="body">Banyak lajur membuat lalu lintas tetap lancar.</p>
+      <p class="body">Satu lajur macet, lajur lain tetap berjalan normal.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DIVIDER 04 ================= -->
+<div class="divider" id="banding">
+  <div class="wrap inner">
+    <span class="num">04</span>
+    <span class="name">Perbandingan</span>
+  </div>
+</div>
+
+<!-- ================= PERBANDINGAN ================= -->
+<section class="sect grey">
+  <div class="wrap">
+    <h2 class="sec">Seri vs Paralel</h2>
+    <p class="body">Mari kita bandingkan kedua jenis rangkaian ini.</p>
+
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr><th>Aspek</th><th>Rangkaian Seri</th><th>Rangkaian Paralel</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="aspek">Jalur arus</td><td><span class="s">Satu</span> jalur saja</td><td><span class="p">Banyak</span> jalur bercabang</td></tr>
+          <tr><td class="aspek">Satu lampu putus</td><td>Semua lampu mati</td><td>Lampu lain tetap nyala</td></tr>
+          <tr><td class="aspek">Kecerahan</td><td>Semakin banyak, semakin redup</td><td>Tetap terang</td></tr>
+          <tr><td class="aspek">Saklar</td><td>Satu untuk semua lampu</td><td>Bisa satu per lampu</td></tr>
+          <tr><td class="aspek">Rumus</td><td>R<sub>t</sub> = R&#8321; + R&#8322; + R&#8323;</td><td>1/R<sub>t</sub> = 1/R&#8321; + 1/R&#8322;</td></tr>
+          <tr><td class="aspek">Contoh</td><td>Lampu hias, baterai senter</td><td>Instalasi rumah, lampu jalan</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub">Keunggulan &amp; Kekurangan</h3>
+    <div class="grid2">
+      <div class="card">
+        <div class="atitle" style="font-weight:700;font-size:clamp(24px,2.6vw,31px)">Rangkaian Seri</div>
+        <ul class="sifat">
+          <li>Hemat kabel dan mudah dibuat.</li>
+          <li>Kekurangan: satu rusak, semua mati.</li>
+          <li>Kekurangan: cahaya menjadi meredup.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="atitle" style="font-weight:700;font-size:clamp(24px,2.6vw,31px)">Rangkaian Paralel</div>
+        <ul class="sifat">
+          <li>Satu rusak, yang lain tetap aman.</li>
+          <li>Cahaya selalu konsisten dan terang.</li>
+          <li>Kekurangan: membutuhkan lebih banyak kabel.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="sub">Aplikasi Sehari-hari</h3>
+    <div class="grid2">
+      <div class="card"><strong>Seri dipakai untuk:</strong><div class="caption">Lampu hias murah dan baterai berderet di senter.</div></div>
+      <div class="card"><strong>Paralel dipakai untuk:</strong><div class="caption">Listrik rumah, lampu jalan, dan lampu stadion.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DIVIDER 05 ================= -->
+<div class="divider" id="lab">
+  <div class="wrap inner">
+    <span class="num">05</span>
+    <span class="name">Lab Interaktif</span>
+  </div>
+</div>
+
+<!-- ================= LABS ================= -->
+<section class="sect white">
+  <div class="wrap">
+
+    <!-- ===== LAB 1 : SERI ===== -->
+    <div class="lab-head"><span class="lab-badge">Lab 1</span><h3 class="sub" style="margin:0">Simulasi Rangkaian Seri</h3></div>
+    <p class="hint">Klik saklar untuk menyalakan semua lampu. Klik sebuah lampu untuk memutuskannya.</p>
+    <div class="stage">
+      <svg viewBox="0 0 640 360" role="img" aria-label="Simulasi rangkaian seri interaktif">
+        <!-- wires -->
+        <path class="wire" d="M360 310 H550 Q570 310 570 290 V110 Q570 90 550 90 H90 Q70 90 70 110 V290 Q70 310 90 310 H280"/>
+        <!-- flow -->
+        <path id="seri-flow" class="flow" d="M360 310 H550 Q570 310 570 290 V110 Q570 90 550 90 H90 Q70 90 70 110 V290 Q70 310 90 310 H280"/>
+        <!-- battery -->
+        <line class="bat-long" x1="310" y1="282" x2="310" y2="338"/>
+        <line class="bat-short" x1="330" y1="296" x2="330" y2="324"/>
+        <text class="lbl" x="294" y="276">+</text>
+        <text class="lbl" x="336" y="276">&minus;</text>
+        <text class="lbl-sm" x="296" y="356">BATERAI</text>
+        <!-- switch on left rail -->
+        <line class="wire" x1="70" y1="90" x2="70" y2="148"/>
+        <line class="wire" x1="70" y1="216" x2="70" y2="290"/>
+        <circle class="dot-big" cx="70" cy="152" r="6"/>
+        <circle class="dot-big" cx="70" cy="212" r="6"/>
+        <line id="seri-lever" class="lever" x1="70" y1="152" x2="70" y2="208" transform="rotate(-52 70 152)"/>
+        <text class="lbl-sm" x="92" y="188">SAKLAR (klik)</text>
+        <g id="seri-sw" class="clickable" role="button" tabindex="0" aria-label="Saklar utama">
+          <circle class="hit" cx="70" cy="182" r="42"/>
+        </g>
+        <!-- lamps -->
+        <g id="sl0" class="lamp clickable" role="button" tabindex="0" aria-label="Lampu 1">
+          <circle class="halo" cx="180" cy="90" r="36"/>
+          <circle class="bulb" cx="180" cy="90" r="21"/>
+          <path class="filament" d="M173 83 L187 98 M187 83 L173 98"/>
+          <g class="crack"><line x1="166" y1="76" x2="194" y2="104"/><line x1="194" y1="76" x2="166" y2="104"/></g>
+          <text class="lbl" x="166" y="34">Lampu 1</text>
+        </g>
+        <g id="sl1" class="lamp clickable" role="button" tabindex="0" aria-label="Lampu 2">
+          <circle class="halo" cx="320" cy="90" r="36"/>
+          <circle class="bulb" cx="320" cy="90" r="21"/>
+          <path class="filament" d="M313 83 L327 98 M327 83 L313 98"/>
+          <g class="crack"><line x1="306" y1="76" x2="334" y2="104"/><line x1="334" y1="76" x2="306" y2="104"/></g>
+          <text class="lbl" x="306" y="34">Lampu 2</text>
+        </g>
+        <g id="sl2" class="lamp clickable" role="button" tabindex="0" aria-label="Lampu 3">
+          <circle class="halo" cx="460" cy="90" r="36"/>
+          <circle class="bulb" cx="460" cy="90" r="21"/>
+          <path class="filament" d="M453 83 L467 98 M467 83 L453 98"/>
+          <g class="crack"><line x1="446" y1="76" x2="474" y2="104"/><line x1="474" y1="76" x2="446" y2="104"/></g>
+          <text class="lbl" x="446" y="34">Lampu 3</text>
+        </g>
+      </svg>
+      <div class="statusbar">
+        <span id="seri-status" class="status off">Saklar terbuka. Semua lampu masih mati.</span>
+        <span class="hint">Garis oranye putus-putus = arah arus listrik.</span>
+      </div>
+    </div>
+
+    <!-- ===== LAB 2 : PARALEL ===== -->
+    <div class="lab-head" style="margin-top:72px"><span class="lab-badge">Lab 2</span><h3 class="sub" style="margin:0">Simulasi Rangkaian Paralel</h3></div>
+    <p class="hint">Setiap lampu punya saklar sendiri. Coba matikan salah satu, lihat yang lain.</p>
+    <div class="stage">
+      <svg viewBox="0 0 640 430" role="img" aria-label="Simulasi rangkaian paralel interaktif">
+        <!-- trunk wires -->
+        <path class="wire" d="M360 370 H550 Q570 370 570 350 V90"/>
+        <path class="wire" d="M70 90 V350 Q70 370 90 370 H280"/>
+        <!-- battery -->
+        <line class="bat-long" x1="310" y1="342" x2="310" y2="398"/>
+        <line class="bat-short" x1="330" y1="356" x2="330" y2="384"/>
+        <text class="lbl" x="294" y="336">+</text>
+        <text class="lbl" x="336" y="336">&minus;</text>
+        <text class="lbl-sm" x="296" y="416">BATERAI</text>
+        <!-- branch 1 -->
+        <path class="wire" d="M70 90 H128 M212 90 H550"/>
+        <circle class="dot-big" cx="130" cy="90" r="6"/><circle class="dot-big" cx="210" cy="90" r="6"/>
+        <circle class="dot-big" cx="70" cy="90" r="6"/><circle class="node" cx="570" cy="90" r="6"/>
+        <line id="sp-lev0" class="lever" x1="130" y1="90" x2="206" y2="90" transform="rotate(-42 130 90)"/>
+        <text class="lbl-sm" x="142" y="66">S1</text>
+        <g id="sp-sw0" class="clickable" role="button" tabindex="0" aria-label="Saklar 1"><circle class="hit" cx="168" cy="90" r="30"/></g>
+        <g id="pl0" class="lamp clickable" role="button" tabindex="0" aria-label="Lampu 1">
+          <circle class="halo" cx="330" cy="90" r="36"/>
+          <circle class="bulb" cx="330" cy="90" r="21"/>
+          <path class="filament" d="M323 83 L337 98 M337 83 L323 98"/>
+          <g class="crack"><line x1="316" y1="76" x2="344" y2="104"/><line x1="344" y1="76" x2="316" y2="104"/></g>
+          <text class="lbl" x="372" y="70">Lampu 1</text>
+        </g>
+        <path id="sp-flow0" class="flow" d="M360 370 H550 Q570 370 570 350 V112 Q570 90 550 90 H90 Q70 90 70 112 V350 Q70 370 90 370 H280"/>
+        <!-- branch 2 -->
+        <path class="wire" d="M70 210 H128 M212 210 H550"/>
+        <circle class="dot-big" cx="130" cy="210" r="6"/><circle class="dot-big" cx="210" cy="210" r="6"/>
+        <circle class="dot-big" cx="70" cy="210" r="6"/><circle class="node" cx="570" cy="210" r="6"/>
+        <line id="sp-lev1" class="lever" x1="130" y1="210" x2="206" y2="210" transform="rotate(-42 130 210)"/>
+        <text class="lbl-sm" x="142" y="186">S2</text>
+        <g id="sp-sw1" class="clickable" role="button" tabindex="0" aria-label="Saklar 2"><circle class="hit" cx="168" cy="210" r="30"/></g>
+        <g id="pl1" class="lamp clickable" role="button" tabindex="0" aria-label="Lampu 2">
+          <circle class="halo" cx="330" cy="210" r="36"/>
+          <circle class="bulb" cx="330" cy="210" r="21"/>
+          <path class="filament" d="M323 203 L337 218 M337 203 L323 218"/>
+          <g class="crack"><line x1="316" y1="196" x2="344" y2="224"/><line x1="344" y1="196" x2="316" y2="224"/></g>
+          <text class="lbl" x="372" y="190">Lampu 2</text>
+        </g>
+        <path id="sp-flow1" class="flow" d="M360 370 H550 Q570 370 570 350 V232 Q570 210 550 210 H90 Q70 210 70 232 V350 Q70 370 90 370 H280"/>
+        <!-- branch 3 -->
+        <path class="wire" d="M70 310 H128 M212 310 H550"/>
+        <circle class="dot-big" cx="130" cy="310" r="6"/><circle class="dot-big" cx="210" cy="310" r="6"/>
+        <circle class="dot-big" cx="70" cy="310" r="6"/><circle class="node" cx="570" cy="310" r="6"/>
+        <line id="sp-lev2" class="lever" x1="130" y1="310" x2="206" y2="310" transform="rotate(-42 130 310)"/>
+        <text class="lbl-sm" x="142" y="286">S3</text>
+        <g id="sp-sw2" class="clickable" role="button" tabindex="0" aria-label="Saklar 3"><circle class="hit" cx="168" cy="310" r="30"/></g>
+        <g id="pl2" class="lamp clickable" role="button" tabindex="0" aria-label="Lampu 3">
+          <circle class="halo" cx="330" cy="310" r="36"/>
+          <circle class="bulb" cx="330" cy="310" r="21"/>
+          <path class="filament" d="M323 303 L337 318 M337 303 L323 318"/>
+          <g class="crack"><line x1="316" y1="296" x2="344" y2="324"/><line x1="344" y1="296" x2="316" y2="324"/></g>
+          <text class="lbl" x="372" y="290">Lampu 3</text>
+        </g>
+        <path id="sp-flow2" class="flow" d="M360 370 H550 Q570 370 570 350 V332 Q570 310 550 310 H90 Q70 310 70 332 V350 Q70 370 90 370 H280"/>
+      </svg>
+      <div class="statusbar">
+        <span id="sp-status" class="status off">Belum ada cabang yang menyala.</span>
+        <span class="hint">Perhatikan: setiap cabang bekerja secara mandiri.</span>
+      </div>
+    </div>
+
+    <!-- ===== LAB 3 : QUIZ ===== -->
+    <div class="lab-head" style="margin-top:72px"><span class="lab-badge">Lab 3</span><h3 class="sub" style="margin:0">Quiz: Seri atau Paralel?</h3></div>
+    <p class="hint">Baca skenario berikut, lalu tebak jenis rangkaiannya.</p>
+
+    <div class="card quiz-box">
+      <div id="quiz-play">
+        <div class="qprogress"><div id="quiz-fill" class="fill"></div></div>
+        <div id="quiz-count" class="caption qcount">Soal 1 dari 8</div>
+        <div id="quiz-q" class="qq">&hellip;</div>
+        <div class="opts">
+          <button id="opt-seri" class="opt" type="button">SERI</button>
+          <button id="opt-paralel" class="opt" type="button">PARALEL</button>
+        </div>
+        <div id="quiz-fb" class="fb">
+          <div id="fb-title" class="verdikt"></div>
+          <div id="fb-why" class="caption"></div>
+        </div>
+        <button id="quiz-next" class="nextbtn" type="button">Soal Berikutnya &rarr;</button>
+      </div>
+      <div id="quiz-end" class="qend">
+        <div class="bigscore" id="quiz-score">0/8</div>
+        <div class="msg" id="quiz-msg">Bagus!</div>
+        <div class="caption">Kerjakan ulang untuk memperbaiki skormu.</div>
+        <button id="quiz-restart" class="restart show" type="button">Ulangi Quiz</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="fname">Rangkaian Listrik</div>
+  <div>Media belajar interaktif &middot; Seri &amp; Paralel &middot; Elon &times; LabsDigital</div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var $ = function(id){ return document.getElementById(id); };
+
+  /* ---------- keyboard support helper ---------- */
+  function bindActivate(el, fn){
+    el.addEventListener("click", fn);
+    el.addEventListener("keydown", function(e){
+      if(e.key === "Enter" || e.key === " "){ e.preventDefault(); fn(); }
+    });
+  }
+
+  /* ================= LAB 1 : SERI ================= */
+  var seri = { on:false, broken:[false,false,false] };
+
+  function lab1Render(){
+    var anyBroken = seri.broken[0] || seri.broken[1] || seri.broken[2];
+    var flowing = seri.on && !anyBroken;
+
+    $("seri-lever").setAttribute("transform",
+      seri.on ? "rotate(0 70 152)" : "rotate(-52 70 152)");
+    $("seri-flow").style.opacity = flowing ? 1 : 0;
+
+    for(var i=0;i<3;i++){
+      var g = $("sl"+i);
+      g.classList.toggle("dead", seri.broken[i]);
+      g.classList.toggle("lit", flowing && !seri.broken[i]);
+    }
+
+    var st = $("seri-status");
+    if(anyBroken){
+      st.className = "status warn";
+      st.textContent = "Ada lampu putus! Karena satu jalur, SEMUA lampu ikut mati.";
+    } else if(flowing){
+      st.className = "status ok";
+      st.textContent = "Saklar tertutup. Arus mengalir, ketiga lampu menyala.";
+    } else {
+      st.className = "status off";
+      st.textContent = "Saklar terbuka. Jalur terputus, semua lampu mati.";
+    }
+  }
+  bindActivate($("seri-sw"), function(){ seri.on = !seri.on; lab1Render(); });
+  [0,1,2].forEach(function(i){
+    bindActivate($("sl"+i), function(){ seri.broken[i] = !seri.broken[i]; lab1Render(); });
+  });
+  lab1Render();
+
+  /* ================= LAB 2 : PARALEL ================= */
+  var par = {
+    sw:[false,false,false],
+    broken:[false,false,false]
+  };
+
+  function lab2Render(){
+    var count = 0;
+    for(var i=0;i<3;i++){
+      var on = par.sw[i] && !par.broken[i];
+      if(on) count++;
+      $("sp-lev"+i).setAttribute("transform",
+        par.sw[i] ? "rotate(0 130 "+(90+i*120)+")" : "rotate(-42 130 "+(90+i*120)+")");
+      $("sp-flow"+i).style.opacity = on ? 1 : 0;
+      var g = $("pl"+i);
+      g.classList.toggle("dead", par.broken[i]);
+      g.classList.toggle("lit", on);
+    }
+    var st = $("sp-status");
+    if(count === 3){
+      st.className = "status ok";
+      st.textContent = "Ketiga cabang menyala. Arus terbagi ke tiga jalur.";
+    } else if(count > 0){
+      st.className = "status ok";
+      st.textContent = count + " dari 3 lampu menyala. Cabang mati tidak mengganggu yang lain.";
+    } else {
+      st.className = "status off";
+      st.textContent = "Belum ada cabang yang menyala.";
+    }
+  }
+  [0,1,2].forEach(function(i){
+    bindActivate($("sp-sw"+i), function(){
+      par.sw[i] = !par.sw[i]; lab2Render();
+    });
+    bindActivate($("pl"+i), function(){
+      par.broken[i] = !par.broken[i]; lab2Render();
+    });
+  });
+  lab2Render();
+
+  /* ================= LAB 3 : QUIZ ================= */
+  var QUIZ = [
+    { q:"Lampu hias pohon Natal disusun berderet. Satu lampu pecah, semuanya padam.",
+      a:"seri", why:"Satu jalur: satu putus, semua mati." },
+    { q:"Di rumah, lampu kamar dimatikan. Lampu ruang tamu tetap menyala.",
+      a:"paralel", why:"Banyak jalur: setiap lampu bekerja mandiri." },
+    { q:"Dua lampu senter dipasang berderet pada satu kabel tanpa cabang.",
+      a:"seri", why:"Disusun berderet di satu jalur adalah ciri seri." },
+    { q:"Tiga lampu taman masing-masing punya saklar sendiri-sendiri.",
+      a:"paralel", why:"Saklar per lampu hanya ada pada rangkaian paralel." },
+    { q:"Semakin banyak lampu ditambahkan, cahayanya semakin redup.",
+      a:"seri", why:"Pada seri, hambatan total naik sehingga arus turun." },
+    { q:"Arus listrik punya banyak jalur untuk kembali ke baterai.",
+      a:"paralel", why:"Banyak jalur arus adalah ciri rangkaian paralel." },
+    { q:"Lampu jalan di satu tiang mati, tetapi tiang-tiang lain tetap terang.",
+      a:"paralel", why:"Setiap titik lampu tersambung pada jalurnya sendiri." },
+    { q:"Arus hanya punya satu jalan dari kutub positif ke kutub negatif.",
+      a:"seri", why:"Satu-satunya jalur artinya rangkaian seri." }
+  ];
+
+  var qi = 0, score = 0, locked = false;
+
+  function quizShow(){
+    locked = false;
+    $("quiz-play").style.display = "block";
+    $("quiz-end").style.display = "none";
+    $("quiz-count").textContent = "Soal " + (qi+1) + " dari " + QUIZ.length;
+    $("quiz-fill").style.width = ((qi)/QUIZ.length*100) + "%";
+    $("quiz-q").textContent = QUIZ[qi].q;
+    $("opt-seri").disabled = false;
+    $("opt-paralel").disabled = false;
+    $("opt-seri").className = "opt";
+    $("opt-paralel").className = "opt";
+    $("quiz-fb").className = "fb";
+    $("quiz-next").className = "nextbtn";
+  }
+
+  function quizAnswer(choice){
+    if(locked) return;
+    locked = true;
+    var correct = QUIZ[qi].a === choice;
+    if(correct) score++;
+    $("opt-seri").disabled = true;
+    $("opt-paralel").disabled = true;
+    $("opt-" + QUIZ[qi].a).classList.add("correct");
+    if(!correct){
+      $("opt-" + choice).classList.add("wrong");
+    }
+    var fb = $("quiz-fb");
+    fb.className = "fb show " + (correct ? "good" : "badf");
+    $("fb-title").textContent = correct ? "Benar!" : "Kurang tepat.";
+    $("fb-why").textContent = QUIZ[qi].why +
+      (correct ? "" : " Jawaban benar: " + QUIZ[qi].a.toUpperCase() + ".");
+    var nb = $("quiz-next");
+    nb.textContent = (qi === QUIZ.length-1) ? "Lihat Hasil \u2192" : "Soal Berikutnya \u2192";
+    nb.className = "nextbtn show";
+  }
+
+  function quizNext(){
+    if(qi < QUIZ.length-1){
+      qi++;
+      quizShow();
+    } else {
+      quizEnd();
+    }
+  }
+
+  function quizEnd(){
+    $("quiz-play").style.display = "none";
+    $("quiz-end").style.display = "block";
+    $("quiz-fill").style.width = "100%";
+    $("quiz-score").textContent = score + "/" + QUIZ.length;
+    var msg;
+    if(score === QUIZ.length){ msg = "Sempurna! Kamu ahli rangkaian."; }
+    else if(score >= QUIZ.length-2){ msg = "Bagus sekali! Sedikit lagi sempurna."; }
+    else if(score >= QUIZ.length/2){ msg = "Cukup baik. Ayo pelajari lagi materinya."; }
+    else { msg = "Jangan menyerah, coba pelajari materinya lagi."; }
+    $("quiz-msg").textContent = msg;
+  }
+
+  $("opt-seri").addEventListener("click", function(){ quizAnswer("seri"); });
+  $("opt-paralel").addEventListener("click", function(){ quizAnswer("paralel"); });
+  $("quiz-next").addEventListener("click", quizNext);
+  $("quiz-restart").addEventListener("click", function(){
+    qi = 0; score = 0; quizShow();
+  });
+  quizShow();
+})();
+</script>
+</body>
+</html>
