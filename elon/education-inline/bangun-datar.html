@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Empat bangun datar dasar beserta rumus luasnya: persegi, persegi panjang, segitiga, dan lingkaran.">
+<title>Bangun Datar — Ilustrasi Edukatif SVG Inline</title>
+<style>
+  :root{
+    --oranye:#F97316; --biru:#3B82F6; --hijau:#10B981; --merah:#EF4444;
+    --bg:#F8FAFC; --kartu:#FFFFFF; --teks:#1F2937; --abu:#6B7280; --garis:#E2E8F0;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Segoe UI',system-ui,-apple-system,Roboto,'Helvetica Neue',Arial,sans-serif;background:var(--bg);color:var(--teks);line-height:1.6}
+  .wadah{max-width:1040px;margin:0 auto;padding:26px 16px 52px}
+  header.atas{margin-bottom:20px}
+  .kembali{display:inline-flex;align-items:center;gap:6px;color:var(--abu);text-decoration:none;font-size:.9rem;font-weight:600;margin-bottom:10px;transition:color .2s}
+  .kembali:hover{color:var(--oranye)}
+  h1{font-size:clamp(1.5rem,3.5vw,2rem);letter-spacing:-.02em}
+  .sub{color:var(--abu);font-size:1rem;margin-top:4px}
+  figure.papan{background:var(--kartu);border:1px solid var(--garis);border-radius:18px;padding:16px;box-shadow:0 10px 30px rgba(15,23,42,.07)}
+  figure svg{display:block;width:100%;height:auto;border-radius:10px}
+  figcaption{margin-top:12px;font-size:.9rem;color:var(--abu);text-align:center}
+
+  /* Interaktivitas */
+  .bentuk{cursor:pointer;transition:transform .25s ease;transform-box:fill-box;transform-origin:center}
+  .bentuk:hover{transform:translateY(-7px)}
+
+  .fakta{margin-top:18px;background:var(--kartu);border-left:4px solid var(--oranye);border-radius:10px;padding:14px 18px;font-size:.92rem;box-shadow:0 4px 14px rgba(15,23,42,.05)}
+  .fakta strong{color:var(--oranye)}
+
+  @media print{
+    body{background:#fff}
+    .kembali,.fakta{display:none}
+    figure.papan{box-shadow:none;border:none;padding:0}
+  }
+</style>
+</head>
+<body>
+<div class="wadah">
+  <header class="atas">
+    <a class="kembali" href="index.html">&#8592; Kembali ke Galeri</a>
+    <h1>Bangun Datar</h1>
+    <p class="sub">Matematika &#8226; Empat bangun datar dasar beserta rumus luasnya.</p>
+  </header>
+
+  <main>
+    <figure class="papan">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 450" role="img" aria-labelledby="bd-judul bd-desc" font-family="'Segoe UI', system-ui, sans-serif">
+        <title id="bd-judul">Bangun Datar dan Rumus Luasnya</title>
+        <desc id="bd-desc">Empat bangun datar: persegi dengan rumus luas s kali s, persegi panjang dengan p kali l, segitiga dengan setengah kali a kali t, dan lingkaran dengan pi kali r kuadrat.</desc>
+
+        <rect x="0" y="0" width="640" height="450" rx="16" fill="#FFFFFF"/>
+        <line x1="320" y1="34" x2="320" y2="420" stroke="#E2E8F0" stroke-width="2" stroke-dasharray="6 6"/>
+        <line x1="36" y1="264" x2="604" y2="264" stroke="#E2E8F0" stroke-width="2" stroke-dasharray="6 6"/>
+
+        <!-- Persegi -->
+        <g class="bentuk">
+          <rect x="65" y="78" width="110" height="110" rx="10" fill="#F97316"/>
+          <text x="120" y="68" text-anchor="middle" font-size="13" font-weight="600" fill="#1F2937">s</text>
+          <text x="48" y="137" text-anchor="middle" font-size="13" font-weight="600" fill="#1F2937">s</text>
+          <text x="120" y="222" text-anchor="middle" font-size="17" font-weight="700" fill="#1F2937">Persegi</text>
+          <text x="120" y="243" text-anchor="middle" font-size="13.5" fill="#475569">Luas = s &#215; s</text>
+          <title>Persegi: keempat sisinya sama panjang</title>
+        </g>
+
+        <!-- Persegi Panjang -->
+        <g class="bentuk">
+          <rect x="370" y="88" width="190" height="95" rx="10" fill="#3B82F6"/>
+          <text x="465" y="76" text-anchor="middle" font-size="13" font-weight="600" fill="#1F2937">p (panjang)</text>
+          <text x="583" y="140" text-anchor="start" font-size="13" font-weight="600" fill="#1F2937"></text>
+          <text x="352" y="140" text-anchor="end" font-size="13" font-weight="600" fill="#1F2937">l</text>
+          <text x="465" y="222" text-anchor="middle" font-size="17" font-weight="700" fill="#1F2937">Persegi Panjang</text>
+          <text x="465" y="243" text-anchor="middle" font-size="13.5" fill="#475569">Luas = p &#215; l</text>
+          <title>Persegi panjang: sisi berhadapan sama panjang</title>
+        </g>
+
+        <!-- Segitiga -->
+        <g class="bentuk">
+          <polygon points="95,385 215,385 155,290" fill="#10B981"/>
+          <line x1="155" y1="290" x2="155" y2="385" stroke="#1F2937" stroke-width="1.8" stroke-dasharray="5 4"/>
+          <rect x="155" y="377" width="9" height="9" fill="none" stroke="#1F2937" stroke-width="1.5"/>
+          <text x="155" y="404" text-anchor="middle" font-size="13" font-weight="600" fill="#1F2937">a</text>
+          <text x="164" y="340" text-anchor="start" font-size="13" font-weight="600" fill="#1F2937">t</text>
+          <text x="155" y="426" text-anchor="middle" font-size="17" font-weight="700" fill="#1F2937">Segitiga</text>
+          <text x="155" y="446" text-anchor="middle" font-size="13.5" fill="#475569">Luas = &#189; &#215; a &#215; t</text>
+          <title>Segitiga: alas dikali tinggi dibagi dua</title>
+        </g>
+
+        <!-- Lingkaran -->
+        <g class="bentuk">
+          <circle cx="468" cy="330" r="58" fill="#EF4444"/>
+          <circle cx="468" cy="330" r="3.2" fill="#FFFFFF"/>
+          <line x1="468" y1="330" x2="526" y2="330" stroke="#FFFFFF" stroke-width="1.8" stroke-dasharray="5 4"/>
+          <text x="497" y="322" text-anchor="middle" font-size="13" font-weight="600" fill="#FFFFFF">r</text>
+          <text x="468" y="426" text-anchor="middle" font-size="17" font-weight="700" fill="#1F2937">Lingkaran</text>
+          <text x="468" y="446" text-anchor="middle" font-size="13.5" fill="#475569">Luas = &#960; &#215; r &#178;</text>
+          <title>Lingkaran: semua titik tepi berjarak sama dari pusat</title>
+        </g>
+      </svg>
+      <figcaption>Arahkan kursor ke tiap bangun &#8212; s = sisi, p = panjang, l = lebar, a = alas, t = tinggi, r = jari-jari, &#960; &#8776; 3,14.</figcaption>
+    </figure>
+
+    <aside class="fakta">
+      <strong>Tahukah kamu?</strong> Kata &#8220;segitiga&#8221; berarti &#8220;tiga sudut&#8221;, dan jumlah ketiga sudut dalam segitiga selalu 180&#176; &#8212; coba ukur sendiri!
+    </aside>
+  </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Simulasi rangkaian listrik sederhana: baterai, kabel, lampu, dan saklar yang bisa diklik untuk menyalakan atau mematikan lampu.">
+<title>Rangkaian Listrik Sederhana — Ilustrasi Edukatif SVG Inline</title>
+<style>
+  :root{
+    --kuning:#F59E0B; --abu:#6B7280; --merah:#EF4444;
+    --bg:#F8FAFC; --kartu:#FFFFFF; --teks:#1F2937; --garis:#E2E8F0;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Segoe UI',system-ui,-apple-system,Roboto,'Helvetica Neue',Arial,sans-serif;background:var(--bg);color:var(--teks);line-height:1.6}
+  .wadah{max-width:1040px;margin:0 auto;padding:26px 16px 52px}
+  header.atas{margin-bottom:20px}
+  .kembali{display:inline-flex;align-items:center;gap:6px;color:var(--abu);text-decoration:none;font-size:.9rem;font-weight:600;margin-bottom:10px;transition:color .2s}
+  .kembali:hover{color:var(--kuning)}
+  h1{font-size:clamp(1.5rem,3.5vw,2rem);letter-spacing:-.02em}
+  .sub{color:var(--abu);font-size:1rem;margin-top:4px}
+  figure.papan{background:var(--kartu);border:1px solid var(--garis);border-radius:18px;padding:16px;box-shadow:0 10px 30px rgba(15,23,42,.07)}
+  figure svg{display:block;width:100%;height:auto;border-radius:10px}
+
+  /* Status */
+  #status{margin-top:12px;text-align:center;font-size:.95rem;font-weight:600;color:var(--abu);min-height:1.5em}
+
+  /* Interaktivitas SVG */
+  #saklar{cursor:pointer;outline:none}
+  #saklar:focus-visible .tuas-hit{stroke:#F59E0B;stroke-width:3}
+  .tuas{transform:rotate(-32deg);transform-origin:430px 330px;transition:transform .3s ease}
+  .menyala .tuas{transform:rotate(0deg)}
+
+  /* Lampu */
+  .lampu-glass{fill:#F1F5F9;stroke:var(--abu);stroke-width:2.5;transition:fill .35s ease}
+  .menyala .lampu-glass{fill:var(--kuning)}
+  .filamen{stroke:var(--abu);stroke-width:2.6;stroke-linecap:round;transition:stroke .35s ease}
+  .menyala .filamen{stroke:#FFFFFF}
+  .halo{fill:var(--kuning);opacity:0;transition:opacity .4s ease}
+  .menyala .halo{opacity:.32;animation:denyut 1.7s ease-in-out infinite}
+  @keyframes denyut{50%{opacity:.14}}
+
+  /* Aliran arus */
+  .arus{stroke:var(--kuning);stroke-width:3.2;fill:none;stroke-dasharray:11 15;stroke-linecap:round;opacity:0;transition:opacity .35s ease}
+  .menyala .arus{opacity:.95;animation:mengalir 1.1s linear infinite}
+  @keyframes mengalir{to{stroke-dashoffset:-104}}
+
+  .fakta{margin-top:18px;background:var(--kartu);border-left:4px solid var(--kuning);border-radius:10px;padding:14px 18px;font-size:.92rem;box-shadow:0 4px 14px rgba(15,23,42,.05)}
+  .fakta strong{color:var(--kuning)}
+
+  @media print{
+    body{background:#fff}
+    .kembali,.fakta,#status{display:none}
+    figure.papan{box-shadow:none;border:none;padding:0}
+    .halo,.arus{animation:none!important}
+  }
+</style>
+</head>
+<body>
+<div class="wadah">
+  <header class="atas">
+    <a class="kembali" href="index.html">&#8592; Kembali ke Galeri</a>
+    <h1>Rangkaian Listrik Sederhana</h1>
+    <p class="sub">IPA / Fisika &#8226; <strong>Klik saklarnya</strong> untuk membuka dan menutup rangkaian!</p>
+  </header>
+
+  <main>
+    <figure class="papan">
+      <svg id="papan-listrik" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 445" role="img" aria-labelledby="lk-judul lk-desc" font-family="'Segoe UI', system-ui, sans-serif">
+        <title id="lk-judul">Rangkaian Listrik Sederhana</title>
+        <desc id="lk-desc">Rangkaian tertutup berisi baterai, kabel, satu lampu, dan satu saklar. Ketika saklar ditutup, arus mengalir dan lampu menyala.</desc>
+
+        <rect x="0" y="0" width="620" height="445" rx="16" fill="#FFFFFF"/>
+
+        <!-- Kabel -->
+        <path d="M150,330 V120 H265 M355,120 H470 V330 H430 M360,330 H150"
+              fill="none" stroke="#6B7280" stroke-width="5" stroke-linecap="round"/>
+
+        <!-- Aliran arus (animasi saat menyala) -->
+        <path class="arus" d="M150,330 V120 H265 M355,120 H470 V330 H430 M360,330 H150" aria-hidden="true"/>
+
+        <!-- Baterai -->
+        <g>
+          <rect x="265" y="98" width="90" height="44" rx="8" fill="#EF4444"/>
+          <rect x="350" y="109" width="9" height="22" rx="3" fill="#EF4444"/>
+          <text x="283" y="127" font-size="17" font-weight="700" fill="#FFFFFF">&#8722;</text>
+          <text x="337" y="127" font-size="17" font-weight="700" fill="#FFFFFF">+</text>
+          <text x="310" y="86" text-anchor="middle" font-size="13.5" font-weight="700" fill="#1F2937">Baterai</text>
+          <text x="310" y="160" text-anchor="middle" font-size="10.5" fill="#6B7280">sumber tegangan</text>
+        </g>
+
+        <!-- Lampu -->
+        <g>
+          <circle class="halo" cx="150" cy="222" r="42"/>
+          <circle class="lampu-glass" cx="150" cy="222" r="27"/>
+          <line class="filamen" x1="138" y1="209" x2="162" y2="235"/>
+          <line class="filamen" x1="162" y1="209" x2="138" y2="235"/>
+          <rect x="139" y="249" width="22" height="12" rx="3" fill="#6B7280"/>
+          <line x1="141" y1="253" x2="159" y2="253" stroke="#FFFFFF" stroke-width="1.4" opacity=".7"/>
+          <line x1="141" y1="257" x2="159" y2="257" stroke="#FFFFFF" stroke-width="1.4" opacity=".7"/>
+          <text x="150" y="288" text-anchor="middle" font-size="13.5" font-weight="700" fill="#1F2937">Lampu</text>
+        </g>
+
+        <!-- Saklar (bisa diklik) -->
+        <g id="saklar" tabindex="0" role="button" aria-pressed="false" aria-label="Saklar rangkaian: tekan untuk membuka atau menutup">
+          <circle cx="430" cy="330" r="5.5" fill="#6B7280"/>
+          <circle cx="360" cy="330" r="5.5" fill="#6B7280"/>
+          <line class="tuas" x1="430" y1="330" x2="360" y2="330" stroke="#EF4444" stroke-width="6" stroke-linecap="round"/>
+          <circle cx="395" cy="300" r="0.1" fill="none"/>
+          <text x="395" y="366" text-anchor="middle" font-size="13.5" font-weight="700" fill="#1F2937">Saklar</text>
+          <text x="395" y="384" text-anchor="middle" font-size="10.5" fill="#6B7280">klik / tekan Enter</text>
+          <!-- Area sentuh transparan -->
+          <rect class="tuas-hit" x="345" y="288" width="100" height="66" rx="10" fill="transparent" stroke="transparent" stroke-width="0"/>
+          <title>Klik untuk membuka/menutup rangkaian</title>
+        </g>
+
+        <!-- Anotasi arah arus -->
+        <g font-size="10.5" fill="#94A3B8">
+          <text x="500" y="225" text-anchor="start">arah arus</text>
+          <text x="500" y="240" text-anchor="start">listrik &#8595;</text>
+        </g>
+      </svg>
+      <p id="status" role="status" aria-live="polite">Rangkaian TERBUKA &#8212; lampu mati.</p>
+      <figcaption>Rangkaian tertutup = arus bisa mengalir &amp; lampu menyala. Rangkaian terbuka = arus terhenti.</figcaption>
+    </figure>
+
+    <aside class="fakta">
+      <strong>Tahukah kamu?</strong> Listrik mengalir hampir secepat cahaya di dalam kabel, tetapi tiap elektron aslinya bergerak sangat lambat &#8212; hanya beberapa milimeter per detik!
+    </aside>
+  </main>
+</div>
+
+<script>
+  (function () {
+    var saklar = document.getElementById('saklar');
+    var papan  = document.getElementById('papan-listrik');
+    var status = document.getElementById('status');
+
+    function ubah() {
+      var nyala = papan.classList.toggle('menyala');
+      saklar.setAttribute('aria-pressed', String(nyala));
+      status.textContent = nyala
+        ? 'Rangkaian TERTUTUP \u2014 lampu MENYALA \uD83D\uDCA1'
+        : 'Rangkaian TERBUKA \u2014 lampu mati.';
+    }
+
+    saklar.addEventListener('click', ubah);
+    saklar.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); ubah(); }
+    });
+  })();
+</script>
+</body>
+</html>

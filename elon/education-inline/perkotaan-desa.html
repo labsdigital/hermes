@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Perbandingan lingkungan perkotaan dan desa: gedung dan jalan raya berhadapan dengan sawah dan peternakan.">
+<title>Perkotaan vs Desa — Ilustrasi Edukatif SVG Inline</title>
+<style>
+  :root{
+    --abu:#6B7280; --hijau:#10B981; --biru:#3B82F6;
+    --bg:#F8FAFC; --kartu:#FFFFFF; --teks:#1F2937; --garis:#E2E8F0;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Segoe UI',system-ui,-apple-system,Roboto,'Helvetica Neue',Arial,sans-serif;background:var(--bg);color:var(--teks);line-height:1.6}
+  .wadah{max-width:1080px;margin:0 auto;padding:26px 16px 52px}
+  header.atas{margin-bottom:20px}
+  .kembali{display:inline-flex;align-items:center;gap:6px;color:var(--abu);text-decoration:none;font-size:.9rem;font-weight:600;margin-bottom:10px;transition:color .2s}
+  .kembali:hover{color:var(--biru)}
+  h1{font-size:clamp(1.5rem,3.5vw,2rem);letter-spacing:-.02em}
+  .sub{color:var(--abu);font-size:1rem;margin-top:4px}
+  figure.papan{background:var(--kartu);border:1px solid var(--garis);border-radius:18px;padding:16px;box-shadow:0 10px 30px rgba(15,23,42,.07)}
+  figure svg{display:block;width:100%;height:auto;border-radius:10px}
+  figcaption{margin-top:12px;font-size:.9rem;color:var(--abu);text-align:center}
+
+  /* Animasi & interaktivitas */
+  .awan{animation:hanyut 7s ease-in-out infinite alternate}
+  .awan.dua{animation-duration:9s;animation-delay:-3s}
+  @keyframes hanyut{from{transform:translateX(0)}to{transform:translateX(14px)}}
+
+  .sinar-matahari{animation:putar 55s linear infinite;transform-origin:640px 88px}
+  @keyframes putar{to{transform:rotate(360deg)}}
+
+  .objek{cursor:pointer;transition:transform .25s ease;transform-box:fill-box;transform-origin:center}
+  .objek:hover{transform:translateY(-5px)}
+
+  .fakta{margin-top:18px;background:var(--kartu);border-left:4px solid var(--hijau);border-radius:10px;padding:14px 18px;font-size:.92rem;box-shadow:0 4px 14px rgba(15,23,42,.05)}
+  .fakta strong{color:var(--hijau)}
+
+  @media print{
+    body{background:#fff}
+    .kembali,.fakta{display:none}
+    figure.papan{box-shadow:none;border:none;padding:0}
+    .awan,.sinar-matahari{animation:none!important}
+  }
+</style>
+</head>
+<body>
+<div class="wadah">
+  <header class="atas">
+    <a class="kembali" href="index.html">&#8592; Kembali ke Galeri</a>
+    <h1>Perkotaan vs Desa</h1>
+    <p class="sub">Geografi / IPS &#8226; Membandingkan ciri lingkungan kota dan desa.</p>
+  </header>
+
+  <main>
+    <figure class="papan">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 430" role="img" aria-labelledby="pd-judul pd-desc" font-family="'Segoe UI', system-ui, sans-serif">
+        <title id="pd-judul">Perbandingan Perkotaan dan Desa</title>
+        <desc id="pd-desc">Di sisi kiri tampak perkotaan dengan gedung-gedung tinggi dan jalan raya penuh kendaraan. Di sisi kanan tampak desa dengan sawah bertingkat, rumah, pepohonan, dan peternakan sapi serta ayam.</desc>
+
+        <rect x="0" y="0" width="700" height="430" rx="16" fill="#FFFFFF"/>
+        <rect x="2" y="2" width="346" height="426" rx="14" fill="#6B7280" fill-opacity=".06"/>
+        <rect x="352" y="2" width="346" height="426" rx="14" fill="#3B82F6" fill-opacity=".07"/>
+        <line x1="350" y1="22" x2="350" y2="408" stroke="#94A3B8" stroke-width="2" stroke-dasharray="8 7"/>
+
+        <text x="175" y="46" text-anchor="middle" font-size="21" font-weight="800" letter-spacing="3" fill="#1F2937">PERKOTAAN</text>
+        <text x="525" y="46" text-anchor="middle" font-size="21" font-weight="800" letter-spacing="3" fill="#1F2937">DESA</text>
+
+        <defs>
+          <pattern id="jendela" width="19" height="24" patternUnits="userSpaceOnUse">
+            <rect x="4" y="6" width="10" height="13" fill="#FFFFFF" fill-opacity=".5"/>
+          </pattern>
+        </defs>
+
+        <!-- ===== SISI KOTA ===== -->
+        <g class="awan"><ellipse cx="95" cy="86" rx="30" ry="12" fill="#FFFFFF"/><ellipse cx="118" cy="78" rx="24" ry="11" fill="#FFFFFF"/></g>
+
+        <!-- Gedung -->
+        <g class="objek">
+          <title>Gedung-gedung tinggi: pusat perdagangan &amp; perkantoran</title>
+          <rect x="28" y="200" width="52" height="122" fill="#6B7280"/>
+          <rect x="90" y="150" width="58" height="172" fill="#3B82F6"/>
+          <rect x="156" y="228" width="46" height="94" fill="#6B7280" opacity=".85"/>
+          <rect x="210" y="176" width="60" height="146" fill="#6B7280"/>
+          <rect x="278" y="244" width="50" height="78" fill="#3B82F6" opacity=".85"/>
+          <rect x="90" y="150" width="58" height="172" fill="url(#jendela)"/>
+          <rect x="210" y="176" width="60" height="146" fill="url(#jendela)"/>
+          <rect x="28" y="200" width="52" height="122" fill="url(#jendela)"/>
+          <rect x="278" y="244" width="50" height="78" fill="url(#jendela)"/>
+        </g>
+        <text x="120" y="316" font-size="11" font-weight="600" fill="#374151">gedung &amp; perkantoran</text>
+
+        <!-- Jalan raya -->
+        <rect x="2" y="322" width="346" height="10" fill="#6B7280" opacity=".35"/>
+        <rect x="2" y="332" width="346" height="58" fill="#6B7280"/>
+        <line x1="2" y1="362" x2="348" y2="362" stroke="#FFFFFF" stroke-width="3" stroke-dasharray="18 14" opacity=".85"/>
+
+        <!-- Mobil -->
+        <g class="objek" transform="translate(105,340)">
+          <path d="M-28,12 L-22,0 L-8,-8 L14,-8 L26,2 L28,12 Z" fill="#3B82F6"/>
+          <path d="M-16,-4 L-6,-4 L-6,-8 L10,-8 L10,-4 Z" fill="#FFFFFF" opacity=".65"/>
+          <circle cx="-15" cy="14" r="6.5" fill="#1F2937"/>
+          <circle cx="15" cy="14" r="6.5" fill="#1F2937"/>
+          <title>Mobil: transportasi di jalan raya</title>
+        </g>
+        <g class="objek" transform="translate(255,352) scale(.82)">
+          <path d="M-28,12 L-22,0 L-8,-8 L14,-8 L26,2 L28,12 Z" fill="#3B82F6" opacity=".75"/>
+          <circle cx="-15" cy="14" r="6.5" fill="#1F2937"/>
+          <circle cx="15" cy="14" r="6.5" fill="#1F2937"/>
+          <title>Kendaraan lain</title>
+        </g>
+        <text x="175" y="410" text-anchor="middle" font-size="11" font-weight="600" fill="#FFFFFF">jalan raya &amp; kendaraan</text>
+
+        <!-- ===== SISI DESA ===== -->
+        <g class="awan dua"><ellipse cx="480" cy="92" rx="30" ry="12" fill="#FFFFFF"/><ellipse cx="503" cy="84" rx="22" ry="10" fill="#FFFFFF"/></g>
+
+        <!-- Matahari -->
+        <g class="objek">
+          <g class="sinar-matahari" stroke="#F59E0B" stroke-width="3.5" stroke-linecap="round" aria-hidden="true">
+            <line x1="640" y1="44" x2="640" y2="56"/><line x1="640" y1="120" x2="640" y2="132"/>
+            <line x1="596" y1="88" x2="608" y2="88"/><line x1="672" y1="88" x2="684" y2="88"/>
+            <line x1="609" y1="57" x2="618" y2="66"/><line x1="662" y1="110" x2="671" y2="119"/>
+            <line x1="671" y1="57" x2="662" y2="66"/><line x1="618" y1="110" x2="609" y2="119"/>
+          </g>
+          <circle cx="640" cy="88" r="24" fill="#F59E0B"/>
+        </g>
+
+        <!-- Bukit & sawah -->
+        <path d="M350,330 C400,304 450,312 500,320 C560,330 620,308 700,326 L700,430 L350,430 Z" fill="#10B981" opacity=".16"/>
+        <g class="objek">
+          <title>Sawah bertingkat (terasering)</title>
+          <path d="M350,346 C420,334 480,346 560,338 C620,332 660,342 700,338 L700,368 C640,372 580,360 520,366 C460,372 400,362 350,370 Z" fill="#10B981" opacity=".45"/>
+          <path d="M350,372 C420,364 480,374 560,368 C620,364 660,372 700,370 L700,398 C640,402 580,392 520,398 C460,404 400,396 350,400 Z" fill="#10B981" opacity=".72"/>
+          <path d="M350,402 C420,396 480,406 560,400 C620,396 660,404 700,402 L700,430 L350,430 Z" fill="#10B981"/>
+          <path d="M360,352 C420,342 480,352 550,346 M380,382 C440,374 500,384 570,378 M370,412 C430,406 490,416 570,410" fill="none" stroke="#FFFFFF" stroke-opacity=".35" stroke-width="2"/>
+        </g>
+        <text x="470" y="420" text-anchor="middle" font-size="11" font-weight="600" fill="#FFFFFF">sawah bertingkat</text>
+
+        <!-- Rumah -->
+        <g class="objek">
+          <title>Rumah penduduk desa</title>
+          <polygon points="438,270 504,270 471,240" fill="#6B7280"/>
+          <rect x="445" y="270" width="52" height="42" fill="#3B82F6"/>
+          <rect x="464" y="288" width="14" height="24" fill="#FFFFFF" opacity=".85"/>
+          <rect x="452" y="276" width="11" height="11" fill="#FFFFFF" opacity=".7"/>
+          <rect x="479" y="276" width="11" height="11" fill="#FFFFFF" opacity=".7"/>
+        </g>
+        <text x="471" y="232" text-anchor="middle" font-size="11" font-weight="600" fill="#374151">rumah</text>
+
+        <!-- Pohon -->
+        <g class="objek">
+          <title>Pepohonan</title>
+          <rect x="543" y="300" width="10" height="26" fill="#6B7280"/>
+          <circle cx="548" cy="288" r="20" fill="#10B981"/>
+          <circle cx="536" cy="296" r="13" fill="#10B981"/>
+          <circle cx="560" cy="296" r="13" fill="#10B981"/>
+        </g>
+
+        <!-- Sapi -->
+        <g class="objek">
+          <title>Sapi ternak</title>
+          <ellipse cx="618" cy="352" rx="25" ry="13" fill="#FFFFFF" stroke="#6B7280" stroke-width="2"/>
+          <circle cx="645" cy="344" r="8.5" fill="#FFFFFF" stroke="#6B7280" stroke-width="2"/>
+          <circle cx="608" cy="350" r="5" fill="#6B7280"/>
+          <circle cx="622" cy="346" r="4" fill="#6B7280"/>
+          <line x1="641" y1="337" x2="637" y2="333" stroke="#6B7280" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="650" y1="337" x2="653" y2="333" stroke="#6B7280" stroke-width="2.5" stroke-linecap="round"/>
+          <g stroke="#6B7280" stroke-width="3" stroke-linecap="round">
+            <line x1="606" y1="363" x2="606" y2="376"/><line x1="614" y1="364" x2="614" y2="377"/>
+            <line x1="624" y1="364" x2="624" y2="377"/><line x1="632" y1="363" x2="632" y2="376"/>
+          </g>
+        </g>
+        <text x="620" y="398" text-anchor="middle" font-size="11" font-weight="600" fill="#FFFFFF">peternakan</text>
+
+        <!-- Ayam -->
+        <g class="objek">
+          <title>Ayam</title>
+          <circle cx="556" cy="386" r="7" fill="#FFFFFF" stroke="#6B7280" stroke-width="1.8"/>
+          <circle cx="563" cy="379" r="3.8" fill="#FFFFFF" stroke="#6B7280" stroke-width="1.6"/>
+          <polygon points="566,378 572,379 566,381" fill="#6B7280"/>
+          <path d="M550,384 C546,380 547,375 551,374" fill="none" stroke="#6B7280" stroke-width="1.8"/>
+          <line x1="555" y1="393" x2="555" y2="398" stroke="#6B7280" stroke-width="1.6"/>
+          <line x1="559" y1="393" x2="559" y2="398" stroke="#6B7280" stroke-width="1.6"/>
+        </g>
+      </svg>
+      <figcaption>Perkotaan identik dengan gedung dan jalan raya; desa identik dengan lahan pertanian dan peternakan.</figcaption>
+    </figure>
+
+    <aside class="fakta">
+      <strong>Tahukah kamu?</strong> Banyak warga kota bekerja di sektor jasa dan perdagangan, sementara warga desa umumnya hidup dari pertanian &#8212; dua wilayah ini saling melengkapi!
+    </aside>
+  </main>
+</div>
+</body>
+</html>
