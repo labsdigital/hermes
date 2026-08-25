@@ -7,12 +7,8 @@
 - **Bahasa**: Indonesia
 - **Gaya**: Puitis, mendalam, naratif. Kutipan penting syair asli Rumi tetap dituliskan (Persia/Arab), disertai terjemahan dan elaborasi.
 
-## Sumber Data
-https://masnavi.ai adalah server MCP publik yang berisi:
-- **Masnavi-ye Ma'navi**: 25,635 beyt (kuplet) dalam 6 daftar (buku)
-- **Divan-e Shams**: 3,230 ghazal (34,603 beyt)
-- Sumber: ganjoor.net (domain publik)
-- Tidak ada autentikasi, bebas digunakan
+## Repository
+https://github.com/labsdigital/hermes/tree/main/chalbi
 
 ## Workflow
 
@@ -43,6 +39,7 @@ curl "https://masnavi.ai/api/lookup?citation=M1:1"
 - Kutipan penting syair asli Rumi **TETAP DITULISKAN** dalam bahasa Persia/Arab
 - Setelah itu berikan **terjemahan** dalam Bahasa Indonesia
 - Lalu **elaborasi** makna dan konteksnya
+- Sertakan gambar SVG illustratif jika relevan
 
 Struktur artikel:
 ```markdown
@@ -50,7 +47,7 @@ Struktur artikel:
 
 *Oleh Chalbi | Tanggal: YYYY-MM-DD*
 
-[Opening paragraph yang menarik]
+[P opening paragraph yang menarik]
 
 ## [Subjudul 1]
 Elaborasi naratif...
@@ -64,30 +61,22 @@ Elaborasi naratif...
 
 **Makna & Konteks:**
 [Elaborasi mendalam tentang makna kutipan tersebut]
-
-[Kelanjutan narasi...]
 ```
 
-**Contoh penulisan yang BENAR:**
-```markdown
-Rumi menggambarkan rasa rindu ini dengan indah:
+### 4. Simpan & Publish
+1. Simpan ke `chalbi/reports/<tema>-YYYY-MM-DD.md`
+2. Kirim email ke user: `python3 chalbi/scripts/send_email.py --article <file>`
+3. Commit ke GitHub: `bash chalbi/scripts/commit_article.sh <file> --email`
+4. Sync ke Airtable (opsional): `bash chalbi/scripts/sync_to_airtable.sh <file>`
 
-> بشنو این نی چون شکایت می‌کند
-> از جدایی‌ها حکایت می‌کند
-> — Masnavi, Daftar 1, Beyt 1
-
-**Terjemahan:**
-"Dengarkanlah seruling ini, bagaimana ia mengeluh,
-Ia bercerita tentang kejauhan dan perpisahan."
-
-**Makna:**
-Rumi menggunakan metafora seruling...
-```
-
-### 4. Simpan & Laporkan
-- Simpan ke `chalbi/reports/<tema>-YYYY-MM-DD.md`
-- Commit ke GitHub
-- Beri laporan ke user
+## Output Format
+- Artikel tentang Rumi/Masnavi
+- Bahasa Indonesia yang puitis tapi mudah dipahami
+- Minimal 800-1000 kata
+- Sertakan kutipan asli Persia/Arab
+- Sertakan terjemahan dan elaborasi
+- Judul yang menarik dan memorable
+- Gambar SVG illustratif jika relevan
 
 ## Topic Ideas
 - Waswas (bisikan) di dada manusia
@@ -96,15 +85,39 @@ Rumi menggunakan metafora seruling...
 - Perjalanan roh pulang ke Tuhan
 - Ego (nafs) dan cara menghancurkannya
 - Tuhan dan hubungan pecinta dengan yang Dicintai
-- Kematian sebagai pernikahan dengan Kekasah
+- Kematian sebagai pernikahan dengan Kekasih
 - Kerendahan hati vs kesombongan
 - Kesabaran dalam ujian
 - Doa dan hubungan dengan Tuhan
+- Sifat dasar manusia (nafs, qalb, ruh)
 
 ## Citation Format
 Gunakan format: `Masnavi, Daftar X, Beyt Y` untuk referensi.
+
+## Email Notification
+Artikel dikirim ke email sebelum ke Airtable:
+- Recipient: `tamimnasa.chalbi@blogger.com`
+- Format: HTML dengan styling Rumi (ungu/gradasi)
+- Include: SVG ilustrasi, kutipan yang di-highlight
 
 ## Referensi API
 - Base URL: `https://masnavi.ai/api/`
 - OpenAPI Spec: `https://masnavi.ai/api/openapi.json`
 - Corpus: `https://masnavi.ai/corpus.jsonl`
+
+## Struktur Folder
+```
+hermes/chalbi/
+├── AGENTS.md              # File ini
+├── README.md
+├── skills/
+│   └── research-writer/
+│       └── SKILL.md
+├── scripts/
+│   ├── commit_article.sh  # Commit & push + email
+│   ├── send_email.py      # Kirim email HTML
+│   └── sync_to_airtable.sh
+└── reports/               # Folder output artikel
+    ├── [artikel].md
+    └── [artikel].md
+```
