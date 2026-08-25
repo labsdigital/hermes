@@ -18,7 +18,7 @@ SMTP_USER = "blog@taraka.id"
 SMTP_PASS = "Blog.215"
 
 def md_to_html(md_text):
-    """Convert markdown to HTML dengan styling Rumi"""
+    """Convert markdown to HTML dengan CSS dasar saja"""
     lines = md_text.split('\n')
     html_lines = []
     in_code_block = False
@@ -32,7 +32,7 @@ def md_to_html(md_text):
                 html_lines.append('</code></pre>')
                 in_code_block = False
             else:
-                html_lines.append('<pre><code style="background:#f8fafc;padding:12px;border-radius:8px;font-family:monospace;">')
+                html_lines.append('<pre><code>')
                 in_code_block = True
             continue
         
@@ -41,34 +41,34 @@ def md_to_html(md_text):
             continue
         
         # Headers
-        if line.startswith('### '):
-            html_lines.append(f'<h3 style="color:#7c3aed;margin-top:24px;">{line[4:]}</h3>')
+        elif line.startswith('### '):
+            html_lines.append(f'<h3>{line[4:]}</h3>')
         elif line.startswith('## '):
-            html_lines.append(f'<h2 style="color:#7c3aed;margin-top:32px;border-bottom:2px solid #ede9fe;padding-bottom:8px;">{line[3:]}</h2>')
+            html_lines.append(f'<h2>{line[3:]}</h2>')
         elif line.startswith('# '):
-            html_lines.append(f'<h1 style="color:#581c87;font-size:28px;margin-bottom:20px;">{line[2:]}</h1>')
+            html_lines.append(f'<h1>{line[2:]}</h1>')
         # Horizontal rule
         elif line == '---':
-            html_lines.append('<hr style="border:none;border-top:1px solid #e9d5ff;margin:24px 0;">')
+            html_lines.append('<hr>')
         # Quote blocks (Rumi quotes)
         elif line.startswith('> ') or line.startswith('❝'):
             if not in_quote:
-                html_lines.append('<blockquote style="border-left:4px solid #a855f7;padding-left:16px;margin:16px 0;background:#faf5ff;border-radius:0 8px 8px 0;font-style:italic;color:#6b21a8;">')
+                html_lines.append('<blockquote>')
                 in_quote = True
             content = line.lstrip('> ❝').strip()
-            html_lines.append(f'<p style="margin:4px 0;">{content}</p>')
+            html_lines.append(f'<p>{content}</p>')
         elif in_quote and line.strip() == '':
             html_lines.append('</blockquote>')
             in_quote = False
         # Bold
         elif '**' in line:
-            line = re.sub(r'\*\*(.+?)\*\*', r'<strong>\\1</strong>', line)
-            line = re.sub(r'\*(.+?)\*', r'<em>\\1</em>', line)
+            line = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', line)
+            line = re.sub(r'\*(.+?)\*', r'<em>\1</em>', line)
             html_lines.append(f'<p>{line}</p>')
         # Lists
         elif line.startswith('- '):
             if not in_list:
-                html_lines.append('<ul style="line-height:1.8;">')
+                html_lines.append('<ul>')
                 in_list = True
             html_lines.append(f'<li>{line[2:]}</li>')
         elif line.strip() == '':
@@ -76,9 +76,27 @@ def md_to_html(md_text):
                 html_lines.append('</ul>')
                 in_list = False
             continue
+        # Tables
+        elif line.startswith('|'):
+            # Simple table handling
+            cells = [c.strip() for c in line.split('|')[1:-1]]
+            if all(c.startswith('**') or c.endswith('**') for c in cells):
+                # Header row
+                html_lines.append('<thead><tr>')
+                for cell in cells:
+                    cell = cell.replace('**', '').replace('|', '')
+                    html_lines.append(f'<th>{cell}</th>')
+                html_lines.append('</tr></thead><tbody>')
+            else:
+                # Data row
+                html_lines.append('<tr>')
+                for cell in cells:
+                    cell = cell.replace('**', '').replace('|', '')
+                    html_lines.append(f'<td>{cell}</td>')
+                html_lines.append('</tr>')
         # Regular paragraph
         else:
-            html_lines.append(f'<p style="line-height:1.8;">{line}</p>')
+            html_lines.append(f'<p>{line}</p>')
     
     if in_list:
         html_lines.append('</ul>')
@@ -93,19 +111,12 @@ def send_email(recipient, subject, body_html):
     msg['From'] = SMTP_USER
     msg['To'] = recipient
     msg['Subject'] = subject
-    msg.add_alternative(f"""\\\
+    msg.add_alternative(f"""\
 <!DOCTYPE html>
 <html>
 <head><meta charset="UTF-8"></head>
-<body style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 700px; margin: 0 auto; padding: 20px; line-height: 1.6; background:#fafafa;">
-<div style="background:linear-gradient(135deg,#7c3aed,#a855f7);color:white;padding:20px;border-radius:12px;margin-bottom:20px;text-align:center;">
-<h1 style="margin:0;font-size:24px;">✨ Artikel Baru dari Chalbi</h1>
-<p style="margin:8px 0 0 0;opacity:0.9;">Rumi & Masnavi Studies</p>
-</div>
+<body>
 {body_html}
-<div style="margin-top:40px;padding-top:20px;border-top:1px solid #e9d5ff;text-align:center;color:#8b5cf6;font-size:14px;">
-<p>Dikirim oleh <strong>@chalbi</strong> — Ahli Sastra Rumi</p>
-</div>
 </body>
 </html>
 """, subtype='html')
@@ -134,19 +145,26 @@ def send_article_notification(article_path, recipient="tamimnasa.chalbi@blogger.
             title = line[2:].strip()
             break
     
-    # Remove title from content
+    # Use full title as subject
+    subject = title
+    
+    # Remove title and author line from content
     body_lines = []
     skipped_title = False
+    skipped_author = False
     for line in lines:
         if not skipped_title and line.startswith('# '):
             skipped_title = True
+            continue
+        if not skipped_author and line.startswith('*Oleh'):
+            skipped_author = True
             continue
         body_lines.append(line)
     
     body_md = '\n'.join(body_lines).strip()
     body_html = md_to_html(body_md)
     
-    return send_email(recipient, f"📜 {title}", body_html)
+    return send_email(recipient, subject, body_html)
 
 if __name__ == "__main__":
     if len(sys.argv) < 4:
