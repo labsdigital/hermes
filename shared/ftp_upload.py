@@ -2,7 +2,7 @@
 """
 Shared FTP Upload Utility - Available for all agents
 Usage: python3 ftp_upload.py <file_or_folder> [remote_path]
-       python3 ftp_upload.py --deploy <type>
+       python3 ftp_upload.py --deploy <agent> [type]
 """
 
 import ftplib
@@ -36,19 +36,17 @@ def connect_ftp():
 def upload_file(ftp, local_path, remote_path):
     """Upload a single file"""
     filename = Path(local_path).name
-    print(f"   📤 {filename}")
     with open(local_path, 'rb') as fp:
         ftp.storbinary(f'STOR {remote_path}{filename}', fp)
     return f"https://{FTP_HOST}{remote_path}{filename}"
 
 def upload_folder(ftp, local_folder, remote_path):
-    """Upload entire folder"""
+    """Upload entire folder recursively"""
     local = Path(local_folder)
     urls = []
     
     for file in local.rglob("*"):
         if file.is_file():
-            # Calculate relative path
             rel_path = file.relative_to(local)
             remote_file_path = f"{remote_path}{rel_path}"
             remote_dir = str(Path(remote_file_path).parent)
@@ -57,7 +55,6 @@ def upload_folder(ftp, local_folder, remote_path):
             try:
                 ftp.cwd(remote_dir)
             except:
-                # Create nested directories
                 parts = remote_dir.strip('/').split('/')
                 current = ""
                 for part in parts:
@@ -69,7 +66,8 @@ def upload_folder(ftp, local_folder, remote_path):
                         ftp.cwd(current)
             
             # Upload file
-            urls.append(upload_file(ftp, file, f"{remote_dir}/"))
+            url = upload_file(ftp, file, f"{remote_dir}/")
+            urls.append(url)
     
     return urls
 
@@ -89,7 +87,6 @@ def deploy_agent(agent_name, content_type="all"):
         try:
             ftp.cwd(remote_path)
         except:
-            # Create agent directory
             parts = remote_path.strip('/').split('/')
             current = ""
             for part in parts:
@@ -101,31 +98,25 @@ def deploy_agent(agent_name, content_type="all"):
                     ftp.cwd(current)
         
         print(f"🚀 Deploying {agent_name} content...")
-        print(f"   Host: {FTP_HOST}")
-        print(f"   Path: {remote_path}")
-        print("")
         
         if content_type in ["all", "articles"]:
             # Upload articles
             article_dir = Path(f"/opt/data/hermes/{agent_name}/reports")
             if article_dir.exists():
-                print(f"📄 Uploading articles from {article_dir}...")
-                for f in article_dir.glob("*.md"):
+                for f in sorted(article_dir.glob("*.md")):
                     url = upload_file(ftp, f, remote_path)
                     urls.append(url)
-                print(f"   ✅ Articles uploaded")
-                print("")
         
         if content_type in ["all", "apps"]:
-            # Upload apps
+            # Upload apps (index.html)
             app_dir = Path(f"/opt/data/hermes/{agent_name}")
             if app_dir.exists():
-                print(f"📱 Uploading apps from {app_dir}...")
-                # Find index.html files
-                for html in app_dir.rglob("index.html"):
+                for html in sorted(app_dir.rglob("index.html")):
                     if html.parent.name != '__pycache__':
                         rel_path = html.relative_to(app_dir)
                         remote_folder = f"{remote_path}{rel_path.parent}/"
+                        
+                        # Create directories
                         try:
                             ftp.cwd(remote_folder)
                         except:
@@ -141,22 +132,27 @@ def deploy_agent(agent_name, content_type="all"):
                                         ftp.cwd(current)
                                     except:
                                         pass
+                        
+                        # Upload HTML
                         url = upload_file(ftp, html, remote_folder)
                         urls.append(url)
-                        # Also upload related files (CSS, JS, assets)
+                        
+                        # Upload assets
                         for asset in html.parent.glob("*"):
                             if asset.is_file() and asset.suffix in ['.css', '.js', '.json', '.png', '.jpg', '.svg']:
                                 upload_file(ftp, asset, remote_folder)
-                print(f"   ✅ Apps uploaded")
         
         ftp.quit()
         
         print("")
         print("✅ Deployment successful!")
-        print("")
-        print("📰 Content URLs:")
-        for url in urls:
-            print(f"   • {url}")
+        
+        # Print direct content links
+        if urls:
+            print("")
+            print("📰 Content URLs:")
+            for url in urls:
+                print(f"   {url}")
         
         return urls
         
@@ -166,7 +162,7 @@ def deploy_agent(agent_name, content_type="all"):
         return []
 
 def upload_single(file_path, remote_path=None, agent=None):
-    """Upload a single file"""
+    """Upload a single file and return URL"""
     if not Path(file_path).exists():
         print(f"❌ File not found: {file_path}")
         return None
@@ -210,11 +206,6 @@ if __name__ == "__main__":
         print("  python3 ftp_upload.py --deploy <agent> [type]")
         print("  python3 ftp_upload.py <file> [remote_path]")
         print("  python3 ftp_upload.py --agent <agent> --file <file>")
-        print("")
-        print("Examples:")
-        print("  python3 ftp_upload.py --deploy chalbi all")
-        print("  python3 ftp_upload.py --deploy elon apps")
-        print("  python3 ftp_upload.py article.md /chalbi/")
         sys.exit(1)
     
     if sys.argv[1] == "--deploy":
