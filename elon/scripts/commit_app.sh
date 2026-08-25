@@ -29,7 +29,7 @@ fi
 
 echo ""
 echo "📤 Mengupload ke FTP..."
-python3 /opt/data/hermes/shared/ftp_upload.py "$FOLDER" "/elon/$1/" >/dev/null 2>&1
+python3 /opt/data/hermes/shared/ftp_upload_folder.py "$FOLDER" "/elon/$1/" >/dev/null 2>&1
 
 echo ""
 echo "🔗 https://ftp.rumahguru.org/elon/$1/"
