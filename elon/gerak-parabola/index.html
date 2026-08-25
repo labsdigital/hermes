@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerak Parabola - Simulasi Interaktif</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e40af;
+            --primary-light: #3b82f6;
+            --accent: #f97316;
+            --success: #10b981;
+            --bg: #0f172a;
+            --surface: #1e293b;
+            --surface-light: #334155;
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+        
+        * { font-family: 'Inter', sans-serif; }
+        body { margin: 0; background: var(--bg); color: var(--text); overflow-x: hidden; }
+        
+        /* Header */
+        .app-header {
+            background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%);
+            border-bottom: 2px solid var(--primary);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .app-title {
+            font-size: 28px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #60a5fa, #f97316);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Main Layout */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 24px;
+            padding: 24px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        
+        @media (max-width: 1200px) {
+            .main-layout { grid-template-columns: 1fr; }
+        }
+        
+        /* Canvas Container */
+        .canvas-container {
+            background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+            border-radius: 20px;
+            border: 2px solid var(--surface-light);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        #simCanvas {
+            width: 100%;
+            height: 500px;
+            display: block;
+        }
+        
+        /* Controls Panel */
+        .controls-panel {
+            background: var(--surface);
+            border-radius: 20px;
+            padding: 24px;
+            border: 1px solid var(--surface-light);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+        
+        .control-group {
+            margin-bottom: 24px;
+        }
+        
+        .control-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .control-value {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 16px;
+        }
+        
+        input[type="range"] {
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: var(--surface-light);
+            outline: none;
+            -webkit-appearance: none;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--accent);
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(249, 115, 22, 0.5);
+        }
+        
+        /* Buttons */
+        .btn {
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(30, 64, 175, 0.4);
+        }
+        
+        .btn-accent {
+            background: linear-gradient(135deg, var(--accent), #fb923c);
+            color: white;
+        }
+        
+        .btn-accent:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(249, 115, 22, 0.4);
+        }
+        
+        .btn-secondary {
+            background: var(--surface-light);
+            color: var(--text);
+        }
+        
+        .btn-secondary:hover {
+            background: #475569;
+        }
+        
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .stat-card {
+            background: var(--bg);
+            padding: 16px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid var(--surface-light);
+        }
+        
+        .stat-value {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--accent);
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+        
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--surface-light);
+            padding-bottom: 12px;
+        }
+        
+        .tab {
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+            color: var(--text-muted);
+        }
+        
+        .tab:hover { background: var(--surface-light); color: var(--text); }
+        .tab.active { background: var(--primary); color: white; }
+        
+        /* Content Sections */
+        .content-section {
+            display: none;
+        }
+        
+        .content-section.active {
+            display: block;
+        }
+        
+        /* Formula Box */
+        .formula-box {
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.2), rgba(249, 115, 22, 0.1));
+            border: 1px solid var(--primary);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 16px 0;
+        }
+        
+        .formula {
+            font-family: 'Courier New', monospace;
+            font-size: 18px;
+            font-weight: 600;
+            color: #60a5fa;
+            margin: 8px 0;
+        }
+        
+        /* Quiz Styles */
+        .quiz-option {
+            width: 100%;
+            padding: 16px;
+            margin: 8px 0;
+            background: var(--bg);
+            border: 2px solid var(--surface-light);
+            border-radius: 12px;
+            color: var(--text);
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.2s;
+        }
+        
+        .quiz-option:hover { border-color: var(--primary-light); background: rgba(59, 130, 246, 0.1); }
+        .quiz-option.correct { border-color: var(--success); background: rgba(16, 185, 129, 0.2); }
+        .quiz-option.wrong { border-color: #ef4444; background: rgba(239, 68, 68, 0.2); }
+        
+        /* Example Cards */
+        .example-card {
+            background: var(--bg);
+            border: 1px solid var(--surface-light);
+            border-radius: 12px;
+            padding: 16px;
+            margin: 12px 0;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .example-card:hover {
+            border-color: var(--accent);
+            transform: translateX(4px);
+        }
+        
+        /* Animations */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .animate-pulse-slow { animation: pulse 2s ease-in-out infinite; }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--surface-light); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="app-header">
+        <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-orange-500 flex items-center justify-center">
+                    <i data-lucide="orbit" class="text-white w-7 h-7"></i>
+                </div>
+                <div>
+                    <h1 class="app-title">GERAK PARABOLA</h1>
+                    <p class="text-sm text-gray-400">Simulasi Interaktif Fisika</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-3">
+                <button class="btn btn-secondary" onclick="resetSimulation()">
+                    <i data-lucide="rotate-ccw" class="w-4 h-4"></i> Reset
+                </button>
+                <button class="btn btn-accent" onclick="togglePause()" id="pauseBtn">
+                    <i data-lucide="pause" class="w-4 h-4" id="pauseIcon"></i>
+                    <span id="pauseText">Pause</span>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Main Layout -->
+    <div class="main-layout">
+        <!-- Left: Canvas & Info -->
+        <div class="space-y-6">
+            <!-- Canvas -->
+            <div class="canvas-container">
+                <canvas id="simCanvas"></canvas>
+                
+                <!-- Overlay Info -->
+                <div class="absolute top-4 left-4 bg-black/60 backdrop-blur-sm rounded-xl p-4 text-sm">
+                    <div class="flex items-center gap-2 mb-2">
+                        <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                        <span class="text-green-400 font-semibold">Live Simulation</span>
+                    </div>
+                    <div class="text-gray-300">
+                        <div>t = <span id="overlayTime" class="text-white font-mono">0.00</span> s</div>
+                        <div>x = <span id="overlayX" class="text-white font-mono">0.00</span> m</div>
+                        <div>y = <span id="overlayY" class="text-white font-mono">0.00</span> m</div>
+                    </div>
+                </div>
+                
+                <!-- Trail Toggle -->
+                <div class="absolute top-4 right-4 flex gap-2">
+                    <button class="btn btn-secondary text-xs" onclick="toggleTrail()">
+                        <i data-lucide="activity" class="w-3 h-3"></i> Trail
+                    </button>
+                    <button class="btn btn-secondary text-xs" onclick="toggleGrid()">
+                        <i data-lucide="grid" class="w-3 h-3"></i> Grid
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Tabs -->
+            <div class="tabs">
+                <div class="tab active" onclick="switchTab('theory')">📚 Teori</div>
+                <div class="tab" onclick="switchTab('examples')">📝 Contoh Soal</div>
+                <div class="tab" onclick="switchTab('quiz')">🎯 Kuis</div>
+                <div class="tab" onclick="switchTab('about')">ℹ️ Tentang</div>
+            </div>
+            
+            <!-- Theory Tab -->
+            <div id="theory-tab" class="content-section active">
+                <div class="bg-surface rounded-2xl p-6 border border-surface-light">
+                    <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
+                        <i data-lucide="book-open" class="text-blue-500"></i>
+                        Apa itu Gerak Parabola?
+                    </h2>
+                    <p class="text-gray-300 mb-4 leading-relaxed">
+                        <strong class="text-white">Gerak parabola</strong> adalah gerak dua dimensi suatu benda yang 
+                        mengalami gaya gravitasi constante ke bawah, sambil bergerak horizontal dengan kecepatan tetap. 
+                        Contoh: bola yang ditendang, peluru yang ditembakkan, atau air dari selang.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-4 mt-6">
+                        <div class="formula-box">
+                            <div class="text-sm text-gray-400 mb-2">Posisi Horizontal (x)</div>
+                            <div class="formula">x = v₀ · cos(θ) · t</div>
+                        </div>
+                        <div class="formula-box">
+                            <div class="text-sm text-gray-400 mb-2">Posisi Vertikal (y)</div>
+                            <div class="formula">y = v₀ · sin(θ) · t - ½g·t²</div>
+                        </div>
+                        <div class="formula-box">
+                            <div class="text-sm text-gray-400 mb-2">Ketinggian Maksimum</div>
+                            <div class="formula">H = v₀²·sin²(θ) / 2g</div>
+                        </div>
+                        <div class="formula-box">
+                            <div class="text-sm text-gray-400 mb-2">Jarak Maksimum (Range)</div>
+                            <div class="formula">R = v₀²·sin(2θ) / g</div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 p-4 bg-blue-900/30 rounded-xl border border-blue-500/30">
+                        <h3 class="font-bold text-blue-400 mb-2 flex items-center gap-2">
+                            <i data-lucide="lightbulb"></i>
+                            Tips Mengingat
+                        </h3>
+                        <ul class="text-gray-300 space-y-1 text-sm">
+                            <li>• Sudut 45° → jarak terjauh</li>
+                            <li>• Sudut 90° → lurus ke atas (jarak 0)</li>
+                            <li>• Kecepatan horizontal tetap (tidak ada gesekan)</li>
+                            <li>• Kecepatan vertikal berubah karena gravitasi</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Examples Tab -->
+            <div id="examples-tab" class="content-section">
+                <div class="space-y-4">
+                    <div class="example-card" onclick="loadExample(1)">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h3 class="font-bold text-lg">Contoh 1: Bola Dilempar</h3>
+                                <p class="text-sm text-gray-400">v₀ = 20 m/s, θ = 30°</p>
+                            </div>
+                            <i data-lucide="play-circle" class="text-orange-500 w-6 h-6"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="example-card" onclick="loadExample(2)">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h3 class="font-bold text-lg">Contoh 2: Peluru Ditembakkan</h3>
+                                <p class="text-sm text-gray-400">v₀ = 50 m/s, θ = 60°</p>
+                            </div>
+                            <i data-lucide="play-circle" class="text-orange-500 w-6 h-6"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="example-card" onclick="loadExample(3)">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h3 class="font-bold text-lg">Contoh 3: Tendangan Bebas</h3>
+                                <p class="text-sm text-gray-400">v₀ = 25 m/s, θ = 45°</p>
+                            </div>
+                            <i data-lucide="play-circle" class="text-orange-500 w-6 h-6"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="example-card" onclick="loadExample(4)">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h3 class="font-bold text-lg">Contoh 4: Air dari Selang</h3>
+                                <p class="text-sm text-gray-400">v₀ = 15 m/s, θ = 75°</p>
+                            </div>
+                            <i data-lucide="play-circle" class="text-orange-500 w-6 h-6"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quiz Tab -->
+            <div id="quiz-tab" class="content-section">
+                <div id="quizContainer"></div>
+                <div id="quizResult" class="hidden mt-6 p-6 bg-gradient-to-r from-blue-900/50 to-purple-900/50 rounded-2xl text-center">
+                    <div class="text-5xl mb-4" id="quizEmoji">🎉</div>
+                    <h3 class="text-2xl font-bold mb-2" id="quizTitle">Selamat!</h3>
+                    <p class="text-gray-300" id="quizMessage">Kamu telah menyelesaikan kuis!</p>
+                    <div class="mt-4 text-3xl font-bold text-orange-400" id="quizScore"></div>
+                    <button class="btn btn-primary mt-6" onclick="resetQuiz()">
+                        <i data-lucide="refresh-cw" class="w-4 h-4"></i> Ulangi Kuis
+                    </button>
+                </div>
+            </div>
+            
+            <!-- About Tab -->
+            <div id="about-tab" class="content-section">
+                <div class="bg-surface rounded-2xl p-6 border border-surface-light">
+                    <h2 class="text-2xl font-bold mb-4">Tentang Simulasi Ini</h2>
+                    <p class="text-gray-300 mb-4">
+                        Aplikasi ini dirancang untuk membantu siswa memahami konsep Gerak Parabola melalui 
+                        visualisasi interaktif. Anda dapat mengubah parameter dan melihat efeknya secara real-time.
+                    </p>
+                    <div class="space-y-3 text-sm text-gray-400">
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="check-circle" class="text-green-500"></i>
+                            <span>Fisika akurat dengan gravitasi 9.8 m/s²</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="check-circle" class="text-green-500"></i>
+                            <span>Animasi real-time dengan trail</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="check-circle" class="text-green-500"></i>
+                            <span>Kalkulasi otomatis H, R, dan t</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="check-circle" class="text-green-500"></i>
+                            <span>Kuis interaktif untuk evaluasi</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Right: Controls -->
+        <div class="controls-panel">
+            <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
+                <i data-lucide="sliders" class="text-orange-500"></i>
+                Kontrol Simulasi
+            </h2>
+            
+            <!-- Initial Velocity -->
+            <div class="control-group">
+                <div class="control-label">
+                    <span>Kecepatan Awal (v₀)</span>
+                    <span class="control-value"><span id="velocityValue">20</span> m/s</span>
+                </div>
+                <input type="range" id="velocity" min="5" max="100" value="20" oninput="updateParams()">
+                <div class="flex justify-between text-xs text-gray-500 mt-1">
+                    <span>5</span>
+                    <span>100</span>
+                </div>
+            </div>
+            
+            <!-- Launch Angle -->
+            <div class="control-group">
+                <div class="control-label">
+                    <span>Sudut Luncur (θ)</span>
+                    <span class="control-value"><span id="angleValue">45</span>°</span>
+                </div>
+                <input type="range" id="angle" min="5" max="85" value="45" oninput="updateParams()">
+                <div class="flex justify-between text-xs text-gray-500 mt-1">
+                    <span>5°</span>
+                    <span>85°</span>
+                </div>
+            </div>
+            
+            <!-- Gravity -->
+            <div class="control-group">
+                <div class="control-label">
+                    <span>Gravitasi (g)</span>
+                    <span class="control-value"><span id="gravityValue">9.8</span> m/s²</span>
+                </div>
+                <input type="range" id="gravity" min="1" max="20" value="9.8" step="0.1" oninput="updateParams()">
+                <div class="flex justify-between text-xs text-gray-500 mt-1">
+                    <span>Bulan (1.6)</span>
+                    <span>Jupiter (24.8)</span>
+                </div>
+            </div>
+            
+            <!-- Initial Height -->
+            <div class="control-group">
+                <div class="control-label">
+                    <span>Tinggi Awal (h₀)</span>
+                    <span class="control-value"><span id="heightValue">0</span> m</span>
+                </div>
+                <input type="range" id="height" min="0" max="50" value="0" oninput="updateParams()">
+            </div>
+            
+            <!-- Speed -->
+            <div class="control-group">
+                <div class="control-label">
+                    <span>Kecepatan Animasi</span>
+                    <span class="control-value"><span id="speedValue">1</span>x</span>
+                </div>
+                <input type="range" id="simSpeed" min="0.1" max="3" value="1" step="0.1" oninput="updateParams()">
+            </div>
+            
+            <button class="btn btn-primary w-full mb-6" onclick="launchProjectile()">
+                <i data-lucide="rocket" class="w-5 h-5"></i>
+                Luncurkan!
+            </button>
+            
+            <!-- Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value" id="statMaxHeight">0</div>
+                    <div class="stat-label">Ketinggian Maks (m)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="statRange">0</div>
+                    <div class="stat-label">Jarak (m)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="statTime">0</div>
+                    <div class="stat-label">Waktu Terbang (s)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="statVelocity">0</div>
+                    <div class="stat-label">V horizontal (m/s)</div>
+                </div>
+            </div>
+            
+            <!-- Legend -->
+            <div class="mt-6 p-4 bg-bg rounded-xl text-xs text-gray-400">
+                <div class="flex items-center gap-2 mb-2">
+                    <div class="w-3 h-3 rounded-full bg-orange-500"></div>
+                    <span>Trail lintasan</span>
+                </div>
+                <div class="flex items-center gap-2 mb-2">
+                    <div class="w-3 h-3 rounded-full bg-blue-500"></div>
+                    <span>Proyektile</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                    <span>Titik landing</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // Canvas setup
+        const canvas = document.getElementById('simCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Simulation state
+        let simulation = {
+            running: false,
+            paused: false,
+            time: 0,
+            showTrail: true,
+            showGrid: true,
+            trail: []
+        };
+        
+        // Physics parameters
+        let params = {
+            v0: 20,
+            angle: 45,
+            g: 9.8,
+            h0: 0,
+            speed: 1
+        };
+        
+        // Scale factors
+        const SCALE_X = 3; // pixels per meter horizontal
+        const SCALE_Y = 3; // pixels per meter vertical
+        const ORIGIN_X = 60;
+        const ORIGIN_Y = canvas.height - 40;
+        
+        // Resize canvas
+        function resizeCanvas() {
+            const rect = canvas.parentElement.getBoundingClientRect();
+            canvas.width = rect.width;
+            canvas.height = 500;
+            ORIGIN_Y = canvas.height - 40;
+            draw();
+        }
+        
+        window.addEventListener('resize', resizeCanvas);
+        
+        // Calculate physics
+        function calculatePhysics() {
+            const rad = params.angle * Math.PI / 180;
+            const vx = params.v0 * Math.cos(rad);
+            const vy = params.v0 * Math.sin(rad);
+            
+            // Time of flight
+            const discriminant = vy * vy + 2 * params.g * params.h0;
+            const tFlight = (vy + Math.sqrt(discriminant)) / params.g;
+            
+            // Max height
+            const hMax = params.h0 + (vy * vy) / (2 * params.g);
+            
+            // Range
+            const range = vx * tFlight;
+            
+            return { vx, vy, tFlight, hMax, range };
+        }
+        
+        // Get position at time t
+        function getPosition(t) {
+            const rad = params.angle * Math.PI / 180;
+            const x = params.v0 * Math.cos(rad) * t;
+            const y = params.h0 + params.v0 * Math.sin(rad) * t - 0.5 * params.g * t * t;
+            return { x, y: Math.max(0, y) };
+        }
+        
+        // Draw grid
+        function drawGrid() {
+            if (!simulation.showGrid) return;
+            
+            ctx.strokeStyle = 'rgba(148, 163, 184, 0.1)';
+            ctx.lineWidth = 1;
+            
+            // Vertical lines
+            for (let i = 0; i <= 100; i += 10) {
+                const x = ORIGIN_X + i * SCALE_X;
+                ctx.beginPath();
+                ctx.moveTo(x, 0);
+                ctx.lineTo(x, canvas.height);
+                ctx.stroke();
+            }
+            
+            // Horizontal lines
+            for (let i = 0; i <= 100; i += 10) {
+                const y = ORIGIN_Y - i * SCALE_Y;
+                if (y < 0) break;
+                ctx.beginPath();
+                ctx.moveTo(0, y);
+                ctx.lineTo(canvas.width, y);
+                ctx.stroke();
+            }
+            
+            // Axis labels
+            ctx.fillStyle = '#64748b';
+            ctx.font = '11px Inter';
+            ctx.textAlign = 'center';
+            
+            for (let i = 0; i <= 100; i += 20) {
+                const x = ORIGIN_X + i * SCALE_X;
+                ctx.fillText(i + 'm', x, ORIGIN_Y + 20);
+            }
+            
+            ctx.textAlign = 'right';
+            for (let i = 0; i <= 100; i += 20) {
+                const y = ORIGIN_Y - i * SCALE_Y;
+                if (y < 20) break;
+                ctx.fillText(i + 'm', ORIGIN_X - 10, y + 4);
+            }
+        }
+        
+        // Draw axes
+        function drawAxes() {
+            ctx.strokeStyle = '#94a3b8';
+            ctx.lineWidth = 2;
+            
+            // X axis
+            ctx.beginPath();
+            ctx.moveTo(0, ORIGIN_Y);
+            ctx.lineTo(canvas.width, ORIGIN_Y);
+            ctx.stroke();
+            
+            // Y axis
+            ctx.beginPath();
+            ctx.moveTo(ORIGIN_X, 0);
+            ctx.lineTo(ORIGIN_X, canvas.height);
+            ctx.stroke();
+            
+            // Arrows
+            ctx.fillStyle = '#94a3b8';
+            ctx.beginPath();
+            ctx.moveTo(canvas.width - 10, ORIGIN_Y - 5);
+            ctx.lineTo(canvas.width, ORIGIN_Y);
+            ctx.lineTo(canvas.width - 10, ORIGIN_Y + 5);
+            ctx.fill();
+            
+            ctx.beginPath();
+            ctx.moveTo(ORIGIN_X - 5, 10);
+            ctx.lineTo(ORIGIN_X, 0);
+            ctx.lineTo(ORIGIN_X + 5, 10);
+            ctx.fill();
+            
+            // Labels
+            ctx.font = 'bold 14px Inter';
+            ctx.fillStyle = '#f8fafc';
+            ctx.textAlign = 'center';
+            ctx.fillText('Jarak (m)', canvas.width / 2, canvas.height - 5);
+            
+            ctx.save();
+            ctx.translate(15, canvas.height / 2);
+            ctx.rotate(-Math.PI / 2);
+            ctx.fillText('Ketinggian (m)', 0, 0);
+            ctx.restore();
+        }
+        
+        // Draw projectile trail
+        function drawTrail() {
+            if (!simulation.showTrail || simulation.trail.length < 2) return;
+            
+            ctx.strokeStyle = 'rgba(249, 115, 22, 0.6)';
+            ctx.lineWidth = 3;
+            ctx.setLineDash([5, 5]);
+            ctx.beginPath();
+            
+            const start = simulation.trail[0];
+            ctx.moveTo(ORIGIN_X + start.x * SCALE_X, ORIGIN_Y - start.y * SCALE_Y);
+            
+            for (let i = 1; i < simulation.trail.length; i++) {
+                const point = simulation.trail[i];
+                ctx.lineTo(ORIGIN_X + point.x * SCALE_X, ORIGIN_Y - point.y * SCALE_Y);
+            }
+            
+            ctx.stroke();
+            ctx.setLineDash([]);
+        }
+        
+        // Draw projectile
+        function drawProjectile(x, y) {
+            const screenX = ORIGIN_X + x * SCALE_X;
+            const screenY = ORIGIN_Y - y * SCALE_Y;
+            
+            // Glow effect
+            const gradient = ctx.createRadialGradient(screenX, screenY, 0, screenX, screenY, 20);
+            gradient.addColorStop(0, 'rgba(59, 130, 246, 0.8)');
+            gradient.addColorStop(1, 'rgba(59, 130, 246, 0)');
+            ctx.fillStyle = gradient;
+            ctx.beginPath();
+            ctx.arc(screenX, screenY, 20, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Ball
+            ctx.fillStyle = '#3b82f6';
+            ctx.beginPath();
+            ctx.arc(screenX, screenY, 8, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Highlight
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+            ctx.beginPath();
+            ctx.arc(screenX - 2, screenY - 2, 3, 0, Math.PI * 2);
+            ctx.fill();
+        }
+        
+        // Draw launch angle
+        function drawLaunchAngle() {
+            const rad = params.angle * Math.PI / 180;
+            const length = 50;
+            
+            ctx.strokeStyle = 'rgba(249, 115, 22, 0.8)';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(ORIGIN_X, ORIGIN_Y);
+            ctx.lineTo(ORIGIN_X + length * Math.cos(rad), ORIGIN_Y - length * Math.sin(rad));
+            ctx.stroke();
+            
+            // Angle arc
+            ctx.strokeStyle = 'rgba(249, 115, 22, 0.5)';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.arc(ORIGIN_X, ORIGIN_Y, 30, -rad, 0);
+            ctx.stroke();
+            
+            // Angle text
+            ctx.fillStyle = '#f97316';
+            ctx.font = 'bold 12px Inter';
+            ctx.textAlign = 'left';
+            ctx.fillText(params.angle + '°', ORIGIN_X + 35, ORIGIN_Y - 10);
+        }
+        
+        // Draw max height indicator
+        function drawMaxHeightIndicator(physics) {
+            if (simulation.time > 0.1) return;
+            
+            const maxHeightY = ORIGIN_Y - physics.hMax * SCALE_Y;
+            
+            ctx.strokeStyle = 'rgba(16, 185, 129, 0.5)';
+            ctx.lineWidth = 1;
+            ctx.setLineDash([5, 5]);
+            ctx.beginPath();
+            ctx.moveTo(ORIGIN_X, maxHeightY);
+            ctx.lineTo(canvas.width, maxHeightY);
+            ctx.stroke();
+            ctx.setLineDash([]);
+            
+            ctx.fillStyle = '#10b981';
+            ctx.font = '11px Inter';
+            ctx.textAlign = 'right';
+            ctx.fillText('H = ' + physics.hMax.toFixed(1) + 'm', ORIGIN_X - 5, maxHeightY + 4);
+        }
+        
+        // Draw landing point
+        function drawLandingPoint(physics) {
+            if (!simulation.running || simulation.time < physics.tFlight * 0.99) return;
+            
+            const landingX = ORIGIN_X + physics.range * SCALE_X;
+            
+            ctx.fillStyle = '#10b981';
+            ctx.beginPath();
+            ctx.arc(landingX, ORIGIN_Y, 6, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.fillStyle = 'rgba(16, 185, 129, 0.3)';
+            ctx.beginPath();
+            ctx.arc(landingX, ORIGIN_Y, 12, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.fillStyle = '#10b981';
+            ctx.font = 'bold 12px Inter';
+            ctx.textAlign = 'center';
+            ctx.fillText('R = ' + physics.range.toFixed(1) + 'm', landingX, ORIGIN_Y + 25);
+        }
+        
+        // Main draw function
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Background gradient
+            const bgGrad = ctx.createLinearGradient(0, 0, 0, canvas.height);
+            bgGrad.addColorStop(0, '#0f172a');
+            bgGrad.addColorStop(1, '#1e293b');
+            ctx.fillStyle = bgGrad;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            drawGrid();
+            drawAxes();
+            drawLaunchAngle();
+            
+            const physics = calculatePhysics();
+            drawMaxHeightIndicator(physics);
+            drawTrail();
+            drawLandingPoint(physics);
+            
+            // Draw projectile if running
+            if (simulation.running && simulation.time <= physics.tFlight) {
+                const pos = getPosition(simulation.time);
+                drawProjectile(pos.x, pos.y);
+            }
+        }
+        
+        // Animation loop
+        let lastTime = 0;
+        function animate(timestamp) {
+            if (!simulation.paused && simulation.running) {
+                const dt = (timestamp - lastTime) / 1000 * params.speed;
+                simulation.time += dt;
+                
+                const physics = calculatePhysics();
+                if (simulation.time >= physics.tFlight) {
+                    simulation.time = physics.tFlight;
+                    simulation.running = false;
+                }
+                
+                // Update trail
+                const pos = getPosition(simulation.time);
+                simulation.trail.push({ x: pos.x, y: pos.y });
+                
+                // Update UI
+                document.getElementById('overlayTime').textContent = simulation.time.toFixed(2);
+                document.getElementById('overlayX').textContent = pos.x.toFixed(2);
+                document.getElementById('overlayY').textContent = pos.y.toFixed(2);
+            }
+            
+            lastTime = timestamp;
+            draw();
+            requestAnimationFrame(animate);
+        }
+        
+        // Update parameters
+        function updateParams() {
+            params.v0 = parseFloat(document.getElementById('velocity').value);
+            params.angle = parseFloat(document.getElementById('angle').value);
+            params.g = parseFloat(document.getElementById('gravity').value);
+            params.h0 = parseFloat(document.getElementById('height').value);
+            params.speed = parseFloat(document.getElementById('simSpeed').value);
+            
+            document.getElementById('velocityValue').textContent = params.v0;
+            document.getElementById('angleValue').textContent = params.angle;
+            document.getElementById('gravityValue').textContent = params.g.toFixed(1);
+            document.getElementById('heightValue').textContent = params.h0;
+            document.getElementById('speedValue').textContent = params.speed.toFixed(1);
+            
+            // Calculate and display stats
+            const physics = calculatePhysics();
+            document.getElementById('statMaxHeight').textContent = physics.hMax.toFixed(1);
+            document.getElementById('statRange').textContent = physics.range.toFixed(1);
+            document.getElementById('statTime').textContent = physics.tFlight.toFixed(2);
+            document.getElementById('statVelocity').textContent = (params.v0 * Math.cos(params.angle * Math.PI / 180)).toFixed(1);
+            
+            resetSimulation();
+        }
+        
+        // Launch projectile
+        function launchProjectile() {
+            simulation.running = true;
+            simulation.paused = false;
+            simulation.time = 0;
+            simulation.trail = [{ x: 0, y: params.h0 }];
+            
+            const physics = calculatePhysics();
+            document.getElementById('pauseText').textContent = 'Pause';
+            document.getElementById('pauseIcon').setAttribute('data-lucide', 'pause');
+            lucide.createIcons();
+        }
+        
+        // Toggle pause
+        function togglePause() {
+            simulation.paused = !simulation.paused;
+            const icon = simulation.paused ? 'play' : 'pause';
+            const text = simulation.paused ? 'Play' : 'Pause';
+            document.getElementById('pauseIcon').setAttribute('data-lucide', icon);
+            document.getElementById('pauseText').textContent = text;
+            lucide.createIcons();
+        }
+        
+        // Reset simulation
+        function resetSimulation() {
+            simulation.running = false;
+            simulation.paused = false;
+            simulation.time = 0;
+            simulation.trail = [];
+            
+            document.getElementById('overlayTime').textContent = '0.00';
+            document.getElementById('overlayX').textContent = '0.00';
+            document.getElementById('overlayY').textContent = '0.00';
+            document.getElementById('pauseText').textContent = 'Pause';
+            document.getElementById('pauseIcon').setAttribute('data-lucide', 'pause');
+            lucide.createIcons();
+        }
+        
+        // Toggle trail
+        function toggleTrail() {
+            simulation.showTrail = !simulation.showTrail;
+        }
+        
+        // Toggle grid
+        function toggleGrid() {
+            simulation.showGrid = !simulation.showGrid;
+        }
+        
+        // Switch tabs
+        function switchTab(tab) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+            
+            event.target.classList.add('active');
+            document.getElementById(tab + '-tab').classList.add('active');
+            
+            if (tab === 'quiz') initQuiz();
+        }
+        
+        // Load example
+        function loadExample(n) {
+            const examples = [
+                { v0: 20, angle: 30, g: 9.8, h0: 0 },
+                { v0: 50, angle: 60, g: 9.8, h0: 0 },
+                { v0: 25, angle: 45, g: 9.8, h0: 0 },
+                { v0: 15, angle: 75, g: 9.8, h0: 0 }
+            ];
+            
+            const ex = examples[n - 1];
+            document.getElementById('velocity').value = ex.v0;
+            document.getElementById('angle').value = ex.angle;
+            document.getElementById('gravity').value = ex.g;
+            document.getElementById('height').value = ex.h0;
+            
+            updateParams();
+            launchProjectile();
+        }
+        
+        // Quiz data
+        const quizData = [
+            {
+                question: "Berapa jarak maksimum (range) jika v₀ = 20 m/s dan θ = 45°?",
+                options: ["35.7 m", "40.8 m", "20.4 m", "50.0 m"],
+                correct: 0,
+                explanation: "R = v₀²·sin(2θ)/g = 400·sin(90°)/9.8 = 40.8 m"
+            },
+            {
+                question: "Sudut berapakah yang menghasilkan jarak terjauh?",
+                options: ["30°", "60°", "45°", "75°"],
+                correct: 2,
+                explanation: "Sudut 45° menghasilkan sin(2θ) = sin(90°) = 1 (maksimum)"
+            },
+            {
+                question: "Apa yang terjadi pada kecepatan horizontal saat benda di puncak?",
+                options: ["Nol", "Maksimum", "Tetap sama", "Berubah arah"],
+                correct: 2,
+                explanation: "Kecepatan horizontal tetap konstan (tidak ada gesekan udara)"
+            },
+            {
+                question: "Jika gravitasi diperbesar, apa yang terjadi pada range?",
+                options: ["Meningkat", "Menurun", "Tetap", "Berubah acak"],
+                correct: 1,
+                explanation: "R berbanding terbalik dengan g (R = v₀²·sin(2θ)/g)"
+            },
+            {
+                question: "Berapa waktu terbang jika v₀ = 30 m/s dan θ = 90° (lurus ke atas)?",
+                options: ["3.06 s", "6.12 s", "0 s", "15 s"],
+                correct: 1,
+                explanation: "t = 2·v₀·sin(θ)/g = 2·30·1/9.8 = 6.12 s"
+            }
+        ];
+        
+        let quizState = { current: 0, score: 0, answered: false };
+        
+        function initQuiz() {
+            if (document.getElementById('quizContainer').children.length > 0) return;
+            
+            quizState = { current: 0, score: 0, answered: false };
+            renderQuizQuestion();
+        }
+        
+        function renderQuizQuestion() {
+            const container = document.getElementById('quizContainer');
+            const q = quizData[quizState.current];
+            
+            container.innerHTML = `
+                <div class="bg-surface rounded-2xl p-6 border border-surface-light">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="text-sm text-gray-400">Soal ${quizState.current + 1} dari ${quizData.length}</span>
+                        <span class="text-sm text-orange-400">Skor: ${quizState.score}</span>
+                    </div>
+                    <h3 class="text-lg font-bold mb-6">${q.question}</h3>
+                    <div class="space-y-3">
+                        ${q.options.map((opt, i) => `
+                            <button class="quiz-option" onclick="answerQuiz(${i})" id="opt-${i}">
+                                ${String.fromCharCode(65 + i)}. ${opt}
+                            </button>
+                        `).join('')}
+                    </div>
+                    <div id="quizFeedback" class="mt-4 p-4 rounded-xl hidden"></div>
+                </div>
+            `;
+            
+            quizState.answered = false;
+        }
+        
+        function answerQuiz(index) {
+            if (quizState.answered) return;
+            quizState.answered = true;
+            
+            const q = quizData[quizState.current];
+            const feedback = document.getElementById('quizFeedback');
+            
+            // Highlight correct/wrong
+            document.getElementById(`opt-${q.correct}`).classList.add('correct');
+            if (index !== q.correct) {
+                document.getElementById(`opt-${index}`).classList.add('wrong');
+            } else {
+                quizState.score++;
+            }
+            
+            // Show feedback
+            feedback.classList.remove('hidden');
+            feedback.className = `mt-4 p-4 rounded-xl ${index === q.correct ? 'bg-green-900/30 text-green-300' : 'bg-red-900/30 text-red-300'}`;
+            feedback.innerHTML = `
+                <div class="font-bold mb-1">${index === q.correct ? '✅ Benar!' : '❌ Salah!'}</div>
+                <div class="text-sm">${q.explanation}</div>
+            `;
+            
+            // Next button
+            setTimeout(() => {
+                feedback.innerHTML += `
+                    <button class="btn btn-primary mt-4 w-full" onclick="nextQuestion()">
+                        ${quizState.current < quizData.length - 1 ? 'Soal Berikutnya →' : 'Lihat Hasil'}
+                    </button>
+                `;
+                lucide.createIcons();
+            }, 500);
+        }
+        
+        function nextQuestion() {
+            quizState.current++;
+            if (quizState.current < quizData.length) {
+                renderQuizQuestion();
+            } else {
+                showQuizResult();
+            }
+        }
+        
+        function showQuizResult() {
+            document.getElementById('quizContainer').innerHTML = '';
+            const result = document.getElementById('quizResult');
+            result.classList.remove('hidden');
+            
+            const percentage = (quizState.score / quizData.length) * 100;
+            document.getElementById('quizScore').textContent = `${quizState.score}/${quizData.length} (${percentage}%)`;
+            
+            if (percentage >= 80) {
+                document.getElementById('quizEmoji').textContent = '🎉';
+                document.getElementById('quizTitle').textContent = 'Luar Biasa!';
+                document.getElementById('quizMessage').textContent = 'Kamu menguasai materi Gerak Parabola dengan sangat baik!';
+            } else if (percentage >= 60) {
+                document.getElementById('quizEmoji').textContent = '👍';
+                document.getElementById('quizTitle').textContent = 'Bagus!';
+                document.getElementById('quizMessage').textContent = 'Terus berlatih untuk hasil yang lebih baik!';
+            } else {
+                document.getElementById('quizEmoji').textContent = '💪';
+                document.getElementById('quizTitle').textContent = 'Tetap Semangat!';
+                document.getElementById('quizMessage').textContent = 'Coba pelajari lagi materinya dan ulangi kuis!';
+            }
+        }
+        
+        function resetQuiz() {
+            document.getElementById('quizResult').classList.add('hidden');
+            initQuiz();
+        }
+        
+        // Initialize
+        resizeCanvas();
+        updateParams();
+        requestAnimationFrame(animate);
+    </script>
+</body>
+</html>
