@@ -10,7 +10,7 @@ from pathlib import Path
 
 # CONFIGURATION
 FTP_HOST = "ftp.rumahguru.org"
-FTP_USER = "hermes@taraka.id"
+FTP_USER = "hermesftp@taraka.id"
 FTP_PASS = "H32m35."
 FTP_PORT = 21
 REMOTE_PATH = "/chalbi/"
