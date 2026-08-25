@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sifat Dasar Manusia - Chalbi</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@400;700&display=swap');
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Amiri', serif;
+            background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 50%, #ede9fe 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(139, 92, 246, 0.15);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #7c3aed 0%, #a855f7 50%, #c084fc 100%);
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '❝';
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-size: 150px;
+            opacity: 0.1;
+            color: white;
+        }
+        
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            color: white;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .header .author {
+            font-size: 18px;
+            color: rgba(255,255,255,0.9);
+            font-style: italic;
+        }
+        
+        .content {
+            padding: 50px 40px;
+        }
+        
+        .intro {
+            font-size: 20px;
+            line-height: 1.9;
+            color: #4c1d95;
+            margin-bottom: 35px;
+            text-align: justify;
+        }
+        
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: #7c3aed;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e9d5ff;
+        }
+        
+        h3 {
+            font-size: 22px;
+            color: #6d28d9;
+            margin: 30px 0 15px;
+        }
+        
+        p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #374151;
+            margin-bottom: 18px;
+            text-align: justify;
+        }
+        
+        .quote-block {
+            background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
+            border-left: 4px solid #a855f7;
+            padding: 25px 30px;
+            margin: 30px 0;
+            border-radius: 0 12px 12px 0;
+            position: relative;
+        }
+        
+        .quote-block::before {
+            content: '❝';
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            font-size: 50px;
+            color: #a855f7;
+            opacity: 0.3;
+        }
+        
+        .quote-persian {
+            font-size: 22px;
+            color: #581c87;
+            text-align: right;
+            direction: rtl;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+        
+        .quote-source {
+            font-size: 14px;
+            color: #7c3aed;
+            text-align: right;
+            margin-bottom: 15px;
+        }
+        
+        .quote-translation {
+            font-size: 18px;
+            color: #4b5563;
+            margin-bottom: 12px;
+            padding-left: 20px;
+        }
+        
+        .quote-meaning {
+            font-size: 16px;
+            color: #6b7280;
+            line-height: 1.7;
+        }
+        
+        .svg-container {
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .svg-container svg {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.1);
+        }
+        
+        th {
+            background: linear-gradient(135deg, #7c3aed, #a855f7);
+            color: white;
+            padding: 15px;
+            font-size: 16px;
+            text-align: left;
+        }
+        
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #e9d5ff;
+            font-size: 16px;
+            color: #374151;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        tr:hover td {
+            background: #faf5ff;
+        }
+        
+        .conclusion {
+            background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+            color: white;
+            padding: 35px;
+            border-radius: 15px;
+            margin-top: 40px;
+        }
+        
+        .conclusion h2 {
+            color: white;
+            border-bottom-color: rgba(255,255,255,0.3);
+            margin-top: 0;
+        }
+        
+        .conclusion p {
+            color: rgba(255,255,255,0.95);
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 30px;
+            background: #f5f3ff;
+            color: #7c3aed;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>السifat Dasar Manusia</h1>
+            <div class="author">Menurut Perspektif Rumi</div>
+            <div class="author">Oleh Chalbi | 2026-08-25</div>
+        </div>
+        
+        <div class="content">
+            <p class="intro">
+                Manusia adalah sebuah kosmos mini. Dalam dirinya tersimpan seluruh rahasia alam semesta—cahaya dan kegelapan, ketinggian dan kedalaman, kecenderungan kepada kebaikan dan godaan menuju kerusakan. Jalaluddin Rumi, penyufi besar Persia abad ke-13, melukiskan realitas ini dengan sangat indah dalam <em>Masnavi-ye Ma'navi</em>-nya.
+            </p>
+            
+            <p class="intro">
+                Dalam tradisi tasawuf, manusia terdiri dari tiga unsur utama: <strong>nafs</strong> (nafsu), <strong>qalb</strong> (hati), dan <strong>ruh</strong> (roh). Ketiga unsur ini saling berinteraksi, kadang bertikai, kadang selaras, membentuk drama kehidupan yang abadi.
+            </p>
+            
+            <!-- SVG: Human Nature Diagram -->
+            <div class="svg-container">
+                <svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#7c3aed;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#a855f7;stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#ec4899;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#f43f5e;stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    
+                    <!-- Center circle (Qalb) -->
+                    <circle cx="200" cy="150" r="60" fill="url(#grad1)" opacity="0.9"/>
+                    <text x="200" y="145" text-anchor="middle" fill="white" font-size="18" font-family="Amiri">QALB</text>
+                    <text x="200" y="165" text-anchor="middle" fill="white" font-size="12" font-family="Arial">Hati</text>
+                    
+                    <!-- Nafs (bottom) -->
+                    <circle cx="200" cy="250" r="50" fill="url(#grad2)" opacity="0.8"/>
+                    <text x="200" y="245" text-anchor="middle" fill="white" font-size="18" font-family="Amiri">NAFS</text>
+                    <text x="200" y="265" text-anchor="middle" fill="white" font-size="12" font-family="Arial">Nafsu</text>
+                    
+                    <!-- Ruh (top) -->
+                    <circle cx="200" cy="50" r="50" fill="url(#grad3)" opacity="0.8"/>
+                    <text x="200" y="45" text-anchor="middle" fill="white" font-size="18" font-family="Amiri">RUH</text>
+                    <text x="200" y="65" text-anchor="middle" fill="white" font-size="12" font-family="Arial">Roh</text>
+                    
+                    <!-- Arrows -->
+                    <path d="M 200 100 L 200 85" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrow)"/>
+                    <path d="M 200 200 L 200 215" stroke="#ec4899" stroke-width="2"/>
+                    
+                    <!-- Labels -->
+                    <text x="270" y="55" fill="#3b82f6" font-size="14" font-family="Arial">↑ Menarik ke atas</text>
+                    <text x="270" y="255" fill="#ec4899" font-size="14" font-family="Arial">↓ Menarik ke bawah</text>
+                    <text x="270" y="155" fill="#7c3aed" font-size="14" font-family="Arial">↔ Pusat keseimbangan</text>
+                </svg>
+            </div>
+            
+            <h2>Nafs: Si Penjaga Diri yang Keliru</h2>
+            
+            <p>
+                Nafs adalah aspek diri yang paling mendasar. Ia adalah "aku" yang kita rasakan setiap hari—keinginan, hasrat, ambisi, dan pertahanan diri. Tanpa nafs, manusia tidak akan bertahan hidup. Namun, nafs yang tidak diasuh dengan bijak akan menjadi tuan yang kejam.
+            </p>
+            
+            <div class="quote-block">
+                <div class="quote-persian">اسب تو خبی است و خبر نبودی<br>تا چه رسد که سوار بر پشت او بودی</div>
+                <div class="quote-source">— Masnavi, Daftar 1, Beyt 2</div>
+                <div class="quote-translation">
+                    <strong>Terjemahan:</strong> "Kudamu buas dan kamu tak tahu, bagaimana mungkin engkau menunggangi punggungnya?"
+                </div>
+                <div class="quote-meaning">
+                    <strong>Makna & Konteks:</strong> Kuda liar itu adalah nafs—daya-daya primitif dalam diri manusia: nafsu makan, nafsu seksual, amarah, dan keserakahan. Tanpa pelatih yang ahli, kuda ini akan membawa tuannya ke jurang.
+                </div>
+            </div>
+            
+            <p>
+                Rumi mengingatkan bahwa kesadaran akan sifat liar ini adalah langkah pertama menuju pembebasan. Namun, nafs bukan musuh yang harus dibunuh. Nafs adalah energi yang perlu dialihkan. Seperti air sungai yang bisa mengairi sawah atau menghanyutkan kampung, nafs bisa menjadi sumber kreasi atau kehancuran.
+            </p>
+            
+            <h2>Qalb: Pusat Segalanya</h2>
+            
+            <p>
+                Jika nafs adalah kuda, maka qalb adalah sang penunggang. Hati dalam pandangan Rumi bukanlah organ fisik, melainkan pusat kesadaran spiritual—tempat di mana akal dan rasa bertemu.
+            </p>
+            
+            <div class="quote-block">
+                <div class="quote-persian">دل را نور است و دل را چراغ است<br>به جز نور هیچ چیز در دل نگار نیست</div>
+                <div class="quote-source">— Masnavi, Daftar 1, Beyt 15</div>
+                <div class="quote-translation">
+                    <strong>Terjemahan:</strong> "Hati memiliki cahaya dan hati memiliki pelita. Di dalam hati, tiada sesuatu selain cahaya."
+                </div>
+            </div>
+            
+            <h2>Ruh: Percikan Sang Matahari</h2>
+            
+            <p>
+                Ruh adalah aspek paling halus dalam diri manusia. Ia adalah percikan dari Cahaya Mutlak, benih keabadian yang tertanam dalam setiap jiwa.
+            </p>
+            
+            <div class="quote-block">
+                <div class="quote-persian">ما از آن تصویریم و در غفلتیم<br>فراموش کرده‌ایم اصل خود را</div>
+                <div class="quote-source">— Masnavi, Daftar 1, Beyt 7</div>
+                <div class="quote-translation">
+                    <strong>Terjemahan:</strong> "Kami adalah bayangan dari gambar itu, dan kami dalam lalai. Kita telah melupakan asal-usul kita."
+                </div>
+            </div>
+            
+            <h2>Tiga Wajah Manusia</h2>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Dimensi</th>
+                        <th>Simbol</th>
+                        <th>Sifat</th>
+                        <th>Tujuan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Nafs Ammarah</strong></td>
+                        <td>🦁 Binatang</td>
+                        <td>Hasrat, egosentris</td>
+                        <td>Kenikmatan sesaat</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Nafs Lawwamah</strong></td>
+                        <td>👤 Manusia</td>
+                        <td>Penyesalan, kritik diri</td>
+                        <td>Pertumbuhan moral</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Nafs Mutmainnah</strong></td>
+                        <td>👼 Malaikat</td>
+                        <td>Kedamaian, penyerahan</td>
+                        <td>Union Ilahi</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="quote-block">
+                <div class="quote-persian">از درون توست هر چه بیرون توست<br>بیرون تویی و درونت یکی است</div>
+                <div class="quote-source">— Masnavi, Daftar 1, Beyt 50</div>
+                <div class="quote-translation">
+                    <strong>Terjemahan:</strong> "Semua yang ada di luar dirimu berasal dari dalam dirimu. Di luar dan dalam itu satu."
+                </div>
+            </div>
+            
+            <h2>Perjalanan Pulang</h2>
+            
+            <p>
+                Dalam konsep Rumi, kehidupan adalah perjalanan pulang. Ruh yang terjebak dalam tubuh materi merindukan asal-usulnya. Nafsu yang liar menarik ke bawah, sedangkan ruh yang suci menarik ke atas.
+            </p>
+            
+            <div class="quote-block">
+                <div class="quote-persian">بشنو این نی چون شکایت می‌کند<br>از جدایی‌ها حکایت می‌کند</div>
+                <div class="quote-source">— Masnavi, Daftar 1, Beyt 1</div>
+                <div class="quote-translation">
+                    <strong>Terjemahan:</strong> "Dengarkanlah seruling ini, bagaimana ia bercerita tentang perpisahan."
+                </div>
+                <div class="quote-meaning">
+                    Bait pembuka <em>Masnavi</em> ini adalah kunci memahami seluruh karya Rumi. Seruling itu adalah ruh manusia yang terpisah dari batang tebu aslinya—Tuhan.
+                </div>
+            </div>
+            
+            <div class="conclusion">
+                <h2>Kesimpulan</h2>
+                <p>
+                    Sifat dasar manusia menurut Rumi adalah <strong>drama pertempuran tiga kekuatan</strong>: nafs yang mendorong ke bawah, qalb yang bisa mengarahkan, dan ruh yang menarik ke atas. Tugas spiritual bukanlah memusnahkan nafs, melainkan menundukkannya melalui disiplin dan cinta.
+                </p>
+                <p style="margin-top:20px;">
+                    Hati yang bersih menjadi jembatan antara tanah dan langit. Ruh yang terjaga menemukan jalan pulang. Dan nafs yang dilatih menjadi kuda perang yang setia.
+                </p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>📜 Artikel oleh <strong>@chalbi</strong> — Ahli Sastra Rumi</p>
+            <p>Sumber: Masnavi-ye Ma'navi via masnavi.ai</p>
+        </div>
+    </div>
+</body>
+</html>
