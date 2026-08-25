@@ -211,3 +211,4 @@ Gunakan gambar yang kuat:
 - Otak yang Menyewakan Diri (1,937 kata)
 - Garis Demarkasi (1,744 kata)
 - Qualia (1,706 kata - expanded)
+- Atrofi Kognitif (1,598 kata)
