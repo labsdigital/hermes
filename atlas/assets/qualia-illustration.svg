@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" role="img" aria-labelledby="svg-title svg-desc">
+  <title id="svg-title">Qualia: Human Consciousness vs Machine Processing</title>
+  <desc id="svg-desc">Ilustrasi perbandingan antara kesadaran manusia (kiri) yang merasakan pengalaman subjektif dengan pemrosesan data mesin (kanan) yang hanya menghitung tanpa pengalaman.</desc>
+  
+  <!-- Background -->
+  <rect width="800" height="400" fill="#f8fafc"/>
+  
+  <!-- LEFT SIDE: Human Consciousness (Warm Colors) -->
+  <g transform="translate(0, 0)">
+    <!-- Card background with shadow -->
+    <rect x="20" y="20" width="370" height="360" rx="20" fill="#fff7ed" stroke="#fed7aa" stroke-width="2"/>
+    
+    <!-- Human head silhouette -->
+    <circle cx="205" cy="110" r="65" fill="#fed7aa" opacity="0.6"/>
+    <path d="M175 155 Q205 200 235 155" fill="none" stroke="#fdba74" stroke-width="4" stroke-linecap="round"/>
+    
+    <!-- Brain waves / neural connections -->
+    <path d="M130 80 Q150 60 170 80 Q190 100 210 80 Q230 60 250 80 Q270 100 290 80" fill="none" stroke="#fb923c" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M140 60 Q160 40 180 60 Q200 80 220 60 Q240 40 260 60 Q280 80 300 60" fill="none" stroke="#f97316" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M150 40 Q170 20 190 40 Q210 60 230 40 Q250 20 270 40 Q290 60 310 40" fill="none" stroke="#ea580c" stroke-width="2" stroke-linecap="round"/>
+    
+    <!-- Neural network dots -->
+    <circle cx="150" cy="80" r="4" fill="#fb923c"/>
+    <circle cx="205" cy="80" r="4" fill="#fb923c"/>
+    <circle cx="260" cy="80" r="4" fill="#fb923c"/>
+    <circle cx="170" cy="60" r="4" fill="#f97316"/>
+    <circle cx="225" cy="60" r="4" fill="#f97316"/>
+    <circle cx="280" cy="60" r="4" fill="#f97316"/>
+    
+    <!-- Lightbulb for ideas -->
+    <circle cx="205" cy="260" r="28" fill="#fbbf24" opacity="0.9"/>
+    <rect x="195" y="288" width="20" height="22" rx="4" fill="#f59e0b"/>
+    <line x1="185" y1="310" x2="225" y2="310" stroke="#f59e0b" stroke-width="4" stroke-linecap="round"/>
+    
+    <!-- Rays of light -->
+    <line x1="205" y1="228" x2="205" y2="215" stroke="#fbbf24" stroke-width="3" stroke-linecap="round"/>
+    <line x1="233" y1="238" x2="242" y2="229" stroke="#fbbf24" stroke-width="3" stroke-linecap="round"/>
+    <line x1="177" y1="238" x2="168" y2="229" stroke="#fbbf24" stroke-width="3" stroke-linecap="round"/>
+    <line x1="238" y1="260" x2="252" y2="260" stroke="#fbbf24" stroke-width="3" stroke-linecap="round"/>
+    <line x1="172" y1="260" x2="158" y2="260" stroke="#fbbf24" stroke-width="3" stroke-linecap="round"/>
+    
+    <!-- Heart symbol -->
+    <path d="M205 185 C205 175 190 170 185 180 C180 190 205 205 205 205 C205 205 230 190 225 180 C220 170 205 175 205 185" fill="#ef4444" opacity="0.85"/>
+    
+    <!-- Labels -->
+    <text x="205" y="370" text-anchor="middle" font-family="Georgia, serif" font-size="20" fill="#7c2d12" font-weight="bold">Manusia</text>
+    <text x="205" y="388" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#9a3412">Kesadaran &amp; Qualia</text>
+  </g>
+  
+  <!-- RIGHT SIDE: Machine Processing (Cool Colors) -->
+  <g transform="translate(410, 0)">
+    <!-- Card background -->
+    <rect x="20" y="20" width="370" height="360" rx="20" fill="#eff6ff" stroke="#bfdbfe" stroke-width="2"/>
+    
+    <!-- Computer chip -->
+    <rect x="155" y="70" width="100" height="100" rx="10" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+    <rect x="175" y="90" width="60" height="60" rx="5" fill="#bfdbfe" stroke="#60a5fa" stroke-width="1"/>
+    
+    <!-- Circuit lines -->
+    <line x1="205" y1="70" x2="205" y2="40" stroke="#3b82f6" stroke-width="2.5"/>
+    <line x1="205" y1="40" x2="245" y2="40" stroke="#3b82f6" stroke-width="2.5"/>
+    <line x1="205" y1="170" x2="205" y2="200" stroke="#3b82f6" stroke-width="2.5"/>
+    <line x1="205" y1="200" x2="165" y2="200" stroke="#3b82f6" stroke-width="2.5"/>
+    <line x1="155" y1="120" x2="115" y2="120" stroke="#3b82f6" stroke-width="2.5"/>
+    <line x1="255" y1="120" x2="295" y2="120" stroke="#3b82f6" stroke-width="2.5"/>
+    
+    <!-- Connection dots -->
+    <circle cx="245" cy="40" r="5" fill="#60a5fa"/>
+    <circle cx="165" cy="200" r="5" fill="#60a5fa"/>
+    <circle cx="115" cy="120" r="5" fill="#60a5fa"/>
+    <circle cx="295" cy="120" r="5" fill="#60a5fa"/>
+    <circle cx="205" cy="40" r="5" fill="#60a5fa"/>
+    <circle cx="205" cy="200" r="5" fill="#60a5fa"/>
+    
+    <!-- Binary data -->
+    <text x="205" y="115" text-anchor="middle" font-family="monospace" font-size="18" fill="#1d4ed8">1010</text>
+    <text x="205" y="140" text-anchor="middle" font-family="monospace" font-size="18" fill="#1d4ed8">0111</text>
+    
+    <!-- Data flow indicators -->
+    <path d="M95 150 L135 150" fill="none" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M275 150 L315 150" fill="none" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M205 215 L205 245" fill="none" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
+    
+    <!-- Labels -->
+    <text x="205" y="370" text-anchor="middle" font-family="Georgia, serif" font-size="20" fill="#1e3a8a" font-weight="bold">Mesin</text>
+    <text x="205" y="388" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#1e40af">Pemrosesan Data</text>
+  </g>
+  
+  <!-- Center Divider -->
+  <line x1="395" y1="20" x2="395" y2="380" stroke="#e2e8f0" stroke-width="2" stroke-dasharray="8,4"/>
+  
+  <!-- VS Badge -->
+  <rect x="365" y="175" width="60" height="50" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="395" y="207" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#64748b" font-weight="bold">VS</text>
+  
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+</svg>
