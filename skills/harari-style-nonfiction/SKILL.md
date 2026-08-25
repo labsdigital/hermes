@@ -67,6 +67,43 @@ Setiap bagian harus:
 **Contoh:**
 > "Sebab di seluruh alam semesta yang bisa dihitung oleh mesin, hanya di dalam kesadaranmu warna itu benar-benar ada."
 
+### 7. Buat Ilustrasi SVG
+Setiap artikel harus dilengkapi dengan ilustrasi SVG yang:
+- Merepresentasikan tema artikel secara visual
+- Simpan di: `/opt/data/hermes/atlas/assets/<judul>.svg`
+- Gunakan format 800×400 viewBox
+- Include accessibility: title + desc, role="img"
+- Gunakan palet warna yang sesuai tema (warm untuk human, cool untuk machine/tech)
+
+**Contoh SVG untuk qualia:**
+- Kiri: Human Consciousness (warm colors, brain waves, lightbulb, heart)
+- Kanan: Machine Processing (cool colors, chip, binary data)
+- Center: VS badge
+
+**Teknik svg-skill:**
+- `viewBox="0 0 800 400"` untuk layout horizontal
+- `<g transform="translate(x,y)">` untuk grouping
+- `<defs>` untuk shared elements (arrow markers, gradients)
+- Non-ASCII text → HTML entities (&amp;, &lt;, &gt;)
+
+### 8. Masukkan SVG ke Artikel
+Tambahkan gambar SVG di bagian atas artikel (setelah judul):
+```markdown
+# [Judul Artikel]
+
+*Esai | [Bulan] [Tahun]*
+
+![Alt text](https://labsdigital.github.io/hermes/atlas/assets/<filename>.svg)
+
+---
+```
+
+### 9. Kirim Email dengan SVG
+Email akan otomatis menyertakan SVG dari GitHub Pages:
+- Script `send_email.py` mendeteksi SVG berdasarkan nama file artikel
+- Jika SVG article-specific exists, gunakan itu
+- Jika tidak, gunakan default SVG
+
 ## Voice & Tone
 
 ### Voice Personal
