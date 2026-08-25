@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" role="img" aria-labelledby="svg-title svg-desc">
+  <title id="svg-title">Timbangan Mesin vs Manusia</title>
+  <desc id="svg-desc">Ilustrasi timbangan besar: di wadah kiri sebuah kepala robot melambangkan mesin (kecepatan, presisi, memori, efisiensi), di wadah kanan wajah manusia melambangkan manusia (kebijaksanaan, kreativitas, empati, makna). Keduanya saling menopang dalam keseimbangan.</desc>
+
+  <!-- Background -->
+  <rect width="800" height="480" fill="#f8fafc"/>
+
+  <!-- Decorative corner: circuit traces (machine side) -->
+  <g fill="none" stroke="#bfdbfe" stroke-width="2">
+    <path d="M40 112 H92 L112 132 H152"/>
+    <path d="M30 142 H72 L92 162 H122"/>
+    <path d="M52 96 V88"/>
+  </g>
+  <circle cx="152" cy="132" r="3.5" fill="#bfdbfe"/>
+  <circle cx="122" cy="162" r="3.5" fill="#bfdbfe"/>
+
+  <!-- Decorative corner: organic vine (human side) -->
+  <path d="M762 118 Q722 126 702 152 Q686 170 658 176" fill="none" stroke="#fcd34d" stroke-width="2"/>
+  <path d="M712 138 Q726 128 736 132 Q734 146 718 148 Z" fill="#fde68a"/>
+  <circle cx="658" cy="176" r="4" fill="#fbbf24"/>
+
+  <!-- Title -->
+  <text x="400" y="42" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="26" font-weight="bold" fill="#0f172a">Mesin vs Manusia</text>
+  <text x="400" y="66" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="14" font-style="italic" fill="#64748b">Dua sisi timbangan yang saling menopang</text>
+
+  <!-- Ground shadow -->
+  <ellipse cx="400" cy="400" rx="130" ry="9" fill="#e2e8f0"/>
+
+  <!-- Balance pillar and base -->
+  <rect x="352" y="362" width="96" height="12" rx="6" fill="#475569"/>
+  <rect x="324" y="374" width="152" height="16" rx="8" fill="#1e293b"/>
+  <rect x="392" y="170" width="16" height="200" rx="6" fill="#334155"/>
+
+  <!-- Beam (slight tilt for life) -->
+  <line x1="250" y1="157" x2="550" y2="169" stroke="#334155" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="400" cy="163" r="10" fill="#1e293b"/>
+  <circle cx="400" cy="163" r="3.5" fill="#94a3b8"/>
+
+  <!-- LEFT PAN: MACHINE -->
+  <line x1="250" y1="157" x2="198" y2="232" stroke="#94a3b8" stroke-width="2"/>
+  <line x1="250" y1="157" x2="302" y2="232" stroke="#94a3b8" stroke-width="2"/>
+  <!-- Robot head -->
+  <line x1="250" y1="160" x2="250" y2="174" stroke="#2563eb" stroke-width="2.5"/>
+  <circle cx="250" cy="154" r="5" fill="#ef4444"/>
+  <rect x="208" y="194" width="10" height="18" rx="4" fill="#93c5fd"/>
+  <rect x="282" y="194" width="10" height="18" rx="4" fill="#93c5fd"/>
+  <rect x="218" y="174" width="64" height="60" rx="11" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5"/>
+  <circle cx="240" cy="198" r="6.5" fill="#2563eb"/>
+  <circle cx="260" cy="198" r="6.5" fill="#2563eb"/>
+  <line x1="242" y1="216" x2="258" y2="216" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Dish -->
+  <path d="M192 237 Q250 290 308 237 Z" fill="#dbeafe" stroke="#2563eb" stroke-width="2.5" stroke-linejoin="round"/>
+  <!-- Labels -->
+  <text x="250" y="318" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="bold" letter-spacing="3" fill="#1d4ed8">MESIN</text>
+  <text x="250" y="338" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="11.5" fill="#64748b">kecepatan &#183; presisi &#183; memori &#183; efisiensi</text>
+
+  <!-- RIGHT PAN: HUMAN -->
+  <line x1="550" y1="169" x2="498" y2="232" stroke="#94a3b8" stroke-width="2"/>
+  <line x1="550" y1="169" x2="602" y2="232" stroke="#94a3b8" stroke-width="2"/>
+  <!-- Human head -->
+  <circle cx="550" cy="204" r="32" fill="#fff7ed" stroke="#d97706" stroke-width="2.5"/>
+  <path d="M518 200 Q522 170 550 169 Q578 170 582 200 Q574 182 550 181 Q526 182 518 200 Z" fill="#b45309" opacity="0.9"/>
+  <circle cx="539" cy="206" r="3" fill="#92400e"/>
+  <circle cx="561" cy="206" r="3" fill="#92400e"/>
+  <path d="M538 219 Q550 228 562 219" fill="none" stroke="#b45309" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Dish -->
+  <path d="M492 237 Q550 290 608 237 Z" fill="#fef3c7" stroke="#d97706" stroke-width="2.5" stroke-linejoin="round"/>
+  <!-- Labels -->
+  <text x="550" y="318" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="bold" letter-spacing="3" fill="#b45309">MANUSIA</text>
+  <text x="550" y="338" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="11.5" fill="#64748b">kebijaksanaan &#183; kreativitas &#183; empati &#183; makna</text>
+
+  <!-- Footer caption -->
+  <text x="400" y="430" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="13" font-style="italic" fill="#475569">Kecepatan dan makna, presisi dan empati &#8212; dua cara menimbang satu dunia.</text>
+</svg>
