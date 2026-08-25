@@ -1,12 +1,13 @@
 #!/bin/bash
 # Upload files to hosting via FTP
 # Usage: ./upload_to_hosting.sh <file_or_folder> [remote_path]
-#
-# CONFIGURATION - Edit these variables:
-FTP_HOST="ftp.taraka.id"        # Ganti dengan hostname FTP kamu
-FTP_USER="your_username"        # Ganti dengan username FTP kamu
-FTP_PASS="your_password"        # Ganti dengan password FTP kamu
-REMOTE_PATH="/public_html/"     # Ganti dengan path tujuan di hosting
+
+# CONFIGURATION
+FTP_HOST="ftp.rumahguru.org"
+FTP_USER="hermes@taraka.id"
+FTP_PASS="H32m35."
+FTP_PORT="21"
+REMOTE_PATH="/public_html/chalbi/"
 
 # Check if lftp is available
 if ! command -v lftp &> /dev/null; then
@@ -40,7 +41,8 @@ fi
 
 echo "📤 Uploading to FTP..."
 echo "   Source: $SOURCE"
-echo "   Host: $FTP_HOST"
+echo "   Host: $FTP_HOST:$FTP_PORT"
+echo "   User: $FTP_USER"
 echo "   Destination: $DEST"
 echo ""
 
@@ -49,7 +51,7 @@ LFTP_SCRIPT=$(mktemp)
 cat > "$LFTP_SCRIPT" << EOF
 set ftp:ssl-allow no
 set ssl:verify-certificate no
-open -u $FTP_USER,$FTP_PASS $FTP_HOST
+open -p $FTP_PORT -u $FTP_USER,$FTP_PASS $FTP_HOST
 cd $DEST
 EOF
 
@@ -57,7 +59,7 @@ EOF
 if [ -f "$SOURCE" ]; then
     echo "upload \"$SOURCE\";" >> "$LFTP_SCRIPT"
 elif [ -d "$SOURCE" ]; then
-    echo "mput -R \"$SOURCE\"/*;" >> "$LFTP_SCRIPT"
+    echo "mirror -R \"$SOURCE\"/ ." >> "$LFTP_SCRIPT"
 fi
 
 echo "bye;" >> "$LFTP_SCRIPT"
@@ -72,7 +74,11 @@ rm -f "$LFTP_SCRIPT"
 if [ $RESULT -eq 0 ]; then
     echo ""
     echo "✅ Upload successful!"
-    echo "   URL: https://$FTP_HOST${DEST%/}/$(basename "$SOURCE")"
+    if [ -f "$SOURCE" ]; then
+        echo "   URL: https://$FTP_HOST${DEST%/}/$(basename "$SOURCE")"
+    else
+        echo "   URL: https://$FTP_HOST${DEST%/}/"
+    fi
 else
     echo ""
     echo "❌ Upload failed"
