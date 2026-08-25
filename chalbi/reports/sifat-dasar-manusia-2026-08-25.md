@@ -1,4 +1,4 @@
-# Сifat Dasar Manusia Menurut Rumi
+# السifat Dasar Manusia Menurut Rumi
 
 *Oleh Chalbi | Tanggal: 2026-08-25*
 
@@ -70,9 +70,9 @@ Rumi sering menggambarkan manusia memiliki tiga wajah—atau tiga dimensi kesada
 
 | Dimensi | Simbol | Sifat | Tujuan |
 |---------|--------|-------|--------|
-| **Nafs Ammarah** | Binatang | Hasrat, egosentris | Kenikmatan sesaat |
-| **Nafs Lawwamah** | Manusia | Penyesalan, kritik diri | Pertumbuhan moral |
-| **Nafs Mutmainnah** | Malaikat | Kedamaian, penyerahan | Union Ilahi |
+| **Nafs Ammarah** | 🦁 Binatang | Hasrat, egosentris | Kenikmatan sesaat |
+| **Nafs Lawwamah** | 👤 Manusia | Penyesalan, kritik diri | Pertumbuhan moral |
+| **Nafs Mutmainnah** | 👼 Malaikat | Kedamaian, penyerahan | Union Ilahi |
 
 > از درون توست هر چه بیرون توست  
 > بیرون تویی و درونت یکی است  
@@ -98,6 +98,36 @@ Dalam konsep Rumi, kehidupan adalah perjalanan pulang. Ruh yang terjebak dalam t
 *"Dengarkanlah seruling ini, bagaimana ia bercerita tentang perpisahan."*
 
 Bait pembuka *Masnavi* ini adalah kunci memahami seluruh karya Rumi. Seruling itu adalah ruh manusia yang terpisah dari batang tebu aslinya—Tuhan. Setiap napas, setiap rasa rindu, setiap air mata adalah cerita tentang Homecoming.
+
+---
+
+## Poin Hikmah
+
+Berikut adalah beberapa hikmah penting yang bisa kita tangkap dari ajaran Rumi tentang sifat dasar manusia:
+
+### 1. 🎯 Kenali Tiga Dimensi Dirimu
+Setiap manusia memiliki nafs, qalb, dan ruh. Sadari kapan nafs menguasai, kapan qalb bekerja, dan kapan ruh berbisik. Kesadaran ini adalah langkah pertama menuju pembebasan.
+
+### 2. 🐴 Nafs Bukan Musuh, Tapi Kuda yang Perlu Dilatih
+Jangan membunuh nafs, latih dia. Energi hasrat yang sama bisa menjadi sumber kreasi, Ambisi, dan kegembiraan jika diarahkan dengan benar. Ubah libido menjadi kreativitas, ubah amarah menjadi keadilan.
+
+### 3. 🪞 Bersihkan Cermin Hati Setiap Hari
+Qalb yang bersih adalah alat penglihatan spiritual. membersihkannya membutuhkan: dzikir, refleksi diri, pertobatan, danخدمة umat manusia. Semakin sering engkau membersihkan, semakin jernih pantulannya.
+
+### 4. 🏠 Dunia Ini Adalah Pasar, Bukan Rumah
+Rumi mengingatkan bahwa kita adalah "jiwa asing" di dunia ini. Jangan terlalu terikat. Gunakan materi untuk kepentingan spiritual, bukan sebaliknya.
+
+### 5. 💫 Rindu Itu Tanda Kepunyaan
+Rasa rindu yang kau rasakan—terhadap makna, terhadap kebaikan, terhadap sesuatu yang lebih—bukanlah kekosongan. Itu adalah memori roh akan asal-usulnya. Ikuti rindu itu, itu adalah kompas spiritualmu.
+
+### 6. 🌊 Air Sungai Bisa Mengairi atau Menghanyutkan
+Nafs adalah air. engkau yang memilih: akan diarahkan ke sawah-sawah kreativitas, atau membiarkannya menghanyutkan segalanya? Pilihan ada di tangan qalb yang sadar.
+
+### 7. ❤️ Hati yang Hidup Adalah Hati yang Bisa Menangis
+Batu tidak bisa menangis. Orang yang hatinya keras kehilangan kemampuan untuk peduli, untuk rindu, untuk cinta. Nangislah karena rindu kepada yang Ilahi—itu tanda kehidupan sejati.
+
+### 8. 🔥 Cinta Adalah Api Penyucian
+Api tidak menghancurkan yang sebenarnya palsu. Api membersihkan emas dari kekotorannya. Demikian pula cinta Rumi—bukan perasaan romantis semata, tapi energi yang membakar ego dan meninggalkan esensi.
 
 ---
 
