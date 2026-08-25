@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[JUDUL APLIKASI] — [SUBJEC]</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   EDUAPP2 TEMPLATE — Desktop App Style (Reusable)
+   Copy this file and modify for each new project.
+   ============================================================ */
+:root{
+  /* Sidebar */
+  --sidebar-bg:#0f172a;
+  --sidebar-text:#e2e8f0;
+  --sidebar-active:#f97316;
+  --sidebar-hover:#1e293b;
+  /* Topbar */
+  --topbar-bg:#0f172a;
+  --topbar-border:#1e293b;
+  /* Content */
+  --content-bg:#e2e8f0;
+  --card-bg:#ffffff;
+  --card-border:#cbd5e1;
+  --frame-bg:#f8fafc;
+  /* Text */
+  --text-primary:#0f172a;
+  --text-secondary:#475569;
+  --text-muted:#64748b;
+  /* Accent */
+  --accent:#f97316;
+  --accent-hover:#fb923c;
+  /* Semantic */
+  --ok:#16a34a;--ok-bg:#dcfce7;--ok-ink:#14532d;
+  --bad:#dc2626;--bad-bg:#fee2e2;--bad-ink:#7f1d1d;
+  --blue:#3b82f6;
+  --tint:rgba(249,115,22,.1);
+  --sh:0 1px 2px rgba(15,23,42,.06),0 4px 12px -4px rgba(15,23,42,.08);
+  --sh-lift:0 20px 40px -12px rgba(15,23,42,.18),0 8px 16px -8px rgba(15,23,42,.1);
+  --sh-window:0 25px 50px -12px rgba(15,23,42,.25),0 12px 24px -8px rgba(15,23,42,.15);
+  /* Layout */
+  --t-topbar:14px;
+  --t-h2:clamp(22px,2.1vw,26px);
+  --t-h3:17px;
+  --t-body:14.5px;
+  --t-cap:12.5px;
+  --t-mini:11px;
+  --sb-w:260px;
+  --topbar-h:56px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{
+  font-family:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  background:var(--content-bg);color:var(--text-primary);
+  -webkit-font-smoothing:antialiased;overflow:hidden;
+}
+button,input,select{font-family:inherit}
+.num{font-variant-numeric:tabular-nums}
+::selection{background:rgba(249,115,22,.25)}
+
+/* ============================================================
+   TOPBAR
+   ============================================================ */
+.topbar{
+  position:fixed;top:0;left:0;right:0;height:var(--topbar-h);z-index:60;
+  background:var(--topbar-bg);border-bottom:1px solid var(--topbar-border);
+  display:flex;align-items:center;gap:14px;padding:0 16px;
+  box-shadow:0 1px 0 rgba(255,255,255,.05);
+}
+.tb-hamburger{
+  width:36px;height:36px;border-radius:8px;border:1px solid var(--topbar-border);
+  background:var(--card-bg);color:var(--text-secondary);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .18s,color .18s,border-color .18s,transform .18s;
+}
+.tb-hamburger:hover{background:var(--sidebar-hover);color:var(--accent-hover);border-color:var(--accent);transform:translateY(-1px)}
+.tb-hamburger svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.tb-title{font-size:var(--t-topbar);font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#f8fafc;white-space:nowrap}
+.tb-badge{display:inline-block;vertical-align:2px;margin-left:8px;background:var(--accent);color:#0f172a;font-size:10px;font-weight:700;letter-spacing:.12em;padding:3px 9px;border-radius:999px}
+.tb-right{margin-left:auto;display:flex;align-items:center;gap:10px}
+.tb-count{font-size:12px;font-weight:500;color:var(--text-muted);white-space:nowrap}
+.tb-count b{color:var(--accent-hover);font-weight:700}
+.tb-progress{position:absolute;left:0;right:0;bottom:-1px;height:3px;background:rgba(148,163,184,.3)}
+#tbFill{height:100%;width:0;background:var(--accent);transition:width .4s cubic-bezier(.22,.61,.36,1)}
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+.sidebar{
+  position:fixed;top:var(--topbar-h);bottom:0;left:0;width:var(--sb-w);z-index:55;
+  background:var(--sidebar-bg);color:var(--sidebar-text);
+  display:flex;flex-direction:column;overflow:hidden;
+  transition:width .3s ease,transform .3s ease;
+}
+.sb-inner{width:var(--sb-w);min-width:var(--sb-w);display:flex;flex-direction:column;height:100%}
+.sb-head{display:flex;align-items:center;gap:11px;padding:14px 16px;border-bottom:1px solid rgba(148,163,184,.16)}
+.sb-logo{
+  flex:0 0 auto;width:34px;height:34px;border-radius:9px;
+  background:linear-gradient(135deg,#fb923c,var(--accent));
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 10px -3px rgba(249,115,22,.6);
+}
+.sb-logo svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.sb-title{font-size:15px;font-weight:700;color:#fff;line-height:1.2}
+.sb-sub{font-size:var(--t-mini);font-weight:500;color:var(--text-muted);letter-spacing:.06em;text-transform:uppercase}
+.sb-label{padding:12px 18px 6px;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#64748b}
+.sb-nav{flex:1;overflow-y:auto;overflow-x:hidden;padding:0 10px 10px;scrollbar-width:thin;scrollbar-color:#334155 transparent}
+.sb-nav::-webkit-scrollbar{width:5px}
+.sb-nav::-webkit-scrollbar-thumb{background:#334155;border-radius:3px}
+.sb-item{
+  display:flex;align-items:center;gap:10px;width:100%;
+  padding:8px 10px;margin-bottom:2px;border:none;border-radius:9px;
+  background:transparent;cursor:pointer;text-align:left;color:var(--sidebar-text);
+  transition:background .18s ease,transform .18s ease;
+}
+.sb-item:hover{background:var(--sidebar-hover);transform:translateX(3px)}
+.sb-item.on{background:rgba(249,115,22,.15);box-shadow:inset 3px 0 0 var(--sidebar-active)}
+.sb-num{
+  flex:0 0 auto;width:30px;height:22px;display:flex;align-items:center;justify-content:center;
+  font-size:10px;font-weight:700;color:#94a3b8;background:rgba(148,163,184,.14);
+  border-radius:6px;font-variant-numeric:tabular-nums;letter-spacing:.02em;
+}
+.sb-num.chap{color:#fdba74;background:rgba(249,115,22,.18)}
+.sb-item.on .sb-num{background:var(--sidebar-active);color:#fff}
+.sb-txt{min-width:0}
+.sb-t{display:block;font-size:13px;font-weight:600;color:var(--sidebar-text);line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sb-s{display:block;font-size:var(--t-mini);font-weight:400;color:#94a3b8;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sb-item.on .sb-t{color:#fff}
+.sb-item.on .sb-s{color:#fdba74}
+.sb-foot{padding:12px 16px 14px;border-top:1px solid rgba(148,163,184,.16)}
+.sb-progress{height:6px;border-radius:999px;background:rgba(148,163,184,.2);overflow:hidden}
+#sbFill{height:100%;width:0;background:var(--accent);border-radius:999px;transition:width .4s cubic-bezier(.22,.61,.36,1)}
+.sb-meta{display:flex;justify-content:space-between;margin-top:8px;font-size:var(--t-mini);font-weight:600;color:#94a3b8;letter-spacing:.04em}
+.sb-meta b{color:#fdba74}
+
+/* mobile backdrop */
+.backdrop{position:fixed;top:var(--topbar-h);left:0;right:0;bottom:0;z-index:54;background:rgba(15,23,42,.5);opacity:0;pointer-events:none;transition:opacity .3s ease}
+body.sb-open .backdrop{opacity:1;pointer-events:auto}
+
+/* ============================================================
+   CONTENT AREA
+   ============================================================ */
+.content{
+  position:fixed;top:var(--topbar-h);bottom:0;left:var(--sb-w);right:0;z-index:10;
+  background:var(--content-bg);
+  background-image:radial-gradient(circle,rgba(51,65,85,.4) 1px,transparent 1px);
+  background-size:24px 24px;
+  transition:left .3s ease;
+}
+body.sb-collapsed .content{left:0}
+.stage-area{position:relative;height:100%;display:flex;align-items:center;justify-content:center;padding:20px}
+
+/* desktop window frame */
+.window-frame{
+  position:relative;width:100%;max-width:1100px;height:100%;
+  background:var(--frame-bg);border-radius:12px;
+  border:1px solid var(--card-border);
+  box-shadow:var(--sh-window);overflow:hidden;
+  display:flex;flex-direction:column;
+}
+.window-frame::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.1),transparent);z-index:1}
+
+/* window title bar */
+.window-titlebar{
+  position:relative;padding:16px 20px 12px;
+  border-bottom:1px solid var(--card-border);
+  background:linear-gradient(180deg,rgba(30,41,59,.5),transparent);
+  flex-shrink:0;
+}
+.window-title{font-size:13px;font-weight:600;color:var(--text-muted);letter-spacing:.05em;text-transform:uppercase;display:flex;align-items:center;gap:10px}
+.window-title .kicker{color:var(--accent-hover)}
+.window-counter{margin-left:auto;font-size:12px;font-weight:500;color:var(--text-muted);font-variant-numeric:tabular-nums}
+.window-counter b{color:var(--accent-hover);font-weight:700}
+
+/* slides */
+.slide{position:absolute;inset:0;z-index:1;overflow:hidden;opacity:0;visibility:hidden;transform:translateX(30px);transition:opacity .4s ease,transform .4s cubic-bezier(.22,.61,.36,1),visibility 0s linear .4s}
+.slide.pos-left{transform:translateX(-30px)}
+.slide.pos-right{transform:translateX(30px)}
+.slide.active{opacity:1;visibility:visible;transform:none;z-index:5;transition-delay:50ms,50ms,0s;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:var(--accent) transparent}
+.slide.active::-webkit-scrollbar{width:6px}
+.slide.active::-webkit-scrollbar-thumb{background:#fdba74;border-radius:3px}
+.slide.active::-webkit-scrollbar-thumb:hover{background:var(--accent)}
+
+.inner{position:relative;flex:1;background:var(--card-bg);border:none;border-radius:0;overflow:hidden;display:flex;flex-direction:column}
+.frame-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 20px;border-bottom:1px solid var(--card-border);background:rgba(15,23,42,.6);flex-shrink:0}
+.kicker{font-size:var(--t-mini);font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-hover)}
+.fcount{font-size:var(--t-cap);font-weight:600;color:var(--text-muted)}
+.frame-body{padding:28px 32px 32px;flex:1;overflow-y:auto}
+
+/* reveal stagger */
+.reveal{opacity:0;transform:translateY(10px)}
+.slide.active .reveal{animation:rise .45s cubic-bezier(.22,.61,.36,1) forwards;animation-delay:var(--d,0s)}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* typography helpers */
+h2.st{font-size:var(--t-h2);font-weight:700;letter-spacing:-.015em;line-height:1.18;margin-bottom:10px;color:var(--text-primary)}
+h2.st em{font-style:normal;color:var(--accent-hover)}
+.subhead{font-size:var(--t-h3);font-weight:600;line-height:1.3;margin:22px 0 10px;color:var(--text-primary)}
+.lead{font-size:var(--t-body);font-weight:400;color:var(--text-secondary);line-height:1.6;max-width:68ch;margin-bottom:6px}
+.caption{font-size:var(--t-cap);font-weight:500;color:var(--text-muted);line-height:1.6}
+.mt1{margin-top:10px}.mt2{margin-top:16px}.mt3{margin-top:24px}
+
+/* ============================================================
+   COMPONENTS
+   ============================================================ */
+.card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;padding:16px 18px;box-shadow:var(--sh);transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.card:hover{transform:translateY(-2px);box-shadow:var(--sh-lift);border-color:#fdba74}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}
+.grid4{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px}
+
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;border:none;border-radius:10px;padding:11px 22px;font-size:var(--t-body);font-weight:700;cursor:pointer;box-shadow:0 4px 12px -4px rgba(249,115,22,.55);transition:background .18s,transform .18s,box-shadow .18s}
+.btn:hover{background:var(--accent-hover);transform:translateY(-2px);box-shadow:var(--sh-lift)}
+.btn:active{transform:scale(.97)}
+.ghost{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--text-primary);border:1.5px solid var(--card-border);border-radius:10px;padding:10px 20px;font-size:var(--t-body);font-weight:600;cursor:pointer;transition:border-color .18s,color .18s,transform .18s,box-shadow .18s}
+.ghost:hover{border-color:var(--accent);color:var(--accent-hover);transform:translateY(-2px);box-shadow:var(--sh)}
+.stat-chip{background:#fff;border:1.5px solid var(--card-border);border-radius:12px;padding:10px 18px;text-align:center;box-shadow:var(--sh);min-width:86px;transition:transform .2s ease,box-shadow .2s ease}
+.stat-chip:hover{transform:translateY(-2px);box-shadow:var(--sh-lift)}
+.stat-chip b{display:block;font-size:20px;font-weight:800;color:var(--accent-hover)}
+.stat-chip span{font-size:10.5px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.08em}
+
+ul.sifat{list-style:none;margin-top:2px}
+ul.sifat li{position:relative;padding:8px 0 8px 30px;border-bottom:1px solid var(--card-border);font-size:var(--t-body);color:var(--text-secondary);line-height:1.55}
+ul.sifat li:last-child{border-bottom:none}
+ul.sifat li::before{content:"";position:absolute;left:4px;top:50%;transform:translateY(-50%);width:12px;height:12px;border-radius:50%;background:var(--accent)}
+
+.formula{background:var(--sidebar-bg);color:#fff;border-radius:12px;padding:20px 24px;text-align:center;margin-top:12px;box-shadow:var(--sh-lift)}
+.formula .fx{font-size:clamp(19px,2.2vw,24px);font-weight:700;line-height:1.35}
+.formula .fx b{color:var(--sidebar-active);font-weight:800}
+.formula .ex{margin-top:8px;color:#cbd5e1;font-size:var(--t-body);line-height:1.6}
+
+.analogy{border-left:5px solid var(--accent);background:var(--card-bg);border-top:1px solid var(--card-border);border-right:1px solid var(--card-border);border-bottom:1px solid var(--card-border);border-radius:12px;padding:16px 20px;margin-top:14px;box-shadow:var(--sh)}
+.analogy .atitle{font-weight:700;font-size:var(--t-h3);line-height:1.3;margin-bottom:8px;color:var(--text-primary)}
+
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:var(--t-body)}
+th,td{padding:10px 16px;text-align:left;border-bottom:1px solid var(--card-border);vertical-align:top}
+thead th{background:var(--sidebar-bg);color:#fff;font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+tbody tr:nth-child(even){background:#f8fafc}
+tbody tr:hover{background:var(--tint)}
+
+.hero{background:linear-gradient(135deg,#ffffff 0%,#f8fafc 100%);border-color:var(--card-border)}
+.hero-body{position:relative;z-index:1;padding:34px 34px 38px}
+.hero-kick{display:inline-flex;align-items:center;gap:10px;font-size:var(--t-mini);font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-hover);margin-bottom:14px}
+.hero-kick::before{content:'';width:22px;height:3px;background:var(--accent);border-radius:2px}
+.hero-title{font-size:clamp(30px,4.4vw,44px);font-weight:800;letter-spacing:-.02em;line-height:1.05;color:var(--text-primary)}
+.hero-tag{font-size:16px;font-weight:600;color:var(--text-secondary);margin-top:10px}
+
+/* ============================================================
+   SLIDER CONTROLS
+   ============================================================ */
+.ctrl-group{margin-bottom:18px}
+.ctrl-label{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;font-size:13px;font-weight:600;color:var(--text-primary)}
+.ctrl-val{color:var(--accent);font-weight:700;font-size:14px}
+input[type=range]{width:100%;height:6px;border-radius:3px;background:var(--card-border);outline:none;-webkit-appearance:none;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--accent);cursor:pointer;box-shadow:0 0 0 3px #fff,0 0 0 5px var(--accent)}
+
+/* ============================================================
+   QUIZ
+   ============================================================ */
+.quiz-opt{display:block;width:100%;padding:14px 16px;margin:8px 0;background:#fff;border:2px solid var(--card-border);border-radius:12px;text-align:left;font-size:var(--t-body);font-weight:500;color:var(--text-primary);cursor:pointer;transition:all .2s}
+.quiz-opt:hover{border-color:var(--accent);background:rgba(249,115,22,.04)}
+.quiz-opt.sel{border-color:var(--accent);background:rgba(249,115,22,.1)}
+.quiz-opt.ok{border-color:var(--ok);background:var(--ok-bg);color:var(--ok-ink)}
+.quiz-opt.no{border-color:var(--bad);background:var(--bad-bg);color:var(--bad-ink)}
+.quiz-exp{margin-top:12px;padding:14px 16px;border-radius:10px;font-size:var(--t-body);line-height:1.6;display:none}
+.quiz-exp.show{display:block;animation:rise .3s ease}
+.quiz-exp.ok{background:var(--ok-bg);color:var(--ok-ink);border:1px solid var(--ok)}
+.quiz-exp.no{background:var(--bad-bg);color:var(--bad-ink);border:1px solid var(--bad)}
+
+/* ============================================================
+   FAB NAVIGATION
+   ============================================================ */
+.fab{position:fixed;bottom:28px;right:28px;display:flex;gap:10px;z-index:70}
+.fab button{
+  width:52px;height:52px;border-radius:50%;border:none;cursor:pointer;
+  background:#fff;color:var(--text-primary);
+  box-shadow:0 4px 14px -4px rgba(15,23,42,.3),0 2px 6px -2px rgba(15,23,42,.15);
+  display:flex;align-items:center;justify-content:center;
+  transition:all .2s cubic-bezier(.22,.61,.36,1);
+}
+.fab button:hover{background:var(--accent);color:#fff;transform:translateY(-3px);box-shadow:0 10px 24px -8px rgba(249,115,22,.5)}
+.fab button:disabled{opacity:.35;cursor:not-allowed;transform:none}
+.fab button svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+
+/* ============================================================
+   CANVAS
+   ============================================================ */
+.canvas-wrap{position:relative;width:100%;border-radius:12px;overflow:hidden;border:1px solid var(--card-border);background:#0f172a}
+.sim-canvas{display:block;width:100%;height:420px}
+.canvas-overlay{position:absolute;top:12px;left:12px;background:rgba(15,23,42,.75);backdrop-filter:blur(8px);border-radius:10px;padding:10px 14px;font-size:12px;color:#94a3b8;line-height:1.7}
+.canvas-overlay b{color:#f8fafc;font-weight:700}
+.canvas-ctrls{position:absolute;top:12px;right:12px;display:flex;gap:6px}
+.canvas-ctrls button{background:rgba(15,23,42,.7);backdrop-filter:blur(8px);border:1px solid rgba(148,163,184,.2);color:#e2e8f0;border-radius:8px;padding:6px 12px;font-size:11px;font-weight:600;cursor:pointer;transition:all .2s}
+.canvas-ctrls button:hover{background:var(--accent);border-color:var(--accent);color:#0f172a}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media(max-width:900px){
+  .sidebar{transform:translateX(-100%)}
+  body.sb-open .sidebar{transform:translateX(0)}
+  .content{left:0!important}
+  .frame-body{padding:20px}
+  .fab{bottom:18px;right:18px}
+}
+
+/* ============================================================
+   PRINT
+   ============================================================ */
+@media print{
+  .sidebar,.topbar,.fab,.backdrop{display:none!important}
+  .content{position:static!important;left:0!important}
+  .slide{position:static!important;opacity:1!important;visibility:visible!important;transform:none!important;break-after:page}
+  body{overflow:visible!important}
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <button class="tb-hamburger" onclick="toggleSidebar()" aria-label="Menu">
+    <svg><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <span class="tb-title">[JUDUL APLIKASI]<span class="tb-badge">LAB</span></span>
+  <div class="tb-right">
+    <span class="tb-count">Slide <b id="tbSlide">1</b> / <b id="tbTotal">30</b></span>
+  </div>
+  <div class="tb-progress"><div id="tbFill"></div></div>
+</header>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar" role="navigation" aria-label="Navigasi">
+  <div class="sb-inner">
+    <div class="sb-head">
+      <div class="sb-logo"><svg><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 1 0 20"/></svg></div>
+      <div>
+        <div class="sb-title">[JUDUL APLIKASI]</div>
+        <div class="sb-sub">[SUBJEC]</div>
+      </div>
+    </div>
+    <nav class="sb-nav">
+      <!-- ============================================================
+           SIDEBAR NAVIGATION — EDIT THIS SECTION FOR EACH PROJECT
+           ============================================================ -->
+      
+      <!-- BAB 1: Pengenalan (Slides 1-3) -->
+      <div class="sb-label">Bab 1 · Pengenalan</div>
+      <button class="sb-item on" onclick="go(0)" data-slide="0">
+        <span class="sb-num">01</span>
+        <span class="sb-txt"><span class="sb-t">Hero / Cover</span><span class="sb-s">Judul & statistik</span></span>
+      </button>
+      <button class="sb-item" onclick="go(1)" data-slide="1">
+        <span class="sb-num">02</span>
+        <span class="sb-txt"><span class="sb-t">Apa Itu [Topik]?</span><span class="sb-s">Definisi & pengantar</span></span>
+      </button>
+      <button class="sb-item" onclick="go(2)" data-slide="2">
+        <span class="sb-num">03</span>
+        <span class="sb-txt"><span class="sb-t">Komponen Utama</span><span class="sb-s"> breakdown konsep</span></span>
+      </button>
+
+      <!-- BAB 2: Teori (Slides 4-8) -->
+      <div class="sb-label">Bab 2 · Teori</div>
+      <button class="sb-item" onclick="go(3)" data-slide="3">
+        <span class="sb-num">04</span>
+        <span class="sb-txt"><span class="sb-t">Konsep Dasar 1</span><span class="sb-s">Penjelasan teori</span></span>
+      </button>
+      <button class="sb-item" onclick="go(4)" data-slide="4">
+        <span class="sb-num">05</span>
+        <span class="sb-txt"><span class="sb-t">Konsep Dasar 2</span><span class="sb-s">Penjelasan teori</span></span>
+      </button>
+      <button class="sb-item" onclick="go(5)" data-slide="5">
+        <span class="sb-num">06</span>
+        <span class="sb-txt"><span class="sb-t">Konsep Dasar 3</span><span class="sb-s">Penjelasan teori</span></span>
+      </button>
+      <button class="sb-item" onclick="go(6)" data-slide="6">
+        <span class="sb-num">07</span>
+        <span class="sb-txt"><span class="sb-t">Rumus & Persamaan</span><span class="sb-s">Formula lengkap</span></span>
+      </button>
+      <button class="sb-item" onclick="go(7)" data-slide="7">
+        <span class="sb-num">08</span>
+        <span class="sb-txt"><span class="sb-t">Contoh Penerapan</span><span class="sb-s">Studi kasus</span></span>
+      </button>
+
+      <!-- BAB 3: Lab Interaktif (Slides 9-14) -->
+      <div class="sb-label">Bab 3 · Lab Interaktif</div>
+      <button class="sb-item" onclick="go(8)" data-slide="8">
+        <span class="sb-num chap">LAB</span>
+        <span class="sb-txt"><span class="sb-t">Lab 1: Simulasi</span><span class="sb-s">Simulasi interaktif</span></span>
+      </button>
+      <button class="sb-item" onclick="go(9)" data-slide="9">
+        <span class="sb-num chap">LAB</span>
+        <span class="sb-txt"><span class="sb-t">Lab 2: Eksplorasi</span><span class="sb-s">Eksperimen mandiri</span></span>
+      </button>
+      <button class="sb-item" onclick="go(10)" data-slide="10">
+        <span class="sb-num chap">LAB</span>
+        <span class="sb-txt"><span class="sb-t">Lab 3: Analisis</span><span class="sb-s">Analisis data</span></span>
+      </button>
+      <button class="sb-item" onclick="go(11)" data-slide="11">
+        <span class="sb-num chap">LAB</span>
+        <span class="sb-txt"><span class="sb-t">Lab 4: Simulasi Lanjut</span><span class="sb-s">Simulasi lanjutan</span></span>
+      </button>
+      <button class="sb-item" onclick="go(12)" data-slide="12">
+        <span class="sb-num chap">LAB</span>
+        <span class="sb-txt"><span class="sb-t">Lab 5: Visualisasi</span><span class="sb-s">Visualisasi data</span></span>
+      </button>
+      <button class="sb-item" onclick="go(13)" data-slide="13">
+        <span class="sb-num chap">LAB</span>
+        <span class="sb-txt"><span class="sb-t">Lab 6: Challenge</span><span class="sb-s">Tantangan interaktif</span></span>
+      </button>
+
+      <!-- BAB 4: Latihan Soal (Slides 15-20) -->
+      <div class="sb-label">Bab 4 · Latihan Soal</div>
+      <button class="sb-item" onclick="go(14)" data-slide="14">
+        <span class="sb-num">15</span>
+        <span class="sb-txt"><span class="sb-t">Contoh Soal 1</span><span class="sb-s">Penyelesaian lengkap</span></span>
+      </button>
+      <button class="sb-item" onclick="go(15)" data-slide="15">
+        <span class="sb-num">16</span>
+        <span class="sb-txt"><span class="sb-t">Contoh Soal 2</span><span class="sb-s">Penyelesaian lengkap</span></span>
+      </button>
+      <button class="sb-item" onclick="go(16)" data-slide="16">
+        <span class="sb-num">17</span>
+        <span class="sb-txt"><span class="sb-t">Contoh Soal 3</span><span class="sb-s">Penyelesaian lengkap</span></span>
+      </button>
+      <button class="sb-item" onclick="go(17)" data-slide="17">
+        <span class="sb-num">18</span>
+        <span class="sb-txt"><span class="sb-t">Latihan 1 (5 soal)</span><span class="sb-s">Pilihan ganda</span></span>
+      </button>
+      <button class="sb-item" onclick="go(18)" data-slide="18">
+        <span class="sb-num">19</span>
+        <span class="sb-txt"><span class="sb-t">Latihan 2 (5 soal)</span><span class="sb-s">Pilihan ganda</span></span>
+      </button>
+      <button class="sb-item" onclick="go(19)" data-slide="19">
+        <span class="sb-num">20</span>
+        <span class="sb-txt"><span class="sb-t">Latihan 3 (5 soal)</span><span class="sb-s">Pilihan ganda</span></span>
+      </button>
+
+      <!-- BAB 5: Evaluasi (Slides 21-26) -->
+      <div class="sb-label">Bab 5 · Evaluasi</div>
+      <button class="sb-item" onclick="go(20)" data-slide="20">
+        <span class="sb-num">21</span>
+        <span class="sb-txt"><span class="sb-t">Kuis Bab 1</span><span class="sb-s">5 soal</span></span>
+      </button>
+      <button class="sb-item" onclick="go(21)" data-slide="21">
+        <span class="sb-num">22</span>
+        <span class="sb-txt"><span class="sb-t">Kuis Bab 2</span><span class="sb-s">5 soal</span></span>
+      </button>
+      <button class="sb-item" onclick="go(22)" data-slide="22">
+        <span class="sb-num">23</span>
+        <span class="sb-txt"><span class="sb-t">Kuis Bab 3</span><span class="sb-s">5 soal</span></span>
+      </button>
+      <button class="sb-item" onclick="go(23)" data-slide="23">
+        <span class="sb-num">24</span>
+        <span class="sb-txt"><span class="sb-t">Kuis Bab 4</span><span class="sb-s">5 soal</span></span>
+      </button>
+      <button class="sb-item" onclick="go(24)" data-slide="24">
+        <span class="sb-num">25</span>
+        <span class="sb-txt"><span class="sb-t">Kuis Bab 5</span><span class="sb-s">5 soal</span></span>
+      </button>
+      <button class="sb-item" onclick="go(25)" data-slide="25">
+        <span class="sb-num">26</span>
+        <span class="sb-txt"><span class="sb-t">Kuis Penutup</span><span class="sb-s">10 soal komprehensif</span></span>
+      </button>
+
+      <!-- BAB 6: Penutup (Slides 27-30) -->
+      <div class="sb-label">Bab 6 · Penutup</div>
+      <button class="sb-item" onclick="go(26)" data-slide="26">
+        <span class="sb-num">27</span>
+        <span class="sb-txt"><span class="sb-t">Rangkuman</span><span class="sb-s">Ringkasan materi</span></span>
+      </button>
+      <button class="sb-item" onclick="go(27)" data-slide="27">
+        <span class="sb-num">28</span>
+        <span class="sb-txt"><span class="sb-t">Misi Tantangan 1</span><span class="sb-s">Aplikasi nyata</span></span>
+      </button>
+      <button class="sb-item" onclick="go(28)" data-slide="28">
+        <span class="sb-num">29</span>
+        <span class="sb-txt"><span class="sb-t">Misi Tantangan 2</span><span class="sb-s">Aplikasi lanjutan</span></span>
+      </button>
+      <button class="sb-item" onclick="go(29)" data-slide="29">
+        <span class="sb-num">30</span>
+        <span class="sb-txt"><span class="sb-t">Selamat! 🎉</span><span class="sb-s">Penutup & apresiasi</span></span>
+      </button>
+    </nav>
+    <div class="sb-foot">
+      <div class="sb-progress"><div id="sbFill"></div></div>
+      <div class="sb-meta"><span>Progress</span><b id="sbPct">0%</b></div>
+    </div>
+  </div>
+</aside>
+<div class="backdrop" onclick="toggleSidebar()"></div>
+
+<!-- CONTENT -->
+<main class="content" id="content">
+  <div class="stage-area">
+    <div class="window-frame">
+
+      <!-- ============================================================
+           SLIDES — COPY & MODIFY FOR EACH PROJECT
+           ============================================================ -->
+
+      <!-- SLIDE 0: Hero -->
+      <div class="slide active" id="slide-0">
+        <div class="inner">
+          <div class="frame">
+            <div class="frame-top">
+              <span class="kicker">Bab 1 · Pengenalan</span>
+              <span class="fcount">1 / 30</span>
+            </div>
+            <div class="frame-body">
+              <div class="hero card" style="border:none;padding:0;box-shadow:none;background:linear-gradient(135deg,#fff 0%,#f8fafc 100%)">
+                <div class="hero-body">
+                  <div class="hero-kick">Modul Interaktif [SUBJEC]</div>
+                  <h1 class="hero-title">[JUDUL APLIKASI]</h1>
+                  <p class="hero-tag mt1">[DESCRIPSI SINGKAT APLIKASI]</p>
+                  <div class="grid4 mt3">
+                    <div class="stat-chip"><b>30</b><span>Slide</span></div>
+                    <div class="stat-chip"><b>6</b><span>Lab Interaktif</span></div>
+                    <div class="stat-chip"><b>30</b><span>Soal Latihan</span></div>
+                    <div class="stat-chip"><b>6</b><span>Bab</span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="mt3">
+                <h2 class="st">Apa yang Akan Kamu Pelajari?</h2>
+                <ul class="sifat mt1">
+                  <li>[Tujuan pembelajaran 1]</li>
+                  <li>[Tujuan pembelajaran 2]</li>
+                  <li>[Tujuan pembelajaran 3]</li>
+                  <li>[Tujuan pembelajaran 4]</li>
+                  <li>[Tujuan pembelajaran 5]</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 1: Apa Itu [Topik]? -->
+      <div class="slide" id="slide-1">
+        <div class="inner">
+          <div class="frame">
+            <div class="frame-top">
+              <span class="kicker">Bab 1 · Pengenalan</span>
+              <span class="fcount">2 / 30</span>
+            </div>
+            <div class="frame-body">
+              <h2 class="st reveal">Apa Itu <em>[TOPIK]</em>?</h2>
+              <p class="lead reveal" style="--d:.05s">[PENJELASAN DEFENISI]</p>
+              <div class="analogy reveal" style="--d:.1s">
+                <div class="atitle">💡 Analogi Sederhana</div>
+                <p class="caption">[ANALOGI UNTUK MEMUDAHKAN PEMAHAMAN]</p>
+              </div>
+              <div class="grid2 mt3 reveal" style="--d:.15s">
+                <div class="card">
+                  <div class="kicker mb1">Poin Penting 1</div>
+                  <p class="caption">[Penjelasan poin pertama]</p>
+                </div>
+                <div class="card">
+                  <div class="kicker mb1">Poin Penting 2</div>
+                  <p class="caption">[Penjelasan poin kedua]</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 2: Komponen Utama -->
+      <div class="slide" id="slide-2">
+        <div class="inner">
+          <div class="frame">
+            <div class="frame-top">
+              <span class="kicker">Bab 1 · Pengenalan</span>
+              <span class="fcount">3 / 30</span>
+            </div>
+            <div class="frame-body">
+              <h2 class="st reveal">Komponen <em>Utama</em></h2>
+              <p class="lead reveal" style="--d:.05s">[PENJELASAN KOMPONEN]</p>
+              <div class="grid3 reveal" style="--d:.1s">
+                <div class="card comp-card">
+                  <div style="font-size:32px;margin-bottom:8px">🔹</div>
+                  <div class="cname">Komponen 1</div>
+                  <p class="caption">[Deskripsi]</p>
+                </div>
+                <div class="card comp-card">
+                  <div style="font-size:32px;margin-bottom:8px">🔸</div>
+                  <div class="cname">Komponen 2</div>
+                  <p class="caption">[Deskripsi]</p>
+                </div>
+                <div class="card comp-card">
+                  <div style="font-size:32px;margin-bottom:8px">🔹</div>
+                  <div class="cname">Komponen 3</div>
+                  <p class="caption">[Deskripsi]</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 3-7: Teori (Bab 2) -->
+      <div class="slide" id="slide-3">
+        <div class="inner">
+          <div class="frame">
+            <div class="frame-top"><span class="kicker">Bab 2 · Teori</span><span class="fcount">4 / 30</span></div>
+            <div class="frame-body">
+              <h2 class="st reveal">[JUDUL KONSEP 1]</h2>
+              <p class="lead reveal" style="--d:.05s">[PENJELASAN]</p>
+              <div class="formula reveal" style="--d:.1s">
+                <div class="fx">[RUMUS/CONTOH]</div>
+                <div class="ex">[KETERANGAN]</div>
+              </div>
+              <ul class="sifat reveal" style="--d:.15s">
+                <li>[Poin 1]</li>
+                <li>[Poin 2]</li>
+                <li>[Poin 3]</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide" id="slide-4">
+        <div class="inner">
+          <div class="frame">
+            <div class="frame-top"><span class="kicker">Bab 2 · Teori</span><span class="fcount">5 / 30</span></div>
+            <div class="frame-body">
+              <h2 class="st reveal">[JUDUL KONSEP 2]</h2>
+              <p class="lead reveal" style="--d:.05s">[PENJELASAN]</p>
+              <div class="grid2 reveal" style="--d:.1s">
+                <div class="card"><div class="kicker mb1">Aspek A</div><p class="caption">[Penjelasan]</p></div>
+                <div class="card"><div class="kicker mb1">Aspek B</div><p class="caption">[Penjelasan]</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide" id="slide-5">
+        <div class="inner">
+          <div class="frame">
+            <div class="frame-top"><span class="kicker">Bab 2 · Teori</span><span class="fcount">6 / 30</span></div>
+            <div class="frame-body">
+              <h2 class="st reveal">[JUDUL KONSEP 3]</h2>
+              <p class="lead reveal" style="--d:.05s">[PENJELASAN]</p>
+              <div class="formula reveal" style="--d:.1s">
+                <div class="fx">[RUMUS]</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide" id="slide-6">
+        <div class="inner">
+          <div class="frame">
+            <div class="frame-top"><span class="kicker">Bab 2 · Teori</span><span class="fcount">7 / 30</span></div>
+            <div class="frame-body">
+              <h2 class="st reveal">Rumus & <em>Persamaan</em></h2>
+              <p class="lead reveal" style="--d:.05s">Rumus-rumus penting yang perlu dihafal:</p>
+              <div class="grid2 reveal" style="--d:.1s">
+                <div class="card"><div class="kicker mb1">Rumus 1</div><div class="formula" style="margin-top:8px"><div class="fx">[rumus]</div></div></div>
+                <div class="card"><div class="kicker mb1">Rumus 2</div><div class="formula" style="margin-top:8px"><div class="fx">[rumus]</div></div></div>
+                <div class="card"><div class="kicker mb1">Rumus 3</div><div class="formula" style="margin-top:8px"><div class="fx">[rumus]</div></div></div>
+                <div class="card"><div class="kicker mb1">Rumus 4</div><div class="formula" style="margin-top:8px"><div class="fx">[rumus]</div></div></div>
+              </div>
+              <div class="analogy reveal" style="--d:.2s">
+                <div class="atitle">💡 Tips Mengingat</div>
+                <p class="caption">[TIPS]</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide" id="slide-7">
+        <div class="inner">
+          <div class="frame">
+            <div class="frame-top"><span class="kicker">Bab 2 · Teori</span><span class="fcount">8 / 30</span></div>
+            <div class="frame-body">
+              <h2 class="st reveal">Contoh <em>Penerapan</em></h2>
+              <p class="lead reveal" style="--d:.05s">[CONTOH KASUS NYATA]</p>
+              <div class="card reveal" style="--d:.1s;border-left:4px solid var(--accent)">
+                <p class="lead"><strong>[Soal Contoh]:</strong> [deskripsi soal]</p>
+              </div>
+              <h3 class="subhead reveal" style="--d:.15s">Penyelesaian:</h3>
+              <div class="formula reveal" style="--d:.2s">
+                <div class="fx">[Langkah 1]</div>
+                <div class="fx mt1">[Langkah 2]</div>
+                <div class="fx mt1" style="color:var(--ok)">[Jawaban]</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 8-13: Lab Interaktif (Bab 3) -->
+      <div class="slide" id="slide-8">
+        <div class="inner">
+          <div class="frame">
+            <div class="frame-top"><span class="kicker">Lab Interaktif</span><span class="fcount">9 / 30</span></div>
+            <div class="frame-body" style="padding:16px">
+              <h2 class="st reveal">Lab 1: <em>[Nama Lab]</em></h2>
+              <p class="lead reveal" style="--d:.05s">[INSTRUKSI LAB]</p>
+              <div class="canvas-wrap reveal" style="--d:.1s">
+                <canvas id="simCanvas" class="sim-canvas"></canvas>
+                <div class="canvas-overlay"><div>w = <b id="ovTime">0.00</b> s</div><div>x = <b id="ovX">0.00</b> m</div><div>y = <b id="ovY">0.00</b> m</div></div>
+                <div class="canvas-ctrls"><button onclick="toggleTrail()">🔗 Trail</button><button onclick="toggleGrid()">📐 Grid</button></div>
+              </div>
+              <div class="grid4 reveal" style="--d:.15s;margin-top:14px">
+                <div class="stat-chip"><b id="statH">0</b><span>[Stat 1]</span></div>
+                <div class="stat-chip"><b id="statR">0</b><span>[Stat 2]</span></div>
+                <div class="stat-chip"><b id="statT">0</b><span>[Stat 3]</span></div>
+                <div class="stat-chip"><b id="statV">0</b><span>[Stat 4]</span></div>
+              </div>
+              <div class="mt2 reveal" style="--d:.2s">
+                <button class="btn" onclick="launchSim()">▶ Luncurkan!</button>
+                <button class="ghost" onclick="resetSim()" style="margin-left:8px">↺ Reset</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide" id="slide-9">
+        <div class="inner">
+          <div class="frame">
+            <div class="frame-top"><span class="kicker">Lab Interaktif</span><span class="fcount">10 / 30</span></div>
+            <div class="frame-body" style="padding:16px">
+              <h2 class="st reveal">Lab 2: <em>[Eksplorasi]</em></h2>
+              <p class="lead reveal" style="--d:.05s">[INSTRUKSI]</p>
+              <div class="reveal" style="--d:.1s">
+                <div class="ctrl-group" style="max-width:400px">
+                  <div class="ctrl-label"><span>[Parameter 1]</span><span class="ctrl-val" id="p1Val">—</span></div>
+                  <input type="range" id="p1" min="0" max="100" value="50" oninput="updateExp()">
+                </div>
+                <div class="ctrl-group" style="max-width:400px">
+                  <div class="ctrl-label"><span>[Parameter 2]</span><span class="ctrl-val" id="p2Val">—</span></div>
+                  <input type="range" id="p2" min="0" max="100" value="50" oninput="updateExp()">
+                </div>
+              </div>
+              <div class="canvas-wrap reveal" style="--d:.15s;margin-top:12px">
+                <canvas id="expCanvas" class="sim-canvas"></canvas>
+              </div>
+              <div class="analogy reveal" style="--d:.2s;margin-top:12px">
+                <div class="atitle">🔍 Temuan</div>
+                <p class="caption" id="expInsight">[INSIGHT]</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDES 10-13: More labs (placeholders) -->
+      <div class="slide" id="slide-10"><div class="inner"><div class="frame"><div class="frame-top"><span class="kicker">Lab Interaktif</span><span class="fcount">11 / 30</span></div><div class="frame-body"><h2 class="st reveal">Lab 3: <em>[Nama]</em></h2><p class="lead reveal" style="--d:.05s">[Deskripsi lab 3]</p><div class="card reveal" style="--d:.1s"><p class="caption">[Konten lab 3]</p></div></div></div></div></div>
+      <div class="slide" id="slide-11"><div class="inner"><div class="frame"><div class="frame-top"><span class="kicker">Lab Interaktif</span><span class="fcount">12 / 30</span></div><div class="frame-body"><h2 class="st reveal">Lab 4: <em>[Nama]</em></h2><p class="lead reveal" style="--d:.05s">[Deskripsi lab 4]</p><div class="card reveal" style="--d:.1s"><p class="caption">[Konten lab 4]</p></div></div></div></div></div>
+      <div class="slide" id="slide-12"><div class="inner"><div class="frame"><div class="frame-top"><span class="kicker">Lab Interaktif</span><span class="fcount">13 / 30</span></div><div class="frame-body"><h2 class="st reveal">Lab 5: <em>[Nama]</em></h2><p class="lead reveal" style="--d:.05s">[Deskripsi lab 5]</p><div class="card reveal" style="--d:.1s"><p class="caption">[Konten lab 5]</p></div></div></div></div></div>
+      <div class="slide" id="slide-13"><div class="inner"><div class="frame"><div class="frame-top"><span class="kicker">Lab Interaktif</span><span class="fcount">14 / 30</span></div><div class="frame-body"><h2 class="st reveal">Lab 6: <em>[Challenge]</em></h2><p class="lead reveal" style="--d:.05s">[Deskripsi lab 6]</p><div class="card reveal" style="--d:.1s"><p class="caption">[Konten lab 6]</p></div></div></div></div></div>
+
+      <!-- SLIDES 14-19: Contoh Soal & Latihan (Bab 4) -->
+      <div class="slide" id="slide-14"><div class="inner"><div class="frame"><div class="frame-top"><span class="kicker">Bab 4 · Latihan</span><span class="fcount">15 / 30</span></div><div class="frame-body"><h2 class="st reveal">Contoh Soal <em>1</em></h2><div class="card reveal" style="--d:.05s;border-left:4px solid var(--accent)"><p class="lead"><strong>Soal:</strong> [Soal contoh 1]</p></div><h3 class="subhead reveal" style="--d:.1s">Penyelesaian:</h3><div class="formula reveal" style="--d:.15s"><div class="fx">[Langkah]</div><div class="fx mt1" style="color:var(--ok)">[Jawaban]</div></div></div></div></div></div>
+      <div class="slide" id="slide-15"><div class="inner"><div class="frame"><div class="frame-top"><span class="kicker">Bab 4 · Latihan</span><span class="fcount">16 / 30</span></div><div class="frame-body"><h2 class="st reveal">Contoh Soal <em>2</em></h2><div class="card reveal" style="--d:.05s;border-left:4px solid var(--blue)"><p class="lead"><strong>Soal:</strong> [Soal contoh 2]</p></div><div class="formula reveal" style="--d:.1s"><div class="fx">[Penyelesaian]</div></div></div></div></div></div>
+      <div class="slide" id="slide-16"><div class="inner"><div class="frame"><div class="frame-top"><span class="kicker">Bab 4 · Latihan</span><span class="fcount">17 / 30</span></div><div class="frame-body"><h2 class="st reveal">Contoh Soal <em>3</em></h2><div class="card reveal" style="--d:.05s;border-left:4px solid var(--ok)"><p class="lead"><strong>Soal:</strong> [Soal contoh 3]</p></div><div class="formula reveal" style="--d:.1s"><div class="fx">[Penyelesaian]</div></div></div></div></div></div>
+      <div class="slide" id="slide-17"><div class="inner"><div class="frame"><div class="frame-top"><span class="kicker">Bab 4 · Latihan</span><span class="fcount">18 / 30</span></div><div class="frame-body"><h2 class="st reveal">Latihan <em>Soal 1</em></h2><p class="lead reveal" style="--d:.05s">Pilih jawaban yang tepat!</p><div id="quizContainer1" class="reveal" style="--d:.1s"></div><div id="quizFeedback1" class="quiz-exp"></div><div class="mt2 reveal" style="--d:.2s"><button class="btn" id="quizNextBtn1" onclick="nextQuiz(1)" style="display:none">Soal Berikutnya →</button></div></div></div></div></div>
+      <div class="slide" id="slide-18"><div class="inner"><div class="frame"><div class="frame-top"><span class="kicker">Bab 4 · Latihan</span><span class="fcount">19 / 30</span></div><div class="frame-body"><h2 class="st reveal">Latihan <em>Soal 2</em></h2><p class="lead reveal" style="--d:.05s">Pilih jawaban yang tepat!</p><div id="quizContainer2" class="reveal" style="--d:.1s"></div><div id="quizFeedback2" class="quiz-exp"></div><div class="mt2 reveal" style="--d:.2s"><button class="btn" id="quizNextBtn2" onclick="nextQuiz(2)" style="display:none">Soal Berikutnya →</button></div></div></div></div></div>
+      <div class="slide" id="slide-19"><div class="inner"><div class="frame"><div class="frame-top"><span class="kicker">Bab 4 · Latihan</span><span class="fcount">20 / 30</span></div><div class="frame-body"><h2 class="st reveal">Latihan <em>Soal 3</em></h2><p class="lead reveal" style="--d:.05s">Pilih jawaban yang tepat!</p><div id="quizContainer3" class="reveal" style="--d:.1s"></div><div id="quizFeedback3" class="quiz-exp"></div><div class="mt2 reveal" style="--d:.2s"><button class="btn" id="quizNextBtn3" onclick="nextQuiz(3)" style="display:none">Soal Berikutnya →</button></div></div></div></div></div>
+
+      <!-- SLIDES 20-25: Kuis (Bab 5) -->
+      <div class="slide" id="slide-20"><div class="inner"><div class="frame"><div class="frame-top"><span class="kicker">Evaluasi</span><span class="fcount">21 / 30</span></div><div class="frame-body"><h2 class="st reveal">Kuis Bab <em>1</em></h2><p class="lead reveal" style="--d:.05s">Uji pemahaman Bab 1 (5 soal)</p><div id="kuis1Container" class="reveal" style="--d:.1s"></div><div id="kuis1Feedback" class="quiz-exp"></div><div class="mt2 reveal" style="--d:.2s"><button class="btn" id="kuis1NextBtn" onclick="nextKuis(1)" style="display:none">Selesai →</button></div></div></div></div></div>
+      <div class="slide" id="slide-21"><div class="inner"><div class="frame"><div class="frame-top"><span class="kicker">Evaluasi</span><span class="fcount">22 / 30</span></div><div class="frame-body"><h2 class="st reveal">Kuis Bab <em>2</em></h2><p class="lead reveal" style="--d:.05s">Uji pemahaman Bab 2 (5 soal)</p><div id="kuis2Container" class="reveal" style="--d:.1s"></div><div id="kuis2Feedback" class="quiz-exp"></div><div class="mt2 reveal" style="--d:.2s"><button class="btn" id="kuis2NextBtn" onclick="nextKuis(2)" style="display:none">Selesai →</button></div></div></div></div></div>
+      <div class="slide" id="slide-22"><div class="inner"><div class="frame"><div class="frame-top"><span class="kicker">Evaluasi</span><span class="fcount">23 / 30</span></div><div class="frame-body"><h2 class="st reveal">Kuis Bab <em>3</em></h2><p class="lead reveal" style="--d:.05s">Uji pemahaman Bab 3 (5 soal)</p><div id="kuis3Container" class="reveal" style="--d:.1s"></div><div id="kuis3Feedback" class="quiz-exp"></div><div class="mt2 reveal" style="--d:.2s"><button class="btn" id="kuis3NextBtn" onclick="nextKuis(3)" style="display:none">Selesai →</button></div></div></div></div></div>
+      <div class="slide" id="slide-23"><div class="inner"><div class="frame"><div class="frame-top"><span class="kicker">Evaluasi</span><span class="fcount">24 / 30</span></div><div class="frame-body"><h2 class="st reveal">Kuis Bab <em>4</em></h2><p class="lead reveal" style="--d:.05s">Uji pemahaman Bab 4 (5 soal)</p><div id="kuis4Container" class="reveal" style="--d:.1s"></div><div id="kuis4Feedback" class="quiz-exp"></div><div class="mt2 reveal" style="--d:.2s"><button class="btn" id="kuis4NextBtn" onclick="nextKuis(4)" style="display:none">Selesai →</button></div></div></div></div></div>
+      <div class="slide" id="slide-24"><div class="inner"><div class="frame"><div class="frame-top"><span class="kicker">Evaluasi</span><span class="fcount">25 / 30</span></div><div class="frame-body"><h2 class="st reveal">Kuis Bab <em>5</em></h2><p class="lead reveal" style="--d:.05s">Uji pemahaman Bab 5 (5 soal)</p><div id="kuis5Container" class="reveal" style="--d:.1s"></div><div id="kuis5Feedback" class="quiz-exp"></div><div class="mt2 reveal" style="--d:.2s"><button class="btn" id="kuis5NextBtn" onclick="nextKuis(5)" style="display:none">Selesai →</button></div></div></div></div></div>
+      <div class="slide" id="slide-25"><div class="inner"><div class="frame"><div class="frame-top"><span class="kicker">Evaluasi</span><span class="fcount">26 / 30</span></div><div class="frame-body"><h2 class="st reveal">Kuis <em>Penutup</em></h2><p class="lead reveal" style="--d:.05s">Uji pemahaman menyeluruh (10 soal)</p><div id="kuisFinalContainer" class="reveal" style="--d:.1s"></div><div id="kuisFinalFeedback" class="quiz-exp"></div><div id="kuisFinalResult" class="reveal" style="--d:.2s;display:none;text-align:center;padding:30px"><div style="font-size:64px;margin-bottom:16px" id="kuisFinalEmoji">🎉</div><h3 style="font-size:24px;font-weight:800;margin-bottom:8px" id="kuisFinalTitle">Selamat!</h3><p class="lead" id="kuisFinalMsg">Kamu telah menyelesaikan kuis!</p><div class="stat-chip" style="display:inline-block;margin-top:16px"><b id="kuisFinalScore" style="font-size:32px">0/10</b><span>Skor</span></div><button class="btn mt2" onclick="resetKuisFinal()">🔄 Ulangi</button></div><div class="mt2 reveal" style="--d:.2s"><button class="btn" id="kuisFinalNextBtn" onclick="nextKuisFinal()" style="display:none">Soal Berikutnya →</button></div></div></div></div></div>
+
+      <!-- SLIDES 26-29: Penutup (Bab 6) -->
+      <div class="slide" id="slide-26"><div class="inner"><div class="frame"><div class="frame-top"><span class="kicker">Bab 6 · Penutup</span><span class="fcount">27 / 30</span></div><div class="frame-body"><h2 class="st reveal">Rangkuman</h2><div class="grid2 reveal" style="--d:.05s"><div class="card"><div class="kicker mb1">📌 Poin Penting</div><ul class="sifat"><li>[Poin 1]</li><li>[Poin 2]</li><li>[Poin 3]</li><li>[Poin 4]</li><li>[Poin 5]</li></ul></div><div class="card"><div class="kicker mb1">📝 Rumus Singkat</div><div class="formula" style="margin-top:0;text-align:left;font-size:13px;line-height:2"><div>[Rumus 1]</div><div>[Rumus 2]</div><div>[Rumus 3]</div></div></div></div></div></div></div></div>
+      <div class="slide" id="slide-27"><div class="inner"><div class="frame"><div class="frame-top"><span class="kicker">Bab 6 · Penutup</span><span class="fcount">28 / 30</span></div><div class="frame-body"><h2 class="st reveal">Misi Tantangan <em>1</em></h2><div class="card reveal" style="--d:.05s;border-left:4px solid var(--accent)"><div class="kicker mb1">🚀 Skenario</div><p class="lead">[Deskripsi misi 1]</p></div><div class="mission-steps reveal" style="--d:.1s"><div class="mission-step"><span class="step-num">1</span><div class="step-content"><div class="font-semibold text-sm">Tugas 1</div><div class="text-xs text-gray-600">[Petunjuk]</div></div></div><div class="mission-step"><span class="step-num">2</span><div class="step-content"><div class="font-semibold text-sm">Tugas 2</div><div class="text-xs text-gray-600">[Petunjuk]</div></div></div><div class="mission-step"><span class="step-num">3</span><div class="step-content"><div class="font-semibold text-sm">Tugas 3</div><div class="text-xs text-gray-600">[Petunjuk]</div></div></div></div><button class="btn mt2 reveal" style="--d:.15s" onclick="showHint(1)">💡 Lihat Petunjuk</button><div id="hint1" class="hint-box reveal" style="--d:.2s"></div></div></div></div></div>
+      <div class="slide" id="slide-28"><div class="inner"><div class="frame"><div class="frame-top"><span class="kicker">Bab 6 · Penutup</span><span class="fcount">29 / 30</span></div><div class="frame-body"><h2 class="st reveal">Misi Tantangan <em>2</em></h2><div class="card reveal" style="--d:.05s;border-left:4px solid var(--blue)"><div class="kicker mb1">🚀 Skenario Lanjutan</div><p class="lead">[Deskripsi misi 2]</p></div><div class="reveal" style="--d:.1s"><p class="lead">[Detail tantangan]</p></div><button class="btn mt2 reveal" style="--d:.15s" onclick="showHint(2)">💡 Lihat Petunjuk</button><div id="hint2" class="hint-box reveal" style="--d:.2s"></div></div></div></div></div>
+      <div class="slide" id="slide-29"><div class="inner"><div class="frame"><div class="frame-top"><span class="kicker">Bab 6 · Penutup</span><span class="fcount">30 / 30</span></div><div class="frame-body"><div class="hero card reveal" style="--d:.05s;border:none;padding:40px;text-align:center;background:linear-gradient(135deg,#fff7ed,#fffbeb)"><div style="font-size:72px;margin-bottom:16px">🎉</div><h1 class="hero-title" style="font-size:clamp(28px,4vw,40px)">Selamat!</h1><p class="hero-tag mt1">Kamu telah menyelesaikan modul [JUDUL].</p><p class="lead mt2">Semoga pengetahuan ini bermanfaat dalam perjalanan belajarmu!</p><div class="grid4 mt3" style="max-width:500px;margin:24px auto 0"><div class="stat-chip"><b>30</b><span>Slide</span></div><div class="stat-chip"><b>6</b><span>Lab</span></div><div class="stat-chip"><b>30</b><span>Soal</span></div><div class="stat-chip"><b>100%</b><span>Selesai</span></div></div><button class="btn mt3" onclick="go(0)">🔄 Ulangi dari Awal</button></div></div></div></div></div>
+
+    </div><!-- /window-frame -->
+  </div><!-- /stage-area -->
+</main>
+
+<!-- FAB -->
+<div class="fab">
+  <button onclick="go(0)" title="Home" aria-label="Home">
+    <svg><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+  </button>
+  <button onclick="prevSlide()" title="Sebelumnya" aria-label="Prev" id="prevBtn">
+    <svg><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <button onclick="nextSlide()" title="Selanjutnya" aria-label="Next" id="nextBtn">
+    <svg><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+</div>
+
+<script>
+// ============================================================
+// EDUAPP2 TEMPLATE — JAVASCRIPT
+// Customize quiz data, simulation logic per project
+// ============================================================
+
+// ============================================================
+// STATE
+// ============================================================
+const TOTAL = 30;
+let cur = 0;
+let sidebarOpen = false;
+
+// ============================================================
+// NAVIGATION
+// ============================================================
+function go(n) {
+  if (n < 0 || n >= TOTAL) return;
+  const prev = document.getElementById('slide-' + cur);
+  const next = document.getElementById('slide-' + n);
+  prev.classList.remove('active');
+  next.classList.add('active');
+  cur = n;
+  updateAll();
+  if (window.innerWidth <= 900) closeSidebar();
+}
+function nextSlide() { go(cur + 1); }
+function prevSlide() { go(cur - 1); }
+
+function updateAll() {
+  document.querySelectorAll('.sb-item').forEach((el, i) => {
+    el.classList.toggle('on', i === cur);
+  });
+  document.getElementById('tbSlide').textContent = cur + 1;
+  document.getElementById('tbTotal').textContent = TOTAL;
+  const pct = Math.round(((cur + 1) / TOTAL) * 100);
+  document.getElementById('tbFill').style.width = pct + '%';
+  document.getElementById('sbFill').style.width = pct + '%';
+  document.getElementById('sbPct').textContent = pct + '%';
+  document.getElementById('prevBtn').disabled = cur === 0;
+  document.getElementById('nextBtn').disabled = cur === TOTAL - 1;
+
+  // Load quiz content on first visit
+  if (cur === 17 && !window._quiz1Init) initQuiz(1);
+  if (cur === 18 && !window._quiz2Init) initQuiz(2);
+  if (cur === 19 && !window._quiz3Init) initQuiz(3);
+  if (cur === 20 && !window._kuis1Init) initKuis(1);
+  if (cur === 21 && !window._kuis2Init) initKuis(2);
+  if (cur === 22 && !window._kuis3Init) initKuis(3);
+  if (cur === 23 && !window._kuis4Init) initKuis(4);
+  if (cur === 24 && !window._kuis5Init) initKuis(5);
+  if (cur === 25 && !window._kuisFinalInit) initKuisFinal();
+  if (cur === 8 && !window._simInit) initSim();
+  if (cur === 9 && !window._expInit) initExp();
+}
+
+function toggleSidebar() {
+  sidebarOpen = !sidebarOpen;
+  document.body.classList.toggle('sb-open', sidebarOpen);
+}
+function closeSidebar() {
+  sidebarOpen = false;
+  document.body.classList.remove('sb-open');
+}
+
+// Keyboard
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') nextSlide();
+  else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') prevSlide();
+  else if (e.key === 'Home') go(0);
+  else if (e.key === 'End') go(TOTAL - 1);
+});
+
+// Touch swipe
+let _tx = 0;
+document.addEventListener('touchstart', e => { _tx = e.changedTouches[0].screenX; }, { passive: true });
+document.addEventListener('touchend', e => {
+  const d = _tx - e.changedTouches[0].screenX;
+  if (Math.abs(d) > 60) d > 0 ? nextSlide() : prevSlide();
+}, { passive: true });
+
+// ============================================================
+// QUIZ SYSTEM (Reusable)
+// ============================================================
+const QUIZ_DATA = {
+  1: [], // Edit: add 5 questions for Lab 1 quiz
+  2: [], // Edit: add 5 questions for Lab 2 quiz
+  3: [], // Edit: add 5 questions for Lab 3 quiz
+  4: [], // Edit: add 5 questions for Bab 1 quiz
+  5: [], // Edit: add 5 questions for Bab 2 quiz
+  final: [] // Edit: add 10 questions for final quiz
+};
+
+function initQuiz(n) {
+  window['_quiz' + n + 'Init'] = true;
+  renderQuiz(n, QUIZ_DATA[n] || []);
+}
+
+function renderQuiz(n, data) {
+  const c = document.getElementById('quizContainer' + n);
+  if (!data.length) { c.innerHTML = '<div class="card"><p class="caption">Quiz ini akan segera tersedia.</p></div>'; return; }
+  c.innerHTML = data.map((q, i) => `
+    <div class="card mb-4">
+      <p class="lead" style="font-weight:600">${i+1}. ${q.q}</p>
+      <div class="mt2">
+        ${q.opts.map((o, oi) => `<button class="quiz-opt" onclick="answerQuiz(${n},${i},${oi},this)">${String.fromCharCode(65+oi)}. ${o}</button>`).join('')}
+      </div>
+    </div>
+  `).join('');
+}
+
+function answerQuiz(n, qi, oi, btn) {
+  // Implementation per project
+}
+
+function nextQuiz(n) {
+  // Implementation per project
+}
+
+// ============================================================
+// SIMULATION (Placeholder — customize per project)
+// ============================================================
+function initSim() {
+  window._simInit = true;
+  // Add canvas simulation code here
+}
+
+function launchSim() {
+  // Add launch logic
+}
+
+function resetSim() {
+  // Add reset logic
+}
+
+function toggleTrail() {}
+function toggleGrid() {}
+
+// ============================================================
+// EXPLORATION (Placeholder — customize per project)
+// ============================================================
+function initExp() {
+  window._expInit = true;
+  // Add exploration canvas code
+}
+
+function updateExp() {
+  // Add update logic
+}
+
+// ============================================================
+// UTILITIES
+// ============================================================
+function showHint(n) {
+  const el = document.getElementById('hint' + n);
+  if (el) el.classList.toggle('show');
+}
+
+// Init
+updateAll();
+</script>
+</body>
+</html>
