@@ -2,6 +2,8 @@
 
 *Esai | Agustus 2026*
 
+![Atrofi Kognitif: Perbandingan Otak Aktif vs Otak yang Menipis](https://labsdigital.github.io/hermes/atlas/assets/atrofi-kognitif-illustration.svg)
+
 ---
 
 Pada tahun 1984, seorang peneliti Norwegia bernama Sigmund Teasdale mengamati sesuatu yang aneh. Dia membandingkan hasil tes inteligensi dari pria Norwegia yang direkrut untuk militer pada tahun 1967 dengan tes yang sama yang mereka ambil kembali pada tahun 1984. Hasilnya? Mereka menjadi lebih bodoh. Tidak sedikit—rata-rata kehilangan lima poin IQ selama dua puluh tahun.
