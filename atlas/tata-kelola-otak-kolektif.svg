@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 700" role="img">
+  <title>Diagram tata kelola AI berlapis: dari kebiasaan individu hingga arsitektur global, dengan keadilan kognitif sebagai fondasi</title>
+  <defs>
+    <style>
+      text { font-family: 'Segoe UI', Arial, Helvetica, sans-serif; }
+    </style>
+  </defs>
+
+  <!-- background -->
+  <rect x="0" y="0" width="960" height="700" rx="16" fill="#0b1220"/>
+
+  <!-- title -->
+  <text x="480" y="40" text-anchor="middle" font-size="22" font-weight="bold" fill="#f1f5f9" letter-spacing="2">SIAPA MENJAGA OTAK KOLEKTIF?</text>
+  <text x="480" y="62" text-anchor="middle" font-size="13" fill="#94a3b8">Empat lapis tata kelola AI — tiap lapis punya kunci yang tidak dimiliki lapis lain</text>
+
+  <!-- ============ LAYER 4 (top): GLOBAL ============ -->
+  <rect x="70" y="84" width="820" height="106" rx="14" fill="#111c33" stroke="#a78bfa" stroke-width="2"/>
+  <rect x="86" y="98" width="150" height="28" rx="14" fill="#a78bfa" opacity="0.18"/>
+  <text x="161" y="117" text-anchor="middle" font-size="13" font-weight="bold" fill="#ddd6fe">LAPIS 4 &#183; GLOBAL</text>
+  <text x="252" y="117" font-size="14" fill="#c7d2fe">Perjanjian antarnegara, standar model frontier, audit lintas benua, kewajiban insiden</text>
+  <text x="86" y="148" font-size="12.5" fill="#94a3b8">Kekuatan: satu-satunya lapis yang bisa menahan perlombaan antarnegara</text>
+  <text x="86" y="168" font-size="12.5" fill="#f87171">Kelemahan: paling lambat, paling mudah dibajak kepentingan negara adopsi-dini</text>
+  <circle cx="852" cy="137" r="26" fill="none" stroke="#a78bfa" stroke-width="2" opacity="0.7"/>
+  <path d="M 840 137 C 840 127 848 123 852 129 C 856 123 864 127 864 137 Z" fill="#a78bfa" opacity="0.8"/>
+  <text x="852" y="155" text-anchor="middle" font-size="9" fill="#a78bfa">UN?</text>
+
+  <!-- arrow between layers -->
+  <line x1="480" y1="190" x2="480" y2="210" stroke="#475569" stroke-width="2"/>
+  <polygon points="480,220 473,208 487,208" fill="#475569"/>
+
+  <!-- ============ LAYER 3: NEGARA ============ -->
+  <rect x="70" y="222" width="820" height="106" rx="14" fill="#111c33" stroke="#38bdf8" stroke-width="2"/>
+  <rect x="86" y="236" width="150" height="28" rx="14" fill="#38bdf8" opacity="0.16"/>
+  <text x="161" y="255" text-anchor="middle" font-size="13" font-weight="bold" fill="#bae6fd">LAPIS 3 &#183; NEGARA</text>
+  <text x="252" y="255" font-size="14" fill="#bae6fd">Hukum data &amp; algoritma, audit pra-rilis, larangan manipulasi, uji dampak kognitif</text>
+  <text x="86" y="288" font-size="12.5" fill="#94a3b8">Kekuatan: satu-satunya yang punya gigi — sanksi, larangan pasar, kewajiban publikasi risiko</text>
+  <text x="86" y="308" font-size="12.5" fill="#f87171">Kelemahan: kalah cepat dari siklus produk; kapital lari ke yurisdiksi longgar</text>
+  <!-- scale icon -->
+  <line x1="850" y1="258" x2="850" y2="298" stroke="#38bdf8" stroke-width="2"/>
+  <line x1="830" y1="266" x2="870" y2="266" stroke="#38bdf8" stroke-width="2"/>
+  <path d="M 824 282 A 8 8 0 0 0 838 282 Z" fill="none" stroke="#38bdf8" stroke-width="1.5"/>
+  <path d="M 862 282 A 8 8 0 0 0 876 282 Z" fill="none" stroke="#38bdf8" stroke-width="1.5"/>
+  <circle cx="850" cy="256" r="3" fill="#38bdf8"/>
+
+  <!-- arrow between layers -->
+  <line x1="480" y1="328" x2="480" y2="348" stroke="#475569" stroke-width="2"/>
+  <polygon points="480,358 473,346 487,346" fill="#475569"/>
+
+  <!-- ============ LAYER 2: KOMUNITAS ============ -->
+  <rect x="70" y="360" width="820" height="106" rx="14" fill="#111c33" stroke="#34d399" stroke-width="2"/>
+  <rect x="86" y="374" width="170" height="28" rx="14" fill="#34d399" opacity="0.15"/>
+  <text x="171" y="393" text-anchor="middle" font-size="13" font-weight="bold" fill="#a7f3d0">LAPIS 2 &#183; KOMUNITAS</text>
+  <text x="272" y="393" font-size="14" fill="#a7f3d0">Dewan etika lokal, literasi AI publik, serikat kerja, uji norma agama/budaya</text>
+  <text x="86" y="426" font-size="12.5" fill="#94a3b8">Kekuatan: tahu konteks yang tidak bisa dibaca model; tekanan sosial tercepat</text>
+  <text x="86" y="446" font-size="12.5" fill="#f87171">Kelemahan: tanpa kewenangan formal — suaranya mudah dikumpulkan lalu dilupakan</text>
+  <!-- people icons -->
+  <circle cx="836" cy="416" r="7" fill="#34d399"/><rect x="829" y="425" width="14" height="18" rx="5" fill="#34d399"/>
+  <circle cx="858" cy="416" r="7" fill="#34d399" opacity="0.75"/><rect x="851" y="425" width="14" height="18" rx="5" fill="#34d399" opacity="0.75"/>
+  <circle cx="880" cy="416" r="7" fill="#34d399" opacity="0.5"/><rect x="873" y="425" width="14" height="18" rx="5" fill="#34d399" opacity="0.5"/>
+
+  <!-- arrow between layers -->
+  <line x1="480" y1="466" x2="480" y2="486" stroke="#475569" stroke-width="2"/>
+  <polygon points="480,496 473,484 487,484" fill="#475569"/>
+
+  <!-- ============ LAYER 1: INDIVIDU ============ -->
+  <rect x="70" y="498" width="820" height="66" rx="14" fill="#111c33" stroke="#f59e0b" stroke-width="2"/>
+  <rect x="86" y="510" width="170" height="26" rx="13" fill="#f59e0b" opacity="0.15"/>
+  <text x="171" y="528" text-anchor="middle" font-size="13" font-weight="bold" fill="#fde68a">LAPIS 1 &#183; INDIVIDU</text>
+  <text x="272" y="528" font-size="13.5" fill="#fde68a">Kesadaran, kontrak personal dengan mesin, kebiasaan latihan</text>
+  <text x="86" y="554" font-size="12.5" fill="#94a3b8">Kekuatan: tercepat untuk berubah. Kelemahan: tidak pernah cukup sendirian — inilah alasan diagram ini ada.</text>
+
+  <!-- ============ FOUNDATION: COGNITIVE JUSTICE ============ -->
+  <rect x="40" y="590" width="880" height="52" rx="10" fill="#1a1030" stroke="#e879f9" stroke-width="2"/>
+  <text x="480" y="611" text-anchor="middle" font-size="14" font-weight="bold" fill="#f5d0fe">KEADILAN KOGNITIF — fondasi semua lapis</text>
+  <text x="480" y="631" text-anchor="middle" font-size="12.5" fill="#d8b4fe">akses adil &#183; latihan yang tidak dialihdayakan &#183; hak berpikir tanpa manipulasi</text>
+</svg>
