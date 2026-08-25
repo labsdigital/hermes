@@ -21,6 +21,9 @@ RECIPIENT = "tamimnasa.simbioma@blogger.com"
 # GitHub Pages base URL
 GITHUB_PAGES_URL = "https://labsdigital.github.io/hermes"
 
+# Default SVG for articles (can be overridden)
+DEFAULT_SVG_URL = f"{GITHUB_PAGES_URL}/atlas/assets/atrofi-kognitif-illustration.svg"
+
 
 def md_to_html(md_text: str) -> str:
     """Convert markdown to HTML with proper line breaks."""
@@ -87,8 +90,15 @@ def send_email(article_path: str):
     # Convert markdown to HTML
     html_content = md_to_html(content)
 
-    # SVG Image URL from GitHub Pages
-    svg_url = f"{GITHUB_PAGES_URL}/atlas/assets/qualia-illustration.svg"
+    # SVG Image URL from GitHub Pages (use article-specific SVG if exists)
+    article_name = Path(article_path).stem
+    svg_filename = f"{article_name}.svg"
+    svg_path = Path(f"/opt/data/hermes/atlas/assets/{svg_filename}")
+    
+    if svg_path.exists():
+        svg_url = f"{GITHUB_PAGES_URL}/atlas/assets/{svg_filename}"
+    else:
+        svg_url = DEFAULT_SVG_URL
 
     # Create email
     msg = MIMEMultipart("alternative")
