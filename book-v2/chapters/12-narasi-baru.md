@@ -94,6 +94,38 @@ Underrepresented voices:
 
 Democratizing AI narrative adalah prerequisite untuk democratic AI governance.
 
+Consider contoh: ChatGPT diluncurkan oleh OpenAI, company yang berbasis di San Francisco, dengan board yang sebagian besar terdiri dari venture capitalists. Narrative yang emerged: AI sebagai product untuk consumers. Suara yang tidak terdengar: factory workers di Philippines yang label training data, farmers di Kenya yang provide data untuk precision agriculture, women di Saudi Arabia yang menggunakan AI untuk navigate gender restrictions.
+
+Setiap choice tentang bagaimana AI dibangun adalah narrative choice. Setiap choice tentang siapa yang diajak berdialog adalah political choice.
+
+## Reframing the Human Story
+
+Untuk membangun narrative yang healthy, kita perlu reframe cerita tentang diri kita sendiri.
+
+Cerita lama: manusia sebagai center of宇宙, intelligence sebagai human exclusive property, progress sebagai linear accumulation of power.
+
+Cerita baru yang emerging: humanity sebagai bagian dari ecological network, intelligence sebagai distributed phenomenon, progress sebagai negotiation antara human dan non-human agents.
+
+Ini bukan abandonment人类centrism—ia expansion dari moral imagination.
+
+Cerita baru ini memerlukan literasi baru: bukan hanya digital literacy, tapi AI literacy, algorithmic literacy, data literacy. Citizens perlu understand bagaimana AI shaped their lives untuk participate meaningfully dalam governance.
+
+Education systems perlu adapt. Kurikulum yang fokus pada memorization akan obsolete. Yang diperlukan: critical thinking, ethical reasoning, creative problem-solving—skills yang justru AI struggle dengan.
+
+## The Story We Choose
+
+Pada akhirnya, pertanyaan tentang AI adalah pertanyaan tentang diri kita sendiri.
+
+Apa yang kita value? Justice atau efficiency? Equity atau growth? Community atau individualism?
+
+AI akan reflect choices ini. Jika kita value extraction, AI akan menjadi tool exploitation. Jika kita value care, AI bisa menjadi instrument healing.
+
+Story bukan reflection pasif dari reality—ia construction active dari reality.
+
+Pilihan narrative hari ini menentukan trajectory decades mendatang.
+
+Mari pilih cerita yang memungkinkan flourishing semua beings—not just humans, not just intelligent agents, tapi ecosystem secara keseluruhan.
+
 ## Transisi
 
 Cerita membawa kepada action. Bab terakhir akan meringkas journey dan发出 call untuk agency collective.

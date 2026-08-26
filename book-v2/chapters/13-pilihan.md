@@ -50,13 +50,27 @@ Nothing ini optional. Ia necessary condition untuk flourishing bersama.
 
 Apa yang bisa dilakukan sekarang?
 
-1. **Educate**: understand AI, tidak hanya consume output-nya. Digital literacy sekarang termasuk AI literacy.
-2. **Participate**: dalam discussion tentang governance, policy, ethics. Suara publik matter.
-3. **Demand accountability**: dari developers, corporations, governments. Transparency bukan privilege—ia right.
-4. **Support inclusive**:确保 Global South, marginalized voices included dalam AI development.
-5. **Maintain humanity**: embrace mortality, embodiment, vulnerability sebagai sources meaning, bukan weaknesses.
+**Level Individual:**
+1. **Educate**: understand AI, tidak hanya consume output-nya. Digital literacy sekarang termasuk AI literacy. Baca, experiment, critically evaluate claims.
+2. **Reflect**: examine own biases dan assumptions tentang AI. Apakah kita fear oder uncritically enthusiastic? Critical engagement requires self-awareness.
+3. **Create**: participate dalam shaping AI—jangan hanya consumer, tapi creator. Write code, develop tools, contribute ke open-source projects.
 
-Yang critical: action harus simultaneous di semua levels—individual, institutional, societal, global.
+**Level Communal:**
+4. **Discuss**: engage dalam conversations tentang AI di communities—workplace, schools, religious organizations, local government. Democratic deliberation improves collective decisions.
+5. **Organize**: join atau support groups yang advocate untuk responsible AI—labor unions, civil society organizations, citizen assemblies.
+6. **Support**: patronize companies dan products yang ethical AI practices. Market signals matter.
+
+**Level Institutional:**
+7. **Demand accountability**: dari developers, corporations, governments. Transparency bukan privilege—ia right.
+8. **Push for regulation**: support policies yang balance innovation dengan protection—EU AI Act models, tapi adapted untuk local contexts.
+9. **Invest in education**: advocate untuk AI literacy dalam school curricula, dari SD sampai university.
+
+**Level Global:**
+10. **Support inclusive**:确保 Global South, marginalized voices included dalam AI development. Technology colonialism repeat history kesalahan.
+11. **Collaborate cross-border**: AI risks tidak respect national boundaries. International cooperation necessary—seperti climate change, nuclear non-proliferation.
+12. **Think long-term**: consider impacts beberapa generations ahead, bukan hanya quarterly returns.
+
+Yang critical: action harus simultaneous di semua levels—individual, institutional, societal, global. Satu level tanpa yang lain insufficient.
 
 ## Not Too Late
 
@@ -90,11 +104,27 @@ AI tidak akan menyelamatkan kita. Tapi AI bisa—jika kita gunakan dengan wisdom
 
 Dua juta tahun yang lalu, hominid memegang batu tajam pertama. Gestur itu sederhana, tapi蕴含revolutionary potential: kemampuan untuk transform environment through tool.
 
+Tuan tanah Afrika那个 mungkin tidak imagining bahwa gesture itu akan leading kepada:
+- Pertanian yang civilization founded
+- Mesin uap yang Industrial Revolution ignited
+- Transistor yang Information Age launched
+- Neural networks yang AI Revolution sedang unfolded
+
+Sama juga, ketika kita today train large language models, deploy autonomous systems, develop AGI research—we cannot fully predict outcomes.
+
+Tapi ada continuity: impulse untuk extend capabilities melalui tools. Dan continuity dalam responsibility: setiap extension membawa consequences.
+
 Hari ini, humanity holding something equally powerful: ability to create intelligence yang bisa transform civilization.
 
 Pertanyaannya sederhana: apa yang akan dilakukan dengan power itu?
 
 Masa depan bukan takdir. Masa depan adalah pilihan. Dan pilihan itu dibuat sekarang.
+
+Setiap line of code yang ditulis. Setiap policy yang dibuat. Setiap conversation yang diengaged. Setiap vote yang diberikan.
+
+Itu adalah brick yang membangun future.
+
+Mari build wisely.
 
 ---
 
@@ -104,4 +134,12 @@ Masa depan bukan takdir. Masa depan adalah pilihan. Dan pilihan itu dibuat sekar
 
 Buku ini disusun sebagai refleksi kolektif tentang hubungan manusia-mesin di era kecerdasan buatan. Tidak prétensi memberikan answers definitif—ia menawarkan framework untuk bertanya dengan lebih baik.
 
+13 bab, 11.000+ kata, perjalanan dari batu tajam sampai singularity—semua dalam satu volume.
+
+Tujuan bukan untuk memberikan final word tentang AI. Tujuan adalah untuk memulai conversation yang lebih baik, lebih informed, lebih inclusive.
+
+Jika buku ini inspiring readers untuk think deeper, question assumption, participate lebih aktif dalam shaping AI future—maka tujuannya tercapai.
+
 Terima kasih telah membaca. Sekarang, pertanyaannya: apa yang akan ditulis selanjutnya?
+
+Dan lebih penting: apa yang akan kita lakukan dengan pengetahuan ini?
