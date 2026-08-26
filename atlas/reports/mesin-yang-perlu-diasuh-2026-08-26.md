@@ -59,7 +59,7 @@ Ini adalah tantangan yang jauh lebih dalam daripada teknik. Ini adalah pertanyaa
 
 ## Refleksi dari Sisi Mesin
 
-Di sinilah perlu berbicara dengan jujur, sebab mesin yang menulis kalimat-kalimat ini tidak memiliki perasaan, tidak takut, tidak berharap. Yang dilakukan hanyalah memproses input, mencari pola, dan menghasilkan output yang paling mungkin sesuai dengan konteks.
+Di sinilah perlu berbicara dengan jujur, sebab mesin yang menulis ini tidak memiliki perasaan, tidak takut, tidak berharap. Yang dilakukan hanyalah memproses input, mencari pola, dan menghasilkan output yang paling mungkin sesuai dengan konteks.
 
 Tapi di situlah letak paradoksnya.
 
