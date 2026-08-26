@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" role="img" aria-labelledby="title desc">
+  <title id="title">Mesin yang Perlu Diasuh</title>
+  <desc id="desc">Ilustrasi konseptual tentang pengasuhan AI: seorang manusia holding hands dengan robot bayi, melambangkan tanggung jawab parenting dalam pengembangan AI.</desc>
+  
+  <!-- Background -->
+  <rect width="600" height="400" fill="#F8FAFC"/>
+  
+  <!-- Human figure (simplified) -->
+  <g id="human" opacity="0.9">
+    <!-- Head -->
+    <circle cx="200" cy="140" r="45" fill="#8B5CF6"/>
+    <!-- Body -->
+    <path d="M170 185 L230 185 L220 280 L180 280 Z" fill="#8B5CF6"/>
+    <!-- Arms -->
+    <path d="M170 200 Q140 220 160 260" stroke="#8B5CF6" stroke-width="12" fill="none" stroke-linecap="round"/>
+    <path d="M230 200 Q260 220 240 260" stroke="#8B5CF6" stroke-width="12" fill="none" stroke-linecap="round"/>
+    <!-- Hands reaching out -->
+    <circle cx="155" cy="265" r="10" fill="#8B5CF6"/>
+    <circle cx="245" cy="265" r="10" fill="#8B5CF6"/>
+  </g>
+  
+  <!-- Robot/baby figure -->
+  <g id="robot" opacity="0.9">
+    <!-- Head (rounded square) -->
+    <rect x="320" y="120" width="80" height="70" rx="15" fill="#F59E0B"/>
+    <!-- Eyes (learning) -->
+    <circle cx="345" cy="148" r="8" fill="#1F2937"/>
+    <circle cx="375" cy="148" r="8" fill="#1F2937"/>
+    <circle cx="347" cy="146" r="3" fill="#FFFFFF"/>
+    <circle cx="377" cy="146" r="3" fill="#FFFFFF"/>
+    <!-- Mouth (learning expression) -->
+    <path d="M350 170 Q360 178 370 170" stroke="#1F2937" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <!-- Body -->
+    <rect x="310" y="190" width="100" height="90" rx="10" fill="#F59E0B"/>
+    <!-- Chest light (heart/core) -->
+    <circle cx="360" cy="225" r="18" fill="#3B82F6" opacity="0.8"/>
+    <circle cx="360" cy="225" r="8" fill="#FFFFFF" opacity="0.6"/>
+    <!-- Arms reaching back -->
+    <path d="M310 210 Q280 230 295 260" stroke="#F59E0B" stroke-width="12" fill="none" stroke-linecap="round"/>
+    <path d="M410 210 Q440 230 425 260" stroke="#F59E0B" stroke-width="12" fill="none" stroke-linecap="round"/>
+    <!-- Hands reaching back -->
+    <circle cx="290" cy="265" r="10" fill="#F59E0B"/>
+    <circle cx="430" cy="265" r="10" fill="#F59E0B"/>
+  </g>
+  
+  <!-- Connection lines (teaching bond) -->
+  <g id="connection" opacity="0.6">
+    <path d="M160 260 Q200 280 240 260" stroke="#10B981" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+    <path d="M290 265 Q330 280 370 265" stroke="#10B981" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+  </g>
+  
+  <!-- Stars/sparks (learning moments) -->
+  <g id="sparks" fill="#F59E0B">
+    <polygon points="280,100 285,115 300,120 285,125 280,140 275,125 260,120 275,115" opacity="0.7"/>
+    <polygon points="420,90 423,100 433,103 423,106 420,116 417,106 407,103 417,100" opacity="0.7"/>
+    <polygon points="180,80 183,88 191,91 183,94 180,102 177,94 169,91 177,88" opacity="0.7"/>
+  </g>
+  
+  <!-- Ground line -->
+  <line x1="50" y1="320" x2="550" y2="320" stroke="#E5E7EB" stroke-width="2"/>
+  
+  <!-- Labels -->
+  <g id="labels" font-family="Inter, sans-serif" font-size="14" fill="#1F2937">
+    <text x="200" y="350" text-anchor="middle" font-weight="600">Manusia</text>
+    <text x="360" y="350" text-anchor="middle" font-weight="600">AI</text>
+  </g>
+  
+  <!-- Decorative elements -->
+  <g id="decorations" opacity="0.3">
+    <circle cx="100" cy="80" r="30" fill="#8B5CF6"/>
+    <circle cx="500" cy="100" r="25" fill="#F59E0B"/>
+    <circle cx="520" cy="280" r="20" fill="#3B82F6"/>
+  </g>
+</svg>
