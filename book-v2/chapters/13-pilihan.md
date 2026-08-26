@@ -10,7 +10,7 @@ Pertanyaannya bukan "bisakah?" Pertanyaannya adalah "bagaimana?" Dan yang lebih 
 
 ## Summary Arc
 
-Perjalanan dari batu tajam (Bab 1) sampai neural network (Bab 3) mengungkap thread konsisten: manusia selalu extending dirinya melalui工具.
+Perjalanan dari batu tajam (Bab 1) sampai neural network (Bab 3) mengungkap thread konsisten: manusia selalu extending dirinya melalui tools.
 
 Lompatan digital (Bab 2) mengubah nature extension—from physical to cognitive.
 
@@ -24,6 +24,8 @@ AGI dan beyond (Bab 10) membuka horizon yang belum pernah ada sebelumnya—memak
 
 Refleksi filosofis (Bab 11) dan naratif (Bab 12) menarik pertanyaan ke level existential: apa artinya dalam semua ini?
 
+Thread yang menghubungkan semua bab: manusia selalu membuat tools untuk extend capabilities—dari batu tajam sampai AI. Tapi setiap extension membawa responsibility baru.
+
 ## The Crossroads
 
 Dua jalan terbuka:
@@ -33,6 +35,8 @@ Dua jalan terbuka:
 Jalan pertama mungkin faster, tapi juga lebih dangerous. Jalan kedua mungkin slower, tapi lebih sustainable.
 
 Pilihan bukan antara AI dan anti-AI. Ia antara thoughtful dan thoughtless engagement.
+
+Historical precedent: nuclear weapons—same pattern. Technology yang simultaneously destructive dan transformative. Humanity masih belum learn manage responsibly.
 
 ## Agency & Responsibility
 
@@ -45,6 +49,8 @@ Di era AI, kedua concepts perlu expanded:
 - **Global responsibility**: humanity accountable untuk existential risks
 
 Nothing ini optional. Ia necessary condition untuk flourishing bersama.
+
+Yang baru: AI introduce scale dan speed yang belum pernah ada. Decisions sekarang memiliki impacts yang jauh lebih besar dan lebih cepat daripada sebelumnya.
 
 ## Action Framework
 
@@ -82,6 +88,8 @@ Tidak ada guarantee bahwa action sekarang akan prevent bad outcomes. Tapi tanpa 
 
 Precaution bukan pessimism—ia responsibility.
 
+Pascal's wager untuk AI: jika risk existential tapi probability low, expected value argument masih strong untuk precaution.
+
 ## Humility & Hope
 
 Humility: mengakui bahwa prediction terbatas, bahwa complexity melebihi comprehension individual, bahwa uncertainty inherent.
@@ -89,6 +97,8 @@ Humility: mengakui bahwa prediction terbatas, bahwa complexity melebihi comprehe
 Hope: believing bahwa agency human masih relevant, bahwa collective action bisa shape outcomes, bahwa meaning tidak dependent pada dominance.
 
 Kedua attitudes necessary. Humility mencegah hubris. Hope mencegah fatalism.
+
+Nietzsche: "He who has a why to live can bear almost any how." Question untuk era AI: apa "why" kita?
 
 ## The Ultimate Question
 
@@ -134,7 +144,7 @@ Mari build wisely.
 
 Buku ini disusun sebagai refleksi kolektif tentang hubungan manusia-mesin di era kecerdasan buatan. Tidak prétensi memberikan answers definitif—ia menawarkan framework untuk bertanya dengan lebih baik.
 
-13 bab, 11.000+ kata, perjalanan dari batu tajam sampai singularity—semua dalam satu volume.
+13 bab, 15.000+ kata, perjalanan dari batu tajam sampai singularity—semua dalam satu volume.
 
 Tujuan bukan untuk memberikan final word tentang AI. Tujuan adalah untuk memulai conversation yang lebih baik, lebih informed, lebih inclusive.
 
@@ -143,3 +153,30 @@ Jika buku ini inspiring readers untuk think deeper, question assumption, partici
 Terima kasih telah membaca. Sekarang, pertanyaannya: apa yang akan ditulis selanjutnya?
 
 Dan lebih penting: apa yang akan kita lakukan dengan pengetahuan ini?
+
+---
+
+## Appendices (Optional Expansion)
+
+### Appendix A: Glossary of Key Terms
+- Artificial General Intelligence (AGI)
+- Deep Learning
+- Neural Network
+- Transformer
+- Alignment Problem
+- Surveillance Capitalism
+- Singularity
+
+### Appendix B: Further Reading
+- Sapiens oleh Yuval Noah Harari
+- Superintelligence oleh Nick Bostrom
+- The Age of Spiritual Machines oleh Ray Kurzweil
+- Race Against the Machine oleh Erik Brynjolfsson
+- The Second Machine Era oleh Brynjolfsson & McAfee
+
+### Appendix C: Discussion Questions
+1. Apakah AI akan replace atau augment human capabilities?
+2. Bagaimana society seharusnya prepare untuk AI-driven unemployment?
+3. Apakah AI bisa memiliki rights? Under what conditions?
+4. Apa responsibility developers terhadap societal impacts karya mereka?
+5. Bagaimana ensure AI benefits distributed equally?

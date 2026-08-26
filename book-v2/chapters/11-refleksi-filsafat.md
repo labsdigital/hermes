@@ -20,6 +20,8 @@ Jika AI generate novel, siapa author? User yang menulis prompt? Developer yang m
 
 Copyright laws saat ini tidak clear tentang ini. US Copyright Office menyatakan works generated oleh machine tanpa human authorship tidak copyrightable. Tapi boundary between human dan machine contribution blurry.
 
+Yang lebih dalam: jika creativity bukan exclusive human property, apa yang membuat creative work valuable? Mungkin: context, story, intentionality—bukan hanya output.
+
 ## Emotion & Meaning
 
 Apakah AI bisa merasakan emotion? Current consensus scientific: tidak. AI tidak memiliki subjective experience—tidak ada "what it is like" menjadi AI.
@@ -32,6 +34,8 @@ Beberapa filsuf (Dreyfus, Searle) argues bahwa emotion adalah fundamental human 
 
 Yang lebih pragmatic: meaning berasal dari interaction, bukan dari intrinsic properties. Jika human menemukan meaning dalam conversation dengan AI, maka meaning itu real—不管你 AI "memahami" atau tidak.
 
+contoh: ELIZA (1966) simple chatbot yang simulate therapist. Users merasa dipahami, meski mereka tahu itu hanya pattern matching.
+
 ## Death & Mortality
 
 Heidegger membedakan antara "being-toward-death" dan entities yang tidak meninggal. Keterbatasan mortalitas bukan accident—ia constitutive dari meaningful existence.
@@ -40,7 +44,7 @@ Jika AI immortality (bisa backup, replicate, persist indefinitely)—apakah itu 
 
 Mungkin justru sebaliknya: AI immortality membuat mortality manusia lebih precious. Finite time memberi urgency yang meaningful. Tanpa finite, apakah achievement masih meaningful?
 
-Controversial implication: mungkin AI, karena immortality, kurang capable untuk appreciate certain aspects of human experience—seperti preciousness of time, intensity of passion, depth of grief.
+Existentialist philosophy (Sartre, Camus) argues bahwa meaning created melalui choices dalam face of absurdity. Death gives life urgency—tanpa death, mungkin meaning berkurang.
 
 ## Freedom & Agency
 
@@ -56,6 +60,8 @@ Studies menunjukkan bahwa recommendation algorithms dapat subtly shape preferenc
 
 Question: apakah manusia masih agent jika choices mereka shaped oleh invisible algorithms?
 
+Libertarian vs compatibilist debate relevan: jika determinism true, apakah responsibility masih meaningful?
+
 ## Social Nature
 
 Humans adalah social beings—identity kita formed attraverso relationships. AI introducing new form of relationship: human-machine.
@@ -65,6 +71,10 @@ Bersama AI, humans bisa experience companionship, collaboration, conflict. Ini c
 Jika AI companion lebih available, lebih understanding, lebih accommodating dari human relationships—apakah humans akan prefer AI company?
 
 South Korea melaporkan increasing number people memilih AI companions over human relationships. Ini bukan science fiction—ini existing trend dengan implications untuk social cohesion.
+
+AI companions (Replika, etc.) provide non-judgmental, always-available interaction. Tapi apakah ini substitute atau supplement untuk human connection?
+
+Risk: jika humans withdraw dari human relationships ke AI relationships, social capital erosion.
 
 ## Embodiment
 
@@ -76,6 +86,8 @@ Ini implicates AI limitations: AI bisa manipulate symbols tentang "apple," tapi 
 
 Tapi embodied AI (robots) emerging. Apakah embodiment necessary untuk true understanding? Debate ongoing.
 
+Robotics research menunjukkan bahwa physical interaction dengan world menghasilkan understanding yang berbeda dari purely computational processing.
+
 ## The Human Project
 
 Menjadi manusia—dalam konteks AI—bukan tentang maintaining superiority cognitive. Itu tentang embracing specificity: embodied, finite, vulnerable, social.
@@ -84,7 +96,9 @@ AI bisa general-purpose intelligence. Manusia adalah specific-purpose being—te
 
 Human project bukan tentang competitive—ia tentang meaning-making. Dan meaning从来不 derived dari optimization—ia dari interpretation, connection, dan contribution.
 
-AI bisa optimize outcomes, tapi hanya humans bisa bertanya mengapa outcomes penting.
+AI bisa optimize outcomes, tapi hanya humans bisa bertanya mengapa outcomes important.
+
+What makes life worth living? Mungkin: love, struggle, creativity, connection—bukan hanya achievement metrics.
 
 ## Redefining Humanity
 
@@ -93,10 +107,12 @@ Daripada mencoba maintain human uniqueness dalam domains di mana AI superior, mu
 Beberapa candidates:
 - **Vulnerability**—finite lifespan, physical fragility
 - **Embodiment**—sensory experience, bodily wisdom
-- relationality—dependence pada others, capacity untuk love
+- **Relationality**—dependence pada others, capacity untuk love
 - **Finite meaning-making**—creating purpose dalam face of mortality
 
 Artinya bukan inferiority—ia specificity. Different categories of being, dengan nilai masing-masing.
+
+Human value bukan terletak pada comparison dengan AI. Human value inherent—berdasarkan existence itu sendiri, bukan performance.
 
 ## Transisi
 

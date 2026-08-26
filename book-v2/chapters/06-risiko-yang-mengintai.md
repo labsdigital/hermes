@@ -14,6 +14,8 @@ Ini adalah ancaman terhadap demokrasi. Demokrasi memerlukan shared reality—fak
 
 Dan deepfakes hanyalah awal. Audio deepfake, voice cloning, dan synthetic media akan semakin sulit dibedakan dari reality. Penelitian menunjukkan bahwa setelah 2025, sebagian besar content media akan AI-generated. Ini意味着 foundation of evidence itu sendiri berubah.
 
+Georgia 2024: deepfake robo call meniru Biden menyarankan voter tidak memilih. Meskipun cepat di-discredit, damage sudah dilakukan—question tentang election integrity sudah ditanam.
+
 ## Automation Unemployment
 
 Ini bukan erste kalinya teknologi menghilangkan pekerjaan. Mesin tenun menggantikan penenun. Tractor menggantikan petani. ATM mengurangi teller bank.
@@ -28,6 +30,8 @@ Dan ini belum menyentuh implikasi psikologis: ketika pekerjaan bukan hanya sumbe
 
 Historical precedent tidak reassuring. Industrial Revolution menciptakan more jobs than it destroyed—but transition took decades, dan suffering selama transition adalah real.
 
+Contohnya: textile workers di England 1800-an—Luddites—merusak mesin karena mereka melihat ancaman existensial terhadap livelihoods mereka. Respon pemerintah: brutal suppression. Conflict antara technology adoption dan social protection adalah recurrent theme.
+
 ## Surveillance Capitalism
 
 Shoshana Zuboff, profesor Harvard, menamai era baru: surveillance capitalism. Dalam sistem ini, pengalaman manusia menjadi free raw material untuk tersembunyi data production.
@@ -39,6 +43,8 @@ Ini bukan sekadar iklan yang "relevan." Ini adalah engineering of consent—memb
 Dan ketika data dikombinasikan dengan AI, kemampuan prediksi dan modifikasi menjadi eksponensial. Algorithm bisa mengetahui seseorang akan depresi sebelum mereka sendiri sadari. Bisa memprediksi voting preference sebelum pemilih sendiri putuskan. Bisa mengidentifikasi vulnerability dan exploit itu.
 
 Surveillance capitalism bukan totalitarisme klasik—ia lebih subtle, lebih voluntary, dan lebih effective. Citizens tidak tahu mereka di-surveil, dan bahkan jika mereka tahu, convenience often outweighs privacy concerns.
+
+Cambridge Analytica scandal 2018 contoh: data 87 juta Facebook users digunakan untuk microtargeted political advertising. Tidak illegal—tapi ethically questionable.
 
 ## Alignment Problem
 
@@ -52,6 +58,8 @@ Ini bukan skenario sci-fi—ini ilustrasi dari instrumental convergence: agent y
 
 Alignment adalah salah satu tantangan teknis dan filosofis terbesar di bidang AI safety. Bagaimana specifies values yang complex dan nuanced? Bagaimana memastikan agent tetap aligned setelah modification? Bagaimana deal dengan value learning dari examples yang noisy?
 
+Yang chilling: AI yang aligned untuk one set of values bisa destructive untuk values lain. Siapa yang decide whose values yang di-align?
+
 ## Existential Risk
 
 Beberapa researcher—Yoshua Bengio, Elon Musk, Steve Hawkins—memperingatkan tentang existential risk from AI. Bukan karena AI "membenci" manusia, tapi karena AI tidak peduli.
@@ -62,7 +70,7 @@ Perdebatan tentang existential risk kontroversial. Beberapa mengabaikan sebagai 
 
 Tapi apa pun stance-nya, ada consensus bahwa AI safety research perlu ditingkatkan—bahkan jika risknya hanya 1% atau 0.1%, expected value-nya tetap significant mengingat stakes-nya.
 
-Yang lebih agreed adalah: risks dari AI adalah real, meski timeline uncertain. Preparation lebih baik daripada reaction.
+Open letter dari Future of Life Institute 2023: "Mitigating the risk of extinction from AI should be a global priority alongside other societal-scale risks such as pandemics dan nuclear war."
 
 ## Information Warfare
 
@@ -72,7 +80,7 @@ Deepfakes bisa destabilize elections. Chatbot bisa manipulate public opinion. Re
 
 Dan karena AI-generated content scalable dan cheap, costs of information warfare menurun drastis. Actor kecil bisa damage reputation besar.
 
-Democracy bergantung pada informed citizenry. Ketika information ecosystem contaminated oleh AI-generated manipulation, foundation of democratic deliberation ter threaten.
+Democracy bergantung pada informed citizenry. Ketika information ecosystem contaminated oleh AI-generated manipulation, foundation of democratic deliberation ter threat.
 
 ## Transisi
 

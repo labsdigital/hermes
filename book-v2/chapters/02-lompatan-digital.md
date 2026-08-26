@@ -14,6 +14,8 @@ Miniaturisasi adalah kunci. Dengan transistor, komponen elektronik bisa dikemas 
 
 Gordon Moore, co-founder Intel, mengamati pola ini tahun 1965 dan memprediksikan bahwa jumlah transistor pada chip akan berlipat ganda setiap dua tahun. Prediksi itu—yang dikenal sebagai Hukum Moore—terpenuhi hampir tanpa pengecualian selama lima dekade. Setiap doublings membuka kemungkinan baru: dari kalkulator saku sampai smartphone di saku, dari superkomputer seukuran ruangan sampai komputer di setiap rumah.
 
+Hukum Moore bukan hukum alam—ia prediksi berbasis tren industri. Tapi prediksi itu menjadi self-fulfilling prophecy: industry invested heavily dalam R&D untuk mempertahankan trajectory ini. Hasilnya: penurunan biaya komputasi sebesar 10x setiap dekade.
+
 ## Momennya Turing
 
 Alan Turing, matematikawan Inggris yang membantu memecahkan kode Enigma selama Perang Dunia II, mengajukan pertanyaan yang sederhana tapi mendalam: apakah mesin bisa berpikir?
@@ -25,6 +27,8 @@ Tes itu—Turing Test—kontroversial. Banyak yang bersikeras bahwa passing test
 Turing juga merancang "Universal Turing Machine"—model teoretis komputer yang bisa mensimulasikan algoritma apapun. Ide ini fundamental: komputer bukan mesin khusus, tapi mesin universal yang bisa diprogram untuk tugas apapun. Konsep ini, lahir dari matematika murni, akan menjadi landasan seluruh industri teknologi modern.
 
 Yang sering terlupakan adalah peran wanita dalam early computing. Ada Lovelace di abad ke-19, Grace Hopper di abad ke-20—mereka adalah programmer pertama, dan visi mereka melampaui teknologi zaman mereka. Hopper, misalnya, mengembangkan compiler pertama, yang memungkinkan programmer menulis kode dalam bahasa yang mendekati manusia, bukan machine code.
+
+Kontribusi women dalam computing sering erased dari narrative mainstream. Padahal, program pertama yang dijalankan di Harvard Mark I computer ditulis oleh Grace Hopper. Dan ENIAC programmers—enam wanita—harus membuktikan bahwa mereka capable setelah dianggap "tidak cocok" untuk pekerjaan teknis.
 
 ## Internet sebagai Sistem Saraf Global
 
@@ -58,6 +62,10 @@ Apple II (1977), IBM PC (1981), dan Windows (1985) membuat komputer masuk rumah 
 
 Revolusi ini memiliki dampak sosial yang dalam. Pertama kali dalam sejarah, individu memiliki akses ke kekuatan komputasi yang sebelumnya hanya tersedia untuk institusi besar. Ini democratization knowledge yang comparable dengan penemuan press oleh Gutenberg.
 
+Steve Jobs dan Steve Wozniak memulai Apple di garasi—the archetype American dream through technology. Bill Gates dan Paul Allen memprogram Altair 8800, founding Microsoft. Larry Page dan Sergey Brin mengembangkan Google di asrama PhD Stanford.
+
+Pattern berulang: young people dengan vision dan technical skills mengubah world through technology.
+
 ## Cloud Computing
 
 Tahun 2000-an membawa gelombang berikutnya: cloud computing. Daripada menyimpan data dan menjalankan program di komputer lokal, pengguna bisa mengakses resources di server remote. Amazon Web Services (AWS), didirikan tahun 2006, menjadi pioneer yang membuktikan model ini scalable dan profitable.
@@ -65,6 +73,8 @@ Tahun 2000-an membawa gelombang berikutnya: cloud computing. Daripada menyimpan 
 Cloud computing mengubah economics of computing. Startup tidak perlu membeli server—mereka bisa menyewa capacity sesuai kebutuhan. Ini mengurangi barrier to entry secara signifikan dan memungkinkan inovasi yang lebih cepat.
 
 Tapi cloud juga mengkonsolidasi power. Few companies—Amazon, Google, Microsoft—controls sebagian besar infrastructure digital dunia. Dan seperti sebelumnya, concentration of infrastructure membawa concentration of control.
+
+Platform economies emergence: Airbnb, Uber, YouTube. Mereka tidak owned physical assets—mereka owned platforms yang connect providers dengan consumers. Ini model bisnis baru yang powerful.
 
 ## Transisi
 

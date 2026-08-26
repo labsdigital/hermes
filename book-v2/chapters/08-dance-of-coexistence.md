@@ -4,6 +4,8 @@
 
 Hubungan manusia dan AI bukanlah static state—ia adalah proses dinamis yang terus direnegosiasikan. Dan ada tiga pola dasar yang emerges: dependency, partnership, dan competition. Masing-masing memiliki implikasi power yang berbeda.
 
+Penting untuk dipahami: tiga model ini bukan mutually exclusive. Satu society bisa mengalami ketiganya simultaneously dalam domains berbeda.
+
 ## Dependency Model
 
 Dalam dependency model, manusia menjadi increasingly reliant pada AI untuk decision-making. Navigation, recommendation, diagnosis, hiring, lending—semua semakin delegate ke algorithm.
@@ -20,7 +22,7 @@ Contoh: pilot modern rely heavily pada autopilot. Ini meningkatkan safety—huma
 
 Dalam healthcare, doctor menggunakan AI untuk diagnosis. AI dapat detect patterns yang human misses. Tapi final decision tetap harus human—dengan consideration untuk patient values, preferences, dan context.
 
-Dependency idealnya adalah symbiotic: human dan AI masing-masing compensate weaknesses lain.
+Dependency idealnya adalah symbiotic: human dan AI masing-masing compensate weaknesses lain. Tapi saat ini, banyak aplikasi AI lebih condong ke arah passive dependency—human sebagai passenger, bukan pilot.
 
 ## Partnership Model
 
@@ -36,6 +38,10 @@ Partnership memerlukan desain yang intentional—AI ditempatkan sebagai tool aug
 Yang critical: partnership memerlukan equality dalam sense bahwa kedua party contribute uniquely. Jika AI dominate sepenuhnya, itu bukan partnership—itu dependency disguised.
 
 Di bidang creativity, partnership muncul sebagai "co-creation": human memberikan vision dan curation, AI memberikan generation dan variation. Hasilnya berbeda dari keduanya单独.
+
+Contoh: seniman menggunakan Midjourney untuk generate visual concepts, lalu refine dengan traditional media. Musician menggunakan AI untuk harmonic suggestions, tapi emotional arc tetap human decision.
+
+Partnership model memerlukan education yang mempersiapkan human untuk collaborate dengan AI, bukan compete dengan AI.
 
 ## Competition Model
 
@@ -55,6 +61,10 @@ Jika AI ownership concentrated dalam few corporations, mereka dapat controlling 
 
 Amazon menggunakan AI untuk monitor warehouse workers—tracking productivity, detecting "time off task," bahkan mem-predict kemungkinan union organizing. Ini adalah competition model di mana human menjadi ancillary kepada system.
 
+Transportasi sector menghadapi disruption: ride-hailing apps sudah menggantikan many taxi drivers. Autonomous trucks threaten trucking industry yang employment millions.
+
+Yang critical: transition costs tidak distributed equally. Workers yang displaced jarang mendapatkan retraining yang adequate. Corporations yang benefiting dari automation rarely share gains secara equitable.
+
 ## Power Dynamics
 
 Salah satu pertanyaan politik paling penting di era AI: siapa yang memegang control?
@@ -66,6 +76,8 @@ Ini menciptakan asymmetry: yang拥有 AI memiliki kemampuan untuk shape reality 
 Demokrasi memerlukan distributed power. AI yang terkonstruksi secara eksklusif oleh少数 bisa mengerosi accountability mechanisms.
 
 Yang diperlukan adalah democratic governance atas AI—bukan hanya regulation, tapi participation dalam decision-making tentang development dan deployment.
+
+Open-source movement sebagai counterbalance: Linux, Python, Hugging Face models. Tapi resource-intensive AI development tetap dominated oleh big tech.
 
 ## The Automation Paradox
 
@@ -81,6 +93,8 @@ Contoh: autonomous vehicles. Dalam ideal scenario, mereka lebih safe dari human 
 
 Hybrid approaches—di mana AI handle routine dan human handle exceptions—sering lebih robust.
 
+Flight systems sudah menggunakan "manual override" design—pilot selalu bisa take control.同样的 principle bisa apply ke AI systems lainnya.
+
 ## Cultural Variations
 
 Relationship model bervariasi across cultures.
@@ -91,7 +105,9 @@ Eastern collectivism (misalnya, Japan, Korea) lebih sering melihat AI sebagai so
 
 Japan memiliki konsep "robot rights" dan diskusi tentang legal status untuk advanced AI. Ini bukan science fiction—ini reflection dari cultural difference dalam memandang machine-human relationship.
 
-Understanding variasi ini penting untuk global governance yang inclusive.
+China menggunakan AI untuk social governance—surveillance, credit scoring, public order. Relationship model berbeda: AI sebagai instrument state capacity.
+
+Understanding variasi ini penting untuk global governance yang inclusive. Satu model tidak cocok untuk semua contexts.
 
 ## Path Dependency
 
@@ -100,6 +116,8 @@ Pilihan early tentang AI architecture dan deployment bisa lock-in certain trajec
 Jika AI system dirancang untuk optimization efficiency, bukan wellbeing—biasanya karena incentive structures corporate—maka path dependency akan reinforces efficiency-focused outcomes.
 
 Counteracting path dependency memerlukan deliberate intervention: policy, education, public deliberation.
+
+Historical contoh: QWERTY keyboard suboptimal tapi locked-in karena network effects. Similar dynamics bisa terjadi dengan AI standards dan protocols.
 
 ## Transisi
 

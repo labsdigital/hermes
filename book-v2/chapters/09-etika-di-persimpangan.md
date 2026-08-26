@@ -16,6 +16,8 @@ Prinsip-prinsip tanpa enforcement mechanism hanyalah rhetoric.
 
 Contoh: Company A宣称 menggunakan "ethical AI framework," tapi algorithm mereka diskriminatif terhadap minority groups. Tanpa audit independent atau regulatory oversight, claims tidak berarti.
 
+Major tech companies memiliki AI ethics boards—tapi sering kali advisory only, tanpa binding authority. Conflict antara ethical principles dan profit motives real dan frequent.
+
 ## Governance Gap
 
 Teknologi bergerak lebih cepat dari regulasi. AI capabilities emerging every month—tapi legislative process takes years.
@@ -32,9 +34,13 @@ Tiap approach memiliki trade-offs. Ex-ante protection innovation. Ex-post terlal
 
 Yang dibutuhkan adalah adaptive governance—framework yang bisa evolve dengan teknologi, bukan kaku tapi juga bukan vacuous.
 
-EU AI Act adalah contoh attempt untuk ex-ante regulation. Mereka categorized AI systems berdasarkan risk level—dari minimal risk (chatbot) sampai unacceptable risk (social scoring). High-risk systems subject ke strict requirements.
+EU AI Act adalah example attempt untuk ex-ante regulation. Mereka categorized AI systems berdasarkan risk level—dari minimal risk (chatbot) sampai unacceptable risk (social scoring). High-risk systems subject ke strict requirements.
 
 Tapi Act juga criticism: terlalu narrow scope, enforcement mechanisms weak, dan跟不上 pace innovation.
+
+China memiliki approach berbeda: state-controlled AI development dengan strict content governance. Efektif untuk control tapi controversial untuk freedoms.
+
+AS approach lebih fragmented: sector-specific regulations, executive orders, dan voluntary commitments.
 
 ## The Alignment Challenge
 
@@ -50,15 +56,19 @@ Contohnya: content moderation. Platform harus decide apa yang allowed. Setiap de
 
 Yang necessary adalah transparent value choices, dengan accountability kepada affected communities.
 
+RLHF (Reinforcement Learning from Human Feedback) attempt untuk align AI dengan human preferences. Tapi human raters themselves memiliki biases dan cultural limitations.
+
 ## Global South Perspective
 
 Percakapan AI ethics didominasi oleh Global North—AS, Eropa, China. Tapi Global South seringkali adalah yang paling terkena dampak: data extracted, models deployed, consequences borne—tanpa participation dalam design.
 
-Contoh: facial recognition di Africa trained pada datasets yang tidak representative, leading إلى higher error rates untuk dark-skinned individuals. Atau agricultural AI optimized untuk industrial farming, irrelevant untuk smallholder farmers.
+Contoh: facial recognition di Africa trained pada datasets yang tidak representative, leading kepada higher error rates untuk dark-skinned individuals. Atau agricultural AI optimized untuk industrial farming, irrelevant untuk smallholder farmers.
 
 Inclusive AI ethics memerlukan structural change: bukan sekadar "diversity in tech," tapi redistribution of power dalam menentukan arah teknologi.
 
-What called "universal values" often adalah Western liberal individualism. Non-Western values—communitarianism, interdependence, harmony dengan nature—sering excluded dari discourse.
+Data colonialism critique: Western companies extract data dari Global South, build models, sell back services. Benefits tidak distributed equally.
+
+African AI researchers mengadvocate untuk "decolonizing AI"—memastikan African perspectives, values, dan needs reflected dalam AI development.
 
 ## Precautionary vs Promethean
 
@@ -70,9 +80,9 @@ Dua pendekatan filosofis terhadap AI risk:
 
 Perdebatan ini bukan antara "pro" dan "anti" AI—ia adalah tentang timing, pace, dan distribution of responsibility.
 
-Precautionary sering dikritik sebagai obstacle innovation. Promethean sering dikritik sebagai reckless. Truth mungkin berada di somewhere in between—tapi where exactly itu adalah pertanyaan politik, bukan teknis.
-
 Yang agreed: uncertainty tentang long-term risks necessitates caution. Tapi caution tidak boleh paralyzed innovation yang bisa save lives sekarang.
+
+Pascal's wager analogy: jika risk existential tapi probability low, expected value argument masih strong untuk precaution.
 
 ## Corporate Self-Regulation
 
@@ -84,6 +94,8 @@ Yang diperlukan adalah accountability mechanisms external: regulation, litigatio
 
 Contoh: Facebook (Meta) faces lawsuits atas algorithmic bias, mental health impacts, election interference. Legal accountability bisa lebih effective daripada self-regulation.
 
+Shareholder activism emerging: investors demanding AI risk disclosure dan governance reforms.
+
 ## Public Participation
 
 Democratic legitimacy memerlukan public participation dalam decisions tentang AI deployment.
@@ -91,6 +103,8 @@ Democratic legitimacy memerlukan public participation dalam decisions tentang AI
 Citizen assemblies—randomly selected citizens yang deliberates sobre AI policy—emerging sebagai model promising. Ireland menggunakan citizen assembly untuk constitutional conventions tentang abortion dan climate change. Model ini bisa adapt untuk AI governance.
 
 Education juga critical: public AI literacy necessary untuk meaningful participation. Tanpa understanding basic concepts, public mudah manipulated oleh technocratic narratives.
+
+Journalism role: investigative reporting tentang AI impacts, holding power accountable.
 
 ## Transisi
 

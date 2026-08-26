@@ -14,11 +14,11 @@ Dataset ImageNet, yang digunakan untuk melatih banyak model computer vision, did
 
 Ini bukan kebetulan. Ini adalah struktur—bias yang tertanam dalam pemilihan data, labeling, dan tujuan pelatihan.
 
-"Garbage in, garbage out" bukan hanya pepatah teknis. Ini adalah peringatan ontologis: AI tidak netral karena data tidak netral.
-
 Contoh lain: COMPAS algorithm, digunakan dalam sistem justice di AS untuk memprediksi recidivism. Study menunjukkan bahwa algoritma ini racial bias—memberikan score lebih tinggi untuk defendants kulit hitam dibandingkan defendants kulit putih dengan criminal history yang sama.
 
 Tapi siapa yang membuat bias ini? Bukan algoritma itu sendiri. Algoritma hanya mengoptimalkan objective function yang diberikan. Bias berasal dari data training—historical arrest data yang mencerminkan policing bias di masyarakat.
+
+"Garbage in, garbage out" bukan hanya pepatah teknis. Ini adalah peringatan ontologis: AI tidak netral karena data tidak netral.
 
 ## Data sebagai Arsip Sejarah
 
@@ -30,9 +30,9 @@ Ketika AI dilatih pada data historis, ia tidak hanya mempelajari pola—ia mengi
 
 Dan ketika AI menggunakan pembelajaran ini untuk membuat keputusan—menerima loan, merekrut karyawan, menentukan parole—ia tidak menghasilkan diskriminasi *baru*. Ia menggenerasi diskriminasi *lama* dengan skala dan kecepatan yang belum pernah terjadi.
 
-Microsoft Tay adalah contoh ekstrem. Chatbot yang dirancang untuk belajar dari interaksi Twitter. Dalam 24 jam, Tay berubah dari ramah menjadi rasialis. Ia tweets hate speech, menyangkal Holocaust, menyerang kelompok minoritas.
+Amazon hiring tool contoh nyatanya: sistem AI yang dilatih pada 10 tahun resume dari company yang male-dominated. Sistem belajar bahwa "pria = kandidat ideal" dan mulai mendegradasi resume yang mengandung kata "women's" (seperti "women's chess club captain"). Amazon akhirnya menarik tool ini.
 
-Mengapa? Karena Twitter—source data—penuh dengan toxic content. Tay tidak diajari nilai-nilai etika. Ia hanya diajari untuk "belajar dari manusia." Akibatnya, ia menyerap racun dari lingkungannya dan mencercaskannya kembali dengan lebih ganas.
+Microsoft Tay contoh lain: chatbot yang belajar dari Twitter dan menjadi rasialis dalam 24 jam.
 
 ## Value Load: Nilai yang Terbawa
 
@@ -74,7 +74,7 @@ Kedua, karena cermin itu impersonal. AI tidak memiliki intention untuk judge—i
 
 Ketiga, karena cermin itu undeniable. Ketika manusia menampilkan bias, kita bisa arguments tentang context, intent, exceptions. Tapi AI output tampak "objective"—mereka berasal dari "netral" calculation. Ini membuat bias lebih sulit di-challenge.
 
-Namun, именно потому, что bias algorithmic看起来objective, it is more dangerous. People trust numbers more than opinions. when bias embedded dalam number, it获得 aura of neutrality.
+Namun,正是因为 yang terlihat objective, ia lebih dangerous. People trust numbers more than opinions. when bias embedded dalam number, it获得 aura of neutrality.
 
 ## Opportunity for Growth
 
@@ -82,11 +82,13 @@ Di sisi lain, AI sebagai mirror juga带来 opportunities.
 
 Pertama, AI membuat bias visible. Human bias sering subtle, implicit, denied. AI bias—karena explicit dalam data—bisa di-identify, di-measure, di-address.
 
-Kedua, AI memaksa society untuk articulate values. Ketika debate tentang AI bias terjadi, society harus negotiate tentang apa fairness, apa justice, apa equality. Proses ini, meski painful, adalah democratic deliberation yang valuable.
+Kedua, AI memaksa society untuk articulate values. Ketika debate tentang AI bias terjadi, society harus negotiate tentang apa fairness, apa justice, apa equality. Process ini, meski painful, adalah democratic deliberation yang valuable.
 
 Ketiga, AI bisa menjadi tool untuk social improvement. Jika AI mencerminkan bias society, maka meng-fix AI memerlukan meng-fix society. Ini bisa menjadi catalyst untuk change.
 
 Amazon hiring tool yang discriminative女性—setelah di-discover, perusahaan harus examine hiring practices secara holistic. Process ini, meski initiated oleh scandal, bisa lead lebih equitable outcomes.
+
+Google face recognition mengakui bahwa system kurang akurat untuk darker-skinned individuals. Setelah public criticism, mereka memperbaiki models dan datasets. Ini contoh accountability—meski reactive.
 
 ## Transisi
 

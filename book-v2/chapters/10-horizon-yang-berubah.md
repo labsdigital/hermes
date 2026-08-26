@@ -17,6 +17,8 @@ Yang tidak disputed: progress экспоненциал. Yang disputed: apakah ad
 
 Singkatnya: nobody knows.
 
+Survey tahun 2022 terhadap AI researchers: median estimate untuk AGI adalah 2040-an. Tapi confidence intervals lebar—dari 2020-an sampai 2100-an.
+
 ## Singularity
 
 Ray Kurzweil mempopulerkan istilah "Singularity"—momen ketika AI melampaui kecerdasan manusia, leading kepada runaway intelligence growth yang unpredictable.
@@ -37,6 +39,8 @@ Beberapa arguments contre:
 
 Yang agreed: jika singularity terjadi, unpredictability akan extreme. Human ability untuk预测 post-singularity world limited.
 
+Historical analogies limited. Printing press, nuclear weapons, industrial revolution—masing-masing unprecedented dalam konteks mereka. AI mungkin unprecedented lagi.
+
 ## Superintelligence
 
 Nick Bostrom, dalam "Superintelligence: Paths, Dangers, Strategies," mengklasifikasikan kemungkinan trajectories:
@@ -51,6 +55,8 @@ Bostrom juga mengidentifikasi "control problem"—bagaimana ensuring superintell
 
 Algorithms yang kita buat bisa menjadi lebih smart dari kita. Tapi bagaimana memastikan mereka tetap align dengan interests kita? Ini analogous kepada parent yang children menjadi lebih smart dari parent—tapi dalam scale yang extreme.
 
+Key insight: superintelligence tidak otomatis beneficial. Intelligence adalah instrument—bukan value. Without proper values, superior intelligence bisa produce superior harm.
+
 ## Transhumanism
 
 Transhumanism adalah gerakan yang advocating untuk enhancing human capabilities melalui teknologi: brain-computer interfaces, genetic engineering, life extension.
@@ -61,6 +67,8 @@ Beberapa visionaries (Kurzweil) melihat merger human-AI sebagai fate. Yang lain 
 
 Brain-computer interface seperti Neuralink bertujuan untuk bandwidth tinggi connection antara human brain dan cloud. Ini bisa enhance cognition, tapi juga menciptakan new forms의 dependency dan vulnerability.
 
+Ethical questions: enhancement access—will only rich dapat enhanced cognition? Create biological caste system?
+
 ## The Uncertainty Principle
 
 Ketidakpastian tentang AGI dan beyond bukan weakness—it's reality. Intelligence adalah domain dengan fundamental unpredictability.
@@ -69,7 +77,7 @@ Sama seperti tidak mungkin memprediksi persis evolusi biologis 100 juta tahun ya
 
 Yang bisa dilakukan: prepare untuk multiple scenarios, build resilience, maintain agency dalam shaping outcome.
 
-Historical analogies limited. Printing press, nuclear weapons, industrial revolution—masing-masing unprecedented dalam konteks mereka. AI mungkin unprecedented lagi.
+Scenario planning useful: best case (AI solve grand challenges), base case (gradual integration), worst case (misalignment disasters).
 
 ## Preparation Strategies
 
@@ -83,6 +91,8 @@ Meski uncertainty, beberapa strategies identified oleh researchers:
 
 Yang critical: preparation harus dimulai sekarang, bukan setelah AGI dekat. Institutional memory dan expertise take years to build.
 
+Lockheed Martin principle: "You can't fix it if you didn't build it in." Safety harus built-in, bukan added-on.
+
 ## Philosophical Implications
 
 AGI memaksa reexamination pertanyaan philosophical mendasar:
@@ -92,6 +102,8 @@ AGI memaksa reexamination pertanyaan philosophical mendasar:
 - Apa meaning of human project jika intelligence tidak exclusive?
 
 Beberapa philosophers argue bahwa AI justru freeing humanity dari necessity untuk define ourselves melalui cognitive superiority. Meaning bisa comes dari relationships, creativity, experience—bukan dari computational power.
+
+Jika AI bisa melakukan apapun yang human bisa do (plus more), apa yang uniquely human? Mungkin: embodiment, mortality, vulnerability, finitude.
 
 ## Transisi
 

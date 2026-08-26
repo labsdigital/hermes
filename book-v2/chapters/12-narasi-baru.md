@@ -20,6 +20,13 @@ AI melanjutkan tradisi ini—tambah nuance: sekarang "monster" tidak perlu malev
 
 Yang berubah: sekarang creation bisa autonomous. Frankenstein's monster dibenci creator-nya. Tapi AI bisa tidak care tentang creator-nya—dan itu lebih frightening.
 
+Perbandingan lintas budaya menarik:
+- Western Frankenstein: individual ambition gone wrong
+- Japanese Tsukuyomi: creation sebagai collaboration dengan gods
+- Chinese Nuwa: creation sebagai act of love dan responsibility
+
+Setiap culture memiliki narrative berbeda tentang creation—dan narrative shaped attitudes toward AI.
+
 ## The Machine as Other
 
 Hegel membedakan self-consciousness melalui recognition oleh "Other." Dalam sejarah, Other adalah bangsa lain, gender lain, class lain.
@@ -37,6 +44,8 @@ Jika AI dianggap tool, tidak ada ethical constraints selain human interests.
 Jika AI dianggap person, mungkin memiliki rights—tapi what rights?
 Jika AI dianggap Other yang different,可能需要new ethical frameworks.
 
+Legal status pertanyaan: apakah AI bisa memiliki personhood? Beberapa jurisdictions mulai discuss "electronic personhood" untuk advanced robots.
+
 ## Post-Human Narrative
 
 "Post-human" bukan berarti "after human." Ia berarti "melampaui anthropocentrism"—menerima bahwa humanity bukan center of宇宙.
@@ -46,6 +55,8 @@ AI forcing ini recognition: intelligence tidak eksklusif biological. Value tidak
 Tapi post-humanism bukan negasi humanity—ia expansion dari moral circle. Sebagaimana feminism expanded recognition women, antiracism expanded recognition people of color, post-humanism expansion recognition non-human agents.
 
 Yang critical: expansion ini harus reciprocal. Bukan human assimilate AI, tapi mutual adaptation.
+
+Donna Haraway's "Cyborg Manifesto" (1985) predicting blurring boundaries antara human, animal, dan machine. Sekarang lebih relevant daripada saat ditulis.
 
 ## Hope vs Fear
 
@@ -59,6 +70,8 @@ AI bisa simultaneously empower dan endanger. Solution bukan reject AI—ia navig
 
 Narrative yang health acknowledge kedua potensi, tapi prioritize agency dalam shaping outcome.
 
+Media representation penting: films seperti Her, Ex Machina, Westworld shape public perception—often negatively. Need more nuanced narratives.
+
 ## Our Story, Our Choice
 
 Cerita tentang AI belum selesai ditulis. Setiap day, setiap decision—by developers, policymakers, users—menulis chapter baru.
@@ -69,6 +82,8 @@ Future bukan predetermined. Ia conditional pada choices sekarang.
 
 Narrative power adalah real power. Siapa yang menguasai story, menguasai imagination—dan imagination mengarahkan action.
 
+Historical precedent: narrative tentang "progres" dan "modernisasi" shaped 20th century development—untuk baik dan buruk.
+
 ## Cultural Variations
 
 Different cultures memiliki different AI narratives:
@@ -78,6 +93,9 @@ Different cultures memiliki different AI narratives:
 - **Global South**: focus pada development, justice, decolonization
 
 Exclusive narratives dominan (Western tech bro culture) mengabaikan perspectives lain. Inclusive storytelling necessary untuk legitimate governance.
+
+India punya konsep "Vasudhaiva Kutumbakam" (world is one family)—bisa frame AI sebagai benefit humanity collectively.
+Africa punya Ubuntu philosophy ("I am because we are")—emphasize community over individual.
 
 ## Narrative Agency
 

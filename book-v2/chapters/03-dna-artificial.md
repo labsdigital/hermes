@@ -2,7 +2,7 @@
 
 ## Hook
 
-Di dalam setiap model bahasa besar—GPT-4, Claude 3, Llama 3—terdapat jaringan saraf buatan dengan ratusan miliar parameter. Bayangkan setiap parameter adalah butir pasir. Seluruh jaringan akan mengisi beberapa stadion olahraga. Dan di antara miliaran butir pasir itu, tersimpan pola-pola yang menyerupai—bukan meniru, tapi *menyerupai*—cara otak manusia memproses bahasa,reasoning, dan creativity.
+Di dalam setiap model bahasa besar—GPT-4, Claude 3, Llama 3—terdapat jaringan saraf buatan dengan ratusan miliar parameter. Bayangkan setiap parameter adalah butir pasir. Seluruh jaringan akan mengisi beberapa stadion olahraga. Dan di antara miliaran butir pasir itu, tersimpan pola-pola yang menyerupai—bukan meniru, tapi *menyerupai*—cara otak manusia memproses bahasa, reasoning, dan creativity.
 
 Tapi apa sebenarnya "jaringan saraf" itu? Dan mengapa struktur yang terinspirasi dari biologi bisa menghasilkan perilaku yang tampaknya "pintar"?
 
@@ -18,6 +18,8 @@ Lapisan pertama dalam image recognition network bisa mendeteksi tepi dan sudut. 
 
 Istilah "deep learning" mengacu pada arsitektur dengan banyak lapisan tersembunyi. Semakin dalam jaringan, semakin abstrak representasi yang bisa dipelajari. Tapi "deep" juga berarti lebih sulit dilatih—memerlukan lebih banyak data, lebih banyak compute, dan algoritma yang lebih sophisticated.
 
+Yang menarik: neurons dalam biological brain juga organized dalam layers—from retina sampai visual cortex. Deep learning tidak hanya inspired by brain—it *approximates* brain architecture dalam beberapa hal.
+
 ## Backpropagation: Cara Mesin "Belajar"
 
 Bagaimana mesin belajar? Jawabannya: dengan kesalahan.
@@ -32,7 +34,9 @@ Backpropagation adalah algoritma inti di balik pembelajaran mesin modern. Ditemu
 
 Setiap iterasi, jaringan menjadi sedikit lebih akurat. Seperti anak kecil yang belajar berjalan—jatuh, bangkit, coba lagi. Bedanya, mesin bisa "jatuh" jutaan kali dalam sehari. Dan karena komputer bisa mengulang dengan kecepatan luar biasa, pembelajaran yang membutuhkan tahun bagi manusia bisa selesai dalam jam bagi mesin.
 
-Yang mengejutkan: jaringan yang dilatih dengan cara ini—tanpa diprogram secara eksplisit untuk memahami tata bahasa, logika, atau fakta—mulai menunjukkan perilaku yang tampak seperti pemahaman. Bukan pemahaman manusia, tapi sesuatu yang berbeda: pattern recognition dalam skala yang belum pernah terjadi sebelumnya.
+Yang revolusioner: backpropagation memungkinkan机器 untuk "belajar" dari examples tanpa diprogram secara eksplisit untuk setiap kemungkinan input. Ini berbeda dari program tradisional yang memerlukan explicit rules untuk setiap scenario.
+
+Contohnya: programmer tradisional harus menulis aturan "jika ada whiskers dan telinga segitiga, maka kucing." Dengan neural network,机器 hanya perlu melihat thousands of cat images dan learn sendiri apa yang membedakan cat dari dog.
 
 ## Transformer: Revolusi Attention
 
@@ -49,6 +53,8 @@ Ini revolusi karena:
 
 Transformers adalah arsitektur di balik GPT, BERT, Claude, dan sebagian besar model AI modern. Tanpanya, tidak akan ada chatbot yang bisa berkonverasi koheren, tidak akan ada code assistant yang bisa menulis program, tidak akan ada model multimodal yang bisa memahami gambar dan teks secara bersamaan.
 
+Paper "Attention Is All You Need" adalah salah satu paper paling cited dalam history computer science—lebih dari 80.000 citations. Ini menunjukkan impact fundamental-nya.
+
 ## Scale Is All You Need
 
 Tahun 2020, peneliti dari Google dan Universitas Washington menerbitkan paper yang judulnya provokatif: "Scaling Laws for Neural Language Models."
@@ -61,6 +67,8 @@ GPT-3, dengan 175 miliar parameter, menunjukkan kemampuan yang belum pernah terl
 
 Kemampuan emergent ini—kemampuan yang muncul tiba-tiba ketika skala mencapai threshold—adalah salah satu temuan paling menarik dalam AI modern. Misalnya, model kecil tidak bisa melakukan few-shot learning (belajar dari sedikit contoh). Tapi model besar bisa. Ini bukan karena fitur ditambahkan secara eksplisit—ia emerg dari scale.
 
+Implikasi: jika scaling laws continue berlaku, maka semakin besar compute dan data, semakin capable AI akan become. Ini menciptakan race dynamics antara companies dan countries.
+
 ## Multimodal AI
 
 Perkembangan terbaru membawa AI dari text-only ke multimodal. Model seperti GPT-4V, CLIP, dan DALL-E bisa memahami dan generate across multiple modalities: text, image, audio, bahkan video.
@@ -68,6 +76,8 @@ Perkembangan terbaru membawa AI dari text-only ke multimodal. Model seperti GPT-
 Ini bukan sekadar menambahkan capability baru. Ini mengubah nature dari intelligence itu sendiri. Human cognition inherently multimodal—we see, hear, touch, dan process secara simultaneous. AI yang multimodal lebih mendekati cara manusia memahami dunia.
 
 Tapi multimodal juga membawa新的挑战. Bagaimana memastikan consistency across modalities? Bagaimana menghindari hallucination di mana model generate informasi yang plausible tapi salah? Ini adalah area penelitian aktif.
+
+Contohnya: model bisa describe gambar dengan accurate, tapi bisa juga generate gambar yang tidak consistent dengan description. Ini menunjukkan bahwa "understanding" masih superficial.
 
 ## Limits of Current AI
 
@@ -82,6 +92,8 @@ Meski kemajuan pesat, AI modern memiliki batas fundamental:
 4. **No intrinsic motivation**—AI tidak memiliki goals sendiri. Mereka mengoptimalkan objective function yang diberikan, bukan desires yang emerge dari embodiment.
 
 Batasan-batasan ini penting untuk diingat. Mereka mencegah anthropomorphization yang naif—kecenderungan untuk menganggap AI sebagai entitas yang "pikir" atau "merasakan" seperti manusia.
+
+Tapi batasan ini juga bukan final—researchers terus bekerja pada embodied AI, persistent memory, dan intrinsic motivation. Mungkin someday, batasan ini akan overcome.
 
 ## Transisi
 

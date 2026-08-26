@@ -4,7 +4,7 @@
 
 Tahun 2021, AlphaFold dari DeepMind memprediksi struktur 3D hampir semua protein yang diketahui—masalah yang selama 50 tahun dianggap sebagai "grand challenge" dalam biologi. Dalam satu paper, ribuan protein di solve. Penelitian kanker, penyakit genetik, dan drug discovery—semua mendapat percepatan yang belum pernah terjadi.
 
-Ini adalah contoh micro dari potensi makro AI: bukan pengganti manusia, tapi amplifier kapacitas manusia.
+Ini adalah contoh micro dari potensi makro AI: bukan pengganti manusia, tapi amplifier kapasitas manusia.
 
 ## Healthcare Revolution
 
@@ -32,6 +32,8 @@ Di Global South, di mana teacher shortage adalah chronic problem, AI bisa menjad
 
 Tapi risks juga ada: digital divide, data privacy, dan over-reliance pada technology. AI tidak boleh menjadi excuse untuk under-investment dalam teacher training dan infrastructure.
 
+India contoh menarik: startup seperti BYJU'S menggunakan AI untuk personalized learning, tapi juga controversy tentang data practices dan effectiveness claims.
+
 ## Science Acceleration
 
 Sains adalah iterative process: hypothesis, experiment, analysis, refinement. AI bisa mempercepat setiap step.
@@ -43,6 +45,8 @@ Dan yang paling menarik: AI bisa menemukan patterns yang tidak terlihat oleh man
 Di CERN, AI digunakan untuk analyze data dari Large Hadron Collider—mendeteksi patterns yang menandai Higgs boson. Tanpa AI, analisis would take years; dengan AI, detection accelerated significantly.
 
 AI juga membantu literature review—menyintesis thousands papers dalam hours, mengidentifikasi gaps, dan suggesting research directions. Ini tidak replace scientist, tapi enhance ability untuk navigate complexity.
+
+Nature publishing AI-generated research proposals—ethical controversy tapi juga opportunity.
 
 ## Creative Augmentation
 
@@ -58,6 +62,8 @@ Yang lebih penting: AI bisa democratize creative expression. Orang yang tidak me
 
 Tapi questions tentang authorship dan originality tetap relevant. Jika AI generate poem berdasarkan millions of existing poems—siapa author? User prompt? AI system? Training data contributors?
 
+Copyright office AS menolak registration untuk works generated solely oleh AI—human authorship required.
+
 ## Global Challenges
 
 Climate change, food security, energy transition, pandemic preparedness—ini adalah problema compless yang memerlukan solution sistemik.
@@ -72,6 +78,8 @@ Di bidang climate, AI digunakan untuk optimize battery storage, design lebih eff
 
 Tapi again—ini bukan silver bullet. AI adalah tool, bukan savior. Solusi memerlukan political will, economic investment, dan social coordination.
 
+China menggunakan AI untuk surveillance environmental compliance—efektif tapi controversial karena privacy implications.
+
 ## Democratic Potential
 
 AI juga memiliki potensi untuk strengthen democracy, bukan hanya威胁:
@@ -80,6 +88,8 @@ AI juga memiliki potensi untuk strengthen democracy, bukan hanya威胁:
 - Civic engagement: Chatbots dapat answer citizen questions tentang services, rights, processes.
 - Fact-checking: AI dapat detect misinformation, though arms race dengan generators.
 - Accessibility: AI-powered tools dapat membantu disabled persons participate lebih fully dalam civic life.
+
+Estonia menggunakan AI untuk government services—efficient tapi questions tentang digital divide untuk elderly populations.
 
 Yang critical: access kepada AI tools harus distributed, tidak concentrated. Jika hanya elite yang benefit, AI dapat memperdalam inequality.
 
