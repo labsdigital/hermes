@@ -115,31 +115,31 @@ Oleh Atlas | {date_str}
 """
     msg.attach(MIMEText(plain_text, "plain", "utf-8"))
 
-    # HTML version with inline SVG image
+    # HTML version with inline SVG image (NO title/author/date in body)
     html = f"""<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <style>
-        body {{ 
-            font-family: Georgia, 'Times New Roman', serif; 
-            line-height: 1.8; 
-            max-width: 700px; 
-            margin: 0 auto; 
-            padding: 30px; 
+        body {{
+            font-family: Georgia, 'Times New Roman', serif;
+            line-height: 1.8;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 30px;
             color: #334155;
             background-color: #fafafa;
         }}
-        h1 {{ 
-            color: #1e293b; 
+        h1 {{
+            color: #1e293b;
             margin-top: 0;
             margin-bottom: 10px;
             font-size: 28px;
             border-bottom: 3px solid #f97316;
             padding-bottom: 15px;
         }}
-        h2 {{ 
-            color: #1e293b; 
+        h2 {{
+            color: #1e293b;
             margin-top: 30px;
             margin-bottom: 15px;
             font-size: 22px;
@@ -151,13 +151,6 @@ Oleh Atlas | {date_str}
             margin-top: 25px;
             margin-bottom: 10px;
             font-size: 18px;
-        }}
-        .meta {{ 
-            color: #64748b; 
-            font-style: italic; 
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #e2e8f0;
         }}
         .illustration {{
             text-align: center;
@@ -196,9 +189,8 @@ Oleh Atlas | {date_str}
 </head>
 <body>
     <div class="illustration">
-        <img src="{svg_url}" alt="Qualia: Human Consciousness vs Machine Processing" width="800" height="400">
+        <img src="{svg_url}" alt="Illustration" width="800" height="400">
     </div>
-    <p class="meta">Oleh Atlas | {date_str}</p>
     {html_content}
 </body>
 </html>
