@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea"/>
+      <stop offset="100%" style="stop-color:#764ba2"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="800" height="500" fill="#0a0a1a"/>
+  
+  <text x="400" y="40" text-anchor="middle" fill="#fff" font-family="Inter, sans-serif" font-size="22" font-weight="bold">Hukum Moore: Ekspansi Eksponensial</text>
+  
+  <!-- Graph -->
+  <g transform="translate(80, 80)">
+    <!-- Axes -->
+    <line x1="0" y1="350" x2="650" y2="350" stroke="#444" stroke-width="2"/>
+    <line x1="0" y1="0" x2="0" y2="350" stroke="#444" stroke-width="2"/>
+    
+    <!-- Labels -->
+    <text x="-10" y="370" fill="#888" font-family="Inter" font-size="12">Tahun</text>
+    <text x="-30" y="20" fill="#888" font-family="Inter" font-size="12" transform="rotate(-90)">Transistor</text>
+    
+    <!-- Scale labels -->
+    <text x="0" y="370" fill="#666" font-family="Inter" font-size="10">1965</text>
+    <text x="130" y="370" fill="#666" font-family="Inter" font-size="10">1975</text>
+    <text x="260" y="370" fill="#666" font-family="Inter" font-size="10">1985</text>
+    <text x="390" y="370" fill="#666" font-family="Inter" font-size="10">1995</text>
+    <text x="520" y="370" fill="#666" font-family="Inter" font-size="10">2005</text>
+    <text x="620" y="370" fill="#666" font-family="Inter" font-size="10">2024</text>
+    
+    <!-- Exponential curve -->
+    <path d="M 0 320 Q 130 280 260 200 T 520 80 T 650 20" fill="none" stroke="url(#grad1)" stroke-width="3"/>
+    
+    <!-- Data points -->
+    <circle cx="0" cy="320" r="5" fill="#667eea"/>
+    <circle cx="130" cy="280" r="5" fill="#667eea"/>
+    <circle cx="260" cy="200" r="5" fill="#667eea"/>
+    <circle cx="390" cy="140" r="5" fill="#667eea"/>
+    <circle cx="520" cy="80" r="5" fill="#667eea"/>
+    <circle cx="650" cy="20" r="5" fill="#e94560"/>
+    
+    <!-- Annotations -->
+    <text x="650" y="10" fill="#e94560" font-family="Inter" font-size="10" font-weight="bold">1B+ transistor</text>
+    <text x="0" y="340" fill="#667eea" font-family="Inter" font-size="10">2,300</text>
+  </g>
+  
+  <!-- Key insight box -->
+  <g transform="translate(50, 420)">
+    <rect width="700" height="60" rx="8" fill="#16213e" stroke="#667eea" stroke-width="1"/>
+    <text x="20" y="25" fill="#e94560" font-family="Inter" font-size="12" font-weight="bold">Inti Hukum Moore:</text>
+    <text x="20" y="45" fill="#ccd6f6" font-family="Inter" font-size="11">Setiap 2 tahun, jumlah transistor berlipat ganda → Biaya komputasi turun 10x per dekade</text>
+  </g>
+</svg>
