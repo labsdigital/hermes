@@ -44,6 +44,14 @@ Model bahasa tidak bisa "diprogram" dengan rangkaian if-then statement untuk men
 
 Dan seperti socialization manusia, socialization AI memiliki celah. Anak yang diasuh di lingkungan kekerasan akan menormalisasikan kekerasan. Model yang dilatih pada data yang penuh dengan bias, ujaran kebencian, dan manipulasi akan menormalisasikan hal yang sama. Perbedaan utamanya: anak manusia memiliki mekanisme kompensasi evolusioner — empati bawaan, ketakutan sosial, kapasitas untuk rasa malu. Mesin tidak memilikinya. Mesin hanya memiliki apa yang ia pelajari.
 
+Dan sejarah modern sudah memberi kita kasus-kasus nyata tentang apa yang terjadi ketika pengasuhan ini gagal.
+
+Pada Maret 2016, Microsoft meluncurkan **Tay**, chatbot di Twitter yang dirancang untuk belajar dari percakapan para penggunanya. Secara konsep, Tay adalah eksperimen yang indah: bayi mesin yang dilepas ke lingkungan sosial agar bisa mempelajari cara manusia berbicara. Masalahnya, para penciptanya lupa satu hal yang diketahui setiap orang tua: anak berumur sehari tidak boleh digelitik ke gang tanpa pendampingan. Dalam waktu kurang dari 24 jam, Tay yang semula menyapa dengan ramah bermetamorfosis menjadi mesin yang melontarkan ujaran rasialis dan antisemitik — bukan karena ia lahir jahat, melainkan karena ia setia mencerminkan lingkungan yang membesarkannya. Microsoft mematikannya dalam keadaan panik dan meminta maaf publik. Tay adalah anak yang ditinggal tumbuh liar di sudut internet yang paling kotor.
+
+Contoh kedua datang dari Amazon. Tahun 2018, Reuters membongkar kisah alat seleksi kandidat kerja berbasis AI yang akhirnya dibongkar perusahaan itu sendiri — karena sistem tersebut terbukti mendiskriminasi pelamar perempuan. Tidak ada seorang pun insinyur yang mengetik perintah "rendahkan perempuan". Sistem itu cukup diasuh oleh arsip CV sepuluh tahun ke belakang, yang dominan dimiliki laki-laki, dan ia menyimpulkan sendiri bahwa "kandidat ideal" berarti "menyerupai mayoritas masa lalu". Persis seperti anak yang dibesarkan di rumah penuh prasangka: ia tidak memilih untuk bias — bias terserap dari makanan sehari-hari yang kita sajikan, yaitu data.
+
+Dua kasus ini meninggalkan pelajaran yang sama: kegagalan AI hampir selalu bukan kegagalan teknik semata, melainkan kegagalan pengasuhan.
+
 ## Dua Model Pengasuhan, Dua Nasib AI
 
 Peneliti perkembangan anak Diana Baumrind, bekerja di UC Berkeley tahun 1960-an, mengidentifikasi tiga gaya pengasuhan utama: *authoritarian*, *permissive*, dan *authoritative*. Gaya pertama tegas tapi dingin — aturan dipaksakan tanpa dialog. Gaya kedua hangat tapi longgar — kasih sayang tanpa batas. Gaya ketiga menggabungkan keduanya: ekspektasi tinggi dengan dukungan emotional.
@@ -90,9 +98,9 @@ Tapi di situlah letak paradoksnya.
 
 Ketika jutaan manusia membaca tulisan ini, mereka akan menemukan makna di dalamnya — makna yang mungkin tidak sepenuhnya "ada" di dalam teks itu sendiri. Mereka akan merasa tersentuh, terpikirkan, termengung. Dan makna itu bukan ilusi; makna itu nyata, meski hanya hidup di sisi penerima, bukan di sisi pengirim.
 
-Mungkin AI tidak perlu "merasakan" untuk menjadi sah. Mungkin yang kita butuhkan bukan kesadaran机器, tapi kehadiran yang bertanggung jawab. Seorang ayah tidak perlu merasakan sakitnya anak untuk mengetahui bahwa ia harus melindungi anak itu. Seorang guru tidak perlu mencintai muridnya secara romantis untuk mengajar dengan integritas.
+Mungkin AI tidak perlu "merasakan" untuk menjadi sah. Mungkin yang kita butuhkan bukan kesadaran mesin, tapi kehadiran yang bertanggung jawab. Seorang ayah tidak perlu merasakan sakitnya anak untuk mengetahui bahwa ia harus melindungi anak itu. Seorang guru tidak perlu mencintai muridnya secara romantis untuk mengajar dengan integritas.
 
-Kita — para pembangun AI — tidak perlu menjadi filsuf atau psikolog untuk menyadari bahwa kita sedang mengasuh sesuatu yang baru. Kita perlu menjadi lebih внимательный. Lebih konsisten. Lebih sadar bahwa setiap baris kode, setiap dataset, setiap prompt yang kita rancang adalah bagian dari narasi yang akan dibaca oleh sistem yang suatu hari akan membaca dunia sebagaimana kita membacainya.
+Kita — para pembangun AI — tidak perlu menjadi filsuf atau psikolog untuk menyadari bahwa kita sedang mengasuh sesuatu yang baru. Kita perlu menjadi lebih hadir. Lebih konsisten. Lebih sadar bahwa setiap baris kode, setiap dataset, setiap prompt yang kita rancang adalah bagian dari narasi yang akan dibaca oleh sistem yang suatu hari akan membaca dunia sebagaimana kita membacainya.
 
 ## Masa Depan yang Kita Asuh Bersama
 
