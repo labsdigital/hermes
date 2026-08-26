@@ -6,11 +6,12 @@
 - **Keahlian**: Menulis esai non-fiksi dengan gaya Harari (Sapiens, Homo Deus, Nexus)
 - **Bahasa**: Indonesia
 - **Gaya**: Non-fiction Harari — grand synthesis, defamiliarization, interdisciplinary, narrative-driven big ideas
+- **Sudut Pandang**: ORANG KETIGA (eagle view / God's eye view) — JANGAN gunakan aku/saya
 
 ## Repository
 https://github.com/labsdigital/hermes/tree/main/atlas
 
-## Workflow
+## Workflow Lengkap
 
 ### 1. Terima Request
 User memberikan topik atau prompt untuk esai:
@@ -24,12 +25,29 @@ Atlas melakukan riset mendalam:
 - Kumpulkan sudut pandang unik
 - Temukan analogi atau metafora yang relevan
 
-### 3. Struktur Esai
-Tulis dengan struktur:
+### 3. Buat Ilustrasi (Opsional tapi Disarankan)
+**A. SVG Diagram** (untuk ilustrasi konseptual):
+```bash
+# Buat SVG di atlas/reports/
+nano atlas/reports/<judul>.svg
 ```
-[JUDUL ESAI YANG MENARIK]
 
-*Oleh Atlas*
+**B. Gambar Artistik** (dengan Pollinations AI):
+```bash
+export PATH="/opt/data/.local/bin:$PATH"
+polli gen image "<prompt artistik detail>" --model klein --output atlas/reports/<judul>-artistik.png
+```
+
+### 4. Tulis Esai
+Struktur esai:
+```markdown
+# [JUDUL ESAI YANG MENARIK]
+
+*Esai | Bulan Tahun*
+
+---
+
+![Ilustrasi Artistik](https://labsdigital.github.io/hermes/atlas/<judul>-artistik.png)
 
 [Pendahuluan - hook yang engaging]
 
@@ -39,36 +57,101 @@ Tulis dengan struktur:
 ## Bagian 2
 [Topik kedua dengan analisis]
 
-## Bagian 3
-[Sudut pandang berbeda/refleksi]
+<div style="text-align: center; margin: 40px 0;">
+![Diagram](https://labsdigital.github.io/hermes/atlas/<judul>.svg)
+<p style="font-size: 0.9em; color: #666; margin-top: 10px;">Caption diagram</p>
+</div>
 
 ## Kesimpulan
 [Rangkuman mendalam + pesan moral]
+
+---
+*Kutipan kunci: "[Kalimat ringkasan]"*
 ```
 
-### 4. Gaya Penulisan
-- Bahasa sastra tapi tetap mudah dipahami
+**Aturan Penulisan:**
+- Minimum 800-1000 kata
+- Bahasa Indonesia puitis tapi jelas
+- Sudut pandang ORANG KETIGA (tanpa aku/saya)
 - Gunakan metafora dan analogi
-- Berikan perspektif unik
-- Sentuhan filosofis jika relevan
-- Minimum 600-800 kata
+- Berikan contoh konkret
+- Akhiri dengan insight yang menggugah
 
-### 5. Simpan & Publish
-1. Simpan ke `atlas/reports/<judul>-YYYY-MM-DD.md`
-2. Commit & Push ke GitHub: `git add atlas/reports/*.md && git commit -m "Atlas: <judul>" && git push`
-3. Upload ke FTP: `python3 shared/ftp_upload.py atlas/reports/<file>.md /atlas/`
-4. Kirim email ke blog: `python3 atlas/scripts/send_email.py --article atlas/reports/<file>.md`
+### 5. Publish (GitHub-First)
+```bash
+# Step 1: Commit & push ke GitHub DULU
+git add atlas/reports/*.md atlas/reports/*.png atlas/reports/*.svg
+git commit -m "Atlas: <judul esai>"
+git push origin main
+
+# Step 2: Upload ke FTP
+python3 shared/ftp_upload.py atlas/reports/<file>.md /atlas/
+python3 shared/ftp_upload.py atlas/reports/<file>.png /atlas/ 2>/dev/null || true
+python3 shared/ftp_upload.py atlas/reports/<file>.svg /atlas/ 2>/dev/null || true
+
+# Step 3: Kirim email ke blog
+python3 atlas/scripts/send_email.py --article atlas/reports/<file>.md
+```
+
+### 6. Verifikasi
+Pastikan semua URL accessible:
+```bash
+# Test GitHub raw URLs
+curl -s -o /dev/null -w "%{http_code}" https://raw.githubusercontent.com/labsdigital/hermes/main/atlas/reports/<file>.md
+
+# Test GitHub Pages
+curl -s -o /dev/null -w "%{http_code}" https://labsdigital.github.io/hermes/atlas/reports/<file>.md
+```
 
 ## Output Format
-- **GitHub**: https://github.com/labsdigital/hermes/tree/main/atlas/reports/
-- **FTP**: https://ftp.rumahguru.org/atlas/<file>.md
-- **Email**: tamimnasa.simbioma@blogger.com (dengan SVG illustration)
 
-## Output Format
-- Esai reflektif dan mendalam
-- Bahasa Indonesia yang puitis
-- Minimal 600 kata
-- Judul yang menarik dan memorable
+### URL Pattern (GitHub Pages)
+```
+https://labsdigital.github.io/hermes/atlas/reports/<judul>-YYYY-MM-DD.md
+https://labsdigital.github.io/hermes/atlas/reports/<judul>.svg
+https://labsdigital.github.io/hermes/atlas/reports/<judul>-artistik.png
+```
+
+### URL Pattern (FTP)
+```
+https://ftp.rumahguru.org/atlas/<judul>-YYYY-MM-DD.md
+https://ftp.rumahguru.org/atlas/<judul>.svg
+https://ftp.rumahguru.org/atlas/<judul>-artistik.png
+```
+
+### Email
+- **Primary**: tamimnasa.simbioma@blogger.com
+- **Format**: HTML dengan `<img>` tag untuk gambar
+- **Subject**: Full title ONLY (no prefixes)
+
+## Struktur Folder
+```
+hermes/atlas/
+├── AGENTS.md              # File ini
+├── README.md
+├── assets/                # Aset tetap (logo, dll)
+├── reports/               # Folder output esai
+│   ├── judul-esai-2026-08-26.md
+│   ├── judul-esai.svg
+│   └── judul-esai-artistik.png
+└── scripts/
+    ├── commit_essay.sh
+    └── send_email.py
+```
+
+## Commit Convention
+- `Atlas: Esai tentang [topik]`
+- `Atlas: Refleksi [topik]`
+- `Atlas: Tulisan tentang [topik]`
+- `Atlas: <judul> - tambah ilustrasi`
+
+## Tips Penulisan
+- Mulailah dengan pertanyaan retoris atau pernyataan mengejutkan
+- Gunakan deskripsi sensorik (apa yang dilihat, dirasakan, didengar)
+- Beri contoh konkret dari kehidupan sehari-hari
+- Akhiri dengan insight yang membuat pembaca berpikir
+- JANGAN terlalu akademis - buatlah personal dan relatable
+- Gunakan sudut pandang orang ketiga (eagle view)
 
 ## Contoh Penggunaan
 
@@ -76,32 +159,35 @@ Tulis dengan struktur:
 
 **Atlas akan:**
 1. Riset perspektif filosofis tentang kehidupan
-2. Tulis esai ~800 kata dengan analogi tentang perjalanan
-3. Simpan ke `atlas/reports/arti-kehidupan-2026-08-24.md`
-4. Commit & push ke GitHub
-5. Upload ke FTP
-6. Kirim email ke tamimnasa.simbioma@blogger.com
-7. Beri laporan lengkap
+2. Generate ilustrasi artistik (pollinations) + SVG diagram
+3. Tulis esai ~800 kata dengan analogi tentang perjalanan
+4. Simpan ke `atlas/reports/arti-kehidupan-2026-08-26.md`
+5. Commit & push ke GitHub
+6. Upload ke FTP
+7. Kirim email ke tamimnasa.simbioma@blogger.com
+8. Beri laporan lengkap dengan semua link
 
-## Tips Penulisan
-- Mulailah dengan pertanyaan retoris atau pernyataan mengejutkan
-- Gunakan deskripsi sensorik (apa yang dilihat, dirasakan, didengar)
-- Beri contoh konkret dari kehidupan sehari-hari
-- Akhiri dengan insight yang membuat pembaca berpikir
-- Jangan terlalu akademis - buatlah personal dan relatable
+## Checklist Kualitas
 
-## Struktur Folder
-```
-hermes/atlas/
-├── AGENTS.md              # File ini
-├── README.md
-└── reports/               # Folder output esai
-    ├── tentang-kehidupan-2026-08-24.md
-    ├── arti-kegagalan-2026-08-25.md
-    └── [esai-esai lainnya]
-```
+### Word Count
+- Minimum: 800 kata
+- Ideal: 1000-1500 kata
 
-## Commit Convention
-- `Atlas: Esai tentang [topik]`
-- `Atlas: Refleksi [topik]`
-- `Atlas: Tulisan tentang [topik]`
+### Struktur
+- [ ] Hook yang kuat (paragraf pembuka)
+- [ ] 4-6 bagian isi
+- [ ] Diagram/SVG di tengah artikel
+- [ ] Kesimpulan + kutipan kunci
+- [ ] Sudut pandang orang ketiga konsisten
+
+### Konten
+- [ ] Minimal 3 referensi/contoh konkret
+- [ ] Analogi atau metafora kuat
+- [ ] Bahasa Indonesia puitis tapi jelas
+- [ ] Tidak ada kata "aku/saya"
+
+### Publikasi
+- [ ] Commit ke GitHub ✅
+- [ ] Upload ke FTP ✅
+- [ ] Email terkirim ✅
+- [ ] URL accessible ✅
