@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#fa709a"/>
+      <stop offset="100%" style="stop-color:#fee140"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="800" height="500" fill="#1a1a2e"/>
+  
+  <text x="400" y="40" text-anchor="middle" fill="#fff" font-family="Inter, sans-serif" font-size="22" font-weight="bold">Tiga Model Hubungan Manusia-AI</text>
+  
+  <g transform="translate(50, 80)">
+    <rect width="220" height="350" rx="12" fill="#16213e" stroke="#e94560" stroke-width="2"/>
+    <text x="110" y="40" text-anchor="middle" fill="#e94560" font-family="Inter" font-size="16" font-weight="bold">KETERGANTUNGAN</text>
+    <text x="110" y="65" text-anchor="middle" fill="#8892b0" font-family="Inter" font-size="12">Dependency Model</text>
+    
+    <circle cx="110" cy="120" r="40" fill="#0f3460" stroke="#e94560" stroke-width="2"/>
+    <text x="110" y="125" text-anchor="middle" fill="#e94560" font-family="Inter" font-size="20">🤖</text>
+    
+    <text x="30" y="190" fill="#ccd6f6" font-family="Inter" font-size="11">• Delegasi penuh ke algorithm</text>
+    <text x="30" y="210" fill="#ccd6f6" font-family="Inter" font-size="11">• Erosi human agency</text>
+    <text x="30" y="230" fill="#ccd6f6" font-family="Inter" font-size="11">• Single point of failure</text>
+    <text x="30" y="250" fill="#ccd6f6" font-family="Inter" font-size="11">• Passive consumption</text>
+    
+    <line x1="30" y1="270" x2="190" y2="270" stroke="#e94560" stroke-width="1"/>
+    <text x="110" y="295" text-anchor="middle" fill="#e94560" font-family="Inter" font-size="11" font-weight="bold">Risiko:</text>
+    <text x="110" y="315" text-anchor="middle" fill="#8892b0" font-family="Inter" font-size="10">Kehilangan kemampuan kritis</text>
+  </g>
+  
+  <g transform="translate(290, 80)">
+    <rect width="220" height="350" rx="12" fill="#16213e" stroke="#64ffda" stroke-width="2"/>
+    <text x="110" y="40" text-anchor="middle" fill="#64ffda" font-family="Inter" font-size="16" font-weight="bold">KEMITRAAN</text>
+    <text x="110" y="65" text-anchor="middle" fill="#8892b0" font-family="Inter" font-size="12">Partnership Model</text>
+    
+    <circle cx="80" cy="120" r="35" fill="#0f3460" stroke="#64ffda" stroke-width="2"/>
+    <text x="80" y="125" text-anchor="middle" fill="#64ffda" font-family="Inter" font-size="18">👤</text>
+    
+    <circle cx="140" cy="120" r="35" fill="#0f3460" stroke="#64ffda" stroke-width="2"/>
+    <text x="140" y="125" text-anchor="middle" fill="#64ffda" font-family="Inter" font-size="18">🤖</text>
+    
+    <text x="30" y="190" fill="#ccd6f6" font-family="Inter" font-size="11">• Complementarity strengths</text>
+    <text x="30" y="210" fill="#ccd6f6" font-family="Inter" font-size="11">• Human-in-the-loop</text>
+    <text x="30" y="230" fill="#ccd6f6" font-family="Inter" font-size="11">• Informed dependency</text>
+    <text x="30" y="250" fill="#ccd6f6" font-family="Inter" font-size="11">• Co-creation</text>
+    
+    <line x1="30" y1="270" x2="190" y2="270" stroke="#64ffda" stroke-width="1"/>
+    <text x="110" y="295" text-anchor="middle" fill="#64ffda" font-family="Inter" font-size="11" font-weight="bold">Ideal:</text>
+    <text x="110" y="315" text-anchor="middle" fill="#8892b0" font-family="Inter" font-size="10">Symbiotic relationship</text>
+  </g>
+  
+  <g transform="translate(530, 80)">
+    <rect width="220" height="350" rx="12" fill="#16213e" stroke="#ffd700" stroke-width="2"/>
+    <text x="110" y="40" text-anchor="middle" fill="#ffd700" font-family="Inter" font-size="16" font-weight="bold">KOMPETISI</text>
+    <text x="110" y="65" text-anchor="middle" fill="#8892b0" font-family="Inter" font-size="12">Competition Model</text>
+    
+    <circle cx="110" cy="120" r="40" fill="#0f3460" stroke="#ffd700" stroke-width="2"/>
+    <text x="110" y="125" text-anchor="middle" fill="#ffd700" font-family="Inter" font-size="20">⚔️</text>
+    
+    <text x="30" y="190" fill="#ccd6f6" font-family="Inter" font-size="11">• Substitution of jobs</text>
+    <text x="30" y="210" fill="#ccd6f6" font-family="Inter" font-size="11">• Concentration of power</text>
+    <text x="30" y="230" fill="#ccd6f6" font-family="Inter" font-size="11">• Transition costs</text>
+    <text x="30" y="250" fill="#ccd6f6" font-family="Inter" font-size="11">• Human as ancillary</text>
+    
+    <line x1="30" y1="270" x2="190" y2="270" stroke="#ffd700" stroke-width="1"/>
+    <text x="110" y="295" text-anchor="middle" fill="#ffd700" font-family="Inter" font-size="11" font-weight="bold">Tantangan:</text>
+    <text x="110" y="315" text-anchor="middle" fill="#8892b0" font-family="Inter" font-size="10">Equitable distribution</text>
+  </g>
+</svg>
