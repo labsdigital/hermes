@@ -19,7 +19,7 @@ PASSWORD = os.environ.get("EMAIL_PASSWORD", "Blog.215")
 RECIPIENT = "tamimnasa.simbioma@blogger.com"
 
 # GitHub Pages base URL
-GITHUB_PAGES_URL = "https://labsdigital.github.io/hermes"
+GITHUB_PAGES_URL = "https://taraka.id/hermes"
 
 # Default SVG for articles (can be overridden)
 DEFAULT_SVG_URL = f"{GITHUB_PAGES_URL}/atlas/assets/atrofi-kognitif-illustration.svg"
