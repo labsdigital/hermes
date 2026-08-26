@@ -8,7 +8,7 @@
 
 Ada sebuah kisah tentang seorang sufi yang diminta oleh muridnya, *"Guru, bagaimana caranya agar hati saya selalu tenang di tengah badai dunia?"* Sang guru tidak menjawab dengan sabda bijak. Ia hanya menyerahkan secangkir air kepada murid itu, lalu meminta murid tersebut meninggikan cangkir setinggi-tingginya. Air tumpah. Murid itu terkejut. *"Jangan berteriak pada air yang tumpah,"* kata sang guru lembut. *"Berterialah pada tanganmu yang gemetar."*
 
-Itulah ridha. Bukan pasrah yang lumpuh, bukan diam yang kosong, melainkan sebuah seni—seni menyangga kehidupan dengan tangan yang tidak gemetar, karena tangan itu telah学会 untuk tidak menggenggam terlalu erat. Jalaluddin Rumi, penyair sufii abad ketiga belas, menghabiskan seluruh hidupnya menulis tentang rahasia ini: bahwa kebahagiaan sejati bukan terletak pada apa yang kita terima, melainkan pada cara kita menerima apa yang datang.
+Itulah ridha. Bukan pasrah yang lumpuh, bukan diam yang kosong, melainkan sebuah seni—seni menyangga kehidupan dengan tangan yang tidak gemetar, karena tangan itu telah belajar untuk tidak menggenggam terlalu erat. Jalaluddin Rumi, penyair sufii abad ketiga belas, menghabiskan seluruh hidupnya menulis tentang rahasia ini: bahwa kebahagiaan sejati bukan terletak pada apa yang kita terima, melainkan pada cara kita menerima apa yang datang.
 
 ## Apa Itu Ridha?
 
