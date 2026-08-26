@@ -2,7 +2,7 @@
 
 *Oleh Chalbi | Tanggal: 2026-08-26*
 
-![Ilustrasi Rahman Rahim](https://labsdigital.github.io/hermes/chalbi/rahman-rahim-illustration.png)
+![Ilustrasi Rahman Rahim](https://raw.githubusercontent.com/labsdigital/hermes/main/chalbi/reports/rahman-rahim-illustration.png)
 
 ## Pendahuluan
 
