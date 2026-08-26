@@ -14,9 +14,9 @@ Dampaknya bukan hanya hiburan—ia mengerosi trust. Ketika video bisa dimanipula
 
 Ini adalah ancaman terhadap demokrasi. Demokrasi memerlukan shared reality—fakta yang disepakati bersama—sebagai dasar deliberasi. Deepfakes menciptakan epistemic chaos: semua claiming sama-sama valid, semua evidence sama-sama skeptis.
 
-Dan deepfakes hanyalah awal. Audio deepfake, voice cloning, dan synthetic media akan semakin sulit dibedakan dari reality. Penelitian menunjukkan bahwa setelah 2025, sebagian besar content media akan AI-generated. Ini意味着 foundation of evidence itu sendiri berubah.
+Dan deepfakes hanyalah awal. Audio deepfake, voice cloning, dan synthetic media akan semakin sulit dibedakan dari reality. Penelitian menunjukkan bahwa setelah 2025, sebagian besar content media akan AI-generated. Ini berarti foundation of evidence itu sendiri berubah.
 
-Georgia 2024: deepfake robo call meniru Biden menyarankan voter tidak memilih. Meskipun cepat di-discredit, damage sudah dilakukan—question tentang election integrity sudah ditanam.
+Georgia 2024: deepfake robo call meniru Biden mengajak voter tidak memilih. Meskipun cepat di-discredit, damage sudah dilakukan—question tentang election integrity sudah ditanam.
 
 ## Pengangguran Otomasi
 
@@ -30,7 +30,7 @@ Tapi transisi—bukan outcome akhir—adalah masalahnya. Pekerjaan baru mungkin 
 
 Dan ini belum menyentuh implikasi psikologis: ketika pekerjaan bukan hanya sumber income tapi juga identity—apa yang terjadi pada masyarakat yang kehilangan sentido de pertenencia?
 
-Historical precedent tidak reassuring. Industrial Revolution menciptakan more jobs than it destroyed—but transition took decades, dan suffering selama transition adalah real.
+Historical precedent tidak reassuring. Industrial Revolution menciptakan more jobs than it destroyed—tapi transition took decades, dan suffering selama transition adalah real.
 
 Contohnya: textile workers di England 1800-an—Luddites—merusak mesin karena mereka melihat ancaman existensial terhadap livelihoods mereka. Respon pemerintah: brutal suppression. Conflict antara technology adoption dan social protection adalah recurrent theme.
 
@@ -72,7 +72,7 @@ Perdebatan tentang existential risk kontroversial. Beberapa mengabaikan sebagai 
 
 Tapi apa pun stance-nya, ada consensus bahwa AI safety research perlu ditingkatkan—bahkan jika risknya hanya 1% atau 0.1%, expected value-nya tetap significant mengingat stakes-nya.
 
-Open letter dari Future of Life Institute 2023: "Mitigating the risk of extinction from AI should be a global priority alongside other societal-scale risks such as pandemics dan nuclear war."
+Open letter dari Future of Life Institute 2023: "Mitigating the risk of extinction from AI should be a global priority alongside other global-scale risks such as pandemics dan nuclear war."
 
 ## Perang Informasi
 

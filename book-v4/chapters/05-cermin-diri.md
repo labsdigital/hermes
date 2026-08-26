@@ -88,7 +88,7 @@ Ketiga, AI bisa menjadi tool untuk social improvement. Jika AI mencerminkan bias
 
 Amazon hiring tool yang discriminative女性—setelah di-discover, perusahaan harus examine hiring practices secara holistic. Process ini, meski initiated oleh scandal, bisa lead lebih equitable outcomes.
 
-Google face recognition mengakui bahwa system kurang akurat untuk darker-skinned individuals. Setelah public criticism, mereka memperbaiki models dan datasets. Ini contoh accountability—meski reactive.
+Google face recognition mengakui bahwa system kurang akurat untuk darker-skinned individuals. Setelah public criticism, mereka memperbaiki models dan datasets. Ini contoh accountability—meskipun reactive.
 
 ## Kesimpulan
 
