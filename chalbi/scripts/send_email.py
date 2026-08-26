@@ -94,6 +94,15 @@ def md_to_html(md_text):
                     cell = cell.replace('**', '').replace('|', '')
                     html_lines.append(f'<td>{cell}</td>')
                 html_lines.append('</tr>')
+        # Markdown images: ![alt](url) → <img>
+        elif '![[' in line or re.match(r'!\[.*\]\(.*\)', line):
+            img_match = re.search(r'!\[(.*?)\]\((.*?)\)', line)
+            if img_match:
+                alt = img_match.group(1)
+                url = img_match.group(2).strip()
+                html_lines.append(f'<div style="text-align:center;margin:20px 0;"><img src="{url}" alt="{alt}" style="max-width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);" /></div>')
+            else:
+                html_lines.append(f'<p>{line}</p>')
         # Regular paragraph
         else:
             html_lines.append(f'<p>{line}</p>')
@@ -167,11 +176,11 @@ def send_article_notification(article_path, recipient="tamimnasa.chalbi@blogger.
     return send_email(recipient, subject, body_html)
 
 if __name__ == "__main__":
-    if len(sys.argv) < 4:
+    if len(sys.argv) < 2:
         print("Usage: python3 send_email.py <recipient> <subject> <body>")
         print("Or: python3 send_email.py --article <path> [--recipient <email>]")
         sys.exit(1)
-    
+
     if sys.argv[1] == "--article":
         article_path = sys.argv[2]
         recipient = "tamimnasa.chalbi@blogger.com"
