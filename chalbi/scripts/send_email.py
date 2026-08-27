@@ -24,8 +24,28 @@ def md_to_html(md_text):
     in_code_block = False
     in_list = False
     in_quote = False
+    in_svg_block = False
+    svg_content = ""
+    svg_counter = 0
     
     for line in lines:
+        # Handle SVG blocks (```svg ... ```)
+        if line.strip() == '```svg':
+            in_svg_block = True
+            svg_content = '<div class="svg-diagram">\n'
+            continue
+        
+        if in_svg_block:
+            if line.strip() == '```':
+                # End of SVG block
+                in_svg_block = False
+                svg_content += '\n</div>'
+                html_lines.append(svg_content)
+                svg_counter += 1
+                continue
+            svg_content += line + '\n'
+            continue
+        
         # Code blocks
         if line.startswith('```'):
             if in_code_block:
@@ -124,6 +144,15 @@ def send_email(recipient, subject, body_html):
 <!DOCTYPE html>
 <html>
 <head><meta charset="UTF-8"></head>
+<style>
+    .svg-diagram {{ max-width: 100%; margin: 30px 0; }}
+    .svg-diagram svg {{ width: 100%; height: auto; }}
+    blockquote {{ border-left: 4px solid #8b4513; padding-left: 20px; margin: 20px 0; font-style: italic; color: #555; }}
+    pre {{ background: #f5f5f5; padding: 15px; overflow-x: auto; border-radius: 8px; }}
+    h1 {{ color: #8b4513; border-bottom: 2px solid #d4a574; padding-bottom: 10px; }}
+    h2 {{ color: #a0522d; margin-top: 30px; }}
+    h3 {{ color: #cd853f; }}
+</style>
 <body>
 {body_html}
 </body>
