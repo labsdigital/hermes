@@ -1,4 +1,4 @@
-# AI Merajai Intimasi Manusia: Ketika Algoritma Mengikis Kepercayaan Sosial
+# AI Merajai Intimasi: Ketika Algoritma Mengikis Kepercayaan Sosial
 
 *Esai Non-Fiksi | Agustus 2026*
 
