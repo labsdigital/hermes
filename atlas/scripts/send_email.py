@@ -206,10 +206,7 @@ def send_email(article_path: str):
     </style>
 </head>
 <body>
-    <div class="illustration">
-        <img src="{svg_url}" alt="Illustration" width="800" height="400">
-    </div>
-    {html_content}
+{html_content}
 </body>
 </html>
 """
