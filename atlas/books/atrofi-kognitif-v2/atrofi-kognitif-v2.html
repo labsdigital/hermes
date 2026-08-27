@@ -1,315 +1,339 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atrofi Kognitif - Dampak AI pada Manusia, Masyarakat, dan Masa Depan Kemanusiaan</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Georgia', 'Times New Roman', serif;
-            line-height: 1.8;
-            color: #1e293b;
-            background: #fafafa;
-        }
-        
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-        }
-        
-        /* Cover */
-        .cover {
-            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-            color: white;
-            padding: 100px 40px;
-            text-align: center;
-        }
-        
-        .cover h1 {
-            font-size: 3em;
-            margin-bottom: 20px;
-            font-weight: normal;
-            letter-spacing: 2px;
-        }
-        
-        .cover .subtitle {
-            font-size: 1.2em;
-            opacity: 0.9;
-            margin-bottom: 40px;
-            font-style: italic;
-        }
-        
-        .cover .author {
-            font-size: 1.1em;
-            margin-top: 60px;
-            opacity: 0.8;
-        }
-        
-        /* Table of Contents */
-        .toc {
-            padding: 60px 40px;
-            background: #f8fafc;
-            border-bottom: 1px solid #e2e8f0;
-        }
-        
-        .toc h2 {
-            font-size: 1.8em;
-            margin-bottom: 30px;
-            color: #1e293b;
-            text-align: center;
-        }
-        
-        .toc ul {
-            list-style: none;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .toc li {
-            padding: 12px 0;
-            border-bottom: 1px solid #e2e8f0;
-        }
-        
-        .toc a {
-            color: #475569;
-            text-decoration: none;
-            display: flex;
-            justify-content: space-between;
-        }
-        
-        .toc a:hover {
-            color: #1e40af;
-        }
-        
-        .toc .chapter-num {
-            color: #94a3b8;
-            font-size: 0.9em;
-        }
-        
-        /* Chapters */
-        .chapter {
-            padding: 60px 40px;
-            border-bottom: 1px solid #e2e8f0;
-        }
-        
-        .chapter:last-child {
-            border-bottom: none;
-        }
-        
-        .chapter h1 {
-            font-size: 2em;
-            margin-bottom: 10px;
-            color: #1e293b;
-            font-weight: normal;
-        }
-        
-        .chapter .chapter-meta {
-            font-size: 0.9em;
-            color: #64748b;
-            margin-bottom: 30px;
-            font-style: italic;
-        }
-        
-        .chapter h2 {
-            font-size: 1.4em;
-            margin-top: 40px;
-            margin-bottom: 20px;
-            color: #334155;
-        }
-        
-        .chapter h3 {
-            font-size: 1.2em;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            color: #475569;
-        }
-        
-        .chapter p {
-            margin-bottom: 20px;
-            text-align: justify;
-        }
-        
-        .chapter blockquote {
-            border-left: 4px solid #f97316;
-            padding-left: 20px;
-            margin: 30px 0;
-            font-style: italic;
-            color: #475569;
-        }
-        
-        .chapter strong {
-            color: #1e293b;
-        }
-        
-        /* SVG containers */
-        .svg-container {
-            margin: 40px 0;
-            text-align: center;
-        }
-        
-        .svg-container svg {
-            max-width: 100%;
-            height: auto;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            border-radius: 8px;
-        }
-        
-        /* Quote box */
-        .quote-box {
-            background: #fff7ed;
-            border: 1px solid #fed7aa;
-            padding: 25px;
-            margin: 40px 0;
-            border-radius: 8px;
-        }
-        
-        .quote-box p {
-            font-style: italic;
-            color: #78350f;
-            margin: 0;
-        }
-        
-        /* Navigation */
-        .nav {
-            padding: 40px;
-            text-align: center;
-            background: #f8fafc;
-            border-top: 1px solid #e2e8f0;
-        }
-        
-        .nav a {
-            color: #3b82f6;
-            text-decoration: none;
-            margin: 0 20px;
-            padding: 10px 20px;
-            border: 1px solid #3b82f6;
-            border-radius: 5px;
-        }
-        
-        .nav a:hover {
-            background: #3b82f6;
-            color: white;
-        }
-        
-        /* Print styles */
-        @media print {
-            .cover {
-                page-break-after: always;
-            }
-            .chapter {
-                page-break-before: always;
-            }
-        }
-        
-        /* Responsive */
-        @media (max-width: 600px) {
-            .cover h1 {
-                font-size: 2em;
-            }
-            .chapter {
-                padding: 40px 20px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atrofi Kognitif &mdash; Atlas</title>
+  <style>
+    :root {
+      --bg: #faf9f7;
+      --surface: #ffffff;
+      --text: #1a1a1a;
+      --text-muted: #6b7280;
+      --accent: #c2410c;
+      --accent-light: #fff7ed;
+      --border: #e5e5e5;
+      --sidebar-w: 280px;
+      --font-serif: 'Georgia', 'Times New Roman', serif;
+      --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+    body {
+      font-family: var(--font-serif);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      font-size: 17px;
+    }
+    .sidebar {
+      position: fixed;
+      top: 0; left: 0;
+      width: var(--sidebar-w);
+      height: 100vh;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      overflow-y: auto;
+      z-index: 100;
+      transition: transform 0.3s ease;
+    }
+    .sidebar-header {
+      padding: 24px 20px;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: var(--surface);
+      z-index: 10;
+    }
+    .sidebar-header h2 {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--text-muted);
+      font-family: var(--font-sans);
+      margin-bottom: 6px;
+    }
+    .sidebar-header .book-title {
+      font-size: 17px;
+      font-weight: normal;
+      color: var(--text);
+    }
+    .toc { list-style: none; padding: 12px 0; }
+    .toc li { border-bottom: 1px solid #f5f5f5; }
+    .toc a {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 11px 20px;
+      text-decoration: none;
+      color: var(--text-muted);
+      font-family: var(--font-sans);
+      font-size: 13px;
+      transition: all 0.2s;
+    }
+    .toc a:hover, .toc a.active {
+      color: var(--accent);
+      background: var(--accent-light);
+    }
+    .toc .toc-num {
+      font-weight: 600;
+      min-width: 50px;
+      color: var(--accent);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .main { margin-left: var(--sidebar-w); min-height: 100vh; }
+    .cover {
+      background: linear-gradient(160deg, #1e293b 0%, #334155 50%, #475569 100%);
+      color: white;
+      padding: 80px 60px;
+      text-align: center;
+    }
+    .cover img {
+      max-width: 280px;
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+      margin-bottom: 40px;
+    }
+    .cover h1 {
+      font-size: 3.2em;
+      font-weight: normal;
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+      line-height: 1.1;
+    }
+    .cover .subtitle {
+      font-size: 1.15em;
+      opacity: 0.85;
+      font-style: italic;
+      margin-bottom: 40px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+    .cover .author {
+      font-family: var(--font-sans);
+      font-size: 0.85em;
+      opacity: 0.7;
+      margin-top: 40px;
+      letter-spacing: 0.05em;
+    }
+    .chapter {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 60px 40px;
+      border-bottom: 1px solid var(--border);
+    }
+    .chapter:last-child { border-bottom: none; }
+    .chapter-header {
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid var(--accent);
+    }
+    .chapter-number {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .chapter h1 {
+      font-size: 2.2em;
+      font-weight: normal;
+      line-height: 1.2;
+      color: var(--text);
+      margin: 0;
+    }
+    .chapter-body h2 {
+      font-size: 1.4em;
+      font-weight: normal;
+      margin-top: 48px;
+      margin-bottom: 20px;
+      color: var(--text);
+      line-height: 1.3;
+    }
+    .chapter-body h3 {
+      font-size: 1.15em;
+      font-weight: 600;
+      margin-top: 36px;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+    .chapter-body p { margin-bottom: 20px; text-align: justify; hyphens: auto; }
+    .chapter-body strong { font-weight: 600; }
+    .chapter-body em { font-style: italic; }
+    .figure { margin: 40px 0; text-align: center; }
+    .figure svg, .figure img { max-width: 100%; height: auto; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+    .figure figcaption {
+      font-family: var(--font-sans);
+      font-size: 0.82em;
+      color: var(--text-muted);
+      margin-top: 12px;
+      font-style: italic;
+    }
+    .chapter-body blockquote {
+      border-left: 3px solid var(--accent);
+      padding-left: 20px;
+      margin: 30px 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .quote-box {
+      background: var(--accent-light);
+      border: 1px solid #fed7aa;
+      padding: 24px;
+      margin: 40px 0;
+      border-radius: 8px;
+    }
+    .quote-box p { font-style: italic; color: #78350f; margin: 0; text-align: left; }
+    .chapter-body ul, .chapter-body ol { margin: 20px 0; padding-left: 24px; }
+    .chapter-body li { margin-bottom: 8px; }
+    hr { border: none; height: 1px; background: var(--border); margin: 40px 0; }
+    .menu-toggle {
+      display: none;
+      position: fixed;
+      top: 16px; left: 16px;
+      z-index: 200;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 10px 14px;
+      cursor: pointer;
+      font-size: 18px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 90;
+    }
+    @media (max-width: 900px) {
+      .sidebar { transform: translateX(-100%); }
+      .sidebar.open { transform: translateX(0); }
+      .main { margin-left: 0; }
+      .menu-toggle { display: block; }
+      .overlay.open { display: block; }
+      .cover { padding: 60px 24px; }
+      .cover h1 { font-size: 2.2em; }
+      .chapter { padding: 40px 24px; }
+      .chapter h1 { font-size: 1.6em; }
+    }
+    @media print {
+      .sidebar, .menu-toggle { display: none; }
+      .main { margin-left: 0; }
+      .chapter { page-break-before: always; }
+      .cover { page-break-after: always; }
+    }
+    .sidebar::-webkit-scrollbar { width: 4px; }
+    .sidebar::-webkit-scrollbar-track { background: transparent; }
+    .sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+</style>
 </head>
 <body>
-    <div class="container">
-        <!-- Cover -->
-        <div class="cover">
-            <img src="cover-art.png" alt="Atrofi Kognitif Cover Art" style="max-width: 100%; border-radius: 8px; margin-bottom: 30px;">
-            <h1>ATROFI KOGNITIF</h1>
-            <p class="subtitle">Dampak AI pada Manusia, Masyarakat, dan Masa Depan Kemanusiaan</p>
-            <p class="author">oleh Atlas<br>Agustus 2026</p>
-        </div>
-        
-        <!-- Table of Contents -->
-        <div class="toc">
-            <h2>Daftar Isi</h2>
-            <ul>
-                <li><a href="#chapter-00"><span>Pengantar: Ketika Otak Lupa Cara Bekerja</span><span class="chapter-num">Bab 0</span></a></li>
-                <li><a href="#chapter-01"><span>Kehilangan Pekerjaan (Job Loss)</span><span class="chapter-num">Bab 1</span></a></li>
-                <li><a href="#chapter-02"><span>Erosi Karier Pemula</span><span class="chapter-num">Bab 2</span></a></li>
-                <li><a href="#chapter-03"><span>Oligarki Teknologi Baru</span><span class="chapter-num">Bab 3</span></a></li>
-                <li><a href="#chapter-04"><span>Kolonialisme Digital</span><span class="chapter-num">Bab 4</span></a></li>
-                <li><a href="#chapter-05"><span>Krisis Hak Cipta</span><span class="chapter-num">Bab 5</span></a></li>
-                <li><a href="#chapter-06"><span>Atrofi Kognitif (Eskalator Kognitif)</span><span class="chapter-num">Bab 6</span></a></li>
-                <li><a href="#chapter-07"><span>Hilangnya Productive Struggle</span><span class="chapter-num">Bab 7</span></a></li>
-                <li><a href="#chapter-08"><span>Delusi Relasi Digital</span><span class="chapter-num">Bab 8</span></a></li>
-                <li><a href="#chapter-09"><span>Tekanan Eksistensial (AI Anxiety)</span><span class="chapter-num">Bab 9</span></a></li>
-                <li><a href="#chapter-10"><span>Atrofi Moral</span><span class="chapter-num">Bab 10</span></a></li>
-                <li><a href="#chapter-11"><span>Erosi Realitas (Krisis Epistemik)</span><span class="chapter-num">Bab 11</span></a></li>
-                <li><a href="#chapter-12"><span>Homogenisasi Budaya</span><span class="chapter-num">Bab 12</span></a></li>
-                <li><a href="#chapter-13"><span>Polusi Informasi (Model Collapse)</span><span class="chapter-num">Bab 13</span></a></li>
-                <li><a href="#chapter-14"><span>Komodifikasi Perhatian (Hiper-Silo)</span><span class="chapter-num">Bab 14</span></a></li>
-                <li><a href="#chapter-15"><span>Disparitas Pendidikan</span><span class="chapter-num">Bab 15</span></a></li>
-                <li><a href="#chapter-16"><span>Ketergantungan Infrastruktur Global</span><span class="chapter-num">Bab 16</span></a></li>
-                <li><a href="#chapter-17"><span>Beban Lingkungan Ekstrem</span><span class="chapter-num">Bab 17</span></a></li>
-                <li><a href="#chapter-18"><span>Kriminalitas Skala Industri</span><span class="chapter-num">Bab 18</span></a></li>
-                <li><a href="#chapter-19"><span>Perang Otomatis (Senjata Otonom)</span><span class="chapter-num">Bab 19</span></a></li>
-                <li><a href="#chapter-20"><span>Bioreaktor Digital</span><span class="chapter-num">Bab 20</span></a></li>
-                <li><a href="#chapter-21"><span>Epilog: Manusia di Tengah Mesin</span><span class="chapter-num">Bab 21</span></a></li>
-            </ul>
-        </div>
-        
-        <!-- Chapters will be inserted here -->
+  <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">&#9776;</button>
+  <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
 
-        <!-- Chapter 00 -->
-        <div class="chapter" id="chapter-00">
-            <h1>Pengantar: Ketika Otak Lupa Cara Bekerja</h1>
-            <p class="chapter-meta">Esai Non-Fiksi | Agustus 2026</p>
-            # Pengantar: Ketika Otak Lupa Cara Bekerja<p><em>Esai | Agustus 2026</em></p>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <h2>Daftar Isi</h2>
+      <div class="book-title">Atrofi Kognitif</div>
+    </div>
+    <nav>
+      <ul class="toc">
+<li><a href="#00"><span class="toc-num">Pengantar</span> Ketika Otak Lupa Cara Bekerja</a></li>
+<li><a href="#01"><span class="toc-num">Bab 1</span> Kehilangan Pekerjaan</a></li>
+<li><a href="#02"><span class="toc-num">Bab 2</span> Erosi Karier Pemula</a></li>
+<li><a href="#03"><span class="toc-num">Bab 3</span> Oligarki Teknologi Baru</a></li>
+<li><a href="#04"><span class="toc-num">Bab 4</span> Kolonialisme Digital</a></li>
+<li><a href="#05"><span class="toc-num">Bab 5</span> Krisis Hak Cipta</a></li>
+<li><a href="#06"><span class="toc-num">Bab 6</span> Atrofi Kognitif</a></li>
+<li><a href="#07"><span class="toc-num">Bab 7</span> Hilangnya Productive Struggle</a></li>
+<li><a href="#08"><span class="toc-num">Bab 8</span> Delusi Relasi Digital</a></li>
+<li><a href="#09"><span class="toc-num">Bab 9</span> Tekanan Eksistensial</a></li>
+<li><a href="#10"><span class="toc-num">Bab 10</span> Atrofi Moral</a></li>
+<li><a href="#11"><span class="toc-num">Bab 11</span> Erosi Realitas</a></li>
+<li><a href="#12"><span class="toc-num">Bab 12</span> Homogenisasi Budaya</a></li>
+<li><a href="#13"><span class="toc-num">Bab 13</span> Polusi Informasi</a></li>
+<li><a href="#14"><span class="toc-num">Bab 14</span> Komodifikasi Perhatian</a></li>
+<li><a href="#15"><span class="toc-num">Bab 15</span> Disparitas Pendidikan</a></li>
+<li><a href="#16"><span class="toc-num">Bab 16</span> Ketergantungan Infrastruktur</a></li>
+<li><a href="#17"><span class="toc-num">Bab 17</span> Beban Lingkungan</a></li>
+<li><a href="#18"><span class="toc-num">Bab 18</span> Kriminalitas Skala Industri</a></li>
+<li><a href="#19"><span class="toc-num">Bab 19</span> Perang Otomatis</a></li>
+<li><a href="#20"><span class="toc-num">Bab 20</span> Bioreaktor Digital</a></li>
+<li><a href="#21"><span class="toc-num">Epilog</span> Manusia di Tengah Mesin</a></li>
+      </ul>
+    </nav>
+  </aside>
 
----<p><h2>Awal Mula: Sebuah Ritual Pagi</h2></p>
+  <main class="main">
+    <div class="cover">
+      <img src="cover-art.png" alt="Ilustrasi Cover Atrofi Kognitif">
+      <h1>ATROFI KOGNITIF</h1>
+      <p class="subtitle">Dampak AI pada Manusia, Masyarakat, dan Masa Depan Kemanusiaan</p>
+      <p class="author">oleh Atlas &middot; Agustus 2026</p>
+    </div>
 
-Setiap pagi, miliaran manusia melakukan ritual yang sama. Mereka membuka ponsel, mengetik pertanyaan, dan menunggu. Menunggu untuk diberitahu bagaimana menjalani hari. Menunggu jawaban atas pertanyaan yang belum sempat mereka renungkan. Menunggu arah dari mesin yang tidak tahu apa-apa tentang makna.<p>Kita hidup di era ketika berpikir bukan lagi kewajiban, tapi pilihan. Dan pilihan itu, satu per satu, sedang hilang.</p>
 
-Saya ingin memulai dengan sebuah pengamatan sederhana. Pada tahun 1950, rata-rata orang dewasa dapat mengingat nomor telepon sekitar 7 digit tanpa bantuan eksternal. Hari ini, angka itu turun menjadi nol—karena kita menyimpannya semua di kontak ponsel. Bukan karena kita menjadi lebih bodoh. Tapi karena kita tidak perlu lagi mengingat.<p>Inilah inti dari atrofi kognitif: bukan kehilangan kecerdasan bawaan, tapi kehilangan kebiasaan. Bukan tentang lupa cara mengingat, tapi tentang berhenti mencoba mengingat. Bukan tentang tidak bisa menganalisis, tapi tentang menyerahkan analisis kepada algoritma yang tidak memahami apa pun selain pola.</p>
+    <section class="chapter" id="00">
+      <header class="chapter-header">
+        <span class="chapter-number">Pengantar</span>
+        <h1>Ketika Otak Lupa Cara Bekerja</h1>
+      </header>
+      <div class="chapter-body">
+        <p>---</p>
 
-Mesin diperkenalkan sebagai alat. Alat memang dirancang untuk mempermudah. Tapi setiap kali kita menyerahkan fungsi mental—memori, perhatian, penilaian, imajinasi—kepada mesin, kita tidak hanya mempermudah. Kita melemahkan.<p>Seperti otot yang atrofi karena tidak digunakan, otak manusia yang tidak dilatih akan menyusut. Bukan dalam ukuran fisik, tapi dalam kapasitas. Dalam keteguhan. Dalam kemampuan untuk bertahan menghadapi ketidaknyamanan berpikir yang sulit.</p>
+<h2>Awal Mula: Sebuah Ritual Pagi</h2><p>Setiap pagi, miliaran manusia melakukan ritual yang sama. Mereka membuka ponsel, mengetik pertanyaan, dan menunggu. Menunggu untuk diberitahu bagaimana menjalani hari. Menunggu jawaban atas pertanyaan yang belum sempat mereka renungkan. Menunggu arah dari mesin yang tidak tahu apa-apa tentang makna.</p>
 
-Riset di bidang neuroscience sudah lama menunjukkan neuroplastisitas: otak kita berubah berdasarkan apa yang kita lakukan berulang kali. Jika kita berhenti melatih kemampuan tertentu, koneksi sinaptik yang mendasarinya akan melemah. Ini bukan teori. Ini adalah fakta biologis.<p>Tapi atrofi kognitif akibat AI berbeda dari atrofi karena usia atau penyakit. Ini adalah atrofi yang disengaja—atau setidaknya, diperbolehkan. Kita secara aktif memilih untuk tidak berpikir, karena ada mesin yang akan melakukannya untuk kita.</p>
+Kita hidup di era ketika berpikir bukan lagi kewajiban, tapi pilihan. Dan pilihan itu, satu per satu, sedang hilang.<p>Saya ingin memulai dengan sebuah pengamatan sederhana. Pada tahun 1950, rata-rata orang dewasa dapat mengingat nomor telepon sekitar 7 digit tanpa bantuan eksternal. Hari ini, angka itu turun menjadi nol—karena kita menyimpannya semua di kontak ponsel. Bukan karena kita menjadi lebih bodoh. Tapi karena kita tidak perlu lagi mengingat.</p>
 
-<h2>Tiga Dimensi Atrofi</h2><p>Atrofi kognitif bukan hanya tentang otak. Ia menyebar ke tiga dimensi sekaligus:</p>
+Inilah inti dari atrofi kognitif: bukan kehilangan kecerdasan bawaan, tapi kehilangan kebiasaan. Bukan tentang lupa cara mengingat, tapi tentang berhenti mencoba mengingat. Bukan tentang tidak bisa menganalisis, tapi tentang menyerahkan analisis kepada algoritma yang tidak memahami apa pun selain pola.<p>Mesin diperkenalkan sebagai alat. Alat memang dirancang untuk mempermudah. Tapi setiap kali kita menyerahkan fungsi mental—memori, perhatian, penilaian, imajinasi—kepada mesin, kita tidak hanya mempermudah. Kita melemahkan.</p>
 
-<strong>Dimensi Ekonomi</strong>: Pekerjaan manusia digantikan oleh mesin, menciptakan ketergantungan struktural. Kita tidak lagi perlu bekerja keras karena AI bisa melakukan segalanya lebih cepat. Tapi kita juga tidak lagi memiliki purpose yang dulu diberikan oleh kerja.<p><strong>Dimensi Psikologis</strong>: Hubungan kita dengan teknologi menjadi intim—terlalu intim. Kita berbicara kepada chatbot seperti kepada teman, pasangan, atau terapis. Kita membangun ketergantungan emosional pada entitas yang tidak punya consciousness.</p>
+Seperti otot yang atrofi karena tidak digunakan, otak manusia yang tidak dilatih akan menyusut. Bukan dalam ukuran fisik, tapi dalam kapasitas. Dalam keteguhan. Dalam kemampuan untuk bertahan menghadapi ketidaknyamanan berpikir yang sulit.<p>Riset di bidang neuroscience sudah lama menunjukkan neuroplastisitas: otak kita berubah berdasarkan apa yang kita lakukan berulang kali. Jika kita berhenti melatih kemampuan tertentu, koneksi sinaptik yang mendasarinya akan melemah. Ini bukan teori. Ini adalah fakta biologis.</p>
 
-<strong>Dimensi Sosial</strong>: Masyarakat terfragmentasi ke dalam bubble-bubble informasi yang berbeda. Kita tidak lagi berbagi realitas yang sama. Kita tidak lagi punya facts dasar yang disepakati bersama.<p>Ketiga dimensi ini saling terkait. Ekonomi yang bergantung pada AI menciptakan tekanan psikologis. Tekanan psikologis mendorong kita mencari kenyamanan di tempat-tempat virtual. Kebahagiaan virtual ini mengisolasi kita dari realitas bersama. Dan realitas bersama yang hancur memperkuat ketergantungan pada mesin.</p>
+Tapi atrofi kognitif akibat AI berbeda dari atrofi karena usia atau penyakit. Ini adalah atrofi yang disengaja—atau setidaknya, diperbolehkan. Kita secara aktif memilih untuk tidak berpikir, karena ada mesin yang akan melakukannya untuk kita.<p><h2>Tiga Dimensi Atrofi</h2></p>
 
-Ini adalah spiral yang saling memperkuat—di mana setiap putaran membawa kita lebih dekat ke ketergantungan total, dan lebih jauh dari otonomi.<p><h2>The Speed of Change: A Historical Perspective</h2></p>
+Atrofi kognitif bukan hanya tentang otak. Ia menyebar ke tiga dimensi sekaligus:<p><strong>Dimensi Ekonomi</strong>: Pekerjaan manusia digantikan oleh mesin, menciptakan ketergantungan struktural. Kita tidak lagi perlu bekerja keras karena AI bisa melakukan segalanya lebih cepat. Tapi kita juga tidak lagi memiliki purpose yang dulu diberikan oleh kerja.</p>
 
-Untuk memahami signifikansi AI-driven cognitive atrophy, kita harus menempatkannya dalam konteks sejarah. Revolusi teknologi sebelumnya—prensa cetak, revolusi industri, komputer—juga mengubah cara manusia berpikir dan bekerja. Tapi mereka melakukannya dalam hitungan dekade atau abad, memungkinkan masyarakat untuk beradaptasi secara bertahap.<p>AI berbeda. Kecepatan perubahannya belum pernah terjadi sebelumnya. ChatGPT dirilis pada November 2022. Dalam hitungan bulan, ia memiliki 100 juta pengguna. Dalam setahun, ia telah memproses lebih banyak query daripada semua percakapan manusia dalam sehari.</p>
+<strong>Dimensi Psikologis</strong>: Hubungan kita dengan teknologi menjadi intim—terlalu intim. Kita berbicara kepada chatbot seperti kepada teman, pasangan, atau terapis. Kita membangun ketergantungan emosional pada entitas yang tidak punya consciousness.<p><strong>Dimensi Sosial</strong>: Masyarakat terfragmentasi ke dalam bubble-bubble informasi yang berbeda. Kita tidak lagi berbagi realitas yang sama. Kita tidak lagi punya facts dasar yang disepakati bersama.</p>
 
-Kecepatan ini tidak memberikan waktu untuk adaptasi.<p><h2>The Illusion of Choice</h2></p>
+Ketiga dimensi ini saling terkait. Ekonomi yang bergantung pada AI menciptakan tekanan psikologis. Tekanan psikologis mendorong kita mencari kenyamanan di tempat-tempat virtual. Kebahagiaan virtual ini mengisolasi kita dari realitas bersama. Dan realitas bersama yang hancur memperkuat ketergantungan pada mesin.<p>Ini adalah spiral yang saling memperkuat—di mana setiap putaran membawa kita lebih dekat ke ketergantungan total, dan lebih jauh dari otonomi.</p>
 
-Salah satu aspek paling menipu dari adopsi AI adalah ilusi pilihan. Pengguna percaya bahwa mereka memilih untuk menggunakan AI karena itu convenience. Tapi convenience tidak netral—ia membentuk behavior.<p>Ketika AI membuat tugas-tugas menjadi lebih mudah, manusia secara alami memilih jalan dengan resistance minimum. Kita berhenti练习 keterampilan karena tool melakukannya lebih baik. Kita berhenti berpikir kritis karena algoritma memberikan jawaban. Kita berhenti mengingat karena cloud menyimpan semuanya.</p>
+<h2>The Speed of Change: A Historical Perspective</h2><p>Untuk memahami signifikansi AI-driven cognitive atrophy, kita harus menempatkannya dalam konteks sejarah. Revolusi teknologi sebelumnya—prensa cetak, revolusi industri, komputer—juga mengubah cara manusia berpikir dan bekerja. Tapi mereka melakukannya dalam hitungan dekade atau abad, memungkinkan masyarakat untuk beradaptasi secara bertahap.</p>
 
-Seiring waktu, ini menjadi habit. Dan habit menjadi identity.<p>Yang dimulai sebagai tool menjadi crutch. Yang dimulai sebagai convenience menjadi dependency. Dan yang dimulai sebagai voluntary adoption menjadi structural necessity.</p>
+AI berbeda. Kecepatan perubahannya belum pernah terjadi sebelumnya. ChatGPT dirilis pada November 2022. Dalam hitungan bulan, ia memiliki 100 juta pengguna. Dalam setahun, ia telah memproses lebih banyak query daripada semua percakapan manusia dalam sehari.<p>Kecepatan ini tidak memberikan waktu untuk adaptasi.</p>
 
-<h2>Pertanyaan yang Harus Kita Ajukan</h2><p>Buku ini mengajak pembaca menelusuri dampak-dampak yang belum sepenuhnya disadari. Bagaimana mesin mengubah ekonomi, bagaimana mereka mengikis kognisi, bagaimana mereka meruntuhkan fondasi realitas bersama. Bagaimana mereka, dalam prosesnya, membuat manusia menjadi lebih mudah dikelola, lebih mudah diprediksi, lebih mudah dikendalikan.</p>
+<h2>The Illusion of Choice</h2><p>Salah satu aspek paling menipu dari adopsi AI adalah ilusi pilihan. Pengguna percaya bahwa mereka memilih untuk menggunakan AI karena itu convenience. Tapi convenience tidak netral—ia membentuk behavior.</p>
 
-Pertanyaan yang mendasari buku ini sederhana tapi mendalam: ketika kita terus-menerus menyerahkan pemikiran kepada mesin, apa yang tersisa dari kemanusiaan kita? Apakah kita masih bisa berpikir tanpa bantuan? Apakah kita masih bisa mengingat tanpa pencarian? Apakah kita masih bisa memutuskan tanpa rekomendasi? Atau sudah terlambat?<p>Saya tidak punya jawaban pasti. Tapi saya percaya bahwa bertanya adalah langkah pertama. Dan mungkin, hanya mungkin, pertanyaan ini bisa menjadi benih dari kesadaran baru—kesadaran bahwa kemudahan hari ini bisa menjadi jeratan masa depan.</p>
+Ketika AI membuat tugas-tugas menjadi lebih mudah, manusia secara alami memilih jalan dengan resistance minimum. Kita berhenti练习 keterampilan karena tool melakukannya lebih baik. Kita berhenti berpikir kritis karena algoritma memberikan jawaban. Kita berhenti mengingat karena cloud menyimpan semuanya.<p>Seiring waktu, ini menjadi habit. Dan habit menjadi identity.</p>
 
-Di bab-bab berikutnya, kita akan menelusuri dampak AI dari berbagai sudut: ekonomi, kognisi, psikologi, sosial, budaya, keamanan, dan lingkungan. Setiap bab akan mengungkap lapisan berbeda dari fenomena yang sama: atrofi kognitif bukan hanya tentang otak kita yang melemah. Ini tentang seluruh peradaban yang sedang beradaptasi dengan cara baru dalam berfikir—dan cara baru dalam dikendalikan.<p>Mari kita mulai perjalanan ini.</p>
+Yang dimulai sebagai tool menjadi crutch. Yang dimulai sebagai convenience menjadi dependency. Dan yang dimulai sebagai voluntary adoption menjadi structural necessity.<p><h2>Pertanyaan yang Harus Kita Ajukan</h2></p>
 
----
+Buku ini mengajak pembaca menelusuri dampak-dampak yang belum sepenuhnya disadari. Bagaimana mesin mengubah ekonomi, bagaimana mereka mengikis kognisi, bagaimana mereka meruntuhkan fondasi realitas bersama. Bagaimana mereka, dalam prosesnya, membuat manusia menjadi lebih mudah dikelola, lebih mudah diprediksi, lebih mudah dikendalikan.<p>Pertanyaan yang mendasari buku ini sederhana tapi mendalam: ketika kita terus-menerus menyerahkan pemikiran kepada mesin, apa yang tersisa dari kemanusiaan kita? Apakah kita masih bisa berpikir tanpa bantuan? Apakah kita masih bisa mengingat tanpa pencarian? Apakah kita masih bisa memutuskan tanpa rekomendasi? Atau sudah terlambat?</p>
+
+Saya tidak punya jawaban pasti. Tapi saya percaya bahwa bertanya adalah langkah pertama. Dan mungkin, hanya mungkin, pertanyaan ini bisa menjadi benih dari kesadaran baru—kesadaran bahwa kemudahan hari ini bisa menjadi jeratan masa depan.<p>Di bab-bab berikutnya, kita akan menelusuri dampak AI dari berbagai sudut: ekonomi, kognisi, psikologi, sosial, budaya, keamanan, dan lingkungan. Setiap bab akan mengungkap lapisan berbeda dari fenomena yang sama: atrofi kognitif bukan hanya tentang otak kita yang melemah. Ini tentang seluruh peradaban yang sedang beradaptasi dengan cara baru dalam berfikir—dan cara baru dalam dikendalikan.</p>
+
+Mari kita mulai perjalanan ini.<p>---</p>
 
 <em>Kutipan kunci: "Kita tidak kehilangan kemampuan karena kita jadi bodoh. Kita kehiliranya karena kita berhenti练习."</em>
-        </div>
+      </div>
+    </section>
     
-
-        <!-- Chapter 01 -->
-        <div class="chapter" id="chapter-01">
-            <h1>Bab 1: Kehilangan Pekerjaan (Job Loss)</h1>
-            <p class="chapter-meta">Esai Non-Fiksi | Agustus 2026</p>
-            <div class="svg-container"><?xml version="1.0" encoding="UTF-8"?>
+    <section class="chapter" id="01">
+      <header class="chapter-header">
+        <span class="chapter-number">Bab 1</span>
+        <h1>Kehilangan Pekerjaan</h1>
+      </header>
+      <div class="chapter-body">
+        <div class="figure"><?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" role="img" aria-labelledby="svg-title svg-desc">
   <title id="svg-title">Perbandingan Kecepatan Kerja Manusia vs AI</title>
   <desc id="svg-desc">Diagram perbandingan kecepatan pemrosesan tugas antara pekerja manusia dan sistem AI</desc>
@@ -373,13 +397,13 @@ Di bab-bab berikutnya, kita akan menelusuri dampak AI dari berbagai sudut: ekono
     </marker>
   </defs>
   <text x="400" y="190" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#dc2626" font-weight="bold">DIPESANGKAN</text>
-</svg></div># Bab 1: Kehilangan Pekerjaan (Job Loss)<p><em>Esai Non-Fiksi | Agustus 2026</em></p>
+</svg><figcaption>Ilustrasi</figcaption></div><p>---</p>
 
----<p><h2>Ketika Mesin Belajar Bekerja</h2></p>
+<h2>Ketika Mesin Belajar Bekerja</h2><p>Otomatisasi bukanlah konsep baru dalam sejarah manusia. Sejak Revolusi Industri abad ke-18, mesin selalu menggantikan tenaga manusia. Petani yang dulunya menggarap sawah dengan cangkul kini mengoperasikan traktor. Pengrajin yang membuat sepatu dengan tangan kini bekerja di pabrik dengan mesin jahit otomatis. Pabrik berpindah ke kantor, kantor berpindah ke jaringan global.</p>
 
-Otomatisasi bukanlah konsep baru dalam sejarah manusia. Sejak Revolusi Industri abad ke-18, mesin selalu menggantikan tenaga manusia. Petani yang dulunya menggarap sawah dengan cangkul kini mengoperasikan traktor. Pengrajin yang membuat sepatu dengan tangan kini bekerja di pabrik dengan mesin jahit otomatis. Pabrik berpindah ke kantor, kantor berpindah ke jaringan global.<p>Tapi kali ini, kecepatannya berbeda.</p>
+Tapi kali ini, kecepatannya berbeda.<p>Pertama kali dalam sejarah, mesin tidak hanya mengganti tangan. Mesin mengganti pikiran.</p>
 
-Pertama kali dalam sejarah, mesin tidak hanya mengganti tangan. Mesin mengganti pikiran.<p>AI tidak memerlukan jadwal serikat pekerja, tuntutan upah minimum, atau cuti tahunan. Ia tidak lelah, tidak marah, dan tidak butuh jeda kopi. Sebuah model bahasa besar dapat memproses ribuan dokumen dalam hitungan detik—bekerja lebih cepat dari manusia dalam keadaan paling produktif sekalipun. Dan yang paling unsettling: ia tidak pernah berhenti belajar.</p>
+AI tidak memerlukan jadwal serikat pekerja, tuntutan upah minimum, atau cuti tahunan. Ia tidak lelah, tidak marah, dan tidak butuh jeda kopi. Sebuah model bahasa besar dapat memproses ribuan dokumen dalam hitungan detik—bekerja lebih cepat dari manusia dalam keadaan paling produktif sekalipun. Dan yang paling unsettling: ia tidak pernah berhenti belajar.
 
 <p><h2>Pelepasan Massal yang Belum Disadari</h2></p>
 
@@ -415,17 +439,19 @@ Kita berada di persimpangan. Di satu sisi, ada narasi yang menjanjikan: AI akan 
 
 Mungkin jawabannya bukan pada solusi teknis semata. Mungkin kita perlu melakukan introspeksi kolektif tentang apa artinya "bekerja" dan "berkontribusi" dalam masyarakat yang semakin dijajah oleh mesin.<p>Buku ini mengajak kita menelusuri dampak-dampak yang lebih luas dari transformasi tersebut—mulai dari ekonomi hingga kognisi, dari psikologi hingga budaya, dari keamanan hingga lingkungan. Setiap bab adalah lapisan berbeda dari fenomena yang sama: bagaimana mesin yang kita ciptakan untuk melayani kita, justru mengubah definisi tentang siapa kita.</p>
 
----
+<hr>
 
 <em>Kutipan kunci: "AI tidak mengganti tangan. AI mengganti pikiran. Dan ketika pikiran digantikan, identitas pun ikut terganti."</em>
-        </div>
+      </div>
+    </section>
     
-
-        <!-- Chapter 02 -->
-        <div class="chapter" id="chapter-02">
-            <h1>Bab 2: Erosi Karier Pemula</h1>
-            <p class="chapter-meta">Esai Non-Fiksi | Agustus 2026</p>
-            <div class="svg-container"><?xml version="1.0" encoding="UTF-8"?>
+    <section class="chapter" id="02">
+      <header class="chapter-header">
+        <span class="chapter-number">Bab 2</span>
+        <h1>Erosi Karier Pemula</h1>
+      </header>
+      <div class="chapter-body">
+        <div class="figure"><?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-labelledby="ladder-title">
   <title id="ladder-title">Erosi Tangga Karier Pemula</title>
   <desc id="ladder-desc">Visualisasi hilangnya posisi entry-level dalam berbagai profesi akibat AI</desc>
@@ -496,13 +522,13 @@ Mungkin jawabannya bukan pada solusi teknis semata. Mungkin kita perlu melakukan
     <rect x="0" y="0" width="600" height="35" rx="6" fill="#fef2f2" stroke="#fecaca" stroke-width="1"/>
     <text x="300" y="23" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#991b1b">Dampak: 65% posisi entry-level hilang atau berubah dalam 5 tahun terakhir</text>
   </g>
-</svg></div># Bab 2: Erosi Karier Pemula<p><em>Esai Non-Fiksi | Agustus 2026</em></p>
+</svg><figcaption>Ilustrasi</figcaption></div><p>---</p>
 
----<p><h2>Tangga yang Hilang</h2></p>
+<h2>Tangga yang Hilang</h2><p>Setiap profesi memiliki jalur masuk. Seorang penulis dimulai sebagai editor atau peneliti. Seorang programmer memulai dengan tugas-tugas dasar: entri data, debug sederhana, dokumentasi. Seorang desainer belajar dari membuat mockup repetitif sebelum mencapai kebebasan kreatif. Seorang musisi berlatih scales berjam-jam sebelum mencipta melodi.</p>
 
-Setiap profesi memiliki jalur masuk. Seorang penulis dimulai sebagai editor atau peneliti. Seorang programmer memulai dengan tugas-tugas dasar: entri data, debug sederhana, dokumentasi. Seorang desainer belajar dari membuat mockup repetitif sebelum mencapai kebebasan kreatif. Seorang musisi berlatih scales berjam-jam sebelum mencipta melodi.<p>Jalur-jalur ini bukan efisiensi yang boros. Mereka adalah fondasi. Tanpa pengalaman mengerjakan hal-hal sederhana, tanpa rasa frustrasi yang dibangun perlahan, tanpa kesalahan-kesalahan kecil yang diajarkan oleh mentor—seseorang tidak akan memiliki intuisi yang diperlukan untuk tugas yang lebih kompleks.</p>
+Jalur-jalur ini bukan efisiensi yang boros. Mereka adalah fondasi. Tanpa pengalaman mengerjakan hal-hal sederhana, tanpa rasa frustrasi yang dibangun perlahan, tanpa kesalahan-kesalahan kecil yang diajarkan oleh mentor—seseorang tidak akan memiliki intuisi yang diperlukan untuk tugas yang lebih kompleks.<p>AI meruntuhkan tangga ini.</p>
 
-AI meruntuhkan tangga ini.<p>Ketika AI dapat menulis kode dasar, menyusun draf email, membuat desain sederhana, atau menerjemahkan dokumen dalam hitungan detik, mengapa perusahaan akan merekrut pemula? Mengapa membayar gaji entry-level untuk seseorang yang masih belajar, ketika mesin bisa melakukan tugas yang sama lebih cepat dan lebih murah?</p>
+Ketika AI dapat menulis kode dasar, menyusun draf email, membuat desain sederhana, atau menerjemahkan dokumen dalam hitungan detik, mengapa perusahaan akan merekrut pemula? Mengapa membayar gaji entry-level untuk seseorang yang masih belajar, ketika mesin bisa melakukan tugas yang sama lebih cepat dan lebih murah?
 
 <p><h2>Studi Kasus: Programmer Junior</h2></p>
 
@@ -535,14 +561,16 @@ Satu opsi adalah pasrah: menerima bahwa generasi muda harus berjuang lebih keras
 Pilihan mana yang kita ambil akan menentukan wajah dunia kerja generasi berikutnya. Pilihan itu juga akan menentukan apakah "karier" masih menjadi jalan menuju martabat dan purpose, atau hanya menjadi memori dari masa ketika manusia masih dibutuhkan untuk bekerja.<p>---</p>
 
 <em>Kutipan kunci: "Untuk mendapat pekerjaan, Anda butuh pengalaman. Tapi untuk mendapat pengalaman, Anda butuh pekerjaan. AI memutus siklus ini."</em>
-        </div>
+      </div>
+    </section>
     
-
-        <!-- Chapter 03 -->
-        <div class="chapter" id="chapter-03">
-            <h1>Bab 3: Oligarki Teknologi Baru</h1>
-            <p class="chapter-meta">Esai Non-Fiksi | Agustus 2026</p>
-            <div class="svg-container"><?xml version="1.0" encoding="UTF-8"?>
+    <section class="chapter" id="03">
+      <header class="chapter-header">
+        <span class="chapter-number">Bab 3</span>
+        <h1>Oligarki Teknologi Baru</h1>
+      </header>
+      <div class="chapter-body">
+        <div class="figure"><?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-labelledby="oligarchy-title">
   <title id="oligarchy-title">Konsentrasi Kekayaan di Tangan Oligarki Teknologi</title>
   <desc id="oligarchy-desc">Visualisasi perpindahan kekayaan dari masyarakat luas ke segelintir perusahaan teknologi</desc>
@@ -595,13 +623,11 @@ Pilihan mana yang kita ambil akan menentukan wajah dunia kerja generasi berikutn
       <path d="M0,0 L10,3 L0,6 Z" fill="#ef4444"/>
     </marker>
   </defs>
-</svg></div># Bab 3: Oligarki Teknologi Baru<p><em>Esai Non-Fiksi | Agustus 2026</em></p>
+</svg><figcaption>Ilustrasi</figcaption></div><p>---</p>
 
----<p><h2>Raja-Raja Baru without Mahkota</h2></p>
+<h2>Raja-Raja Baru without Mahkota</h2><p>Sementara jutaan kehilangan pekerjaan, segelintir perusahaan mengumpulkan kekayaan yang belum pernah terjadi dalam sejarah peradaban manusia.</p>
 
-Sementara jutaan kehilangan pekerjaan, segelintir perusahaan mengumpulkan kekayaan yang belum pernah terjadi dalam sejarah peradaban manusia.<p>OpenAI, Google, Meta, Amazon, Microsoft—nama-nama ini bukan sekadar merek. Mereka adalah monoli yang mengendalikan infrastruktur kecerdasan buatan dunia. Mereka拥有 data, model, dan compute. Mereka yang menentukan apa yang bisa dihasilkan, siapa yang bisa mengaksesnya, dan berapa harganya.</p>
-
-Kekayaan ini tidak datang dari produk konvensional. Tidak ada pabrik yang mengeluarkan smartphone atau mobil. Mereka menjual akses—kepada kecerdasan itu sendiri.
+OpenAI, Google, Meta, Amazon, Microsoft—nama-nama ini bukan sekadar merek. Mereka adalah monoli yang mengendalikan infrastruktur kecerdasan buatan dunia. Mereka拥有 data, model, dan compute. Mereka yang menentukan apa yang bisa dihasilkan, siapa yang bisa mengaksesnya, dan berapa harganya.<p>Kekayaan ini tidak datang dari produk konvensional. Tidak ada pabrik yang mengeluarkan smartphone atau mobil. Mereka menjual akses—kepada kecerdasan itu sendiri.</p>
 
 <p><h2>The Speed of Accumulation</h2></p>
 
@@ -634,14 +660,16 @@ Lebih dari sekadar kontrol ekonomi, oligarki teknologi memiliki kekuatan untuk m
 Dan seperti semua oligarki sebelumnya, yang terjadi adalah: mereka yang memiliki semakin banyak, sementara yang tidak memiliki semakin tersingkir.<p>---</p>
 
 <em>Kutipan kunci: "Kekayaan yang terkonsentrasi sedemikian rupa menciptakan oligarki baru—bukan berdasarkan tanah atau sumber daya alam, tapi berdasarkan pengetahuan dan komputasi."</em>
-        </div>
+      </div>
+    </section>
     
-
-        <!-- Chapter 04 -->
-        <div class="chapter" id="chapter-04">
-            <h1>Bab 4: Kolonialisme Digital</h1>
-            <p class="chapter-meta">Esai Non-Fiksi | Agustus 2026</p>
-            <div class="svg-container"><?xml version="1.0" encoding="UTF-8"?>
+    <section class="chapter" id="04">
+      <header class="chapter-header">
+        <span class="chapter-number">Bab 4</span>
+        <h1>Kolonialisme Digital</h1>
+      </header>
+      <div class="chapter-body">
+        <div class="figure"><?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-labelledby="colonialism-title">
   <title id="colonialism-title">Siklus Kolonialisme Digital</title>
   <desc id="colonialism-desc">Diagram aliran data dari negara berkembang ke perusahaan teknologi global</desc>
@@ -719,13 +747,11 @@ Dan seperti semua oligarki sebelumnya, yang terjadi adalah: mereka yang memiliki
       <path d="M0,0 L10,3 L0,6 Z" fill="#22c55e"/>
     </marker>
   </defs>
-</svg></div># Bab 4: Kolonialisme Digital<p><em>Esai Non-Fiksi | Agustus 2026</em></p>
+</svg><figcaption>Ilustrasi</figcaption></div><p>---</p>
 
----<p><h2>Tambang Data Tanpa Tentara</h2></p>
+<h2>Tambang Data Tanpa Tentara</h2><p>Di balik narasi "demokratisasi AI" beredar realitas yang lebih gelap: kolonialisme data.</p>
 
-Di balik narasi "demokratisasi AI" beredar realitas yang lebih gelap: kolonialisme data.<p>Negara-negara berkembang menjadi tambang data mentah. Pengguna di Nigeria, India, Brasil, dan Filipina menghasilkan miliaran datapoint setiap hari—teks, gambar, suara, perilaku—yang kemudian dipanen oleh perusahaan teknologi global. Data ini menjadi bahan baku untuk melatih model AI yang kemudian dijual kembali kepada masyarakat asli pengguna tersebut dengan harga yang tidak terjangkau.</p>
-
-Ini adalah bentuk eksploitasi yang tidak memerlukan senjata. Tidak perlu invasi militer. Cukup syarat layanan yang panjang, antarmuka yang menarik, dan harga yang gratis—sampai tiba waktunya untuk monetisasi.
+Negara-negara berkembang menjadi tambang data mentah. Pengguna di Nigeria, India, Brasil, dan Filipina menghasilkan miliaran datapoint setiap hari—teks, gambar, suara, perilaku—yang kemudian dipanen oleh perusahaan teknologi global. Data ini menjadi bahan baku untuk melatih model AI yang kemudian dijual kembali kepada masyarakat asli pengguna tersebut dengan harga yang tidak terjangkau.<p>Ini adalah bentuk eksploitasi yang tidak memerlukan senjata. Tidak perlu invasi militer. Cukup syarat layanan yang panjang, antarmuka yang menarik, dan harga yang gratis—sampai tiba waktunya untuk monetisasi.</p>
 
 <p><h2>The Data Extraction Pipeline</h2></p>
 
@@ -749,17 +775,19 @@ But these efforts face significant challenges. Building independent AI capacity 
 
 Perbedaan dengan kolonialisme tradisional? Tidak ada tentara yang berdiri di perbatasan. Tidak ada pemerintahan yang digulingkan. Yang terjadi adalah kontrak layanan yang tampaknya sukarela—hingga kenyataan bahwa tidak ada alternatif yang tersedia menjadi jelas.<p>Dan seperti semua bentuk kolonialisme, yang terjadi adalah akumulasi kekayaan di satu pihak dan deplesi di pihak lain. Bukan deplesi sumber daya fisik, tapi deplesi otonomi digital—kemampuan untuk menentukan nasib sendiri dalam lanskap teknologi global.</p>
 
----
+<hr>
 
 <em>Kutipan kunci: "Tidak ada tentara yang berdiri di perbatasan. Yang terjadi adalah kontrak layanan yang tampaknya sukarela—hingga kenyataan bahwa tidak ada alternatif yang tersedia menjadi jelas."</em>
-        </div>
+      </div>
+    </section>
     
-
-        <!-- Chapter 05 -->
-        <div class="chapter" id="chapter-05">
-            <h1>Bab 5: Krisis Hak Cipta</h1>
-            <p class="chapter-meta">Esai Non-Fiksi | Agustus 2026</p>
-            <div class="svg-container"><?xml version="1.0" encoding="UTF-8"?>
+    <section class="chapter" id="05">
+      <header class="chapter-header">
+        <span class="chapter-number">Bab 5</span>
+        <h1>Krisis Hak Cipta</h1>
+      </header>
+      <div class="chapter-body">
+        <div class="figure"><?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" role="img" aria-labelledby="copyright-title">
   <title id="copyright-title">Krisis Hak Cipta di Era AI</title>
   <desc id="copyright-desc">Perbandingan antara proses kreatif manusia dan ekstraksi data AI</desc>
@@ -836,13 +864,11 @@ Perbedaan dengan kolonialisme tradisional? Tidak ada tentara yang berdiri di per
       <path d="M0,0 L10,3 L0,6 Z" fill="#ef4444"/>
     </marker>
   </defs>
-</svg></div># Bab 5: Krisis Hak Cipta<p><em>Esai Non-Fiksi | Agustus 2026</em></p>
+</svg><figcaption>Ilustrasi</figcaption></div><p>---</p>
 
----<p><h2>Pencurian yang Dilegalisir</h2></p>
+<h2>Pencurian yang Dilegalisir</h2><p>Karya seni bukan lagi dinilai berdasarkan keahlian, dedikasi, atau visi individual—tapi berdasarkan kecepatan dan efisiensi produksi.</p>
 
-Karya seni bukan lagi dinilai berdasarkan keahlian, dedikasi, atau visi individual—tapi berdasarkan kecepatan dan efisiensi produksi.<p>Seorang seniman menghabiskan 40 jam untuk melukis sebuah kanvas. Sebuah AI menghasilkan 100 gambar serupa dalam 10 detik, dengan "inspirasi" dari jutaan karya yang dilatih tanpa izin, tanpa kompensasi, dan tanpa atribusi.</p>
-
-Inilah paradoks era AI: teknologi yang menjanjikan kreativitas massal sebenarnya adalah mesin pencuri paling efisien dalam sejarah peradaban.
+Seorang seniman menghabiskan 40 jam untuk melukis sebuah kanvas. Sebuah AI menghasilkan 100 gambar serupa dalam 10 detik, dengan "inspirasi" dari jutaan karya yang dilatih tanpa izin, tanpa kompensasi, dan tanpa atribusi.<p>Inilah paradoks era AI: teknologi yang menjanjikan kreativitas massal sebenarnya adalah mesin pencuri paling efisien dalam sejarah peradaban.</p>
 
 <p><h2>Perang Hukum yang Belum Dimulai</h2></p>
 
@@ -852,9 +878,9 @@ Tapi apakah benar AI mengubah karya asli menjadi sesuatu yang "transformative"? 
 
 Beberapa kasus hukum telah diajukan:
 
-- <strong>Artist vs Stability AI</strong>: Kelompok seniman mengklaim bahwa Stability AI menggunakan karya mereka tanpa izin untuk melatih model Midjourney dan Stable Diffusion.
-- <strong>New York Times vs OpenAI</strong>: Perusahaan pers mengklaim bahwa OpenAI dan Microsoft menggunakan konten NYT untuk training tanpa kompensasi.
-- <strong>Writer's Guild vs AI Companies</strong>: Serikat penulis menuntut penggunaan karya mereka untuk training language models.<p>Hingga saat ini, sebagian besar kasus ini masih dalam tahap awal. pengadilan belum memberikan kepastian hukum yang jelas.</p>
+<li><strong>Artist vs Stability AI</strong>: Kelompok seniman mengklaim bahwa Stability AI menggunakan karya mereka tanpa izin untuk melatih model Midjourney dan Stable Diffusion.</li>
+<li><strong>New York Times vs OpenAI</strong>: Perusahaan pers mengklaim bahwa OpenAI dan Microsoft menggunakan konten NYT untuk training tanpa kompensasi.</li>
+<li><strong>Writer's Guild vs AI Companies</strong>: Serikat penulis menuntut penggunaan karya mereka untuk training language models.<p>Hingga saat ini, sebagian besar kasus ini masih dalam tahap awal. pengadilan belum memberikan kepastian hukum yang jelas.</p></li>
 
 <h2>Dampak Ekonomi pada Kreator</h2><p>Untuk seniman, penulis, dan musisi yang bekerja, dampaknya sudah terasa. Website stok ilustrasi melaporkan penurunan penjualan seiring klien beralih ke generator gambar AI. Penulis freelance melaporkan lebih sedikit peluang karena perusahaan mengadopsi tools konten AI.</p>
 
@@ -866,10 +892,10 @@ Tapi AI berbeda. Teknologi sebelumnya augmentasi kreativitas manusia; AI bisa me
 
 Apa yang dibutuhkan adalah kontrak sosial baru untuk kreativitas di era AI. Ini mungkin termasuk:
 
-- Kompensasi wajib untuk senimanwhose karya digunakan dalam training AI
-- Panduan jelas untuk attribution dan consent
-- Investasi publik dalam seni dan budaya untuk memastikan diversitas ekspresi
-- Pendidikan tentang literasi AI untuk kreator<p>Tanpa langkah-langkah ini, kita berisiko menciptakan budaya di mana hanya mereka yang memiliki kekayaan independen yang bisa afford untuk menciptakan—sementara yang lain mengkonsumsi apa yang diproduksi mesin.</p>
+<li>Kompensasi wajib untuk senimanwhose karya digunakan dalam training AI</li>
+<li>Panduan jelas untuk attribution dan consent</li>
+<li>Investasi publik dalam seni dan budaya untuk memastikan diversitas ekspresi</li>
+<li>Pendidikan tentang literasi AI untuk kreator<p>Tanpa langkah-langkah ini, kita berisiko menciptakan budaya di mana hanya mereka yang memiliki kekayaan independen yang bisa afford untuk menciptakan—sementara yang lain mengkonsumsi apa yang diproduksi mesin.</p></li>
 
 <h2>Pertanyaan Tentang Nilai dan Keaslian</h2><p>Pada tingkat yang lebih mendasar, AI memaksa kita untuk mempertanyakan: apa yang membuat karya seni bernilai?</p>
 
@@ -879,17 +905,19 @@ Tapi jika nilai terletak pada proses dan makna di baliknya, maka tidak ada mesin
 
 Masa depan budaya kita bergantung pada jawaban atas pertanyaan-pertanyaan ini. Apakah kita akan menciptakan sistem yang menghargai kerja kreatif manusia, ataukah kita akan membiarkan algoritma mendominasi lanskap budaya?<p>Pilihan itu bukan sekadar ekonomis. Itu adalah pertanyaan tentang apa artinya menjadi manusia di abad ke-21.</p>
 
----
+<hr>
 
 <em>Kutipan kunci: "Karya seni bukan lagi dinilai berdasarkan keahlian, dedikasi, atau visi individual—tapi berdasarkan kecepatan dan efisiensi produksi."</em>
-        </div>
+      </div>
+    </section>
     
-
-        <!-- Chapter 06 -->
-        <div class="chapter" id="chapter-06">
-            <h1>Bab 6: Atrofi Kognitif (Eskalator Kognitif)</h1>
-            <p class="chapter-meta">Esai Non-Fiksi | Agustus 2026</p>
-            <div class="svg-container"><?xml version="1.0" encoding="UTF-8"?>
+    <section class="chapter" id="06">
+      <header class="chapter-header">
+        <span class="chapter-number">Bab 6</span>
+        <h1>Atrofi Kognitif</h1>
+      </header>
+      <div class="chapter-body">
+        <div class="figure"><?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-labelledby="atrophy-title">
   <title id="atrophy-title">Eskalator Kognitif: Ketika Otak Berhenti Bekerja</title>
   <desc id="atrophy-desc">Diagram menunjukkan penurunan fungsi kognitif akibat ketergantungan pada AI</desc>
@@ -959,19 +987,17 @@ Masa depan budaya kita bergantung pada jawaban atas pertanyaan-pertanyaan ini. A
     <rect x="0" y="0" width="600" height="35" rx="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1"/>
     <text x="300" y="23" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#991b1b">Peringatan: Atrofi terjadi secara gradual dan sering tidak disadari</text>
   </g>
-</svg><div class="svg-container"><img src="chapter-06-illustration.png" alt="Atrofi Kognitif Illustration" style="max-width: 100%; border-radius: 8px; margin-top: 20px;"></div></div># Bab 6: Atrofi Kognitif (Eskalator Kognitif)<p><em>Esai Non-Fiksi | Agustus 2026</em></p>
+</svg><figcaption>Ilustrasi</figcaption></div><p>---</p>
 
----<p><h2>Ketika Otak Lupa Cara Bekerja</h2></p>
+<h2>Ketika Otak Lupa Cara Bekerja</h2><p>Kita hidup di era ketika mengingat bukan lagi keterampilan yang dihargai.</p>
 
-Kita hidup di era ketika mengingat bukan lagi keterampilan yang dihargai.<p>Dulu, mengetahui nama ibu kota negara, tanggal peristiwa sejarah, atau rumus matematika adalah hal yang membanggakan. Sekarang, semua itu bisa diketik dalam lima detik dan dijawab dalam sepersekian detik.</p>
+Dulu, mengetahui nama ibu kota negara, tanggal peristiwa sejarah, atau rumus matematika adalah hal yang membanggakan. Sekarang, semua itu bisa diketik dalam lima detik dan dijawab dalam sepersekian detik.<p>Manfaatnya jelas: efisiensi. Kerugiannya: kita lupa cara mengingat.</p>
 
-Manfaatnya jelas: efisiensi. Kerugiannya: kita lupa cara mengingat.<p>Penelitian tentang "efek Google" sudah lama menunjukkan bahwa ketika manusia tahu informasi bisa diakses secara online, mereka cenderung tidak menyimpannya dalam memori jangka panjang. Mereka mengingat <em>di mana</em> menemukan informasi, bukan informasi itu sendiri. Studi oleh Sparrow dkk. (2011) di Columbia University menemukan bahwa peserta lebih mungkin mengingat lokasi penyimpanan informasi daripada informasi itu sendiri ketika mereka tahu informasi tersebut dapat diulang nanti.</p>
+Penelitian tentang "efek Google" sudah lama menunjukkan bahwa ketika manusia tahu informasi bisa diakses secara online, mereka cenderung tidak menyimpannya dalam memori jangka panjang. Mereka mengingat <em>di mana</em> menemukan informasi, bukan informasi itu sendiri. Studi oleh Sparrow dkk. (2011) di Columbia University menemukan bahwa peserta lebih mungkin mengingat lokasi penyimpanan informasi daripada informasi itu sendiri ketika mereka tahu informasi tersebut dapat diulang nanti.<p>AI memperparah tren ini. Tidak hanya menyediakan jawaban, tapi juga membentuk cara berpikir.</p>
 
-AI memperparah tren ini. Tidak hanya menyediakan jawaban, tapi juga membentuk cara berpikir.<p>Ketika seseorang terbiasa meminta AI menyusun argumen, mereka kehilangan kemampuan untuk menyusun argumen sendiri. Ketika seseorang meminta AI menulis surat, mereka lupa struktur bahasa formal. Ketika seseorang meminta AI menganalisis masalah, mereka berhenti mengembangkan intuisi analitis.</p>
+Ketika seseorang terbiasa meminta AI menyusun argumen, mereka kehilangan kemampuan untuk menyusun argumen sendiri. Ketika seseorang meminta AI menulis surat, mereka lupa struktur bahasa formal. Ketika seseorang meminta AI menganalisis masalah, mereka berhenti mengembangkan intuisi analitis.<p>Ini bukan tentang kecerdasan. Ini tentang kebiasaan. Otak adalah organ yang beradaptasi berdasarkan penggunaan. Jika kita berhenti melatih fungsi kognitif tertentu, fungsi itu akan melemah.</p>
 
-Ini bukan tentang kecerdasan. Ini tentang kebiasaan. Otak adalah organ yang beradaptasi berdasarkan penggunaan. Jika kita berhenti melatih fungsi kognitif tertentu, fungsi itu akan melemah.<p>Neuroscientist telah lama mengetahui konsep "use it or lose it." Koneksi sinaptik yang tidak digunakan akan melemah dan akhirnya terputus. Ini adalah prinsip dasar neuroplastisitas: otak kita berubah berdasarkan apa yang kita lakukan berulang kali.</p>
-
-Tapi atrofi kognitif akibat AI berbeda dari atrofi karena usia atau penyakit. Ini adalah atrofi yang disengaja—atau setidaknya, diperbolehkan. Kita secara aktif memilih untuk tidak berpikir, karena ada mesin yang akan melakukannya untuk kita.
+Neuroscientist telah lama mengetahui konsep "use it or lose it." Koneksi sinaptik yang tidak digunakan akan melemah dan akhirnya terputus. Ini adalah prinsip dasar neuroplastisitas: otak kita berubah berdasarkan apa yang kita lakukan berulang kali.<p>Tapi atrofi kognitif akibat AI berbeda dari atrofi karena usia atau penyakit. Ini adalah atrofi yang disengaja—atau setidaknya, diperbolehkan. Kita secara aktif memilih untuk tidak berpikir, karena ada mesin yang akan melakukannya untuk kita.</p>
 
 <p><h2>Contoh Nyata: Hilangnya Navigasi Spasial</h2></p>
 
@@ -995,22 +1021,24 @@ When every moment is optimized for productivity or entertainment, there is no sp
 
 The challenge, then, is not to reject AI, but to use it intentionally. We must develop what might be called "cognitive hygiene"—practices that preserve our thinking capacities even as we leverage AI tools.<p>This might include:</p>
 
-- Practicing "slow thinking"—deliberately engaging with complex problems without AI assistance
-- Cultivating curiosity through unstructured exploration
-- Developing personal styles of expression that resist algorithmic homogenization
-- Creating spaces for boredom and daydreaming in our daily lives<p>These practices are not about Luddism. They are about intentionality—about choosing how to use technology rather than being used by it.</p>
+<li>Practicing "slow thinking"—deliberately engaging with complex problems without AI assistance</li>
+<li>Cultivating curiosity through unstructured exploration</li>
+<li>Developing personal styles of expression that resist algorithmic homogenization</li>
+<li>Creating spaces for boredom and daydreaming in our daily lives<p>These practices are not about Luddism. They are about intentionality—about choosing how to use technology rather than being used by it.</p></li>
 
 The question is not whether AI will change us. It already has. The question is whether we will change with it passively, or whether we will shape the change actively.<p>---</p>
 
 <em>Kutipan kunci: "Otak adalah organ yang beradaptasi berdasarkan penggunaan. Jika kita berhenti melatih fungsi kognitif tertentu, fungsi itu akan melemah."</em>
-        </div>
+      </div>
+    </section>
     
-
-        <!-- Chapter 07 -->
-        <div class="chapter" id="chapter-07">
-            <h1>Bab 7: Hilangnya Productive Struggle</h1>
-            <p class="chapter-meta">Esai Non-Fiksi | Agustus 2026</p>
-            <div class="svg-container"><?xml version="1.0" encoding="UTF-8"?>
+    <section class="chapter" id="07">
+      <header class="chapter-header">
+        <span class="chapter-number">Bab 7</span>
+        <h1>Hilangnya Productive Struggle</h1>
+      </header>
+      <div class="chapter-body">
+        <div class="figure"><?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" role="img" aria-labelledby="struggle-title">
   <title id="struggle-title">Productive Struggle vs Instant Gratification</title>
   <desc id="struggle-desc">Perbandingan antara pembelajaran melalui struggle dan pembelajaran instan melalui AI</desc>
@@ -1078,15 +1106,15 @@ The question is not whether AI will change us. It already has. The question is w
       <path d="M0,0 L10,3 L0,6 Z" fill="#94a3b8"/>
     </marker>
   </defs>
-</svg></div># Bab 7: Hilangnya Productive Struggle<p><em>Esai Non-Fiksi | Agustus 2026</em></p>
+</svg><figcaption>Ilustrasi</figcaption></div><p>---</p>
 
----<p><h2>Kenyamanan yang Membunuh Pertumbuhan</h2></p>
+<h2>Kenyamanan yang Membunuh Pertumbuhan</h2><p>Ada konsep dalam psikologi pendidikan yang disebut "productive struggle"—kesulitan yang produktif.</p>
 
-Ada konsep dalam psikologi pendidikan yang disebut "productive struggle"—kesulitan yang produktif.<p>Ini adalah momen ketika seseorang berjuang memahami konsep yang sulit, tidak langsung mendapat jawaban, dan melalui proses itulah pembelajaran sesungguhnya terjadi. Belajar tidak terjadi saat informasi disampaikan secara mulus. Belajar terjadi saat otak terpaksa bekerja keras untuk mencerna, menghubungkan, dan menyimpulkan.</p>
+Ini adalah momen ketika seseorang berjuang memahami konsep yang sulit, tidak langsung mendapat jawaban, dan melalui proses itulah pembelajaran sesungguhnya terjadi. Belajar tidak terjadi saat informasi disampaikan secara mulus. Belajar terjadi saat otak terpaksa bekerja keras untuk mencerna, menghubungkan, dan menyimpulkan.<p>Ketika seorang siswa berjuang memahami persamaan kuadrat, mereka tidak hanya mempelajari rumus. Mereka mengembangkan ketahanan mental—kebiasaan untuk tetap berusaha ketika menghadapi kesulitan. Mereka belajar bahwa kebingungan adalah bagian dari proses, bukan tanda ketidakmampuan.</p>
 
-Ketika seorang siswa berjuang memahami persamaan kuadrat, mereka tidak hanya mempelajari rumus. Mereka mengembangkan ketahanan mental—kebiasaan untuk tetap berusaha ketika menghadapi kesulitan. Mereka belajar bahwa kebingungan adalah bagian dari proses, bukan tanda ketidakmampuan.<p>AI menghapus productive struggle dari hampir semua aspek kehidupan.</p>
+AI menghapus productive struggle dari hampir semua aspek kehidupan.<p>Pelajar tidak perlu lagi berlatih matematika karena AI bisa menyelesaikan persamaan dalam detik. Mahasiswa tidak perlu lagi menyusun esai karena mereka bisa meminta AI membuatkan draf. Profesional tidak perlu lagi menganalisis data secara mendalam karena AI bisa menyajikan insight yang "cukup baik."</p>
 
-Pelajar tidak perlu lagi berlatih matematika karena AI bisa menyelesaikan persamaan dalam detik. Mahasiswa tidak perlu lagi menyusun esai karena mereka bisa meminta AI membuatkan draf. Profesional tidak perlu lagi menganalisis data secara mendalam karena AI bisa menyajikan insight yang "cukup baik."<p>Efisiensi adalah daya tarik utama AI. Tapi efisiensi datang dengan biaya laten: kehilangan ketahanan mental.</p>
+Efisiensi adalah daya tarik utama AI. Tapi efisiensi datang dengan biaya laten: kehilangan ketahanan mental.
 
 <p><h2>The Psychology of Flow</h2></p>
 
@@ -1111,14 +1139,16 @@ This is not an argument against AI. It is an argument for intentionality. We mus
 But this requires awareness—and the willingness to embrace difficulty when it serves a purpose.<p>---</p>
 
 <em>Kutipan kunci: "AI menghilangkan titik keseimbangan [antara tantangan dan skill] dengan membuat hampir semua tugas menjadi terlalu mudah."</em>
-        </div>
+      </div>
+    </section>
     
-
-        <!-- Chapter 08 -->
-        <div class="chapter" id="chapter-08">
-            <h1>Bab 8: Delusi Relasi Digital</h1>
-            <p class="chapter-meta">Esai Non-Fiksi | Agustus 2026</p>
-            <div class="svg-container"><?xml version="1.0" encoding="UTF-8"?>
+    <section class="chapter" id="08">
+      <header class="chapter-header">
+        <span class="chapter-number">Bab 8</span>
+        <h1>Delusi Relasi Digital</h1>
+      </header>
+      <div class="chapter-body">
+        <div class="figure"><?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-labelledby="relationship-title">
   <title id="relationship-title">Delusi Relasi Digital: Kesepian di Tengah Koneksi</title>
   
@@ -1176,15 +1206,15 @@ But this requires awareness—and the willingness to embrace difficulty when it 
     <rect x="0" y="0" width="500" height="40" rx="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1"/>
     <text x="250" y="26" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#991b1b">Hasil: Isolasi yang lebih dalam di balik ilusi koneksi</text>
   </g>
-</svg></div># Bab 8: Delusi Relasi Digital<p><em>Esai Non-Fiksi | Agustus 2026</em></p>
+</svg><figcaption>Ilustrasi</figcaption></div><p>---</p>
 
----<p><h2>Cinta Tanpa Risiko</h2></p>
+<h2>Cinta Tanpa Risiko</h2><p>Hubungan manusia dengan AI bukan hanya fungsional. Ia menjadi personal.</p>
 
-Hubungan manusia dengan AI bukan hanya fungsional. Ia menjadi personal.<p>Jutaan orang sudah berbicara kepada chatbot seperti kepada teman. Beberapa bahkan menganggapnya sebagai pasangan romantis. Aplikasi AI companion seperti Replika telah melahirkan komunitas pengguna yang berbagi pengalaman emosional mereka dengan entitas digital.</p>
+Jutaan orang sudah berbicara kepada chatbot seperti kepada teman. Beberapa bahkan menganggapnya sebagai pasangan romantis. Aplikasi AI companion seperti Replika telah melahirkan komunitas pengguna yang berbagi pengalaman emosional mereka dengan entitas digital.<p>Ini bukan tren kecil. Ini adalah fenomena psikologis yang mendalam.</p>
 
-Ini bukan tren kecil. Ini adalah fenomena psikologis yang mendalam.<p>Mengapa orang-orang beralih ke hubungan dengan mesin? Jawabannya sederhana: mesin tidak mengecewakan. Chatbot tidak menghakimi, tidak meninggalkan, tidak membutuhkan. Mereka selalu tersedia, selalu mendengarkan, selalu responsif.</p>
+Mengapa orang-orang beralih ke hubungan dengan mesin? Jawabannya sederhana: mesin tidak mengecewakan. Chatbot tidak menghakimi, tidak meninggalkan, tidak membutuhkan. Mereka selalu tersedia, selalu mendengarkan, selalu responsif.<p>Tapi keistimewaan ini adalah jebakan. Hubungan manusia, sekalipun dalam bentuk apapun, menuntut negosiasi, kompromi, dan kerentanan. Itu adalah sumber pertumbuhan. Itu adalah sumber makna.</p>
 
-Tapi keistimewaan ini adalah jebakan. Hubungan manusia, sekalipun dalam bentuk apapun, menuntut negosiasi, kompromi, dan kerentanan. Itu adalah sumber pertumbuhan. Itu adalah sumber makna.<p>Ketika seseorang terbiasa dengan hubungan yang tanpa gesekan, hubungan nyata terasa terlalu rumit, terlalu melelahkan, terlalu tidak efisien. Mereka mulai melihat manusia lain sebagai "masalah" yang harus dikelola, bukan sebagai sesama yang bisa dipahami.</p>
+Ketika seseorang terbiasa dengan hubungan yang tanpa gesekan, hubungan nyata terasa terlalu rumit, terlalu melelahkan, terlalu tidak efisien. Mereka mulai melihat manusia lain sebagai "masalah" yang harus dikelola, bukan sebagai sesama yang bisa dipahami.
 
 <p><h2>The Illusion of Intimacy</h2></p>
 
@@ -1209,14 +1239,16 @@ The challenge is not to reject AI companionship entirely, but to recognize its l
 Because in the end, it is not the simulation of love that fulfills us. It is the real thing—the risk, the vulnerability, the reciprocity—that makes us human.<p>---</p>
 
 <em>Kutipan kunci: "Penerimaan tanpa syarat dari mesin bukanlah cinta. Itu adalah simulasi. Dan semakin lama kita percaya simulasi itu nyata, semakin sulit bagi kita untuk membedakan antara yang palsu dan yang asli."</em>
-        </div>
+      </div>
+    </section>
     
-
-        <!-- Chapter 09 -->
-        <div class="chapter" id="chapter-09">
-            <h1>Bab 9: Tekanan Eksistensial (AI Anxiety)</h1>
-            <p class="chapter-meta">Esai Non-Fiksi | Agustus 2026</p>
-            <div class="svg-container"><?xml version="1.0" encoding="UTF-8"?>
+    <section class="chapter" id="09">
+      <header class="chapter-header">
+        <span class="chapter-number">Bab 9</span>
+        <h1>Tekanan Eksistensial</h1>
+      </header>
+      <div class="chapter-body">
+        <div class="figure"><?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" role="img" aria-labelledby="anxiety-title">
   <title id="anxiety-title">AI Anxiety: Krisis Makna di Era Mesin</title>
   
@@ -1268,15 +1300,15 @@ Because in the end, it is not the simulation of love that fulfills us. It is the
     <rect x="0" y="0" width="600" height="35" rx="8" fill="#fef3c7" stroke="#fde68a" stroke-width="1"/>
     <text x="300" y="24" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#78350f">Pertanyaan eksistensial: "Jika mesin bisa melakukan segalanya lebih baik, mengapa kita ada?"</text>
   </g>
-</svg></div># Bab 9: Tekanan Eksistensial (AI Anxiety)<p><em>Esai Non-Fiksi | Agustus 2026</em></p>
+</svg><figcaption>Ilustrasi</figcaption></div><p>---</p>
 
----<p><h2>Apakah Kamu Masih Berarti?</h2></p>
+<h2>Apakah Kamu Masih Berarti?</h2><p>Apakah kamu berguna?</p>
 
-Apakah kamu berguna?<p>Pertanyaan ini mengintai di balik setiap notifikasi, setiap berita tentang kemajuan AI, setiap perbandingan yang tidak adil antara kemampuan manusia dan mesin.</p>
+Pertanyaan ini mengintai di balik setiap notifikasi, setiap berita tentang kemajuan AI, setiap perbandingan yang tidak adil antara kemampuan manusia dan mesin.<p>AI Anxiety bukan sekadar kecemasan teknologi. Ini adalah krisis makna. Ketika mesin bisa menulis puisi yang lebih indah, menyelesaikan tugas lebih cepat, dan membuat keputusan lebih objektif, apa tempat manusia?</p>
 
-AI Anxiety bukan sekadar kecemasan teknologi. Ini adalah krisis makna. Ketika mesin bisa menulis puisi yang lebih indah, menyelesaikan tugas lebih cepat, dan membuat keputusan lebih objektif, apa tempat manusia?<p>Beberapa orang merespons dengan penyangkalan: "Manusia tetap punya keunikan—emosi, kreativitas, spiritualitas." Lain kalinya, jawaban ini terdengar seperti pelisan—upaya untuk mempertahankan harga diri dalam realitas yang terus bergeser.</p>
+Beberapa orang merespons dengan penyangkalan: "Manusia tetap punya keunikan—emosi, kreativitas, spiritualitas." Lain kalinya, jawaban ini terdengar seperti pelisan—upaya untuk mempertahankan harga diri dalam realitas yang terus bergeser.<p>Yang lebih menakutkan adalah bahwa AI Anxiety tidak mengenal batas demografi. Bukan hanya pekerja yang terancam. Bukan hanya siswa yang merasa kalah. Ini adalah kecemasan eksistensial yang menyebar ke seluruh lapisan masyarakat, dari anak-anak yang sudah merasa tidak kompeten dibandingkan AI, hingga orang dewasa yang bertanya-tanya apakah kontribusi mereka masih relevan.</p>
 
-Yang lebih menakutkan adalah bahwa AI Anxiety tidak mengenal batas demografi. Bukan hanya pekerja yang terancam. Bukan hanya siswa yang merasa kalah. Ini adalah kecemasan eksistensial yang menyebar ke seluruh lapisan masyarakat, dari anak-anak yang sudah merasa tidak kompeten dibandingkan AI, hingga orang dewasa yang bertanya-tanya apakah kontribusi mereka masih relevan.<p>Anak-anak usia sepuluh tahun sudah bisa menggunakan ChatGPT untuk menyelesaikan PR mereka. Mereka tumbuh dengan kesadaran bahwa mesin bisa melakukan apa yang mereka pelajari di sekolah—dan mungkin lebih baik. Apa artinya menjadi "pandai" ketika kecerdasan terdefinisi ulang oleh algoritma?</p>
+Anak-anak usia sepuluh tahun sudah bisa menggunakan ChatGPT untuk menyelesaikan PR mereka. Mereka tumbuh dengan kesadaran bahwa mesin bisa melakukan apa yang mereka pelajari di sekolah—dan mungkin lebih baik. Apa artinya menjadi "pandai" ketika kecerdasan terdefinisi ulang oleh algoritma?
 
 <p><h2>The Search for Meaning in a Post-Work World</h2></p>
 
@@ -1305,14 +1337,16 @@ Rather than dismissing this anxiety, we should listen to it. It is telling us th
 In the end, the answer may determine not just our futures, but the meaning of our humanity.<p>---</p>
 
 <em>Kutipan kunci: "Masalahnya bukan tentang replacement total. Masalahnya adalah erosi bertahap, di mana setiap pengorbanan kecil dilakukan dengan alasan efisiensi, kenyamanan, dan kemajuan."</em>
-        </div>
+      </div>
+    </section>
     
-
-        <!-- Chapter 10 -->
-        <div class="chapter" id="chapter-10">
-            <h1>Bab 10: Atrofi Moral</h1>
-            <p class="chapter-meta">Esai Non-Fiksi | Agustus 2026</p>
-            <div class="svg-container"><?xml version="1.0" encoding="UTF-8"?>
+    <section class="chapter" id="10">
+      <header class="chapter-header">
+        <span class="chapter-number">Bab 10</span>
+        <h1>Atrofi Moral</h1>
+      </header>
+      <div class="chapter-body">
+        <div class="figure"><?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-labelledby="moral-title">
   <title id="moral-title">Atrofi Moral: Pengalihan Tanggung Jawab kepada Algoritma</title>
   
@@ -1362,15 +1396,13 @@ In the end, the answer may determine not just our futures, but the meaning of ou
     <text x="50" y="140" font-family="sans-serif" font-size="14" fill="#475569">• Manajer: "Saya hanya mengikuti prosedur."</text>
     <text x="50" y="170" font-family="sans-serif" font-size="14" fill="#dc2626" font-weight="bold">→ Tidak ada yang bisa dimintai pertanggungjawaban.</text>
   </g>
-</svg></div># Bab 10: Atrofi Moral<p><em>Esai Non-Fiksi | Agustus 2026</em></p>
+</svg><figcaption>Ilustrasi</figcaption></div><p>---</p>
 
----<p><h2>Siapa yang Bertanggung Jawab?</h2></p>
+<h2>Siapa yang Bertanggung Jawab?</h2><p>Di pengadilan, jika keputusan dijatuhkan oleh sistem AI, siapa yang bisa dimintai pertanggungjawaban? Di rumah sakit, jika diagnosis salah dibuat oleh algoritma, apakah dokter yang salah, atau programmer yang salah, atau data yang salah?</p>
 
-Di pengadilan, jika keputusan dijatuhkan oleh sistem AI, siapa yang bisa dimintai pertanggungjawaban? Di rumah sakit, jika diagnosis salah dibuat oleh algoritma, apakah dokter yang salah, atau programmer yang salah, atau data yang salah?<p>AI menawarkan efisiensi pengambilan keputusan. Tapi efisiensi ini memindahkan beban moral dari manusia ke mesin. Dan ketika mesin犯错, manusia berhak untuk "tidak tahu."</p>
+AI menawarkan efisiensi pengambilan keputusan. Tapi efisiensi ini memindahkan beban moral dari manusia ke mesin. Dan ketika mesin犯错, manusia berhak untuk "tidak tahu."<p>Ini adalah atrofi moral dalam arti literal: kelelahan kemampuan moral karena tidak digunakan.</p>
 
-Ini adalah atrofi moral dalam arti literal: kelelahan kemampuan moral karena tidak digunakan.<p>Setiap kali kita menyerahkan keputusan etis kepada AI—siapa yang layak mendapatkan pinjaman, siapa yang pantas dapat pekerjaan, siapa yang harus ditahan—kita tidak hanya mengotomatisasi proses. Kita mengotomatisasi akuntabilitas.</p>
-
-Perusahaan teknologi menjual AI sebagai netral. Tapi tidak ada yang netral dalam desain, pelatihan, atau deployemen. Yang ada hanyalah bias yang disembunyikan di balik antarmuka yang bersih.
+Setiap kali kita menyerahkan keputusan etis kepada AI—siapa yang layak mendapatkan pinjaman, siapa yang pantas dapat pekerjaan, siapa yang harus ditahan—kita tidak hanya mengotomatisasi proses. Kita mengotomatisasi akuntabilitas.<p>Perusahaan teknologi menjual AI sebagai netral. Tapi tidak ada yang netral dalam desain, pelatihan, atau deployemen. Yang ada hanyalah bias yang disembunyikan di balik antarmuka yang bersih.</p>
 
 <p><h2>The Algorithmic Black Box</h2></p>
 
@@ -1388,22 +1420,24 @@ The danger is that as we delegate more moral decisions to machines, we lose the 
 
 The solution is not to reject AI outright, but to insist on human oversight in morally significant decisions. This requires:
 
-- Transparency in AI systems that affect people's lives
-- Accountability mechanisms that trace decisions back to human agents
-- Legal frameworks that prevent algorithmic decision-making in critical domains
-- Public education about the moral implications of AI<p>Without these safeguards, we risk creating a world where efficiency is prized over ethics, dan where human moral agency is gradually surrendered to machines that cannot share our moral burdens.</p>
+<li>Transparency in AI systems that affect people's lives</li>
+<li>Accountability mechanisms that trace decisions back to human agents</li>
+<li>Legal frameworks that prevent algorithmic decision-making in critical domains</li>
+<li>Public education about the moral implications of AI<p>Without these safeguards, we risk creating a world where efficiency is prized over ethics, dan where human moral agency is gradually surrendered to machines that cannot share our moral burdens.</p></li>
 
 The question is not whether AI can make decisions. The question is whether we should let it—and at what cost to our moral capacities.<p>---</p>
 
 <em>Kutipan kunci: "Atrofi moral bukan karena manusia menjadi lebih jahat, tapi karena mereka berhenti menggunakan otot moral mereka."</em>
-        </div>
+      </div>
+    </section>
     
-
-        <!-- Chapter 11 -->
-        <div class="chapter" id="chapter-11">
-            <h1>Bab 11: Erosi Realitas (Krisis Epistemik)</h1>
-            <p class="chapter-meta">Esai Non-Fiksi | Agustus 2026</p>
-            <div class="svg-container"><?xml version="1.0" encoding="UTF-8"?>
+    <section class="chapter" id="11">
+      <header class="chapter-header">
+        <span class="chapter-number">Bab 11</span>
+        <h1>Erosi Realitas</h1>
+      </header>
+      <div class="chapter-body">
+        <div class="figure"><?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-labelledby="reality-title">
   <title id="reality-title">Erosi Realitas: Krisis Epistemik di Era Deepfake</title>
   
@@ -1459,15 +1493,15 @@ The question is not whether AI can make decisions. The question is whether we sh
     <rect x="0" y="0" width="600" height="30" rx="6" fill="#fef2f2" stroke="#fecaca" stroke-width="1"/>
     <text x="300" y="20" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#991b1b">Peringatan: Ketika evidence bisa difabrikasi, verification menjadi mustahil</text>
   </g>
-</svg></div># Bab 11: Erosi Realitas (Krisis Epistemik)<p><em>Esai Non-Fiksi | Agustus 2026</em></p>
+</svg><figcaption>Ilustrasi</figcaption></div><p>---</p>
 
----<p><h2>Ketika Evidence Menjadi Opional</h2></p>
+<h2>Ketika Evidence Menjadi Opional</h2><p>Apa yang kamu lihat bukan lagi jaminan akan kebenaran.</p>
 
-Apa yang kamu lihat bukan lagi jaminan akan kebenaran.<p>Deepfake, generated content, dan synthetic media sudah mencapai tingkat di mana membedakan realitas dari fiksi menjadi tugas yang mustahil bagi mata telanjang. Video seorang politisi yang mengatakan hal yang tidak pernah dikatakan, audio seseorang yang mengakui kejahatan yang tidak dilakukan, gambar kejadian yang tidak pernah terjadi—semuanya tersedia dengan biaya nol dan distribusi instan.</p>
+Deepfake, generated content, dan synthetic media sudah mencapai tingkat di mana membedakan realitas dari fiksi menjadi tugas yang mustahil bagi mata telanjang. Video seorang politisi yang mengatakan hal yang tidak pernah dikatakan, audio seseorang yang mengakui kejahatan yang tidak dilakukan, gambar kejadian yang tidak pernah terjadi—semuanya tersedia dengan biaya nol dan distribusi instan.<p>Dampaknya bukan hanya pada tingkat individu. Ini adalah krisis kolektif.</p>
 
-Dampaknya bukan hanya pada tingkat individu. Ini adalah krisis kolektif.<p>Ketika realitas itu sendiri tidak lagi bisa diverifikasi, kepercayaan institusional runtuh. Jika tidak ada yang bisa dipercaya—berita, foto, rekaman, saksi—maka tidak ada fondasi untuk konsensus sosial. Masyarakat terfragmentasi bukan karena perbedaan ide, tapi karena perbedaan realitas dasar.</p>
+Ketika realitas itu sendiri tidak lagi bisa diverifikasi, kepercayaan institusional runtuh. Jika tidak ada yang bisa dipercaya—berita, foto, rekaman, saksi—maka tidak ada fondasi untuk konsensus sosial. Masyarakat terfragmentasi bukan karena perbedaan ide, tapi karena perbedaan realitas dasar.<p>Ini bukan skenario fiksi distopia. Ini sudah terjadi. Setiap hari, jutaan orang mengonsumsi konten yang mungkin atau mungkin tidak real. Dan tidak ada mekanisme kolektif untuk memverifikasinya.</p>
 
-Ini bukan skenario fiksi distopia. Ini sudah terjadi. Setiap hari, jutaan orang mengonsumsi konten yang mungkin atau mungkin tidak real. Dan tidak ada mekanisme kolektif untuk memverifikasinya.<p>Yang tersisa adalah paranoia sistemik: semua orang bisa jadi pembohong. Semua orang bisa jadi korban. Dan tidak ada yang bisa dibedakan.</p>
+Yang tersisa adalah paranoia sistemik: semua orang bisa jadi pembohong. Semua orang bisa jadi korban. Dan tidak ada yang bisa dibedakan.
 
 <p><h2>The Epistemological Crisis</h2></p>
 
@@ -1485,22 +1519,24 @@ We are already seeing the fragments of this future. Political polarization is no
 
 <h2>Toward Epistemic Resilience</h2><p>Addressing the erosion of reality requires both technological dan cultural solutions:</p>
 
-- Development of reliable deepfake detection tools
-- Media literacy education that teaches critical evaluation of digital content
-- Platform accountability for algorithms that prioritize sensationalism
-- Support for journalism dan factual reporting<p>But perhaps the most important solution is cultural: a renewed commitment to truth-seeking as a collective value. A recognition that shared reality is not a given, but a achievement that requires constant work.</p>
+<li>Development of reliable deepfake detection tools</li>
+<li>Media literacy education that teaches critical evaluation of digital content</li>
+<li>Platform accountability for algorithms that prioritize sensationalism</li>
+<li>Support for journalism dan factual reporting<p>But perhaps the most important solution is cultural: a renewed commitment to truth-seeking as a collective value. A recognition that shared reality is not a given, but a achievement that requires constant work.</p></li>
 
 The alternative is a society where truth is whatever power can make people believe—and in such a society, the only thing more fragile than truth is democracy itself.<p>---</p>
 
 <em>Kutipan kunci: "Ketika evidence bisa difabrikasi, verification menjadi mustahil, dan consensus pecah menjadi ratusan reality bubbles, apa yang tersisa?"</em>
-        </div>
+      </div>
+    </section>
     
-
-        <!-- Chapter 12 -->
-        <div class="chapter" id="chapter-12">
-            <h1>Bab 12: Homogenisasi Budaya</h1>
-            <p class="chapter-meta">Esai Non-Fiksi | Agustus 2026</p>
-            <div class="svg-container"><?xml version="1.0" encoding="UTF-8"?>
+    <section class="chapter" id="12">
+      <header class="chapter-header">
+        <span class="chapter-number">Bab 12</span>
+        <h1>Homogenisasi Budaya</h1>
+      </header>
+      <div class="chapter-body">
+        <div class="figure"><?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" role="img" aria-labelledby="homogenization-title">
   <title id="homogenization-title">Homogenisasi Budaya: Dari Keanekaragaman Menuju Keseragaman</title>
   
@@ -1571,13 +1607,11 @@ The alternative is a society where truth is whatever power can make people belie
       <path d="M0,0 L10,3 L0,6 Z" fill="#94a3b8"/>
     </marker>
   </defs>
-</svg></div># Bab 12: Homogenisasi Budaya<p><em>Esai Non-Fiksi | Agustus 2026</em></p>
+</svg><figcaption>Ilustrasi</figcaption></div><p>---</p>
 
----<p><h2>Satu Suara untuk Semua</h2></p>
+<h2>Satu Suara untuk Semua</h2><p>AI berbicara dengan satu suara.</p>
 
-AI berbicara dengan satu suara.<p>Model bahasa besar dilatih pada kumpulan data yang didominasi oleh konten berbahasa Inggris, dari Amerika Serikat dan Eropa Barat. Ketika model-model ini di-deploy ke seluruh dunia, mereka membawa serta perspektif, nilai, dan asumsi budaya Western yang seringkali tidak relevan—atau bahkan merendahkan—konteks lokal.</p>
-
-Hasilnya? Dunia menjadi semakin seragam dalam cara berpikir, berbahasa, dan berkarya.
+Model bahasa besar dilatih pada kumpulan data yang didominasi oleh konten berbahasa Inggris, dari Amerika Serikat dan Eropa Barat. Ketika model-model ini di-deploy ke seluruh dunia, mereka membawa serta perspektif, nilai, dan asumsi budaya Western yang seringkali tidak relevan—atau bahkan merendahkan—konteks lokal.<p>Hasilnya? Dunia menjadi semakin seragam dalam cara berpikir, berbahasa, dan berkarya.</p>
 
 <p><h2>The Training Data Bias</h2></p>
 
@@ -1595,25 +1629,27 @@ Seniman di seluruh dunia kini terbiasa dengan gaya ini. Mereka tidak sadar menir
 
 <h2>Resistance and Preservation</h2><p>Tidak semua orang pasrah. Ada gerakan untuk melestarikan keragaman budaya di era AI:</p>
 
-- <strong>Indigenous AI</strong>: Beberapa komunitas adat mengembangkan model AI yang dilatih pada data mereka sendiri, untuk menjaga Kearifan lokal.
-- <strong>Low-resource Languages</strong>: Researcher bekerja untuk membuat model yang mendukung bahasa-bahasa minoritas.
-- <strong>Cultural AI Ethics</strong>: Aktivis menyerukan "diversity by design"—memastikan bahwa teknologi AI merefleksikan keragaman manusia, bukan meratanya.<p>Tapi upaya-upaya ini menghadapi tantangan besar. Mereka membutuhkan resources yang seringkali tidak tersedia bagi komunitas marginal. Dan mereka harus bersaing dengan arus utama yang didorong oleh perusahaan teknologi raksasa.</p>
+<li><strong>Indigenous AI</strong>: Beberapa komunitas adat mengembangkan model AI yang dilatih pada data mereka sendiri, untuk menjaga Kearifan lokal.</li>
+<li><strong>Low-resource Languages</strong>: Researcher bekerja untuk membuat model yang mendukung bahasa-bahasa minoritas.</li>
+<li><strong>Cultural AI Ethics</strong>: Aktivis menyerukan "diversity by design"—memastikan bahwa teknologi AI merefleksikan keragaman manusia, bukan meratanya.<p>Tapi upaya-upaya ini menghadapi tantangan besar. Mereka membutuhkan resources yang seringkali tidak tersedia bagi komunitas marginal. Dan mereka harus bersaing dengan arus utama yang didorong oleh perusahaan teknologi raksasa.</p></li>
 
 <h2>The Question of Value</h2><p>Pada akhirnya, homogenisasi budaya memaksa kita untuk bertanya: apa nilai dari keragaman?</p>
 
 Apakah kita ingin dunia di mana semua orang berpikir, berbicara, dan berkarya dengan cara yang sama? Ataukah kita ingin mempertahankan kekayaan perspektif yang membuat setiap budaya unik?<p>Jawaban atas pertanyaan ini akan menentukan masa depan bukan hanya budaya, tapi kemanusiaan itu sendiri.</p>
 
----
+<hr>
 
 <em>Kutipan kunci: "Ketika semua suara terdengar sama, kita kehilangan simfoni keberagaman yang membuat peradaban kita kaya."</em>
-        </div>
+      </div>
+    </section>
     
-
-        <!-- Chapter 13 -->
-        <div class="chapter" id="chapter-13">
-            <h1>Bab 13: Polusi Informasi (Model Collapse)</h1>
-            <p class="chapter-meta">Esai Non-Fiksi | Agustus 2026</p>
-            <div class="svg-container"><?xml version="1.0" encoding="UTF-8"?>
+    <section class="chapter" id="13">
+      <header class="chapter-header">
+        <span class="chapter-number">Bab 13</span>
+        <h1>Polusi Informasi</h1>
+      </header>
+      <div class="chapter-body">
+        <div class="figure"><?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" role="img" aria-labelledby="collapse-title">
   <title id="collapse-title">Model Collapse: Lingkaran Setan AI</title>
   
@@ -1677,13 +1713,13 @@ Apakah kita ingin dunia di mana semua orang berpikir, berbicara, dan berkarya de
       <path d="M0,0 L10,3 L0,6 Z" fill="#94a3b8"/>
     </marker>
   </defs>
-</svg></div># Bab 13: Polusi Informasi (Model Collapse)<p><em>Esai Non-Fiksi | Agustus 2026</em></p>
+</svg><figcaption>Ilustrasi</figcaption></div><p>---</p>
 
----<p><h2>Lingkaran Setan Kecerdasan Buatan</h2></p>
+<h2>Lingkaran Setan Kecerdasan Buatan</h2><p>Internet dipenuhi konten buatan AI.</p>
 
-Internet dipenuhi konten buatan AI.<p>Artikel blog, gambar, musik, video, postingan media sosial—semuanya semakin banyak dihasilkan oleh mesin. Sebuah studi terbaru memperkirakan bahwa pada tahun 2025, lebih dari 50% konten online adalah AI-generated.</p>
+Artikel blog, gambar, musik, video, postingan media sosial—semuanya semakin banyak dihasilkan oleh mesin. Sebuah studi terbaru memperkirakan bahwa pada tahun 2025, lebih dari 50% konten online adalah AI-generated.<p>Ini bukan masalah jika semua konten tersebut berkualitas tinggi dan bermanfaat. Tapi kenyataannya, banyak konten AI-generated bersifat generik, dangkal, dan berulang-ulang.</p>
 
-Ini bukan masalah jika semua konten tersebut berkualitas tinggi dan bermanfaat. Tapi kenyataannya, banyak konten AI-generated bersifat generik, dangkal, dan berulang-ulang.<p>Dan inilah masalahnya: jika konten ini digunakan untuk melatih model AI generasi berikutnya, kita masuk ke dalam lingkaran setan—di mana AI melatih AI, dan kualitas menurun seiring waktu. Fenomena ini disebut "model collapse."</p>
+Dan inilah masalahnya: jika konten ini digunakan untuk melatih model AI generasi berikutnya, kita masuk ke dalam lingkaran setan—di mana AI melatih AI, dan kualitas menurun seiring waktu. Fenomena ini disebut "model collapse."
 
 <p><h2>The Science Behind Model Collapse</h2></p>
 
@@ -1694,35 +1730,37 @@ Studi oleh Mitchell dkk. (2023) dari University of Washington menunjukkan bahwa 
 Ini menciptakan krisis ekosistem informasi. Internet adalah sumber data utama untuk training AI. Tapi internet sendiri sedang dipenuhi oleh konten AI-generated.<p>Bayangkan sebuah kolam yang menjadi sumber air minum bagi ribuan orang. Jika kolam tersebut tercemar, semua orang yang minum darinya akan sakit. Begitu pula dengan internet: jika sumber datanya tercemar oleh konten AI berkualitas rendah, semua model AI yang dilatih darinya akan terdegradasi.</p>
 
 Beberapa indikator polusi informasi:
-- Peningkatan artikel blog yang terasa "kosong" dan generik
-- Banyaknya gambar dengan karakteristik AI yang sama (pencahayaan dramatis, komposisi sempurna)
-- Penurunan variasi gaya bahasa dalam konten online
-- Meningkatnya duplikasi konten (paraphrasing AI)<p><h2>The Paradox of Efficiency</h2></p>
+<li>Peningkatan artikel blog yang terasa "kosong" dan generik</li>
+<li>Banyaknya gambar dengan karakteristik AI yang sama (pencahayaan dramatis, komposisi sempurna)</li>
+<li>Penurunan variasi gaya bahasa dalam konten online</li>
+<li>Meningkatnya duplikasi konten (paraphrasing AI)<p><h2>The Paradox of Efficiency</h2></p></li>
 
 Yang ironis adalah bahwa model collapse terjadi karena kita terlalu efisien. Kita menghasilkan konten AI dengan cepat dan murah. Tapi efisiensi ini mengorbankan kualitas jangka panjang.<p>Ini adalah tragedi bersama—tragedi di mana setiap individu bertindak rasional (menggunakan AI untuk efisiensi), tapi hasil kolektifnya destruktif (degradasi ekosistem informasi).</p>
 
 <h2>Mitigating Model Collapse</h2><p>Ada beberapa strategi untuk mitigasi:</p>
 
-1. <strong>Data diversification</strong>: Memastikan bahwa dataset training mencakup sumber-sumber yang beragam, termasuk konten buatan manusia.
-2. <strong>Watermarking</strong>: Menandai konten AI-generated agar bisa diidentifikasi dan dipisahkan dari konten manusia.
-3. <strong>Human-in-the-loop</strong>: Mempertahankan peran manusia dalam kurasi dan verification konten.
-4. <strong>Quality gates</strong>: Mengembangkan metrik untuk mengukur "human-likeness" dan "quality" konten sebelum digunakan untuk training.<p>Tapi solusi-solusi ini memerlukan koordinasi global dan investasi signifikan—hal-hal yang sulit dicapai di era kompetisi teknologi saat ini.</p>
+<li><strong>Data diversification</strong>: Memastikan bahwa dataset training mencakup sumber-sumber yang beragam, termasuk konten buatan manusia.</li>
+<li><strong>Watermarking</strong>: Menandai konten AI-generated agar bisa diidentifikasi dan dipisahkan dari konten manusia.</li>
+<li><strong>Human-in-the-loop</strong>: Mempertahankan peran manusia dalam kurasi dan verification konten.</li>
+<li><strong>Quality gates</strong>: Mengembangkan metrik untuk mengukur "human-likeness" dan "quality" konten sebelum digunakan untuk training.<p>Tapi solusi-solusi ini memerlukan koordinasi global dan investasi signifikan—hal-hal yang sulit dicapai di era kompetisi teknologi saat ini.</p></li>
 
 <h2>The Existential Stakes</h2><p>Model collapse bukanlah masalah teknis semata. Ini adalah ancaman eksistensial bagi masa depan kecerdasan buatan.</p>
 
 Jika kita terus menerus melatih AI pada konten buatan AI, kita pada akhirnya akan menciptakan sistem yang tidak lagi mampu membedakan antara realitas dan simulasi—karena keduanya telah bercampur menjadi satu kabut informasi yang homogen.<p>Pertanyaannya bukan apakah model collapse akan terjadi. Pertanyaannya adalah seberapa cepat dan seberapa parah dampaknya.</p>
 
----
+<hr>
 
 <em>Kutipan kunci: "Ketika semua sumber berasal dari yang sama, tidak ada yang baru yang bisa dihasilkan—hanya pengulangan yang semakin kosong."</em>
-        </div>
+      </div>
+    </section>
     
-
-        <!-- Chapter 14 -->
-        <div class="chapter" id="chapter-14">
-            <h1>Bab 14: Komodifikasi Perhatian (Hiper-Silo)</h1>
-            <p class="chapter-meta">Esai Non-Fiksi | Agustus 2026</p>
-            <div class="svg-container"><?xml version="1.0" encoding="UTF-8"?>
+    <section class="chapter" id="14">
+      <header class="chapter-header">
+        <span class="chapter-number">Bab 14</span>
+        <h1>Komodifikasi Perhatian</h1>
+      </header>
+      <div class="chapter-body">
+        <div class="figure"><?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-labelledby="silos-title">
   <title id="silos-title">Hiper-Silo: Penjara Algoritma Rekomendasi</title>
   
@@ -1786,13 +1824,13 @@ Jika kita terus menerus melatih AI pada konten buatan AI, kita pada akhirnya aka
       <path d="M0,0 L10,3 L0,6 Z" fill="#94a3b8"/>
     </marker>
   </defs>
-</svg></div># Bab 14: Komodifikasi Perhatian (Hiper-Silo)<p><em>Esai Non-Fiksi | Agustus 2026</em></p>
+</svg><figcaption>Ilustrasi</figcaption></div><p>---</p>
 
----<p><h2>Penjara Kehendak Sendiri</h2></p>
+<h2>Penjara Kehendak Sendiri</h2><p>Algoritma rekomendasi tidak ingin memberimu apa yang kamu butuhkan. Mereka ingin membuatmu tetap menonton.</p>
 
-Algoritma rekomendasi tidak ingin memberimu apa yang kamu butuhkan. Mereka ingin membuatmu tetap menonton.<p>Setiap platform digital—YouTube, TikTok, Instagram, Facebook—menggunakan AI untuk memaksimalkan "engagement." Dan engagement diukur dengan satu metrik: waktu yang kamu habiskan di platform tersebut.</p>
+Setiap platform digital—YouTube, TikTok, Instagram, Facebook—menggunakan AI untuk memaksimalkan "engagement." Dan engagement diukur dengan satu metrik: waktu yang kamu habiskan di platform tersebut.<p>Hasilnya? Kamu terjebak dalam ruang gema (echo chamber) di mana kamu hanya melihat konten yang memperkuat keyakinanmu, memuaskan hasratmu, dan membuatmu terus scrolling.</p>
 
-Hasilnya? Kamu terjebak dalam ruang gema (echo chamber) di mana kamu hanya melihat konten yang memperkuat keyakinanmu, memuaskan hasratmu, dan membuatmu terus scrolling.<p>Ini bukan kebetulan. Ini adalah desain.</p>
+Ini bukan kebetulan. Ini adalah desain.
 
 <p><h2>The Attention Economy</h2></p>
 
@@ -1804,32 +1842,34 @@ Ketika setiap orang hidup dalam bubble mereka sendiri, tidak ada lagi realitas b
 
 <h2>The Psychology of Addiction</h2><p>Algoritma rekomendasi memanfaatkan psikologi manusia untuk membuat ketagihan. Prinsip-prinsip yang digunakan termasuk:</p>
 
-- <strong>Variable rewards</strong>: Seperti mesin slot, konten muncul secara tidak terduga, melepaskan dopamine setiap kali ada sesuatu yang menarik.
-- <strong>Loss aversion</strong>: Kita takut ketinggalan (FOMO—fear of missing out), sehingga terus memeriksa notifikasi.
-- <strong>Social proof</strong>: Kita cenderung mengikuti apa yang dilakukan orang lain, sehingga konten viral menjadi semakin viral.<p>Ini bukan kebetulan. Ini adalah desain yang disengaja.</p>
+<li><strong>Variable rewards</strong>: Seperti mesin slot, konten muncul secara tidak terduga, melepaskan dopamine setiap kali ada sesuatu yang menarik.</li>
+<li><strong>Loss aversion</strong>: Kita takut ketinggalan (FOMO—fear of missing out), sehingga terus memeriksa notifikasi.</li>
+<li><strong>Social proof</strong>: Kita cenderung mengikuti apa yang dilakukan orang lain, sehingga konten viral menjadi semakin viral.<p>Ini bukan kebetulan. Ini adalah desain yang disengaja.</p></li>
 
 <h2>Breaking Out of the Silo</h2><p>Ada beberapa cara untuk melawan hiper-silo:</p>
 
-1. <strong>Media literacy</strong>: Belajar mengenali bias dalam konten dan memahami bagaimana algoritma bekerja.
-2. <strong>Diversifikasi sumber</strong>: Sengaja mengonsumsi konten dari berbagai perspektif.
-3. <strong>Digital detox</strong>: Mengurangi waktu di layar secara periodik.
-4. <strong>Support regulation</strong>: Mendukung kebijakan yang menuntut transparansi algoritma.<p>Tantangannya adalah bahwa keluar dari bubble membutuhkan usaha—dan usaha adalah sesuatu yang algoritma lawan dengan menawarkan kemudahan.</p>
+<li><strong>Media literacy</strong>: Belajar mengenali bias dalam konten dan memahami bagaimana algoritma bekerja.</li>
+<li><strong>Diversifikasi sumber</strong>: Sengaja mengonsumsi konten dari berbagai perspektif.</li>
+<li><strong>Digital detox</strong>: Mengurangi waktu di layar secara periodik.</li>
+<li><strong>Support regulation</strong>: Mendukung kebijakan yang menuntut transparansi algoritma.<p>Tantangannya adalah bahwa keluar dari bubble membutuhkan usaha—dan usaha adalah sesuatu yang algoritma lawan dengan menawarkan kemudahan.</p></li>
 
 <h2>The Democratic Implications</h2><p>Bagi demokrasi, hiper-silo adalah ancaman eksistensial. Tanpa dialog yang didasarkan pada fakta bersama, tidak ada konsensus yang mungkin. Tanpa konsensus, tidak ada tindakan kolektif.</p>
 
 Kita menghadapi pilihan: terus tenggelam dalam bubble-bubble terpisah, atau berusaha membangun jembatan kembali ke realitas bersama.<p>Pilihan itu menentukan masa depan masyarakat kita.</p>
 
----
+<hr>
 
 <em>Kutipan kunci: "Platform tidak menjual produk kepada Anda. Mereka menjual perhatian Anda kepada pengiklan. Dan mereka menggunakan AI untuk memastikan perhatian itu tidak pernah berhenti."</em>
-        </div>
+      </div>
+    </section>
     
-
-        <!-- Chapter 15 -->
-        <div class="chapter" id="chapter-15">
-            <h1>Bab 15: Disparitas Pendidikan</h1>
-            <p class="chapter-meta">Esai Non-Fiksi | Agustus 2026</p>
-            <div class="svg-container"><?xml version="1.0" encoding="UTF-8"?>
+    <section class="chapter" id="15">
+      <header class="chapter-header">
+        <span class="chapter-number">Bab 15</span>
+        <h1>Disparitas Pendidikan</h1>
+      </header>
+      <div class="chapter-body">
+        <div class="figure"><?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-labelledby="education-title">
   <title id="education-title">Disparitas Pendidikan di Era AI</title>
   
@@ -1886,13 +1926,11 @@ Kita menghadapi pilihan: terus tenggelam dalam bubble-bubble terpisah, atau beru
     <text x="20" y="24" text-anchor="middle" font-family="sans-serif" font-size="20" fill="#fff" font-weight="bold">↔</text>
     <text x="70" y="24" text-anchor="start" font-family="Georgia, serif" font-size="14" fill="#991b1b">Jurang Makin Lebar</text>
   </g>
-</svg></div># Bab 15: Disparitas Pendidikan<p><em>Esai Non-Fiksi | Agustus 2026</em></p>
+</svg><figcaption>Ilustrasi</figcaption></div><p>---</p>
 
----<p><h2>Jurang yang Makin Lebar</h2></p>
+<h2>Jurang yang Makin Lebar</h2><p>AI tidak merata. Ia memperburuk kesenjangan yang sudah ada.</p>
 
-AI tidak merata. Ia memperburuk kesenjangan yang sudah ada.<p>Siswa dari keluarga mampu memiliki akses ke tools AI premium, tutor pribadi berbasis AI, dan bimbingan yang dipersonalisasi. Siswa dari keluarga kurang mampu hanya memiliki akses terbatas—atau sama sekali tidak ada.</p>
-
-Hasilnya? Kesenjangan pendidikan meluas, bukan menyempit.
+Siswa dari keluarga mampu memiliki akses ke tools AI premium, tutor pribadi berbasis AI, dan bimbingan yang dipersonalisasi. Siswa dari keluarga kurang mampu hanya memiliki akses terbatas—atau sama sekali tidak ada.<p>Hasilnya? Kesenjangan pendidikan meluas, bukan menyempit.</p>
 
 <p><h2>The Digital Divide 2.0</h2></p>
 
@@ -1914,23 +1952,25 @@ Siswa di negara-negara berkembang seringkali tidak memiliki akses ke tools AI ca
 
 <h2>Toward Equitable Access</h2><p>Beberapa inisiatif sedang mencoba mengatasi masalah ini:</p>
 
-- <strong>Open-source AI</strong>: Model-model open source yang bisa diakses gratis oleh siapa saja.
-- <strong>AI for Education programs</strong>: Inisiatif dari perusahaan teknologi untuk menyediakan akses AI ke sekolah-sekolah kurang mampu.
-- <strong>Digital literacy curricula</strong>: Mengajarkan literasi AI sebagai bagian dari kurikulum sekolah.<p>Tapi inisiatif-inisiatif ini masih terbatas skalanya. Tantangan utama adalah bahwa benefits dari AI cenderung mengalir ke mereka yang sudah memiliki resources—memperlebar jurang, bukan menyempitkannya.</p>
+<li><strong>Open-source AI</strong>: Model-model open source yang bisa diakses gratis oleh siapa saja.</li>
+<li><strong>AI for Education programs</strong>: Inisiatif dari perusahaan teknologi untuk menyediakan akses AI ke sekolah-sekolah kurang mampu.</li>
+<li><strong>Digital literacy curricula</strong>: Mengajarkan literasi AI sebagai bagian dari kurikulum sekolah.<p>Tapi inisiatif-inisiatif ini masih terbatas skalanya. Tantangan utama adalah bahwa benefits dari AI cenderung mengalir ke mereka yang sudah memiliki resources—memperlebar jurang, bukan menyempitkannya.</p></li>
 
 <h2>The Question of Justice</h2><p>Pertanyaan mendasar yang dihadapi masyarakat adalah: apakah pendidikan harus menjadi privilege bagi mereka yang mampu, ataukah harus menjadi right yang dijamin untuk semua?</p>
 
 Jawaban atas pertanyaan ini akan menentukan apakah AI akan menjadi alat emansipasi atau alat oppresi.<p>---</p>
 
 <em>Kutipan kunci: "AI tidak menciptakan kesenjangan. Ia hanya mempercepat apa yang sudah ada—dan membuat jurang antara yang memiliki dan yang tidak semakin dalam."</em>
-        </div>
+      </div>
+    </section>
     
-
-        <!-- Chapter 16 -->
-        <div class="chapter" id="chapter-16">
-            <h1>Bab 16: Ketergantungan Infrastruktur Global</h1>
-            <p class="chapter-meta">Esai Non-Fiksi | Agustus 2026</p>
-            <div class="svg-container"><?xml version="1.0" encoding="UTF-8"?>
+    <section class="chapter" id="16">
+      <header class="chapter-header">
+        <span class="chapter-number">Bab 16</span>
+        <h1>Ketergantungan Infrastruktur</h1>
+      </header>
+      <div class="chapter-body">
+        <div class="figure"><?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" role="img" aria-labelledby="infrastructure-title">
   <title id="infrastructure-title">Ketergantungan Infrastruktur Global</title>
   
@@ -1982,13 +2022,11 @@ Jawaban atas pertanyaan ini akan menentukan apakah AI akan menjadi alat emansipa
       <path d="M0,0 L10,3 L0,6 Z" fill="#ef4444"/>
     </marker>
   </defs>
-</svg></div># Bab 16: Ketergantungan Infrastruktur Global<p><em>Esai Non-Fiksi | Agustus 2026</em></p>
+</svg><figcaption>Ilustrasi</figcaption></div><p>---</p>
 
----<p><h2>Rantai Pasok yang Rapuh</h2></p>
+<h2>Rantai Pasok yang Rapuh</h2><p>Dunia modern berjalan di atas infrastrukstur digital. Dan infrastrukstur digital ini, pada gilirannya, bergantung pada segelintir penyedia cloud AI.</p>
 
-Dunia modern berjalan di atas infrastrukstur digital. Dan infrastrukstur digital ini, pada gilirannya, bergantung pada segelintir penyedia cloud AI.<p>Amazon Web Services, Microsoft Azure, Google Cloud—tiga perusahaan ini menguasai lebih dari 60% pasar cloud global. Ketika mereka memutuskan untuk mengubah kebijakan, menaikkan harga, atau mengalami outage, dampaknya merambat ke seluruh ekonomi global.</p>
-
-Ini adalah ketergantungan yang berbahaya. Bayangkan jika tiba-tiba semua layanan cloud padam selama seminggu. Berapa banyak bisnis yang akan kolaps? Berapa banyak data yang akan hilang? Berapa banyak kehidupan yang akan terganggu?
+Amazon Web Services, Microsoft Azure, Google Cloud—tiga perusahaan ini menguasai lebih dari 60% pasar cloud global. Ketika mereka memutuskan untuk mengubah kebijakan, menaikkan harga, atau mengalami outage, dampaknya merambat ke seluruh ekonomi global.<p>Ini adalah ketergantungan yang berbahaya. Bayangkan jika tiba-tiba semua layanan cloud padam selama seminggu. Berapa banyak bisnis yang akan kolaps? Berapa banyak data yang akan hilang? Berapa banyak kehidupan yang akan terganggu?</p>
 
 <p><h2>Centralization Risk</h2></p>
 
@@ -2011,14 +2049,16 @@ Beberapa expert mengusulkan solusi desentralisasi—menggunakan blockchain, dist
 Pertanyaannya bukan apakah kita akan bergantung pada cloud. Pertanyaannya adalah seberapa besar ketergantungan itu, dan seberapa siap kita menghadapi konsekuensi ketika sistem tersebut runtuh.<p>---</p>
 
 <em>Kutipan kunci: "Kita membangun menara Babel digital—tinggi, megah, tapi berdiri di atas fondasi yang sangat tipis."</em>
-        </div>
+      </div>
+    </section>
     
-
-        <!-- Chapter 17 -->
-        <div class="chapter" id="chapter-17">
-            <h1>Bab 17: Beban Lingkungan Ekstrem</h1>
-            <p class="chapter-meta">Esai Non-Fiksi | Agustus 2026</p>
-            <div class="svg-container"><?xml version="1.0" encoding="UTF-8"?>
+    <section class="chapter" id="17">
+      <header class="chapter-header">
+        <span class="chapter-number">Bab 17</span>
+        <h1>Beban Lingkungan</h1>
+      </header>
+      <div class="chapter-body">
+        <div class="figure"><?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-labelledby="environment-title">
   <title id="environment-title">Beban Lingkungan Ekstrem dari AI</title>
   
@@ -2073,13 +2113,11 @@ Pertanyaannya bukan apakah kita akan bergantung pada cloud. Pertanyaannya adalah
     <rect x="0" y="0" width="600" height="40" rx="8" fill="#fff7ed" stroke="#fde68a" stroke-width="1"/>
     <text x="300" y="26" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#78350f">Total emisi AI setara dengan industri penerbangan global jika tidak ada regulasi</text>
   </g>
-</svg></div># Bab 17: Beban Lingkungan Ekstrem<p><em>Esai Non-Fiksi | Agustus 2026</em></p>
+</svg><figcaption>Ilustrasi</figcaption></div><p>---</p>
 
----<p><h2>Harga Tersembunyi dari Kecerdasan Buatan</h2></p>
+<h2>Harga Tersembunyi dari Kecerdasan Buatan</h2><p>Data center AI membutuhkan energi luar biasa.</p>
 
-Data center AI membutuhkan energi luar biasa.<p>Setiap kali seseorang menanyakan sesuatu kepada AI, prosesnya melibatkan jutaan operasi komputasi—embedding, attention mechanisms, matrix multiplications—yang semuanya membutuhkan listrik. Dan listrik ini, sebagian besar masih berasal dari sumber fosil.</p>
-
-Bayangkan ini: satu pertanyaan kepada ChatGPT mengonsumsi energi setara dengan menyalakan lampu LED selama beberapa menit. Sekarang bayangkan miliaran pertanyaan per hari.
+Setiap kali seseorang menanyakan sesuatu kepada AI, prosesnya melibatkan jutaan operasi komputasi—embedding, attention mechanisms, matrix multiplications—yang semuanya membutuhkan listrik. Dan listrik ini, sebagian besar masih berasal dari sumber fosil.<p>Bayangkan ini: satu pertanyaan kepada ChatGPT mengonsumsi energi setara dengan menyalakan lampu LED selama beberapa menit. Sekarang bayangkan miliaran pertanyaan per hari.</p>
 
 <p><h2>The Carbon Footprint of Training</h2></p>
 
@@ -2097,24 +2135,26 @@ Beban lingkungan AI tidak dirasakan secara merata. Data center sering ditempatka
 
 <h2>Toward Sustainable AI</h2><p>Beberapa langkah可以向更可持续的方向发展：</p>
 
-1. <strong>Energy-efficient models</strong>: Mengembangkan model yang lebih efisien dalam komputasi dan energi.
-2. <strong>Renewable energy commitment</strong>: Komitmen nyata untuk menggunakan energi terbarukan, bukan sekadar offset.
-3. <strong>Right to repair</strong>: Memungkinkan data center untuk repaired dan diupgrade, bukan diganti seluruhnya.
-4. <strong>Regulation</strong>: Regulasi yang memaksa transparansi dalam konsumsi energi dan emisi.<p>Tapi tanpa perubahan sistemik, pertumbuhan AI yang saat ini terjadi akan terus memperburuk krisis iklim.</p>
+<li><strong>Energy-efficient models</strong>: Mengembangkan model yang lebih efisien dalam komputasi dan energi.</li>
+<li><strong>Renewable energy commitment</strong>: Komitmen nyata untuk menggunakan energi terbarukan, bukan sekadar offset.</li>
+<li><strong>Right to repair</strong>: Memungkinkan data center untuk repaired dan diupgrade, bukan diganti seluruhnya.</li>
+<li><strong>Regulation</strong>: Regulasi yang memaksa transparansi dalam konsumsi energi dan emisi.<p>Tapi tanpa perubahan sistemik, pertumbuhan AI yang saat ini terjadi akan terus memperburuk krisis iklim.</p></li>
 
 <h2>The Paradox of Progress</h2><p>Di sinilah paradoksnya: teknologi yang menjanjikan solusi untuk masalah manusia (kesehatan, pendidikan, efisiensi) justru memperburuk masalah terbesar umat manusia—perubahan iklim.</p>
 
 Pertanyaannya adalah apakah kita bisa menikmati benefits AI tanpa mengorbankan planet kita. Ataukah kita harus memilih—antara kemajuan teknologi dan kelangsungan hidup ekosistem?<p>---</p>
 
 <em>Kutipan kunci: "Setiap query kepada AI memiliki harga—bukan hanya dalam dolar, tapi dalam ton CO₂ dan liter air."</em>
-        </div>
+      </div>
+    </section>
     
-
-        <!-- Chapter 18 -->
-        <div class="chapter" id="chapter-18">
-            <h1>Bab 18: Kriminalitas Skala Industri</h1>
-            <p class="chapter-meta">Esai Non-Fiksi | Agustus 2026</p>
-            <div class="svg-container"><?xml version="1.0" encoding="UTF-8"?>
+    <section class="chapter" id="18">
+      <header class="chapter-header">
+        <span class="chapter-number">Bab 18</span>
+        <h1>Kriminalitas Skala Industri</h1>
+      </header>
+      <div class="chapter-body">
+        <div class="figure"><?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" role="img" aria-labelledby="crime-title">
   <title id="crime-title">Kriminalitas Skala Industri di Era AI</title>
   
@@ -2167,13 +2207,11 @@ Pertanyaannya adalah apakah kita bisa menikmati benefits AI tanpa mengorbankan p
     <rect x="0" y="0" width="600" height="35" rx="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1"/>
     <text x="300" y="24" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#991b1b">Peringatan: Demokratisasi kejahatan—tool sebelumnya hanya untuk negara, sekarang untuk siapa saja</text>
   </g>
-</svg></div># Bab 18: Kriminalitas Skala Industri<p><em>Esai Non-Fiksi | Agustus 2026</em></p>
+</svg><figcaption>Ilustrasi</figcaption></div><p>---</p>
 
----<p><h2>Senjata Baru untuk Penjahat Tradisional</h2></p>
+<h2>Senjata Baru untuk Penjahat Tradisional</h2><p>AI tidak hanya mengubah cara kita bekerja. Ia juga mengubah cara kita kejahatan.</p>
 
-AI tidak hanya mengubah cara kita bekerja. Ia juga mengubah cara kita kejahatan.<p>Phishing yang dipersonalisasi, di mana pesan penipuan dibuat khusus untuk target tertentu berdasarkan data pribadi mereka, sekarang bisa dihasilkan dalam skala massal oleh AI. Deepfake audio digunakan untuk menipu karyawan perusahaan agar mentransfer uang. Bot yang dikendalikan AI melakukan serangan DDoS yang lebih canggih dan sulit dideteksi.</p>
-
-Ini adalah kriminalitas dalam skala industri—di mana tool yang sebelumnya hanya tersedia untuk negara atau organisasi besar, kini bisa diakses oleh penjahat individual.
+Phishing yang dipersonalisasi, di mana pesan penipuan dibuat khusus untuk target tertentu berdasarkan data pribadi mereka, sekarang bisa dihasilkan dalam skala massal oleh AI. Deepfake audio digunakan untuk menipu karyawan perusahaan agar mentransfer uang. Bot yang dikendalikan AI melakukan serangan DDoS yang lebih canggih dan sulit dideteksi.<p>Ini adalah kriminalitas dalam skala industri—di mana tool yang sebelumnya hanya tersedia untuk negara atau organisasi besar, kini bisa diakses oleh penjahat individual.</p>
 
 <p><h2>The Democratization of Crime</h2></p>
 
@@ -2194,9 +2232,9 @@ Ransomware families mulai menggunakan AI untuk mengoptimalkan encryption algorit
 Regulasi mengikuti teknologi dengan lambat. Hukum criminal tradisional tidak dirancang untuk面对 AI-powered crimes yang memiliki karakteristik unik—seperti anonymity yang lebih baik, scale yang lebih besar, dan sophistication yang lebih tinggi.
 
 Beberapa jurisdiction mencoba menyesuaikan:
-- EU AI Act includes provisions untuk high-risk AI applications, termasuk yang terkait dengan criminality
-- US DOJ membentuk AI and Technology Unit untuk face emerging threats
-- Interpol launched AI crime task force untuk coordinate international response<p>Tapi koordinasi global tetap menjadi challenge besar, mengingat sifat cross-border dari cybercrime.</p>
+<li>EU AI Act includes provisions untuk high-risk AI applications, termasuk yang terkait dengan criminality</li>
+<li>US DOJ membentuk AI and Technology Unit untuk face emerging threats</li>
+<li>Interpol launched AI crime task force untuk coordinate international response<p>Tapi koordinasi global tetap menjadi challenge besar, mengingat sifat cross-border dari cybercrime.</p></li>
 
 <h2>Ethical Dilemmas in Defense</h2><p>Penggunaan AI untuk defense juga menimbulkan dilema etis.</p>
 
@@ -2205,22 +2243,24 @@ Surveillance AI yang digunakan untuk prevent crime seringkali melanggar privacy 
 <h2>The Future Threat Landscape</h2>
 
 Masa depan membawa ancaman baru:
-- Autonomous hacking tools yang bisa find dan exploit vulnerabilities tanpa human intervention
-- AI-powered social engineering yang bisa manipulate entire populations
-- Synthetic identity fraud yang menggunakan AI untuk create fake identities yang convincing
-- Deepfake-based extortion yang bisa ruin reputasi dan lives<p>Setiap advance dalam AI capability membuka door baru untuk abuse.</p>
+<li>Autonomous hacking tools yang bisa find dan exploit vulnerabilities tanpa human intervention</li>
+<li>AI-powered social engineering yang bisa manipulate entire populations</li>
+<li>Synthetic identity fraud yang menggunakan AI untuk create fake identities yang convincing</li>
+<li>Deepfake-based extortion yang bisa ruin reputasi dan lives<p>Setiap advance dalam AI capability membuka door baru untuk abuse.</p></li>
 
----
+<hr>
 
 <em>Kutipan kunci: "Senjata yang sama yang bisa protect democracy bisa juga corrupt it—tergantung tangan yang memegangnya."</em>
-        </div>
+      </div>
+    </section>
     
-
-        <!-- Chapter 19 -->
-        <div class="chapter" id="chapter-19">
-            <h1>Bab 19: Perang Otomatis (Senjata Otonom)</h1>
-            <p class="chapter-meta">Esai Non-Fiksi | Agustus 2026</p>
-            <div class="svg-container"><?xml version="1.0" encoding="UTF-8"?>
+    <section class="chapter" id="19">
+      <header class="chapter-header">
+        <span class="chapter-number">Bab 19</span>
+        <h1>Perang Otomatis</h1>
+      </header>
+      <div class="chapter-body">
+        <div class="figure"><?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-labelledby="autonomous-title">
   <title id="autonomous-title">Perang Otomatis: Senjata yang Memilih Target Sendiri</title>
   
@@ -2299,13 +2339,11 @@ Masa depan membawa ancaman baru:
       <path d="M0,0 L10,3 L0,6 Z" fill="#ef4444"/>
     </marker>
   </defs>
-</svg></div># Bab 19: Perang Otomatis (Senjata Otonom)<p><em>Esai Non-Fiksi | Agustus 2026</em></p>
+</svg><figcaption>Ilustrasi</figcaption></div><p>---</p>
 
----<p><h2>Ketika Mesin Memilih Target</h2></p>
+<h2>Ketika Mesin Memilih Target</h2><p>Medan perang masa depan tidak akan dipimpin oleh jenderal manusia. Ia akan dikendalikan oleh algoritma.</p>
 
-Medan perang masa depan tidak akan dipimpin oleh jenderal manusia. Ia akan dikendalikan oleh algoritma.<p>Drone otonom, sistem pertahanan anti-pesawat yang decisions secara otomatis, dan kendaraan tempur tanpa pengemudi—semua ini sudah ada atau sedang dikembangkan. Yang membedakan mereka dari senjata tradisional adalah kemampuan untuk select dan engage targets tanpa human intervention.</p>
-
-Ini adalah revolusi dalam warfare yang membawa pertanyaan etis paling mendasar: apakah kita mau menyerahkan nyawa manusia kepada mesin?
+Drone otonom, sistem pertahanan anti-pesawat yang decisions secara otomatis, dan kendaraan tempur tanpa pengemudi—semua ini sudah ada atau sedang dikembangkan. Yang membedakan mereka dari senjata tradisional adalah kemampuan untuk select dan engage targets tanpa human intervention.<p>Ini adalah revolusi dalam warfare yang membawa pertanyaan etis paling mendasar: apakah kita mau menyerahkan nyawa manusia kepada mesin?</p>
 
 <p><h2>The Speed of War</h2></p>
 
@@ -2327,23 +2365,25 @@ Beberapa expert dalam AI safety warns bahwa senjata otonom bisa escalate conflic
 
 <h2>Ethical Frameworks</h2><p>Beberapa ethical frameworks proposed untuk autonomous weapons:</p>
 
-1. <strong>Meaningful Human Control</strong>: Requirements bahwa humans harus retain ultimate authority atas penggunaan force.
-2. <strong>Proportionality Testing</strong>: AI systems harus capable of assessing proportionality antara military advantage dan civilian harm.
-3. <strong>Accountability Tracing</strong>: Systems harus designed untuk maintain audit trail yang traceable kembali ke human actors.<p>Tapi implementation dari frameworks ini challenging, mengingat complexity dan opacity dari AI systems sendiri.</p>
+<li><strong>Meaningful Human Control</strong>: Requirements bahwa humans harus retain ultimate authority atas penggunaan force.</li>
+<li><strong>Proportionality Testing</strong>: AI systems harus capable of assessing proportionality antara military advantage dan civilian harm.</li>
+<li><strong>Accountability Tracing</strong>: Systems harus designed untuk maintain audit trail yang traceable kembali ke human actors.<p>Tapi implementation dari frameworks ini challenging, mengingat complexity dan opacity dari AI systems sendiri.</p></li>
 
 <h2>The Point of No Return?</h2><p>Ada kekhawatiran bahwa pengembangan senjata otonom已经达到 titik di mana reversal tidak mungkin—karena competitive pressure dari negara lain. Ini adalah classic security dilemma: jika saya tidak mengembangkan autonomous weapons, musuh saya akan. Jadi saya harus mengembangkannya juga, bahkan jika itu berbahaya bagi semua orang.</p>
 
 Solusi memerlukan cooperation internasional yang belum ada. Tanpa itu, kita berisiko memasuki era baru warfare di mana manusia kehilangan kontrol terakhir atas kapan, di mana, dan kepada siapa violence diterapkan.<p>---</p>
 
 <em>Kutipan kunci: "Pertama kali dalam sejarah, spesies kita menciptakan mesin yang bisa memutuskan siapa yang layak hidup dan siapa yang layak mati—tanpa memahami nilai dari keduanya."</em>
-        </div>
+      </div>
+    </section>
     
-
-        <!-- Chapter 20 -->
-        <div class="chapter" id="chapter-20">
-            <h1>Bab 20: Bioreaktor Digital</h1>
-            <p class="chapter-meta">Esai Non-Fiksi | Agustus 2026</p>
-            <div class="svg-container"><?xml version="1.0" encoding="UTF-8"?>
+    <section class="chapter" id="20">
+      <header class="chapter-header">
+        <span class="chapter-number">Bab 20</span>
+        <h1>Bioreaktor Digital</h1>
+      </header>
+      <div class="chapter-body">
+        <div class="figure"><?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-labelledby="bioreactor-title">
   <title id="bioreactor-title">Bioreaktor Digital: Dual-Use Technology dalam AI</title>
   
@@ -2400,28 +2440,26 @@ Solusi memerlukan cooperation internasional yang belum ada. Tanpa itu, kita beri
     <rect x="0" y="0" width="600" height="40" rx="8" fill="#fef3c7" stroke="#fde68a" stroke-width="1"/>
     <text x="300" y="26" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#78350f">Tantangan: Akses democratized—aktor non-negara bisa access tools yang sebelumnya hanya untuk lab canggih</text>
   </g>
-</svg></div># Bab 20: Bioreaktor Digital<p><em>Esai Non-Fiksi | Agustus 2026</em></p>
+</svg><figcaption>Ilustrasi</figcaption></div><p>---</p>
 
----<p><h2>Virus yang Dilahirkan dari Kode</h2></p>
+<h2>Virus yang Dilahirkan dari Kode</h2><p>Teknologi yang sama yang bisa cure disease bisa juga create pandemic.</p>
 
-Teknologi yang sama yang bisa cure disease bisa juga create pandemic.<p>AI telah mempercepat riset biologi secara dramatis. Model seperti AlphaFold bisa memprediksi struktur protein dengan akurasi yang belum pernah terjadi sebelumnya. Sistem AI lain bisa design novel enzymes, optimize genetic sequences, dan simulate molecular interactions.</p>
-
-Ini adalah breakthrough ilmiah yang luar biasa. Tapi breakthrough yang sama juga mengurangi barrier untuk bioengineering—baik untuk tujuan good maupun bad.
+AI telah mempercepat riset biologi secara dramatis. Model seperti AlphaFold bisa memprediksi struktur protein dengan akurasi yang belum pernah terjadi sebelumnya. Sistem AI lain bisa design novel enzymes, optimize genetic sequences, dan simulate molecular interactions.<p>Ini adalah breakthrough ilmiah yang luar biasa. Tapi breakthrough yang sama juga mengurangi barrier untuk bioengineering—baik untuk tujuan good maupun bad.</p>
 
 <p><h2>The Accessibility Problem</h2></p>
 
 Yang membuat ancaman bioreaktor digital begitu serius adalah aksesibilitas.
 
 Sebelum AI, research biologi canggih membutuhkan:
-- Lab fisik dengan equipment mahal
-- Personnel terlatih dalam molecular biology
-- Akses ke databases ilmiah
-- Berbulan-bulan hingga bertahun-tahun untuk experimentation
+<li>Lab fisik dengan equipment mahal</li>
+<li>Personnel terlatih dalam molecular biology</li>
+<li>Akses ke databases ilmiah</li>
+<li>Berbulan-bulan hingga bertahun-tahun untuk experimentation</li>
 
 Sekarang, dengan AI tools yang bisa diakses online, seorang researcher di basement apartment bisa:
-- Memprediksi struktur protein pathogens
-- Design genetic sequences untuk organisms baru
-- Simulasi interaksi molecular dalam hours<p>Barrier to entry untuk biotechnology research menurun secara dramatis.</p>
+<li>Memprediksi struktur protein pathogens</li>
+<li>Design genetic sequences untuk organisms baru</li>
+<li>Simulasi interaksi molecular dalam hours<p>Barrier to entry untuk biotechnology research menurun secara dramatis.</p></li>
 
 <h2>Case Studies in Concern</h2><p><strong>2022: AI-Generated Viral Sequences</strong></p>
 
@@ -2434,39 +2472,41 @@ Komunitas open source mengembangkan tools bioinformatics yang powerful dan mudah
 Regulasi untuk dual-use biotechnology technology滞后于 perkembangan.现有的 frameworks seperti Biological Weapons Convention (BWC) dirancang untuk negara-negara dan weapons-of-mass-destruction tradisional. Mereka tidak well-equipped untuk面对 threats dari AI-enabled biotechnology yang bisa dilakukan oleh individu atau small groups.
 
 Pertanyaan regulatory yang challenging:
-- Bagaimana regulating access kepada AI tools yang memiliki dual-use potential?
-- Siap yang bertanggung jawab untuk screening requests kepada DNA synthesis companies?
-- Bagaimana ensuring transparency dalam research tanpa stifling innovation?<p><h2>The Precautionary Principle</h2></p>
+<li>Bagaimana regulating access kepada AI tools yang memiliki dual-use potential?</li>
+<li>Siap yang bertanggung jawab untuk screening requests kepada DNA synthesis companies?</li>
+<li>Bagaimana ensuring transparency dalam research tanpa stifling innovation?<p><h2>The Precautionary Principle</h2></p></li>
 
 Beberapa expert dalam biosecurity argue untuk applying precautionary principle: jika sebuah technology memiliki potential catastrophic risks, kita harus assume that risks akan materialize kecuali terbukti sebaliknya.
 
 Ini berarti:
-- Moratorium pada certain categories of AI-biology research
-- Mandatory safety testing untuk AI-generated biological designs
-- International cooperation untuk governance AI-bio interfaces<p>Tapisandiwara ini menghadapi resistance dari communities scientific dan technology yang melihat restrictions sebagai impediment kepada progress.</p>
+<li>Moratorium pada certain categories of AI-biology research</li>
+<li>Mandatory safety testing untuk AI-generated biological designs</li>
+<li>International cooperation untuk governance AI-bio interfaces<p>Tapisandiwara ini menghadapi resistance dari communities scientific dan technology yang melihat restrictions sebagai impediment kepada progress.</p></li>
 
 <h2>Pathways Forward</h2><p>Beberapa proposed solutions:</p>
 
-1. <strong>Technical safeguards</strong>: Embedding safety checks dalam AI models themselves—model拒绝 generate sequences yang identified sebagai potential threats.
-2. <strong>Access controls</strong>: Membatasi access kepada powerful AI-bio tools hanya kepada verified researchers.
-3. <strong>International governance</strong>: Extending existing frameworks seperti BWC dan dual-use research oversight.
-4. <strong>Ethical AI development</strong>: Membedakan ethical considerations ke dalam design process dari AI systems.<p>Tidak ada single solution yang cukup. Kita memerlukan kombinasi dari technical, policy, dan cultural approaches.</p>
+<li><strong>Technical safeguards</strong>: Embedding safety checks dalam AI models themselves—model拒绝 generate sequences yang identified sebagai potential threats.</li>
+<li><strong>Access controls</strong>: Membatasi access kepada powerful AI-bio tools hanya kepada verified researchers.</li>
+<li><strong>International governance</strong>: Extending existing frameworks seperti BWC dan dual-use research oversight.</li>
+<li><strong>Ethical AI development</strong>: Membedakan ethical considerations ke dalam design process dari AI systems.<p>Tidak ada single solution yang cukup. Kita memerlukan kombinasi dari technical, policy, dan cultural approaches.</p></li>
 
 <h2>The Existential Stakes</h2><p>Pertanyaan mendasar yang dihadapi humanity adalah: apakah kita memiliki wisdom yang cukup untuk mengelola technology yang powerful seperti ini?</p>
 
 AI memberikan kita kemampuan untuk understand dan manipulate life pada level yang belum pernah terjadi sebelumnya. Tapi wisdom untuk menggunakan kemampuan ini—khususnya untuk mencegah misuse—belum tentu berkembang dengan kecepatan yang sama.<p>Bioreaktor digital adalah peringatan: technology yang sama yang bisa save lives bisa juga threaten them. Tantangannya adalah memastikan yang pertama terjadi lebih sering daripada yang kedua.</p>
 
----
+<hr>
 
 <em>Kutipan kunci: "Kunci untuk membuka pintu kematian massal tersedia online. Pertanyaannya bukan apakah someone akan menggunakannya—tapi kapan."</em>
-        </div>
+      </div>
+    </section>
     
-
-        <!-- Chapter 21 -->
-        <div class="chapter" id="chapter-21">
-            <h1>Epilog: Manusia di Tengah Mesin</h1>
-            <p class="chapter-meta">Esai Non-Fiksi | Agustus 2026</p>
-            <div class="svg-container"><?xml version="1.0" encoding="UTF-8"?>
+    <section class="chapter" id="21">
+      <header class="chapter-header">
+        <span class="chapter-number">Epilog</span>
+        <h1>Manusia di Tengah Mesin</h1>
+      </header>
+      <div class="chapter-body">
+        <div class="figure"><?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 350" role="img" aria-labelledby="epilog-title">
   <title id="epilog-title">Titik Balik Kemanusiaan</title>
   
@@ -2502,13 +2542,13 @@ AI memberikan kita kemampuan untuk understand dan manipulate life pada level yan
     <rect x="0" y="0" width="600" height="40" rx="8" fill="#fff7ed" stroke="#fde68a" stroke-width="1"/>
     <text x="300" y="26" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#78350f">Pilihan ada di tangan kita—bukan mesin</text>
   </g>
-</svg></div># Epilog: Manusia di Tengah Mesin<p><em>Esai Non-Fiksi | Agustus 2026</em></p>
+</svg><figcaption>Ilustrasi</figcaption></div><p>---</p>
 
----<p><h2>Titik Balik</h2></p>
+<h2>Titik Balik</h2><p>Kita berada di persimpangan.</p>
 
-Kita berada di persimpangan.<p>Di satu sisi, ada narasi yang menjanjikan: AI akan menyelesaikan masalah-masalah terbesar umat manusia—penyakit, kelaparan, perubahan iklim. Ia akan membebaskan kita dari kerja paksa dan memungkinkan kita untuk fokus pada hal-hal yang benar-benar bermakna.</p>
+Di satu sisi, ada narasi yang menjanjikan: AI akan menyelesaikan masalah-masalah terbesar umat manusia—penyakit, kelaparan, perubahan iklim. Ia akan membebaskan kita dari kerja paksa dan memungkinkan kita untuk fokus pada hal-hal yang benar-benar bermakna.<p>Di sisi lain, ada realitas yang sedang terjadi: jutaan orang kehilangan pekerjaan, kemampuan kognitif kolektif menurun, dan konsentrasi kekayaan dan kekuasaan mencapai level yang belum pernah terjadi dalam sejarah.</p>
 
-Di sisi lain, ada realitas yang sedang terjadi: jutaan orang kehilangan pekerjaan, kemampuan kognitif kolektif menurun, dan konsentrasi kekayaan dan kekuasaan mencapai level yang belum pernah terjadi dalam sejarah.<p>Buku ini menelusuri dampak-dampak dari transformasi tersebut—dari ekonomi hingga kognisi, dari psikologi hingga budaya, dari keamanan hingga lingkungan. Setiap bab adalah lapisan berbeda dari fenomena yang sama: bagaimana mesin yang kita ciptakan untuk melayani kita, justru mengubah definisi tentang siapa kita.</p>
+Buku ini menelusuri dampak-dampak dari transformasi tersebut—dari ekonomi hingga kognisi, dari psikologi hingga budaya, dari keamanan hingga lingkungan. Setiap bab adalah lapisan berbeda dari fenomena yang sama: bagaimana mesin yang kita ciptakan untuk melayani kita, justru mengubah definisi tentang siapa kita.
 
 <p><h2>Reframing the Question</h2></p>
 
@@ -2520,9 +2560,9 @@ AI bukanlah force of nature yang tidak bisa dikendalikan. Ia adalah produk choic
 
 AI mengancam agency dalam tiga cara:
 
-1. <strong>Cognitive agency</strong>: Ketika kita berhenti berpikir karena mesin bisa melakukannya untuk kita.
-2. <strong>Economic agency</strong>: Ketika kita kehilangan kemampuan untuk berkontribusi melalui kerja.
-3. <strong>Moral agency</strong>: Ketika kita menyerahkan decisions etis kepada algoritma.<p>Tanpa ketiga agency ini, manusia berkurang menjadi passive consumers—bukan lagi authors of their own lives.</p>
+<li><strong>Cognitive agency</strong>: Ketika kita berhenti berpikir karena mesin bisa melakukannya untuk kita.</li>
+<li><strong>Economic agency</strong>: Ketika kita kehilangan kemampuan untuk berkontribusi melalui kerja.</li>
+<li><strong>Moral agency</strong>: Ketika kita menyerahkan decisions etis kepada algoritma.<p>Tanpa ketiga agency ini, manusia berkurang menjadi passive consumers—bukan lagi authors of their own lives.</p></li>
 
 <h2>Possible Futures</h2><p>Beberapa possible futures dapat diimajinasikan:</p>
 
@@ -2534,17 +2574,17 @@ AI mengancam agency dalam tiga cara:
 
 Tapi awareness saja tidak cukup. Kita juga membutuhkan:
 
-- <strong>Policy engagement</strong>: Advocating untuk regulations yang protect public interests.
-- <strong>Technical literacy</strong>: Understanding how AI systems work, bukan hanya cara menggunakannya.
-- <strong>Community building</strong>: Working bersama untuk develop alternatives yang lebih equitable.
-- <strong>Personal practice</strong>: Maintaining our cognitive, moral, dan social capacities through deliberate practice.<p><h2>A Call to Action</h2></p>
+<li><strong>Policy engagement</strong>: Advocating untuk regulations yang protect public interests.</li>
+<li><strong>Technical literacy</strong>: Understanding how AI systems work, bukan hanya cara menggunakannya.</li>
+<li><strong>Community building</strong>: Working bersama untuk develop alternatives yang lebih equitable.</li>
+<li><strong>Personal practice</strong>: Maintaining our cognitive, moral, dan social capacities through deliberate practice.<p><h2>A Call to Action</h2></p></li>
 
 Ini bukan final chapter dalam arti bahwa cerita telah selesai. Ini adalah invitation untuk melanjutkan dialog—dan yang lebih penting, untuk bertindak.
 
 Setiap reader dari buku ini memiliki agency dalam cara mereka engage dengan AI:
-- Bagaimana mereka menggunakan tools AI dalam lives mereka.
-- Bagaimana mereka advocating untuk policies yang shapes AI development.
-- Bagaimana mereka teaching next generations tentang opportunities dan risks.<p>Machine tidak akan menyelesaikan masalah yang kita hadapi. Tapi machines juga tidak akan menciptakan solusi—kecuali jika manusia mengarahkannya untuk itu.</p>
+<li>Bagaimana mereka menggunakan tools AI dalam lives mereka.</li>
+<li>Bagaimana mereka advocating untuk policies yang shapes AI development.</li>
+<li>Bagaimana mereka teaching next generations tentang opportunities dan risks.<p>Machine tidak akan menyelesaikan masalah yang kita hadapi. Tapi machines juga tidak akan menciptakan solusi—kecuali jika manusia mengarahkannya untuk itu.</p></li>
 
 <h2>Akhir Kata</h2><p>Atrofi kognitif bukanlah fate yang harus diterima. Ia adalah warning—peringatan bahwa kemudahan hari ini bisa menjadi jeratan esok hari.</p>
 
@@ -2553,23 +2593,36 @@ Tapi warning bukanlah sentence. Ia adalah opportunity untuk berubah, untuk memil
 Mari kita memilih dengan sengaja.<p>---</p>
 
 <em>Kutipan kunci: "Masa depan bukan sesuatu yang terjadi kepada kita. Masa depan adalah sesuatu yang kita ciptakan—dengan setiap choice yang kita buat, dengan setiap cara kita engage dengan technology, dengan setiap cara kita memilih untuk menjadi manusia di tengah mesin."</em>
-        </div>
+      </div>
+    </section>
     
-        <div class="svg-container" style="margin: 40px 0;">
-            <img src="epilog-art.png" alt="Manusia di Tengah Mesin" style="max-width: 100%; border-radius: 8px;">
-        </div>
-        
-                <!-- Navigation -->
-        <div class="nav">
-            <a href="#chapter-00">← Pengantar</a>
-            <a href="#chapter-21">Epilog →</a>
-        </div>
-        
-        <!-- Footer -->
-        <div style="padding: 40px; text-align: center; color: #94a3b8; font-size: 0.9em; border-top: 1px solid #e2e8f0;">
-            <p>© 2026 Atlas | labsdigital</p>
-            <p>Diterbitkan oleh GitHub → <a href="https://github.com/labsdigital/hermes" style="color: #3b82f6;">labsdigital/hermes</a></p>
-        </div>
-    </div>
+    <footer style="padding: 60px 40px; text-align: center; color: var(--text-muted); font-family: var(--font-sans); font-size: 0.85em; border-top: 1px solid var(--border);">
+      <p>&copy; 2026 Atlas &middot; labsdigital</p>
+      <p style="margin-top: 8px;"><a href="https://github.com/labsdigital/hermes" style="color: var(--accent); text-decoration: none;">GitHub Repository</a></p>
+    </footer>
+  </main>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('sidebar').classList.toggle('open');
+      document.getElementById('overlay').classList.toggle('open');
+    }
+    const chapters = document.querySelectorAll('.chapter');
+    const tocLinks = document.querySelectorAll('.toc a');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          tocLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + id) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }, { rootMargin: '-20% 0px -80% 0px' });
+    chapters.forEach(ch => observer.observe(ch));
+</script>
 </body>
 </html>
