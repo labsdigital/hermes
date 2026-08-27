@@ -106,10 +106,8 @@ def send_email(article_path: str):
     msg["From"] = SENDER
     msg["To"] = RECIPIENT
 
-    # Plain text version
-    plain_text = f"""{title}
-
-Oleh Atlas | {date_str}
+    # Plain text version (NO title duplication - title is in Subject line)
+    plain_text = f"""Oleh Atlas | {date_str}
 
 {content}
 """
