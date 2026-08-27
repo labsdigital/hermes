@@ -30,6 +30,36 @@ Dan masyarakat umum? Mereka menjadi既data source既customer. Data mereka melati
 
 Siklus ini menguntungkan segelintir pemain, sementara yang lain hanya bisa berharap mendapatkan bagian dari remah-remah.
 
+**The Concentration of Knowledge Power**
+
+What makes tech oligarchy unique is that it concentrates not just wealth, but knowledge itself. In previous oligarchies, the elite controlled land, resources, atau military power. Today's elite controls data, algorithms, dan computational power—the very foundations of modern knowledge production.
+
+This concentration has profound implications for democracy. When a handful of companies control the infrastructure of thought, they effectively control what society can think about, how it can think about it, dan what conclusions it can reach.
+
+Consider search engines. Google processes over 8.5 billion searches daily. The algorithms that determine what results appear are proprietary, opaque, dan constantly changing. Users rarely question why certain information is prioritized while other information is buried.
+
+Consider social media. Meta's algorithms determine what billions of people see on their feeds. These algorithms optimize for engagement, not truth. The result is a social media landscape where sensationalism dan polarization thrive, while nuance dan complexity struggle to find an audience.
+
+**The Capture of Public Institutions**
+
+Tech oligarchs have also captured public institutions. Through lobbying, campaign contributions, dan the revolving door between government dan industry, they influence policy in ways that benefit their interests.
+
+The result is a regulatory framework that often protects incumbents while stifling competition. Antitrust laws, designed to prevent monopolies, are poorly enforced in the tech sector. Data privacy regulations, intended to protect consumers, often serve as barriers to entry for smaller competitors.
+
+**The Intellectual Monoculture**
+
+Perhaps the most subtle form of oligarchic power is the creation of intellectual monoculture. When everyone uses the same AI models, trained on the same data, dengan the same objectives, they produce similar outputs.
+
+This homogenization of thought is not the result of explicit censorship. It emerges organically from the convergence on shared tools dan shared training data. But the effect is the same: a narrowing of the Overton window, a constriction of the range of acceptable thought.
+
+**Resistance and Alternatives**
+
+Not all is lost. Movements for open-source AI, decentralized governance, dan digital rights are growing. Artists dan writers are forming collectives to protect their work from unauthorized AI training. Countries like China dan members of the EU are developing their own AI standards dan regulations.
+
+But these efforts face enormous challenges. Open-source models require significant computational resources. Decentralized governance is difficult to scale. National regulations can be circumvented by global platforms.
+
+The question remains: can society develop the institutional capacity to match the technological capacity of a few powerful actors? Atau will the oligarchy consolidate its power beyond redemption?
+
 Sejarah menunjukkan bahwa konsentrasi kekuasaan yang ekstrem selalu berujung pada ketimpangan sosial yang tajam. Roman Empire jatuh bukan karena invasi eksternal, tapi karena kesenjangan antara elit dan massa menjadi terlalu lebar untuk ditoleransi.
 
 Mungkin zaman oligarki teknologi akan berakhir dengan cara yang sama. Tapi sampai saat itu tiba, jutaan orang akan merasakan dampaknya—dalam bentuk kehilangan pekerjaan, kehilangan otonomi, dan kehilangan suara.

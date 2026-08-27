@@ -32,6 +32,43 @@ Mungkin yang paling menyakitkan adalah bahwa banyak creator tidak tahu bahwa kar
 
 Ini bukan sekadar pertanyaan hukum. Ini adalah pertanyaan tentang apa yang kita hargai sebagai masyarakat—apakah usaha kreatif manusia layak dilindungi, atau apakah itu hanyalah bahan baku gratis untuk mesin masa depan.
 
+**The Legal Battleground**
+
+The legal battles over AI and copyright are among the most significant of our time. Multiple lawsuits have been filed by authors, artists, and musicians against AI companies for unauthorized use of their work.
+
+These cases raise fundamental questions: Does training an AI model on copyrighted material constitute infringement? Does the output of an AI model constitute a derivative work? Who owns the rights to AI-generated content?
+
+Courts are grappling with these questions without clear precedent. The U.S. Copyright Office has stated that works generated entirely by AI cannot be copyrighted, while human-AI collaborations may receive limited protection. But these guidelines are evolving rapidly.
+
+**The Economic Impact on Creators**
+
+For working artists, writers, and musicians, the economic impact is already tangible. Stock illustration websites report declining sales as clients turn to AI image generators. Freelance writers report fewer opportunities as companies adopt AI content tools.
+
+The devaluation of creative work has profound implications for cultural production. If artists cannot make a living from their craft, who will create? Will we see a decline in the diversity and quality of cultural output?
+
+Some argue that AI will free artists from mundane tasks, allowing them to focus on more meaningful work. But this assumes that artists have the resources to make that transition—and that the market will value their enhanced output sufficiently to sustain them.
+
+**The Precedent of Previous Technologies**
+
+History offers precedents for this kind of technological disruption. Photography was once feared to kill painting. Radio threatened live music. Television challenged theater. In each case, the "threatened" art form adapted and survived, often in new forms.
+
+But AI is different. Previous technologies augmented human creativity; AI can replace it. The scope of replacement is broader and deeper, touching not just manual skills but cognitive and creative ones.
+
+**A New Social Contract for Creativity**
+
+What is needed is a new social contract for creativity in the age of AI. This might include:
+
+- Mandatory compensation for artists whose work is used in AI training
+- Clear guidelines for attribution and consent
+- Public investment in arts and culture to ensure diversity of expression
+- Education about AI literacy for creators
+
+Without such measures, we risk creating a culture where only those with independent wealth can afford to create—while the rest consume what machines produce.
+
+---
+
+*Kutipan kunci: "Teknologi yang sama yang bisa cure disease bisa juga create pandemic."*
+
 ---
 
 *Kutipan kunci: "Karya seni bukan lagi dinilai berdasarkan keahlian, dedikasi, atau visi individual—tapi berdasarkan kecepatan dan efisiensi produksi."*

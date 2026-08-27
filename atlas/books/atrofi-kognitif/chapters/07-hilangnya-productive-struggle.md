@@ -28,9 +28,47 @@ Orang tua yang membantu anak mereka menyelesaikan pekerjaan rumah bukan karena i
 
 AI melakukan hal yang sama—tapi dalam skala peradaban.
 
-Yang lebih berbahaya adalah bahwa kita tidak menyadari kerugian ini. Kita merasa lebih cerdas karena kita bisa mengakses informasi dengan cepat. Tapi akses bukan sama dengan pemahaman. Kecepatan bukan sama dengan kedalaman.
+**The Loss of Resilience**
 
-Dan ketika generasi yang dibesarkan dengan AI bertemu dengan masalah dunia nyata yang tidak bisa dipecahkan oleh algoritma—masalah kompleks yang memerlukan kreativitas, empati, dan pertimbangan moral—they will find that their skills have atrophied in ways they never anticipated.
+There is a concept in psychology called "stress inoculation"—the idea that exposure to manageable stress builds resilience. Just as muscles grow stronger through resistance training, mental toughness develops through overcoming challenges.
+
+AI removes the resistance. By eliminating struggle from learning, problem-solving, dan decision-making, it juga eliminates the opportunity to build resilience.
+
+Consider students who use AI to complete assignments. They may receive good grades, but they miss the opportunity to develop perseverance, patience, dan intellectual stamina. When faced with genuine challenges—whether in their careers or personal lives—they may lack the psychological tools to cope.
+
+**The Confidence Paradox**
+
+Productive struggle also builds confidence. When someone overcomes a difficulty through their own effort, they develop a sense of efficacy—the belief that they can handle challenges.
+
+This belief is crucial for mental health and well-being. Research shows that feelings of competence dan autonomy are fundamental psychological needs. When these needs are frustrated, people experience anxiety, depression, dan a sense of meaninglessness.
+
+AI, by making everything easy, may inadvertently frustrate these needs. People who never struggle may never develop the confidence that comes from overcoming adversity.
+
+**Redefining Education**
+
+Educators are beginning to recognize this problem. Some are redesigning curricula to emphasize process over product, struggle over speed, dan reflection over completion.
+
+The "flipped classroom" model, where students watch lectures at home dan do "homework" in class with teacher guidance, is one approach. Another adalah project-based learning, where students work on complex, open-ended problems over extended periods.
+
+These approaches recognize that learning is not just about acquiring information—it is about developing the capacity to think, to struggle, dan to grow.
+
+**The Role of Difficulty**
+
+There is a saying in martial arts: "The harder the training, the easier the battle." The same principle applies to intellectual development. Difficulty is not the enemy of learning—it is the engine of learning.
+
+By removing difficulty from our cognitive lives, we may be robbing ourselves of the very experiences that make us capable, resilient, dan fulfilled.
+
+The question is not whether AI can do things better than humans. The question is whether humans can still grow when AI does everything for them.
+
+**The Paradox of Comfort**
+
+There is a paradox at the heart of AI adoption: the very convenience that makes AI attractive is what makes it dangerous. By making life easier, AI makes us weaker. By solving our problems, it prevents us from developing the skills to solve them ourselves.
+
+This is not an argument against AI. It is an argument for intentionality. We must choose how we use AI, rather than letting AI choose for us.
+
+We can use AI as a tool for augmentation, not replacement. We can use it to handle routine tasks while preserving space for human struggle, growth, dan meaning-making.
+
+But this requires awareness—and the willingness to embrace difficulty when it serves a purpose.
 
 ---
 
