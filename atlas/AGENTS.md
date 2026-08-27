@@ -123,6 +123,8 @@ https://ftp.rumahguru.org/atlas/<judul>-artistik.png
 - **Primary**: tamimnasa.simbioma@blogger.com
 - **Format**: HTML dengan `<img>` tag untuk gambar
 - **Subject**: Full title ONLY (no prefixes)
+- **Body**: Tidak ada judul duplikat, SVG diagram dirender sebagai gambar (bukan kode)
+- **Plain text**: SVG code block diganti dengan `[Diagram SVG]`
 
 ## Struktur Folder
 ```

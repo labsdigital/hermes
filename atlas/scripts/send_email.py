@@ -124,10 +124,12 @@ def send_email(article_path: str):
     msg["From"] = SENDER
     msg["To"] = RECIPIENT
 
-    # Plain text version (NO title duplication - title is in Subject line)
+    # Plain text version (NO title, NO SVG code blocks - clean format for email)
+    # Remove SVG code blocks for plain text
+    clean_content = re.sub(r'```svg\s*\n.*?\n```', '[Diagram SVG]', content, flags=re.DOTALL)
     plain_text = f"""Oleh Atlas | {date_str}
 
-{content}
+{clean_content}
 """
     msg.attach(MIMEText(plain_text, "plain", "utf-8"))
 
