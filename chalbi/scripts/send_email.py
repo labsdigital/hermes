@@ -168,7 +168,7 @@ def send_email(recipient, subject, body_html):
         return False, f"Error: {e}"
 
 def send_article_notification(article_path, recipient="tamimnasa.chalbi@blogger.com"):
-    """Kirim notifikasi artikel baru"""
+    """Kirim notifikasi artikel baru ke multiple recipients"""
     article = Path(article_path)
     if not article.exists():
         return False, "File tidak ditemukan"
@@ -202,7 +202,25 @@ def send_article_notification(article_path, recipient="tamimnasa.chalbi@blogger.
     body_md = '\n'.join(body_lines).strip()
     body_html = md_to_html(body_md)
     
-    return send_email(recipient, subject, body_html)
+    # Default recipients (primary + secondary)
+    default_recipients = [
+        "tamimnasa.chalbi@blogger.com",
+        "tamimnasa@gmail.com"
+    ]
+    
+    # If custom recipient specified, use that instead
+    if recipient not in default_recipients:
+        recipients = [recipient]
+    else:
+        recipients = default_recipients
+    
+    # Send to all recipients
+    results = []
+    for r in recipients:
+        success, msg = send_email(r, subject, body_html)
+        results.append(msg)
+    
+    return all(r[0] for r in results), "; ".join(results)
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
