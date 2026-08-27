@@ -93,18 +93,7 @@ python3 shared/ftp_upload.py atlas/reports/<file>.svg /atlas/ 2>/dev/null || tru
 python3 atlas/scripts/send_email.py --article atlas/reports/<file>.md
 
 # Step 4: Convert MD to HTML dan upload ke FTP
-# Buat HTML version dari artikel
-python3 -c "
-import re
-from pathlib import Path
-
-article = Path('atlas/reports/<file>.md').read_text(encoding='utf-8')
-# Convert markdown to HTML
-html = article.replace('# ', '<h1>').replace('## ', '<h2>').replace('### ', '<h3>')
-html = html.replace('\n\n', '</p><p>').replace('\n', '<br>')
-html = f'<html><body><p>{html}</p></body></html>'
-Path('atlas/reports/<file>.html').write_text(html, encoding='utf-8')
-"
+python3 atlas/scripts/publish_article.py <file>
 
 # Upload HTML ke FTP
 python3 shared/ftp_upload.py atlas/reports/<file>.html /atlas/
