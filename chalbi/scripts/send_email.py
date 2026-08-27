@@ -37,9 +37,13 @@ def md_to_html(md_text):
         
         if in_svg_block:
             if line.strip() == '```':
-                # End of SVG block
+                # End of SVG block - remove XML declaration for email compatibility
                 in_svg_block = False
-                svg_content += '\n</div>'
+                # Remove XML declaration if present
+                svg_text = svg_content.strip()
+                if svg_text.startswith('<?xml'):
+                    svg_text = re.sub(r'^<\?xml[^?]*\?>\s*', '', svg_text)
+                svg_content = f'<div class="svg-diagram">\n{svg_text}\n</div>'
                 html_lines.append(svg_content)
                 svg_counter += 1
                 continue
