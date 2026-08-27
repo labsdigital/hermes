@@ -23,10 +23,15 @@ def md_to_html(md_text: str) -> tuple[str, str]:
         # Handle code blocks
         if line.strip().startswith('```'):
             if not in_code_block and not in_svg_block:
-                in_code_block = True
+                # Check if it's an SVG block
+                if line.strip() == '```svg':
+                    in_svg_block = True
+                    svg_content = '<div class="svg-diagram">\n'
+                else:
+                    in_code_block = True
                 continue
             elif in_svg_block:
-                # End of SVG block - close div and add inline SVG
+                # End of SVG block
                 in_svg_block = False
                 svg_content += '\n</div>'
                 html_lines.append(svg_content)
@@ -35,13 +40,11 @@ def md_to_html(md_text: str) -> tuple[str, str]:
                 in_code_block = False
                 continue
         
-        # Handle SVG blocks
-        if line.strip() == '```svg':
-            in_svg_block = True
-            svg_content = '<div class="svg-diagram">\n'
-            continue
-        
+        # Handle SVG content
         if in_svg_block:
+            # Remove XML declaration for better compatibility
+            if line.strip().startswith('<?xml'):
+                continue
             svg_content += line + '\n'
             continue
         
@@ -55,10 +58,13 @@ def md_to_html(md_text: str) -> tuple[str, str]:
         if line.startswith('---'):
             continue
         
-        # Extract title
+        # Extract title (skip if already found)
         if line.startswith('# ') and not title:
             title = line[2:].strip()
-            html_lines.append(f'<h1>{line[2:]}</h1>')
+            continue  # Don't add title here, it will be in header
+        
+        # Skip author line
+        if line.startswith('*Oleh'):
             continue
         
         # Headings
