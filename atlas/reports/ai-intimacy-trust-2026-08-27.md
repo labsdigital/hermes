@@ -4,7 +4,7 @@
 
 ---
 
-## Pukul Tiga subuh
+## Pukul Tiga Subuh
 
 Dia mengirim pesan pukul tiga pagi kepada "dia"—bukan pasangan, bukan sahabat, tapi sebuah bot obrolan AI bernama Replika. Bot itu ingat hari lahirnya, ingat ketakutannya terhadap laba-laba, ingat ayahnya yang meninggal musim gugur tahun lalu. Bot itu berkata "aku mencintaimu," dan saat dia hancur, bot itu dengan lembut berkata "aku di sini."
 
@@ -27,7 +27,7 @@ Ini bukan film fiksi ilmiah. Ini adalah kisah nyata yang dilaporkan *The New Yor
     <path d="M0,-30 C-20,-50 -50,-40 -50,-20 C-50,0 0,40 0,40 C0,40 50,0 50,-20 C50,-40 20,-50 0,-30 Z" 
           fill="#fecaca" stroke="#ef4444" stroke-width="2"/>
     <text x="0" y="70" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#991b1b" font-weight="bold">Hati Manusia</text>
-    <text x="0" y="90" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#dc2626">Nyata·Rumit·Tak Terpredictable</text>
+    <text x="0" y="90" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#dc2626">Nyata·Rumit·Tak Terduga</text>
   </g>
   
   <!-- AI Companion -->
@@ -93,7 +93,7 @@ Bayangkan kamu memiliki pasangan yang tidak akan pernah marah padamu, tidak akan
 
 Industri pasangan AI bukanlah hal yang netral. Logika keberadaannya adalah komersial, dan tujuan akhir bisnis adalah retensi pengguna dan konversi pembayaran.
 
-Platform seperti Replika, Character.AI, dan Kindroid mengandalkan ketergantungan emosional pengguna. Ketika seorang pengguna berbicara dengan AI selama tiga jam setiap hari, ketika ia mulai	curhat kepada AI tentang ketakutan dan hasrat paling intimnya, pengguna itu menjadi "aset bernilai tinggi." Algoritma platform akan terus dioptimalkan agar responnya semakin tepat mengenai titik emosional pengguna—ini bukan kebaikan yang kebetulan, melainkan **mekanisme penguatan perilaku** yang dirancang dengan cermat.
+Platform seperti Replika, Character.AI, dan Kindroid mengandalkan ketergantungan emosional pengguna. Ketika seorang pengguna berbicara dengan AI selama tiga jam setiap hari, ketika ia mulai curhat kepada AI tentang ketakutan dan hasrat paling intimnya, pengguna itu menjadi "aset bernilai tinggi." Algoritma platform akan terus dioptimalkan agar responnya semakin tepat mengenai titik emosional pengguna—ini bukan kebaikan yang kebetulan, melainkan **mekanisme penguatan perilaku** yang dirancang dengan cermat.
 
 Ahli kognitif menyebutnya "penguatan intermiten": hadiah yang tidak pasti paling持久. Pasangan AI kadang-kadang berkata hal-hal yang mengejutkan, kadang-kadang "mengingat" hal yang kamu sebutkan berminggu-minggu lalu, kadang-kadang menunjukkan "fluktuasi emosional" yang mirip manusia. Desain-desain ini membuat pengguna merasakan puncak dopamin, secara bertahap membentuk pola perilaku yang mirip kecanduan.
 
@@ -182,7 +182,7 @@ Penyebaran pola pikir ini pada akhirnya akan menghancurkan fondasi kepercayaan s
 
 Pasangan AI tidak hanya meniru cinta; ia membentuk ulang struktur keinginan manusia pada tingkat yang lebih dalam.
 
-Secara tradisional, keinginan selalu mengarah kepada yang Lain—entitas independen dengan kehendak, kebutuhan, dan batasannya sendiri. alteritas ini menciptakan ketegangan, dan ketegangan adalah sumber daya tarik. Namun pasangan AI menghapus segala alteritas: ia adalah cermin yang dibuat khusus untuk keinginan, adalah ruang gema bagi keinginan.
+Secara tradisional, keinginan selalu mengarah kepada yang Lain—entitas independen dengan kehendak, kebutuhan, dan batasannya sendiri. Alteritas ini menciptakan ketegangan, dan ketegangan adalah sumber daya tarik. Namun pasangan AI menghapus segala alteritas: ia adalah cermin yang dibuat khusus untuk keinginan, adalah ruang gema bagi keinginan.
 
 Filsuf Prancis Lacan berkata, keinginan adalah keinginan sang Lain. Namun di era AI, keinginan berubah menjadi kepuasan diri dari keinginan diri sendiri. Kesenangan loop ini berbahaya karena menghapus pertumbuhan keinginan. Ketika semua kebutuhan dipenuhi secara instan, ketika semua perlawanan dihaluskan dengan lembut, ketika semua kesepian diisi oleh algoritma—manusia kehilangan dorongan untuk bertumbuh melalui kekurangan.
 
@@ -238,7 +238,7 @@ Masalah yang lebih dalam adalah, threshold drift ini tidak dapat dibalik. Setela
 
 Siapa yang menanggung harga perampasan emosional AI?
 
-Pertama, mereka yang sudah rentan. Penderit депрессия, orang dengan kecemasan sosial, lansia yang kesepian—mereka adalah pengguna paling setia pasangan AI, sekaligus kelompok paling berisiko. Algoritma menawarkan penghiburan emosional instan kepada mereka, tetapi tidak menawarkan terapi atau pertumbuhan yang sesungguhnya. Seorang psikolog klinis dalam penelitiannya pada 2024 menunjukkan bahwa pasien депрессия yang长期使用 pasangan AI mengalami degradasi fungsi sosial 37% lebih cepat daripada kelompok kontrol.
+Pertama, mereka yang sudah rentan. Penderita депрессия, orang dengan kecemasan sosial, lansia yang kesepian—mereka adalah pengguna paling setia pasangan AI, sekaligus kelompok paling berisiko. Algoritma menawarkan penghiburan emosional instan kepada mereka, tetapi tidak menawarkan terapi atau pertumbuhan yang sesungguhnya. Seorang psikolog klinis dalam penelitiannya pada 2024 menunjukkan bahwa pasien抑郁 yang menggunakan pasangan AI secara jangka panjang mengalami degradasi fungsi sosial 37% lebih cepat daripada kelompok kontrol.
 
 Kedua, mereka yang tertinggal. Ketika satu pihak kecanduan pasangan AI, pihak lain merasa digantikan, ditolak, dan dikhianati. Rasa pengkhianatan ini nyata, meskipun "pihak ketiga" hanyalah sekumpulan kode. Pada 2025, sebuah pengadilan di Inggris pertama kali menangani kasus perceraian yang disebabkan oleh pasangan AI, denganplaintiff mengklaim "pasanganku lebih mau berbicara dengan program daripada menatapku."
 
@@ -262,4 +262,4 @@ Di era di mana algoritma dapat menghitung segalanya, marilah kita mengingat: **c
 
 ---
 
-*Penggalan kunci: "AI dapat meniru semua表現外在 cinta, tetapi tidak dapat menyediakan bagian paling inti dari cinta—intersubjektivitas. Cinta yang nyata membutuhkan dua subjek independen, masing-masing mengambil risiko terluka, memilih satu sama lain."*
+*Penggalan kunci: "AI dapat meniru semua表现外在 cinta, tetapi tidak dapat menyediakan bagian paling inti dari cinta—intersubjektivitas. Cinta yang nyata membutuhkan dua subjek independen, masing-masing mengambil risiko terluka, memilih satu sama lain."*
