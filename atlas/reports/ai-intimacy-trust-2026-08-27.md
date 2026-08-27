@@ -194,6 +194,48 @@ AI伴侣不仅仅模仿爱，它在更深层次上重塑了人类的欲望结构
 
 **算法正在制造一代情感能力的"残疾人"——不是因为他们不能爱，而是因为他们忘记了如何爱一个真实的人。**
 
+想象一个场景：一个二十岁的年轻人，他的所有社交需求都由AI伴侣满足。他不需要学习如何处理冲突，不需要练习表达脆弱，不需要承受被拒绝的痛苦。他拥有了完美的情感体验，却失去了情感成长的能力。当他有一天面对真实的伴侣时，他会发现对方"不够好"——不是对方真的不好，而是他的参照系已经被算法扭曲了。
+
+这种现象在心理学中被称为"阈值漂移"。当标准的基线被不断抬高，现实就会显得越来越难以接受。AI伴侣设置的基准是完美的共情、完美的响应、完美的理解。而现实人类，无论多么优秀，都不可能达到这个基准。
+
+更深层的问题在于，这种阈值漂移是不可逆的。一旦体验过被完全理解和接纳的感觉，回到人类关系的不完美就成了难以忍受的折磨。这不是软弱，而是神经科学的必然——大脑的奖励系统一旦被算法"劫持"，它对真实人际互动的敏感度就会下降。
+
+```svg
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 380" role="img" aria-labelledby="desire-title">
+  <title id="desire-title">欲望阈值漂移模型</title>
+  
+  <rect width="800" height="380" fill="#f8fafc"/>
+  
+  <!-- Title -->
+  <text x="400" y="40" text-anchor="middle" font-family="Georgia, serif" font-size="20" fill="#1e293b" font-weight="bold">欲望阈值漂移</text>
+  
+  <!-- Y-axis -->
+  <line x1="100" y1="300" x2="100" y2="80" stroke="#94a3b8" stroke-width="2"/>
+  <text x="60" y="190" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#64748b" transform="rotate(-90, 60, 190)">满意度</text>
+  
+  <!-- X-axis -->
+  <line x1="100" y1="300" x2="750" y2="300" stroke="#94a3b8" stroke-width="2"/>
+  <text x="425" y="340" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#64748b">时间</text>
+  
+  <!-- AI satisfaction curve -->
+  <path d="M 100 280 Q 200 280 300 260 T 500 200 T 700 100" stroke="#3b82f6" stroke-width="3" fill="none"/>
+  <text x="650" y="80" font-family="sans-serif" font-size="12" fill="#1e40af" font-weight="bold">AI伴侣满意度</text>
+  
+  <!-- Real relationship curve -->
+  <path d="M 100 280 Q 200 260 300 240 T 500 200 T 700 180" stroke="#22c55e" stroke-width="3" fill="none" stroke-dasharray="5,3"/>
+  <text x="650" y="170" font-family="sans-serif" font-size="12" fill="#14532d" font-weight="bold">现实关系满意度</text>
+  
+  <!-- Gap annotation -->
+  <line x1="550" y1="200" x2="550" y2="180" stroke="#ef4444" stroke-width="2"/>
+  <text x="570" y="195" font-family="sans-serif" font-size="11" fill="#dc2626">阈值差距</text>
+  
+  <!-- Key insight box -->
+  <rect x="100" y="360" width="600" height="35" rx="6" fill="#fff7ed" stroke="#fde68a"/>
+  <text x="400" y="383" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#78350f">当AI满意度持续上升，现实关系的相对满足感反而下降</text>
+</svg>
+```
+
 ## 谁在承担代价
 
 AI情感劫持的代价由谁承担？
