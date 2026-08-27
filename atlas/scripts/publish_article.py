@@ -28,8 +28,9 @@ def md_to_html(md_text: str) -> tuple[str, str]:
                 in_code_block = True
                 continue
             elif in_svg_block:
-                # End of SVG block - convert to inline SVG
+                # End of SVG block - close div and add inline SVG
                 in_svg_block = False
+                svg_content += '\n</div>'
                 html_lines.append(svg_content)
                 continue
             elif in_code_block:
