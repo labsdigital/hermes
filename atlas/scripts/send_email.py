@@ -26,15 +26,33 @@ DEFAULT_SVG_URL = f"{GITHUB_PAGES_URL}/atlas/assets/atrofi-kognitif-illustration
 
 
 def md_to_html(md_text: str) -> str:
-    """Convert markdown to HTML with proper line breaks."""
+    """Convert markdown to HTML with proper line breaks and SVG handling."""
+    # First, extract inline SVG blocks and replace with placeholders
+    svg_placeholders = []
+    def replace_svg(match):
+        svg_code = match.group(1)
+        placeholder = f"__SVG_PLACEHOLDER_{len(svg_placeholders)}__"
+        svg_placeholders.append(svg_code)
+        return placeholder
+
+    # Replace ```svg ... ``` blocks with placeholders
+    md_text = re.sub(r'```svg\s*\n(.*?)\n```', replace_svg, md_text, flags=re.DOTALL)
+
     paragraphs = md_text.split('\n\n')
     result = []
-    
+
     for para in paragraphs:
         para = para.strip()
         if not para:
             continue
-        
+
+        # Restore SVG placeholders as inline SVG
+        if para.startswith('__SVG_PLACEHOLDER_'):
+            idx = int(para.replace('__SVG_PLACEHOLDER_', '').replace('__', ''))
+            svg_code = svg_placeholders[idx]
+            result.append(f'<div class="illustration">{svg_code}</div>')
+            continue
+
         # Handle headers
         if para.startswith('# '):
             content = para[2:].strip()
@@ -63,7 +81,7 @@ def md_to_html(md_text: str) -> str:
             lines = para.split('\n')
             content = '<br>'.join(lines)
             result.append(f'<p>{content}</p>')
-    
+
     return '\n'.join(result)
 
 
