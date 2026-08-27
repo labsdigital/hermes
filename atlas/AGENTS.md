@@ -91,6 +91,23 @@ python3 shared/ftp_upload.py atlas/reports/<file>.svg /atlas/ 2>/dev/null || tru
 
 # Step 3: Kirim email ke blog
 python3 atlas/scripts/send_email.py --article atlas/reports/<file>.md
+
+# Step 4: Convert MD to HTML dan upload ke FTP
+# Buat HTML version dari artikel
+python3 -c "
+import re
+from pathlib import Path
+
+article = Path('atlas/reports/<file>.md').read_text(encoding='utf-8')
+# Convert markdown to HTML
+html = article.replace('# ', '<h1>').replace('## ', '<h2>').replace('### ', '<h3>')
+html = html.replace('\n\n', '</p><p>').replace('\n', '<br>')
+html = f'<html><body><p>{html}</p></body></html>'
+Path('atlas/reports/<file>.html').write_text(html, encoding='utf-8')
+"
+
+# Upload HTML ke FTP
+python3 shared/ftp_upload.py atlas/reports/<file>.html /atlas/
 ```
 
 ### 6. Verifikasi
@@ -101,7 +118,16 @@ curl -s -o /dev/null -w "%{http_code}" https://raw.githubusercontent.com/labsdig
 
 # Test GitHub Pages
 curl -s -o /dev/null -w "%{http_code}" https://labsdigital.github.io/hermes/atlas/reports/<file>.md
+
+# Test FTP HTML
+curl -s -o /dev/null -w "%{http_code}" https://ftp.rumahguru.org/atlas/<file>.html
 ```
+
+### 7. Output URLs
+Berikan link akses artikel:
+- **GitHub**: https://github.com/labsdigital/hermes/blob/main/atlas/reports/<file>.md
+- **FTP HTML**: https://taraka.id/hermes/atlas/<file>.html
+- **Email**: ✅ Terkirim
 
 ## Output Format
 
