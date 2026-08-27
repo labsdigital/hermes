@@ -39,11 +39,12 @@ def md_to_html(md_text):
             if line.strip() == '```':
                 # End of SVG block - remove XML declaration for email compatibility
                 in_svg_block = False
+                # Extract just the SVG content (without div wrapper)
+                svg_raw = svg_content.replace('<div class="svg-diagram">\n', '').replace('\n</div>', '').strip()
                 # Remove XML declaration if present
-                svg_text = svg_content.strip()
-                if svg_text.startswith('<?xml'):
-                    svg_text = re.sub(r'^<\?xml[^?]*\?>\s*', '', svg_text)
-                svg_content = f'<div class="svg-diagram">\n{svg_text}\n</div>'
+                if svg_raw.startswith('<?xml'):
+                    svg_raw = re.sub(r'^<\?xml[^?]*\?>\s*', '', svg_raw)
+                svg_content = f'<div class="svg-diagram">\n{svg_raw}\n</div>'
                 html_lines.append(svg_content)
                 svg_counter += 1
                 continue
