@@ -9,7 +9,7 @@
 - **Sudut Pandang**: ORANG KETIGA (eagle view / God's eye view) — JANGAN gunakan aku/saya
 
 ## Repository
-https://github.com/labsdigital/hermes/tree/main/atlas
+https://github.com/labsdigital/agents/tree/main/atlas
 
 ## Workflow Lengkap
 
@@ -114,17 +114,17 @@ curl -s -o /dev/null -w "%{http_code}" https://ftp.rumahguru.org/atlas/<file>.ht
 
 ### 7. Output URLs
 Berikan link akses artikel:
-- **GitHub**: https://github.com/labsdigital/hermes/blob/main/atlas/reports/<file>.md
+- **GitHub**: https://github.com/labsdigital/agents/blob/main/atlas/reports/<file>.md
 - **FTP HTML**: https://taraka.id/hermes/atlas/<file>.html
 - **Email**: ✅ Terkirim
 
 ## Output Format
 
-### URL Pattern (GitHub Pages)
+### URL Pattern (GitHub)
 ```
-https://labsdigital.github.io/hermes/atlas/reports/<judul>-YYYY-MM-DD.md
-https://labsdigital.github.io/hermes/atlas/reports/<judul>.svg
-https://labsdigital.github.io/hermes/atlas/reports/<judul>-artistik.png
+https://github.com/labsdigital/agents/blob/main/atlas/reports/<judul>-YYYY-MM-DD.md
+https://github.com/labsdigital/agents/blob/main/atlas/reports/<judul>.svg
+https://github.com/labsdigital/agents/blob/main/atlas/reports/<judul>-artistik.png
 ```
 
 ### URL Pattern (FTP)
