@@ -2,7 +2,7 @@
 """
 Atlas Article Publisher - Dual Format (.md + .html)
 Publishes articles to GitHub in both Markdown and HTML formats.
-No external dependencies required.
+Fixed: Title duplication, image handling, agents repo support.
 """
 
 import argparse
@@ -12,7 +12,7 @@ from pathlib import Path
 from datetime import datetime
 
 
-def md_to_html(md_text: str) -> tuple[str, str]:
+def md_to_html(md_text: str, use_agents_repo: bool = True) -> tuple[str, str]:
     """Convert markdown text to HTML string. Returns (title, html_body)."""
     lines = md_text.split('\n')
     title = ""
@@ -20,6 +20,13 @@ def md_to_html(md_text: str) -> tuple[str, str]:
     in_code_block = False
     in_svg_block = False
     svg_content = ""
+    title_already_in_header = False
+    
+    # Base URL for images - use agents repo raw content
+    if use_agents_repo:
+        base_url = "https://raw.githubusercontent.com/labsdigital/agents/main/atlas/reports"
+    else:
+        base_url = "https://raw.githubusercontent.com/labsdigital/hermes/main/atlas/reports"
     
     for line in lines:
         # Handle code blocks
@@ -31,7 +38,7 @@ def md_to_html(md_text: str) -> tuple[str, str]:
                 # End of SVG block - close div and add inline SVG
                 in_svg_block = False
                 svg_content += '\n</div>'
-                html_lines.append(svg_content)
+                html_lines.append(f'<div class="svg-diagram">{svg_content}</div>')
                 continue
             elif in_code_block:
                 in_code_block = False
@@ -40,7 +47,7 @@ def md_to_html(md_text: str) -> tuple[str, str]:
         # Handle SVG blocks
         if line.strip() == '```svg':
             in_svg_block = True
-            svg_content = '<div class="svg-diagram">\n'
+            svg_content = ''
             continue
         
         if in_svg_block:
@@ -57,10 +64,14 @@ def md_to_html(md_text: str) -> tuple[str, str]:
         if line.startswith('---'):
             continue
         
-        # Extract title
+        # Extract title (only first h1)
         if line.startswith('# ') and not title:
             title = line[2:].strip()
-            html_lines.append(f'<h1>{line[2:]}</h1>')
+            title_already_in_header = True
+            continue  # Don't add h1 to body, it's in header
+        
+        # For subsequent headings, skip if title already in header
+        if title_already_in_header and line.startswith('# '):
             continue
         
         # Headings
@@ -75,6 +86,23 @@ def md_to_html(md_text: str) -> tuple[str, str]:
         if line.strip() == '---':
             html_lines.append('<hr>')
             continue
+        
+        # Handle images - convert markdown ![]() to <img> tags
+        if '![' in line:
+            # Match markdown image syntax
+            img_match = re.findall(r'!\[([^\]]*)\]\(([^)]+)\)', line)
+            if img_match:
+                for alt, url in img_match:
+                    # Convert URL to raw GitHub URL if needed
+                    if 'labsdigital.github.io/hermes' in url:
+                        url = url.replace('labsdigital.github.io/hermes/atlas/', 
+                                        f'{base_url}/')
+                    elif 'raw.githubusercontent.com/labsdigital/hermes' in url:
+                        url = url.replace('raw.githubusercontent.com/labsdigital/hermes/main/atlas/',
+                                        f'{base_url}/')
+                    html_lines.append(f'<div class="article-image"><img src="{url}" alt="{alt}" /></div>')
+                # Skip the original line since we converted it
+                continue
         
         # Bold
         bold_lines = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', line)
@@ -169,19 +197,25 @@ def create_html_article(title: str, html_body: str, date: str) -> str:
             font-family: 'Courier New', monospace;
             font-size: 0.9em;
         }}
-        article img {{
+        .article-image {{
+            text-align: center;
+            margin: 30px 0;
+        }}
+        .article-image img {{
             max-width: 100%;
             height: auto;
             border-radius: 8px;
-            margin: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }}
         .svg-diagram {{
             max-width: 100%;
             margin: 30px 0;
+            text-align: center;
         }}
         .svg-diagram svg {{
             width: 100%;
             height: auto;
+            max-width: 600px;
         }}
         hr {{
             border: none;
@@ -226,7 +260,7 @@ def create_html_article(title: str, html_body: str, date: str) -> str:
 </html>'''
 
 
-def publish_article(article_name: str, base_path: str = '/opt/data/hermes', skip_git: bool = False):
+def publish_article(article_name: str, base_path: str = '/opt/data/hermes', skip_git: bool = False, use_agents: bool = True):
     """Publish article in both .md and .html formats."""
     base = Path(base_path)
     reports = base / 'atlas' / 'reports'
@@ -244,14 +278,14 @@ def publish_article(article_name: str, base_path: str = '/opt/data/hermes', skip
     
     # Convert to HTML
     print(f"📝 Mengonversi {md_file.name} → {html_file.name}...")
-    title, html_body = md_to_html(md_content)
+    title, html_body = md_to_html(md_content, use_agents_repo=use_agents)
     html_doc = create_html_article(title, html_body, date)
     html_file.write_text(html_doc, encoding='utf-8')
     print(f"✅ HTML dibuat: {title}")
     
-    # Git operations
+    # Git operations for hermes repo
     if not skip_git:
-        print("\n📤 Commit ke GitHub...")
+        print("\n📤 Commit ke GitHub (hermes)...")
         import subprocess
         
         # Add files
@@ -263,14 +297,15 @@ def publish_article(article_name: str, base_path: str = '/opt/data/hermes', skip
         
         # Push
         subprocess.run(['git', 'push', 'origin', 'main'], cwd=base)
-        print("✅ Dipush ke GitHub")
+        print("✅ Dipush ke GitHub (hermes)")
     
     # Show URLs
     print("\n" + "="*50)
     print("📄 Versi Markdown:")
-    print(f"   https://github.com/labsdigital/hermes/blob/main/atlas/reports/{article_name}.md")
+    repo_base = "labsdigital/agents" if use_agents else "labsdigital/hermes"
+    print(f"   https://github.com/{repo_base}/blob/main/atlas/reports/{article_name}.md")
     print(f"\n🌐 Versi HTML:")
-    print(f"   https://labsdigital.github.io/hermes/atlas/reports/{article_name}.html")
+    print(f"   https://github.com/{repo_base}/blob/main/atlas/reports/{article_name}.html")
     print("="*50)
 
 
@@ -279,9 +314,10 @@ def main():
     parser.add_argument('article', help='Article name (without extension)')
     parser.add_argument('--skip-git', action='store_true', help='Skip git operations')
     parser.add_argument('--base', default='/opt/data/hermes', help='Base path')
+    parser.add_argument('--agents', action='store_true', help='Use agents repo for image URLs')
     
     args = parser.parse_args()
-    publish_article(args.article, args.base, args.skip_git)
+    publish_article(args.article, args.base, args.skip_git, use_agents=args.agents)
 
 
 if __name__ == '__main__':
