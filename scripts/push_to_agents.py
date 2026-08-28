@@ -21,7 +21,7 @@ def push_to_agents(filename):
     # Get base filename without extension
     base = os.path.splitext(filename)[0]
     
-    # Copy all related files
+    # Copy all related files (MD, HTML, PNG, SVG)
     files_to_copy = [
         f"{base}.md",
         f"{base}.html",
@@ -29,6 +29,7 @@ def push_to_agents(filename):
         f"{base}-artistik.png"
     ]
     
+    copied = False
     for f in files_to_copy:
         src = os.path.join(HERMES_REPO, "atlas", "reports", f)
         dst = os.path.join(AGENTS_CLONE, "atlas", "reports", f)
@@ -36,13 +37,23 @@ def push_to_agents(filename):
             os.makedirs(os.path.dirname(dst), exist_ok=True)
             subprocess.run(["cp", src, dst], check=True)
             print(f"  📋 Copied: {f}")
+            copied = True
+    
+    if not copied:
+        print(f"  ⚠️ No files found to copy for {base}")
+        return True
     
     # Commit and push
-    subprocess.run(["git", "-C", AGENTS_CLONE, "add", "."], check=True)
-    subprocess.run(["git", "-C", AGENTS_CLONE, "commit", "-m", f"Atlas: {base}"], check=True)
-    subprocess.run(["git", "-C", AGENTS_CLONE, "push"], check=True)
+    result = subprocess.run(["git", "-C", AGENTS_CLONE, "add", "."], capture_output=True, text=True)
     
-    print(f"\n✅ Pushed to: https://github.com/labsdigital/agents/tree/main/atlas/reports")
+    result = subprocess.run(["git", "-C", AGENTS_CLONE, "status", "--short"], capture_output=True, text=True)
+    if result.stdout.strip():
+        subprocess.run(["git", "-C", AGENTS_CLONE, "commit", "-m", f"Atlas: {base} - article + images"], check=True)
+        subprocess.run(["git", "-C", AGENTS_CLONE, "push"], check=True)
+        print(f"\n✅ Pushed to: https://github.com/labsdigital/agents/tree/main/atlas/reports")
+    else:
+        print(f"\nℹ️  No changes to commit (files already up to date)")
+    
     return True
 
 if __name__ == "__main__":
