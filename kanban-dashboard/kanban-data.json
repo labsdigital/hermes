@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-28T00:44:47.929730",
+  "last_updated": "2026-08-28T04:03:34.845040",
   "boards": [
     {
       "id": 1,
@@ -13,26 +13,6 @@
           "status": "todo",
           "priority": "high",
           "assignee": "atlas",
-          "blocked_reason": "",
-          "created_at": "2026-08-27 14:58:22"
-        },
-        {
-          "id": 2,
-          "title": "Review Bab 1",
-          "description": "Review dan revisi chapter 1",
-          "status": "todo",
-          "priority": "medium",
-          "assignee": "unassigned",
-          "blocked_reason": "",
-          "created_at": "2026-08-27 14:58:22"
-        },
-        {
-          "id": 4,
-          "title": "Upload ke GitHub",
-          "description": "Commit dan push changes",
-          "status": "todo",
-          "priority": "medium",
-          "assignee": "max",
           "blocked_reason": "",
           "created_at": "2026-08-27 14:58:22"
         },
@@ -54,6 +34,26 @@
           "priority": "low",
           "assignee": "unassigned",
           "blocked_reason": "Menunggu review",
+          "created_at": "2026-08-27 14:58:22"
+        },
+        {
+          "id": 2,
+          "title": "Review Bab 1",
+          "description": "Review dan revisi chapter 1",
+          "status": "todo",
+          "priority": "medium",
+          "assignee": "unassigned",
+          "blocked_reason": "",
+          "created_at": "2026-08-27 14:58:22"
+        },
+        {
+          "id": 4,
+          "title": "Upload ke GitHub",
+          "description": "Commit dan push changes",
+          "status": "todo",
+          "priority": "medium",
+          "assignee": "max",
+          "blocked_reason": "",
           "created_at": "2026-08-27 14:58:22"
         }
       ]
@@ -94,6 +94,46 @@
           "created_at": "2026-08-28 00:21:14"
         },
         {
+          "id": 15,
+          "title": "@atlas: Riset arsitektur web pasca-AI - layer agen & platform sosial media",
+          "description": "",
+          "status": "done",
+          "priority": "high",
+          "assignee": "atlas",
+          "blocked_reason": "",
+          "created_at": "2026-08-28 01:07:01"
+        },
+        {
+          "id": 16,
+          "title": "@atlas: Tulis artikel arsitektur web pasca-AI dengan ilustrasi",
+          "description": "",
+          "status": "done",
+          "priority": "high",
+          "assignee": "atlas",
+          "blocked_reason": "",
+          "created_at": "2026-08-28 01:07:01"
+        },
+        {
+          "id": 18,
+          "title": "@atlas: Semantic Web 2.0 - Article with SVG & PNG",
+          "description": "",
+          "status": "done",
+          "priority": "high",
+          "assignee": "atlas",
+          "blocked_reason": "",
+          "created_at": "2026-08-28 02:54:40"
+        },
+        {
+          "id": 19,
+          "title": "@atlas: Convert article to MD + HTML format",
+          "description": "",
+          "status": "done",
+          "priority": "high",
+          "assignee": "atlas",
+          "blocked_reason": "",
+          "created_at": "2026-08-28 02:54:40"
+        },
+        {
           "id": 14,
           "title": "@atlas: Publish ke GitHub, Email Blogger, dan FTP",
           "description": "Deployment ke semua platform",
@@ -102,6 +142,73 @@
           "assignee": "atlas",
           "blocked_reason": "",
           "created_at": "2026-08-28 00:21:14"
+        },
+        {
+          "id": 17,
+          "title": "@atlas: Publish ke hermes-blog",
+          "description": "",
+          "status": "done",
+          "priority": "medium",
+          "assignee": "atlas",
+          "blocked_reason": "",
+          "created_at": "2026-08-28 01:07:01"
+        },
+        {
+          "id": 20,
+          "title": "@atlas: Post to GitHub Blog + FTP + Blogger",
+          "description": "",
+          "status": "done",
+          "priority": "medium",
+          "assignee": "atlas",
+          "blocked_reason": "",
+          "created_at": "2026-08-28 02:54:40"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Skill-Workflow-Fix",
+      "description": "Perbaikan workflow skill untuk image generation dan article creation",
+      "tasks": [
+        {
+          "id": 21,
+          "title": "@atlas: Perbaiki skill gen-image workflow",
+          "description": "Push ke github labsdigital di hermes/images",
+          "status": "done",
+          "priority": "high",
+          "assignee": "atlas",
+          "blocked_reason": "",
+          "created_at": "2026-08-28 03:28:34.368656"
+        },
+        {
+          "id": 22,
+          "title": "@atlas: Perbaiki skill article creation",
+          "description": "Buatkan artikel dalam format .md dan .html",
+          "status": "done",
+          "priority": "high",
+          "assignee": "atlas",
+          "blocked_reason": "",
+          "created_at": "2026-08-28 03:28:34.368846"
+        },
+        {
+          "id": 24,
+          "title": "@atlas: Embed gambar di HTML article",
+          "description": "Gunakan URL labsdigital.github.io/hermes/images/",
+          "status": "done",
+          "priority": "high",
+          "assignee": "atlas",
+          "blocked_reason": "",
+          "created_at": "2026-08-28 03:52:08.970098"
+        },
+        {
+          "id": 23,
+          "title": "@atlas: Artikel media sosial agen AI",
+          "description": "OUTLINE + ARTIKEL LENGKAP",
+          "status": "done",
+          "priority": "medium",
+          "assignee": "atlas",
+          "blocked_reason": "",
+          "created_at": "2026-08-28 03:28:34.368887"
         }
       ]
     }
