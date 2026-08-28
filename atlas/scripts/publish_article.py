@@ -78,7 +78,7 @@ def md_to_html(md_text: str) -> tuple[str, str]:
         
         # Bold
         bold_lines = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', line)
-        bold_lines = re.sub(r'\\*(.+?)\\*', r'<em>\1</em>', bold_lines)
+        bold_lines = re.sub(r'\*(.+?)\*', r'<em>\1</em>', bold_lines)
         
         # Links
         bold_lines = re.sub(r'\[(.+?)\]\((.+?)\)', r'<a href="\2">\1</a>', bold_lines)
@@ -226,9 +226,9 @@ def create_html_article(title: str, html_body: str, date: str) -> str:
 </html>'''
 
 
-def publish_article(article_name: str, skip_git: bool = False):
+def publish_article(article_name: str, base_path: str = '/opt/data/hermes', skip_git: bool = False):
     """Publish article in both .md and .html formats."""
-    base = Path('/opt/data/hermes')
+    base = Path(base_path)
     reports = base / 'atlas' / 'reports'
     
     md_file = reports / f"{article_name}.md"
@@ -278,9 +278,10 @@ def main():
     parser = argparse.ArgumentParser(description='Publish Atlas article in .md and .html formats')
     parser.add_argument('article', help='Article name (without extension)')
     parser.add_argument('--skip-git', action='store_true', help='Skip git operations')
+    parser.add_argument('--base', default='/opt/data/hermes', help='Base path')
     
     args = parser.parse_args()
-    publish_article(args.article, args.skip_git)
+    publish_article(args.article, args.base, args.skip_git)
 
 
 if __name__ == '__main__':

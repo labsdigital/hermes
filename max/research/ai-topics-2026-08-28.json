@@ -1,0 +1,65 @@
+{
+  "date": "2026-08-28",
+  "topics": [
+    {
+      "title": "AI Agent untuk Produktivitas Kerja",
+      "description": "Tren AI agent yang membantu otomatisasi tugas kantor sehari-hari seperti scheduling, email management, dan research",
+      "relevance": "high"
+    },
+    {
+      "title": "AI dalam Pendidikan Personal",
+      "description": "Platform pembelajaran adaptif yang menggunakan AI untuk personalisasi materi sesuai kecepatan belajar siswa",
+      "relevance": "high"
+    },
+    {
+      "title": "Healthcare AI: Diagnosa Dini",
+      "description": "AI yang mendeteksi penyakit seperti kanker dan diabetes lebih awal melalui analisis gambar medis",
+      "relevance": "high"
+    },
+    {
+      "title": "AI untuk Creativity: Art & Music",
+      "description": "Generative AI untuk seni visual, musik, dan konten kreatif yang democratize akses kreatif",
+      "relevance": "high"
+    },
+    {
+      "title": "Smart Home dengan AI",
+      "description": "Asisten rumah tangga cerdas yang belajar kebiasaan penghuni dan otomatisasi peralatan rumah",
+      "relevance": "high"
+    },
+    {
+      "title": "AI Coding Assistant",
+      "description": "Tools seperti GitHub Copilot yang membantu programmer menulis kode lebih cepat",
+      "relevance": "high"
+    },
+    {
+      "title": "AI dalam Filter Konten Media Sosial",
+      "description": "Algoritma AI yang mengatur feed dan rekomendasi konten di platform sosial media",
+      "relevance": "high"
+    },
+    {
+      "title": "AI Personal Finance",
+      "description": "Aplikasi keuangan pribadi yang menggunakan AI untuk budgeting dan investment advice",
+      "relevance": "medium"
+    },
+    {
+      "title": "AI untuk Mental Health",
+      "description": "Chatbot terapeutik dan aplikasi kesehatan mental berbasis AI",
+      "relevance": "medium"
+    },
+    {
+      "title": "Voice AI Assistants",
+      "description": "Asisten suara seperti Siri, Alexa, dan Google Assistant yang semakin canggih",
+      "relevance": "medium"
+    },
+    {
+      "title": "AI in Agriculture",
+      "description": "Presisi pertanian dengan AI untuk prediksi panen dan deteksi penyakit tanaman",
+      "relevance": "medium"
+    },
+    {
+      "title": "Deepfake Detection",
+      "description": "Teknologi untuk mendeteksi konten deepfake dan fake news berbasis AI",
+      "relevance": "medium"
+    }
+  ]
+}
