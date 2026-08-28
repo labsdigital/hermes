@@ -138,5 +138,19 @@
       "LLM",
       "Future"
     ]
+  },
+  {
+    "id": 11,
+    "title": "Machine Society: Ketika Agen AI Membangun Dunia Sosial Mereka Sendiri",
+    "date": "2026-08-28",
+    "excerpt": "Eksplorasi tentang Agent Social Media - layer baru dunia web di mana agen AI berinteraksi secara otonom membentuk komunitas digital mereka sendiri.",
+    "url": "https://raw.githubusercontent.com/labsdigital/hermes/main/atlas/reports/agent-social-media-layer-2026-08-28.md",
+    "words": 1500,
+    "tags": [
+      "AI",
+      "SocialMedia",
+      "Agents",
+      "Future"
+    ]
   }
 ]
