@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanban Dashboard - Hermes Agent</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+        }
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 15px;
+        }
+        .stat-item { text-align: center; }
+        .stat-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #64ffda;
+        }
+        .stat-label {
+            font-size: 0.9em;
+            color: #8892b0;
+        }
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .btn {
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border: none;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        .last-updated {
+            text-align: center;
+            color: #8892b0;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+        .board-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .board {
+            margin-bottom: 40px;
+            background: rgba(22, 33, 62, 0.6);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+        }
+        .board-header {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(102, 126, 234, 0.3);
+        }
+        .board-title {
+            font-size: 1.5em;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+        .board-desc {
+            color: #8892b0;
+            font-size: 0.9em;
+        }
+        .tasks-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+        }
+        .task-card {
+            background: rgba(45, 55, 72, 0.8);
+            border-radius: 10px;
+            padding: 15px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.2s;
+        }
+        .task-card:hover { transform: translateX(5px); }
+        .task-card.todo { border-left-color: #ffd700; }
+        .task-card.in-progress { border-left-color: #64ffda; }
+        .task-card.done { border-left-color: #667eea; opacity: 0.7; }
+        .task-card.blocked { border-left-color: #e94560; }
+        .task-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .task-id {
+            font-size: 0.8em;
+            color: #8892b0;
+        }
+        .task-title {
+            font-size: 1em;
+            margin-bottom: 8px;
+            color: #e6e6e6;
+        }
+        .task-desc {
+            font-size: 0.85em;
+            color: #8892b0;
+            margin-bottom: 10px;
+        }
+        .task-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8em;
+        }
+        .task-assignee { color: #64ffda; }
+        .priority-high { color: #e94560; }
+        .priority-medium { color: #ffd700; }
+        .priority-low { color: #64ffda; }
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #8892b0;
+        }
+        .error {
+            text-align: center;
+            padding: 40px;
+            color: #e94560;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📋 Kanban Dashboard</h1>
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-value" id="total-tasks">-</div>
+                <div class="stat-label">Total</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="todo-count">-</div>
+                <div class="stat-label">TODO</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="progress-count">-</div>
+                <div class="stat-label">In Progress</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="done-count">-</div>
+                <div class="stat-label">Done</div>
+            </div>
+        </div>
+        <div class="controls">
+            <button class="btn" onclick="loadData()">🔄 Refresh</button>
+            <label style="display: flex; align-items: center; gap: 10px; color: #8892b0;">
+                <input type="checkbox" id="auto-refresh" onchange="toggleAutoRefresh()">
+                Auto-refresh (30s)
+            </label>
+        </div>
+        <div class="last-updated" id="last-updated">Loading...</div>
+    </div>
+    
+    <div class="board-container" id="boards-container">
+        <div class="loading">Memuat data...</div>
+    </div>
+
+    <script>
+        // Use PHP API endpoint for real-time data
+        const API_URL = 'api.php';
+        let autoRefreshInterval = null;
+        
+        async function loadData() {
+            try {
+                const response = await fetch(API_URL + '?t=' + new Date().getTime());
+                const data = await response.json();
+                renderBoards(data);
+                updateStats(data);
+                updateTimestamp(data.last_updated);
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('boards-container').innerHTML = 
+                    '<div class="error">Gagal memuat data. Pastikan api.php tersedia.</div>';
+            }
+        }
+        
+        function renderBoards(data) {
+            const container = document.getElementById('boards-container');
+            
+            if (!data.boards || data.boards.length === 0) {
+                container.innerHTML = '<div class="loading">Belum ada board</div>';
+                return;
+            }
+            
+            container.innerHTML = data.boards.map(board => `
+                <div class="board">
+                    <div class="board-header">
+                        <h2 class="board-title">📁 ${board.name}</h2>
+                        <span class="board-desc">${board.description || ''}</span>
+                    </div>
+                    <div class="tasks-container">
+                        ${board.tasks.map(task => renderTask(task)).join('')}
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function renderTask(task) {
+            const statusLabels = {
+                'todo': '⏳ TODO',
+                'in-progress': '🔄 IN PROGRESS',
+                'blocked': '🚫 BLOCKED',
+                'done': '✅ DONE'
+            };
+            
+            return `
+                <div class="task-card ${task.status}">
+                    <div class="task-header">
+                        <span class="task-id">#${task.id}</span>
+                    </div>
+                    <div class="task-title">${task.title}</div>
+                    ${task.description ? `<div class="task-desc">${task.description}</div>` : ''}
+                    <div class="task-meta">
+                        <span class="task-assignee">@${task.assignee}</span>
+                        <span class="priority-${task.priority}">${task.priority.toUpperCase()}</span>
+                    </div>
+                    ${task.blocked_reason ? `<div style="margin-top:10px;color:#e94560;font-size:0.85em;">🚫 ${task.blocked_reason}</div>` : ''}
+                </div>
+            `;
+        }
+        
+        function updateStats(data) {
+            let total = 0, todo = 0, progress = 0, done = 0;
+            
+            data.boards.forEach(board => {
+                board.tasks.forEach(task => {
+                    total++;
+                    if (task.status === 'todo') todo++;
+                    else if (task.status === 'in-progress') progress++;
+                    else if (task.status === 'done') done++;
+                });
+            });
+            
+            document.getElementById('total-tasks').textContent = total;
+            document.getElementById('todo-count').textContent = todo;
+            document.getElementById('progress-count').textContent = progress;
+            document.getElementById('done-count').textContent = done;
+        }
+        
+        function updateTimestamp(timestamp) {
+            const date = new Date(timestamp);
+            const formatted = date.toLocaleString('id-ID', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+            document.getElementById('last-updated').textContent = `Last updated: ${formatted}`;
+        }
+        
+        function toggleAutoRefresh() {
+            const checkbox = document.getElementById('auto-refresh');
+            if (checkbox.checked) {
+                autoRefreshInterval = setInterval(loadData, 30000);
+                console.log('Auto-refresh enabled (30s)');
+            } else {
+                clearInterval(autoRefreshInterval);
+                console.log('Auto-refresh disabled');
+            }
+        }
+        
+        // Load data on page load
+        loadData();
+    </script>
+</body>
+</html>
