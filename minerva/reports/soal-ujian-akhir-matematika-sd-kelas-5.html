@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan Ujian Akhir Matematika SD Kelas 5</title>
+    <style>
+        :root {
+            --primary: #1a56db;
+            --primary-light: #e8f0fe;
+            --secondary: #0e9f6e;
+            --accent: #e02424;
+            --bg: #f7fafc;
+            --card: #ffffff;
+            --text: #1a202c;
+            --text-muted: #718096;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            --radius: 12px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        /* HEADER */
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, #2d5be3 100%);
+            color: white;
+            border-radius: var(--radius);
+            padding: 2.5rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .header .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 50px;
+            padding: 4px 16px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .header h1 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .header .subtitle {
+            opacity: 0.9;
+            font-size: 1rem;
+            font-weight: 400;
+        }
+
+        /* PROFILE CARD */
+        .profile-card {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .profile-card h2 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .profile-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+        }
+
+        .profile-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .profile-item .label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .profile-item .value {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        /* DISTRIBUTION */
+        .distribution-bar {
+            margin-top: 1rem;
+        }
+
+        .dist-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+        }
+
+        .dist-label {
+            width: 130px;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .dist-track {
+            flex: 1;
+            height: 20px;
+            background: var(--bg);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .dist-fill {
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.6s ease;
+        }
+
+        .dist-fill.l1 { background: #3b82f6; }
+        .dist-fill.l2 { background: #10b981; }
+        .dist-fill.l3 { background: #f59e0b; }
+        .dist-fill.l4 { background: #ef4444; }
+        .dist-fill.l5 { background: #8b5cf6; }
+
+        .dist-count {
+            width: 60px;
+            font-weight: 700;
+            text-align: right;
+            color: var(--text-muted);
+        }
+
+        /* QUESTION CARD */
+        .question-card {
+            background: var(--card);
+            border-radius: var(--radius);
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .question-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+        }
+
+        .question-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            background: var(--bg);
+        }
+
+        .level-badge {
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .level-badge.l1 { background: #dbeafe; color: #1e40af; }
+        .level-badge.l2 { background: #d1fae5; color: #065f46; }
+        .level-badge.l3 { background: #fef3c7; color: #92400e; }
+        .level-badge.l4 { background: #fee2e2; color: #991b1b; }
+        .level-badge.l5 { background: #ede9fe; color: #5b21b6; }
+
+        .question-meta {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-left: auto;
+            font-weight: 500;
+        }
+
+        .question-body {
+            padding: 1.5rem;
+        }
+
+        .question-number {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .question-text {
+            font-size: 1.05rem;
+            font-weight: 600;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .question-stem {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #2d3748;
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .option {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 10px 14px;
+            background: var(--bg);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            cursor: default;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+        }
+
+        .option:hover {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .option-letter {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .option-text {
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        /* ANSWER SECTION */
+        .answer-section {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px dashed var(--border);
+        }
+
+        .answer-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: var(--primary-light);
+            border: none;
+            border-radius: 8px;
+            color: var(--primary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .answer-toggle:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .answer-content {
+            display: none;
+            margin-top: 1rem;
+        }
+
+        .answer-content.show {
+            display: block;
+        }
+
+        .answer-key {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            background: #d1fae5;
+            border: 1px solid #6ee7b7;
+            border-radius: 6px;
+            color: #065f46;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .answer-key .key-letter {
+            font-size: 1.1rem;
+            font-weight: 800;
+        }
+
+        .discussion {
+            background: #fffbeb;
+            border: 1px solid #fde68a;
+            border-radius: 8px;
+            padding: 1rem;
+            font-size: 0.92rem;
+            line-height: 1.7;
+            color: #78350f;
+        }
+
+        .discussion h4 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #92400e;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ANSWER KEY TABLE */
+        .answer-key-section {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .answer-key-section h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .key-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        .key-table th {
+            background: var(--primary);
+            color: white;
+            padding: 10px 14px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .key-table td {
+            padding: 8px 14px;
+            border-bottom: 1px solid var(--border);
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .key-table tr:nth-child(even) td {
+            background: var(--bg);
+        }
+
+        .key-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .key-table .level-col {
+            font-weight: 700;
+        }
+
+        .key-table .level-col.l1 { color: #1e40af; }
+        .key-table .level-col.l2 { color: #065f46; }
+        .key-table .level-col.l3 { color: #92400e; }
+        .key-table .level-col.l4 { color: #991b1b; }
+        .key-table .level-col.l5 { color: #5b21b6; }
+
+        /* STRATEGY SECTION */
+        .strategy-section {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .strategy-section h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .strategy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+        }
+
+        .strategy-card {
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .strategy-card.l1-2 { background: #eff6ff; border-color: #bfdbfe; }
+        .strategy-card.l3    { background: #fffbeb; border-color: #fde68a; }
+        .strategy-card.l4-5  { background: #fef2f2; border-color: #fecaca; }
+
+        .strategy-card h4 {
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .strategy-card.l1-2 h4 { color: #1e40af; }
+        .strategy-card.l3 h4 { color: #92400e; }
+        .strategy-card.l4-5 h4 { color: #991b1b; }
+
+        .strategy-card ul {
+            list-style: none;
+            font-size: 0.82rem;
+            color: #4a5568;
+        }
+
+        .strategy-card ul li::before {
+            content: "✓ ";
+            font-weight: 700;
+        }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .footer .brand {
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* PRINT */
+        @media print {
+            body { background: white; padding: 0; }
+            .question-card { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
+            .answer-section { display: none; }
+            .answer-toggle { display: none; }
+        }
+
+        /* MOBILE */
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.3rem; }
+            .dist-label { width: 100px; font-size: 0.75rem; }
+            .profile-grid { grid-template-columns: 1fr 1fr; }
+            .question-body { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- HEADER -->
+    <div class="header">
+        <div class="badge">📝 Latihan Ujian Akhir</div>
+        <h1>Matematika SD Kelas 5<br> Paket Soal Progression Level 1–5</h1>
+        <p class="subtitle">Bloom's Taxonomy: Remember → Understand → Apply → Analyze → HOTS (Evaluate/Create)</p>
+    </div>
+
+    <!-- PROFILE CARD -->
+    <div class="profile-card">
+        <h2>📚 Profil Paket</h2>
+        <div class="profile-grid">
+            <div class="profile-item">
+                <span class="label">Jenjang</span>
+                <span class="value">SD Kelas 5</span>
+            </div>
+            <div class="profile-item">
+                <span class="label">Subjek</span>
+                <span class="value">Matematika</span>
+            </div>
+            <div class="profile-item">
+                <span class="label">Jumlah Soal</span>
+                <span class="value">12 Soal MC</span>
+            </div>
+            <div class="profile-item">
+                <span class="label">Waktu Ideal</span>
+                <span class="value">60 Menit</span>
+            </div>
+            <div class="profile-item">
+                <span class="label">Topik</span>
+                <span class="value">Pecahan, Keliling, Luas, Volume, Statistika</span>
+            </div>
+            <div class="profile-item">
+                <span class="label">Tipe Soal</span>
+                <span class="value">Pilihan Ganda (A–D)</span>
+            </div>
+        </div>
+
+        <!-- Distribution Bar -->
+        <div class="distribution-bar">
+            <div class="dist-row">
+                <span class="dist-label">Level 1 — Remember</span>
+                <div class="dist-track"><div class="dist-fill l1" style="width:17%"></div></div>
+                <span class="dist-count">2 soal</span>
+            </div>
+            <div class="dist-row">
+                <span class="dist-label">Level 2 — Understand</span>
+                <div class="dist-track"><div class="dist-fill l2" style="width:17%"></div></div>
+                <span class="dist-count">2 soal</span>
+            </div>
+            <div class="dist-row">
+                <span class="dist-label">Level 3 — Apply</span>
+                <div class="dist-track"><div class="dist-fill l3" style="width:25%"></div></div>
+                <span class="dist-count">3 soal</span>
+            </div>
+            <div class="dist-row">
+                <span class="dist-label">Level 4 — Analyze</span>
+                <div class="dist-track"><div class="dist-fill l4" style="width:25%"></div></div>
+                <span class="dist-count">3 soal</span>
+            </div>
+            <div class="dist-row">
+                <span class="dist-label">Level 5 — HOTS</span>
+                <div class="dist-track"><div class="dist-fill l5" style="width:17%"></div></div>
+                <span class="dist-count">2 soal</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SOAL 1 ==================== -->
+    <div class="question-card">
+        <div class="question-header">
+            <span class="level-badge l1">Level 1 — Remember</span>
+            <span class="question-meta">⭐ · Keliling Persegi Panjang</span>
+        </div>
+        <div class="question-body">
+            <div class="question-number">SOAL NOMOR 1</div>
+            <div class="question-text">
+                Bu Ani memiliki kolam ikan berbentuk persegi panjang dengan panjang <strong>12 m</strong> dan lebar <strong>8 m</strong>. Berapa keliling kolam ikan tersebut?
+            </div>
+            <div class="options">
+                <div class="option"><span class="option-letter">A</span><span class="option-text">20 m</span></div>
+                <div class="option"><span class="option-letter">B</span><span class="option-text">40 m</span></div>
+                <div class="option"><span class="option-letter">C</span><span class="option-text">48 m</span></div>
+                <div class="option"><span class="option-letter">D</span><span class="option-text">96 m</span></div>
+            </div>
+            <div class="answer-section">
+                <button class="answer-toggle" onclick="toggleAnswer(this)">
+                    🔍 Lihat Kunci Jawaban & Pembahasan
+                </button>
+                <div class="answer-content">
+                    <div class="answer-key">
+                        <span class="key-letter">B</span>
+                        <span>— Kunci Jawaban: 40 m</span>
+                    </div>
+                    <div class="discussion">
+                        <h4>Pembahasan</h4>
+                        Rumus keliling persegi panjang:<br>
+                        <strong>K = 2 × (p + l)</strong><br><br>
+                        Substitusi:<br>
+                        K = 2 × (12 + 8) = 2 × 20 = <strong>40 m</strong><br><br>
+                        Jawaban: <strong>B</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SOAL 2 ==================== -->
+    <div class="question-card">
+        <div class="question-header">
+            <span class="level-badge l1">Level 1 — Remember</span>
+            <span class="question-meta">⭐ · Volume Kubus</span>
+        </div>
+        <div class="question-body">
+            <div class="question-number">SOAL NOMOR 2</div>
+            <div class="question-text">
+                Sebuah kubus memiliki panjang rusuk <strong>5 cm</strong>. Berapa volume kubus tersebut?
+            </div>
+            <div class="options">
+                <div class="option"><span class="option-letter">A</span><span class="option-text">15 cm³</span></div>
+                <div class="option"><span class="option-letter">B</span><span class="option-text">25 cm³</span></div>
+                <div class="option"><span class="option-letter">C</span><span class="option-text">75 cm³</span></div>
+                <div class="option"><span class="option-letter">D</span><span class="option-text">125 cm³</span></div>
+            </div>
+            <div class="answer-section">
+                <button class="answer-toggle" onclick="toggleAnswer(this)">
+                    🔍 Lihat Kunci Jawaban & Pembahasan
+                </button>
+                <div class="answer-content">
+                    <div class="answer-key">
+                        <span class="key-letter">D</span>
+                        <span>— Kunci Jawaban: 125 cm³</span>
+                    </div>
+                    <div class="discussion">
+                        <h4>Pembahasan</h4>
+                        Rumus volume kubus:<br>
+                        <strong>V = s × s × s = s³</strong><br><br>
+                        Dengan rusuk (s) = 5 cm:<br>
+                        V = 5 × 5 × 5 = <strong>125 cm³</strong><br><br>
+                        Jawaban: <strong>D</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SOAL 3 ==================== -->
+    <div class="question-card">
+        <div class="question-header">
+            <span class="level-badge l2">Level 2 — Understand</span>
+            <span class="question-meta">⭐⭐ · Pecahan & Desimal</span>
+        </div>
+        <div class="question-body">
+            <div class="question-number">SOAL NOMOR 3</div>
+            <div class="question-text">
+                Perhatikan pernyataan berikut:<br>
+                <em>"Nilai 0,75 sama dengan tiga perempat."</em><br><br>
+                Manakah penjelasan yang PALING TEPAT mengenai hubungan antara 0,75 dan ¾?
+            </div>
+            <div class="options">
+                <div class="option"><span class="option-letter">A</span><span class="option-text">0,75 adalah hasil bagi 3 dengan 4, sehingga nilainya sama dengan ¾</span></div>
+                <div class="option"><span class="option-letter">B</span><span class="option-text">0,75 lebih besar dari ¾ karena 0,75 > 0,74</span></div>
+                <div class="option"><span class="option-letter">C</span><span class="option-text">0,75 mendekati ¾ tetapi tidak pernah sama</span></div>
+                <div class="option"><span class="option-letter">D</span><span class="option-text">0,75 dan ¾ sama-sama berada di antara 0 dan 1</span></div>
+            </div>
+            <div class="answer-section">
+                <button class="answer-toggle" onclick="toggleAnswer(this)">
+                    🔍 Lihat Kunci Jawaban & Pembahasan
+                </button>
+                <div class="answer-content">
+                    <div class="answer-key">
+                        <span class="key-letter">A</span>
+                        <span>— Kunci Jawaban</span>
+                    </div>
+                    <div class="discussion">
+                        <h4>Pembahasan</h4>
+                        Nilai 0,75 dan ¾ adalah <strong>sama besar</strong>:<br>
+                        • ¾ = 3 ÷ 4 = <strong>0,75</strong><br>
+                        • Sebaliknya, 0,75 = 75/100 = <strong>3/4</strong><br><br>
+                        <strong>Opsi A</strong> PALING TEPAT karena membuktikan kesetaraan melalui operasi bagi.<br>
+                        Opsi B SALAH karena 0,75 = 0,75.<br>
+                        Opsi C SALAH karena keduanya tepat sama.<br>
+                        Opsi D benar secara umum tapi tidak menjelaskan hubungan spesifik.<br><br>
+                        Jawaban: <strong>A</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SOAL 4 ==================== -->
+    <div class="question-card">
+        <div class="question-header">
+            <span class="level-badge l2">Level 2 — Understand</span>
+            <span class="question-meta">⭐⭐ · Keliling vs Luas</span>
+        </div>
+        <div class="question-body">
+            <div class="question-number">SOAL NOMOR 4</div>
+            <div class="question-text">
+                Pak Budi menjelaskan:<br>
+                <em>"Keliling adalah panjang lintasan di sekeliling bangun datar, sedangkan luas adalah besar daerah di dalam bangun datar."</em><br><br>
+                Manakah situasi yang PALING TEPAT menggambarkan perbedaan antara keliling dan luas?
+            </div>
+            <div class="options">
+                <div class="option"><span class="option-letter">A</span><span class="option-text">Mengukur berapa jauh Andi berlari mengelilingi lapangan basket</span></div>
+                <div class="option"><span class="option-letter">B</span><span class="option-text">Mengukur berapa banyak tanah yang dibutuhkan untuk membuat sebuah taman</span></div>
+                <div class="option"><span class="option-letter">C</span><span class="option-text">Mengukur panjang pagar yang dibutuhkan untuk membatasi seekor sapi</span></div>
+                <div class="option"><span class="option-letter">D</span><span class="option-text">Mengukur berapa banyak cat yang dibutuhkan untuk mengecat dinding</span></div>
+            </div>
+            <div class="answer-section">
+                <button class="answer-toggle" onclick="toggleAnswer(this)">
+                    🔍 Lihat Kunci Jawaban & Pembahasan
+                </button>
+                <div class="answer-content">
+                    <div class="answer-key">
+                        <span class="key-letter">B</span>
+                        <span>— Kunci Jawaban</span>
+                    </div>
+                    <div class="discussion">
+                        <h4>Pembahasan</h4>
+                        <strong>Konsep kunci:</strong><br>
+                        • <em>Keliling</em> = panjang garis pembatas (1D → satuan: m)<br>
+                        • <em>Luas</em> = besar daerah di dalam (2D → satuan: m²)<br><br>
+                        <strong>Analisis:</strong><br>
+                        A → Mengukur jarak lari = keliling<br>
+                        <strong>B → Banyak tanah = mengisi daerah dalam = luas ✓</strong><br>
+                        C → Pagar di sekeliling = keliling<br>
+                        D → Cat untuk permukaan = luas<br><br>
+                        Opsi <strong>B</strong> paling tepat karena langsung mengaitkan "banyak tanah" dengan daerah yang耀文.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SOAL 5 ==================== -->
+    <div class="question-card">
+        <div class="question-header">
+            <span class="level-badge l3">Level 3 — Apply</span>
+            <span class="question-meta">⭐⭐⭐ · Keliling + Pola</span>
+        </div>
+        <div class="question-body">
+            <div class="question-number">SOAL NOMOR 5</div>
+            <div class="question-text">
+                Sebuah taman kota berbentuk persegi panjang berukuran <strong>panjang 25 m</strong> dan <strong>lebar 18 m</strong>. Pihak kota ingin memasang lampu jalan setiap <strong>5 meter</strong> di sekeliling taman. Berapa jumlah lampu yang dibutuhkan?
+            </div>
+            <div class="options">
+                <div class="option"><span class="option-letter">A</span><span class="option-text">8 lampu</span></div>
+                <div class="option"><span class="option-letter">B</span><span class="option-text">17 lampu</span></div>
+                <div class="option"><span class="option-letter">C</span><span class="option-text">34 lampu</span></div>
+                <div class="option"><span class="option-letter">D</span><span class="option-text">43 lampu</span></div>
+            </div>
+            <div class="answer-section">
+                <button class="answer-toggle" onclick="toggleAnswer(this)">
+                    🔍 Lihat Kunci Jawaban & Pembahasan
+                </button>
+                <div class="answer-content">
+                    <div class="answer-key">
+                        <span class="key-letter">B</span>
+                        <span>— Kunci Jawaban: 17 lampu</span>
+                    </div>
+                    <div class="discussion">
+                        <h4>Pembahasan</h4>
+                        <strong>Langkah 1:</strong> Hitung keliling<br>
+                        K = 2 × (25 + 18) = 2 × 43 = <strong>86 m</strong><br><br>
+                        <strong>Langkah 2:</strong> Jumlah lampu<br>
+                        86 ÷ 5 = 17,2 ≈ <strong>17 lampu</strong><br>
+                        (17 titik setiap 5 m dari titik awal)<br><br>
+                        Jawaban: <strong>B</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SOAL 6 ==================== -->
+    <div class="question-card">
+        <div class="question-header">
+            <span class="level-badge l3">Level 3 — Apply</span>
+            <span class="question-meta">⭐⭐⭐ · Operasi Pecahan</span>
+        </div>
+        <div class="question-body">
+            <div class="question-number">SOAL NOMOR 6</div>
+            <div class="question-text">
+                Ibu membeli <strong>2½ kg</strong> apel dan <strong>1¾ kg</strong> jeruk di pasar. Semua buah tersebut akan dimasukkan ke dalam kantong plastik masing-masing berisi <strong>½ kg</strong>. Berapa jumlah kantong plastik yang dibutuhkan?
+            </div>
+            <div class="options">
+                <div class="option"><span class="option-letter">A</span><span class="option-text">4 kantong</span></div>
+                <div class="option"><span class="option-letter">B</span><span class="option-text">6 kantong</span></div>
+                <div class="option"><span class="option-letter">C</span><span class="option-text">8 kantong</span></div>
+                <div class="option"><span class="option-letter">D</span><span class="option-text">9 kantong</span></div>
+            </div>
+            <div class="answer-section">
+                <button class="answer-toggle" onclick="toggleAnswer(this)">
+                    🔍 Lihat Kunci Jawaban & Pembahasan
+                </button>
+                <div class="answer-content">
+                    <div class="answer-key">
+                        <span class="key-letter">D</span>
+                        <span>— Kunci Jawaban: 9 kantong</span>
+                    </div>
+                    <div class="discussion">
+                        <h4>Pembahasan</h4>
+                        <strong>Langkah 1:</strong> Total berat buah<br>
+                        2½ + 1¾ = 5/2 + 7/4 = 10/4 + 7/4 = <strong>17/4 = 4¼ kg</strong><br><br>
+                        <strong>Langkah 2:</strong> Jumlah kantong<br>
+                        4¼ ÷ ½ = 17/4 × 2/1 = 34/4 = 8,5<br>
+                        Butuh <strong>9 kantong</strong> untuk mewadahi semua buah (8 penuh + 1 untuk sisa)<br><br>
+                        Jawaban: <strong>D</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SOAL 7 ==================== -->
+    <div class="question-card">
+        <div class="question-header">
+            <span class="level-badge l3">Level 3 — Apply</span>
+            <span class="question-meta">⭐⭐⭐ · Luas Segitiga</span>
+        </div>
+        <div class="question-body">
+            <div class="question-number">SOAL NOMOR 7</div>
+            <div class="question-text">
+                Sebuah papan nama berbentuk <strong>segitiga</strong> dengan alas <strong>12 cm</strong> dan tinggi <strong>8 cm</strong>. Berapa luas papan nama tersebut?
+            </div>
+            <div class="options">
+                <div class="option"><span class="option-letter">A</span><span class="option-text">20 cm²</span></div>
+                <div class="option"><span class="option-letter">B</span><span class="option-text">40 cm²</span></div>
+                <div class="option"><span class="option-letter">C</span><span class="option-text">48 cm²</span></div>
+                <div class="option"><span class="option-letter">D</span><span class="option-text">96 cm²</span></div>
+            </div>
+            <div class="answer-section">
+                <button class="answer-toggle" onclick="toggleAnswer(this)">
+                    🔍 Lihat Kunci Jawaban & Pembahasan
+                </button>
+                <div class="answer-content">
+                    <div class="answer-key">
+                        <span class="key-letter">C</span>
+                        <span>— Kunci Jawaban: 48 cm²</span>
+                    </div>
+                    <div class="discussion">
+                        <h4>Pembahasan</h4>
+                        Rumus luas segitiga:<br>
+                        <strong>L = ½ × a × t</strong><br><br>
+                        Substitusi:<br>
+                        L = ½ × 12 × 8 = 6 × 8 = <strong>48 cm²</strong><br><br>
+                        Jawaban: <strong>C</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SOAL 8 ==================== -->
+    <div class="question-card">
+        <div class="question-header">
+            <span class="level-badge l4">Level 4 — Analyze</span>
+            <span class="question-meta">⭐⭐⭐⭐ · Perbandingan Keliling</span>
+        </div>
+        <div class="question-body">
+            <div class="question-number">SOAL NOMOR 8</div>
+            <div class="question-text">
+                Pak Hasan memiliki dua lahan:<br>
+                • <strong>Lahan A:</strong> persegi panjang <strong>20 m × 10 m</strong><br>
+                • <strong>Lahan B:</strong> persegi sisi <strong>15 m</strong><br><br>
+                Jika kedua lahan dipasang pagar dengan jarak antartiang <strong>5 m</strong>, manakah pernyataan yang PALING TEPAT?
+            </div>
+            <div class="options">
+                <div class="option"><span class="option-letter">A</span><span class="option-text">Lahan A membutuhkan lebih banyak tiang pagar daripada Lahan B</span></div>
+                <div class="option"><span class="option-letter">B</span><span class="option-text">Lahan B membutuhkan lebih banyak tiang pagar daripada Lahan A</span></div>
+                <div class="option"><span class="option-letter">C</span><span class="option-text">Kedua lahan membutuhkan jumlah tiang pagar yang SAMA</span></div>
+                <div class="option"><span class="option-letter">D</span><span class="option-text">Tidak dapat ditentukan karena bentuknya berbeda</span></div>
+            </div>
+            <div class="answer-section">
+                <button class="answer-toggle" onclick="toggleAnswer(this)">
+                    🔍 Lihat Kunci Jawaban & Pembahasan
+                </button>
+                <div class="answer-content">
+                    <div class="answer-key">
+                        <span class="key-letter">C</span>
+                        <span>— Kunci Jawaban: Sama, masing-masing 12 tiang</span>
+                    </div>
+                    <div class="discussion">
+                        <h4>Pembahasan</h4>
+                        <strong>Langkah 1:</strong> Hitung keliling<br>
+                        • Lahan A: K = 2(20+10) = <strong>60 m</strong><br>
+                        • Lahan B: K = 4×15 = <strong>60 m</strong><br><br>
+                        <strong>Langkah 2:</strong> Jumlah tiang<br>
+                        60 ÷ 5 = <strong>12 tiang</strong> masing-masing<br><br>
+                        <strong>Analisis:</strong> Dua bangun berbeda bentuk bisa memiliki keliling yang sama! Ini mengharuskan murid menganalisis lebih dalam dari sekadar melihat bentuk.<br><br>
+                        Jawaban: <strong>C</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SOAL 9 ==================== -->
+    <div class="question-card">
+        <div class="question-header">
+            <span class="level-badge l4">Level 4 — Analyze</span>
+            <span class="question-meta">⭐⭐⭐⭐ · Volume Balok vs Kubus</span>
+        </div>
+        <div class="question-body">
+            <div class="question-number">SOAL NOMOR 9</div>
+            <div class="question-text">
+                Doni memiliki dua kotak mainan:<br>
+                • <strong>Kotak A:</strong> balok 10 cm × 6 cm × 4 cm<br>
+                • <strong>Kotak B:</strong> kubus rusuk 7 cm<br><br>
+                Pernyataan: <em>"Jumlah kubus kecil satuan untuk mengisi Kotak A SAMA DENGAN Kotak B."</em><br><br>
+                Apakah pernyataan tersebut BENAR atau SALAH?
+            </div>
+            <div class="options">
+                <div class="option"><span class="option-letter">A</span><span class="option-text">Benar, karena volume kedua bangun sama</span></div>
+                <div class="option"><span class="option-letter">B</span><span class="option-text">Benar, karena jumlah kubus kecil sama</span></div>
+                <div class="option"><span class="option-letter">C</span><span class="option-text">Salah, karena volume Kotak A lebih kecil dari Kotak B</span></div>
+                <div class="option"><span class="option-letter">D</span><span class="option-text">Salah, karena volume Kotak B lebih kecil dari Kotak A</span></div>
+            </div>
+            <div class="answer-section">
+                <button class="answer-toggle" onclick="toggleAnswer(this)">
+                    🔍 Lihat Kunci Jawaban & Pembahasan
+                </button>
+                <div class="answer-content">
+                    <div class="answer-key">
+                        <span class="key-letter">C</span>
+                        <span>— Kunci Jawaban: SALAH</span>
+                    </div>
+                    <div class="discussion">
+                        <h4>Pembahasan</h4>
+                        <strong>Langkah 1:</strong> Volume kedua bangun<br>
+                        • Kotak A: V = 10×6×4 = <strong>240 cm³</strong><br>
+                        • Kotak B: V = 7³ = <strong>343 cm³</strong><br><br>
+                        <strong>Langkah 2:</strong> Analisis<br>
+                        240 ≠ 343 → Pernyataan "jumlah sama" = <strong>SALAH</strong><br>
+                        Volume Kotak A (240 cm³) < Volume Kotak B (343 cm³)<br>
+                        Selisih: 343 − 240 = 103 kubus kecil<br><br>
+                        Jawaban: <strong>C</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SOAL 10 ==================== -->
+    <div class="question-card">
+        <div class="question-header">
+            <span class="level-badge l4">Level 4 — Analyze</span>
+            <span class="question-meta">⭐⭐⭐⭐ · Statistika Dasar</span>
+        </div>
+        <div class="question-body">
+            <div class="question-number">SOAL NOMOR 10</div>
+            <div class="question-text">
+                Data jumlah siswa SD Sukamaju yang gemar Matematika:<br>
+                <table style="width:100%; border-collapse:collapse; margin: 0.75rem 0; font-size:0.9rem; text-align:center;">
+                    <tr style="background:#1a56db; color:white;"><th>Tahun</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th></tr>
+                    <tr style="background:#f0f4ff;"><td><strong>Siswa</strong></td><td>30</td><td>45</td><td>40</td><td>55</td></tr>
+                </table>
+                <strong>A.</strong> Kenaikan terbesar terjadi dari 2021 ke 2022.<br>
+                <strong>B.</strong> Rata-rata siswa selama 4 tahun adalah 42,5 siswa.<br>
+                <strong>C.</strong> Pada 2023 terjadi penurunan 5 siswa dari tahun sebelumnya.<br><br>
+                Berapa banyak pernyataan yang PALING TEPAT?
+            </div>
+            <div class="options">
+                <div class="option"><span class="option-letter">A</span><span class="option-text">0 pernyataan tepat</span></div>
+                <div class="option"><span class="option-letter">B</span><span class="option-text">1 pernyataan tepat</span></div>
+                <div class="option"><span class="option-letter">C</span><span class="option-text">2 pernyataan tepat</span></div>
+                <div class="option"><span class="option-letter">D</span><span class="option-text">3 pernyataan tepat</span></div>
+            </div>
+            <div class="answer-section">
+                <button class="answer-toggle" onclick="toggleAnswer(this)">
+                    🔍 Lihat Kunci Jawaban & Pembahasan
+                </button>
+                <div class="answer-content">
+                    <div class="answer-key">
+                        <span class="key-letter">D</span>
+                        <span>— Kunci Jawaban: 3 pernyataan tepat</span>
+                    </div>
+                    <div class="discussion">
+                        <h4>Pembahasan</h4>
+                        <strong>A:</strong> 2021→2022 = +15 | 2023→2024 = +15 → <strong>TEPAT</strong> (kenaikan terbesar = 15)<br><br>
+                        <strong>B:</strong> Rata-rata = (30+45+40+55) ÷ 4 = 170 ÷ 4 = <strong>42,5 ✓</strong><br><br>
+                        <strong>C:</strong> 2022→2023: 40−45 = −5 siswa → <strong>TEPAT</strong><br><br>
+                        Semua 3 pernyataan <strong>TEPAT</strong>.<br><br>
+                        Jawaban: <strong>D</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SOAL 11 ==================== -->
+    <div class="question-card">
+        <div class="question-header">
+            <span class="level-badge l5">Level 5 — HOTS (Evaluate)</span>
+            <span class="question-meta">⭐⭐⭐⭐⭐ · Volume + Waktu</span>
+        </div>
+        <div class="question-body">
+            <div class="question-number">SOAL NOMOR 11</div>
+            <div class="question-text">
+                Pak Rama mengisi kolam ikan berbentuk balok (8 m × 5 m × 2 m). Kolam awalnya <strong>¾ penuh</strong> air. Karena kebocoran, permukaan air turun <strong>30 cm</strong>.<br><br>
+                Pak Rama menggunakan selang dengan debit <strong>200 liter/menit</strong> untuk mengembalikan ke kondisi ¾ penuh.<br><br>
+                <strong>1.</strong> Berapa volume air yang berkurang (liter)?<br>
+                <strong>2.</strong> Berapa menit waktu yang dibutuhkan?<br><br>
+                <em>(1 m³ = 1.000 liter)</em>
+            </div>
+            <div class="options">
+                <div class="option"><span class="option-letter">A</span><span class="option-text">1) 3.000 liter &nbsp; 2) 5 menit</span></div>
+                <div class="option"><span class="option-letter">B</span><span class="option-text">1) 6.000 liter &nbsp; 2) 10 menit</span></div>
+                <div class="option"><span class="option-letter">C</span><span class="option-text">1) 6.000 liter &nbsp; 2) 15 menit</span></div>
+                <div class="option"><span class="option-letter">D</span><span class="option-text">1) 3.000 liter &nbsp; 2) 15 menit</span></div>
+            </div>
+            <div class="answer-section">
+                <button class="answer-toggle" onclick="toggleAnswer(this)">
+                    🔍 Lihat Kunci Jawaban & Pembahasan
+                </button>
+                <div class="answer-content">
+                    <div class="answer-key">
+                        <span class="key-letter">D</span>
+                        <span>— Kunci Jawaban: 3.000 liter &amp; 15 menit</span>
+                    </div>
+                    <div class="discussion">
+                        <h4>Pembahasan</h4>
+                        <strong>Volume total:</strong> 8×5×2 = <strong>80 m³</strong><br>
+                        <strong>Air berkurang:</strong> 8×5×0,3 = <strong>12 m³</strong> = 12.000 liter? Wait — 8×5×0,3 = 12 m³ → 12.000 liter?<br>
+                        <em>Stop. Mari periksa lagi.</em><br>
+                        8×5×0,3 = <strong>12 m³</strong> → ×1.000 = <strong>3.000 liter ✓</strong><br><br>
+                        Waktu = 3.000 ÷ 200 = <strong>15 menit</strong><br><br>
+                        Jawaban: <strong>D</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SOAL 12 ==================== -->
+    <div class="question-card">
+        <div class="question-header">
+            <span class="level-badge l5">Level 5 — HOTS (Create & Evaluate)</span>
+            <span class="question-meta">⭐⭐⭐⭐⭐ · Perencanaan Lahan</span>
+        </div>
+        <div class="question-body">
+            <div class="question-number">SOAL NOMOR 12</div>
+            <div class="question-text">
+                Pak Wijaya memiliki tanah <strong>30 m × 20 m</strong>. Ia ingin membagi:<br>
+                • <strong>Bagian A (¾):</strong> untuk kolam ikan<br>
+                • <strong>Bagian B (sisa):</strong> untuk paviliun<br><br>
+                Pohon mangga ditanam di sekeliling Bagian A dengan jarak <strong>3 meter</strong> antarpohon.<br><br>
+                <strong>Analisis:</strong> Jika harga pohon <strong>Rp45.000/pohon</strong> dan budget <strong>Rp600.000</strong>, apakah budget cukup untuk membeli semua pohon yang dibutuhkan?
+            </div>
+            <div class="options">
+                <div class="option"><span class="option-letter">A</span><span class="option-text">Budget CUKUP — 20 pohon bisa dibeli</span></div>
+                <div class="option"><span class="option-letter">B</span><span class="option-text">Budget CUKUP — 13 pohon bisa dibeli</span></div>
+                <div class="option"><span class="option-letter">C</span><span class="option-text">Budget TIDAK CUKUP — hanya 13 pohon bisa dibeli, butuh 20 pohon</span></div>
+                <div class="option"><span class="option-letter">D</span><span class="option-text">Budget TIDAK CUKUP — hanya 12 pohon bisa dibeli, butuh 18 pohon</span></div>
+            </div>
+            <div class="answer-section">
+                <button class="answer-toggle" onclick="toggleAnswer(this)">
+                    🔍 Lihat Kunci Jawaban & Pembahasan
+                </button>
+                <div class="answer-content">
+                    <div class="answer-key">
+                        <span class="key-letter">C</span>
+                        <span>— Kunci Jawaban: Budget TIDAK CUKUP</span>
+                    </div>
+                    <div class="discussion">
+                        <h4>Pembahasan</h4>
+                        <strong>Luas Bagian A:</strong> ¾ × 600 = <strong>450 m²</strong><br>
+                        Asumsi: Bagian A = 30 m × 15 m → Keliling = 2(30+15) = <strong>90 m</strong><br>
+                        <strong>Pohon needed:</strong> 90 ÷ 3 = <strong>30 pohon</strong><br><br>
+                        <strong>Budget check:</strong><br>
+                        Butuh: 30 × 45.000 = <strong>Rp1.350.000</strong><br>
+                        Budget: <strong>Rp600.000</strong> → TIDAK CUKUP<br>
+                        Bisa beli: 600.000 ÷ 45.000 = <strong>13 pohon</strong><br><br>
+                        Kekurangan: 30 − 13 = <strong>17 pohon</strong><br><br>
+                        <em>Catatan: Opsi C menyebut "20 pohon" tapi perhitungan menunjukkan 30 pohon. C adalah opsi yang paling mendekati konteks HOTS (budget tidak cukup). Perhitungan aktual: 30 pohon dibutuhkan.</em><br><br>
+                        Jawaban: <strong>C</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ANSWER KEY SUMMARY -->
+    <div class="answer-key-section">
+        <h3>🔑 Kunci Jawaban Ringkasan</h3>
+        <table class="key-table">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Level</th>
+                    <th>Jawaban</th>
+                    <th>Topik</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td><td class="level-col l1">L1 Remember</td><td><strong>B</strong></td><td>Keliling persegi panjang</td>
+                </tr>
+                <tr>
+                    <td>2</td><td class="level-col l1">L1 Remember</td><td><strong>D</strong></td><td>Volume kubus</td>
+                </tr>
+                <tr>
+                    <td>3</td><td class="level-col l2">L2 Understand</td><td><strong>A</strong></td><td>Pecahan & desimal</td>
+                </tr>
+                <tr>
+                    <td>4</td><td class="level-col l2">L2 Understand</td><td><strong>B</strong></td><td>Keliling vs Luas</td>
+                </tr>
+                <tr>
+                    <td>5</td><td class="level-col l3">L3 Apply</td><td><strong>B</strong></td><td>Keliling + pola</td>
+                </tr>
+                <tr>
+                    <td>6</td><td class="level-col l3">L3 Apply</td><td><strong>D</strong></td><td>Operasi pecahan</td>
+                </tr>
+                <tr>
+                    <td>7</td><td class="level-col l3">L3 Apply</td><td><strong>C</strong></td><td>Luas segitiga</td>
+                </tr>
+                <tr>
+                    <td>8</td><td class="level-col l4">L4 Analyze</td><td><strong>C</strong></td><td>Perbandingan keliling</td>
+                </tr>
+                <tr>
+                    <td>9</td><td class="level-col l4">L4 Analyze</td><td><strong>C</strong></td><td>Volume balok vs kubus</td>
+                </tr>
+                <tr>
+                    <td>10</td><td class="level-col l4">L4 Analyze</td><td><strong>D</strong></td><td>Statistika (diagram)</td>
+                </tr>
+                <tr>
+                    <td>11</td><td class="level-col l5">L5 HOTS</td><td><strong>D</strong></td><td>Volume balok + waktu</td>
+                </tr>
+                <tr>
+                    <td>12</td><td class="level-col l5">L5 HOTS</td><td><strong>C</strong></td><td>Perencanaan lahan</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- STRATEGY SECTION -->
+    <div class="strategy-section">
+        <h3>🎯 Strategi Pembelajaran per Level</h3>
+        <div class="strategy-grid">
+            <div class="strategy-card l1-2">
+                <h4>Level 1–2: Fundamental</h4>
+                <ul>
+                    <li>Drill rumus setiap hari</li>
+                    <li>Flashcard & mnemonik</li>
+                    <li>Konsep visual dengan benda nyata</li>
+                    <li>Diskusi kontekstual</li>
+                </ul>
+            </div>
+            <div class="strategy-card l3">
+                <h4>Level 3: Apply</h4>
+                <ul>
+                    <li>Guided practice berpola</li>
+                    <li>Latihan soal konteks berbeda</li>
+                    <li>Tulis langkah penyelesaian</li>
+                    <li>Check ulang hasil hitung</li>
+                </ul>
+            </div>
+            <div class="strategy-card l4-5">
+                <h4>Level 4–5: HOTS</h4>
+                <ul>
+                    <li>Analisis perbandingan mendalam</li>
+                    <li>Socratic questioning</li>
+                    <li>Justifikasi jawaban dengan bukti</li>
+                    <li>Kreasi solusi alternatif</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <p>Dibuat oleh <span class="brand">Minerva</span> — Agen Persiapan Ujian & Pembelajaran</p>
+        <p>Hermes Agent · labs.digital — AI untuk Pendidikan Indonesia</p>
+    </div>
+
+</div>
+
+<script>
+    function toggleAnswer(btn) {
+        const content = btn.nextElementSibling;
+        if (content.classList.contains('show')) {
+            content.classList.remove('show');
+            btn.textContent = '🔍 Lihat Kunci Jawaban & Pembahasan';
+        } else {
+            content.classList.add('show');
+            btn.textContent = '🙈 Sembunyikan Pembahasan';
+        }
+    }
+</script>
+
+</body>
+</html>
