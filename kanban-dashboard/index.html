@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanban Dashboard - Hermes Agent</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .header .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 15px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #64ffda;
+        }
+        
+        .stat-label {
+            font-size: 0.9em;
+            color: #8892b0;
+        }
+        
+        .refresh-btn {
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border: none;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 15px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .refresh-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .refresh-btn.loading {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+        
+        .last-updated {
+            text-align: center;
+            color: #8892b0;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+        
+        .board-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .board {
+            margin-bottom: 40px;
+            background: rgba(22, 33, 62, 0.6);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .board-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #667eea;
+        }
+        
+        .board-title {
+            font-size: 1.5em;
+            color: #64ffda;
+        }
+        
+        .board-desc {
+            margin-left: 15px;
+            color: #8892b0;
+            font-size: 0.9em;
+        }
+        
+        .tasks-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+        }
+        
+        .task-card {
+            background: linear-gradient(145deg, #0f3460, #16213e);
+            border-radius: 10px;
+            padding: 15px;
+            border-left: 4px solid;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .task-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .task-card.todo { border-left-color: #667eea; }
+        .task-card.in-progress { border-left-color: #ffd700; }
+        .task-card.blocked { border-left-color: #e94560; }
+        .task-card.done { border-left-color: #4ade80; opacity: 0.7; }
+        
+        .task-header {
+            Display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 10px;
+        }
+        
+        .task-id {
+            background: rgba(102, 126, 234, 0.2);
+            color: #667eea;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-size: 0.8em;
+        }
+        
+        .task-title {
+            font-weight: 600;
+            margin: 8px 0;
+            line-height: 1.4;
+        }
+        
+        .task-desc {
+            color: #8892b0;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        
+        .task-meta {
+            Display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85em;
+        }
+        
+        .task-assignee {
+            background: rgba(100, 255, 218, 0.1);
+            color: #64ffda;
+            padding: 3px 10px;
+            border-radius: 12px;
+        }
+        
+        .task-priority {
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+        
+        .priority-high { background: rgba(233, 69, 96, 0.2); color: #e94560; }
+        .priority-medium { background: rgba(255, 215, 0, 0.2); color: #ffd700; }
+        .priority-low { background: rgba(74, 222, 128, 0.2); color: #4ade80; }
+        
+        .task-status {
+            Display: inline-block;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            margin-top: 10px;
+        }
+        
+        .status-todo { background: rgba(102, 126, 234, 0.2); color: #667eea; }
+        .status-in-progress { background: rgba(255, 215, 0, 0.2); color: #ffd700; }
+        .status-blocked { background: rgba(233, 69, 96, 0.2); color: #e94560; }
+        .status-done { background: rgba(74, 222, 128, 0.2); color: #4ade80; }
+        
+        .blocked-reason {
+            background: rgba(233, 69, 96, 0.1);
+            color: #e94560;
+            padding: 8px;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-size: 0.85em;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 50px;
+            color: #8892b0;
+        }
+        
+        .loading::after {
+            content: '...';
+            animation: dots 1.5s infinite;
+        }
+        
+        @keyframes dots {
+            0%, 20% { content: '.'; }
+            40% { content: '..'; }
+            60%, 100% { content: '...'; }
+        }
+        
+        .auto-refresh-toggle {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .auto-refresh-toggle label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            color: #8892b0;
+        }
+        
+        .auto-refresh-toggle input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 { font-size: 1.8em; }
+            .stats { flex-direction: column; gap: 15px; }
+            .tasks-container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📋 Kanban Dashboard</h1>
+        <p>Hermes Agent - Multi-Agent Work Queue</p>
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-value" id="total-tasks">-</div>
+                <div class="stat-label">Total Tasks</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="todo-count">-</div>
+                <div class="stat-label">To Do</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="progress-count">-</div>
+                <div class="stat-label">In Progress</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="done-count">-</div>
+                <div class="stat-label">Done</div>
+            </div>
+        </div>
+        <button class="refresh-btn" onclick="loadData()">🔄 Refresh</button>
+        <div class="last-updated" id="last-updated">Last updated: Loading...</div>
+        <div class="auto-refresh-toggle">
+            <label>
+                <input type="checkbox" id="auto-refresh" onchange="toggleAutoRefresh()">
+                Auto-refresh every 30 seconds
+            </label>
+        </div>
+    </div>
+    
+    <div class="board-container" id="boards-container">
+        <div class="loading">Memuat data</div>
+    </div>
+    
+    <script>
+        let autoRefreshInterval = null;
+        const DATA_URL = 'kanban-data.json';
+        
+        async function loadData() {
+            try {
+                const response = await fetch(DATA_URL + '?t=' + new Date().getTime());
+                const data = await response.json();
+                renderBoards(data);
+                updateStats(data);
+                updateTimestamp(data.last_updated);
+            } catch (error) {
+                console.error('Error loading data:', error);
+                document.getElementById('boards-container').innerHTML = 
+                    '<div class="loading">Gagal memuat data</div>';
+            }
+        }
+        
+        function renderBoards(data) {
+            const container = document.getElementById('boards-container');
+            
+            if (!data.boards || data.boards.length === 0) {
+                container.innerHTML = '<div class="loading">Belum ada board</div>';
+                return;
+            }
+            
+            container.innerHTML = data.boards.map(board => `
+                <div class="board">
+                    <div class="board-header">
+                        <h2 class="board-title">📁 ${board.name}</h2>
+                        <span class="board-desc">${board.description || ''}</span>
+                    </div>
+                    <div class="tasks-container">
+                        ${board.tasks.map(task => renderTask(task)).join('')}
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function renderTask(task) {
+            const statusLabels = {
+                'todo': '⏳ TODO',
+                'in-progress': '🔄 IN PROGRESS',
+                'blocked': '🚫 BLOCKED',
+                'done': '✅ DONE'
+            };
+            
+            const priorityClass = `priority-${task.priority}`;
+            const statusClass = `status-${task.status}`;
+            
+            return `
+                <div class="task-card ${task.status}">
+                    <div class="task-header">
+                        <span class="task-id">#${task.id}</span>
+                    </div>
+                    <div class="task-title">${task.title}</div>
+                    ${task.description ? `<div class="task-desc">${task.description}</div>` : ''}
+                    <div class="task-meta">
+                        <span class="task-assignee">@${task.assignee}</span>
+                        <span class="task-priority ${priorityClass}">${task.priority.toUpperCase()}</span>
+                    </div>
+                    <span class="task-status ${statusClass}">${statusLabels[task.status] || task.status}</span>
+                    ${task.blocked_reason ? `<div class="blocked-reason">🚫 ${task.blocked_reason}</div>` : ''}
+                </div>
+            `;
+        }
+        
+        function updateStats(data) {
+            let total = 0, todo = 0, progress = 0, done = 0;
+            
+            data.boards.forEach(board => {
+                board.tasks.forEach(task => {
+                    total++;
+                    if (task.status === 'todo') todo++;
+                    else if (task.status === 'in-progress') progress++;
+                    else if (task.status === 'done') done++;
+                });
+            });
+            
+            document.getElementById('total-tasks').textContent = total;
+            document.getElementById('todo-count').textContent = todo;
+            document.getElementById('progress-count').textContent = progress;
+            document.getElementById('done-count').textContent = done;
+        }
+        
+        function updateTimestamp(timestamp) {
+            const date = new Date(timestamp);
+            const formatted = date.toLocaleString('id-ID', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+            document.getElementById('last-updated').textContent = `Last updated: ${formatted}`;
+        }
+        
+        function toggleAutoRefresh() {
+            const checkbox = document.getElementById('auto-refresh');
+            if (checkbox.checked) {
+                autoRefreshInterval = setInterval(loadData, 30000);
+                console.log('Auto-refresh enabled (30s)');
+            } else {
+                clearInterval(autoRefreshInterval);
+                console.log('Auto-refresh disabled');
+            }
+        }
+        
+        // Load data on page load
+        loadData();
+    </script>
+</body>
+</html>
