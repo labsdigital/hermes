@@ -497,9 +497,12 @@
             filterArticles(activeFilter);
         });
         
-        // Initialize
-        loadAgents();
-        loadArticles();
+        // Initialize - wait for agents to load first
+        async function init() {
+            await loadAgents();
+            await loadArticles();
+        }
+        init();
     </script>
 </body>
 </html>
