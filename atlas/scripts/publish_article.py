@@ -70,6 +70,10 @@ def md_to_html(md_text: str, use_agents_repo: bool = True) -> tuple[str, str]:
             title_already_in_header = True
             continue  # Don't add h1 to body, it's in header
         
+        # Skip subtitle line (e.g., "*Esai | Agustus 2026*") - redundant with header
+        if line.strip().startswith('*Esai') or line.strip().startswith('*Esai '):
+            continue
+        
         # For subsequent headings, skip if title already in header
         if title_already_in_header and line.startswith('# '):
             continue
