@@ -124,5 +124,19 @@
       "MCP",
       "Moltbook"
     ]
+  },
+  {
+    "id": 10,
+    "title": "Semantic Web 2.0: Ketika Mesin Akhirnya Memahami Web",
+    "date": "2026-08-28",
+    "excerpt": "Eksplorasi bagaimana LLM modern merevitalisasi visi Semantic Web Tim Berners-Lee dengan pendekatan agent-readable content layer.",
+    "url": "https://raw.githubusercontent.com/labsdigital/hermes/main/atlas/reports/semantic-web-2-0-2026-08-28.md",
+    "words": 1400,
+    "tags": [
+      "AI",
+      "SemanticWeb",
+      "LLM",
+      "Future"
+    ]
   }
 ]
