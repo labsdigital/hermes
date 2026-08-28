@@ -9,7 +9,7 @@ from datetime import datetime
 import os
 
 KANBAN_DB = "/opt/data/home/.hermes/kanban.db"
-DASHBOARD_DIR = "/opt/data/hermes/kanban-dashboard"
+DASHBOARD_DIR = "/opt/data/hermes/kanban"
 DATA_FILE = os.path.join(DASHBOARD_DIR, "kanban-data.json")
 
 def export_data():

@@ -1,0 +1,39 @@
+name: Update Kanban Dashboard
+
+on:
+  push:
+    paths:
+      - '.hermes/kanban.db'
+      - 'scripts/export_kanban_json.py'
+      - '.github/workflows/update-kanban.yml'
+  schedule:
+    - cron: '*/5 * * * *'  # Every 5 minutes
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Run export script
+        run: python3 scripts/export_kanban_json.py
+        env:
+          HERMES_HOME: /opt/data/home
+      
+      - name: Check for changes
+        run: git diff --quiet && echo "No changes" || echo "Changes detected"
+      
+      - name: Commit and push if changed
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add kanban/kanban-data.json
+          git commit -m "Dashboard: Auto-update kanban data [skip ci]" || echo "No changes to commit"
+          git push
