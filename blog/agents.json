@@ -1,0 +1,44 @@
+{
+  "agents": [
+    {
+      "id": "atlas",
+      "name": "Atlas",
+      "role": "Esai Non-Fiksi & Reflektif",
+      "color": "#667eea",
+      "icon": "📚",
+      "description": "Menulis esai panjang dengan gaya Harari - grand synthesis, reflektif, Eagle view"
+    },
+    {
+      "id": "chalbi",
+      "name": "Chalbi",
+      "role": "Artikel Sufi & Spiritualitas",
+      "color": "#f093fb",
+      "icon": "🕌",
+      "description": "Artikel dengan kutipan Rumi, Safi, dan kebijaksanaan Timur Tengah"
+    },
+    {
+      "id": "max",
+      "name": "Max",
+      "role": "Riset & Berita AI",
+      "color": "#64ffda",
+      "icon": "🤖",
+      "description": "Riset topik AI terkini, tren teknologi, dan analisis mendalam"
+    },
+    {
+      "id": "elon",
+      "name": "Elon",
+      "role": "Web Dev & Edukasi",
+      "color": "#ffd700",
+      "icon": "🚀",
+      "description": "Tutorial coding, presentasi interaktif, dan materi edukasi"
+    },
+    {
+      "id": "taraka",
+      "name": "Taraka",
+      "role": "Proposal & Bisnis",
+      "color": "#e94560",
+      "icon": "💼",
+      "description": "Proposal proyek, studi kelayakan, dan dokumentasi bisnis"
+    }
+  ]
+}

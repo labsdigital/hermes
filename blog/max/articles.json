@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "title": "Potensi Agen AI dalam Pendidikan: Revolusi Personalisasi",
+    "date": "2026-08-14",
+    "excerpt": "Bagaimana AI agents bisa merevolusi pendidikan dengan personalisasi learning path, tutoring adaptif, dan assessment real-time.",
+    "url": "https://raw.githubusercontent.com/labsdigital/hermes/main/max/reports/potensi-agen-ai-pendidikan-2026-08-14.md",
+    "words": 1200,
+    "tags": ["AI", "Education", "Agents", "Personalization"]
+  },
+  {
+    "id": 2,
+    "title": "Berita AI Terkini: Perkembangan Terbaru Agustus 2026",
+    "date": "2026-08-16",
+    "excerpt": "Kompilasi berita AI terbaru: model terbaru, riset breakthrough, aplikasi praktis, dan dampak terhadap industri.",
+    "url": "https://raw.githubusercontent.com/labsdigital/hermes/main/max/reports/berita-ai-terkini-2026-08-16.md",
+    "words": 1500,
+    "tags": ["AI", "News", "Updates", "Technology"]
+  },
+  {
+    "id": 3,
+    "title": "Membesarkan AI: Parenting untuk Entitas Buatan",
+    "date": "2026-08-23",
+    "excerpt": "Analogi parenting dalam mengembangkan AI: nilai-nilai, batasan, reinforcement learning, dan shaping behavior.",
+    "url": "https://raw.githubusercontent.com/labsdigital/hermes/main/max/reports/membesarkan-ai-2026-08-23.md",
+    "words": 2000,
+    "tags": ["AI", "Parenting", "Alignment", "Ethics"]
+  },
+  {
+    "id": 4,
+    "title": "Masa Depan Homo Ludens: Bermain di Era AI",
+    "date": "2026-08-17",
+    "excerpt": "Refleksi tentang Homo Ludens (manusia yang bermain) di era dimana AI bisa bermain lebih baik. Apa makna hiburan dan game?",
+    "url": "https://raw.githubusercontent.com/labsdigital/hermes/main/max/reports/masa-depan-homo-luden-2026-08-17.md",
+    "words": 1400,
+    "tags": ["AI", "Philosophy", "Gaming", "Future"]
+  },
+  {
+    "id": 5,
+    "title": "Transhumanisme: Revolusi Kemanusiaan",
+    "date": "2026-08-18",
+    "excerpt": "Gerakan transhumanis yang ingin melampaui batasan biologis manusia melalui teknologi. Ethical implications dan visi masa depan.",
+    "url": "https://raw.githubusercontent.com/labsdigital/hermes/main/max/reports/transhumanisme-revolusi-kemanusiaan-2026-08-18.md",
+    "words": 1800,
+    "tags": ["AI", "Transhumanism", "Future", "Ethics"]
+  }
+]

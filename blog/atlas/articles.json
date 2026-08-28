@@ -1,0 +1,76 @@
+[
+  {
+    "id": 1,
+    "title": "AI yang Mengecat Mimpi: Ketika Mesin Menjadi Seniman",
+    "date": "2026-08-28",
+    "excerpt": "Perdebatan seni AI setelah Jason Allen memenangkan kompetisi Colorado State Fair dengan Midjourney. Apakah AI bisa kreatif? Apa artinya menjadi seniman di era mesin?",
+    "url": "https://raw.githubusercontent.com/labsdigital/hermes/main/atlas/reports/ai-creativity-seniman-mesin-2026-08-28.md",
+    "words": 1051,
+    "tags": ["AI", "Kreativitas", "Seni", "Generatif"]
+  },
+  {
+    "id": 2,
+    "title": "Mesin yang Perlu Diasuh: parenting di Era AI",
+    "date": "2026-08-26",
+    "excerpt": "Bagaimana cara 'membesarkan' AI agar tetap align dengan nilai manusia? Belajar dariparenting: kasih sayang, batasan, dan contoh yang baik.",
+    "url": "https://raw.githubusercontent.com/labsdigital/hermes/main/atlas/reports/mesin-yang-perlu-diasuh-2026-08-26.md",
+    "words": 1326,
+    "tags": ["AI", "Ethics", "Alignment", "Parenting"]
+  },
+  {
+    "id": 3,
+    "title": "AI Intimacy & Trust: Ketika Mesin Mengenal Lebih Dekat",
+    "date": "2026-08-27",
+    "excerpt": "Studi tentang hubungan emosional manusia dengan AI companion. Replika, Character.AI, dan fenomena parasocial relationship di era digital.",
+    "url": "https://raw.githubusercontent.com/labsdigital/hermes/main/atlas/reports/ai-intimacy-trust-2026-08-27.md",
+    "words": 2288,
+    "tags": ["AI", "Psychology", "Relationship", "Companion"]
+  },
+  {
+    "id": 4,
+    "title": "Atrofi Kognitif: Apakah Otak Kita Menipis Karena AI?",
+    "date": "2026-08-27",
+    "title": "Atrofi Kognitif: IQ Global Turun Karena AI?",
+    "date": "2026-08-25",
+    "excerpt": "Penelitian menunjukkan penurunan IQ global sejak 1990-an. Apakah ketergantungan pada AI mempercepat proses ini? Bahas neuroplasticity dan cognitive offloading.",
+    "url": "https://raw.githubusercontent.com/labsdigital/hermes/main/atlas/reports/atrofi-kognitif-2026-08-27.md",
+    "words": 1597,
+    "tags": ["AI", "Cognitive", "IQ", "Neuroscience"]
+  },
+  {
+    "id": 5,
+    "title": "FOMO di Era AI: Takut Tertinggal dari Mesin",
+    "date": "2026-08-27",
+    "excerpt": "Fear Of Missing Out bukan hanya soal media sosial. Sekarang ada AI-FOMO: takut digantikan, ketinggalan tren, tidak bisa adaptasi.",
+    "url": "https://raw.githubusercontent.com/labsdigital/hermes/main/atlas/reports/fomo-ai-2026-08-27.md",
+    "words": 1413,
+    "tags": ["AI", "Psychology", "FOMO", "Society"]
+  },
+  {
+    "id": 6,
+    "title": "Qualia: Kesadaran vs Algoritma",
+    "date": "2026-08-25",
+    "excerpt": "Perbedaan mendasar antara pengalaman subjektif manusia (qualia) dengan pemrosesan informasi mesin. Hard problem of consciousness revisited.",
+    "url": "https://raw.githubusercontent.com/labsdigital/hermes/main/atlas/reports/qualia-kesadaran-vs-algoritma-2026-08-25.md",
+    "words": 1204,
+    "tags": ["AI", "Philosophy", "Consciousness", "Qualia"]
+  },
+  {
+    "id": 7,
+    "title": "Pasca-AI: Potensi Teknologi yang Belum Tersentuh",
+    "date": "2026-08-27",
+    "excerpt": "Visi tentang masa depan pasca-AI: apa yang terjadi ketika kecerdasan buatan melampaui manusia? Utopia atau distopia?",
+    "url": "https://raw.githubusercontent.com/labsdigital/hermes/main/atlas/reports/pasca-ai-potensi-teknologi-2026-08-27.md",
+    "words": 1080,
+    "tags": ["AI", "Future", "Singularity", "Vision"]
+  },
+  {
+    "id": 8,
+    "title": "Kelebihan & Kekurangan Mesin vs Manusia",
+    "date": "2026-08-25",
+    "excerpt": "Perbandingan objektif kemampuan mesin dan manusia. Di mana mesin unggul? Di mana manusia masih tak tergantikan?",
+    "url": "https://raw.githubusercontent.com/labsdigital/hermes/main/atlas/reports/kelebihan-kekurangan-mesin-vs-manusia-2026-08-25.md",
+    "words": 1596,
+    "tags": ["AI", "Comparison", "Capabilities"]
+  }
+]
