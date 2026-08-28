@@ -40,3 +40,4 @@ python3 scripts/add_blog_article.py \
   "https://raw.githubusercontent.com/labsdigital/hermes/main/atlas/reports/file.md" \
   "AI,Tech"
 ```
+
