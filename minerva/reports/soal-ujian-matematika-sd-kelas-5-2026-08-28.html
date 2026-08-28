@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan Ujian Akhir Matematika SD Kelas 5 - Minerva Agent</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            color: #e6e6e6;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(22, 33, 62, 0.8);
+            border-radius: 20px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #667eea;
+        }
+        
+        .header h1 {
+            font-size: 2.2em;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+        }
+        
+        .header .subtitle {
+            color: #8892b0;
+            font-size: 1.1em;
+        }
+        
+        .info-box {
+            background: rgba(102, 126, 234, 0.1);
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+        }
+        
+        .info-box h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 6px;
+        }
+        
+        .info-item .label {
+            color: #8892b0;
+        }
+        
+        .info-item .value {
+            color: #64ffda;
+            font-weight: bold;
+        }
+        
+        .level-section {
+            margin-bottom: 40px;
+        }
+        
+        .level-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px 20px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 10px;
+            color: white;
+        }
+        
+        .level-badge {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+        
+        .level-info h2 {
+            font-size: 1.4em;
+            margin-bottom: 5px;
+        }
+        
+        .level-info span {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+        
+        .question-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .question-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+        }
+        
+        .question-number {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .question-text {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        
+        .options {
+            display: grid;
+            gap: 10px;
+        }
+        
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .option:hover {
+            background: rgba(102, 126, 234, 0.2);
+            border-color: #667eea;
+        }
+        
+        .option-letter {
+            width: 30px;
+            height: 30px;
+            background: #667eea;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+            color: white;
+        }
+        
+        .option-text {
+            flex: 1;
+        }
+        
+        .answer-section {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(100, 255, 218, 0.1);
+            border-left: 4px solid #64ffda;
+            border-radius: 8px;
+        }
+        
+        .answer-section h4 {
+            color: #64ffda;
+            margin-bottom: 10px;
+        }
+        
+        .answer-section p {
+            margin-bottom: 10px;
+        }
+        
+        .hints {
+            margin-top: 15px;
+            padding: 15px;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 8px;
+            border-left: 4px solid #ffd700;
+        }
+        
+        .hints h4 {
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+        
+        .hints ul {
+            margin-left: 20px;
+            color: #8892b0;
+        }
+        
+        .hints li {
+            margin-bottom: 5px;
+        }
+        
+        .strategy-section {
+            background: rgba(240, 147, 251, 0.1);
+            border-left: 4px solid #f093fb;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 40px;
+        }
+        
+        .strategy-section h3 {
+            color: #f093fb;
+            margin-bottom: 20px;
+            font-size: 1.3em;
+        }
+        
+        .strategy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .strategy-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        .strategy-card h4 {
+            color: #64ffda;
+            margin-bottom: 15px;
+        }
+        
+        .strategy-card ul {
+            margin-left: 15px;
+            color: #8892b0;
+        }
+        
+        .strategy-card li {
+            margin-bottom: 8px;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #8892b0;
+            font-size: 0.9em;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+            
+            .container {
+                box-shadow: none;
+                background: white;
+            }
+            
+            .question-card:hover {
+                transform: none;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📝 LATIHAN UJIAN AKHIR MATEMATIKA</h1>
+            <p class="subtitle">SD Kelas 5 — Progression Level 1-5 (Remember → HOTS)</p>
+        </div>
+        
+        <div class="info-box">
+            <h3>📚 Profil Paket Soal</h3>
+            <div class="info-grid">
+                <div class="info-item">
+                    <span class="label">Jenjang:</span>
+                    <span class="value">SD Kelas 5</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Subjek:</span>
+                    <span class="value">Matematika</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Total Soal:</span>
+                    <span class="value">12 soal</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Waktu:</span>
+                    <span class="value">90 menit</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Tipe:</span>
+                    <span class="value">Pilihan Ganda</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Level:</span>
+                    <span class="value">1-5 (HOTS)</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Level 1 -->
+        <div class="level-section">
+            <div class="level-header">
+                <div class="level-badge">1</div>
+                <div class="level-info">
+                    <h2>REMEMBER</h2>
+                    <span>Soal pengingatan & recall</span>
+                </div>
+            </div>
+            
+            <div class="question-card">
+                <span class="question-number">Soal 1</span>
+                <p class="question-text">Ibu membeli 3/4 kg gula. Gula tersebut digunakan untuk membuat kue sebanyak 1/2 kg. Sisa gula ibu sekarang adalah...</p>
+                <div class="options">
+                    <div class="option">
+                        <div class="option-letter">A</div>
+                        <div class="option-text">1/4 kg</div>
+                    </div>
+                    <div class="option">
+                        <div class="option-letter">B</div>
+                        <div class="option-text">1/2 kg</div>
+                    </div>
+                    <div class="option">
+                        <div class="option-letter">C</div>
+                        <div class="option-text">3/4 kg</div>
+                    </div>
+                    <div class="option">
+                        <div class="option-letter">D</div>
+                        <div class="option-text">1 kg</div>
+                    </div>
+                </div>
+                <div class="answer-section">
+                    <h4>✅ Kunci Jawaban: A</h4>
+                    <p><strong>Pembahasan:</strong></p>
+                    <p>1. Gula awal = 3/4 kg<br>
+                    2. Gula terpakai = 1/2 kg<br>
+                    3. Sisa = 3/4 - 1/2 = 3/4 - 2/4 = 1/4 kg</p>
+                </div>
+                <div class="hints">
+                    <h4>💡 Tips</h4>
+                    <ul>
+                        <li>Samakan penyebut terlebih dahulu</li>
+                        <li>KPK dari 4 dan 2 adalah 4</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="question-card">
+                <span class="question-number">Soal 2</span>
+                <p class="question-text">KPK dari 12 dan 18 adalah...</p>
+                <div class="options">
+                    <div class="option">
+                        <div class="option-letter">A</div>
+                        <div class="option-text">24</div>
+                    </div>
+                    <div class="option">
+                        <div class="option-letter">B</div>
+                        <div class="option-text">36</div>
+                    </div>
+                    <div class="option">
+                        <div class="option-letter">C</div>
+                        <div class="option-text">48</div>
+                    </div>
+                    <div class="option">
+                        <div class="option-letter">D</div>
+                        <div class="option-text">72</div>
+                    </div>
+                </div>
+                <div class="answer-section">
+                    <h4>✅ Kunci Jawaban: B</h4>
+                    <p><strong>Pembahasan:</strong></p>
+                    <p>1. Faktor prima 12 = 2² × 3<br>
+                    2. Faktor prima 18 = 2 × 3²<br>
+                    3. KPK = 2² × 3² = 4 × 9 = 36</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Level 2 -->
+        <div class="level-section">
+            <div class="level-header">
+                <div class="level-badge">2</div>
+                <div class="level-info">
+                    <h2>UNDERSTAND</h2>
+                    <span>Soal pemahaman & interpretasi</span>
+                </div>
+            </div>
+            
+            <div class="question-card">
+                <span class="question-number">Soal 3</span>
+                <p class="question-text">Pak Budi memiliki sebidang tanah berbentuk persegi panjang dengan panjang 15 meter dan lebar 8 meter. Ia ingin memagari tanah tersebut dengan kawat sepanjang keliling tanah. Berapa meter kawat yang dibutuhkan Pak Budi?</p>
+                <div class="options">
+                    <div class="option">
+                        <div class="option-letter">A</div>
+                        <div class="option-text">23 meter</div>
+                    </div>
+                    <div class="option">
+                        <div class="option-letter">B</div>
+                        <div class="option-text">46 meter</div>
+                    </div>
+                    <div class="option">
+                        <div class="option-letter">C</div>
+                        <div class="option-text">120 meter</div>
+                    </div>
+                    <div class="option">
+                        <div class="option-letter">D</div>
+                        <div class="option-text">240 meter</div>
+                    </div>
+                </div>
+                <div class="answer-section">
+                    <h4>✅ Kunci Jawaban: B</h4>
+                    <p><strong>Pembahasan:</strong></p>
+                    <p>1. Rumus keliling persegi panjang = 2 × (panjang + lebar)<br>
+                    2. Keliling = 2 × (15 + 8) = 2 × 23 = 46 meter</p>
+                </div>
+            </div>
+            
+            <div class="question-card">
+                <span class="question-number">Soal 4</span>
+                <p class="question-text">Sebuah kubus memiliki panjang rusuk 10 cm. Volume kubus tersebut adalah...</p>
+                <div class="options">
+                    <div class="option">
+                        <div class="option-letter">A</div>
+                        <div class="option-text">100 cm³</div>
+                    </div>
+                    <div class="option">
+                        <div class="option-letter">B</div>
+                        <div class="option-text">300 cm³</div>
+                    </div>
+                    <div class="option">
+                        <div class="option-letter">C</div>
+                        <div class="option-text">1.000 cm³</div>
+                    </div>
+                    <div class="option">
+                        <div class="option-letter">D</div>
+                        <div class="option-text">10.000 cm³</div>
+                    </div>
+                </div>
+                <div class="answer-section">
+                    <h4>✅ Kunci Jawaban: C</h4>
+                    <p><strong>Pembahasan:</strong></p>
+                    <p>1. Rumus volume kubus = s³<br>
+                    2. Volume = 10³ = 10 × 10 × 10 = 1.000 cm³</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Level 3 -->
+        <div class="level-section">
+            <div class="level-header">
+                <div class="level-badge">3</div>
+                <div class="level-info">
+                    <h2>APPLY</h2>
+                    <span>Soal penerapan & problem-solving</span>
+                </div>
+            </div>
+            
+            <div class="question-card">
+                <span class="question-number">Soal 5</span>
+                <p class="question-text">Tiga teman, Andi, Budi, dan Cici, berlari mengelilingi lapangan. Andi selesai 1 putaran dalam 4 menit, Budi dalam 6 menit, dan Cici dalam 8 menit. Mereka berangkat bersamaan dari titik yang sama. Setelah berapa menit mereka akan bertemu kembali di titik mulai?</p>
+                <div class="options">
+                    <div class="option">
+                        <div class="option-letter">A</div>
+                        <div class="option-text">12 menit</div>
+                    </div>
+                    <div class="option">
+                        <div class="option-letter">B</div>
+                        <div class="option-text">24 menit</div>
+                    </div>
+                    <div class="option">
+                        <div class="option-letter">C</div>
+                        <div class="option-text">48 menit</div>
+                    </div>
+                    <div class="option">
+                        <div class="option-letter">D</div>
+                        <div class="option-text">96 menit</div>
+                    </div>
+                </div>
+                <div class="answer-section">
+                    <h4>✅ Kunci Jawaban: B</h4>
+                    <p><strong>Pembahasan:</strong></p>
+                    <p>1. Cari KPK dari 4, 6, dan 8<br>
+                    2. 4 = 2², 6 = 2 × 3, 8 = 2³<br>
+                    3. KPK = 2³ × 3 = 8 × 3 = 24<br>
+                    4. Mereka akan bertemu kembali setelah 24 menit</p>
+                </div>
+            </div>
+            
+            <div class="question-card">
+                <span class="question-number">Soal 6</span>
+                <p class="question-text">Sebuah kolam renang berbentuk persegi panjang dengan ukuran panjang 20 meter dan lebar 10 meter. Kolam diisi air setinggi 1,5 meter. Berapa liter air yang diperlukan untuk mengisi kolam tersebut? (1 m³ = 1.000 liter)</p>
+                <div class="options">
+                    <div class="option">
+                        <div class="option-letter">A</div>
+                        <div class="option-text">300 liter</div>
+                    </div>
+                    <div class="option">
+                        <div class="option-letter">B</div>
+                        <div class="option-text">3.000 liter</div>
+                    </div>
+                    <div class="option">
+                        <div class="option-letter">C</div>
+                        <div class="option-text">30.000 liter</div>
+                    </div>
+                    <div class="option">
+                        <div class="option-letter">D</div>
+                        <div class="option-text">300.000 liter</div>
+                    </div>
+                </div>
+                <div class="answer-section">
+                    <h4>✅ Kunci Jawaban: D</h4>
+                    <p><strong>Pembahasan:</strong></p>
+                    <p>1. Volume kolam = panjang × lebar × tinggi<br>
+                    2. Volume = 20 × 10 × 1,5 = 300 m³<br>
+                    3. Konversi ke liter: 300 × 1.000 = 300.000 liter</p>
+                </div>
+            </div>
+            
+            <div class="question-card">
+                <span class="question-number">Soal 7</span>
+                <p class="question-text">Data nilai ulangan Matematika 8 siswa: 7, 8, 6, 9, 7, 8, 7, 9. Modus dari data tersebut adalah...</p>
+                <div class="options">
+                    <div class="option">
+                        <div class="option-letter">A</div>
+                        <div class="option-text">6</div>
+                    </div>
+                    <div class="option">
+                        <div class="option-letter">B</div>
+                        <div class="option-text">7</div>
+                    </div>
+                    <div class="option">
+                        <div class="option-letter">C</div>
+                        <div class="option-text">8</div>
+                    </div>
+                    <div class="option">
+                        <div class="option-letter">D</div>
+                        <div class="option-text">9</div>
+                    </div>
+                </div>
+                <div class="answer-section">
+                    <h4>✅ Kunci Jawaban: B</h4>
+                    <p><strong>Pembahasan:</strong></p>
+                    <p>1. Modus = nilai yang paling sering muncul<br>
+                    2. Frekuensi: 6 (1x), 7 (3x), 8 (2x), 9 (2x)<br>
+                    3. Modus = 7 (muncul paling sering)</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Level 4 -->
+        <div class="level-section">
+            <div class="level-header">
+                <div class="level-badge">4</div>
+                <div class="level-info">
+                    <h2>ANALYZE</h2>
+                    <span>Soal analisis & perbandingan</span>
+                </div>
+            </div>
+            
+            <div class="question-card">
+                <span class="question-number">Soal 8</span>
+                <p class="question-text">Perhatikan pernyataan berikut:<br>
+                1. Keliling persegi dengan sisi 10 cm sama dengan keliling persegi panjang 12 cm × 8 cm<br>
+                2. Luas persegi dengan sisi 10 cm lebih besar dari luas persegi panjang 12 cm × 8 cm<br>
+                Manakah pernyataan yang benar?</p>
+                <div class="options">
+                    <div class="option">
+                        <div class="option-letter">A</div>
+                        <div class="option-text">Hanya pernyataan 1</div>
+                    </div>
+                    <div class="option">
+                        <div class="option-letter">B</div>
+                        <div class="option-text">Hanya pernyataan 2</div>
+                    </div>
+                    <div class="option">
+                        <div class="option-letter">C</div>
+                        <div class="option-text">Keduanya benar</div>
+                    </div>
+                    <div class="option">
+                        <div class="option-letter">D</div>
+                        <div class="option-text">Keduanya salah</div>
+                    </div>
+                </div>
+                <div class="answer-section">
+                    <h4>✅ Kunci Jawaban: C</h4>
+                    <p><strong>Pembahasan:</strong></p>
+                    <p><strong>Pernyataan 1:</strong><br>
+                    • Keliling persegi = 4 × 10 = 40 cm<br>
+                    • Keliling persegi panjang = 2 × (12 + 8) = 40 cm<br>
+                    • ✓ BENAR (sama-sama 40 cm)</p>
+                    <p><strong>Pernyataan 2:</strong><br>
+                    • Luas persegi = 10 × 10 = 100 cm²<br>
+                    • Luas persegi panjang = 12 × 8 = 96 cm²<br>
+                    • 100 > 96 ✓ BENAR</p>
+                </div>
+            </div>
+            
+            <div class="question-card">
+                <span class="question-number">Soal 9</span>
+                <p class="question-text">Ibu memiliki 2 kg tepung. Untuk membuat kue, tepung digunakan sebanyak 3/4 kg. Sisa tepung kemudian dibagi rata ke dalam 5 wadah. Berapa kg tepung dalam setiap wadah?</p>
+                <div class="options">
+                    <div class="option">
+                        <div class="option-letter">A</div>
+                        <div class="option-text">1/8 kg</div>
+                    </div>
+                    <div class="option">
+                        <div class="option-letter">B</div>
+                        <div class="option-text">1/4 kg</div>
+                    </div>
+                    <div class="option">
+                        <div class="option-letter">C</div>
+                        <div class="option-text">1/2 kg</div>
+                    </div>
+                    <div class="option">
+                        <div class="option-letter">D</div>
+                        <div class="option-text">3/4 kg</div>
+                    </div>
+                </div>
+                <div class="answer-section">
+                    <h4>✅ Kunci Jawaban: B</h4>
+                    <p><strong>Pembahasan:</strong></p>
+                    <p>1. Tepung sisa = 2 - 3/4 = 8/4 - 3/4 = 5/4 kg<br>
+                    2. Dibagi 5 wadah: 5/4 ÷ 5 = 5/4 × 1/5 = 1/4 kg</p>
+                </div>
+            </div>
+            
+            <div class="question-card">
+                <span class="question-number">Soal 10</span>
+                <p class="question-text">Sebuah taman berbentuk lingkaran dengan diameter 28 meter. Di sekeliling taman akan ditanami pohon dengan jarak antar pohon 4 meter. Berapa banyak pohon yang diperlukan? (π = 22/7)</p>
+                <div class="options">
+                    <div class="option">
+                        <div class="option-letter">A</div>
+                        <div class="option-text">21 pohon</div>
+                    </div>
+                    <div class="option">
+                        <div class="option-letter">B</div>
+                        <div class="option-text">22 pohon</div>
+                    </div>
+                    <div class="option">
+                        <div class="option-letter">C</div>
+                        <div class="option-text">44 pohon</div>
+                    </div>
+                    <div class="option">
+                        <div class="option-letter">D</div>
+                        <div class="option-text">88 pohon</div>
+                    </div>
+                </div>
+                <div class="answer-section">
+                    <h4>✅ Kunci Jawaban: B</h4>
+                    <p><strong>Pembahasan:</strong></p>
+                    <p>1. Keliling lingkaran = π × d = 22/7 × 28 = 88 meter<br>
+                    2. Banyak pohon = 88 ÷ 4 = 22 pohon</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Level 5 -->
+        <div class="level-section">
+            <div class="level-header">
+                <div class="level-badge">5</div>
+                <div class="level-info">
+                    <h2>EVALUATE & CREATE (HOTS)</h2>
+                    <span>Soal evaluasi, justifikasi & kreativitas</span>
+                </div>
+            </div>
+            
+            <div class="question-card">
+                <span class="question-number">Soal 11</span>
+                <p class="question-text">Seorang petani ingin membuat pagar persegi panjang untuk kandang ayam. Panjang pagar 3 kali lebar, dan kelilingnya 64 meter. Petani tersebut memiliki 3 jenis kawat:<br>
+                • Kawat A: Rp15.000/meter<br>
+                • Kawat B: Rp12.000/meter<br>
+                • Kawat C: Rp10.000/meter<br><br>
+                Dengan budget maksimal Rp800.000, jenis kawat mana yang paling efisien dipilih? Justifikasi pilihanmu!</p>
+                <div class="options">
+                    <div class="option">
+                        <div class="option-letter">A</div>
+                        <div class="option-text">Kawat A (Rp15.000/m)</div>
+                    </div>
+                    <div class="option">
+                        <div class="option-letter">B</div>
+                        <div class="option-text">Kawat B (Rp12.000/m)</div>
+                    </div>
+                    <div class="option">
+                        <div class="option-letter">C</div>
+                        <div class="option-text">Kawat C (Rp10.000/m)</div>
+                    </div>
+                    <div class="option">
+                        <div class="option-letter">D</div>
+                        <div class="option-text">Kombinasi kawat</div>
+                    </div>
+                </div>
+                <div class="answer-section">
+                    <h4>✅ Kunci Jawaban: C</h4>
+                    <p><strong>Pembahasan HOTS:</strong></p>
+                    <p><strong>Langkah 1: Cari dimensi kandang</strong><br>
+                    • Panjang = 3 × lebar<br>
+                    • Keliling = 2(p + l) = 64<br>
+                    • 2(3l + l) = 64 → 8l = 64 → l = 8 meter, p = 24 meter</p>
+                    <p><strong>Langkah 2: Hitung biaya masing-masing kawat</strong><br>
+                    • Kawat A: 64 × 15.000 = Rp960.000 ❌ MELEBIHI budget!<br>
+                    • Kawat B: 64 × 12.000 = Rp768.000 ✓ Dalam budget<br>
+                    • Kawat C: 64 × 10.000 = Rp640.000 ✓ Dalam budget</p>
+                    <p><strong>Langkah 3: Analisis efisiensi</strong><br>
+                    • Kawat C paling hemat dan memenuhi semua kriteria</p>
+                    <p><strong>Justifikasi:</strong> Kawat C paling efisien karena memenuhi semua kriteria: dalam budget, termurah, dan kekuatan memadai untuk pagar.</p>
+                </div>
+                <div class="hints">
+                    <h4>🎯 Kompetensi HOTS yang diuji:</h4>
+                    <ul>
+                        <li>Evaluasi opsi dengan constraint (budget)</li>
+                        <li>Optimasi biaya dengan analisis trade-off</li>
+                        <li>Justifikasi keputusan berbasis data</li>
+                        <li>Aplikasi algebra dalam konteks nyata</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="question-card">
+                <span class="question-number">Soal 12</span>
+                <p class="question-text">Sekolah akan mengadakan lomba membalap sepeda. Lapangan berbentuk persegi dengan sisi 100 meter. Setiap peserta wajib melakukan 3 putaran.<br><br>
+                <strong>Skenario A:</strong> Siswa berlari dengan kecepatan 10 m/detik<br>
+                <strong>Skenario B:</strong> Siswa berlari dengan kecepatan bervariasi (8, 12, 10 m/detik)<br><br>
+                a) Hitung waktu tempuh untuk setiap skenario!<br>
+                b) Manakah skenario yang lebih menantang? Berikan argumenmu!<br>
+                c) Jika kamu menjadi pelatih, strategi apa yang akan kamu berikan kepada peserta?</p>
+                <div class="answer-section">
+                    <h4>✅ Kunci Jawaban & Rubrik Penilaian</h4>
+                    <p><strong>a) Perhitungan:</strong></p>
+                    <p>• Jarak total = 4 × 100 × 3 = 1.200 meter<br>
+                    • Skenario A: 1.200 ÷ 10 = 120 detik = 2 menit<br>
+                    • Skenario B: 1.200 ÷ 10 = 120 detik (rata-rata kecepatan tetap 10 m/detik)</p>
+                    <p><strong>b) Analisis tantangan:</strong></p>
+                    <p>• Skenario B lebih menantang karena:<br>
+                    - Butuh strategi pacing (mengatur kecepatan)<br>
+                    - Variasi kecepatan menguji kemampuan adaptasi<br>
+                    - Lebih realistis seperti lomba sebenarnya</p>
+                    <p><strong>c) Strategi pelatih:</strong></p>
+                    <p>• Latih pacing: kecepatan stabil lebih efisien<br>
+                    • Latihan interval: variasi kecepatan<br>
+                    • Teknik relaksasi saat turun/naik<br>
+                    • Nutrisi dan hidrasi yang cukup</p>
+                    <p><strong>Rubrik Penilaian:</strong><br>
+                    • Perhitungan benar: 3 poin<br>
+                    • Analisis alasan: 2 poin<br>
+                    • Strategi kreatif: 2 poin<br>
+                    • Justifikasi logis: 3 poin</p>
+                </div>
+                <div class="hints">
+                    <h4>🎯 Kompetensi HOTS yang diuji:</h4>
+                    <ul>
+                        <li>Evaluasi multiple scenarios</li>
+                        <li>Create strategy based on analysis</li>
+                        <li>Justify decision with evidence</li>
+                        <li>Transfer knowledge to new context</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Strategy Section -->
+        <div class="strategy-section">
+            <h3>🎓 Strategi Pembelajaran</h3>
+            <div class="strategy-grid">
+                <div class="strategy-card">
+                    <h4>Level 1-2 (Fundamental)</h4>
+                    <ul>
+                        <li>Drill hitung pecahan</li>
+                        <li>Flashcard rumus keliling & luas</li>
+                        <li>Tanya-jawab cepat</li>
+                    </ul>
+                    <p><strong>Penilaian:</strong> Kecepatan & ketepatan recall</p>
+                </div>
+                <div class="strategy-card">
+                    <h4>Level 3 (Apply)</h4>
+                    <ul>
+                        <li>Latihan soal kontekstual</li>
+                        <li>Problem-solving berkelompok</li>
+                        <li>Demonstrasi konsep</li>
+                    </ul>
+                    <p><strong>Penilaian:</strong> Ketepatan langkah & hasil</p>
+                </div>
+                <div class="strategy-card">
+                    <h4>Level 4-5 (HOTS)</h4>
+                    <ul>
+                        <li>Diskusi pemecahan masalah</li>
+                        <li>Analisis kasus nyata</li>
+                        <li>Project-based learning</li>
+                        <li>Presentasi solusi</li>
+                    </ul>
+                    <p><strong>Penilaian:</strong> Kualitas argumen & kreativitas</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Notes -->
+        <div class="strategy-section" style="margin-top: 30px;">
+            <h3>📌 Catatan untuk Guru/Orang Tua</h3>
+            <p><strong>Common Errors:</strong></p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li><strong>Salah konsep pecahan</strong> → Gunakan visualisasi (gambar kue/pizza)</li>
+                <li><strong>Lupa konversi satuan</strong> → Buat checklist konversi</li>
+                <li><strong>Salah menerapkan rumus</strong> → Drill identifikasi rumus sebelum menghitung</li>
+            </ul>
+            <p style="margin-top: 15px;"><strong>Tips Belajar:</strong></p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li>Pahami konsep sebelum menghafal rumus</li>
+                <li>Latihan soal bertahap dari mudah ke sulit</li>
+                <li>Diskusi soal dengan teman untuk memperdalam pemahaman</li>
+                <li>Buat catatan rumus dan contoh soal</li>
+            </ul>
+            <p style="margin-top: 15px;"><strong>Pertanyaan Pengayaan:</strong></p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li>"Bagaimana jika ukuran lapangan changed 2x lipat?"</li>
+                <li>"Apa yang terjadi jika kecepatan bervariasi seperti skenario B?"</li>
+                <li>"Bisaakah kamu membuat soal HOTS sendiri tentang topik ini?"</li>
+            </ul>
+        </div>
+        
+        <div class="footer">
+            <p>Dibuat oleh <strong>@minerva Agent</strong> — Agen Persiapan Ujian HOTS</p>
+            <p style="margin-top: 10px;">Tanggal: 28 Agustus 2026</p>
+            <p style="margin-top: 5px; font-size: 0.85em;">GitHub: https://github.com/labsdigital/hermes/tree/main/minerva</p>
+        </div>
+    </div>
+</body>
+</html>
