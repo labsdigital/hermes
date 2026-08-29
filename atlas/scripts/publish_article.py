@@ -22,11 +22,11 @@ def md_to_html(md_text: str, use_agents_repo: bool = True) -> tuple[str, str]:
     svg_content = ""
     title_already_in_header = False
     
-    # Base URL for images - use agents repo raw content
+    # Base URL for images - use GitHub Pages for hermes repo
     if use_agents_repo:
-        base_url = "https://raw.githubusercontent.com/labsdigital/agents/main/atlas/reports"
+        base_url = "https://labsdigital.github.io/hermes/atlas/reports"
     else:
-        base_url = "https://raw.githubusercontent.com/labsdigital/hermes/main/atlas/reports"
+        base_url = "https://labsdigital.github.io/hermes/atlas/reports"
     
     for line in lines:
         # Handle code blocks
