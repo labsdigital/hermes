@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" role="img" aria-labelledby="svg-title svg-desc">
+  <title id="svg-title">Masa Depan Pekerjaan: Manusia vs Mesin</title>
+  <desc id="svg-desc">Diagram perbandingan kemampuan pekerjaan manusia dan mesin di era AI, menunjukkan transisi dari kerja fisik ke kerja kognitif dan kreativitas.</desc>
+  
+  <!-- Background -->
+  <rect width="800" height="400" fill="#f8fafc"/>
+  
+  <!-- Title -->
+  <text x="400" y="35" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#1e293b" font-weight="bold">Evolusi Pekerjaan: Dari Fisik ke Makna</text>
+  
+  <!-- LEFT SIDE: Manusia -->
+  <g transform="translate(0, 0)">
+    <!-- Card background -->
+    <rect x="20" y="55" width="370" height="325" rx="20" fill="#fff7ed" stroke="#fed7aa" stroke-width="2"/>
+    
+    <!-- Human icon - simple head and body -->
+    <circle cx="205" cy="120" r="45" fill="#fb923c" opacity="0.3" stroke="#f97316" stroke-width="2"/>
+    <path d="M160,200 Q205,175 250,200 L250,300 L160,300 Z" fill="#fb923c" opacity="0.2" stroke="#f97316" stroke-width="2"/>
+    
+    <!-- Eyes -->
+    <circle cx="190" cy="115" r="5" fill="#7c2d12"/>
+    <circle cx="220" cy="115" r="5" fill="#7c2d12"/>
+    
+    <!-- Smile -->
+    <path d="M195,130 Q205,140 215,130" stroke="#7c2d12" stroke-width="2" fill="none" stroke-linecap="round"/>
+    
+    <!-- Traits -->
+    <text x="205" y="320" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#7c2d12">Kreativitas · Empati · Makna</text>
+    <text x="205" y="340" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#9a3412" font-style="italic">Keunggulan tak tergantikan</text>
+  </g>
+  
+  <!-- RIGHT SIDE: Mesin -->
+  <g transform="translate(410, 0)">
+    <!-- Card background -->
+    <rect x="20" y="55" width="370" height="325" rx="20" fill="#eff6ff" stroke="#bfdbfe" stroke-width="2"/>
+    
+    <!-- Robot/chip icon -->
+    <rect x="170" y="90" width="70" height="55" rx="8" fill="#3b82f6" opacity="0.2" stroke="#3b82f6" stroke-width="2"/>
+    <rect x="180" y="100" width="15" height="15" rx="3" fill="#1d4ed8"/>
+    <rect x="205" y="100" width="15" height="15" rx="3" fill="#1d4ed8"/>
+    <rect x="185" y="125" width="30" height="8" rx="4" fill="#1d4ed8"/>
+    
+    <!-- Circuit lines -->
+    <line x1="205" y1="145" x2="205" y2="175" stroke="#3b82f6" stroke-width="2"/>
+    <line x1="170" y1="160" x2="240" y2="160" stroke="#3b82f6" stroke-width="1.5"/>
+    <line x1="205" y1="175" x2="160" y2="200" stroke="#3b82f6" stroke-width="1.5"/>
+    <line x1="205" y1="175" x2="250" y2="200" stroke="#3b82f6" stroke-width="1.5"/>
+    
+    <!-- Nodes -->
+    <circle cx="160" cy="200" r="8" fill="#3b82f6" opacity="0.5"/>
+    <circle cx="250" cy="200" r="8" fill="#3b82f6" opacity="0.5"/>
+    <circle cx="205" cy="215" r="8" fill="#3b82f6" opacity="0.5"/>
+    
+    <!-- Traits -->
+    <text x="205" y="320" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#1e3a8a">Kecepatan · Akurasi · Skalabilitas</text>
+    <text x="205" y="340" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#1e40af" font-style="italic">Efisiensi tanpa batas</text>
+  </g>
+  
+  <!-- Center divider -->
+  <line x1="395" y1="55" x2="395" y2="380" stroke="#e2e8f0" stroke-width="2" stroke-dasharray="8,4"/>
+  
+  <!-- Transition arrow -->
+  <path d="M395,200 L410,190 M395,200 L410,210" stroke="#94a3b8" stroke-width="2" fill="none"/>
+  <text x="400" y="185" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#64748b">+</text>
+  <text x="400" y="225" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#64748b">→</text>
+  
+  <!-- Bottom caption -->
+  <text x="400" y="395" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#94a3b8">Perubahan paradigma: dari kerja sebagai kebutuhan menuju kerja sebagai makna</text>
+</svg>
