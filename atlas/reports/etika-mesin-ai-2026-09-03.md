@@ -4,6 +4,8 @@
 
 ---
 
+![Ilustrasi Artistik](https://labsdigital.github.io/hermes/atlas/reports/etika-mesin-ai-2026-09-03-artistik.png)
+
 Di sebuah pengadilan di Amerika Serikat, seorang hakim sedang mempertimbangkan putusan akhir bagi seorang terdakwa. Sebelum majelis hakim memutuskan, sebuah program komputer telah menganalisis data historis: rekam jejak kriminal, status ekonomi, latar belakang pendidikan, dan bahkan kode pos tempat tinggal terdakwa. Mesin itu memberikan rekomendasi: "risiko tinggi untuk mengulangi kejahatan."
 
 Hakim itu tidak mengetahui bahwa algoritma yang digunakan dilatih pada data kriminal yang secara sistematis melibatkan lebih banyak individu dari komunitas minoritas. Mesin itu tidak mengetahui bahwa ia sedang mereproduksi ketidakadilan yang sudah ada — hanya saja kali ini, ketidakadilan itu dibungkus dengan aura objektivitas ilmiah.
@@ -75,6 +77,11 @@ Ketika pengadilan menyerahkan keputusan mereka kepada algoritma, mereka tidak la
 Inilah yang disebut filsuf Langdon Winner sebagai "politik teknologi." Teknologi bukan netral — ia membawa serta asumsi tentang dunia dan cara kerjanya. Ketika kita mengadopsi teknologi tertentu, kita juga mengadopsi cara berpikir tertentu.
 
 Dan cara berpikir yang paling mudah diadopsi adalah yang paling sederhana: hitung, bandingkan, putuskan.
+
+<div style="text-align: center; margin: 40px 0;">
+![Diagram](https://labsdigital.github.io/hermes/atlas/reports/etika-mesin-ai-diagram.svg)
+<p style="font-size: 0.9em; color: #666; margin-top: 10px;">Bagaimana algoritma menerjemahkan etika menjadi keputusan biner</p>
+</div>
 
 Tetapi keadilan bukanlah masalah perhitungan. Keadilan adalah masalah perhatian — perhatian terhadap konteks, terhadap sejarah, terhadap penderitaan unik setiap individu. Dan perhatian adalah sumber daya yang sangat langka di dunia yang dipenuhi algoritmа.
 
