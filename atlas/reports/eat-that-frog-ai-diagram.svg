@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" font-family="Inter, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0f"/>
+      <stop offset="100%" style="stop-color:#1a1a2e"/>
+    </linearGradient>
+    <linearGradient id="frog" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b35"/>
+      <stop offset="100%" style="stop-color:#f7931e"/>
+    </linearGradient>
+    <linearGradient id="ai" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7c3aed"/>
+      <stop offset="100%" style="stop-color:#a78bfa"/>
+    </linearGradient>
+    <linearGradient id="human" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981"/>
+      <stop offset="100%" style="stop-color:#34d399"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <rect width="800" height="480" fill="url(#bg)"/>
+  
+  <!-- Title -->
+  <text x="400" y="35" text-anchor="middle" fill="#fff" font-size="18" font-weight="600">Human-AI Collaboration Flow</text>
+  
+  <!-- Step 1: Human Draft -->
+  <rect x="50" y="80" width="140" height="100" rx="10" fill="none" stroke="url(#human)" stroke-width="2" filter="url(#glow)"/>
+  <circle cx="120" cy="110" r="25" fill="url(#human)" opacity="0.3"/>
+  <text x="120" y="115" text-anchor="middle" fill="#10b981" font-size="20">✍️</text>
+  <text x="120" y="150" text-anchor="middle" fill="#fff" font-size="12" font-weight="600">DRAFT</text>
+  <text x="120" y="168" text-anchor="middle" fill="#888" font-size="10">Manual writing</text>
+  <text x="120" y="178" text-anchor="middle" fill="#888" font-size="10">10+ minutes</text>
+  
+  <!-- Arrow -->
+  <path d="M 200 130 L 230 130" stroke="#888" stroke-width="2"/>
+  
+  <!-- Step 2: AI Polish -->
+  <rect x="240" y="80" width="140" height="100" rx="10" fill="none" stroke="url(#ai)" stroke-width="2"/>
+  <circle cx="310" cy="110" r="25" fill="url(#ai)" opacity="0.3"/>
+  <text x="310" y="115" text-anchor="middle" fill="#7c3aed" font-size="20">🤖</text>
+  <text x="310" y="150" text-anchor="middle" fill="#fff" font-size="12" font-weight="600">AI POLISH</text>
+  <text x="310" y="168" text-anchor="middle" fill="#888" font-size="10">Structure + flow</text>
+  <text x="310" y="178" text-anchor="middle" fill="#888" font-size="10">Examples + args</text>
+  
+  <!-- Arrow -->
+  <path d="M 380 130 L 410 130" stroke="#888" stroke-width="2"/>
+  
+  <!-- Step 3: Human Edit -->
+  <rect x="420" y="80" width="140" height="100" rx="10" fill="none" stroke="url(#human)" stroke-width="2" filter="url(#glow)"/>
+  <circle cx="490" cy="110" r="25" fill="url(#human)" opacity="0.3"/>
+  <text x="490" y="115" text-anchor="middle" fill="#10b981" font-size="20">🔍</text>
+  <text x="490" y="150" text-anchor="middle" fill="#fff" font-size="12" font-weight="600">HUMAN EDIT</text>
+  <text x="490" y="168" text-anchor="middle" fill="#888" font-size="10">Cut fluff 30-40%</text>
+  <text x="490" y="178" text-anchor="middle" fill="#888" font-size="10">Add personal voice</text>
+  
+  <!-- Arrow -->
+  <path d="M 560 130 L 590 130" stroke="#888" stroke-width="2"/>
+  
+  <!-- Step 4: Final -->
+  <rect x="600" y="80" width="150" height="100" rx="10" fill="none" stroke="url(#frog)" stroke-width="3"/>
+  <circle cx="675" cy="110" r="25" fill="url(#frog)" opacity="0.3"/>
+  <text x="675" y="115" text-anchor="middle" fill="#ff6b35" font-size="20">✅</text>
+  <text x="675" y="150" text-anchor="middle" fill="#fff" font-size="12" font-weight="600">FINAL ARTIKEL</text>
+  <text x="675" y="168" text-anchor="middle" fill="#888" font-size="10">Ready to publish</text>
+  
+  <!-- Bottom: Key Rules -->
+  <rect x="50" y="220" width="700" height="220" rx="12" fill="#111" stroke="#333"/>
+  
+  <text x="70" y="250" fill="#fff" font-size="14" font-weight="600">21 Strategi Productivity (Eat That Frog! edisi AI)</text>
+  
+  <!-- Strategy groups -->
+  <text x="70" y="280" fill="#ff6b35" font-size="11" font-weight="500">SIANG HARI:</text>
+  <text x="70" y="300" fill="#ccc" font-size="10">1. Tentukan Katak sebelum bangun  |  2. AI sebagai katalis  |  3. Potong 80% konten</text>
+  <text x="70" y="320" fill="#ccc" font-size="10">4. Rutinitas tanpa layar  |  5. Batch task  |  6. Gunakan template</text>
+  
+  <text x="70" y="350" fill="#7c3aed" font-size="11" font-weight="500">KEPUTUSAN CEPAT:</text>
+  <text x="70" y="370" fill="#ccc" font-size="10">7. Delete/Delegate/Delay — aturan 2 menit</text>
+  
+  <text x="70" y="400" fill="#10b981" font-size="11" font-weight="500">LINGKUNGAN:</text>
+  <text x="70" y="420" fill="#ccc" font-size="10">8. Ciptakan lingkungan anti-distraksi  |  9. Refleksi mingguan  |  10. Rayakan kemenangan kecil</text>
+  
+  <!-- Call to action -->
+  <rect x="70" y="445" width="660" height="35" rx="6" fill="#1a1a2e" stroke="#ff6b35"/>
+  <text x="400" y="467" text-anchor="middle" fill="#ff6b35" font-size="11" font-weight="500">TUGAS SEKARANG: Tutup tab ini → Buka dokumen → Tulis 1 paragraf pertama → Selesai.</text>
+</svg>
