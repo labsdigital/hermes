@@ -16,7 +16,7 @@ SMTP_SERVER = "mail.taraka.id"
 SMTP_PORT = 465
 SENDER = "blog@taraka.id"
 PASSWORD = os.environ.get("EMAIL_PASSWORD", "Blog.215")
-RECIPIENT = "tamimnasa.simbioma@blogger.com"
+RECIPIENT = os.environ.get("EMAIL_RECIPIENT", "tamimnasa.simbioma@blogger.com")
 
 # GitHub Pages base URL
 GITHUB_PAGES_URL = "https://taraka.id/hermes"
