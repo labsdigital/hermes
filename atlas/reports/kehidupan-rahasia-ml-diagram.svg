@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="Inter, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0f"/>
+      <stop offset="100%" style="stop-color:#1a1a2e"/>
+    </linearGradient>
+    <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b35"/>
+      <stop offset="100%" style="stop-color:#f7931e"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7c3aed"/>
+      <stop offset="100%" style="stop-color:#a78bfa"/>
+    </linearGradient>
+    <linearGradient id="g3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06b6d4"/>
+      <stop offset="100%" style="stop-color:#22d3ee"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <rect width="800" height="500" fill="url(#bg)"/>
+  
+  <!-- Title -->
+  <text x="400" y="35" text-anchor="middle" fill="#fff" font-size="18" font-weight="600">Arsitektur Machine Learning</text>
+  
+  <!-- Data Layer -->
+  <rect x="50" y="80" width="180" height="120" rx="10" fill="none" stroke="url(#g1)" stroke-width="2" filter="url(#glow)"/>
+  <text x="140" y="110" text-anchor="middle" fill="#ff6b35" font-size="28">📊</text>
+  <text x="140" y="140" text-anchor="middle" fill="#fff" font-size="14" font-weight="600">DATA</text>
+  <text x="140" y="160" text-anchor="middle" fill="#888" font-size="10">Triliunan baris</text>
+  <text x="140" y="175" text-anchor="middle" fill="#888" font-size="10">gambar, teks, suara</text>
+  
+  <!-- Arrow 1 -->
+  <path d="M 240 140 L 270 140" stroke="#ff6b35" stroke-width="2"/>
+  
+  <!-- Processing Layer -->
+  <rect x="280" y="80" width="180" height="120" rx="10" fill="none" stroke="url(#g2)" stroke-width="2"/>
+  <text x="370" y="110" text-anchor="middle" fill="#7c3aed" font-size="28">🧠</text>
+  <text x="370" y="140" text-anchor="middle" fill="#fff" font-size="14" font-weight="600">MODEL</text>
+  <text x="370" y="160" text-anchor="middle" fill="#888" font-size="10">Neural Network</text>
+  <text x="370" y="175" text-anchor="middle" fill="#888" font-size="10">Miliaran parameter</text>
+  
+  <!-- Arrow 2 -->
+  <path d="M 470 140 L 500 140" stroke="#7c3aed" stroke-width="2"/>
+  
+  <!-- Training Layer -->
+  <rect x="510" y="80" width="180" height="120" rx="10" fill="none" stroke="url(#g3)" stroke-width="2"/>
+  <text x="600" y="110" text-anchor="middle" fill="#06b6d4" font-size="28">⚙️</text>
+  <text x="600" y="140" text-anchor="middle" fill="#fff" font-size="14" font-weight="600">TRAINING</text>
+  <text x="600" y="160" text-anchor="middle" fill="#888" font-size="10">Optimasi loss</text>
+  <text x="600" y="175" text-anchor="middle" fill="#888" font-size="10">Gradient descent</text>
+  
+  <!-- Bottom: Three Types -->
+  <rect x="50" y="240" width="700" height="220" rx="12" fill="#111" stroke="#333"/>
+  
+  <text x="70" y="270" fill="#fff" font-size="14" font-weight="600">Tiga Jenis Machine Learning</text>
+  
+  <!-- Supervised -->
+  <rect x="70" y="290" width="200" height="150" rx="8" fill="#1a1a2e" stroke="#ff6b35" stroke-width="1"/>
+  <text x="170" y="315" text-anchor="middle" fill="#ff6b35" font-size="12" font-weight="600">SUPERVISED</text>
+  <text x="170" y="335" text-anchor="middle" fill="#ccc" font-size="10">Belajar dengan guru</text>
+  <text x="170" y="355" text-anchor="middle" fill="#888" font-size="9">Input + Output diketahui</text>
+  <text x="170" y="375" text-anchor="middle" fill="#888" font-size="9">Contoh: Spam filter</text>
+  <text x="170" y="400" text-anchor="middle" fill="#666" font-size="9">📧 Email classification</text>
+  
+  <!-- Unsupervised -->
+  <rect x="300" y="290" width="200" height="150" rx="8" fill="#1a1a2e" stroke="#7c3aed" stroke-width="1"/>
+  <text x="400" y="315" text-anchor="middle" fill="#7c3aed" font-size="12" font-weight="600">UNSUPERVISED</text>
+  <text x="400" y="335" text-anchor="middle" fill="#ccc" font-size="10">Belajar mandiri</text>
+  <text x="400" y="355" text-anchor="middle" fill="#888" font-size="9">Pola tersembunyi ditemukan</text>
+  <text x="400" y="375" text-anchor="middle" fill="#888" font-size="9">Contoh: Customer segmentation</text>
+  <text x="400" y="400" text-anchor="middle" fill="#666" font-size="9">👥 Grouping behavior</text>
+  
+  <!-- Reinforcement -->
+  <rect x="530" y="290" width="200" height="150" rx="8" fill="#1a1a2e" stroke="#06b6d4" stroke-width="1"/>
+  <text x="630" y="315" text-anchor="middle" fill="#06b6d4" font-size="12" font-weight="600">REINFORCEMENT</text>
+  <text x="630" y="335" text-anchor="middle" fill="#ccc" font-size="10">Belajar dari konsekuensi</text>
+  <text x="630" y="355" text-anchor="middle" fill="#888" font-size="9">Trial & error + reward</text>
+  <text x="630" y="375" text-anchor="middle" fill="#888" font-size="9">Contoh: AlphaGo</text>
+  <text x="630" y="400" text-anchor="middle" fill="#666" font-size="9">♟️ Game playing</text>
+  
+  <!-- Footer -->
+  <text x="400" y="480" text-anchor="middle" fill="#444" font-size="9">Machine Learning: Dari data mentah menjadi kecerdasan bertindak</text>
+</svg>
