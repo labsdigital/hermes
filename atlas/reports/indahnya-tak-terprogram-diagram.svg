@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="Inter, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0f"/>
+      <stop offset="100%" style="stop-color:#1a1a2e"/>
+    </linearGradient>
+    <linearGradient id="human" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b35"/>
+      <stop offset="100%" style="stop-color:#f7931e"/>
+    </linearGradient>
+    <linearGradient id="ai" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7c3aed"/>
+      <stop offset="100%" style="stop-color:#a78bfa"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <rect width="800" height="500" fill="url(#bg)"/>
+  
+  <!-- Title -->
+  <text x="400" y="35" text-anchor="middle" fill="#fff" font-size="18" font-weight="600">Dua Model Keindahan: Ekspresif vs Optimasi</text>
+  
+  <!-- Human Art Side -->
+  <rect x="40" y="70" width="340" height="380" rx="12" fill="#111" stroke="url(#human)" stroke-width="2" filter="url(#glow)"/>
+  
+  <text x="210" y="100" text-anchor="middle" fill="#ff6b35" font-size="16" font-weight="600">SENAMANI MANUSIA</text>
+  
+  <!-- Flow diagram -->
+  <circle cx="120" cy="160" r="30" fill="url(#human)" opacity="0.3"/>
+  <text x="120" y="165" text-anchor="middle" fill="#ff6b35" font-size="20">💭</text>
+  <text x="120" y="205" text-anchor="middle" fill="#fff" font-size="11">Pengalaman</text>
+  <text x="120" y="220" text-anchor="middle" fill="#888" font-size="9">Hidup & Emosi</text>
+  
+  <path d="M 120 235 L 120 265" stroke="#ff6b35" stroke-width="2"/>
+  
+  <circle cx="120" cy="280" r="30" fill="url(#human)" opacity="0.3"/>
+  <text x="120" y="285" text-anchor="middle" fill="#ff6b35" font-size="20">❤️</text>
+  <text x="120" y="325" text-anchor="middle" fill="#fff" font-size="11">Ekspresi</text>
+  <text x="120" y="340" text-anchor="middle" fill="#888" font-size="9">Emosi → Karya</text>
+  
+  <path d="M 120 350 L 120 380" stroke="#ff6b35" stroke-width="2"/>
+  
+  <rect x="70" y="390" width="100" height="40" rx="6" fill="url(#human)" opacity="0.4"/>
+  <text x="120" y="415" text-anchor="middle" fill="#fff" font-size="10" font-weight="500">KARYA SENI</text>
+  
+  <!-- Right side label -->
+  <text x="210" y="470" text-anchor="middle" fill="#666" font-size="9">Makna mengalir dari dalam ke luar</text>
+  
+  <!-- AI Art Side -->
+  <rect x="420" y="70" width="340" height="380" rx="12" fill="#111" stroke="url(#ai)" stroke-width="2"/>
+  
+  <text x="590" y="100" text-anchor="middle" fill="#7c3aed" font-size="16" font-weight="600">OUTPUT AI</text>
+  
+  <!-- Flow diagram -->
+  <circle cx="670" cy="160" r="30" fill="url(#ai)" opacity="0.3"/>
+  <text x="670" y="165" text-anchor="middle" fill="#7c3aed" font-size="20">📊</text>
+  <text x="670" y="205" text-anchor="middle" fill="#fff" font-size="11">Data</text>
+  <text x="670" y="220" text-anchor="middle" fill="#888" font-size="9">Internet + Training</text>
+  
+  <path d="M 670 235 L 670 265" stroke="#7c3aed" stroke-width="2"/>
+  
+  <circle cx="670" cy="280" r="30" fill="url(#ai)" opacity="0.3"/>
+  <text x="670" y="285" text-anchor="middle" fill="#7c3aed" font-size="20">🤖</text>
+  <text x="670" y="325" text-anchor="middle" fill="#fff" font-size="11">Optimasi</text>
+  <text x="670" y="340" text-anchor="middle" fill="#888" font-size="9">Probabilitas + Loss</text>
+  
+  <path d="M 670 350 L 670 380" stroke="#7c3aed" stroke-width="2"/>
+  
+  <rect x="620" y="390" width="100" height="40" rx="6" fill="url(#ai)" opacity="0.4"/>
+  <text x="670" y="415" text-anchor="middle" fill="#fff" font-size="10" font-weight="500">OUTPUT</text>
+  
+  <!-- Right side label -->
+  <text x="590" y="470" text-anchor="middle" fill="#666" font-size="9">Makna mengalir dari luar ke dalam</text>
+  
+  <!-- Center comparison -->
+  <text x="400" y="280" text-anchor="middle" fill="#fff" font-size="20">VS</text>
+  
+  <!-- Key insight -->
+  <rect x="100" y="480" width="600" height="15" rx="3" fill="#1a1a2e"/>
+  <text x="400" y="491" text-anchor="middle" fill="#888" font-size="9">Kedua menghasilkan keindahan, tetapi hanya satu yang memiliki niat di baliknya</text>
+</svg>
