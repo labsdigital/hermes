@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b35;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f7931e;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2d3436;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#636e72;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="500" fill="#fafafa"/>
+  
+  <!-- Title -->
+  <text x="400" y="40" text-anchor="middle" font-family="Inter, sans-serif" font-size="20" font-weight="600" fill="#2d3436">Transformasi Memori Manusia ke Data Digital</text>
+  
+  <!-- Human Memory Phase -->
+  <rect x="50" y="80" width="160" height="100" rx="12" fill="url(#grad2)" filter="utf(shadow)"/>
+  <text x="130" y="115" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="600" fill="#fff">Memori Manusia</text>
+  <text x="130" y="135" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#dfe6e9">Subjektif</text>
+  <text x="130" y="155" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#dfe6e9">Emosional</text>
+  <text x="130" y="175" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#dfe6e9">Tidak Lengkap</text>
+  
+  <!-- Input Phase -->
+  <rect x="250" y="80" width="160" height="100" rx="12" fill="#74b9ff" filter="url(#shadow)"/>
+  <text x="330" y="115" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="600" fill="#fff">Input Digital</text>
+  <text x="330" y="135" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#fff">Foto, Video, Pesan</text>
+  <text x="330" y="155" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#fff">Jejak Media Sosial</text>
+  <text x="330" y="175" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#fff">Dokumen & Catatan</text>
+  
+  <!-- AI Processing Phase -->
+  <rect x="450" y="80" width="160" height="100" rx="12" fill="url(#grad1)" filter="url(#shadow)"/>
+  <text x="530" y="115" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="600" fill="#fff">Proses AI</text>
+  <text x="530" y="135" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#fff">Analisis Pola</text>
+  <text x="530" y="155" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#fff">Pattern Recognition</text>
+  <text x="530" y="175" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#fff">Generative Model</text>
+  
+  <!-- Output Phase -->
+  <rect x="650" y="80" width="100" height="100" rx="12" fill="#a29bfe" filter="url(#shadow)"/>
+  <text x="700" y="115" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="600" fill="#fff">Output</text>
+  <text x="700" y="145" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#fff">Avatar</text>
+  <text x="700" y="165" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#fff">Digital Twin</text>
+  
+  <!-- Arrows -->
+  <path d="M 210 130 L 245 130" stroke="#2d3436" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M 410 130 L 445 130" stroke="#2d3436" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M 610 130 L 645 130" stroke="#2d3436" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2d3436"/>
+    </marker>
+  </defs>
+  
+  <!-- Bottom Section: Characteristics -->
+  <rect x="50" y="220" width="700" height="250" rx="12" fill="#fff" filter="url(#shadow)"/>
+  <text x="400" y="255" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="600" fill="#2d3436">Karakteristik Memori Buatan AI</text>
+  
+  <!-- Characteristic boxes -->
+  <rect x="70" y="280" width="150" height="80" rx="8" fill="#ffeaa7" stroke="#fdcb6e" stroke-width="2"/>
+  <text x="145" y="305" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#2d3436">Objektif</text>
+  <text x="145" y="325" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#636e72">Tanpa bias emosi</text>
+  <text x="145" y="340" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#636e72">Data komprehensif</text>
+  
+  <rect x="240" y="280" width="150" height="80" rx="8" fill="#81ecec" stroke="#00cec9" stroke-width="2"/>
+  <text x="315" y="305" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#2d3436">Interaktif</text>
+  <text x="315" y="325" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#636e72">Respons real-time</text>
+  <text x="315" y="340" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#636e72">Dialog dinamis</text>
+  
+  <rect x="410" y="280" width="150" height="80" rx="8" fill="#fab1a0" stroke="#e17055" stroke-width="2"/>
+  <text x="485" y="305" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#2d3436">Simulasi</text>
+  <text x="485" y="325" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#636e72">Bukan kesadaran</text>
+  <text x="485" y="340" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#636e72">Refleksi behavioral</text>
+  
+  <rect x="580" y="280" width="150" height="80" rx="8" fill="#dfe6e9" stroke="#b2bec3" stroke-width="2"/>
+  <text x="655" y="305" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#2d3436">Eternal</text>
+  <text x="655" y="325" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#636e72">Tidak pernah lupa</text>
+  <text x="655" y="340" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#636e72">Keabadian digital</text>
+  
+  <!-- Key Insight -->
+  <rect x="70" y="390" width="660" height="60" rx="8" fill="#2d3436"/>
+  <text x="400" y="415" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#fff">Pertanyaan Kritis:</text>
+  <text x="400" y="435" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#dfe6e9">Apakah keabadian digital memberikan kehadiran sejati, atau hanya ilusi yang memuaskan rasa rindu?</text>
+</svg>
