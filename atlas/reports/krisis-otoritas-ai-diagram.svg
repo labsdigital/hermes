@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" font-family="Inter, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0f"/>
+      <stop offset="100%" style="stop-color:#1a1a2e"/>
+    </linearGradient>
+    <linearGradient id="human" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b35"/>
+      <stop offset="100%" style="stop-color:#f7931e"/>
+    </linearGradient>
+    <linearGradient id="ai" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7c3aed"/>
+      <stop offset="100%" style="stop-color:#a78bfa"/>
+    </linearGradient>
+    <linearGradient id="future" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981"/>
+      <stop offset="100%" style="stop-color:#34d399"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <rect width="800" height="520" fill="url(#bg)"/>
+  
+  <!-- Title -->
+  <text x="400" y="35" text-anchor="middle" fill="#fff" font-size="18" font-weight="600">Transformasi Peran Ahli: Dari Otoritas Menjadi Interpreter</text>
+  
+  <!-- Old Model -->
+  <rect x="40" y="70" width="220" height="200" rx="12" fill="#111" stroke="url(#human)" stroke-width="2" filter="url(#glow)"/>
+  <text x="150" y="100" text-anchor="middle" fill="#ff6b35" font-size="14" font-weight="600">MODEL LAMA</text>
+  
+  <circle cx="150" cy="145" r="35" fill="url(#human)" opacity="0.3"/>
+  <text x="150" y="152" text-anchor="middle" fill="#ff6b35" font-size="24">👨‍⚕️</text>
+  <text x="150" y="195" text-anchor="middle" fill="#fff" font-size="11" font-weight="500">PAKAR</text>
+  <text x="150" y="215" text-anchor="middle" fill="#888" font-size="9">Otoritas pengetahuan</text>
+  <text x="150" y="235" text-anchor="middle" fill="#888" font-size="9">Menjawab semua</text>
+  
+  <text x="150" y="265" text-anchor="middle" fill="#666" font-size="9">Pengalaman → Keahlian → Otoritas</text>
+  
+  <!-- Transition -->
+  <path d="M 270 170 L 310 170" stroke="#fff" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="290" y="160" text-anchor="middle" fill="#fff" font-size="10">BЕРDUBA</text>
+  
+  <!-- AI Layer -->
+  <rect x="320" y="70" width="220" height="200" rx="12" fill="#111" stroke="url(#ai)" stroke-width="2"/>
+  <text x="430" y="100" text-anchor="middle" fill="#7c3aed" font-size="14" font-weight="600">AI</text>
+  
+  <circle cx="430" cy="145" r="35" fill="url(#ai)" opacity="0.3"/>
+  <text x="430" y="152" text-anchor="middle" fill="#7c3aed" font-size="24">🤖</text>
+  <text x="430" y="195" text-anchor="middle" fill="#fff" font-size="11" font-weight="500">SISTEM</text>
+  <text x="430" y="215" text-anchor="middle" fill="#888" font-size="9">Data masif</text>
+  <text x="430" y="235" text-anchor="middle" fill="#888" font-size="9">Pattern recognition</text>
+  
+  <text x="430" y="265" text-anchor="middle" fill="#666" font-size="9">Data → Training → Output</text>
+  
+  <!-- New Model -->
+  <rect x="600" y="70" width="220" height="200" rx="12" fill="#111" stroke="url(#future)" stroke-width="2"/>
+  <text x="710" y="100" text-anchor="middle" fill="#10b981" font-size="14" font-weight="600">MODEL BARU</text>
+  
+  <circle cx="710" cy="145" r="35" fill="url(#future)" opacity="0.3"/>
+  <text x="710" y="152" text-anchor="middle" fill="#10b981" font-size="24">🔄</text>
+  <text x="710" y="195" text-anchor="middle" fill="#fff" font-size="11" font-weight="500">INTERPRETER</text>
+  <text x="710" y="215" text-anchor="middle" fill="#888" font-size="9">Menghubungkan</text>
+  <text x="710" y="235" text-anchor="middle" fill="#888" font-size="9">Konteks + Empati</text>
+  
+  <text x="710" y="265" text-anchor="middle" fill="#666" font-size="9">AI Output → Human Context → Aksi</text>
+  
+  <!-- Bottom: Domains -->
+  <rect x="40" y="300" width="720" height="200" rx="12" fill="#111" stroke="#333"/>
+  <text x="400" y="330" text-anchor="middle" fill="#fff" font-size="14" font-weight="600">Empat Domain yang Terdampak</text>
+  
+  <!-- Four columns -->
+  <rect x="60" y="350" width="150" height="130" rx="8" fill="#0a0a0f" stroke="#ff6b35" stroke-width="1"/>
+  <text x="135" y="375" text-anchor="middle" fill="#ff6b35" font-size="11" font-weight="500">🏥 MEDIS</text>
+  <text x="135" y="400" text-anchor="middle" fill="#ccc" font-size="9">Dari diagnosis</text>
+  <text x="135" y="420" text-anchor="middle" fill="#ccc" font-size="9">Menjadi interpreter</text>
+  <text x="135" y="445" text-anchor="middle" fill="#888" font-size="8">AI + Empati dokter</text>
+  
+  <rect x="230" y="350" width="150" height="130" rx="8" fill="#0a0a0f" stroke="#7c3aed" stroke-width="1"/>
+  <text x="305" y="375" text-anchor="middle" fill="#7c3aed" font-size="11" font-weight="500">⚖️ HUKUM</text>
+  <text x="305" y="400" text-anchor="middle" fill="#ccc" font-size="9">Dari precedents</text>
+  <text x="305" y="420" text-anchor="middle" fill="#ccc" font-size="9">Menjadi strategist</text>
+  <text x="305" y="445" text-anchor="middle" fill="#888" font-size="8">AI + Nuansa kasus</text>
+  
+  <rect x="400" y="350" width="150" height="130" rx="8" fill="#0a0a0f" stroke="#10b981" stroke-width="1"/>
+  <text x="475" y="375" text-anchor="middle" fill="#10b981" font-size="11" font-weight="500">🎵 SENI</text>
+  <text x="475" y="400" text-anchor="middle" fill="#ccc" font-size="9">Dari komposisi</text>
+  <text x="475" y="420" text-anchor="middle" fill="#ccc" font-size="9">Menjadi kurator</text>
+  <text x="475" y="445" text-anchor="middle" fill="#888" font-size="8">AI + Makna karya</text>
+  
+  <rect x="570" y="350" width="150" height="130" rx="8" fill="#0a0a0f" stroke="#06b6d4" stroke-width="1"/>
+  <text x="645" y="375" text-anchor="middle" fill="#06b6d4" font-size="11" font-weight="500">🎓 PENDIDIKAN</text>
+  <text x="645" y="400" text-anchor="middle" fill="#ccc" font-size="9">Dari传授知识</text>
+  <text x="645" y="420" text-anchor="middle" fill="#ccc" font-size="9">Menjadi mentor</text>
+  <text x="645" y="445" text-anchor="middle" fill="#888" font-size="8">AI + Development</text>
+  
+  <!-- Footer -->
+  <text x="400" y="495" text-anchor="middle" fill="#666" font-size="9">Keahlian baru: bukan bersaing dengan mesin, tetapi melengkapi kekurangannya</text>
+</svg>
