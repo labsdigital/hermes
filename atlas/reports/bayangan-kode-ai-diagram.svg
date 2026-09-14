@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="Inter, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0f"/>
+      <stop offset="100%" style="stop-color:#1a1a2e"/>
+    </linearGradient>
+    <linearGradient id="l1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#60a5fa"/>
+    </linearGradient>
+    <linearGradient id="l2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6"/>
+      <stop offset="100%" style="stop-color:#a78bfa"/>
+    </linearGradient>
+    <linearGradient id="l3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ec4899"/>
+      <stop offset="100%" style="stop-color:#f472b6"/>
+    </linearGradient>
+    <linearGradient id="l4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b"/>
+      <stop offset="100%" style="stop-color:#fbbf24"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <rect width="800" height="500" fill="url(#bg)"/>
+  
+  <!-- Title -->
+  <text x="400" y="35" text-anchor="middle" fill="#fff" font-size="18" font-weight="600">Mekanisme Filter Bubble: Dari Personalisasi Menjadi Isolasi Epistemik</text>
+  
+  <!-- Four layers -->
+  <!-- Layer 1: Data Collection -->
+  <rect x="40" y="70" width="160" height="180" rx="10" fill="#111" stroke="url(#l1)" stroke-width="2" filter="url(#glow)"/>
+  <text x="120" y="100" text-anchor="middle" fill="#3b82f6" font-size="12" font-weight="600">1. DATA</text>
+  <circle cx="120" cy="145" r="28" fill="url(#l1)" opacity="0.3"/>
+  <text x="120" y="152" text-anchor="middle" fill="#3b82f6" font-size="22">📊</text>
+  <text x="120" y="190" text-anchor="middle" fill="#fff" font-size="10" font-weight="500">Collection</text>
+  <text x="120" y="210" text-anchor="middle" fill="#888" font-size="9">Klik, scroll,</text>
+  <text x="120" y="225" text-anchor="middle" fill="#888" font-size="9"> dwell time</text>
+  <text x="120" y="240" text-anchor="middle" fill="#666" font-size="8">Setiap aksi direkam</text>
+  
+  <!-- Arrow 1-2 -->
+  <path d="M 210 160 L 240 160" stroke="#fff" stroke-width="2"/>
+  
+  <!-- Layer 2: Profiling -->
+  <rect x="250" y="70" width="160" height="180" rx="10" fill="#111" stroke="url(#l2)" stroke-width="2"/>
+  <text x="330" y="100" text-anchor="middle" fill="#8b5cf6" font-size="12" font-weight="600">2. PROFIL</text>
+  <circle cx="330" cy="145" r="28" fill="url(#l2)" opacity="0.3"/>
+  <text x="330" y="152" text-anchor="middle" fill="#8b5cf6" font-size="22">👤</text>
+  <text x="330" y="190" text-anchor="middle" fill="#fff" font-size="10" font-weight="500">Profiling</text>
+  <text x="330" y="210" text-anchor="middle" fill="#888" font-size="9">Psikografi,</text>
+  <text x="330" y="225" text-anchor="middle" fill="#888" font-size="9">interests</text>
+  <text x="330" y="240" text-anchor="middle" fill="#666" font-size="8">Label: climate_concern</text>
+  
+  <!-- Arrow 2-3 -->
+  <path d="M 420 160 L 450 160" stroke="#fff" stroke-width="2"/>
+  
+  <!-- Layer 3: Ranking -->
+  <rect x="460" y="70" width="160" height="180" rx="10" fill="#111" stroke="url(#l3)" stroke-width="2"/>
+  <text x="540" y="100" text-anchor="middle" fill="#ec4899" font-size="12" font-weight="600">3. RANKING</text>
+  <circle cx="540" cy="145" r="28" fill="url(#l3)" opacity="0.3"/>
+  <text x="540" y="152" text-anchor="middle" fill="#ec4899" font-size="22">⚖️</text>
+  <text x="540" y="190" text-anchor="middle" fill="#fff" font-size="10" font-weight="500">Ranking</text>
+  <text x="540" y="210" text-anchor="middle" fill="#888" font-size="9">Optimasi</text>
+  <text x="540" y="225" text-anchor="middle" fill="#888" font-size="9">engagement</text>
+  <text x="540" y="240" text-anchor="middle" fill="#666" font-size="8">Bukan kebenaran</text>
+  
+  <!-- Arrow 3-4 -->
+  <path d="M 630 160 L 660 160" stroke="#fff" stroke-width="2"/>
+  
+  <!-- Layer 4: Delivery -->
+  <rect x="670" y="70" width="90" height="180" rx="10" fill="#111" stroke="url(#l4)" stroke-width="2"/>
+  <text x="715" y="100" text-anchor="middle" fill="#f59e0b" font-size="11" font-weight="600">4. DELIVER</text>
+  <circle cx="715" cy="145" r="25" fill="url(#l4)" opacity="0.3"/>
+  <text x="715" y="152" text-anchor="middle" fill="#f59e0b" font-size="20">📱</text>
+  <text x="715" y="190" text-anchor="middle" fill="#fff" font-size="9" font-weight="500">Feed</text>
+  <text x="715" y="210" text-anchor="middle" fill="#888" font-size="8">Personalized</text>
+  <text x="715" y="225" text-anchor="middle" fill="#888" font-size="8">content</text>
+  <text x="715" y="240" text-anchor="middle" fill="#666" font-size="7">Infinite scroll</text>
+  
+  <!-- Bottom: Cycle -->
+  <rect x="40" y="290" width="720" height="190" rx="12" fill="#111" stroke="#333"/>
+  
+  <text x="400" y="320" text-anchor="middle" fill="#fff" font-size="14" font-weight="600">Dampak: Filter Bubble & Echo Chamber</text>
+  
+  <!-- Left side: Filter Bubble -->
+  <rect x="70" y="345" width="300" height="110" rx="8" fill="#0a0a0f" stroke="#3b82f6"/>
+  <text x="220" y="370" text-anchor="middle" fill="#3b82f6" font-size="11" font-weight="500">FILTER BUBBLE</text>
+  <text x="220" y="395" text-anchor="middle" fill="#ccc" font-size="9">Realitas tersaring</text>
+  <text x="220" y="415" text-anchor="middle" fill="#ccc" font-size="9">Hanya melihat apa</text>
+  <text x="220" y="435" text-anchor="middle" fill="#ccc" font-size="9">yang ingin dilihat</text>
+  
+  <!-- Right side: Echo Chamber -->
+  <rect x="430" y="345" width="300" height="110" rx="8" fill="#0a0a0f" stroke="#ec4899"/>
+  <text x="580" y="370" text-anchor="middle" fill="#ec4899" font-size="11" font-weight="500">ECHO CHAMBER</text>
+  <text x="580" y="395" text-anchor="middle" fill="#ccc" font-size="9">Opini diperkuat</text>
+  <text x="580" y="415" text-anchor="middle" fill="#ccc" font-size="9">Perspektif lain</text>
+  <text x="580" y="435" text-anchor="middle" fill="#ccc" font-size="9">Tidak pernah bertemu</text>
+  
+  <!-- Warning -->
+  <rect x="150" y="470" width="500" height="25" rx="5" fill="#1a1a2e" stroke="#ef4444"/>
+  <text x="400" y="487" text-anchor="middle" fill="#ef4444" font-size="10">⚠️ Hasil: Isolasi epistemik — tidak ada common ground</text>
+  
+  <!-- Feedback loop arrow -->
+  <path d="M 120 250 L 120 310" stroke="#3b82f6" stroke-width="2" stroke-dasharray="4,4"/>
+  <text x="90" y="285" text-anchor="middle" fill="#888" font-size="8">Feedback</text>
+</svg>
