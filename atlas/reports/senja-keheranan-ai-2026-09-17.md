@@ -107,7 +107,7 @@ Konsep "ma" juga berlaku dalam berpikir. Untuk truly memahami sesuatu, manusia m
 
 Penelitian dari University of Chicago tahun 2025 menunjukkan bahwa orang yang menghabiskan waktu minimal tiga puluh menit sehari tanpa stimulasi eksternal — tanpa ponsel, tanpa musik, tanpa percakapan — menunjukkan peningkatan kreativitas sebesar empat puluh persen dibandingkan mereka yang selalu terisi. Otak manusia, ketika dibiarkan menganggur, secara otomatis memasuki mode "default mode network" — jaringan neural yang bertanggung jawab untuk thinking abstrak, pemecahan masalah kreatif, dan integrasi pengalaman menjadi makna.
 
-AI, dengan menyediakan stimulasi konstan, secara tidak langsung mematikan jaringan ini. Kita tidak lagi bosan. Dan tanpa bosan, kita kehilangan salah satu mekanisme paling古老 manusia untuk menjadi kreatif.
+AI, dengan menyediakan stimulasi konstan, secara tidak langsung mematikan jaringan ini. Kita tidak lagi bosan. Dan tanpa bosan, kita kehilangan salah satu mekanisme paling kuno manusia untuk menjadi kreatif.
 
 ## Mencari Keheranan Kembali
 
