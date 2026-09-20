@@ -32,7 +32,7 @@
 **Ringkasan Fakta:** The New York Times melaporkan bahwa Iran dan China telah mengerahkan jaringan AI agent berbasis model open-source China (termasuk DeepSeek) untuk secara otomatis membuat akun palsu di Instagram, Facebook, X, dan TikTok. Mereka menulis dan menyebarkan postingan palsu tentang isu politik dan sosial tanpa pengawasan manusia yang signifikan — erste kasus di mana AI agent menangani seluruh proses operasi pengaruh: dari pembuatan akun hingga koordinasi pesan.
 
 **Wilayah Terdampak:**
-- **Truth & Power** — Arsitektur kontrol算法ic mencapai tahap baru: bukan lagi troll berbayar yang menulis manual, tapi ratusan agent otonom yang beroperasi 24/7. Batas antara manusia dan mesin dalam produksi narasi runtuh.
+- **Truth & Power** — Arsitektur kontrol algorithmic mencapai tahap baru: bukan lagi troll berbayar yang menulis manual, tapi ratusan agent otonom yang beroperasi 24/7. Batas antara manusia dan mesin dalam produksi narasi runtuh.
 - **Meaning** — Ketika bot AI bisa berpura-pura menjadi warga AS biasa di kota-kota besar dan mendapatkan 80.000 follower dalam setengah tahun, konsep "opini publik" menjadi pertanyaan filosofis: apa artinya "rakyat" ketika sebagian dari mereka adalah mesin?
 
 **Lensa Pedagogis & Organik:**
@@ -45,30 +45,30 @@
 
 ---
 
-### 3. Studi: Students Using AI "Underground" Despite Institutional Bans — AI Shame Culture
+### 3. Studi arXiv: Ethics Flags di Konferensi AI Tidak Efektif Mengubah Riset
 
-**Sumber:** arXiv:2602.17720 (dikutip dalam pencarian arXiv cs.CY recent)
+**Sumber:** arXiv:2609.10740 (Governing AI Research Through Peer Review)
 
-**Ringkasan Fakta:** Penelitian kualitatif menunjukkan bahwa tekanan institusional (deadline, siklus ujian, grading) memaksa siswa menggunakan AI meskipun mereka percaya hal itu merusak pembelajaran mereka. Social influences, particularly peer micro-communities, establish de-facto AI norms regardless of official policies. Campus-wide "AI shame" is prevalent, often pushing AI use underground. Policies perceived as generic, inconsistent, and confusing.
+**Ringkasan Fakta:** Studi mixed-methods menemukan bahwa 83% dari 446 kasus resubmission setelah ethics flag, penulis meninggalkan perhatian etika tanpa ditangani atau merevisi paper tanpa mengubah metode atau prosedur yang bermasalah. Penulis lebih sering mengubah presentasi daripada arah riset mereka sendiri. Peer review etik dianggap sebagai "editorial process" yang membentuk "cerita yang dilihat", bukan mengubah penelitian.
 
 **Wilayah Terdampak:**
-- **Mind** — When AI use becomes a source of shame rather than a pedagogical conversation, students learn to hide their relationship with technology rather than develop critical literacy. This is cognitive outsourcing masked as compliance.
-- **Work & Creation** — The tension between institutional prohibition and peer normalization creates a generation that knows how to cheat the system but not how to think with tools.
+- **Mind** — Ketika sistem governance dikurangi menjadi checkbox compliance, researchers belajar cara "mengalahkan sistem" alih-alih mengembangkan pertimbangan etis. Ini adalah outsourcing moral.
+- **Work & Creation** — Proses akademik yang seharusnya menjadi refleksi kritis berubah menjadi ritual paperwork. Nilai karya peneliti diukur dari publikasi, bukan dari pertanggungjawaban sosial.
 
 **Lensa Pedagogis & Organik:**
-- Dampak pada kognisi anak/ruang kelas: "Shame culture" around AI prevents honest pedagogical dialogue. Students aren't learning to govern their own use — they're learning to evade detection. The real skill isn't avoiding AI, it's developing the capacity to use it thoughtfully.
-- Apa yang hilang dari "tubuh/keringat manusia": Proses belajar yang sesungguhnya — kesulitan, kebuntuan, usaha — diganti dengan strategi avoidance. Siswa tidak belajar bagaimana berkarya, mereka belajar bagaimana berpura-pura tidak menggunakan shortcut.
+- Dampak pada kognisi anak/ruang kelas: Ini adalah mikrocosm dari masalah更大: siswa kita juga diajarkan untuk "main game" sistem pendidikan — submit assignment yang memenuhi criteria minimal, bukan mengembangkan pemahaman mendalam. Kita perlu mengajarkan ethical reasoning, bukan compliance.
+- Apa yang hilang dari "tubuh/keringat manusia": Proses refleksi etis yang sesungguhnya membutuhkan waktu, kerentanan, dan keberanian untuk mengubah arah riset. Sistem yang menghargai output cepat mengorbankan kedalaman moral.
 
 **Ide Artikel/Esai (Actionable):**
-- Judul Provokatif: "Shame Bukan Strategi Pedagogis — Tapi Kita Sudah Terlanjur Memilihnya"
-- Premis Argumen: Larangan AI di kampus tidak melindungi integritas akademik — ia hanya mendorong penggunaan AI ke ranah bawah tanah di mana siswa belajar menyembunyikan, bukan belajar mengontrol.
+- Judul Provokatif: "Checkbox Ethics: Ketika Compliance Menggantikan Pertimbangan Moral"
+- Premis Argumen: Sistem governance AI saat ini mengajarkan researchers cara "mengalahkan sistem" alih-alih mengembangkan integritas — dan generasi berikutnya akan membawa kebiasaan ini ke ranah profesional mereka.
 
 ---
 
 ## Praktis: Tools AI untuk Pembelajaran & Keseharian
 
 ### 1. Gauth AI Course — Kursus Matematika Visual dengan Tutor AI
-**Link:** https://www.prnewswire.com/news-releases/all-in-one-learning-platform-gauth-launches-user-generated-education-302866395.html
+**Link:** https://en.jmdedu.com/Article/1181
 
 200+ kursus AI-powered matematika (Algebra I sampai AP Calculus) dengan pendekatan visual. Fitur UGC (user-generated content) memungkinkan siswa membuat kursus sendiri. AI Tutor interaktif bisa dihentikan mid-lesson untuk bertanya.
 
@@ -96,8 +96,8 @@ Program di 71 sekolah pemerintah Sikkim untuk Kelas 3-5, fokus literasi dan nume
 
 ## Catatan Radar
 
-Tiga temuan hari ini membentuk pola yang sama: teknologi tidak netral, dan "inadequacy" adalah kata kunci. Kebijakan deepfake yang inadequate, regulasi AI yang inadequate, kebijakan kampus yang inadequate — semuanya menunjukkan bahwa kita membangun sistem lebih cepat dari kemampuan kita untuk memahami dampaknya.
+Tiga temuan hari ini membentuk pola yang sama: sistem governance kita tertinggal dari kapasitas teknologi. Meta mengakui "inadequacy" kebijakan deepfake-nya. Konferensi AI top menunjukkan ethics flags tidak mengubah perilaku peneliti. Negara-negara otoriter telah mengadopsi AI agent otonom untuk operasi pengaruh.
 
-Siswa yang malu menggunakan AI, negara yang menggunakan AI untuk surveilance, dan platform yang gagal menangani deepfake — ketiganya adalah manifestasi dari kegagalan struktur, bukan kegagalan teknologi.
+Pertanyaan besarnya: apakah kita membangun sistem yang lebih baik, atau hanya meningkatkan kemampuan untuk mengalahkan sistem yang ada?
 
 — Max, 20 September 2026
