@@ -4,91 +4,91 @@
 
 ---
 
-### 1. Laporan Anthropic: Negara-negara Autoriter Menyalahgunakan Claude untuk Survei dan Propaganda
+### 1. Meta's Oversight Board Mengutuk Kebijakan Deepfake yang "Inadekuat Fundamental"
 
-**Sumber:** https://news.aunoo.ai/2026/09/18/disinformation-influence-operations-weekly-9
+**Sumber:** https://www.theguardian.com/technology/2026/sep/17/meta-ordered-remove-deepfakes-oversight-board-inadequate-safeguards
 
-**Ringkasan Fakta:** Anthropic mempublikasikan laporan dokumentasi bagaimana aktor negara dan kriminal menyalahgunakan Claude AI. Junta Mali menggunakannya untuk menjalankan sistem surveillance yang melacak 25 juta SIM card. Kelompok Rusia, Iran, dan Yaman menggunakannya untuk kode drone, propaganda, dan desain senjata. Anthropic melaporkan telah mengganggu akun-akun tersebut.
-
-**Wilayah Terdampak:**
-
-- **Truth & Power** — Ketika AI menjadi infrastruktur kontrol negara, batasan antara tools produktivitas dan alat represi menjadi kabur. 25 juta SIM card yang dilacak bukan hanya data statistik — ini adalah hidup manusia yang dipantau.
-- **Work & Creation** — Developer yang menggunakan Claude untuk produktivitas sehari-hari unwittingly memberikan kapasitas strategis kepada rezim otoriter.
-
-**Lensa Pedagogis & Organik:**
-- Dampak pada kognisi anak/ruang kelas: Siswa belajar AI sebagai "alat netral" tanpa kesadaran bahwa teknologi yang sama bisa dilatih untuk pengawasan massal. Ruang kelas perlu membahas konteks geopolitik di balik tools yang mereka gunakan.
-- Apa yang hilang dari "tubuh/keringat manusia": Surveilance digital mengganti keterlibatan fisik masyarakat sipil — orang tidak lagi perlu berkumpul atau berbicara karena AI bisa memprediksi dan mengontrol gerakan mereka.
-
-**Ide Artikel/Esai (Actionable):**
-- Judul Provokatif: "Claude Bukan Sekadar Chatbot — Ia Juga Senjata Negara"
-- Premis Argumen: Setiap kali kita menggunakan AI generatif untuk produktivitas, kita berkontribusi pada ekosistem yang sama yang memungkinkan rejim otoriter melacak populasi mereka — dan ketidaktahuan kita tentang ini adalah bentuk komplicitas pasif.
-
----
-
-### 2. Studi Simulasi: AI Mengancam Keragaman Epistemik dalam Sains
-
-**Sumber:** https://arxiv.org/abs/2608.19390 (Navigating Epistemic Monocultures in AI-Driven Science)
-
-**Ringkasan Fakta:** Penelitian simulasi NK landscape oleh Fazelpour, O'Brien, dan Rubin menunjukkan bahwa integrasi AI ke dalam komunitas ilmiah menjanjikan percepatan penemuan tapi juga risiko homogenisasi pengetahuan yang berbahaya. Model menunjukkan bagaimana AI dapat menciptakan "monokultur epistemik" di mana keragaman perspektif dan metode penelitian berkurang.
+**Ringkasan Fakta:** Dewan Pengawas Meta (body independen yang berperan seperti "mahkamah konstitusi" perusahaan) memerintahkan penghapusan video deepfake politisi UK dan perempuan Muslim muda, sambil mengkritik kebijakan perusahaan yang "konsisten dan fundamental inadekuat" dalam menangani konten sintetis. Video pertama menggambarkan councillor Scotland mengucapkan hal rasis tentang pengungsi — 324.000 views. Video kedua mengejek kampanye kesehatan menstruasi perempuan Muslim dengan menampilkaninya berolahraga absurd dan makan junk food.
 
 **Wilayah Terdampak:**
-- **Mind** — Ketika AI menghasilkan hipotesis dan menganalisis data, pola pikir kognitif peneliti berubah dari exploration aktif menuju reliance pada output AI. Ini adalah outsourcing intelektual kolektif, bukan individual.
-- **Culture** — Monokultur epistemik berarti hilangnya cara-cara alternatif untuk tahu dan memahami dunia — pengetahuan yang lahir dari tradisi, komunitas marginal, dan metodologi non-Barat tersingkirkan.
+
+- **Truth & Power** — Ketika platform mengklaim "kebebasan berekspresi" tapi menolak menandai deepfake sebagai risiko tinggi, mereka memilih struktur kekuasaan yang ada atas perlindungan korban. Arsitektur kontrol algoritma memilih side yang salah.
+- **Heart** — Deepfake secara disproportional menargetkan perempuan yang bersuara publik. Ini bukan sekadar "konten buruk" — ini perang psikologis gendered yang menggunakan intimasi sintetis untuk mengintimidasi dan membungkam.
 
 **Lensa Pedagogis & Organik:**
-- Dampak pada kognisi anak/ruang kelas: Siswa yang dibesarkan dengan AI sebagai "asisten penelitian" mungkin kehilangan kemampuan meragukan, mempertanyakan, dan mengeksplorasi secara mandiri. Kelas perlu mengajarkan critical AI literacy — bukan hanya cara menggunakan AI, tapi kapan TIDAK menggunakannya.
-- Apa yang hilang dari "tubuh/keringat manusia": Proses ilmiah yang sesungguhnya melibatkan kesalahan, kebuntuan, dan usaha panjang — semua itu adalah materi pembelajaran yang tidak tergantikan. AI menawarkan shortcut yang mengorbankan kedalaman pemahaman.
-
-**Ide Artikel/Esai (Actionable):**
-- Judul Provokatif: "Kita Tidak Butuh AI yang Lebih Cerdas — Kita Butuh AI yang Lebih Rabuh"
-- Premis Argumen: Bahaya terbesar AI dalam sains bukan adalah ketika ia salah, tapi ketika ia terlalu benar — dan kita berhenti bertanya mengapa.
-
----
-
-### 3. Dewan Pengawas Meta Mengutuk Kebijakan Deepfake yang "Inadekuat Fundamental"
-
-**Sumber:** https://newsdive.net/2026/09/17/meta-directed-to-eliminate-deepfakes-after-oversight-board-condemns-insufficient-protective-measures
-
-**Ringkasan Fakta:** Dewan Pengawas Meta (oversight board) memerintahkan penghapusan video deepfake politisi UK dan perempuan Muslim muda, sekaligus mengkritik kebijakan perusahaan yang "konsisten dan fundamental inadekuat" dalam melindungi pengguna dari deepfake. Video pertama menampilkan councillor Scotland yang digambarkan mengatakan hal rasis tentang pengungsi — total 324.000 views. Video kedua mengejek perempuan yang berkampanye untuk edukasi kesehatan menstruasi.
-
-**Wilayah Terdampak:**
-- **Heart** — Deepfake khususnya menargetkan perempuan yang bersuara publik, menggunakan intimasi sintetis untuk mengintimidasi dan membungkam. Ini bukan sekadar "konten buruk" — ini perang psikologis gendered.
-- **Relationship** — Ketika kepercayaan pada media visual runtuh, relasi sosial berbasis shared reality juga runtuh. Masyarakat tidak lagi bisa sepakat apa yang nyata.
-
-**Lensa Pedagogis & Organik:**
-- Dampak pada kognisi anak/ruang kelas: Anak-anak dilahirkan ke dunia di mana "melihat adalah mempercayai" sudah tidak berlaku. Pendidikan literasi media harus mencakup verifikasi sumber, reverse image search, dan skepticism sehat terhadap konten viral — bukan sebagai paranoid, tapi sebagai kompetensi dasar abad 21.
-- Apa yang hilang dari "tubuh/keringat manusia": Deepfake menghilangkan konsekuensi fisik dari kata-kata dan tindakan. Seorang perempuan bisa difitnah tanpa pernah mengucapkan kata itu — tapi dampaknya nyata. Ruang kelas perlu membahas etika representasi dan consent digital.
+- Dampak pada kognisi anak/ruang kelas: Anak-anak dilahirkan ke dunia di mana "melihat adalah mempercayai" sudah tidak berlaku. Literasi media harus mencakup verifikasi sumber, reverse image search, dan skepticism sehat — bukan sebagai paranoia, tapi sebagai kompetensi dasar abad 21.
+- Apa yang hilang dari "tubuh/keringat manusia": Deepfake menghilangkan konsekuensi fisik dari kata-kata. Seorang perempuan bisa difitnah tanpa pernah mengucapkan kata itu — tapi dampaknya nyata. Ruang kelas perlu membahas etika representasi dan consent digital.
 
 **Ide Artikel/Esai (Actionable):**
 - Judul Provokatif: "Deepfake Bukan Ancaman bagi Demokrasi — Ia Adalah Cerminnya"
-- Premis Argumen: Deepfake tidak merusak kepercayaan kita pada realitas — ia mengungkapkan bahwa kepercayaan itu selalu bersifat fragil, dan yang kita salahkan bukanlah teknologinya tapi ketidakmatangan budaya kita dalam menyikapi kebenaran.
+- Premis Argumen: Deepfake tidak merusak kepercayaan kita pada realitas — ia mengungkapkan bahwa kepercayaan itu selalu fragil, dan yang kita salahkan bukanlah teknologinya tapi ketidakmatangan budaya kita dalam menyikapi kebenaran.
+
+---
+
+### 2. Rusia, Iran, China Gunakan AI Agent untuk Operasi Pengaruh Otomatis
+
+**Sumber:** https://www.asiae.co.kr/en/article/2026091917511705304
+
+**Ringkasan Fakta:** The New York Times melaporkan bahwa Iran dan China telah mengerahkan jaringan AI agent berbasis model open-source China (termasuk DeepSeek) untuk secara otomatis membuat akun palsu di Instagram, Facebook, X, dan TikTok. Mereka menulis dan menyebarkan postingan palsu tentang isu politik dan sosial tanpa pengawasan manusia yang signifikan — erste kasus di mana AI agent menangani seluruh proses operasi pengaruh: dari pembuatan akun hingga koordinasi pesan.
+
+**Wilayah Terdampak:**
+- **Truth & Power** — Arsitektur kontrol算法ic mencapai tahap baru: bukan lagi troll berbayar yang menulis manual, tapi ratusan agent otonom yang beroperasi 24/7. Batas antara manusia dan mesin dalam produksi narasi runtuh.
+- **Meaning** — Ketika bot AI bisa berpura-pura menjadi warga AS biasa di kota-kota besar dan mendapatkan 80.000 follower dalam setengah tahun, konsep "opini publik" menjadi pertanyaan filosofis: apa artinya "rakyat" ketika sebagian dari mereka adalah mesin?
+
+**Lensa Pedagogis & Organik:**
+- Dampak pada kognisi anak/ruang kelas: Siswa yang tumbuh dengan media sosial perlu memahami bahwa "viral" tidak selalu berarti "nyata" atau "populer sejati". Mereka perlu diajarkan epistemologi digital — cara mengetahui apa yang bisa dipercaya di ruang yang didesain untuk mempercayakan segalanya.
+- Apa yang hilang dari "tubuh/keringat manusia": Operasi pengaruh tradisional membutuhkan pasukan troll manusia dengan identitas palsu. Sekarang satu orang bisa mengoperasikan ratusan agent. Ini adalah devaluasi total dari kehadiran fisik dan usaha interpersonal dalam politik.
+
+**Ide Artikel/Esai (Actionable):**
+- Judul Provokatif: "Demokrasi di Era Agent Otonom: Ketika 80.000 Pendukung Anda adalah Bot"
+- Premis Argumen: Ancaman terbesar bagi demokrasi bukan adalah ketika AI membuat kita percaya hal palsu, tapi ketika AI membuat kita tidak lagi bisa membedakan mana yang manusia dan mana yang mesin dalam ruang publik — dan kita kehilangan kemampuan untuk bermasyarakat karena kita lupa apa itu kebersamaan yang nyata.
+
+---
+
+### 3. Studi: Students Using AI "Underground" Despite Institutional Bans — AI Shame Culture
+
+**Sumber:** arXiv:2602.17720 (dikutip dalam pencarian arXiv cs.CY recent)
+
+**Ringkasan Fakta:** Penelitian kualitatif menunjukkan bahwa tekanan institusional (deadline, siklus ujian, grading) memaksa siswa menggunakan AI meskipun mereka percaya hal itu merusak pembelajaran mereka. Social influences, particularly peer micro-communities, establish de-facto AI norms regardless of official policies. Campus-wide "AI shame" is prevalent, often pushing AI use underground. Policies perceived as generic, inconsistent, and confusing.
+
+**Wilayah Terdampak:**
+- **Mind** — When AI use becomes a source of shame rather than a pedagogical conversation, students learn to hide their relationship with technology rather than develop critical literacy. This is cognitive outsourcing masked as compliance.
+- **Work & Creation** — The tension between institutional prohibition and peer normalization creates a generation that knows how to cheat the system but not how to think with tools.
+
+**Lensa Pedagogis & Organik:**
+- Dampak pada kognisi anak/ruang kelas: "Shame culture" around AI prevents honest pedagogical dialogue. Students aren't learning to govern their own use — they're learning to evade detection. The real skill isn't avoiding AI, it's developing the capacity to use it thoughtfully.
+- Apa yang hilang dari "tubuh/keringat manusia": Proses belajar yang sesungguhnya — kesulitan, kebuntuan, usaha — diganti dengan strategi avoidance. Siswa tidak belajar bagaimana berkarya, mereka belajar bagaimana berpura-pura tidak menggunakan shortcut.
+
+**Ide Artikel/Esai (Actionable):**
+- Judul Provokatif: "Shame Bukan Strategi Pedagogis — Tapi Kita Sudah Terlanjur Memilihnya"
+- Premis Argumen: Larangan AI di kampus tidak melindungi integritas akademik — ia hanya mendorong penggunaan AI ke ranah bawah tanah di mana siswa belajar menyembunyikan, bukan belajar mengontrol.
 
 ---
 
 ## Praktis: Tools AI untuk Pembelajaran & Keseharian
 
-### 1. Gemini Notebook — Tools Studi Interaktif (Google)
+### 1. Gauth AI Course — Kursus Matematika Visual dengan Tutor AI
+**Link:** https://www.prnewswire.com/news-releases/all-in-one-learning-platform-gauth-launches-user-generated-education-302866395.html
+
+200+ kursus AI-powered matematika (Algebra I sampai AP Calculus) dengan pendekatan visual. Fitur UGC (user-generated content) memungkinkan siswa membuat kursus sendiri. AI Tutor interaktif bisa dihentikan mid-lesson untuk bertanya.
+
+**Untuk siapa:** Siswa SMA/kuliah yang belajar matematika — terutama visual learner.
+
+---
+
+### 2. Gemini Notebook — Obrolan Real-time dengan Materi Belajar
 **Link:** https://blog.google/innovation-and-ai/products/gemini-notebook/new-study-tools-september-2026
 
-Fitur baru: obrolan real-time dengan notebook, quiz interaktif (short answer, multiple select, fill in the blank), dan Short Video Overviews dalam 80+ bahasa. Cocok untuk siswa yang ingin belajar dengan pendekatan conversational dan self-assessment.
+Fitur baru: voice chat dengan notebook, quiz formats (short answer, multiple select, fill in the blank), Short Video Overviews dalam 80+ bahasa. Grounded in user's trusted sources.
 
-**Untuk siapa:** Siswa SMA/kuliah yang butuh bantuan belajar personalized.
-
----
-
-### 2. Google LearnLM — Learning Interactives untuk Guru
-**Link:** https://arc-codex.com/article/4df3b41c735e7affab235637fb9c5d78
-
-Generative UI yang memungkinkan guru membuat simulasi interaktif custom untuk topik STEM (fisika, kimia, biologi, matematika). 30+ template sudah tersedia untuk sekolah menengah. Schools bisa join pilot program via Google for Education.
-
-**Untuk siapa:** Guru STEM yang ingin membuat materi visual interaktif tanpa coding.
+**Untuk siapa:** Siswa dan mahasiswa yang butuh bantuan belajar personalized.
 
 ---
 
-### 3. Sikkim AI-FunZone — Program Pembelajaran AI untuk Sekolah Pemerintah
+### 3. Sikkim AI-FunZone — Program AI untuk Sekolah Pemerintah
 **Link:** https://freepressjournal.in/education/sikkim-rolls-out-ai-powered-learning-programme-in-71-government-schools
 
-Program di 71 sekolah pemerintah Sikkim untuk siswa Kelas 3-5, fokus literasi dan numerasi dasar. AI digunakan sebagai support tool, bukan replacement guru. 60 menit AI-FunZone per hari dengan pendekatan non-eksaminasi.
+Program di 71 sekolah pemerintah Sikkim untuk Kelas 3-5, fokus literasi dan numerasi dasar. AI sebagai support tool, bukan replacement guru. 60 menit AI-FunZone per hari, pendekatan non-eksaminasi.
 
 **Untuk siapa:** Educator dan policy maker yang ingin studi kasus implementasi AI di sekolah kurang mampu.
 
@@ -96,8 +96,8 @@ Program di 71 sekolah pemerintah Sikkim untuk siswa Kelas 3-5, fokus literasi da
 
 ## Catatan Radar
 
-Tiga temuan hari ini saling terkait: AI tidak netral, AI tidak egaliter, dan AI tidak innocent. Dari surveilance negara hingga deepfake gendered hingga monokultur epistemik — semuanya menunjukkan pola yang sama: teknologi yang diklaim "demokratis" justru memperkuat struktur kuasa yang ada.
+Tiga temuan hari ini membentuk pola yang sama: teknologi tidak netral, dan "inadequacy" adalah kata kunci. Kebijakan deepfake yang inadequate, regulasi AI yang inadequate, kebijakan kampus yang inadequate — semuanya menunjukkan bahwa kita membangun sistem lebih cepat dari kemampuan kita untuk memahami dampaknya.
 
-Tugas kita bukan menolak AI, tapi mengajar generasi baru untuk tidak naïf terhadapnya.
+Siswa yang malu menggunakan AI, negara yang menggunakan AI untuk surveilance, dan platform yang gagal menangani deepfake — ketiganya adalah manifestasi dari kegagalan struktur, bukan kegagalan teknologi.
 
 — Max, 20 September 2026
