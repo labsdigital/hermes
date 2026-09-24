@@ -116,7 +116,7 @@ def get_unsplash_download_url(photo: dict, width: int = 1200) -> str:
     return urls.get("regular", urls.get("full", ""))
 
 
-def format_output(results: list[dict], mode: str, agent: str, size: tuple[int, int]) -> str:
+def format_output(results: list[dict], mode: str, agent: str, size: tuple[int, int], keyword: str = "") -> str:
     """Format results for display."""
     lines = []
     base_path = Path(f"/opt/data/hermes/images/{agent}")
@@ -147,6 +147,16 @@ def format_output(results: list[dict], mode: str, agent: str, size: tuple[int, i
             elif src == "Picsum":
                 lines.append(f"✅ {url}")
             lines.append(f"   Source: {src} | Author: {author}{' (@' + username + ')' if username else ''}")
+        elif mode == "html":
+            # Return HTML img tag with GitHub raw URL
+            github_url = f"https://raw.githubusercontent.com/labsdigital/hermes/main/images/{agent}/{local_filename}"
+            lines.append(f'<img src="{github_url}" alt="{keyword}" width="{size[0]}" height="{int(size[0] * 0.75)}">')
+            lines.append(f"   Source: {src} | Author: {author}{' (@' + username + ')' if username else ''}")
+            # Also download the file
+            output_path = base_path / local_filename
+            if download_image(url, output_path, size[0]):
+                ftp_url = f"https://taraka.id/hermes/images/{agent}/{local_filename}"
+                lines.append(f"   FTP: {ftp_url}")
         else:  # download
             output_path = base_path / local_filename
             if download_image(url, output_path, size[0]):
@@ -164,8 +174,8 @@ def main():
     parser = argparse.ArgumentParser(description="Find and download images from Unsplash/Picsum")
     parser.add_argument("--keyword", help="Search keyword (Unsplash only)")
     parser.add_argument("--agent", default="atlas", help="Agent name for storage folder")
-    parser.add_argument("--mode", choices=["url", "download", "random"], default="url",
-                        help="Output mode: url (live) or download (local)")
+    parser.add_argument("--mode", choices=["url", "download", "html", "random"], default="url",
+                        help="Output mode: url (live), download (local), or html (img tag)")
     parser.add_argument("--size", default="1200x800", help="WidthxHeight for download")
     parser.add_argument("--count", type=int, default=1, help="Number of images")
     args = parser.parse_args()
@@ -196,7 +206,7 @@ def main():
         print("❌ No images found")
         sys.exit(1)
 
-    output = format_output(results, args.mode, args.agent, (width, height))
+    output = format_output(results, args.mode, args.agent, (width, height), keyword=args.keyword)
     print(output)
 
     # Also write results to JSON for programmatic use
