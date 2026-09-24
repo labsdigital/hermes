@@ -80,23 +80,24 @@ Struktur esai:
 ### 5. Publish (GitHub-First)
 ```bash
 # Step 1: Commit & push ke GitHub DULU
-git add atlas/reports/*.md atlas/reports/*.png atlas/reports/*.svg
+git add atlas/reports/*.md atlas/reports/*.png atlas/reports/*.svg images/atlas/*.jpg
 git commit -m "Atlas: <judul esai>"
 git push origin main
 
-# Step 2: Upload ke FTP
-python3 shared/ftp_upload.py atlas/reports/<file>.md /atlas/
-python3 shared/ftp_upload.py atlas/reports/<file>.png /atlas/ 2>/dev/null || true
-python3 shared/ftp_upload.py atlas/reports/<file>.svg /atlas/ 2>/dev/null || true
-
-# Step 3: Kirim email ke blog
-python3 atlas/scripts/send_email.py --article atlas/reports/<file>.md
-
-# Step 4: Convert MD to HTML dan upload ke FTP
+# Step 2: Convert MD to HTML
 python3 atlas/scripts/publish_article.py <file>
 
-# Upload HTML ke FTP
+# Step 3: Upload ke FTP
+python3 shared/ftp_upload.py atlas/reports/<file>.md /atlas/
 python3 shared/ftp_upload.py atlas/reports/<file>.html /atlas/
+python3 shared/ftp_upload.py atlas/reports/<file>.png /atlas/ 2>/dev/null || true
+python3 shared/ftp_upload.py atlas/reports/<file>.svg /atlas/ 2>/dev/null || true
+python3 shared/ftp_upload.py images/atlas/*.jpg /images/atlas/ 2>/dev/null || true
+```
+
+⚠️ **EMAIL HANYA MANUAL** — Jangan kirim email otomatis di workflow. Kirim email hanya ketika user secara eksplisit meminta:
+```bash
+python3 atlas/scripts/send_email.py --article atlas/reports/<file>.md
 ```
 
 ### 6. Verifikasi
