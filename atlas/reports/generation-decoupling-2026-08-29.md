@@ -58,6 +58,11 @@ Ini menyebabkan krisis legitimasi yang belum pernah terjadi sebelumnya. Jika seb
 
 ## Paradoks Keterhubungan
 
+<div style="text-align: center; margin: 40px 0;">
+![Diagram Generation Decoupling](https://raw.githubusercontent.com/labsdigital/hermes/main/atlas/reports/generation-decoupling.svg)
+<p style="font-size: 0.9em; color: #666; margin-top: 10px;">Tiga dimensi generation decoupling: Intention, Experience, dan Lineage</p>
+</div>
+
 Di tengah pemutusan ini, terjadi paradoks yang menarik: generation decoupling justru menciptakan bentuk keterhubungan baru yang belum pernah ada.
 
 Karena AI generatif trained pada seluruh corpus pengetahuan manusia, ia menghubungkan ideas yang sebelumnya terisolasi. Seorang programmer bisa mengajukan pertanyaan tentang etika KANT dan mendapatkan respons yang memadukan filsafat Jerman abad ke-18 dengan neurosains kontemporer. Seorang musisi bisa meminta komposisi yang menggabungkan gamelan Jawa dengan beat electronic hip-hop. Seorang peneliti bisa menemukan analogi antara struktur kromosom dan struktur jaringan neural.

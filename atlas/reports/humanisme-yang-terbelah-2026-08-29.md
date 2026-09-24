@@ -26,6 +26,11 @@ Mereka bukan Luddite yang menolak teknologi. Mereka menggunakan ponsel, minum ob
 
 ## Pertarungan yang Sudah Dimulai
 
+<div style="text-align: center; margin: 40px 0;">
+![Diagram Humanisme yang Terbelah](https://raw.githubusercontent.com/labsdigital/hermes/main/atlas/reports/humanisme-yang-terbelah.svg)
+<p style="font-size: 0.9em; color: #666; margin-top: 10px;">Perbandingan dua aliran humanisme: Transhumanis vs Pro-Humanis</p>
+</div>
+
 Perpecahan ini bukan lagi debat akademis di ruang kuliah. Ia sudah merasuk ke kebijakan, ekonomi, dan kehidupan sehari-hari.
 
 Di Silicon Valley, startup startup seperti Neuralink dan Synchron sedang menguji implan otak yang memungkinkan manusia mengendalikan komputer dengan pikiran. Pada 2024, seorang pasien paralump telah bisa mengetik tiga puluh kata per menit hanya dengan berpikir. Ini bukan fiksi ilmiah — ini prototipe. Dan setiap prototipe yang berhasil menarik lebih banyak pendanaan, lebih banyak peneliti, lebih banyak harapan.
