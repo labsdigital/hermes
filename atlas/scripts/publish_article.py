@@ -29,10 +29,15 @@ def md_to_html(md_text: str, use_agents_repo: bool = True) -> tuple[str, str]:
         base_url = "https://labsdigital.github.io/hermes/atlas/reports"
     
     for line in lines:
-        # Handle code blocks
+        # Handle code blocks and SVG blocks
         if line.strip().startswith('```'):
+            lang = line.strip()[3:].strip()
             if not in_code_block and not in_svg_block:
-                in_code_block = True
+                if lang == 'svg':
+                    in_svg_block = True
+                    svg_content = ''
+                else:
+                    in_code_block = True
                 continue
             elif in_svg_block:
                 # End of SVG block - close div and add inline SVG

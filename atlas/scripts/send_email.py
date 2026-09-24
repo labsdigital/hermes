@@ -55,10 +55,10 @@ def md_to_html(md_text: str) -> str:
             continue
 
         # Restore SVG placeholders as inline SVG
-        if para.startswith('__SVG_PLACEHOLDER_'):
-            idx = int(para.replace('__SVG_PLACEHOLDER_', '').replace('__', ''))
-            svg_code = svg_placeholders[idx]
-            result.append(f'<div class="illustration">{svg_code}</div>')
+        if '__SVG_PLACEHOLDER_' in para:
+            for j, ph in enumerate(svg_placeholders):
+                para = para.replace(f'__SVG_PLACEHOLDER_{j}__', f'<div class="illustration">{ph}</div>')
+            result.append(para)
             continue
 
         # Handle headers
