@@ -31,8 +31,16 @@ def md_to_html(md_text: str) -> str:
     svg_placeholders = []
     def replace_svg(match):
         svg_code = match.group(1)
+        # Strip XML declaration
+        svg_lines = svg_code.split('\n')
+        cleaned_lines = []
+        for svg_line in svg_lines:
+            if svg_line.strip().startswith('<?xml'):
+                continue
+            cleaned_lines.append(svg_line)
+        svg_clean = '\n'.join(cleaned_lines)
         placeholder = f"__SVG_PLACEHOLDER_{len(svg_placeholders)}__"
-        svg_placeholders.append(svg_code)
+        svg_placeholders.append(svg_clean)
         return placeholder
 
     # Replace ```svg ... ``` blocks with placeholders

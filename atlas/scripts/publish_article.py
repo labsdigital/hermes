@@ -37,8 +37,15 @@ def md_to_html(md_text: str, use_agents_repo: bool = True) -> tuple[str, str]:
             elif in_svg_block:
                 # End of SVG block - close div and add inline SVG
                 in_svg_block = False
-                svg_content += '\n</div>'
-                html_lines.append(f'<div class="svg-diagram">{svg_content}</div>')
+                # Strip XML declaration if present
+                svg_lines = svg_content.split('\n')
+                cleaned_svg = []
+                for svg_line in svg_lines:
+                    if svg_line.strip().startswith('<?xml'):
+                        continue
+                    cleaned_svg.append(svg_line)
+                svg_clean = '\n'.join(cleaned_svg)
+                html_lines.append(f'<div class="svg-diagram">{svg_clean}</div>')
                 continue
             elif in_code_block:
                 in_code_block = False
@@ -97,6 +104,8 @@ def md_to_html(md_text: str, use_agents_repo: bool = True) -> tuple[str, str]:
             img_match = re.findall(r'!\[([^\]]*)\]\(([^)]+)\)', line)
             if img_match:
                 for alt, url in img_match:
+                    # Clean up URL - remove any double https
+                    url = url.replace('https://https://', 'https://')
                     # Convert URL to raw GitHub URL if needed
                     if 'labsdigital.github.io/hermes' in url:
                         url = url.replace('labsdigital.github.io/hermes/atlas/', 
