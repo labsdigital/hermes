@@ -1,0 +1,255 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Diagram Tahapan Cinta Ilahi Rumi: Syauq, Wahdah, Jam', Fanā">
+  <title>Tahapan Cinta Ilahi dalam Perspektif Rumi</title>
+  <desc>Diagram spiral menunjukkan empat tahapan cinta ilahi: Syauq (kerinduan), Wahdah (kesatuan), Jam' (penggabungan), dan Fanā (penghancuran diri) menurut Masnavi Rumi.</desc>
+
+  <defs>
+    <!-- Gradasi latar belakang -->
+    <radialGradient id="bgGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#1a0a2e"/>
+      <stop offset="100%" stop-color="#0a0514"/>
+    </radialGradient>
+
+    <!-- Gradasi untuk api/sinar pusat -->
+    <radialGradient id="fireGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFD700"/>
+      <stop offset="40%" stop-color="#FF8C00"/>
+      <stop offset="80%" stop-color="#FF4500"/>
+      <stop offset="100%" stop-color="#8B0000"/>
+    </radialGradient>
+
+    <!-- Gradasi Syauq - Biru Lembut -->
+    <linearGradient id="gradSyauq" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#89CFF0"/>
+      <stop offset="100%" stop-color="#4A90D9"/>
+    </linearGradient>
+
+    <!-- Gradasi Wahdah - Hijau Sejuk -->
+    <linearGradient id="gradWahdah" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#82E0AA"/>
+      <stop offset="100%" stop-color="#28B463"/>
+    </linearGradient>
+
+    <!-- Gradasi Jam' - Oranye Hangat -->
+    <linearGradient id="gradJamm" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5B041"/>
+      <stop offset="100%" stop-color="#E67E22"/>
+    </linearGradient>
+
+    <!-- Gradasi Fanā - Merah Dalam -->
+    <linearGradient id="gradFana" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E74C3C"/>
+      <stop offset="100%" stop-color="#922B21"/>
+    </linearGradient>
+
+    <!-- Gradasi garis spiral -->
+    <linearGradient id="spiralGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#89CFF0"/>
+      <stop offset="33%" stop-color="#28B463"/>
+      <stop offset="66%" stop-color="#E67E22"/>
+      <stop offset="100%" stop-color="#E74C3C"/>
+    </linearGradient>
+
+    <!-- Glow filter untuk api pusat -->
+    <filter id="glowFire" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Glow filter untuk lingkaran -->
+    <filter id="glowCircle" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Bayangan teks -->
+    <filter id="textShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="1" dy="1" stdDeviation="2" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Latar Belakang -->
+  <rect width="800" height="600" fill="url(#bgGrad)" rx="12"/>
+
+  <!-- Bintang-bintang latar -->
+  <g fill="white" opacity="0.3">
+    <circle cx="50" cy="50" r="1"/><circle cx="120" cy="80" r="0.8"/>
+    <circle cx="200" cy="30" r="1.2"/><circle cx="350" cy="60" r="0.7"/>
+    <circle cx="500" cy="40" r="1"/><circle cx="650" cy="25" r="0.9"/>
+    <circle cx="720" cy="70" r="1.1"/><circle cx="780" cy="55" r="0.6"/>
+    <circle cx="30" cy="150" r="0.8"/><circle cx="90" cy="200" r="1"/>
+    <circle cx="700" cy="180" r="0.7"/><circle cx="760" cy="220" r="1"/>
+    <circle cx="60" cy="350" r="0.9"/><circle cx="150" cy="400" r="0.6"/>
+    <circle cx="720" cy="380" r="1.1"/><circle cx="770" cy="430" r="0.8"/>
+    <circle cx="40" cy="500" r="1"/><circle cx="100" cy="560" r="0.7"/>
+    <circle cx="750" cy="540" r="1.2"/><circle cx="300" cy="20" r="0.5"/>
+    <circle cx="450" cy="580" r="0.9"/><circle cx="600" cy="560" r="0.6"/>
+  </g>
+
+  <!-- Judul -->
+  <text x="400" y="42" text-anchor="middle" font-family="Georgia, serif" font-size="22" font-weight="bold" fill="#FFD700" filter="url(#textShadow)">ٱلْمَحَبَّةُ ٱلْإِلَٰهِيَّةُ</text>
+  <text x="400" y="68" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#C8A2C8" font-style="italic">Tahapan Cinta Ilahi dalam Perspektif Rumi</text>
+
+  <!-- Garis pemisah dekoratif -->
+  <line x1="100" y1="80" x2="700" y2="80" stroke="#C8A2C8" stroke-width="0.5" opacity="0.5"/>
+  <circle cx="400" cy="80" r="3" fill="#C8A2C8" opacity="0.5"/>
+
+  <!-- Lingkaran spiral - 4 tahap konsentris dari luar ke dalam -->
+  <!-- Lingkaran 1: Syauq (paling luar) -->
+  <circle cx="400" cy="320" r="220" fill="none" stroke="url(#gradSyauq)" stroke-width="2.5" stroke-dasharray="8,4" opacity="0.7" filter="url(#glowCircle)"/>
+  <!-- Lingkaran 2: Wahdah -->
+  <circle cx="400" cy="320" r="160" fill="none" stroke="url(#gradWahdah)" stroke-width="2.5" stroke-dasharray="6,4" opacity="0.75" filter="url(#glowCircle)"/>
+  <!-- Lingkaran 3: Jam' -->
+  <circle cx="400" cy="320" r="105" fill="none" stroke="url(#gradJamm)" stroke-width="2.5" stroke-dasharray="5,3" opacity="0.8" filter="url(#glowCircle)"/>
+  <!-- Lingkaran 4: Fanā (paling dalam, sebelum api) -->
+  <circle cx="400" cy="320" r="55" fill="none" stroke="url(#gradFana)" stroke-width="2.5" stroke-dasharray="4,3" opacity="0.85" filter="url(#glowCircle)"/>
+
+  <!-- Api pusat - Fanā tertinggi -->
+  <circle cx="400" cy="320" r="30" fill="url(#fireGrad)" filter="url(#glowFire)">
+    <animate attributeName="r" values="28;32;28" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="400" cy="320" r="16" fill="#FFD700" opacity="0.9">
+    <animate attributeName="opacity" values="0.9;1;0.9" dur="1.5s" repeatCount="indefinite"/>
+  </circle>
+  <text x="400" y="326" text-anchor="middle" font-family="Georgia, serif" font-size="10" font-weight="bold" fill="#1a0a2e">فنا</text>
+
+  <!-- Lingkaran tahap dengan label -->
+
+  <!-- TAHAP 1: Syauq — Posisi: kiri atas -->
+  <g transform="translate(180, 145)">
+    <circle r="42" fill="url(#gradSyauq)" opacity="0.15"/>
+    <circle r="42" fill="none" stroke="url(#gradSyauq)" stroke-width="2.5" filter="url(#glowCircle)"/>
+    <text y="-8" text-anchor="middle" font-family="Georgia, serif" font-size="20" font-weight="bold" fill="#89CFF0">١</text>
+    <text y="12" text-anchor="middle" font-family="Georgia, serif" font-size="15" font-weight="bold" fill="#89CFF0">Syauq</text>
+    <text y="28" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#AED6F1">شوق</text>
+    <text y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#85C1E9">Kerinduan</text>
+  </g>
+
+  <!-- Connector Syauq → Wahdah -->
+  <path d="M 220 185 Q 260 200 295 225" fill="none" stroke="#28B463" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#arrowGreen)"/>
+  <defs>
+    <marker id="arrowGreen" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L6,3 Z" fill="#28B463"/>
+    </marker>
+  </defs>
+
+  <!-- TAHAP 2: Wahdah — Posisi: kanan atas -->
+  <g transform="translate(620, 145)">
+    <circle r="42" fill="url(#gradWahdah)" opacity="0.15"/>
+    <circle r="42" fill="none" stroke="url(#gradWahdah)" stroke-width="2.5" filter="url(#glowCircle)"/>
+    <text y="-8" text-anchor="middle" font-family="Georgia, serif" font-size="20" font-weight="bold" fill="#82E0AA">٢</text>
+    <text y="12" text-anchor="middle" font-family="Georgia, serif" font-size="15" font-weight="bold" fill="#82E0AA">Wahdah</text>
+    <text y="28" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#AED6F1">وحدة</text>
+    <text y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#85C1E9">Kesatuan</text>
+  </g>
+
+  <!-- Connector Wahdah → Jam' -->
+  <path d="M 620 185 Q 590 210 555 240" fill="none" stroke="#E67E22" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <defs>
+    <marker id="arrowOrange" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L6,3 Z" fill="#E67E22"/>
+    </marker>
+  </defs>
+  <path d="M 595 187 Q 575 210 560 240" fill="none" stroke="#E67E22" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#arrowOrange)"/>
+
+  <!-- TAHAP 3: Jam' — Posisi: kanan bawah -->
+  <g transform="translate(620, 460)">
+    <circle r="42" fill="url(#gradJamm)" opacity="0.15"/>
+    <circle r="42" fill="none" stroke="url(#gradJamm)" stroke-width="2.5" filter="url(#glowCircle)"/>
+    <text y="-8" text-anchor="middle" font-family="Georgia, serif" font-size="20" font-weight="bold" fill="#F5B041">٣</text>
+    <text y="12" text-anchor="middle" font-family="Georgia, serif" font-size="15" font-weight="bold" fill="#F5B041">Jam'</text>
+    <text y="28" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#AED6F1">جمع</text>
+    <text y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#85C1E9">Penggabungan</text>
+  </g>
+
+  <!-- Connector Jam' → Fanā -->
+  <path d="M 595 462 Q 560 440 510 390" fill="none" stroke="#E74C3C" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <defs>
+    <marker id="arrowRed" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L6,3 Z" fill="#E74C3C"/>
+    </marker>
+  </defs>
+  <path d="M 590 458 Q 555 438 510 392" fill="none" stroke="#E74C3C" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#arrowRed)"/>
+
+  <!-- TAHAP 4: Fanā — Posisi: kiri bawah -->
+  <g transform="translate(180, 460)">
+    <circle r="42" fill="url(#gradFana)" opacity="0.15"/>
+    <circle r="42" fill="none" stroke="url(#gradFana)" stroke-width="2.5" filter="url(#glowCircle)"/>
+    <text y="-8" text-anchor="middle" font-family="Georgia, serif" font-size="20" font-weight="bold" fill="#E74C3C">٤</text>
+    <text y="12" text-anchor="middle" font-family="Georgia, serif" font-size="15" font-weight="bold" fill="#E74C3C">Fanā</text>
+    <text y="28" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#AED6F1">فنا</text>
+    <text y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#85C1E9">Penghancuran Diri</text>
+  </g>
+
+  <!-- Connector Fanā → kembali ke Syauq (spiral) -->
+  <path d="M 185 462 Q 150 400 150 320 Q 150 240 180 185" fill="none" stroke="url(#spiralGrad)" stroke-width="1.2" stroke-dasharray="3,3" opacity="0.4"/>
+
+  <!-- Spiral arrows menunjukkan alur perjalanan -->
+  <defs>
+    <marker id="arrowSyauq" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L6,3 Z" fill="#89CFF0"/>
+    </marker>
+  </defs>
+
+  <!-- Panah spiral kecil di tepi -->
+  <path d="M 155 320 Q 180 280 220 200" fill="none" stroke="#89CFF0" stroke-width="1" stroke-dasharray="3,2" marker-end="url(#arrowSyauq)" opacity="0.5"/>
+
+  <!-- Keterangan tambahan di setiap tahap -->
+
+  <!-- Syauq description box -->
+  <rect x="30" y="100" width="130" height="58" rx="8" fill="#1A1A2E" stroke="#89CFF0" stroke-width="1" opacity="0.8"/>
+  <text x="95" y="118" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#89CFF0" font-weight="bold">Tahap 1 — SYAUQ</text>
+  <text x="95" y="132" text-anchor="middle" font-family="Arial, sans-serif" font-size="7.5" fill="#AED6F1">Jiwa menyadari</text>
+  <text x="95" y="144" text-anchor="middle" font-family="Arial, sans-serif" font-size="7.5" fill="#AED6F1">kekosongan &amp; merindukan</text>
+  <text x="95" y="156" text-anchor="middle" font-family="Arial, sans-serif" font-size="7.5" fill="#AED6F1">Kekayaan Ilahi</text>
+
+  <!-- Wahdah description box -->
+  <rect x="640" y="100" width="130" height="58" rx="8" fill="#1A1A2E" stroke="#28B463" stroke-width="1" opacity="0.8"/>
+  <text x="705" y="118" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#82E0AA" font-weight="bold">Tahap 2 — WAHDAH</text>
+  <text x="705" y="132" text-anchor="middle" font-family="Arial, sans-serif" font-size="7.5" fill="#AED6F1">MelihatSatu dlm Segala</text>
+  <text x="705" y="144" text-anchor="middle" font-family="Arial, sans-serif" font-size="7.5" fill="#AED6F1">Hilangnya dualitas</text>
+  <text x="705" y="156" text-anchor="middle" font-family="Arial, sans-serif" font-size="7.5" fill="#AED6F1">dalam pandangan batin</text>
+
+  <!-- Jam' description box -->
+  <rect x="640" y="475" width="130" height="58" rx="8" fill="#1A1A2E" stroke="#E67E22" stroke-width="1" opacity="0.8"/>
+  <text x="705" y="493" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#F5B041" font-weight="bold">Tahap 3 — JAM'</text>
+  <text x="705" y="507" text-anchor="middle" font-family="Arial, sans-serif" font-size="7.5" fill="#AED6F1">Penggabungan total</text>
+  <text x="705" y="519" text-anchor="middle" font-family="Arial, sans-serif" font-size="7.5" fill="#AED6F1">&amp;mencintai &amp; dicintai</text>
+  <text x="705" y="531" text-anchor="middle" font-family="Arial, sans-serif" font-size="7.5" fill="#AED6F1">menyatu dalam satu cinta</text>
+
+  <!-- Fanā description box -->
+  <rect x="30" y="475" width="130" height="58" rx="8" fill="#1A1A2E" stroke="#E74C3C" stroke-width="1" opacity="0.8"/>
+  <text x="95" y="493" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#E74C3C" font-weight="bold">Tahap 4 — FANĀ</text>
+  <text x="95" y="507" text-anchor="middle" font-family="Arial, sans-serif" font-size="7.5" fill="#AED6F1">Ego lenyap total</text>
+  <text x="95" y="519" text-anchor="middle" font-family="Arial, sans-serif" font-size="7.5" fill="#AED6F1">fana fillah — terlahir</text>
+  <text x="95" y="531" text-anchor="middle" font-family="Arial, sans-serif" font-size="7.5" fill="#AED6F1">kembali sebagai hamba murni</text>
+
+  <!-- Teks Arab indah di tengah spiral -->
+  <text x="400" y="195" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#C8A2C8" opacity="0.7" font-style="italic">من عرف نفسه فقد عرف ربه</text>
+  <text x="400" y="210" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#9B59B6" opacity="0.6">"Barangsiapa mengenal dirinya, pasti mengenal Tuhannya"</text>
+
+  <!-- Kutipan Rumi di bagian bawah -->
+  <text x="400" y="565" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#C8A2C8" font-style="italic">«عشق آن بگزین که جمله انبیا یافتند از عشق او کار و کیا»</text>
+  <text x="400" y="580" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#9B59B6">— Masnavi, Daftar I, Beyt 221 | Rumi</text>
+
+  <!-- Garis bawah -->
+  <line x1="100" y1="548" x2="700" y2="548" stroke="#C8A2C8" stroke-width="0.5" opacity="0.4"/>
+  <circle cx="400" cy="548" r="2" fill="#C8A2C8" opacity="0.4"/>
+
+  <!-- Legends / Petunjuk warna -->
+  <g transform="translate(295, 555)">
+    <circle cx="0" cy="0" r="5" fill="#89CFF0"/>
+    <text x="8" y="4" font-family="Arial, sans-serif" font-size="7" fill="#AED6F1">Syauq</text>
+    <circle cx="70" cy="0" r="5" fill="#28B463"/>
+    <text x="78" y="4" font-family="Arial, sans-serif" font-size="7" fill="#AED6F1">Wahdah</text>
+    <circle cx="150" cy="0" r="5" fill="#E67E22"/>
+    <text x="158" y="4" font-family="Arial, sans-serif" font-size="7" fill="#AED6F1">Jam'</text>
+    <circle cx="215" cy="0" r="5" fill="#E74C3C"/>
+    <text x="223" y="4" font-family="Arial, sans-serif" font-size="7" fill="#AED6F1">Fanā</text>
+  </g>
+</svg>
