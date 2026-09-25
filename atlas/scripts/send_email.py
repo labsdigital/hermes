@@ -2,15 +2,21 @@
 """
 Atlas Essay Email Sender
 Sends essay via email with SVG illustration from GitHub Pages
+Prevents double-sending with email tracker
 """
 
 import argparse
+import sys
 import smtplib
 import re
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from pathlib import Path
 import os
+
+# Import email tracker to prevent double-sending
+sys.path.insert(0, str(Path(__file__).parent))
+from email_tracker import is_already_sent, mark_as_sent
 
 SMTP_SERVER = "mail.taraka.id"
 SMTP_PORT = 465
@@ -99,6 +105,11 @@ def send_email(article_path: str):
     if not article_file.exists():
         print(f"Error: Article not found: {article_path}")
         return False
+
+    # Check if already sent to prevent double-sending
+    if is_already_sent(article_path):
+        print(f"⏭️  SKIP: Email already sent for {article_file.name}")
+        return True
 
     # Read article
     content = article_file.read_text(encoding="utf-8")
@@ -227,6 +238,10 @@ def send_email(article_path: str):
         server.login(SENDER, PASSWORD)
         server.send_message(msg)
         server.quit()
+        
+        # Mark as sent to prevent double-sending
+        mark_as_sent(article_path, RECIPIENT, title)
+        
         print(f"✅ Email sent to {RECIPIENT}")
         print(f"📧 Subject: {title}")
         print(f"🖼️  Image: {svg_url}")
