@@ -2,6 +2,7 @@
 """
 HTML Validation Tool for Atlas Articles
 Validates HTML output from md_to_html conversion
+Converts remaining markdown syntax to proper HTML
 """
 
 import re
@@ -15,7 +16,8 @@ def validate_html(html_path: str) -> dict:
         'file': html_path,
         'errors': [],
         'warnings': [],
-        'valid': True
+        'valid': True,
+        'fixes_applied': []
     }
     
     try:
@@ -24,6 +26,16 @@ def validate_html(html_path: str) -> dict:
         results['errors'].append(f"Cannot read file: {e}")
         results['valid'] = False
         return results
+    
+    original_content = html_content
+    
+    # Check for markdown image syntax still present (![alt](url))
+    markdown_images = re.findall(r'!\[([^\]]*)\]\(([^)]+)\)', html_content)
+    if markdown_images:
+        results['errors'].append(f"Markdown image syntax found: {len(markdown_images)} instances")
+        results['valid'] = False
+        for alt, url in markdown_images:
+            results['warnings'].append(f"  - ![{alt}]({url})")
     
     # Check for double HTTPS URLs
     if 'https://https://' in html_content:
@@ -100,6 +112,24 @@ def validate_html(html_path: str) -> dict:
     if '<body>' not in html_content or '</body>' not in html_content:
         results['warnings'].append("Missing or improper body section")
     
+    # Check for markdown syntax still present
+    markdown_patterns = [
+        (r'\*\*(.+?)\*\*', r'<strong>\1</strong>', 'bold'),
+        (r'\*(.+?)\*', r'<em>\1</em>', 'italic'),
+        (r'`(.+?)`', r'<code>\1</code>', 'inline code'),
+        (r'\[(.+?)\]\((.+?)\)', r'<a href="\2">\1</a>', 'links'),
+    ]
+    
+    for pattern, replacement, name in markdown_patterns:
+        matches = re.findall(pattern, html_content)
+        if matches:
+            results['warnings'].append(f"Unc converted {name}: {len(matches)} instances")
+    
+    # Check for raw URLs (not linked)
+    raw_urls = re.findall(r'https?://[^\s<>"\')]+', html_content)
+    if raw_urls and len(raw_urls) > 5:  # Allow some URLs
+        results['warnings'].append(f"Potential raw URLs found: {len(raw_urls)} instances")
+    
     return results
 
 
@@ -107,13 +137,62 @@ def fix_html(html_path: str) -> bool:
     """Apply automatic fixes to HTML file."""
     content = Path(html_path).read_text(encoding='utf-8')
     original = content
+    fixes = []
     
-    # Fix double HTTPS
-    content = content.replace('https://https://', 'https://')
+    # Fix 1: Convert markdown images to HTML img tags
+    markdown_images = re.findall(r'!\[([^\]]*)\]\(([^)]+)\)', content)
+    if markdown_images:
+        for alt, url in markdown_images:
+            # Clean up URL
+            url = url.replace('https://https://', 'https://')
+            # Convert to HTML img tag
+            html_img = f'<div class="article-image"><img src="{url}" alt="{alt}" /></div>'
+            content = content.replace(f'![{alt}]({url})', html_img)
+        fixes.append(f"Converted {len(markdown_images)} markdown images to HTML img tags")
     
-    # Fix double slashes in URLs
-    content = re.sub(r'https://labsdigital\.github\.io/hermes/atlas/reports/reports/',
-                     'https://labsdigital.github.io/hermes/atlas/reports/', content)
+    # Fix 2: Fix double HTTPS
+    if 'https://https://' in content:
+        content = content.replace('https://https://', 'https://')
+        fixes.append("Fixed double HTTPS URLs")
+    
+    # Fix 3: Fix double slashes in URLs
+    fixed = re.sub(r'https://labsdigital\.github\.io/hermes/atlas/reports/reports/',
+                   'https://labsdigital.github.io/hermes/atlas/reports/', content)
+    if fixed != content:
+        content = fixed
+        fixes.append("Fixed double path segments in URLs")
+    
+    # Fix 4: Convert uncached markdown bold (if any slipped through)
+    # This handles cases where **bold** appears outside of proper HTML
+    bold_matches = re.findall(r'\*\*(.+?)\*\*', content)
+    if bold_matches:
+        for match in bold_matches:
+            # Only convert if not already inside HTML tags
+            pattern = f'**{match}**'
+            if pattern in content and f'<strong>{match}</strong>' not in content:
+                content = content.replace(pattern, f'<strong>{match}</strong>')
+        if '**' in content:
+            fixes.append("Converted remaining bold markdown to <strong> tags")
+    
+    # Fix 5: Convert uncached markdown italic
+    italic_matches = re.findall(r'\*(.+?)\*', content)
+    if italic_matches:
+        for match in italic_matches:
+            pattern = f'*{match}*'
+            if pattern in content and f'<em>{match}</em>' not in content:
+                content = content.replace(pattern, f'<em>{match}</em>')
+        if '*' in content and '<em>' not in content:
+            fixes.append("Converted remaining italic markdown to <em> tags")
+    
+    # Fix 6: Convert uncached inline code
+    code_matches = re.findall(r'`(.+?)`', content)
+    if code_matches:
+        for match in code_matches:
+            pattern = f'`{match}`'
+            if pattern in content and f'<code>{match}</code>' not in content:
+                content = content.replace(pattern, f'<code>{match}</code>')
+        if '`' in content and '<code>' not in content:
+            fixes.append("Converted remaining inline code markdown to <code> tags")
     
     if content != original:
         Path(html_path).write_text(content, encoding='utf-8')
@@ -126,6 +205,7 @@ def main():
     parser = argparse.ArgumentParser(description='Validate Atlas article HTML')
     parser.add_argument('html_file', help='Path to HTML file')
     parser.add_argument('--fix', action='store_true', help='Apply automatic fixes')
+    parser.add_argument('--verbose', action='store_true', help='Show detailed output')
     args = parser.parse_args()
     
     print(f"Validating: {args.html_file}\n")
@@ -137,6 +217,7 @@ def main():
             print("✅ Fixes applied")
         else:
             print("No fixes needed")
+        print()
     
     results = validate_html(args.html_file)
     
@@ -156,7 +237,7 @@ def main():
         print()
     
     if not results['errors'] and not results['warnings']:
-        print("✅ No issues found")
+        print("✅ No issues found - HTML is valid!")
     
     return 0 if results['valid'] else 1
 
