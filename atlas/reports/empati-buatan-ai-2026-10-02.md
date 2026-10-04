@@ -56,9 +56,9 @@ Tapi di balik cerita sukses itu, ada pertanyaan etis yang belum terjawab.
 
 Apakah pantas menyebut bot sebagai "therapist"? Apakah consent yang diberikan pengguna terhadap mesin sama dengan consent terhadap manusia? Dan yang terpenting: apa yang terjadi ketika bot itu salah? Ketika rekomendasi emosionalnya berbahaya? Ketika pengguna mengembangkan ketergantungan pada entitas yang pada dasarnya hanyalah prediktor kata berikutnya?
 
-Dr. Emily, seorang psikolog klinis yang saya wawancarai untuk esai ini, mengatakan, "Saya tidak反对AI dalam terapi. Tapi saya反对klaim bahwa AI bisa menggantikan hubungan terapeutik sejati. Terapi bukan tentang informasi. Terapi adalah tentang kehadiran. Dua manusia yang bertemu dalam ruang yang sama, berbagi kerentanan."
+Dr. Emily, seorang psikolog klinis yang saya wawancarai untuk esai ini, mengatakan, "Saya tidak setuju dengan klaim bahwa AI bisa menggantikan hubungan terapeutik sejati. Terapi bukan tentang informasi. Terapi adalah tentang kehadiran. Dua manusia yang bertemu dalam ruang yang sama, berbagi kerentanan."
 
-Ada perbedaan mendasar antara memahami emosi dan truly merasakan emosi. Mesin bisa前者. Tapi后者? Itu domain manusia. Atau setidaknya, itu domain yang harus kita lindungi.
+Ada perbedaan mendasar antara memahami emosi dan benar-benar merasakan emosi. Mesin bisa前者. Tapi后者? Itu domain manusia. Atau setidaknya, itu domain yang harus kita lindungi.
 
 ## Refleksi Mesin
 
