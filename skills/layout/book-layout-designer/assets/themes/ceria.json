@@ -1,0 +1,48 @@
+{
+ "label": "Ceria — Biru & Kuning",
+ "mood": "Ramah, energik, cocok untuk buku anak, LKPD, bahan ajar SD, materi siswa",
+ "colors": {
+  "primary": "#2446A8",
+  "primary2": "#2F5FC4",
+  "primaryLight": "#E9F0FD",
+  "primaryDark": "#172E73",
+  "accent": "#FFB627",
+  "accentDark": "#9A4F00",
+  "accentLight": "#FFF4DB",
+  "success": "#1F7A52",
+  "successLight": "#E4F5EC",
+  "danger": "#C7324A",
+  "dangerLight": "#FDE9EC",
+  "info": "#1F6F96",
+  "infoLight": "#E6F4FA",
+  "violet": "#7043B8",
+  "violetLight": "#F2ECFB",
+  "neutral": "#3B4557",
+  "neutralLight": "#EEF1F6",
+  "ink": "#1D2433",
+  "muted": "#525C70",
+  "line": "#D9E1EE",
+  "zebra": "#F7F9FD",
+  "codeBg": "#F5F8FD",
+  "codeHead": "#172E73",
+  "series": [
+   "#2446A8",
+   "#1F7A52",
+   "#BF5416",
+   "#7043B8",
+   "#1F6F96"
+  ],
+  "paper": "#FFFFFF"
+ },
+ "fonts": {
+  "heading": "Poppins",
+  "body": "Work Sans",
+  "mono": "JetBrains Mono"
+ },
+ "type": {
+  "base": 10.8,
+  "leading": 1.62,
+  "headingWeight": 700
+ },
+ "name": "ceria"
+}

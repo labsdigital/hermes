@@ -1,0 +1,48 @@
+{
+ "label": "Korporat — Navy & Coral",
+ "mood": "Profesional, tegas, cocok untuk laporan tahunan, whitepaper, SOP, proposal",
+ "colors": {
+  "primary": "#1B2F4E",
+  "primary2": "#2F5D8A",
+  "primaryLight": "#E8EEF6",
+  "primaryDark": "#111F36",
+  "accent": "#F26B4F",
+  "accentDark": "#A63A24",
+  "accentLight": "#FDEDE8",
+  "success": "#2C7857",
+  "successLight": "#E5F3EC",
+  "danger": "#B83A3A",
+  "dangerLight": "#FBEAEA",
+  "info": "#2F5D8A",
+  "infoLight": "#E8EEF6",
+  "violet": "#5A4E8C",
+  "violetLight": "#EEECF6",
+  "neutral": "#3F4B5B",
+  "neutralLight": "#EDF0F4",
+  "ink": "#1A2233",
+  "muted": "#56627A",
+  "line": "#D8DEE8",
+  "zebra": "#F7F9FC",
+  "codeBg": "#F5F7FA",
+  "codeHead": "#1B2F4E",
+  "series": [
+   "#1B2F4E",
+   "#2F5D8A",
+   "#2E7D5B",
+   "#BF4D35",
+   "#5A4E8C"
+  ],
+  "paper": "#FFFFFF"
+ },
+ "fonts": {
+  "heading": "Outfit",
+  "body": "Work Sans",
+  "mono": "JetBrains Mono"
+ },
+ "type": {
+  "base": 9.8,
+  "leading": 1.6,
+  "headingWeight": 700
+ },
+ "name": "korporat"
+}

@@ -1,0 +1,36 @@
+# Konfigurasi buku — semua kunci opsional kecuali title.
+title: Merancang Modul Pelatihan yang Memikat
+subtitle: Panduan ringkas menyusun modul pelatihan guru yang jelas, menarik, dan mudah dipraktikkan.
+kicker: Contoh Buku
+edition: Edisi 2026
+author: Tim Penyusun
+institution: Nama Lembaga
+lang: id                 # id | en  (label komponen)
+theme: edukasi           # edukasi | korporat | akademik | teknologi | alam | premium | ceria | path/ke/tema.json
+page_size: A4            # A4 | B5 | A5 | Letter
+part_label: Modul        # label pembuka bagian: Modul | Bab | Bagian | Chapter
+footer_text: Merancang Modul Pelatihan
+toc: true
+toc_after: Tentang Buku Ini   # sisipkan daftar isi setelah bab ini (hapus agar tepat setelah sampul)
+cover:
+  motif: book            # helm | orbit | grid | waves | book | none
+  tagline: Belajar jadi mudah diikuti.
+  title_lines:
+    - Merancang
+    - Modul Pelatihan
+    - {text: yang, style: small}
+    - {text: Memikat, style: accent}
+  highlights:            # opsional: deretan inisial berwarna di sampul
+    - {mark: J, label: Jelas}
+    - {mark: M, label: Menarik}
+    - {mark: P, label: Praktis}
+  chips: [2 Modul, 2 Template, Lintas Jenjang]
+back_cover:
+  quote: '"Modul yang baik tidak dibaca sekali lalu dilupakan; ia dipakai berulang kali."'
+  blurb: Contoh buku ini memperlihatkan semua komponen tata letak skill book-layout-designer — sampul, pembuka modul, callout, tabel, template, diagram, dan lampiran.
+  bullets: [Tipografi dan warna yang teruji, Komponen yang mudah dipindai, PDF dan DOCX dari satu naskah]
+chapters:
+  - chapters/*.md
+output:
+  name: Contoh-Modul-Pelatihan
+  formats: [pdf, docx]

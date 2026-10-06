@@ -1,0 +1,48 @@
+{
+ "label": "Akademik — Maroon & Gold",
+ "mood": "Klasik, berwibawa, cocok untuk buku ajar, monograf, prosiding, bahan kuliah",
+ "colors": {
+  "primary": "#6B1E2E",
+  "primary2": "#8E3B46",
+  "primaryLight": "#F6ECEC",
+  "primaryDark": "#45121D",
+  "accent": "#D4AE55",
+  "accentDark": "#7D5E17",
+  "accentLight": "#FAF3E1",
+  "success": "#3F6E3A",
+  "successLight": "#EDF4EA",
+  "danger": "#A8323E",
+  "dangerLight": "#F9E9EB",
+  "info": "#2F5A7A",
+  "infoLight": "#EAF1F6",
+  "violet": "#5B4577",
+  "violetLight": "#F0ECF5",
+  "neutral": "#4A4340",
+  "neutralLight": "#F1EEEA",
+  "ink": "#2A2220",
+  "muted": "#625954",
+  "line": "#E2D9D2",
+  "zebra": "#FBF8F4",
+  "codeBg": "#FAF7F2",
+  "codeHead": "#45121D",
+  "series": [
+   "#6B1E2E",
+   "#8E3B46",
+   "#3F6E3A",
+   "#916D1C",
+   "#5B4577"
+  ],
+  "paper": "#FFFFFF"
+ },
+ "fonts": {
+  "heading": "Crimson Pro",
+  "body": "Crimson Pro",
+  "mono": "JetBrains Mono"
+ },
+ "type": {
+  "base": 11.3,
+  "leading": 1.5,
+  "headingWeight": 700
+ },
+ "name": "akademik"
+}

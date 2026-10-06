@@ -1,0 +1,52 @@
+{
+ "Poppins": {
+  "regular": "Poppins-Regular.ttf",
+  "italic": "Poppins-Italic.ttf",
+  "medium": "Poppins-Medium.ttf",
+  "bold": "Poppins-Bold.ttf"
+ },
+ "Lora": {
+  "regular": "Lora-Regular.ttf",
+  "italic": "Lora-Italic.ttf",
+  "bold": "Lora-Bold.ttf",
+  "boldItalic": "Lora-BoldItalic.ttf"
+ },
+ "Work Sans": {
+  "regular": "WorkSans-Regular.ttf",
+  "italic": "WorkSans-Italic.ttf",
+  "bold": "WorkSans-Bold.ttf",
+  "boldItalic": "WorkSans-BoldItalic.ttf"
+ },
+ "IBM Plex Serif": {
+  "regular": "IBMPlexSerif-Regular.ttf",
+  "italic": "IBMPlexSerif-Italic.ttf",
+  "bold": "IBMPlexSerif-Bold.ttf",
+  "boldItalic": "IBMPlexSerif-BoldItalic.ttf"
+ },
+ "Crimson Pro": {
+  "regular": "CrimsonPro-Regular.ttf",
+  "italic": "CrimsonPro-Italic.ttf",
+  "bold": "CrimsonPro-Bold.ttf"
+ },
+ "Outfit": {
+  "regular": "Outfit-Regular.ttf",
+  "bold": "Outfit-Bold.ttf"
+ },
+ "Bricolage Grotesque": {
+  "regular": "BricolageGrotesque-Regular.ttf",
+  "bold": "BricolageGrotesque-Bold.ttf"
+ },
+ "Instrument Sans": {
+  "regular": "InstrumentSans-Regular.ttf",
+  "italic": "InstrumentSans-Italic.ttf",
+  "bold": "InstrumentSans-Bold.ttf",
+  "boldItalic": "InstrumentSans-BoldItalic.ttf"
+ },
+ "Young Serif": {
+  "regular": "YoungSerif-Regular.ttf"
+ },
+ "JetBrains Mono": {
+  "regular": "JetBrainsMono-Regular.ttf",
+  "bold": "JetBrainsMono-Bold.ttf"
+ }
+}

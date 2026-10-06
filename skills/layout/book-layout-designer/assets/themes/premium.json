@@ -1,0 +1,48 @@
+{
+ "label": "Premium — Plum & Gold",
+ "mood": "Elegan, eksklusif, cocok untuk buku kepemimpinan, coaching, katalog program, portofolio",
+ "colors": {
+  "primary": "#3F1D38",
+  "primary2": "#6B3A60",
+  "primaryLight": "#F4ECF2",
+  "primaryDark": "#2A1226",
+  "accent": "#D8A657",
+  "accentDark": "#80591A",
+  "accentLight": "#FBF2E2",
+  "success": "#2F6F55",
+  "successLight": "#E6F2EC",
+  "danger": "#A83246",
+  "dangerLight": "#F9E8EC",
+  "info": "#34597F",
+  "infoLight": "#EAF0F6",
+  "violet": "#6B3A60",
+  "violetLight": "#F4ECF2",
+  "neutral": "#463C44",
+  "neutralLight": "#F1EDF0",
+  "ink": "#231A21",
+  "muted": "#62575F",
+  "line": "#E4DAE1",
+  "zebra": "#FBF8FA",
+  "codeBg": "#FAF6F9",
+  "codeHead": "#2A1226",
+  "series": [
+   "#3F1D38",
+   "#6B3A60",
+   "#2F6F55",
+   "#926B28",
+   "#34597F"
+  ],
+  "paper": "#FFFFFF"
+ },
+ "fonts": {
+  "heading": "Young Serif",
+  "body": "Lora",
+  "mono": "JetBrains Mono"
+ },
+ "type": {
+  "base": 10.2,
+  "leading": 1.58,
+  "headingWeight": 400
+ },
+ "name": "premium"
+}
