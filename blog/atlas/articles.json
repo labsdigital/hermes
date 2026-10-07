@@ -180,5 +180,19 @@
       "moralitas",
       "filsafat"
     ]
+  },
+  {
+    "id": 14,
+    "title": "Mata Tanpa Kelopak: Ketika Setiap Langkah Terukur",
+    "date": "2026-10-07",
+    "excerpt": "Pengawasan algoritmik mengakhiri anonimitas publik. Dari kamera plat nomor hingga kacamata pintar, era baru pengamatan tanpa batas telah tiba.",
+    "url": "https://github.com/labsdigital/agents/blob/main/atlas/reports/mata-tanpa-kelopak-ai-2026-10-07.md",
+    "words": 1400,
+    "tags": [
+      "ai",
+      "privasi",
+      "surveillance",
+      "teknologi"
+    ]
   }
 ]
