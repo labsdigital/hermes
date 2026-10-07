@@ -23,9 +23,9 @@ Era ketiga - era yang kita masuki sekarang - adalah pengawasan algoritmik. Mesin
 
 Kita hidup di era transparansi paksa. Setiap transaksi kartu kredit tercatat. Setiap perjalanan GPS direkam. Setiap pesan obrolan berpotensi dibaca oleh algoritma. Dalam beberapa tahun terakhir, perusahaan teknologi telah membangun infrastruktur pengawasan yang belum pernah ada dalam sejarah peradaban manusia.
 
-Meta, perusahaan di balik Facebook dan Instagram,faces class-action lawsuit karena allegedly menggunakan foto-foto pengguna tanpa persetujuan untuk melatih sistem pengenalan wajahnya yang disebut NameTag. Sistem ini memungkinkan pengguna kacamata pintar Ray-Ban Meta mengidentifikasi orang-orang di sekitar mereka secara real-time - menarik nama, profil, dan informasi pribadi lainnya hanya dengan melihat seseorang.
+Meta, perusahaan di balik Facebook dan Instagram, menghadapi gugatan kelas karena diduga menggunakan foto-foto pengguna tanpa persetujuan untuk melatih sistem pengenalan wajahnya yang disebut NameTag. Sistem ini memungkinkan pengguna kacamata pintar Ray-Ban Meta mengidentifikasi orang-orang di sekitar mereka secara real-time - menarik nama, profil, dan informasi pribadi lainnya hanya dengan melihat seseorang.
 
-Harvard University students demonstrated the danger in 2024: dengan menggunakan kacamata pintar konsumen, mesin pengenalan wajah publik, dan model bahasa besar, mereka dapat mengidentifikasi nama, alamat, dan nomor telepon orang asing dalam waktu kurang dari satu menit. Seluruh mekanisme menggunakan komponen komersial yang tersedia umum - bukan perangkat khusus atau keahlian teknis tingkat tinggi.
+Mahasiswa Harvard University mendemonstrasikan bahaya ini pada 2024: dengan menggunakan kacamata pintar konsumen, mesin pengenalan wajah publik, dan model bahasa besar, mereka dapat mengidentifikasi nama, alamat, dan nomor telepon orang asing dalam waktu kurang dari satu menit. Seluruh mekanisme menggunakan komponen komersial yang tersedia umum - bukan perangkat khusus atau keahlian teknis tingkat tinggi.
 
 Ini bukan skenario fiksi ilmiah. Ini adalah teknologi yang tersedia hari ini, di tangan siapa saja yang dapat membelinya di toko.
 
@@ -43,7 +43,7 @@ Dahulu, untuk mendapatkan riwayat lokasi seseorang, polisi memerlukan surat peri
 
 Pengawasan era AI bukan lagi tentang kamera tunggal atau database terpisah. Sistem-sistem ini saling terhubung, membentuk ekosistem pengawasan yang kohesif.
 
-Flock Safety, perusahaan yang memasang kamera pembaca plat nomor di seluruh Amerika Serikat, telah menjadi subjek gugatan kelas ACTION senilai $300.000 setelah aktivis Jose Rodriguez mengajukan 53 permintaan catatan publik dan menemukan bahwa banyak yurisdiksi telah menghapus footage setelah 30 hari. Setidaknya 13 yurisdiksi membatalkan kontrak mereka.
+Flock Safety, perusahaan yang memasang kamera pembaca plat nomor di seluruh Amerika Serikat, telah menjadi subjek gugatan kelas senilai $300.000 setelah aktivis Jose Rodriguez mengajukan 53 permintaan catatan publik dan menemukan bahwa banyak yurisdiksi telah menghapus footage setelah 30 hari. Setidaknya 13 yurisdiksi membatalkan kontrak mereka.
 
 Tapi masalahnya melampaui plat nomor. Sistem-sistem ini terintegrasi dengan database imigrasi, catatan kriminal, dan bahkan data pembelian retail. Sebuah truk biru yang terlihat di kamera Flock dapat dihubungkan dengan catatan pemilihan, chip hewan peliharaan, ping ponsel, dan postingan media sosial. Mozaik yang dihasilkan mengungkapkan jauh lebih banyak daripada yang dapat ditunjukkan oleh sensor tunggal.
 
