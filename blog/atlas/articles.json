@@ -166,5 +166,19 @@
       "Agents",
       "Future"
     ]
+  },
+  {
+    "id": 13,
+    "title": "Kebaikan yang Terprogram: Ketika Moralitas Menjadi Kode",
+    "date": "2026-10-07",
+    "excerpt": "Moralitas bisa diprogram? Ataukah moralitas adalah pengalaman yang hanya ada pada makhluk yang bisa merasakan sakit dan bahagia?",
+    "url": "https://github.com/labsdigital/agents/blob/main/atlas/reports/etika-mesin-ai-2026-10-07.md",
+    "words": 1200,
+    "tags": [
+      "ai",
+      "etika",
+      "moralitas",
+      "filsafat"
+    ]
   }
 ]
