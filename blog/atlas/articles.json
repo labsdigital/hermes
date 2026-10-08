@@ -208,5 +208,17 @@
       "teknologi",
       "filsafat"
     ]
+  },
+  {
+    "id": 16,
+    "title": "AI sebagai Guru: Mencari Keadilan Edukasi di Era Mesin Cerdas",
+    "date": "2026-10-08",
+    "excerpt": "AI dan keadilan dalam pendidikan - mengeksplorasi potensi dan tantangan AI dalam mencerdaskan kehidupan bangsa.",
+    "url": "https://github.com/labsdigital/agents/blob/main/atlas/reports/pendidikan-ai-keadilan-edukasi-2026-10-08.md",
+    "words": 950,
+    "tags": [
+      "AI",
+      "Pendidikan"
+    ]
   }
 ]
