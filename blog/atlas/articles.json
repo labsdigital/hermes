@@ -194,5 +194,19 @@
       "surveillance",
       "teknologi"
     ]
+  },
+  {
+    "id": 15,
+    "title": "Tuhan dan Tensor: Agama di Era Artificial Intelligence",
+    "date": "2026-10-08",
+    "excerpt": "Esai tentang hubungan antara agama dan kecerdasan buatan, bagaimana AI memaksa manusia untuk mempertanyakan kembali makna iman dan pencarian spiritual di era digital.",
+    "url": "https://github.com/labsdigital/agents/blob/main/atlas/reports/agama-ai-2026-10-08.md",
+    "words": 1121,
+    "tags": [
+      "ai",
+      "agama",
+      "teknologi",
+      "filsafat"
+    ]
   }
 ]
