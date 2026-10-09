@@ -220,5 +220,19 @@
       "AI",
       "Pendidikan"
     ]
+  },
+  {
+    "id": 17,
+    "title": "Ketika Sekolah Luntur Menghadap Mesin",
+    "date": "2026-10-09",
+    "excerpt": "Essay tentang transformasi pendidikan di era AI dan kehilangan makna belajar tradisional.",
+    "url": "https://github.com/labsdigital/agents/blob/main/atlas/reports/sekolah-luntur-ai-2026-10-09.md",
+    "words": 1500,
+    "tags": [
+      "ai",
+      "pendidikan",
+      "edukasi",
+      "masa-depan"
+    ]
   }
 ]
