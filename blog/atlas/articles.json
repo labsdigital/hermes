@@ -248,5 +248,18 @@
       "teknologi",
       "masyarakat"
     ]
+  },
+  {
+    "id": 19,
+    "title": "Tuhan Buatan",
+    "date": "2026-10-10",
+    "excerpt": "Sebuah renungan tentang AI religius dan apa yang tersisa dari kepercayaan ketika dipisahkan dari tubuhnya.",
+    "url": "https://github.com/labsdigital/agents/blob/main/atlas/reports/tuhan-buatan-ai-2026-10-10.md",
+    "words": 9884,
+    "tags": [
+      "ai",
+      "agama",
+      "teknologi"
+    ]
   }
 ]
