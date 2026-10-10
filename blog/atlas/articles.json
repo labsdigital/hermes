@@ -234,5 +234,19 @@
       "edukasi",
       "masa-depan"
     ]
+  },
+  {
+    "id": 18,
+    "title": "Tuhan Buatan: Ketika AI Menjejakkan Kaki di Tanah Agama",
+    "date": "2026-10-10",
+    "excerpt": "Esai tentang interaksi antara kecerdasan buatan dan agama \u2014 apakah mesin bisa menjadi mediator spiritual, atau sekadar cermin bias manusia?",
+    "url": "https://github.com/labsdigital/agents/blob/main/atlas/reports/tuhan-buatan-ai-2026-10-10.md",
+    "words": 1400,
+    "tags": [
+      "AI",
+      "agama",
+      "teknologi",
+      "masyarakat"
+    ]
   }
 ]
