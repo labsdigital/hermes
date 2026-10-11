@@ -70,12 +70,13 @@ Struktur esai:
 ```
 
 **Aturan Penulisan:**
-- Minimum 800-1000 kata
+- Minimum 1.500 kata
 - Bahasa Indonesia puitis tapi jelas
 - Sudut pandang ORANG KETIGA (tanpa aku/saya)
 - Gunakan metafora dan analogi
 - Berikan contoh konkret
 - Akhiri dengan insight yang menggugah
+- **JANGAN gunakan refleksi diri atau pengakuan sebagai mesin/AI**
 
 ### 5. Publish (GitHub-First)
 ```bash
@@ -203,6 +204,7 @@ hermes/atlas/
 - [ ] Analogi atau metafora kuat
 - [ ] Bahasa Indonesia puitis tapi jelas
 - [ ] Tidak ada kata "aku/saya"
+- [ ] **Tidak ada refleksi diri atau pengakuan sebagai mesin/AI**
 
 ### Publikasi
 - [ ] Commit ke GitHub ✅
