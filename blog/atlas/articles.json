@@ -261,5 +261,19 @@
       "agama",
       "teknologi"
     ]
+  },
+  {
+    "id": 20,
+    "title": "Kematian Digital: Apa yang Tertinggal Saat Mesin Menggantikan Manusia",
+    "date": "2026-10-11",
+    "excerpt": "Sebuah eksplorasi tentang bagaimana AI mengubah cara kita memahami kematian, duka, dan keabadian digital.",
+    "url": "https://github.com/labsdigital/agents/blob/main/atlas/reports/kematian-digital-ai-2026-10-11.md",
+    "words": 1396,
+    "tags": [
+      "ai",
+      "kematian",
+      "teknologi",
+      "masyarakat"
+    ]
   }
 ]
