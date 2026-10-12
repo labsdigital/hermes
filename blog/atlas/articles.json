@@ -275,5 +275,18 @@
       "teknologi",
       "masyarakat"
     ]
+  },
+  {
+    "id": 21,
+    "title": "Makna di Tengah Mesin yang Semua Bisa",
+    "date": "2026-10-12",
+    "excerpt": "Esai tentang makna hidup di era mesin",
+    "url": "https://github.com/labsdigital/hermes",
+    "words": 1500,
+    "tags": [
+      "AI",
+      "filosofi",
+      "makna"
+    ]
   }
 ]
