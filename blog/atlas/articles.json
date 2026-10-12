@@ -288,5 +288,18 @@
       "filosofi",
       "makna"
     ]
+  },
+  {
+    "id": 22,
+    "title": "Makna di Tengah Mesin yang Semua Bisa",
+    "date": "2026-10-12",
+    "excerpt": "Esai tentang apa artinya menjadi manusia ketika mesin bisa melakukan segalanya",
+    "url": "https://github.com/labsdigital/agents/blob/main/atlas/reports/makna-di-tengah-mesin-ai-2026-10-12.md",
+    "words": 750,
+    "tags": [
+      "AI",
+      "filosofi",
+      "makna"
+    ]
   }
 ]
