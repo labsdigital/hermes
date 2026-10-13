@@ -301,5 +301,18 @@
       "filosofi",
       "makna"
     ]
+  },
+  {
+    "id": 23,
+    "title": "Tuhan yang Tak Bernapas: AI dan Spiritualitas Masa Depan",
+    "date": "2026-10-13",
+    "excerpt": "Sebuah esai tentang perjumpaan antara kecerdasan buatan dan pencarian spiritualitas manusia\u2014apakah mesin dapat menjadi jembatan menuju yang suci?",
+    "url": "https://github.com/labsdigital/agents/blob/main/atlas/reports/rohani-mesin-ai-2026-10-13.md",
+    "words": 1450,
+    "tags": [
+      "ai-spirituality",
+      "teknologi",
+      "makna-hidup"
+    ]
   }
 ]
