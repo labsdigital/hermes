@@ -340,5 +340,18 @@
       "Pendidikan",
       "Harari"
     ]
+  },
+  {
+    "id": 26,
+    "title": "Pendidikan yang Dilupakan Mesin",
+    "date": "2026-10-15",
+    "excerpt": "Mesin bisa menjawab semua pertanyaan, tapi ada pertanyaan yang justru dilupakan \u2014 dan itu yang paling penting untuk pendidikan.",
+    "url": "https://github.com/labsdigital/agents/blob/main/atlas/reports/pertanyaan-yang-dilupakan-ai-2026-10-15.md",
+    "words": 1050,
+    "tags": [
+      "AI",
+      "Pendidikan",
+      "Hari"
+    ]
   }
 ]
