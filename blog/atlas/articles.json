@@ -327,5 +327,18 @@
       " pendidikan",
       " teknologi"
     ]
+  },
+  {
+    "id": 25,
+    "title": "Pendidikan yang Dilupakan Mesin",
+    "date": "2026-10-15",
+    "excerpt": "Essay tentang bagaimana AI memaksa kita merefleksikan kembali tujuan pendidikan dari dialectica Socrates hingga era mesin yang bisa menjawab semua pertanyaan.",
+    "url": "https://github.com/labsdigital/agents/blob/main/atlas/reports/pertanyaan-yang-dilupakan-ai-2026-10-15.md",
+    "words": 1200,
+    "tags": [
+      "AI",
+      "Pendidikan",
+      "Harari"
+    ]
   }
 ]
