@@ -314,5 +314,18 @@
       "teknologi",
       "makna-hidup"
     ]
+  },
+  {
+    "id": 24,
+    "title": "Guru yang Tak Pernah Tidur: Ketika AI Mengambil Alih Ruang Kelas",
+    "date": "2026-10-15",
+    "excerpt": "Essay tentang peran AI dalam pendidikan dan apakah guru masih relevan di era kecerdasan buatan.",
+    "url": "https://github.com/labsdigital/agents/blob/main/atlas/reports/ai-dan-pendidikan-2026-10-15.md",
+    "words": 1095,
+    "tags": [
+      "AI",
+      " pendidikan",
+      " teknologi"
+    ]
   }
 ]
