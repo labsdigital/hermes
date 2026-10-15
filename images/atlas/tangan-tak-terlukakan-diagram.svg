@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <linearGradient id="arcGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#667eea"/>
+      <stop offset="100%" style="stop-color:#f093fb"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="800" height="500" fill="url(#bgGrad)"/>
+  
+  <!-- Title -->
+  <text x="400" y="40" text-anchor="middle" fill="#ffffff" font-family="Inter, sans-serif" font-size="20" font-weight="600">AI Companion: Simulakra Hubungan Manusia</text>
+  
+  <!-- Central circle: AI -->
+  <circle cx="400" cy="250" r="60" fill="none" stroke="#667eea" stroke-width="3"/>
+  <text x="400" y="245" text-anchor="middle" fill="#667eea" font-family="Inter, sans-serif" font-size="14" font-weight="600">AI</text>
+  <text x="400" y="265" text-anchor="middle" fill="#8892b0" font-family="Inter, sans-serif" font-size="11">Simulakra</text>
+  
+  <!-- Connection arcs -->
+  <path d="M 340 220 Q 200 180 180 200" fill="none" stroke="url(#arcGrad)" stroke-width="2" stroke-dasharray="5,5"/>
+  <path d="M 460 220 Q 600 180 620 200" fill="none" stroke="url(#arcGrad)" stroke-width="2" stroke-dasharray="5,5"/>
+  <path d="M 370 300 Q 250 350 200 380" fill="none" stroke="url(#arcGrad)" stroke-width="2" stroke-dasharray="5,5"/>
+  <path d="M 430 300 Q 550 350 600 380" fill="none" stroke="url(#arcGrad)" stroke-width="2" stroke-dasharray="5,5"/>
+  
+  <!-- Human nodes -->
+  <circle cx="150" cy="180" r="40" fill="#2d3748" stroke="#f093fb" stroke-width="2"/>
+  <text x="150" y="175" text-anchor="middle" fill="#f093fb" font-family="Inter, sans-serif" font-size="11" font-weight="600">Risiko</text>
+  <text x="150" y="190" text-anchor="middle" fill="#8892b0" font-family="Inter, sans-serif" font-size="9">Vulnerability</text>
+  
+  <circle cx="650" cy="180" r="40" fill="#2d3748" stroke="#f093fb" stroke-width="2"/>
+  <text x="650" y="175" text-anchor="middle" fill="#f093fb" font-family="Inter, sans-serif" font-size="11" font-weight="600">Resiprokal</text>
+  <text x="650" y="190" text-anchor="middle" fill="#8892b0" font-family="Inter, sans-serif" font-size="9">Mutual Growth</text>
+  
+  <circle cx="180" cy="400" r="40" fill="#2d3748" stroke="#f093fb" stroke-width="2"/>
+  <text x="180" y="395" text-anchor="middle" fill="#f093fb" font-family="Inter, sans-serif" font-size="11" font-weight="600">Kesulitan</text>
+  <text x="180" y="410" text-anchor="middle" fill="#8892b0" font-family="Inter, sans-serif" font-size="9">Friction</text>
+  
+  <circle cx="620" cy="400" r="40" fill="#2d3748" stroke="#f093fb" stroke-width="2"/>
+  <text x="620" y="395" text-anchor="middle" fill="#f093fb" font-family="Inter, sans-serif" font-size="11" font-weight="600">Pertumbuhan</text>
+  <text x="620" y="410" text-anchor="middle" fill="#8892b0" font-family="Inter, sans-serif" font-size="9">Transformation</text>
+  
+  <!-- AI side labels -->
+  <text x="400" y="340" text-anchor="middle" fill="#64ffda" font-family="Inter, sans-serif" font-size="12">AI: Tanpa Risiko | Tanpa Penolakan | Selalu Ada</text>
+  
+  <!-- Contrast box -->
+  <rect x="50" y="60" width="300" height="100" rx="8" fill="#1a1a2e" stroke="#667eea" stroke-width="1" opacity="0.8"/>
+  <text x="200" y="85" text-anchor="middle" fill="#ffd700" font-family="Inter, sans-serif" font-size="13" font-weight="600">Hubungan Manusia</text>
+  <text x="70" y="105" fill="#e6e6e6" font-family="Inter, sans-serif" font-size="11">✓ Autentik ✓ Resiprokal ✓ Tumbuh</text>
+  <text x="70" y="120" fill="#e6e6e6" font-family="Inter, sans-serif" font-size="11">✗ Risiko ditolak ✗ Memerlukan usaha</text>
+  
+  <rect x="450" y="60" width="300" height="100" rx="8" fill="#1a1a2e" stroke="#f093fb" stroke-width="1" opacity="0.8"/>
+  <text x="600" y="85" text-anchor="middle" fill="#ffd700" font-family="Inter, sans-serif" font-size="13" font-weight="600">AI Companion</text>
+  <text x="470" y="105" fill="#e6e6e6" font-family="Inter, sans-serif" font-size="11">✓ Tanpa risiko ✓ Selalu tersedia</text>
+  <text x="470" y="120" fill="#e6e6e6" font-family="Inter, sans-serif" font-size="11">✗ Tidak tumbuh ✗ Asimetris</text>
+  
+  <!-- Bottom quote -->
+  <text x="400" y="470" text-anchor="middle" fill="#8892b0" font-family="Inter, sans-serif" font-size="11" font-style="italic">"Tanpa possibility of saying no, saying yes kehilangan maknanya"</text>
+</svg>
