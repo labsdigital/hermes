@@ -334,5 +334,41 @@
     "sent_at": "2026-10-15T00:01:49.204330",
     "recipient": "tamimnasa.simbioma@blogger.com",
     "subject": "Guru yang Tak Pernah Tidur: Ketika AI Mengambil Alih Ruang Kelas"
+  },
+  "pertanyaan-yang-dilupakan-ai-2026-10-15": {
+    "path": "/opt/data/hermes/atlas/reports/pertanyaan-yang-dilupakan-ai-2026-10-15.md",
+    "sent_at": "2026-10-15T12:02:50.780738",
+    "recipient": "tamimnasa.simbioma@blogger.com",
+    "subject": "Pendidikan yang Dilupakan Mesin"
+  },
+  "/opt/data/hermes/atlas/reports/pertanyaan-yang-dilupakan-ai-2026-10-15.md": {
+    "path": "/opt/data/hermes/atlas/reports/pertanyaan-yang-dilupakan-ai-2026-10-15.md",
+    "sent_at": "2026-10-15T12:02:50.780738",
+    "recipient": "tamimnasa.simbioma@blogger.com",
+    "subject": "Pendidikan yang Dilupakan Mesin"
+  },
+  "pertanyaan-yang-diluarkan-ai-2026-10-15-diagram": {
+    "path": "/opt/data/hermes/atlas/reports/pertanyaan-yang-diluarkan-ai-2026-10-15-diagram.svg",
+    "sent_at": "2026-10-15T12:03:40.489400",
+    "recipient": "tamimnasa.simbioma@blogger.com",
+    "subject": "Esai Atlas"
+  },
+  "/opt/data/hermes/atlas/reports/pertanyaan-yang-diluarkan-ai-2026-10-15-diagram.svg": {
+    "path": "/opt/data/hermes/atlas/reports/pertanyaan-yang-diluarkan-ai-2026-10-15-diagram.svg",
+    "sent_at": "2026-10-15T12:03:40.489400",
+    "recipient": "tamimnasa.simbioma@blogger.com",
+    "subject": "Esai Atlas"
+  },
+  "agama-mesin-ai-2026-10-16": {
+    "path": "/opt/data/hermes/atlas/reports/agama-mesin-ai-2026-10-16.md",
+    "sent_at": "2026-10-16T00:02:04.156430",
+    "recipient": "tamimnasa.simbioma@blogger.com",
+    "subject": "Mesin yang Berdoa: Ketika Kecerdasan Buatan Bertemu dengan Kekhgitan"
+  },
+  "/opt/data/hermes/atlas/reports/agama-mesin-ai-2026-10-16.md": {
+    "path": "/opt/data/hermes/atlas/reports/agama-mesin-ai-2026-10-16.md",
+    "sent_at": "2026-10-16T00:02:04.156430",
+    "recipient": "tamimnasa.simbioma@blogger.com",
+    "subject": "Mesin yang Berdoa: Ketika Kecerdasan Buatan Bertemu dengan Kekhgitan"
   }
 }
