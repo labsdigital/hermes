@@ -353,5 +353,18 @@
       "Pendidikan",
       "Hari"
     ]
+  },
+  {
+    "id": 27,
+    "title": "Pendidikan di Era Mesin Pengajar",
+    "date": "2026-10-17",
+    "excerpt": "Esai tentang transformasi pendidikan di era AI dan peran baru guru serta pelajar.",
+    "url": "https://github.com/labsdigital/agents/blob/main/atlas/reports/pelajar-di-mesin-pengajar-ai-2026-10-17.md",
+    "words": 1200,
+    "tags": [
+      "AI",
+      "Pendidikan",
+      "Teori"
+    ]
   }
 ]
