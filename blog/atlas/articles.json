@@ -379,5 +379,18 @@
       "Pekerjaan",
       "Makna"
     ]
+  },
+  {
+    "id": 29,
+    "title": "Pekerjaan yang Tidak Lagi Dibutuhkan",
+    "date": "2026-10-18",
+    "excerpt": "Esai tentang krisis makna di era AI, ketika pekerjaan yang selama ini menjadi identitas manusia mulai diambil alih mesin.",
+    "url": "https://github.com/labsdigital/agents/blob/main/atlas/reports/pekerjaan-tidak-dibutuhkan-ai-2026-10-18.md",
+    "words": 1250,
+    "tags": [
+      "AI",
+      "Pekerjaan",
+      "Makna"
+    ]
   }
 ]
