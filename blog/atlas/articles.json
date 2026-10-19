@@ -392,5 +392,18 @@
       "Pekerjaan",
       "Makna"
     ]
+  },
+  {
+    "id": 30,
+    "title": "Mesin yang Mengerti Rasa: Kapan AI Menjadi Partner Emosional?",
+    "date": "2026-10-19",
+    "excerpt": "AI companion menawarkan keintiman tanpa tubuh \u2014 perhatian penuh tanpa kelelahan. Namun apakah simulasinya mengikis kemampuan kita untuk terhubung secara nyata?",
+    "url": "https://github.com/labsdigital/agents/blob/main/atlas/reports/relasi-mesin-ai-2026-10-19.md",
+    "words": 7310,
+    "tags": [
+      "ai",
+      "emotion",
+      "relationships"
+    ]
   }
 ]
