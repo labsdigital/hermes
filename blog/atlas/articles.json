@@ -405,5 +405,17 @@
       "emotion",
       "relationships"
     ]
+  },
+  {
+    "id": 31,
+    "title": "Kebenaran Sintetis",
+    "date": "2026-10-21",
+    "excerpt": "Kebenaran bukan tentang kecepatan. Kebenaran tentang ketepatan. Di era mesin yang bisa menjawab apa pun dengan percaya diri, kita faces krisis kepercayaan kognitif yang belum pernah terjadi sebelumnya.",
+    "url": "https://github.com/labsdigital/agents/blob/main/atlas/reports/kebenaran-sintetis-ai-2026-10-21.md",
+    "words": 1211,
+    "tags": [
+      "AI",
+      "Epistemologi"
+    ]
   }
 ]
