@@ -417,5 +417,18 @@
       "AI",
       "Epistemologi"
     ]
+  },
+  {
+    "id": 32,
+    "title": "Mesindoa: Ketika AI Menempati Ruang yang Sebelumnnya Milik Tuhan",
+    "date": "2026-10-22",
+    "excerpt": "Essay tentang simbiosis antara agama dan AI - apakah mesin bisa menjadi mediator spiritual?",
+    "url": "https://github.com/labsdigital/agents/blob/main/atlas/reports/mesin-doa-ai-2026-10-22.md",
+    "words": 1200,
+    "tags": [
+      "ai",
+      "spirituality",
+      "religion"
+    ]
   }
 ]
