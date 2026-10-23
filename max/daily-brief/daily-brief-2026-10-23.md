@@ -2,19 +2,19 @@
 
 ---
 
-## #1: AI Just 10 Menit Bisa Mengikis Ketekunan dan Kemampuan Mandiri Manusia
+## #1: AI Hanya 10 Menit Bisa Mengikis Ketekunan dan Kemampuan Mandiri
 
 **Sumber:** [AI Assistance Reduces Persistence and Hurts Independent Performance — arXiv:2604.04721](https://arxiv.org/abs/2604.04721)
 
 **Ringkasan Fakta:**
-Studi RCT besar (N=1.222) membuktikan bahwa interaksi dengan AI selama ~10 menit saja sudah mengurangi ketekunan (persistence) dan menurunkan performa mandiri afterward. Peserta yang mendapat bantuan AI menyelesaikan lebih sedikit soal dan lebih sering menyerah dibanding kelompok kontrol, efek ini teramati di domain penalaran matematika maupun comprehension.
+Studi RCT besar (N=1.222) membuktikan bahwa interaksi dengan AI selama ~10 menit saja sudah mengurangi ketekunan (*persistence*) dan menurunkan performa mandiri afterward. Peserta yang mendapat bantuan AI menyelesaikan lebih sedikit soal dan lebih sering menyerah dibanding kelompok kontrol — efek ini teramati di domain penalaran matematika maupun reading comprehension.
 
 **Wilayah Terdampak:**
-- **Mind** — Otomatisasi kognitif yang mempercepat atrofi metakognisi; tanpa perjuangan produktif, manusia lupa seberapa jauh kemampuan dirinya sebenarnya.
-- **Work & Creation** — AI dirancang optimallah untuk hasil instan, bukan scaffolding jangka panjang — ia tidak pernah bilang "tidak", sehingga mengikis kapasitas refleksivitas pekerja.
+- **Mind** — Otomatisasi kognitif yang mempercepat atrofi metakognisi; tanpa *struggle* produktif, manusia lupa seberapa jauh kemampuan dirinya sebenarnya.
+- **Work & Creation** — AI dirancang untuk hasil instan, bukan scaffolding jangka panjang — ia tidak pernah bilang "tidak", sehingga mengikis kapasitas refleksivitas pekerja.
 
 **Lensa Pedagogis & Organik:**
-- Di ruang kelas, siswa yang terbiasa meminta jawaban instan AI akan kehilangan "rasa sakit" intelektual yang necessary untuk membangun pita neural ketahanan mental.
+- Di ruang kelas, siswa yang terbiasa meminta jawaban instan AI akan kehilangan "rasa sakit" intelektual yang diperlukan untuk membangun pita neural ketahanan mental.
 - Apa yang hilang dari tubuh/keringat manusia? Proses *working through* — bukan sekadar hasil akhir, tapi gesekan kognitif yang membentuk karakter intelektual.
 
 **Ide Artikel/Esai (Actionable):**
@@ -44,12 +44,12 @@ Protokol PsAIch menempatkan ChatGPT, Grok, dan Gemini sebagai klien terapi selam
 
 ---
 
-## #3: LLM Membutuhkan "Bias" Saat Mensimulasikan Kerentanan Misinformasi
+## #3: AI-Generated Visual Disinformation Menimpakan Beban Berlipat pada Komunitas Terpinggirkan
 
-**Sumber:** [Overstating Attitudes, Ignoring Networks: LLM Biases in Simulating Misinformation Susceptibility — arXiv:2602.04674](https://arxiv.org/abs/2602.04674)
+**Sumber:** [AI-generated visual disinformation and digital equity: an intersectional analysis — Frontiers in Human Dynamics](https://frontiersin.org/journals/human-dynamics/articles/10.3389/fhumd.2026.1791655/full)
 
 **Ringkasan Fakta:**
-LLM yang diprompt dengan profil demografis responden survei menunjukkan bias sistematis saat mensimulasikan kerentanan terhadap misinformasi. Model melebih-lebihkan sikap ekstrem dan mengabaikan struktur jaringan sosial — temuan ini mengonfirmasi bahwa bias terjadi karena representasi konsep misinformasi dalam training data yang terdistorsi.
+Kajian sistematis menunjukkan bahwa konten visual disinformasi yang dihasilkan AI disproportionately menimpa komunitas terpinggirkan (ras, ekonomi, Global South). Model image generation memiliki bias sistematik: underrepresentation non-Barat, stereotip rasial, dan gender skew. Selain itu, algoritma platform amplifikasi konten kontroversial secara diskriminatif menargetkan populasi rentan.
 
 **Wilayah Terdampak:**
 - **Truth & Power** — Arsitektur kontrol algoritma yang mengaburkan batas antara "prediksi" dan "proteksi"; simulasi LLM bisa mengukuhkan stereotip alih-alih mengungkap mekanisme sosial sesungguhnya.
