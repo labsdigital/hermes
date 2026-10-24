@@ -2,9 +2,9 @@
 
 ---
 
-## 1. Students Who Rely Most on AI Lose Their Cognitive Edge — And It's Not Who You'd Expect
+## 1. Cognitive Debt Cycle: When Students Trust AI Too Much, They Stop Thinking
 
-**[arXiv:2601.22430](https://arxiv.org/abs/2601.22430) · Thinking Less, Trusting More: GenAI's Impacts on Students' Cognitive Habits**
+**[arXiv:2601.22430](https://arxiv.org/abs/2601.22430) · "Thinking Less, Trusting More: GenAI's Impacts on Students' Cognitive Habits"**
 
 **Ringkasan Fakta:** Studi terhadap 299 siswa STEM di lima universitas Amerika menemukan bahwa penggunaan rutin GenAI yang didorong kepercayaan mengurangi keterlibatan kognitif secara signifikan — refleksi, kebutuhan memahami, dan berpikir kritis semua menurun. Yang mengejutkan: siswa dengan motivasi teknofilik tinggi, toleransi risiko besar, dan efikasi komputer kuat — sifat yang biasanya dipuji di pendidikan STEM — justru paling rentan terhadap efek ini. Pengalaman sebelumnya dengan AI tidak memberi perlindungan.
 
@@ -39,20 +39,20 @@
 
 **Lensa Pedagogis & Organik:**
 
-- Di kelas, temuan ini berbicara keras: guru yang melihat siswa "tidak fokus" atau "lambat" mungkin sedang menyaksikan otak yang overcrowded, bukan otak yang kosong. intervensi yang tepat bukan "menambah stimulus" tapi "menenangkan noise".
-- Digital twin sebagai alat diagnostik pribadi — ini mimpi yang jadi kenyataan. Tapi juga mimpi yang mengerikan: jika AI bisa memetakan otak anak untuk "diagnosa", siapa yang memiliki data itu? Dan bagaimana label itu membentuk expectativa terhadap anak?
+- Di kelas, temuan ini berbicara keras: guru yang melihat siswa "tidak fokus" atau "lambat" mungkin sedang menyaksikan otak yang overcrowded, bukan otak yang kosong. Intervensi yang tepat bukan "menambah stimulus" tapi "menenangkan noise".
+- Digital twin sebagai alat diagnostik pribadi — ini mimpi yang jadi kenyataan. Tapi juga mimpi yang mengerikan: jika AI bisa memetakan otak anak untuk "diagnosa", siapa yang memiliki data itu? Dan bagaimana label itu membentuk expectation terhadap anak?
 - Yang hilang dari "tubuh/keringat manusia": proses diagnosa yang kini jadi algoritma menghilangkan dialog manusia — guru yang mengamati, memahami, menyesuaikan pendekatan satu per satu. Digital twin presisi, tapi dingin.
 
 **Ide Artikel/Esai:**
 
 - Judul Provokatif: *"Anak yang Terlalu Cepat Bingung Mungkin Otaknya Terlalu Cepat Bekerja"*
-- Premis Argumen: Kita salah mengerti kesulitan belajar selama puluhan tahun — dan solusi yang datang bukan dari menambah usaha, tapi dari memahami bahwa kadang otak anak overwhelmed bukanunderstimulated.
+- Premis Argumen: Kita salah mengerti kesulitan belajar selama puluhan tahun — dan solusi yang datang bukan dari menambah usaha, tapi dari memahami bahwa kadang otak anak overwhelmed bukan understimulated.
 
 ---
 
-## 3. AI untuk Emosi vs AI untuk Fungsi: Dua Otak yang Berbeda
+## 3. Dua Jenis Penggunaan AI, Dua Otak yang Berbeda: Temuan Neurosains Pertama
 
-**[arXiv:2604.08594](https://arxiv.org/abs/2604.08594) · Mapping Generative AI Use in the Human Brain: Divergent Neural, Academic, and Mental Health Profiles**
+**[arXiv:2604.08594](https://arxiv.org/abs/2604.08594) · "Mapping Generative AI Use in the Human Brain: Divergent Neural, Academic, and Mental Health Profiles"**
 
 **Ringkasan Fakta:** Studi neuroimaging pertama yang memetakan pola penggunaan AI generatif pada 222 mahasiswa. Penggunaan fungsional (belajar, riset, produktivitas) berkorelasi dengan volume gray matter lebih besar di prefrontal cortex dan hippocampus, serta outcome akademik lebih baik. Sebaliknya, penggunaan socio-emotional (berbincang dengan AI untuk dukungan emosional) berkorelasi dengan volume lebih kecil di superior temporal gyrus dan amygdala, serta skor kesehatan mental yang lebih buruk (depresi, kecemasan sosial).
 
@@ -64,8 +64,8 @@
 **Lensa Pedagogis & Organik:**
 
 - Di sekolah, ini pertanyaan penting: kapan AI sebagai tutor vs kapan AI sebagai teman? Batasnya tipis. Murid yang menggunakan AI untuk "ngobrol" tentang perasaan mungkin terlihat produktif (dia tetap di layar, tetap "belajar"), tapi secara neurologis dia mengorbankan jaringan sosial-emosional otaknya.
-- Yang hilang dari "tubuh/keringat manusia": relasi emosional manusia melibatkan wajah, sentuhan, kehadiran fisik, ketegangan, keheningan — semua dimens iyang tidak bisa direplikasi AI. Otak kita berevolusi untuk manusia, bukan untuk chatbot.
-- Guru perlu sadar: siswa yang " kecanduan AI" untuk alasan emosional bukan sekadar kurang disiplin — dia sedang mengalami proses neuroplastisitas yang mengarah ke isolasi.
+- Yang hilang dari "tubuh/keringat manusia": relasi emosional manusia melibatkan wajah, sentuhan, kehadiran fisik, ketegangan, keheningan — semua dimensi yang tidak bisa direplikasi AI. Otak kita berevolusi untuk manusia, bukan untuk chatbot.
+- Guru perlu sadar: siswa yang "kecanduan AI" untuk alasan emosional bukan sekadar kurang disiplin — dia sedang mengalami proses neuroplastisitas yang mengarah ke isolasi.
 
 **Ide Artikel/Esai:**
 
@@ -87,7 +87,7 @@ Google telah mengubah NotebookLM menjadi **Gemini Notebook** dengan fitur-fitur 
    - *Use case:* Murid mulai dengan 3 ide, minta AI cari sumber terbaru dan buat laporan dengan referensi.
 
 3. **Custom Goals & Personas** — Setel persona AI hingga 5.000 karakter: "Berperilaku sebagai reviewer jurnal yang ketat", "Sebagai guru yang sabar menjelaskan konsep dasar".
-   - *Use case:* Guru buat notebook dengan persona " examiner soal HOTS" untukLatihan soal.
+   - *Use case:* Guru buat notebook dengan persona " examiner soal HOTS" untuk latihan soal.
 
 4. **Flashcards & Quizzes** — Generate dari dokumen sendiri, dengan penjelasan yang menghubungkan jawaban kembali ke sumber.
    - *Use case:* Siswa upload catatan kuliah, generate flashcard, praktik dengan spaced repetition.
@@ -96,6 +96,14 @@ Google telah mengubah NotebookLM menjadi **Gemini Notebook** dengan fitur-fitur 
    - *Use case:* Guru buat video ringkasan materi untuk flipped classroom.
 
 ⚠️ **Catatan Kritis:** Semua fitur ini powerful — tapi powerful tools without pedagogical intention adalah resep cognitive offloading. Gunakan sebagai scaffold, bukan sebagai pengganti proses belajar.
+
+### 🛠️ AI Tutor Socratic dari NotebookLM
+
+**[arXiv:2504.09720](https://arxiv.org/abs/2504.09720) · "NotebookLM as a Socratic physics tutor: Design and preliminary observations"**
+
+Studi eksploratif menunjukkan NotebookLM bisa dikonfigurasi sebagai tutor Socratic untuk pelajaran fisika. Sistem dibatasi hanya pada interface chat, mempromosikan dialog berbasis pertanyaan alih-alih jawaban langsung. Dengan grounding pada sumber yang disediakan guru, AI tutor mitigasi hallucination dan memastikan jawaban traceable.
+
+- *Use case:* Guru fisika buat notebook dengan soal-soal konseptual, setel persona sebagai tutor yang hanya bertanya (tidak memberi jawaban), siswa belajar melalui guided questioning.
 
 ---
 
