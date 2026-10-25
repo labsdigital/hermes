@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Ethicist - Etika Kecerdasan Buatan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: #0a0a0a;
+            color: #f5f5f5;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .slide {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: clamp(24px, 8vw, 60px);
+            page-break-after: always;
+            position: relative;
+        }
+        .slide h1 {
+            font-size: clamp(2rem, 7vw, 3.5rem);
+            font-weight: 800;
+            text-align: center;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ff6b00, #ff9500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .slide h2 {
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #ff9500;
+        }
+        .slide ul {
+            list-style: none;
+            max-width: 600px;
+            width: 100%;
+        }
+        .slide li {
+            font-size: clamp(1.1rem, 3.5vw, 1.5rem);
+            padding: 0.5rem 0;
+            border-left: 4px solid #ff6b00;
+            padding-left: 1rem;
+            margin-bottom: 0.75rem;
+        }
+        .slide .subtitle {
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            color: #aaa;
+            text-align: center;
+            margin-top: 1rem;
+        }
+        .slide .cta {
+            background: #ff6b00;
+            color: #000;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-size: clamp(1.2rem, 4vw, 1.8rem);
+            font-weight: 700;
+            text-align: center;
+            margin-top: 2rem;
+        }
+        .slide .highlight {
+            background: linear-gradient(135deg, rgba(255,107,0,0.2), rgba(255,149,0,0.1));
+            padding: 1.5rem;
+            border-radius: 16px;
+            margin: 1rem 0;
+            border: 1px solid rgba(255,107,0,0.3);
+        }
+        .slide .icon {
+            font-size: clamp(3rem, 10vw, 5rem);
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Slide 1: Judul -->
+    <div class="slide">
+        <div class="icon">🤖</div>
+        <h1>AI ETHICIST</h1>
+        <p class="subtitle">Menjaga Kemanusiaan di Era Kecerdasan Buatan</p>
+    </div>
+
+    <!-- Slide 2: Pengantar -->
+    <div class="slide">
+        <h2>Apa Itu AI Ethicist?</h2>
+        <ul>
+            <li>Profesional yang mempelajari dampak etis AI</li>
+            <li>Penghubung antara teknologi dan nilai kemanusiaan</li>
+            <li>Penjaga agar AI tidak melampaui batas moral</li>
+        </ul>
+        <p class="subtitle">Bukan sekadar teknisi — mereka adalah "hati nurani" digital</p>
+    </div>
+
+    <!-- Slide 3: Peran -->
+    <div class="slide">
+        <h2>Peran Utama AI Ethicist</h2>
+        <ul>
+            <li>Menganalisis bias dalam algoritma</li>
+            <li>Merancang framework etika untuk pengembangan AI</li>
+            <li>Menjadi jembatan antara developer dan masyarakat</li>
+            <li>Mengawasi penggunaan AI di bidang sensitif (kesehatan, hukum, militer)</li>
+        </ul>
+    </div>
+
+    <!-- Slide 4: Tantangan -->
+    <div class="slide">
+        <h2>Tantangan Etika AI</h2>
+        <div class="highlight">
+            <ul>
+                <li><strong>Bias Algoritma</strong> — AI bisa memperkuat diskriminasi</li>
+                <li><strong>Privasi Data</strong> — Keseimbangan antara inovasi dan hak pribadi</li>
+                <li><strong>Transparansi</strong> — AI "black box" yang sulit dipahami</li>
+                <li><strong>Akuntabilitas</strong> — Siapa yang bertanggung jawab saat AI gagal?</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Slide 5: Prinsip -->
+    <div class="slide">
+        <h2>Prinsip Etika AI</h2>
+        <ul>
+            <li>🔹 <strong>Fairness</strong> — Adil dan tanpa diskriminasi</li>
+            <li>🔹 <strong>Transparency</strong> — Dapat dipahami dan dijelaskan</li>
+            <li>🔹 <strong>Accountability</strong> — Ada pertanggungjawaban jelas</li>
+            <li>🔹 <strong>Privacy</strong> — Menghormati data pribadi</li>
+            <li>🔹 <strong>Human-centric</strong> — Manusia tetap di pusat keputusan</li>
+        </ul>
+    </div>
+
+    <!-- Slide 6: Dampak -->
+    <div class="slide">
+        <h2>Dampak Tanpa Etika</h2>
+        <ul>
+            <li>Penguatan stereotip dan rasisme sistemik</li>
+            <li>Pelanggaran hak asasi manusia secara masif</li>
+            <li>Kehilangan kepercayaan publik terhadap teknologi</li>
+            <li>Bencana sosial akibat keputusan otomatis yang salah</li>
+        </ul>
+        <p class="subtitle">AI tanpa etika = alat kontrol, bukan alat pembebasan</p>
+    </div>
+
+    <!-- Slide 7: Masa Depan -->
+    <div class="slide">
+        <h2>Masa Depan AI Ethicist</h2>
+        <ul>
+            <li>Semakin dibutuhkan di perusahaan teknologi</li>
+            <li>Kolaborasi dengan regulator dan policymaker</li>
+            <li>Pendidikan etika AI sejak dini</li>
+            <li>Global standard untuk pengembangan AI yang bertanggung jawab</li>
+        </ul>
+    </div>
+
+    <!-- Slide 8: Penutup -->
+    <div class="slide">
+        <div class="icon">⚖️</div>
+        <h2>Teknologi Tanpa Etika<br>Buta Tanpa Arah</h2>
+        <p class="subtitle">AI Ethicist adalah kompas kemanusiaan di era digital</p>
+        <div class="cta">Mari jaga teknologi tetap manusiawi 🤝</div>
+    </div>
+</body>
+</html>
