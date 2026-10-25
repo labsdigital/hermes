@@ -3,246 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Konsistensi — Kunci Sukses Jangka Panjang</title>
+    <title>Konsistensi — Tindakan Kecil Menuju Sukses</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
-            font-family: 'Inter', system-ui, sans-serif;
-            background: #fefefe;
-            color: #1a1a1a;
-            min-height: 100vh;
-        }
-        .slide {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: clamp(35px, 8vw, 90px);
-            page-break-after: always;
-            position: relative;
-            border-bottom: 2px solid rgba(0,0,0,0.08);
-        }
-        /* Color Variants */
-        .slide.cover { background: linear-gradient(145deg, #0d1b2a 0%, #1b263b 100%); color: #fff; }
-        .slide.cover h1 { color: #e8a87c; }
-        .slide.cover .subtitle { color: #a8b5c7; }
-        .slide.cover .tag { background: #e8a87c; color: #0d1b2a; }
-        .slide.cover .chapter-num { color: transparent; -webkit-text-stroke: 2px #e8a87c; }
-        .slide.cover .divider { background: #e8a87c; }
+        body { font-family: 'Inter', system-ui, sans-serif; background: #faf9f7; color: #2d3436; min-height: 100vh; }
+        .slide { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: clamp(40px, 10vw, 100px); page-break-after: always; position: relative; }
         
-        .slide.intro { background: #f8f4ef; color: #2c3e50; }
-        .slide.intro h1, .slide.intro h2 { color: #2c3e50; }
-        .slide.intro .divider { background: #2c3e50; }
-        .slide.intro .tag { background: #2c3e50; color: #f8f4ef; }
-        .slide.intro .pull-quote { background: #2c3e50; color: #f8f4ef; }
+        /* Scheme 1: Foundations - Navy + Gold */
+        .slide.foundations { background: #1a2a3a; color: #f5f5f5; }
+        .slide.foundations h1, .slide.foundations h2 { color: #d4a574; }
+        .slide.foundations .chapter-num { color: transparent; -webkit-text-stroke: 2px #d4a574; }
+        .slide.foundations .divider { background: #d4a574; }
+        .slide.foundations .tag { background: #d4a574; color: #1a2a3a; }
+        .slide.foundations .pull-quote { background: rgba(212,165,116,0.15); color: #d4a574; border: 1px solid #d4a574; }
+        .slide.foundations .highlight-box { background: rgba(212,165,116,0.1); }
+        .slide.foundations .detail-text { color: #c8c8c8; }
+        .slide.foundations li { border-bottom-color: rgba(212,165,116,0.2); color: #e0e0e0; }
+        .slide.foundations table th { color: #d4a574; }
+        .slide.foundations table td { color: #c8c8c8; border-bottom-color: rgba(212,165,116,0.15); }
         
-        .slide.concept { background: #fff; color: #1a1a1a; }
-        .slide.concept h1, .slide.concept h2 { color: #1a1a1a; }
-        .slide.concept .divider { background: #1a1a1a; }
-        .slide.concept .tag { background: #1a1a1a; color: #fff; }
-        .slide.concept .pull-quote { background: #1a1a1a; color: #fff; }
+        /* Scheme 2: Action - Teal + Cream */
+        .slide.actions { background: #0f4c5c; color: #f5f5f5; }
+        .slide.actions h1, .slide.actions h2 { color: #40e0d0; }
+        .slide.actions .chapter-num { color: transparent; -webkit-text-stroke: 2px #40e0d0; }
+        .slide.actions .divider { background: #40e0d0; }
+        .slide.actions .tag { background: #40e0d0; color: #0f4c5c; }
+        .slide.actions .pull-quote { background: rgba(64,224,208,0.15); color: #40e0d0; border: 1px solid #40e0d0; }
+        .slide.actions .highlight-box { background: rgba(64,224,208,0.1); }
+        .slide.actions .detail-text { color: #c8e0de; }
+        .slide.actions li { border-bottom-color: rgba(64,224,208,0.2); color: #e0f0ef; }
+        .slide.actions table th { color: #40e0d0; }
+        .slide.actions table td { color: #c8e0de; border-bottom-color: rgba(64,224,208,0.15); }
         
-        .slide.war { background: linear-gradient(135deg, #c0392b 0%, #922b21 100%); color: #fff; }
-        .slide.war h1, .slide.war h2 { color: #fff; }
-        .slide.war .divider { background: #fff; }
-        .slide.war .tag { background: #fff; color: #c0392b; }
-        .slide.war .pull-quote { background: rgba(255,255,255,0.15); color: #fff; border: 2px solid #fff; }
-        .slide.war .highlight-box { background: rgba(255,255,255,0.1); }
+        /* Scheme 3: Environment - Warm Brown + Cream */
+        .slide.environment { background: #3d2b1f; color: #f5f0e8; }
+        .slide.environment h1, .slide.environment h2 { color: #e8a87c; }
+        .slide.environment .chapter-num { color: transparent; -webkit-text-stroke: 2px #e8a87c; }
+        .slide.environment .divider { background: #e8a87c; }
+        .slide.environment .tag { background: #e8a87c; color: #3d2b1f; }
+        .slide.environment .pull-quote { background: rgba(232,168,124,0.15); color: #e8a87c; border: 1px solid #e8a87c; }
+        .slide.environment .highlight-box { background: rgba(232,168,124,0.1); }
+        .slide.environment .detail-text { color: #d4c4b0; }
+        .slide.environment li { border-bottom-color: rgba(232,168,124,0.2); color: #e8ddd0; }
+        .slide.environment table th { color: #e8a87c; }
+        .slide.environment table td { color: #d4c4b0; border-bottom-color: rgba(232,168,124,0.15); }
         
-        .slide.easy { background: #27ae60; color: #fff; }
-        .slide.easy h1, .slide.easy h2 { color: #fff; }
-        .slide.easy .divider { background: #fff; }
-        .slide.easy .tag { background: #fff; color: #27ae60; }
-        .slide.easy .pull-quote { background: rgba(255,255,255,0.15); color: #fff; }
-        .slide.easy .highlight-box { background: rgba(255,255,255,0.15); }
+        /* Light variant for contrast slides */
+        .slide.light { background: #f5f0e8; color: #2d3436; }
+        .slide.light h1, .slide.light h2 { color: #1a2a3a; }
+        .slide.light .chapter-num { color: transparent; -webkit-text-stroke: 2px #1a2a3a; }
+        .slide.light .divider { background: #1a2a3a; }
+        .slide.light .tag { background: #1a2a3a; color: #f5f0e8; }
+        .slide.light .pull-quote { background: #1a2a3a; color: #f5f0e8; }
+        .slide.light .highlight-box { background: #e8e0d8; }
+        .slide.light .detail-text { color: #4a4a4a; }
+        .slide.light li { border-bottom-color: rgba(26,42,58,0.15); color: #3d3d3d; }
+        .slide.light table th { color: #1a2a3a; }
+        .slide.light table td { color: #4a4a4a; border-bottom-color: rgba(26,42,58,0.1); }
         
-        .slide.correct { background: #2980b9; color: #fff; }
-        .slide.correct h1, .slide.correct h2 { color: #fff; }
-        .slide.correct .divider { background: #fff; }
-        .slide.correct .tag { background: #fff; color: #2980b9; }
-        .slide.correct .pull-quote { background: rgba(255,255,255,0.15); color: #fff; }
-        .slide.correct .highlight-box { background: rgba(255,255,255,0.1); }
-        
-        .slide.flywheel { background: #8e44ad; color: #fff; }
-        .slide.flywheel h1, .slide.flywheel h2 { color: #fff; }
-        .slide.flywheel .divider { background: #fff; }
-        .slide.flywheel .tag { background: #fff; color: #8e44ad; }
-        .slide.flywheel .pull-quote { background: rgba(255,255,255,0.15); color: #fff; }
-        .slide.flywheel .highlight-box { background: rgba(255,255,255,0.1); }
-        
-        .slide.belief { background: #d35400; color: #fff; }
-        .slide.belief h1, .slide.belief h2 { color: #fff; }
-        .slide.belief .divider { background: #fff; }
-        .slide.belief .tag { background: #fff; color: #d35400; }
-        .slide.belief .pull-quote { background: rgba(255,255,255,0.15); color: #fff; }
-        .slide.belief .highlight-box { background: rgba(255,255,255,0.1); }
-        
-        .slide.badday { background: #16a085; color: #fff; }
-        .slide.badday h1, .slide.badday h2 { color: #fff; }
-        .slide.badday .divider { background: #fff; }
-        .slide.badday .tag { background: #fff; color: #16a085; }
-        .slide.badday .pull-quote { background: rgba(255,255,255,0.15); color: #fff; }
-        .slide.badday .highlight-box { background: rgba(255,255,255,0.1); }
-        
-        .slide.cultivate { background: #f39c12; color: #fff; }
-        .slide.cultivate h1, .slide.cultivate h2 { color: #fff; }
-        .slide.cultivate .divider { background: #fff; }
-        .slide.cultivate .tag { background: #fff; color: #f39c12; }
-        .slide.cultivate .pull-quote { background: rgba(255,255,255,0.15); color: #fff; }
-        .slide.cultivate .highlight-box { background: rgba(255,255,255,0.1); }
-        
-        .slide.circle { background: #2c3e50; color: #fff; }
-        .slide.circle h1, .slide.circle h2 { color: #fff; }
-        .slide.circle .divider { background: #fff; }
-        .slide.circle .tag { background: #fff; color: #2c3e50; }
-        .slide.circle .pull-quote { background: rgba(255,255,255,0.15); color: #fff; }
-        .slide.circle .highlight-box { background: rgba(255,255,255,0.1); }
-        
-        .slide.conclusion { background: linear-gradient(145deg, #0d1b2a 0%, #1b263b 100%); color: #fff; }
-        .slide.conclusion h1 { color: #e8a87c; }
-        .slide.conclusion .divider { background: #e8a87c; }
-        .slide.conclusion .tag { background: #e8a87c; color: #0d1b2a; }
-        .slide.conclusion .pull-quote { background: #e8a87c; color: #0d1b2a; }
-        .slide.conclusion .chapter-num { color: transparent; -webkit-text-stroke: 2px #e8a87c; }
-        
-        /* Common Styles */
-        .slide h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.2rem, 7vw, 4.5rem);
-            font-weight: 900;
-            text-align: center;
-            line-height: 1.05;
-            margin-bottom: 1.2rem;
-            letter-spacing: -0.02em;
-        }
-        .slide h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(1.6rem, 4.5vw, 2.8rem);
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 1.2rem;
-        }
-        .slide .chapter-num {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(4rem, 12vw, 10rem);
-            font-weight: 900;
-            color: transparent;
-            -webkit-text-stroke: 2px currentColor;
-            position: absolute;
-            top: 4%;
-            right: 3%;
-            opacity: 0.18;
-        }
-        .slide ul {
-            list-style: none;
-            max-width: 680px;
-            width: 100%;
-        }
-        .slide li {
-            font-size: clamp(1rem, 2.8vw, 1.4rem);
-            padding: 0.7rem 0;
-            border-bottom: 1px solid rgba(128,128,128,0.2);
-            line-height: 1.5;
-        }
+        /* Typography */
+        .slide h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 7vw, 4.5rem); font-weight: 900; text-align: center; line-height: 1.05; margin-bottom: 1.2rem; letter-spacing: -0.02em; }
+        .slide h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 4.5vw, 2.8rem); font-weight: 700; text-align: center; margin-bottom: 1.2rem; }
+        .slide .chapter-num { font-family: 'Playfair Display', serif; font-size: clamp(4rem, 12vw, 10rem); font-weight: 900; position: absolute; top: 4%; right: 3%; opacity: 0.15; }
+        .slide ul { list-style: none; max-width: 680px; width: 100%; }
+        .slide li { font-size: clamp(1rem, 2.8vw, 1.4rem); padding: 0.7rem 0; line-height: 1.5; border-bottom: 1px solid rgba(128,128,128,0.2); }
         .slide li:last-child { border-bottom: none; }
-        .slide .subtitle {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(1rem, 2.8vw, 1.4rem);
-            text-align: center;
-            margin-top: 0.8rem;
-            font-style: italic;
-        }
-        .slide .pull-quote {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(1.2rem, 3.5vw, 2rem);
-            font-weight: 700;
-            text-align: center;
-            line-height: 1.35;
-            padding: 1.8rem;
-            border-radius: 4px;
-            margin: 1.2rem 0;
-            max-width: 680px;
-        }
-        .slide .highlight-box {
-            padding: clamp(1.2rem, 3vw, 2rem);
-            border-radius: 8px;
-            margin: 0.8rem 0;
-            max-width: 680px;
-            width: 100%;
-        }
-        .slide .highlight-box p {
-            font-size: clamp(0.95rem, 2.5vw, 1.2rem);
-            line-height: 1.6;
-        }
-        .slide .tag {
-            display: inline-block;
-            padding: 0.35rem 0.9rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 0.8rem;
-        }
-        .slide .divider {
-            width: 70px;
-            height: 3px;
-            margin: 1.2rem auto;
-            border-radius: 2px;
-        }
-        .slide .author {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(0.85rem, 2.2vw, 1rem);
-            text-align: center;
-            margin-top: 1.5rem;
-            letter-spacing: 0.05em;
-            opacity: 0.7;
-        }
-        .slide .big-number {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(3.5rem, 11vw, 8rem);
-            font-weight: 900;
-            line-height: 1;
-            margin-bottom: 0.3rem;
-        }
-        .slide .section-label {
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            margin-bottom: 0.4rem;
-            opacity: 0.7;
-        }
-        .slide .detail-text {
-            font-size: clamp(0.95rem, 2.5vw, 1.15rem);
-            line-height: 1.7;
-            text-align: center;
-            max-width: 650px;
-            margin-top: 0.8rem;
-        }
-        /* Table styles */
-        .slide table {
-            width: 100%;
-            max-width: 650px;
-            border-collapse: collapse;
-            margin-top: 1rem;
-        }
-        .slide th, .slide td {
-            padding: 0.6rem 0.8rem;
-            text-align: left;
-            font-size: clamp(0.85rem, 2.3vw, 1.1rem);
-            border-bottom: 1px solid rgba(128,128,128,0.2);
-        }
-        .slide th {
-            font-weight: 700;
-        }
+        .slide .subtitle { font-family: 'Playfair Display', serif; font-size: clamp(1rem, 2.8vw, 1.4rem); text-align: center; margin-top: 0.8rem; font-style: italic; opacity: 0.85; }
+        .slide .pull-quote { font-family: 'Playfair Display', serif; font-size: clamp(1.2rem, 3.5vw, 2rem); font-weight: 700; text-align: center; line-height: 1.35; padding: 1.8rem; border-radius: 4px; margin: 1.2rem 0; max-width: 680px; }
+        .slide .highlight-box { padding: clamp(1.2rem, 3vw, 2rem); border-radius: 8px; margin: 0.8rem 0; max-width: 680px; width: 100%; }
+        .slide .highlight-box p { font-size: clamp(0.95rem, 2.5vw, 1.2rem); line-height: 1.6; }
+        .slide .tag { display: inline-block; padding: 0.35rem 0.9rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.8rem; }
+        .slide .divider { width: 70px; height: 3px; margin: 1.2rem auto; border-radius: 2px; }
+        .slide .author { font-family: 'Playfair Display', serif; font-size: clamp(0.85rem, 2.2vw, 1rem); text-align: center; margin-top: 1.5rem; opacity: 0.7; }
+        .slide .big-number { font-family: 'Playfair Display', serif; font-size: clamp(3.5rem, 11vw, 8rem); font-weight: 900; line-height: 1; margin-bottom: 0.3rem; }
+        .slide .section-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 0.4rem; opacity: 0.7; }
+        .slide .detail-text { font-size: clamp(0.95rem, 2.5vw, 1.15rem); line-height: 1.7; text-align: center; max-width: 650px; margin-top: 0.8rem; }
+        .slide table { width: 100%; max-width: 680px; border-collapse: collapse; margin-top: 1rem; }
+        .slide th, .slide td { padding: 0.6rem 0.8rem; text-align: left; font-size: clamp(0.85rem, 2.3vw, 1.1rem); }
+        .slide th { font-weight: 700; }
+        .slide .checklist li::before { content: "☐ "; font-weight: 600; }
     </style>
 </head>
 <body>
 
     <!-- Slide 1: Cover -->
-    <div class="slide cover">
+    <div class="slide foundations">
         <span class="chapter-num">01</span>
         <div class="tag">Konsistensi</div>
         <h1>TINDAKAN KECIL<br>SETIAP HARI</h1>
@@ -252,21 +98,21 @@
     </div>
 
     <!-- Slide 2: Introduction -->
-    <div class="slide intro">
+    <div class="slide light">
         <span class="chapter-num">02</span>
         <div class="section-label">Pendahuluan</div>
         <h1>Mengapa Kita Sering<br>Kegagalan?</h1>
         <div class="divider"></div>
         <p class="detail-text">Banyak orang menunggu momen sempurna atau tindakan besar untuk berubah. Padahal, kesuksesan bukan tentang satu langkah heroik, melainkan akumulasi dari keputusan-keputusan kecil yang dilakukan secara konsisten.</p>
-        <div class="highlight-box" style="background: #e8e0d8;">
+        <div class="highlight-box">
             <p><strong>Realita:</strong> Hasil jangka panjang adalah cerminan dari kebiasaan harian, bukan intensitas sesaat.</p>
         </div>
     </div>
 
     <!-- Slide 3: The Invisible War -->
-    <div class="slide war">
+    <div class="slide foundations">
         <span class="chapter-num">03</span>
-        <div class="tag">Perang Tak Terlihat</div>
+        <div class="tag">Konsep Inti</div>
         <h1>Perang yang<br>Tak Terlihat</h1>
         <div class="divider"></div>
         <p class="pull-quote">"Hidup Anda terus bergerak — entah ke arah kesuksesan atau kegagalan — berdasarkan pilihan kecil yang Anda buat setiap hari."</p>
@@ -274,19 +120,19 @@
     </div>
 
     <!-- Slide 4: Short vs Long Term -->
-    <div class="slide intro">
+    <div class="slide light">
         <span class="chapter-num">04</span>
         <div class="section-label">Perspektif Waktu</div>
         <h1>Hasil Tidak Langsung<br>Terasa</h1>
         <div class="divider"></div>
         <p class="detail-text">Dalam jangka pendek, hasil mungkin tidak terlihat. Tapi dalam jangka panjang, perbedaan antara yang konsisten dan yang tidak akan sangat signifikan.</p>
-        <div class="highlight-box" style="background: #f8f4ef; border: 2px solid #e8e0d8;">
+        <div class="highlight-box">
             <p><strong>Metafora:</strong> Seperti pohon bambu — 5 tahun pertama tumbuh di bawah tanah, lalu meledak setinggi 30 meter dalam 6 minggu. Akar sudah kuat, hanya menunggu waktu.</p>
         </div>
     </div>
 
     <!-- Slide 5: The Easiest Problem -->
-    <div class="slide easy">
+    <div class="slide actions">
         <span class="chapter-num">05</span>
         <div class="tag">Paradoks Sukses</div>
         <h1>Masalah Termudah<br>Yang Terlupakan</h1>
@@ -296,47 +142,35 @@
     </div>
 
     <!-- Slide 6: Small vs Big Actions -->
-    <div class="slide concept">
+    <div class="slide light">
         <span class="chapter-num">06</span>
         <div class="section-label">Perbandingan</div>
         <h1>Konsistensi Kecil<br>vs Konsistensi Besar</h1>
         <div class="divider"></div>
         <table>
-            <tr>
-                <th>Tindakan Kecil (Konsisten)</th>
-                <th>Tindakan Besar (Tidak Berkelanjutan)</th>
-            </tr>
-            <tr>
-                <td>📖 Baca 10 halaman/hari = 3.650 halaman/tahun</td>
-                <td>📚 Baca 100 halaman sekali = berhenti seminggu</td>
-            </tr>
-            <tr>
-                <td>🏃 Lari 15 menit/hari = 91 jam/tahun</td>
-                <td>🏃 Lari 3 jam sekali = cedera & berhenti</td>
-            </tr>
-            <tr>
-                <td>✍️ Tulis 200 kata/hari = 73.000 kata/tahun</td>
-                <td>✍️ Menulis 2.000 kata sekali = burnout</td>
-            </tr>
+            <tr><th>Tindakan Kecil (Konsisten)</th><th>Tindakan Besar (Tidak Berkelanjutan)</th></tr>
+            <tr><td>📖 Baca 10 halaman/hari = 3.650 halaman/tahun</td><td>📚 Baca 100 halaman sekali = berhenti seminggu</td></tr>
+            <tr><td>🏃 Lari 15 menit/hari = 91 jam/tahun</td><td>🏃 Lari 3 jam sekali = cedera & berhenti</td></tr>
+            <tr><td>✍️ Tulis 200 kata/hari = 73.000 kata/tahun</td><td>✍️ Menulis 2.000 kata sekali = burnout</td></tr>
         </table>
     </div>
 
     <!-- Slide 7: The Power of Compounding -->
-    <div class="slide easy">
+    <div class="slide foundations">
         <span class="chapter-num">07</span>
-        <div class="section-label" style="color: rgba(255,255,255,0.7);">Kekuatan Akumulasi</div>
+        <div class="section-label" style="color: rgba(212,165,116,0.7);">Kekuatan Akumulasi</div>
         <h1>Kekuatan<br>Compound</h1>
         <div class="divider"></div>
-        <div class="big-number" style="color: #fff;">1.01³⁶⁵</div>
-        <p class="detail-text" style="color: rgba(255,255,255,0.9);">= 37.78</p>
-        <p class="subtitle" style="color: rgba(255,255,255,0.7); margin-top: 0.5rem;">Kenaikan 1% setiap hari selama setahun menghasilkan 37x lipat</p>
+        <div class="big-number" style="color: #d4a574;">1.01³⁶⁵</div>
+        <p class="detail-text" style="color: rgba(212,165,116,0.9);">= 37.78</p>
+        <p class="subtitle" style="color: rgba(200,200,200,0.7); margin-top: 0.5rem;">Kenaikan 1% setiap hari selama setahun menghasilkan 37x lipat</p>
         <div class="highlight-box">
             <p><strong>Sebaliknya:</strong> Penurunan 1% setiap hari selama setahun = 0.03 (hampir nihil)</p>
         </div>
     </div>
 
     <!-- Slide 8: Continuous Correction -->
-    <div class="slide correct">
+    <div class="slide actions">
         <span class="chapter-num">08</span>
         <div class="tag">Metafora Roket</div>
         <h1>Koreksi Terus-menerus</h1>
@@ -346,7 +180,7 @@
     </div>
 
     <!-- Slide 9: Rocket Analogy -->
-    <div class="slide concept">
+    <div class="slide light">
         <span class="chapter-num">09</span>
         <div class="section-label">Analogi Roket</div>
         <h1>Seperti Roket<br>Menuju Bulan</h1>
@@ -361,7 +195,7 @@
     </div>
 
     <!-- Slide 10: Flywheel Principle -->
-    <div class="slide flywheel">
+    <div class="slide foundations">
         <span class="chapter-num">10</span>
         <div class="tag">Prinsip Fundamental</div>
         <h1>Prinsip<br>Flywheel</h1>
@@ -371,7 +205,7 @@
     </div>
 
     <!-- Slide 11: Flywheel Stages -->
-    <div class="slide concept">
+    <div class="slide light">
         <span class="chapter-num">11</span>
         <div class="section-label">Tahapan Momentum</div>
         <h1>Tiga Fase<br>Flywheel</h1>
@@ -381,13 +215,13 @@
             <li><strong>Fase 2 — Accelerate:</strong> Roda mulai berputar. Hasil mulai terlihat, tapi masih butuh usaha.</li>
             <li><strong>Fase 3 — Momentum:</strong> Roda berputar sendiri. Kemajuan terasa mudah dan otomatis.</li>
         </ul>
-        <div class="highlight-box" style="background: #f0f0f0;">
+        <div class="highlight-box">
             <p><strong>Kunci:</strong> Jangan berhenti di Fase 1. Konsistensi di phase inilah yang membedakan yang sukses dan yang gagal.</p>
         </div>
     </div>
 
     <!-- Slide 12: Philosophy & Belief -->
-    <div class="slide belief">
+    <div class="slide actions">
         <span class="chapter-num">12</span>
         <div class="tag">Landasan Pikir</div>
         <h1>Filosofi dan<br>Keyakinan</h1>
@@ -397,37 +231,22 @@
     </div>
 
     <!-- Slide 13: Belief Systems -->
-    <div class="slide concept">
+    <div class="slide light">
         <span class="chapter-num">13</span>
         <div class="section-label">Dua Jenis Keyakinan</div>
         <h1>Apa yang Anda<br>Percaya?</h1>
         <div class="divider"></div>
         <table>
-            <tr>
-                <th>❌ Keyakinan Terbatas</th>
-                <th>✅ Keyakinan Pertumbuhan</th>
-            </tr>
-            <tr>
-                <td>"Tindakan kecil tidak berpengaruh"</td>
-                <td>"Setiap tindakan kecil adalah investasi"</td>
-            </tr>
-            <tr>
-                <td>"Hasil harus segera terlihat"</td>
-                <td>"Hasil datang setelah akumulasi"</td>
-            </tr>
-            <tr>
-                <td>"Saya perlu motivasi besar"</td>
-                <td>"Saya butuh sistem yang konsisten"</td>
-            </tr>
-            <tr>
-                <td>"Gagal = berhenti"</td>
-                <td>"Gagal = data untuk koreksi"</td>
-            </tr>
+            <tr><th>❌ Keyakinan Terbatas</th><th>✅ Keyakinan Pertumbuhan</th></tr>
+            <tr><td>"Tindakan kecil tidak berpengaruh"</td><td>"Setiap tindakan kecil adalah investasi"</td></tr>
+            <tr><td>"Hasil harus segera terlihat"</td><td>"Hasil datang setelah akumulasi"</td></tr>
+            <tr><td>"Saya perlu motivasi besar"</td><td>"Saya butuh sistem yang konsisten"</td></tr>
+            <tr><td>"Gagal = berhenti"</td><td>"Gagal = data untuk koreksi"</td></tr>
         </table>
     </div>
 
     <!-- Slide 14: Bad Days -->
-    <div class="slide badday">
+    <div class="slide foundations">
         <span class="chapter-num">14</span>
         <div class="tag">Strategi Tangguh</div>
         <h1>Menghadapi<br>Hari Buruk</h1>
@@ -437,36 +256,35 @@
     </div>
 
     <!-- Slide 15: Minimum Viable Day -->
-    <div class="slide concept">
+    <div class="slide light">
         <span class="chapter-num">15</span>
         <div class="section-label">Minimum Viable Day</div>
         <h1>Standar Minimum<br>Hari Buruk</h1>
         <div class="divider"></div>
-        <ul>
-            <li>📖 Tidak bisa baca 10 halaman? Baca 1 halaman</li>
-            <li>🏃 Tidak bisa lari 5km? Lakukan 1 push-up</li>
-            <li>✍️ Tidak bisa menulis 500 kata? Tulis 1 kalimat</li>
-            <li>🧘 Tidak bisa meditasi 20 menit? Napas 1 kali</li>
-        </ul>
-        <div class="highlight-box" style="background: #e8f4f4;">
+        <table>
+            <tr><th>Target Normal</th><th>Minimum Hari Buruk</th></tr>
+            <tr><td>📖 Baca 10 halaman</td><td>Baca 1 halaman</td></tr>
+            <tr><td>🏃 Lari 5km</td><td>1 push-up</td></tr>
+            <tr><td>✍️ Tulis 500 kata</td><td>Tulis 1 kalimat</td></tr>
+            <tr><td>🧘 Meditasi 20 menit</td><td>Napas 1 kali</td></tr>
+        </table>
+        <div class="highlight-box">
             <p><strong>Prinsip:</strong> Lebih baik melakukan sesuatu daripada tidak sama sekali. Kunci adalah menjaga <em>rantai</em> tetap utuh.</p>
         </div>
     </div>
 
-    <!-- Slide 16: The Gap -->
-    <div class="slide concept">
+    <!-- Slide 16: Perfectionism -->
+    <div class="slide actions">
         <span class="chapter-num">16</span>
-        <div class="section-label">Mindset</div>
-        <h1>Jangan Biarkan<br>Perfeckisme Membunuh</h1>
+        <div class="section-label" style="color: rgba(64,224,208,0.7);">Mindset</div>
+        <h1>Jangan Biarkan<br>Perfekis Membunuh</h1>
         <div class="divider"></div>
-        <p class="detail-text">Banyak orang berhenti karena merasa hari itu tidak ideal. Mereka menunggu "hari sempurna" untuk memulai lagi. Padahal, konsistensi bukanlah tentang kesempurnaan — ini tentangToShow up every day, even if it's just a little.</p>
-        <div class="pull-quote" style="background: #1a1a1a; color: #fff;">
-            "Sempurna adalah musuh dari selesai. Lebih baik melakukan 1% daripada 0%."
-        </div>
+        <p class="detail-text">Banyak orang berhenti karena merasa hari itu tidak ideal. Mereka menunggu "hari sempurna" untuk memulai lagi. Padahal, konsistensi bukanlah tentang kesempurnaan — ini tentang menunjukkan diri setiap hari, even if it's just a little.</p>
+        <div class="pull-quote">"Sempurna adalah musuh dari selesai. Lebih baik melakukan 1% daripada 0%."</div>
     </div>
 
     <!-- Slide 17: Cultivation -->
-    <div class="slide cultivate">
+    <div class="slide foundations">
         <span class="chapter-num">17</span>
         <div class="tag">Proses Alamiah</div>
         <h1>Budidaya:<br>Seni Bersabar</h1>
@@ -475,8 +293,8 @@
         <p class="detail-text">Keberhasilan seperti bertani — Anda tidak bisa menanam biji dan langsung memanen esok hari. Butuh waktu, perawatan konsisten, dan kesabaran.</p>
     </div>
 
-    <!-- Slide 18: Farming Analogy -->
-    <div class="slide concept">
+    <!-- Slide 18: Farming Stages -->
+    <div class="slide light">
         <span class="chapter-num">18</span>
         <div class="section-label">Analogi Pertanian</div>
         <h1>Tahapan<br>Budidaya</h1>
@@ -485,15 +303,15 @@
             <li>🌱 <strong>Menanam:</strong> Menyiapkan tanah, menyebarkan benih (fase awal,看不到 hasil)</li>
             <li>💧 <strong>Menyiram:</strong> Perawatan harian yang konsisten (fase membangun akar)</li>
             <li>🌿 <strong>Menumbuhkan:</strong> Tunas mulai muncul (fase percepatan)</li>
-            <li>🌾 <strong>Memanen:</strong> Hasil akhir dari proses yang sabar (fasa reward)</li>
+            <li>🌾 <strong>Memanen:</strong> Hasil akhir dari proses yang sabar (fase reward)</li>
         </ul>
-        <p class="detail-text">Orang yang ingin memanen tanpa membudidayakan akan kecewa. Prosesnya tidak bisa dirompeng.</p>
+        <p class="detail-text">Orang yang ingin memanen tanpa membudidayakan akan kecewa. Prosesnya tidak bisa dirampog.</p>
     </div>
 
     <!-- Slide 19: Impatience Trap -->
-    <div class="slide cultivate">
+    <div class="slide actions">
         <span class="chapter-num">19</span>
-        <div class="section-label">Jebakan Modern</div>
+        <div class="section-label" style="color: rgba(64,224,208,0.7);">Jebakan Modern</div>
         <h1>Jebakan<br>Kesabaran</h1>
         <div class="divider"></div>
         <p class="detail-text">Di era digital, kita terbiasa dengan instant results — makanan cepat saji, video 15 detik, pengiriman express. Ini membentuk otak untuk mengharapkan hasil instan.</p>
@@ -503,7 +321,7 @@
     </div>
 
     <!-- Slide 20: Social Circle -->
-    <div class="slide circle">
+    <div class="slide environment">
         <span class="chapter-num">20</span>
         <div class="tag">Lingkungan Sosial</div>
         <h1>Lingkaran<br>Sosial</h1>
@@ -513,52 +331,37 @@
     </div>
 
     <!-- Slide 21: Givers vs Takers -->
-    <div class="slide concept">
+    <div class="slide light">
         <span class="chapter-num">21</span>
         <div class="section-label">Dinamika Hubungan</div>
         <h1>Givers vs<br>Takers</h1>
         <div class="divider"></div>
         <table>
-            <tr>
-                <th>🟢 Givers (Pemberi)</th>
-                <th>🔴 Takers (Pengambil)</th>
-            </tr>
-            <tr>
-                <td>Mendorong pertumbuhan Anda</td>
-                <td>Menguras energi Anda</td>
-            </tr>
-            <tr>
-                <td>Rajin memberikan dukungan</td>
-                <td>Sering mengkritik tanpa solusi</td>
-            </tr>
-            <tr>
-                <td>Merayakan kesuksesan Anda</td>
-                <td>Iri atau merasa terancam</td>
-            </tr>
-            <tr>
-                <td>Membuka peluang baru</td>
-                <td>Menjebak dalam complain循环</td>
-            </tr>
+            <tr><th>🟢 Givers (Pemberi)</th><th>🔴 Takers (Pengambil)</th></tr>
+            <tr><td>Mendorong pertumbuhan Anda</td><td>Menguras energi Anda</td></tr>
+            <tr><td>Rajin memberikan dukungan</td><td>Sering mengkritik tanpa solusi</td></tr>
+            <tr><td>Merayakan kesuksesan Anda</td><td>Iri atau merasa terancam</td></tr>
+            <tr><td>Membuka peluang baru</td><td>Menjerumuskan dalam complain循环</td></tr>
         </table>
     </div>
 
     <!-- Slide 22: Energy Audit -->
-    <div class="slide circle">
+    <div class="slide environment">
         <span class="chapter-num">22</span>
-        <div class="section-label" style="color: rgba(255,255,255,0.7);">Audit Lingkungan</div>
+        <div class="section-label" style="color: rgba(232,168,124,0.7);">Audit Lingkungan</div>
         <h1>Audit Energi<br>Sosial Anda</h1>
         <div class="divider"></div>
         <p class="detail-text">Setelah berinteraksi dengan seseorang, bagaimana perasaan Anda?</p>
-        <ul style="color: #fff;">
+        <ul>
             <li>🔋 Terenergize dan termotivasi → Pertahankan hubungan</li>
             <li>🪫 Terkuras dan down → Batasi interaksi</li>
             <li>😐 Netral → Evaluasi apakah hubungan ini menambah value</li>
         </ul>
-        <p class="subtitle" style="color: rgba(255,255,255,0.6);">Anda adalah rata-rata dari 5 orang yang paling sering bergaul.</p>
+        <p class="subtitle" style="color: rgba(212,196,176,0.7);">Anda adalah rata-rata dari 5 orang yang paling sering bergaul.</p>
     </div>
 
-    <!-- Slide 23: Building Your Circle -->
-    <div class="slide concept">
+    <!-- Slide 23: Building Circle -->
+    <div class="slide light">
         <span class="chapter-num">23</span>
         <div class="section-label">Membangun Lingkaran</div>
         <h1>Cara Membangun<br>Lingkaran Supportif</h1>
@@ -566,16 +369,16 @@
         <ul>
             <li>🤝 Bergabung dengan komunitas yang memiliki goal serupa</li>
             <li>📚 Cari mentor yang sudah melewati perjalanan yang sama</li>
-            <li>💬 Berpartisi dalam diskusi constructive, bukan gossip</li>
+            <li>💬 Berpartisipasi dalam diskusi constructive, bukan gossip</li>
             <li>🎯 Tetapkan boundary dengan takers secara tegas</li>
             <li>🌱 Jadilah giver untuk orang lain — attract by being</li>
         </ul>
     </div>
 
     <!-- Slide 24: Common Mistakes -->
-    <div class="slide concept">
+    <div class="slide actions">
         <span class="chapter-num">24</span>
-        <div class="section-label">Pengingat</div>
+        <div class="section-label" style="color: rgba(64,224,208,0.7);">Pengingat</div>
         <h1>Kesalahan Umum<br>yang Perlu Dihindari</h1>
         <div class="divider"></div>
         <ul>
@@ -587,95 +390,84 @@
         </ul>
     </div>
 
-    <!-- Slide 25: The Compound Effect -->
-    <div class="slide easy">
+    <!-- Slide 25: Compound Effect -->
+    <div class="slide foundations">
         <span class="chapter-num">25</span>
-        <div class="section-label" style="color: rgba(255,255,255,0.7);">Efek Jangka Panjang</div>
+        <div class="section-label" style="color: rgba(212,165,116,0.7);">Efek Jangka Panjang</div>
         <h1>Compound<br>Effect</h1>
         <div class="divider"></div>
-        <div class="big-number" style="color: #fff;">1.01^365</div>
-        <p class="detail-text" style="color: rgba(255,255,255,0.9);">= 37.78x lebih baik dalam satu tahun</p>
-        <p class="subtitle" style="color: rgba(255,255,255,0.6);">Sedangkan 0.99^365 = 0.03 (hampir nihil)</p>
+        <div class="big-number" style="color: #d4a574;">1.01^365</div>
+        <p class="detail-text" style="color: rgba(212,165,116,0.9);">= 37.78x lebih baik dalam satu tahun</p>
+        <p class="subtitle" style="color: rgba(200,200,200,0.6);">Sedangkan 0.99^365 = 0.03 (hampir nihil)</p>
         <div class="highlight-box">
             <p><strong>Pilihlah:</strong> Apakah Anda akan naik 1% atau turun 1% hari ini?</p>
         </div>
     </div>
 
     <!-- Slide 26: Action Framework -->
-    <div class="slide concept">
+    <div class="slide light">
         <span class="chapter-num">26</span>
         <div class="section-label">Kerangka Aksi</div>
         <h1>Framework<br>Konsistensi Harian</h1>
         <div class="divider"></div>
         <ul>
-            <li><strong>Pagi:</strong> Tetapkan 1-3重点任务 hari ini (tidak berlebihan)</li>
+            <li><strong>Pagi:</strong> Tetapkan 1-3 task prioritas hari ini (tidak berlebihan)</li>
             <li><strong>Selama hari:</strong> Fokus pada proses, bukan hasil</li>
             <li><strong>Malam:</strong> Review — apa yang berhasil, apa yang perlu dikoreksi</li>
-            <li><strong>Buruk hari:</strong> Turunkan standar ke minimum viable</li>
+            <li><strong>Hari buruk:</strong> Turunkan standar ke minimum viable</li>
         </ul>
     </div>
 
     <!-- Slide 27: Daily Checklist -->
-    <div class="slide concept">
+    <div class="slide environment">
         <span class="chapter-num">27</span>
-        <div class="section-label">Checklist Harian</div>
+        <div class="section-label" style="color: rgba(232,168,124,0.7);">Checklist Harian</div>
         <h1>Ceklist<br>Konsistensi</h1>
         <div class="divider"></div>
-        <ul>
-            <li>☐ Apakah saya melakukan tindakan kecil hari ini?</li>
-            <li>☐ Apakah saya tetap konsisten meski hari buruk?</li>
-            <li>☐ Apakah saya melakukan koreksi jika menyimpang?</li>
-            <li>☐ Apakah lingkungan saya mendukung goals saya?</li>
-            <li>☐ Apakah saya sabar menunggu hasil?</li>
+        <ul class="checklist">
+            <li>Apakah saya melakukan tindakan kecil hari ini?</li>
+            <li>Apakah saya tetap konsisten meski hari buruk?</li>
+            <li>Apakah saya melakukan koreksi jika menyimpang?</li>
+            <li>Apakah lingkungan saya mendukung goals saya?</li>
+            <li>Apakah saya sabar menunggu hasil?</li>
         </ul>
     </div>
 
     <!-- Slide 28: Mindset Shift -->
-    <div class="slide belief">
+    <div class="slide light">
         <span class="chapter-num">28</span>
-        <div class="section-label" style="color: rgba(255,255,255,0.7);">Transformasi Mindset</div>
+        <div class="section-label">Transformasi Mindset</div>
         <h1>Dari Target ke<br>Sistem</h1>
         <div class="divider"></div>
-        <table style="color: #fff;">
-            <tr>
-                <th style="color: #f39c12;">Mindset Target</th>
-                <th style="color: #27ae60;">Mindset Sistem</th>
-            </tr>
-            <tr>
-                <td>"Saya ingin menurunkan 10kg"</td>
-                <td>"Saya akan jalan 30 menit setiap hari"</td>
-            </tr>
-            <tr>
-                <td>"Saya ingin jadi kaya"</td>
-                <td>"Saya akan menabung 10% dari penghasilan"</td>
-            </tr>
-            <tr>
-                <td>"Saya ingin tulis buku"</td>
-                <td>"Saya akan menulis 500 kata setiap pagi"</td>
-            </tr>
+        <table>
+            <tr><th>Mindset Target</th><th>Mindset Sistem</th></tr>
+            <tr><td>"Saya ingin menurunkan 10kg"</td><td>"Saya akan jalan 30 menit setiap hari"</td></tr>
+            <tr><td>"Saya ingin jadi kaya"</td><td>"Saya akan menabung 10% dari penghasilan"</td></tr>
+            <tr><td>"Saya ingin tulis buku"</td><td>"Saya akan menulis 500 kata setiap pagi"</td></tr>
         </table>
     </div>
 
     <!-- Slide 29: Conclusion -->
-    <div class="slide conclusion">
+    <div class="slide foundations">
         <span class="chapter-num">✦</span>
+        <div class="tag">Kesimpulan</div>
         <h1>Kesuksesan Adalah<br>Akumulasi</h1>
         <div class="divider"></div>
         <p class="pull-quote">"Kesuksesan bukanlah hasil dari satu tindakan besar, melainkan akumulasi dari tindakan-tindakan kecil yang dilakukan secara terus-menerus tanpa henti."</p>
-        <p class="subtitle" style="color: rgba(255,255,255,0.6);">Konsistensi dalam tindakan kecil setiap hari adalah kunci utama.</p>
+        <p class="subtitle" style="color: rgba(200,200,200,0.7);">Konsistensi dalam tindakan kecil setiap hari adalah kunci utama.</p>
     </div>
 
     <!-- Slide 30: Call to Action -->
-    <div class="slide cover">
+    <div class="slide environment">
         <span class="chapter-num">30</span>
         <div class="tag">Mulai Sekarang</div>
-        <h1> satu Tindakan Kecil<br>Hari Ini</h1>
+        <h1>Satu Tindakan Kecil<br>Hari Ini</h1>
         <div class="divider"></div>
-        <p class="detail-text" style="color: rgba(255,255,255,0.8);">Apa satu hal kecil yang bisa Anda lakukan hari ini untuk menuju tujuan jangka panjang Anda?</p>
-        <div class="highlight-box" style="background: rgba(232,168,124,0.2); border: 2px solid #e8a87c;">
+        <p class="detail-text" style="color: rgba(212,196,176,0.9);">Apa satu hal kecil yang bisa Anda lakukan hari ini untuk menuju tujuan jangka panjang Anda?</p>
+        <div class="highlight-box">
             <p style="color: #e8a87c; font-weight: 600; text-align: center;">"The best time to plant a tree was 20 years ago. The second best time is now."</p>
         </div>
-        <p class="author" style="color: #666;">Terima kasih 🙏</p>
+        <p class="author" style="color: rgba(212,196,176,0.6);">Terima kasih 🙏</p>
     </div>
 
 </body>

@@ -6,7 +6,7 @@
 
 ## Slide 1: Cover
 
-# TINDAKAN KECIL SETIAP HARI
+### TINDAKAN KECIL SETIAP HARI
 
 **Kunci Utama Menuju Sukses Jangka Panjang**
 
@@ -145,7 +145,7 @@ Keberhasilan jangka panjang dimulai dari keyakinan bahwa tindakan kecil memiliki
 
 ## Slide 13: Dua Jenis Keyakinan
 
-### MINDSET对比
+### MINDSET PERBANDINGAN
 
 | ❌ Keyakinan Terbatas | ✅ Keyakinan Pertumbuhan |
 |----------------------|------------------------|
@@ -185,7 +185,7 @@ Hari buruk adalah bagian dari perjalanan. Yang membedakan orang sukses adalah me
 
 ### MINDSET
 
-Banyak orang berhenti karena merasa hari itu tidak ideal. Mereka menunggu "hari sempurna" untuk memulai lagi. Padahal, konsistensi bukanlah tentang kesempurnaan — ini tentang menunjukkan diri setiap hari, bahkan jika hanya sedikit.
+Banyak orang berhenti karena merasa hari itu tidak ideal. Mereka menunggu "hari sempurna" untuk memulai lagi. Padahal, konsistensi bukanlah tentang kesempurnaan — ini tentang menunjukkan diri setiap hari, even if it's just a little.
 
 > *"Sempurna adalah musuh dari selesai. Lebih baik melakukan 1% daripada 0%."*
 
