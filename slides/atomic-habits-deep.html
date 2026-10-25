@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atomic Habits - Editorial Deep Dive</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: #fefefe;
+            color: #1a1a1a;
+            min-height: 100vh;
+        }
+        .slide {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: clamp(35px, 8vw, 90px);
+            page-break-after: always;
+            position: relative;
+            border-bottom: 2px solid #e8e4df;
+        }
+        /* Color variants per slide type */
+        .slide.cover { background: linear-gradient(145deg, #1a1a1a 0%, #2d2d2d 100%); color: #fefefe; }
+        .slide.cover h1 { color: #ff6b35; -webkit-text-stroke: 0; }
+        .slide.cover .subtitle { color: #aaa; }
+        .slide.cover .author { color: #888; }
+        .slide.cover .chapter-num { color: transparent; -webkit-text-stroke: 2px #ff6b35; }
+        
+        .slide.section { background: #ff6b35; color: #fff; }
+        .slide.section h2 { color: #fff; }
+        .slide.section .divider { background: #fff; }
+        .slide.section .tag { background: #fff; color: #ff6b35; }
+        
+        .slide.content-light { background: #fefefe; color: #1a1a1a; }
+        .slide.content-light h1, .slide.content-light h2 { color: #1a1a1a; }
+        .slide.content-light .divider { background: #1a1a1a; }
+        .slide.content-light .pull-quote { background: #1a1a1a; color: #fefefe; }
+        
+        .slide.content-dark { background: #1a1a1a; color: #fefefe; }
+        .slide.content-dark h1, .slide.content-dark h2 { color: #fefefe; }
+        .slide.content-dark .divider { background: #fefefe; }
+        .slide.content-dark .tag { background: #ff6b35; color: #1a1a1a; }
+        .slide.content-dark .pull-quote { background: #ff6b35; color: #1a1a1a; }
+        
+        .slide.accent-blue { background: #1e3a5f; color: #fefefe; }
+        .slide.accent-blue h1, .slide.accent-blue h2 { color: #fefefe; }
+        .slide.accent-blue .divider { background: #4a90d9; }
+        .slide.accent-blue .tag { background: #4a90d9; color: #1e3a5f; }
+        .slide.accent-blue .pull-quote { background: #4a90d9; color: #1e3a5f; }
+        
+        .slide.accent-teal { background: #0f4c5c; color: #fefefe; }
+        .slide.accent-teal h1, .slide.accent-teal h2 { color: #fefefe; }
+        .slide.accent-teal .divider { background: #40e0d0; }
+        .slide.accent-teal .tag { background: #40e0d0; color: #0f4c5c; }
+        .slide.accent-teal .pull-quote { background: #40e0d0; color: #0f4c5c; }
+        
+        .slide.accent-gold { background: #b8860b; color: #1a1a1a; }
+        .slide.accent-gold h1, .slide.accent-gold h2 { color: #1a1a1a; }
+        .slide.accent-gold .divider { background: #1a1a1a; }
+        .slide.accent-gold .tag { background: #1a1a1a; color: #b8860b; }
+        .slide.accent-gold .pull-quote { background: #1a1a1a; color: #b8860b; }
+        
+        .slide h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 900;
+            text-align: center;
+            line-height: 1.05;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+        .slide h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .slide .chapter-num {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(5rem, 15vw, 12rem);
+            font-weight: 900;
+            color: transparent;
+            -webkit-text-stroke: 2px currentColor;
+            position: absolute;
+            top: 5%;
+            right: 3%;
+            opacity: 0.2;
+        }
+        .slide ul {
+            list-style: none;
+            max-width: 700px;
+            width: 100%;
+        }
+        .slide li {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(128,128,128,0.2);
+            line-height: 1.5;
+        }
+        .slide li:last-child { border-bottom: none; }
+        .slide .subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            color: #666;
+            text-align: center;
+            margin-top: 1rem;
+            font-style: italic;
+        }
+        .slide .pull-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.4rem, 4vw, 2.2rem);
+            font-weight: 700;
+            text-align: center;
+            line-height: 1.3;
+            padding: 2rem;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+            max-width: 650px;
+        }
+        .slide .highlight-box {
+            padding: clamp(1.5rem, 4vw, 2.5rem);
+            border-radius: 8px;
+            margin: 1rem 0;
+            max-width: 650px;
+            width: 100%;
+        }
+        .slide .highlight-box p {
+            font-size: clamp(1rem, 2.8vw, 1.3rem);
+            line-height: 1.6;
+        }
+        .slide .tag {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+        .slide .divider {
+            width: 80px;
+            height: 3px;
+            margin: 1.5rem auto;
+            border-radius: 2px;
+        }
+        .slide .author {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            text-align: center;
+            margin-top: 2rem;
+            letter-spacing: 0.05em;
+        }
+        .slide .big-number {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(4rem, 12vw, 9rem);
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        .slide .section-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 0.5rem;
+            opacity: 0.7;
+        }
+        .slide .detail-text {
+            font-size: clamp(1rem, 2.8vw, 1.2rem);
+            line-height: 1.7;
+            text-align: center;
+            max-width: 650px;
+            margin-top: 1rem;
+        }
+        /* Light theme variants */
+        .slide.content-light .highlight-box { background: #f5f0eb; }
+        .slide.content-dark .highlight-box { background: #2a2a2a; }
+        .slide.accent-blue .highlight-box { background: rgba(255,255,255,0.1); }
+        .slide.accent-teal .highlight-box { background: rgba(255,255,255,0.1); }
+        .slide.accent-gold .highlight-box { background: rgba(255,255,255,0.3); }
+    </style>
+</head>
+<body>
+
+    <!-- Slide 1: Cover -->
+    <div class="slide cover">
+        <span class="chapter-num">01</span>
+        <div class="tag">James Clear · 2018</div>
+        <h1>ATOMIC<br>HABITS</h1>
+        <div class="divider" style="background: #ff6b35;"></div>
+        <p class="subtitle">How Little Changes Can<br>Produce Great Results</p>
+        <p class="author">— Panduan Lengkap Penerapan</p>
+    </div>
+
+    <!-- Slide 2: The Problem -->
+    <div class="slide content-light">
+        <span class="chapter-num">02</span>
+        <div class="section-label">Masalah Fundamental</div>
+        <h1>Mengapa Kita Gagal<br>Mengubah Diri?</h1>
+        <div class="divider"></div>
+        <p class="detail-text">Kebanyakan orang fokus pada tujuan jangka panjang — berat badan ideal, bisnis sukses, menulis buku. Tapi mereka mengabaikan sistem sehari-hari yang membawanya ke sana.</p>
+        <div class="highlight-box" style="background: #f5f0eb;">
+            <p><strong>Realita:</strong> Anda tidak akan naik ke level tujuan Anda. Anda akan jatuh ke level sistem Anda. Hasil adalah lag dari kebiasaan Anda, bukan penyebabnya.</p>
+        </div>
+    </div>
+
+    <!-- Slide 3: The 1% Rule -->
+    <div class="slide content-dark">
+        <span class="chapter-num">03</span>
+        <div class="section-label" style="color: #888;">Matematika Perubahan</div>
+        <h1>1% Lebih Baik<br>Setiap Hari</h1>
+        <div class="divider"></div>
+        <div class="big-number" style="color: #ff6b35;">37x</div>
+        <p class="detail-text">Jika Anda améliore 1% setiap hari selama satu tahun penuh, pada akhir tahun Anda akan menjadi <strong>37 kali lebih baik</strong>. Sebaliknya, jika Anda menurun 1% setiap hari, Anda turun mendekati nol.</p>
+        <p class="subtitle" style="color: #888; margin-top: 1.5rem;">Hasil acumulasi kebiasaan sering kali tertunda. Ini disebut "Plateau of Latent Potential."</p>
+    </div>
+
+    <!-- Slide 4: Systems vs Goals -->
+    <div class="slide section">
+        <span class="chapter-num">04</span>
+        <div class="tag">Paradigma Inti</div>
+        <h1>Bukan Target,<br>Tapi Sistem</h1>
+        <div class="divider"></div>
+        <p class="pull-quote">"Winners and losers have the same goals. Setiap atlet olimpiade ingin memenangkan emas."</p>
+        <p class="detail-text">Perbedaan bukan pada tujuan, tapi pada sistem yang mereka bangun. Fokus pada proses, biarkan hasil mengurus dirinya sendiri.</p>
+    </div>
+
+    <!-- Slide 5: Three Layers -->
+    <div class="slide content-light">
+        <span class="chapter-num">05</span>
+        <div class="section-label">Tingkat Perubahan</div>
+        <h1>Tiga Lapisan<br>Perubahan Perilaku</h1>
+        <div class="divider"></div>
+        <ul>
+            <li><strong>Lapisan 1 — Hasil:</strong> Apa yang Anda capai (berat badan, pendapatan)</li>
+            <li><strong>Lapisan 2 — Proses:</strong> Apa yang Anda lakukan (rutinitas, sistem)</li>
+            <li><strong>Lapisan 3 — Identitas:</strong> Siapa yang Anda yakini (keyakinan, nilai)</li>
+        </ul>
+        <p class="detail-text">Perubahan terdalam terjadi di tingkat identitas, bukan hasil. Ubah siapa Anda, dan perilaku akan mengikuti.</p>
+    </div>
+
+    <!-- Slide 6: Identity-Based Habits -->
+    <div class="slide accent-blue">
+        <span class="chapter-num">06</span>
+        <div class="tag">Teknik Inti</div>
+        <h1>Ubah Identitas,<br>Bukan Hasil</h1>
+        <div class="divider"></div>
+        <p class="pull-quote">"Setiap tindakan adalah vote untuk tipe orang yang ingin Anda jadikan."</p>
+        <ul style="max-width: 550px;">
+            <li>❌ "Saya sedang mencoba berhenti merokok"</li>
+            <li>✅ "Saya bukan perokok"</li>
+            <li>❌ "Saya ingin lari maraton"</li>
+            <li>✅ "Saya adalah pelari"</li>
+        </ul>
+        <p class="detail-text" style="color: rgba(255,255,255,0.8);">Identitas terbentuk melalui pembuktian berulang. Setiap kali Anda melakukan habit, Anda memberikan suara untuk versi diri yang baru.</p>
+    </div>
+
+    <!-- Slide 7: Habit Loop -->
+    <div class="slide content-light">
+        <span class="chapter-num">07</span>
+        <div class="section-label">Mekanisme Otomatis</div>
+        <h1>4 Langkah<br>Kebiasaan</h1>
+        <div class="divider"></div>
+        <ul>
+            <li><strong>1. Cue (Pemicu)</strong> — Sinyal di lingkungan yang memberi tahu otak untuk memasuki mode otomatis</li>
+            <li><strong>2. Craving (Keinginan)</strong> — Energi motivasional di balik setiap habit — bukan habit itu sendiri yang kita kejar, tapi perubahan status yang dibawanya</li>
+            <li><strong>3. Response (Respons)</strong> — Aksi fisik atau pikiran yang Anda lakukan, tergantung pada motivasi dan kemampuan</li>
+            <li><strong>4. Reward (Hadiah)</strong> — Kepuasan yang memenuhi keinginan dan mempelajari, menyembunyikan, atau mengulang loop kebiasaan</li>
+        </ul>
+    </div>
+
+    <!-- Slide 8: The Golden Thread -->
+    <div class="slide accent-teal">
+        <span class="chapter-num">08</span>
+        <div class="tag">Insight Kunci</div>
+        <h1>Cue → Craving → Response → Reward</h1>
+        <div class="divider"></div>
+        <p class="pull-quote">"Setiap habit mengikuti urutan neuronal yang sama: cue, craving, response, reward."</p>
+        <p class="detail-text">Memahami loop ini memungkinkan kita untuk "merekayasa" kebiasaan — mengubah pemicu, meningkatkan daya tarik, memudahkan respons, dan memuaskan hadiah.</p>
+    </div>
+
+    <!-- Slide 9: 1st Law Header -->
+    <div class="slide section">
+        <span class="chapter-num">I</span>
+        <div class="tag">Hukum Pertama</div>
+        <h1>Make It<br>Obvious</h1>
+        <div class="divider"></div>
+        <p class="detail-text">Langkah pertama membangun kebiasaan baik adalah membuatnya <strong>jelas</strong>. Kebanyakan kebiasaan terjadi secara otomatis, tanpa disadari.</p>
+    </div>
+
+    <!-- Slide 10: Implementation Intentions -->
+    <div class="slide content-light">
+        <span class="chapter-num">10</span>
+        <div class="section-label">Hukum 1 — Strategi</div>
+        <h1>Implementation<br>Intentions</h1>
+        <div class="divider"></div>
+        <div class="highlight-box" style="background: #1a1a1a; color: #fefefe;">
+            <p style="font-size: clamp(1.2rem, 3.5vw, 1.6rem); font-weight: 600;">"Saya akan [PERILAKU] di [WAKTU] di [TEMPAT]."</p>
+        </div>
+        <p class="detail-text">Strategi ini membuat Anda sadar akan kapan dan di mana kebiasaan baru akan terjadi, menghilangkan kabur yang sering menyebabkan kegagalan.</p>
+    </div>
+
+    <!-- Slide 11: Habit Stack -->
+    <div class="slide content-dark">
+        <span class="chapter-num">11</span>
+        <div class="section-label" style="color: #888;">Hukum 1 — Teknik</div>
+        <h1>Habit Stacking</h1>
+        <div class="divider"></div>
+        <div class="highlight-box" style="background: #2a2a2a;">
+            <p><strong>Formula:</strong></p>
+            <p style="font-size: 1.3rem; font-weight: 600; color: #ff6b35; margin-top: 0.5rem;">"Setelah [HABIT SAAT INI], saya akan [HABIT BARU]."</p>
+        </div>
+        <ul>
+            <li>Setelah menyeduh kopi pagi, saya meditasi 1 menit</li>
+            <li>Setelah duduk di meja kerja, saya menulis 1 paragraf</li>
+            <li>Setelah olahraga, saya minum protein shake</li>
+        </ul>
+    </div>
+
+    <!-- Slide 12: Environment Design -->
+    <div class="slide content-light">
+        <span class="chapter-num">12</span>
+        <div class="section-label">Hukum 1 — Lingkungan</div>
+        <h1>Desain Lingkungan<br>untuk Kebiasaan Baik</h1>
+        <div class="divider"></div>
+        <p class="detail-text">Orang dengan disiplin tinggi pandai membangun lingkungan yang meminimalkan godaan dan memaksimalkan isyarat untuk kebiasaan positif.</p>
+        <ul>
+            <li>🍎 Letakkan buah di meja → lebih sering makan sehat</li>
+            <li>📱 Taruh HP di ruangan lain saat kerja → lebih fokus</li>
+            <li>👟 Siapkan baju olahraga malam sebelumnya → lebih mudah bangun pagi</li>
+            <li>📖 Letakkan buku di bantal → lebih sering membaca sebelum tidur</li>
+        </ul>
+    </div>
+
+    <!-- Slide 13: 2nd Law Header -->
+    <div class="slide accent-blue">
+        <span class="chapter-num">II</span>
+        <div class="tag">Hukum Kedua</div>
+        <h1>Make It<br>Attractive</h1>
+        <div class="divider"></div>
+        <p class="detail-text">Langkah kedua membuat kebiasaan menjadi <strong>menarik</strong>. Semakin tinggi dopamin yang diharapkan, semakin kuat motivasi untuk melakukannya.</p>
+    </div>
+
+    <!-- Slide 14: Temptation Bundling -->
+    <div class="slide content-light">
+        <span class="chapter-num">14</span>
+        <div class="section-label">Hukum 2 — Taktik</div>
+        <h1>Temptation<br>Bundling</h1>
+        <div class="divider"></div>
+        <p class="detail-text">Gabungkan hal yang <strong>harus</strong> dilakukan dengan hal yang <strong>ingin</strong> dilakukan.</p>
+        <div class="highlight-box" style="background: #f5f0eb;">
+            <p><strong>Contoh:</strong></p>
+            <p>🎧 Mendengarkan podcast favorit <strong>hanya</strong> saat olahraga</p>
+            <p>☕ Minum latte spesial <strong>hanya</strong> saat mengerjakan tugas sulit</p>
+            <p>📺 Nonton serial favorit <strong>hanya</strong> saat di treadmill</p>
+        </div>
+        <p class="detail-text">Ini menciptakan asosiasi positif dengan kebiasaan yang sebelumnya dianggap membosankan.</p>
+    </div>
+
+    <!-- Slide 15: Social Norms -->
+    <div class="slide content-dark">
+        <span class="chapter-num">15</span>
+        <div class="section-label" style="color: #888;">Hukum 2 — Kelompok</div>
+        <h1>Bergabung dengan<br>Kelompok yang Tepat</h1>
+        <div class="divider"></div>
+        <p class="pull-quote">"Kita meniru tiga hal: yang dekat dengan kita, yang banyak orang lakukan, dan yang berhasil."</p>
+        <ul>
+            <li>Bergabung dengan kelompok di mana kebiasaan target adalah norma normal</li>
+            <li>Disekitari orang yang memiliki identitas yang Anda inginkan</li>
+            <li>Cari mentor yang sudah menjalani habit yang ingin Anda bangun</li>
+        </ul>
+    </div>
+
+    <!-- Slide 16: 3rd Law Header -->
+    <div class="slide accent-teal">
+        <span class="chapter-num">III</span>
+        <div class="tag">Hukum Ketiga</div>
+        <h1>Make It<br>Easy</h1>
+        <div class="divider"></div>
+        <p class="detail-text">Langkah ketiga membuat kebiasaan menjadi <strong>mudah</strong>. Semakin rendah friksi, semakin tinggi kemungkinan Anda melakukannya.</p>
+    </div>
+
+    <!-- Slide 17: Two-Minute Rule -->
+    <div class="slide content-light">
+        <span class="chapter-num">17</span>
+        <div class="section-label">Hukum 3 — Aturan Emas</div>
+        <h1>Two-Minute<br>Rule</h1>
+        <div class="divider"></div>
+        <div class="highlight-box" style="background: #1a1a1a; color: #fefefe;">
+            <p style="font-size: clamp(1.2rem, 3.5vw, 1.5rem); font-weight: 600; text-align: center;">"Saat memulai kebiasaan baru, waktu yang dibutuhkan harus kurang dari 2 menit."</p>
+        </div>
+        <ul>
+            <li>Membaca → "Baca 1 halaman" (bukan "Baca 30 menit")</li>
+            <li>Olahraga → "Pakai sepatu lari" (bukan "Lari 5km")</li>
+            <li>Meditasi → "Napaskan 1 kali" (bukan "Meditasi 20 menit")</li>
+        </ul>
+        <p class="detail-text">Anda tidak bisa memperbaiki kebiasaan yang tidak ada. Stage awal hanyalah membangun fondasi — ritual sebelum peningkatan.</p>
+    </div>
+
+    <!-- Slide 18: Reduction -->
+    <div class="slide content-dark">
+        <span class="chapter-num">18</span>
+        <div class="section-label" style="color: #888;">Hukum 3 — Optimalisasi</div>
+        <h1>Auto-Reduce<br>Friction</h1>
+        <div class="divider"></div>
+        <p class="detail-text">Kurangi langkah yang memisahkan Anda dari kebiasaan baik:</p>
+        <ul>
+            <li>🏋️ Inisialisasi latihan: Siapkan peralatan sebelumnya</li>
+            <li>🥗 Makan sehat: Meal prep di hari Minggu</li>
+            <li>💰 Menabung: Auto-transfer gaji ke rekening tabungan</li>
+            <li>📝 Menulis: Buka dokumen kosong di malam hari</li>
+        </ul>
+        <p class="detail-text" style="color: #888;">Pada akhirnya, kebiasaan buruk sering kali disebabkan oleh friksi yang terlalu tinggi untuk dihindari.</p>
+    </div>
+
+    <!-- Slide 19: 4th Law Header -->
+    <div class="slide accent-gold">
+        <span class="chapter-num">IV</span>
+        <div class="tag">Hukum Keempat</div>
+        <h1>Make It<br>Satisfying</h1>
+        <div class="divider"></div>
+        <p class="detail-text">Langkah keempat membuat kebiasaan menjadi <strong>memuaskan</strong>. Ini adalah kunci untuk mempertahankan kebiasaan jangka panjang.</p>
+    </div>
+
+    <!-- Slide 20: Immediate Reward -->
+    <div class="slide content-light">
+        <span class="chapter-num">20</span>
+        <div class="section-label">Hukum 4 — Psikologi</div>
+        <h1>Hadiah Segera<br>vs Konsekuensi Tertunda</h1>
+        <div class="divider"></div>
+        <p class="detail-text">Otak manusia dirancang untuk prioritas immediate. Kebiasaan baik sering kali memiliki reward yang tertunda (kesehatan), sementara kebiasaan buruk memiliki reward segera (kenikmatan).</p>
+        <div class="highlight-box" style="background: #f5f0eb;">
+            <p><strong>Strategi:</strong> Berikan hadiah instan setiap kali Anda menyelesaikan habit. Ini menciptakan asosiasi positif di otak.</p>
+        </div>
+        <p class="detail-text">Contoh: Centang kalender setelah mengerjakan habit. Visual progress adalah reward yang memuaskan.</p>
+    </div>
+
+    <!-- Slide 21: Habit Tracker -->
+    <div class="slide content-dark">
+        <span class="chapter-num">21</span>
+        <div class="section-label" style="color: #888;">Hukum 4 — Implementasi</div>
+        <h1>Habit Tracker<br>& Seinfeld Strategy</h1>
+        <div class="divider"></div>
+        <p class="pull-quote">"Jangan putuskan rantai."</p>
+        <ul>
+            <li>✨ Gunakan calendar checker — centang setiap hari habit dilakukan</li>
+            <li>🔥 Sequin Strategy: Jerry Seinfeld menulis 1 joke/hari, tidak pernah skip</li>
+            <li>📊 Visual proof memberikan kepuasan instan</li>
+            <li>⚠️ Satu hari skip = okay. Dua hari skip = awal dari habit baru yang buruk</li>
+        </ul>
+    </div>
+
+    <!-- Slide 22: Breaking Bad Habits -->
+    <div class="slide content-light">
+        <span class="chapter-num">22</span>
+        <div class="section-label">Kebalikan Hukum</div>
+        <h1>Cara Memutuskan<br>Kebiasaan Buruk</h1>
+        <div class="divider"></div>
+        <ul>
+            <li><strong>Invisible</strong> — Buat pemicu tidak terlihat (simpan HP di laci saat kerja)</li>
+            <li><strong>Unattractive</strong> — Reframe pikiran tentang kebiasaan buruk (rokok = bau, mahal, mempersingkat hidup)</li>
+            <li><strong>Difficult</strong> — Tambah friksi (hapus app medsos, gunakan blocking software)</li>
+            <li><strong>Unsatisfying</strong> — Buat konsekuensi segera terasa ( accountability partner, denda finansial)</li>
+        </ul>
+    </div>
+
+    <!-- Slide 23: Goldilocks Rule -->
+    <div class="slide accent-blue">
+        <span class="chapter-num">23</span>
+        <div class="tag">Tahap Mastery</div>
+        <h1>Goldilocks<br>Rule</h1>
+        <div class="divider"></div>
+        <div class="big-number" style="color: #4a90d9;">4%</div>
+        <p class="detail-text" style="color: rgba(255,255,255,0.9);">Tantangan harus berada tepat di tepi kemampuan Anda — tidak terlalu mudah (menyebabkan boredom), tidak terlalu sulit (menyebabkan anxiety).</p>
+        <p class="subtitle" style="color: rgba(255,255,255,0.6);">Zona optimal ini disebut "flow state" — di mana keterampilan dan tantangan seimbang sempurna.</p>
+    </div>
+
+    <!-- Slide 24: Plateau of Latent Potential -->
+    <div class="slide content-dark">
+        <span class="chapter-num">24</span>
+        <div class="section-label" style="color: #888;">Mindset Kunci</div>
+        <h1>Plateau of<br>Latent Potential</h1>
+        <div class="divider"></div>
+        <p class="pull-quote">"Hasil seringkali tertunda. Kesabaran bukan pasif — ini aktif menunggu momen yang tepat."</p>
+        <p class="detail-text">Seperti es batu yang dipanaskan dari -10°C ke 0°C, tidak ada perubahan terlihat. Tapi pada 0°C, es mulai mencair. Usaha Anda belum sia-sia — hanya belum terlihat.</p>
+        <p class="subtitle" style="color: #888;">Jangan menyerah di phase ini. Ini adalah di mana perubahan sejati sedang terjadi.</p>
+    </div>
+
+    <!-- Slide 25: Closing -->
+    <div class="slide cover">
+        <span class="chapter-num">✦</span>
+        <h1>Setiap Hari<br>Peluang Baru</h1>
+        <div class="divider" style="background: #ff6b35;"></div>
+        <p class="pull-quote" style="background: #ff6b35; color: #1a1a1a;">"You do not rise to the level of your goals.<br>You fall to the level of your systems."</p>
+        <p class="subtitle" style="color: #888; margin-top: 2rem;">Mulai dengan yang kecil. Tetap konsisten. Biarkan waktu bekerja untuk Anda.</p>
+        <p class="author" style="color: #666;">— James Clear, Atomic Habits</p>
+    </div>
+
+</body>
+</html>
