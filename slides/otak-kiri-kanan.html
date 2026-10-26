@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Otak Kiri - Otak Kanan</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            line-height: 1.6;
+        }
+        .slide {
+            min-height: 100vh;
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        .slide-header {
+            margin-bottom: 2rem;
+        }
+        .slide-number {
+            font-size: 0.75rem;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+        .content {
+            flex: 1;
+        }
+        .highlight {
+            color: #f59e0b;
+            font-weight: 600;
+        }
+        .highlight-blue {
+            color: #60a5fa;
+            font-weight: 600;
+        }
+        .highlight-pink {
+            color: #f472b6;
+            font-weight: 600;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #f59e0b;
+        }
+        .box {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+        .box-blue {
+            background: rgba(96,165,250,0.1);
+            border-left: 3px solid #60a5fa;
+        }
+        .box-pink {
+            background: rgba(244,114,182,0.1);
+            border-left: 3px solid #f472b6;
+        }
+        .quote {
+            font-style: italic;
+            color: #94a3b8;
+            border-left: 3px solid #f59e0b;
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+        }
+        .footer {
+            margin-top: 2rem;
+            font-size: 0.75rem;
+            color: #475569;
+            text-align: center;
+        }
+        /* Slide-specific colors */
+        .slide-cover { background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%); }
+        .slide-left { background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%); }
+        .slide-right { background: linear-gradient(135deg, #4a1942 0%, #0f172a 100%); }
+        .slide-compare { background: linear-gradient(135deg, #0f172a 0%, #1a1a2e 100%); }
+        .slide-myth { background: linear-gradient(135deg, #3d1c02 0%, #0f172a 100%); }
+        .slide-practice { background: linear-gradient(135deg, #1a3a2a 0%, #0f172a 100%); }
+    </style>
+</head>
+<body>
+    <!-- Slide 1: Cover -->
+    <div class="slide slide-cover">
+        <div class="slide-header">
+            <div class="slide-number">01 / 22</div>
+            <h1>🧠 OTAK KIRI<br>&<br>OTAK KANAN</h1>
+            <p style="color: #94a3b8; margin-top: 1rem;">Memahami Lateralisasi Fungsi Otak Manusia</p>
+        </div>
+        <div class="content">
+            <div class="quote">
+                "Setiap sisi otak memiliki keunikan dan kekuatan masing-masing."
+            </div>
+        </div>
+        <div class="footer">Presentasi Edukasi | 2026</div>
+    </div>
+
+    <!-- Slide 2: Pengantar -->
+    <div class="slide">
+        <div class="slide-header">
+            <div class="slide-number">02 / 22</div>
+            <h2>Pendahuluan</h2>
+        </div>
+        <div class="content">
+            <p style="margin-bottom: 1rem;">Otak manusia terdiri dari dua belahan yang terlihat simetris, tetapi memiliki fungsi yang berbeda.</p>
+            <div class="box">
+                <p><span class="highlight">Konsep Dasar:</span></p>
+                <ul>
+                    <li>Otak terbagi menjadi <span class="highlight-blue">hemisfer kiri</span> dan <span class="highlight-pink">hemisfer kanan</span></li>
+                    <li>Setiap belahan mengontrol sisi tubuh yang berlawanan</li>
+                    <li>Koneksi utama: <span class="highlight">corpus callosum</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3: Anatomi -->
+    <div class="slide">
+        <div class="slide-header">
+            <div class="slide-number">03 / 22</div>
+            <h2>Anatomi Otak</h2>
+        </div>
+        <div class="content">
+            <div class="box box-blue">
+                <p class="highlight-blue">Corpus Callosum</p>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">Jembatan saraf yang menghubungkan kedua belahan otak, memungkinkan komunikasi antarhemisfer.</p>
+            </div>
+            <div class="box box-pink">
+                <p class="highlight-pink">Sulkus Longitudinal</p>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">Celah yang memisahkan hemisfer kiri dan kanan secara fisik.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: Otak Kiri -->
+    <div class="slide slide-left">
+        <div class="slide-header">
+            <div class="slide-number">04 / 22</div>
+            <h2>🔵 Otak Kiri</h2>
+        </div>
+        <div class="content">
+            <p class="highlight-blue">Logis, Analitis, Berurutan</p>
+            <ul style="margin-top: 1.5rem;">
+                <li>Bahasa dan literasi</li>
+                <li>Pemikiran logis dan analitis</li>
+                <li>Matematika dan perhitungan</li>
+                <li>Pengurutan dan urutan</li>
+                <li>Analisis komponen</li>
+                <li>Berpikir linear</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Slide 5: Fungsi Otak Kiri -->
+    <div class="slide slide-left">
+        <div class="slide-header">
+            <div class="slide-number">05 / 22</div>
+            <h2>Fungsi Utama Otak Kiri</h2>
+        </div>
+        <div class="content">
+            <div class="box box-blue">
+                <p><span class="highlight-blue">1. Bahasa</span></p>
+                <p style="font-size: 0.85rem; margin-top: 0.5rem;">Memproduksi dan memahami bahasa, tata bahasa, dan makna kata.</p>
+            </div>
+            <div class="box box-blue">
+                <p><span class="highlight-blue">2. Logika</span></p>
+                <p style="font-size: 0.85rem; margin-top: 0.5rem;">Berpikir rasional, analisis sebab-akibat, dan pemecahan masalah sistematis.</p>
+            </div>
+            <div class="box box-blue">
+                <p><span class="highlight-blue">3. Matematika</span></p>
+                <p style="font-size: 0.85rem; margin-top: 0.5rem;">Perhitungan, rumus, dan simbol-simbol matematis.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 6: Otak Kanan -->
+    <div class="slide slide-right">
+        <div class="slide-header">
+            <div class="slide-number">06 / 22</div>
+            <h2>🩷 Otak Kanan</h2>
+        </div>
+        <div class="content">
+            <p class="highlight-pink">Kreatif, Holistik, Intuitif</p>
+            <ul style="margin-top: 1.5rem;">
+                <li>Kreativitas dan imajinasi</li>
+                <li>Pengenalan pola dan wajah</li>
+                <li>Music dan ritme</li>
+                <li>Spasial dan visual</li>
+                <li>Emosi dan intuisi</li>
+                <li>Pemikiran holistik</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Slide 7: Fungsi Otak Kanan -->
+    <div class="slide slide-right">
+        <div class="slide-header">
+            <div class="slide-number">07 / 22</div>
+            <h2>Fungsi Utama Otak Kanan</h2>
+        </div>
+        <div class="content">
+            <div class="box box-pink">
+                <p><span class="highlight-pink">1. Kreativitas</span></p>
+                <p style="font-size: 0.85rem; margin-top: 0.5rem;">Berpikir out-of-the-box, inovasi, dan ekspresi artistik.</p>
+            </div>
+            <div class="box box-pink">
+                <p><span class="highlight-pink">2. Spasial</span></p>
+                <p style="font-size: 0.85rem; margin-top: 0.5rem;">Navigasi, membaca peta, dan memahami ruang 3D.</p>
+            </div>
+            <div class="box box-pink">
+                <p><span class="highlight-pink">3. Emosi</span></p>
+                <p style="font-size: 0.85rem; margin-top: 0.5rem;">Memahami konteks emosional dan bahasa tubuh.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 8: Perbandingan -->
+    <div class="slide slide-compare">
+        <div class="slide-header">
+            <div class="slide-number">08 / 22</div>
+            <h2>Perbandingan Kedua Belahan</h2>
+        </div>
+        <div class="content">
+            <div style="display: grid; gap: 1rem;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="box box-blue">
+                        <p class="highlight-blue" style="text-align: center;">KIRI</p>
+                        <ul style="font-size: 0.85rem; margin-top: 0.5rem;">
+                            <li>Analitis</li>
+                            <li>Logis</li>
+                            <li>Verbal</li>
+                            <li>Seqensial</li>
+                        </ul>
+                    </div>
+                    <div class="box box-pink">
+                        <p class="highlight-pink" style="text-align: center;">KANAN</p>
+                        <ul style="font-size: 0.85rem; margin-top: 0.5rem;">
+                            <li>Holistik</li>
+                            <li>Kreatif</li>
+                            <li>Visual</li>
+                            <li>Simultan</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 9: Myth Buster -->
+    <div class="slide slide-myth">
+        <div class="slide-header">
+            <div class="slide-number">09 / 22</div>
+            <h2>🚫 Mitos yang Salah</h2>
+        </div>
+        <div class="content">
+            <div class="box">
+                <p style="margin-bottom: 1rem;"><span class="highlight">Mitos:</span> "Orang kiri lebih logis, orang kanan lebih kreatif"</p>
+                <p style="color: #94a3b8; font-size: 0.9rem;">Fakta: Setiap orang menggunakan <strong>kedua belahan otak</strong> untuk hampir semua aktivitas. Pembagian "types" otak adalah simplifikasi berlebihan.</p>
+            </div>
+            <div class="box">
+                <p style="margin-bottom: 1rem;"><span class="highlight">Mitos:</span> Pendidikan bisa "melatih" satu sisi otak</p>
+                <p style="color: #94a3b8; font-size: 0.9rem;">Fakta: Otak bekerja terintegrasi. Aktivitas kompleks melibatkan kedua belahan.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 10: Sains Modern -->
+    <div class="slide">
+        <div class="slide-header">
+            <div class="slide-number">10 / 22</div>
+            <h2>Penelitian Neuroscience Modern</h2>
+        </div>
+        <div class="content">
+            <p style="margin-bottom: 1rem;">Penelitian menggunakan fMRI dan PET scan menunjukkan:</p>
+            <ul>
+                <li>Bahasa memang lebih dominan di hemisfer kiri (Broca's & Wernicke's area)</li>
+                <li>Pengenalan wajah lebih dominan di hemisfer kanan</li>
+                <li>Tetapi setiap tugas kompleks melibatkan <span class="highlight">jaringan otak yang luas</span></li>
+            </ul>
+            <div class="quote">
+                "Otak bukanlah organ yang terbagi dua—ia adalah sistem yang terintegrasi."
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 11: Dominasi Bahasa -->
+    <div class="slide slide-left">
+        <div class="slide-header">
+            <div class="slide-number">11 / 22</div>
+            <h2>Dominasi Bahasa di Kiri</h2>
+        </div>
+        <div class="content">
+            <div class="box box-blue">
+                <p class="highlight-blue">Area Broca (09:00)</p>
+                <p style="font-size: 0.85rem;">Berfungsi dalam produksi bahasa dan pemrosesan tata bahasa.</p>
+            </div>
+            <div class="box box-blue">
+                <p class="highlight-blue">Area Wernicke (10:00)</p>
+                <p style="font-size: 0.85rem;">Berfungsi dalam pemahaman bahasa dan pemrosesan makna.</p>
+            </div>
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: #94a3b8;">Sekitar <strong>95%</strong> orang kidal kanan memiliki dominasi bahasa di hemisfer kiri.</p>
+        </div>
+    </div>
+
+    <!-- Slide 12: Dominasi Spasial -->
+    <div class="slide slide-right">
+        <div class="slide-header">
+            <div class="slide-number">12 / 22</div>
+            <h2>Dominasi Spasial di Kanan</h2>
+        </div>
+        <div class="content">
+            <div class="box box-pink">
+                <p class="highlight-pink">Parietal Right</p>
+                <p style="font-size: 0.85rem;">Bertanggung jawab atas orientasi spasial dan navigasi.</p>
+            </div>
+            <div class="box box-pink">
+                <p class="highlight-pink">Visual-Spatial</p>
+                <p style="font-size: 0.85rem;">Memproses informasi visual dan hubungan ruang.</p>
+            </div>
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: #94a3b8;">Luka di hemisfer kanan sering menyebabkan <strong>neglect syndrome</strong>—mengabaikan sisi kiri tubuh.</p>
+        </div>
+    </div>
+
+    <!-- Slide 13: Kreativitas -->
+    <div class="slide slide-right">
+        <div class="slide-header">
+            <div class="slide-number">13 / 22</div>
+            <h2>Kreativitas: Kerja Sama Otak</h2>
+        </div>
+        <div class="content">
+            <p>Studi neuroimaging menunjukkan bahwa kreativitas melibatkan:</p>
+            <ul>
+                <li><span class="highlight">Default Mode Network</span> (DMN) — otak kanan dominan</li>
+                <li><span class="highlight-blue">Executive Control Network</span> — otak kiri dominan</li>
+                <li>Keduanya harus <strong>bekerja sama</strong> untuk menghasilkan ide kreatif</li>
+            </ul>
+            <div class="quote">
+                "Kreativitas bukan milik satu sisi otak—ia adalah simfoni kedua belahan."
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 14: Musik -->
+    <div class="slide">
+        <div class="slide-header">
+            <div class="slide-number">14 / 22</div>
+            <h2>Musik & Otak</h2>
+        </div>
+        <div class="content">
+            <div style="display: grid; gap: 1rem;">
+                <div class="box box-blue">
+                    <p class="highlight-blue">Aspek Teknis (Kiri)</p>
+                    <p style="font-size: 0.85rem;">Notasi, ritme, struktur harmoni, teori musik</p>
+                </div>
+                <div class="box box-pink">
+                    <p class="highlight-pink">Aspek Emosional (Kanan)</p>
+                    <p style="font-size: 0.85rem;">Melodi, timbre, ekspresi, perasaan</p>
+                </div>
+            </div>
+            <p style="margin-top: 1rem; font-size: 0.9rem;">Musisi profesional menggunakan <span class="highlight">kedua belahan otak</span> secara simultan.</p>
+        </div>
+    </div>
+
+    <!-- Slide 15: Anak-anak -->
+    <div class="slide slide-practice">
+        <div class="slide-header">
+            <div class="slide-number">15 / 22</div>
+            <h2>Pengembangan Anak</h2>
+        </div>
+        <div class="content">
+            <p style="margin-bottom: 1rem;">Untuk mengembangkan potensi optimal anak:</p>
+            <ul>
+                <li><span class="highlight-blue">Aktivitas analitis:</span> matematika, membaca, debat</li>
+                <li><span class="highlight-pink">Aktivitas kreatif:</span> seni, musik, tari</li>
+                <li><span class="highlight">Aktivitas integratif:</span> olahraga, bermain peran, puzzle</li>
+            </ul>
+            <div class="box" style="background: rgba(245,158,11,0.1); border-left: 3px solid #f59e0b;">
+                <p><span class="highlight">Tips:</span> Jangan membatasi anak pada satu "tipe" aktivitas—variitas adalah kunci.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 16: Produktivitas -->
+    <div class="slide slide-practice">
+        <div class="slide-header">
+            <div class="slide-number">16 / 22</div>
+            <h2>Produktivitas seimbang</h2>
+        </div>
+        <div class="content">
+            <p style="margin-bottom: 1rem;">Strategi untuk keseimbangan otak:</p>
+            <div class="box box-blue">
+                <p class="highlight-blue">Pagi: Waktu Analitis</p>
+                <p style="font-size: 0.85rem;">Tugash yang membutuhkan fokus dan logika</p>
+            </div>
+            <div class="box box-pink">
+                <p class="highlight-pink">Sore: Waktu Kreatif</p>
+                <p style="font-size: 0.85rem;"> brainstorming, ide baru, pemecahan masalah alternatif</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 17: Pembelajaran -->
+    <div class="slide">
+        <div class="slide-header">
+            <div class="slide-number">17 / 22</div>
+            <h2>Metode Pembelajaran</h2>
+        </div>
+        <div class="content">
+            <p>Belajar efektif melibatkan keduanya:</p>
+            <ul>
+                <li><span class="highlight-blue">Konseptual:</span> memahami struktur dan aturan</li>
+                <li><span class="highlight-pink">Eksperien:</span> mencoba dan merasakan langsung</li>
+                <li><span class="highlight">Reflektif:</span> menghubungkan pengalaman dengan teori</li>
+            </ul>
+            <div class="quote">
+                "Guru yang baik menstimulasi kedua belahan otak siswa."
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 18: Neuroplastisitas -->
+    <div class="slide">
+        <div class="slide-header">
+            <div class="slide-number">18 / 22</div>
+            <h2>Neuroplastisitas</h2>
+        </div>
+        <div class="content">
+            <p>Otak memiliki kemampuan untuk <span class="highlight">beradaptasi dan berubah</span> sepanjang hidup.</p>
+            <ul style="margin-top: 1rem;">
+                <li>Luka otak bisa "dialihkan" fungsinya ke belahan lain</li>
+                <li>Pelatihan spesifik dapat memperkuat koneksi saraf</li>
+                <li>Anak-anak memiliki plastisitas lebih tinggi dari dewasa</li>
+            </ul>
+            <div class="box" style="background: rgba(245,158,11,0.1); border-left: 3px solid #f59e0b;">
+                <p><span class="highlight">Kesimpulan:</span> Otak Anda bisa berkembang—mulailah belajar hal baru!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 19: Kidal -->
+    <div class="slide">
+        <div class="slide-header">
+            <div class="slide-number">19 / 22</div>
+            <h2>Kidal & Dominansi</h2>
+        </div>
+        <div class="content">
+            <p style="margin-bottom: 1rem;">Sekitar <strong>10%</strong> populasi adalah kidal.</p>
+            <ul>
+                <li>70% kidal memiliki dominasi bahasa di <span class="highlight-pink">hemisfer kanan</span></li>
+                <li>30% lainnya tetap dominan kiri seperti orang kanan</li>
+                <li>Kidal sering menunjukkan <span class="highlight">ko-dominansi</span> yang lebih seimbang</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Slide 20: Aplikasi -->
+    <div class="slide slide-practice">
+        <div class="slide-header">
+            <div class="slide-number">20 / 22</div>
+            <h2>Aplikasi Praktis</h2>
+        </div>
+        <div class="content">
+            <div style="display: grid; gap: 1rem;">
+                <div class="box box-blue">
+                    <p class="highlight-blue">Edukasi</p>
+                    <p style="font-size: 0.85rem;">Kurikulum seimbang: seni + sains, musik + matematika</p>
+                </div>
+                <div class="box box-pink">
+                    <p class="highlight-pink">Workplace</p>
+                    <p style="font-size: 0.85rem;">Tim dengan diversitas kognitif lebih inovatif</p>
+                </div>
+                <div class="box">
+                    <p class="highlight">Self-Development</p>
+                    <p style="font-size: 0.85rem;">Latih kedua "sisi" melalui aktivitas beragam</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 21: Kesimpulan -->
+    <div class="slide">
+        <div class="slide-header">
+            <div class="slide-number">21 / 22</div>
+            <h2>Kesimpulan</h2>
+        </div>
+        <div class="content">
+            <div class="box" style="background: rgba(245,158,11,0.1); border-left: 3px solid #f59e0b;">
+                <p><span class="highlight">1. Kedua belahan otak bekerja sama</span></p>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">Tidak ada "otak kiri" atau "otak kanan" murni—semua aktivitas kompleks melibatkan integrasi kedua belahan.</p>
+            </div>
+            <div class="box" style="background: rgba(245,158,11,0.1); border-left: 3px solid #f59e0b;">
+                <p><span class="highlight">2. Keunggulan relatif</span></p>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">Meski terintegrasi, ada spesialisasi regional: bahasa di kiri, spasial di kanan.</p>
+            </div>
+            <div class="box" style="background: rgba(245,158,11,0.1); border-left: 3px solid #f59e0b;">
+                <p><span class="highlight">3. Variasi individual</span></p>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">Setiap orang unik—tidak ada orang yang "hanya otak kiri" atau "hanya otak kanan".</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 22: Penutup -->
+    <div class="slide slide-cover">
+        <div class="slide-header">
+            <div class="slide-number">22 / 22</div>
+            <h1>Terima Kasih</h1>
+        </div>
+        <div class="content">
+            <p style="text-align: center; color: #94a3b8; margin: 2rem 0;">
+                "Otak kita dirancang untuk bekerja sebagai satu kesatuan—<br>
+                mari kita gunakan seluruh potensinya."
+            </p>
+            <div style="text-align: center; margin-top: 3rem;">
+                <p style="font-size: 0.85rem; color: #475569;">Referensi:</p>
+                <p style="font-size: 0.75rem; color: #334155; margin-top: 0.5rem;">
+                    Sperry, R.W. (1968). Hemisphere deconnection and unity in conscious awareness.<br>
+                    Bear, M.F. et al. (2020). Neuroscience: Exploring the Brain.
+                </p>
+            </div>
+        </div>
+        <div class="footer">Presentasi Edukasi | 2026</div>
+    </div>
+</body>
+</html>
