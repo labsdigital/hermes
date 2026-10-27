@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Etika Teknologi — Mobile Slide Deck</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    :root {
+      --bg-dark: #0d0e11;
+      --bg-cream: #f6f3ed;
+      --bg-moss: #121815;
+      --text-dark: #111418;
+      --text-light: #f1ebd9;
+      --accent-coral: #e05638;
+      --accent-gold: #c99351;
+      --accent-teal: #3ba99c;
+      --muted-dark: #8a909a;
+      --muted-light: #7c776e;
+      --font-serif: 'Newsreader', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: var(--bg-dark);
+      font-family: var(--font-sans);
+      color: var(--text-light);
+    }
+
+    /* Container for Snap Scrolling */
+    .deck-container {
+      width: 100vw;
+      height: 100dvh;
+      overflow-y: mandatory;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* Top Progress Bar */
+    .progress-bar-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      z-index: 100;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: var(--accent-coral);
+      transition: width 0.3s ease-out;
+    }
+
+    /* Floating Navigation HUD */
+    .hud-controls {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: rgba(18, 20, 26, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 8px 18px;
+      border-radius: 40px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      z-index: 100;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .hud-btn {
+      background: none;
+      border: none;
+      color: var(--text-light);
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      transition: background 0.2s ease, opacity 0.2s ease;
+    }
+
+    .hud-btn:active {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .slide-counter {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--text-light);
+      min-width: 60px;
+      text-align: center;
+    }
+
+    /* Individual Slide Styles */
+    .slide {
+      width: 100vw;
+      height: 100dvh;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: clamp(28px, 7vw, 48px) clamp(24px, 6vw, 40px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Color Themes per Slide Category */
+    .theme-dark {
+      background-color: #0d0e11;
+      color: #f1ebd9;
+    }
+    .theme-dark .accent-tag { color: var(--accent-coral); }
+    .theme-dark .highlight { color: var(--accent-coral); }
+
+    .theme-cream {
+      background-color: var(--bg-cream);
+      color: var(--text-dark);
+    }
+    .theme-cream .accent-tag { color: #b34226; }
+    .theme-cream .highlight { color: #b34226; }
+    .theme-cream .num-badge { border-color: rgba(17, 20, 24, 0.2); color: var(--text-dark); }
+    .theme-cream .bullet-item { border-left-color: #b34226; background: rgba(179, 66, 38, 0.04); }
+
+    .theme-moss {
+      background-color: var(--bg-moss);
+      color: #f0eada;
+    }
+    .theme-moss .accent-tag { color: var(--accent-gold); }
+    .theme-moss .highlight { color: var(--accent-gold); }
+    .theme-moss .bullet-item { border-left-color: var(--accent-gold); }
+
+    /* Editorial Typography & Elements */
+    .slide-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    .category-tag {
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      opacity: 0.85;
+    }
+
+    .num-badge {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-style: italic;
+      opacity: 0.6;
+    }
+
+    .slide-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: 20px 0;
+    }
+
+    .editorial-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.2rem, 8.5vw, 4.2rem);
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+
+    .editorial-title.large-cover {
+      font-size: clamp(2.8rem, 11vw, 5.2rem);
+      font-weight: 400;
+      line-height: 1.02;
+    }
+
+    .body-text {
+      font-size: clamp(1.15rem, 4.2vw, 1.6rem);
+      line-height: 1.45;
+      font-weight: 400;
+      opacity: 0.92;
+      max-width: 680px;
+    }
+
+    .quote-box {
+      border-left: 3px solid var(--accent-coral);
+      padding-left: 20px;
+      margin-top: 15px;
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(1.25rem, 4.8vw, 1.8rem);
+      line-height: 1.35;
+    }
+
+    .bullet-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 15px;
+      width: 100%;
+    }
+
+    .bullet-item {
+      padding: 14px 18px;
+      border-left: 3px solid var(--accent-coral);
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 0 10px 10px 0;
+      font-size: clamp(1rem, 3.8vw, 1.35rem);
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    .bullet-item span {
+      font-weight: 700;
+      display: block;
+      font-size: 0.85em;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      opacity: 0.7;
+      margin-bottom: 4px;
+    }
+
+    .slide-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      width: 100%;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      opacity: 0.5;
+    }
+
+    /* Swipe hint animation for cover */
+    .swipe-hint {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0.7;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-8px); }
+      60% { transform: translateY(-4px); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="progress-bar-container">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <div class="hud-controls">
+    <button class="hud-btn" id="prevBtn" aria-label="Previous Slide">↑</button>
+    <div class="slide-counter" id="slideCounter">01 / 22</div>
+    <button class="hud-btn" id="nextBtn" aria-label="Next Slide">↓</button>
+  </div>
+
+  <div class="deck-container" id="deckContainer">
+
+    <!-- Slide 1: Cover -->
+    <section class="slide theme-dark" id="slide-1">
+      <div class="slide-header">
+        <span class="category-tag accent-tag">EDITORIAL DECK</span>
+        <span class="num-badge">01</span>
+      </div>
+      <div class="slide-content">
+        <h1 class="editorial-title large-cover">Etika<br><i style="font-family: var(--font-serif); font-weight: 300;">Teknologi</i></h1>
+        <p class="body-text" style="margin-top: 15px; opacity: 0.8;">Menavigasi Masa Depan Peradaban Digital dengan Kompas Kemanusiaan.</p>
+      </div>
+      <div class="slide-footer">
+        <span>HERMES AGENT DECK</span>
+        <div class="swipe-hint">Geser Ke Bawah ↓</div>
+      </div>
+    </section>
+
+    <!-- Slide 2: Intro -->
+    <section class="slide theme-cream" id="slide-2">
+      <div class="slide-header">
+        <span class="category-tag accent-tag">KONTEKS ZAMAN</span>
+        <span class="num-badge">02</span>
+      </div>
+      <div class="slide-content">
+        <h2 class="editorial-title">Krisis Kecepatan vs. Etika</h2>
+        <div class="quote-box" style="border-left-color: #b34226;">
+          "Teknologi bergerak secepat cahaya. Kesadaran etis dan regulasi bergerak secepat pejalan kaki."
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>PERCEPATAN EKSPONENSIAL</span>
+        <span>ETIKA TEKNOLOGI</span>
+      </div>
+    </section>
+
+    <!-- Slide 3: Definisi -->
+    <section class="slide theme-dark" id="slide-3">
+      <div class="slide-header">
+        <span class="category-tag accent-tag">FOUNDATIONS</span>
+        <span class="num-badge">03</span>
+      </div>
+      <div class="slide-content">
+        <h2 class="editorial-title">Apa Itu Etika Teknologi?</h2>
+        <p class="body-text">
+          Bukan sekadar aturan moral baku, melainkan <span class="highlight">kerangka evaluasi kritis</span> atas dampak inovasi terhadap martabat, kebebasan, dan masa depan manusia.
+        </p>
+      </div>
+      <div class="slide-footer">
+        <span>DEFINISI INTI</span>
+        <span>ETIKA TEKNOLOGI</span>
+      </div>
+    </section>
+
+    <!-- Slide 4: Pilar 1 - Privasi -->
+    <section class="slide theme-moss" id="slide-4">
+      <div class="slide-header">
+        <span class="category-tag accent-tag">PILAR I</span>
+        <span class="num-badge">04</span>
+      </div>
+      <div class="slide-content">
+        <h2 class="editorial-title">Privasi & Hak Atas Data</h2>
+        <p class="body-text">
+          Data pribadi bukanlah komoditas mentah yang bebas ditambang. Data adalah <span class="highlight">ekstensi dari identitas</span> dan kedaulatan individu.
+        </p>
+      </div>
+      <div class="slide-footer">
+        <span>KEDAULATAN DATA</span>
+        <span>ETIKA TEKNOLOGI</span>
+      </div>
+    </section>
+
+    <!-- Slide 5: Surveillance Capitalism -->
+    <section class="slide theme-dark" id="slide-5">
+      <div class="slide-header">
+        <span class="category-tag accent-tag">ISU KRITIS</span>
+        <span class="num-badge">05</span>
+      </div>
+      <div class="slide-content">
+        <h2 class="editorial-title">Kapitalisme Pengawasan</h2>
+        <p class="body-text">
+          Ketika pengalaman hidup manusia diubah menjadi komoditas pasar komportemen. Kita bukan lagi konsumen—kita adalah <span class="highlight">sumber daya yang diekstraksi</span>.
+        </p>
+      </div>
+      <div class="slide-footer">
+        <span>SURVEILLANCE CAPITALISM</span>
+        <span>ETIKA TEKNOLOGI</span>
+      </div>
+    </section>
+
+    <!-- Slide 6: Pilar 2 - Bias Algoritma -->
+    <section class="slide theme-cream" id="slide-6">
+      <div class="slide-header">
+        <span class="category-tag accent-tag">PILAR II</span>
+        <span class="num-badge">06</span>
+      </div>
+      <div class="slide-content">
+        <h2 class="editorial-title">Mitos Netralitas Algoritma</h2>
+        <p class="body-text">
+          Algoritma tidak pernah bebas nilai. Kode adalah cermin dari <span class="highlight">bias historis dan prasangka</span> para penciptanya.
+        </p>
+      </div>
+      <div class="slide-footer">
+        <span>BIAS ALGORITMA</span>
+        <span>ETIKA TEKNOLOGI</span>
+      </div>
+    </section>
+
+    <!-- Slide 7: Diskriminasi Terselubung -->
+    <section class="slide theme-dark" id="slide-7">
+      <div class="slide-header">
+        <span class="category-tag accent-tag">DAMPAK SOSIAL</span>
+        <span class="num-badge">07</span>
+      </div>
+      <div class="slide-content">
+        <h2 class="editorial-title">Ketidakadilan Terprogram</h2>
+        <div class="bullet-list">
+          <div class="bullet-item">
+            <span>Rekrutmen AI</span>
+            Mengesampingkan kandidat berdasarkan gender & ras.
+          </div>
+          <div class="bullet-item">
+            <span>Sistem Kredit</span>
+            Penilaian finansial yang diskriminatif.
+          </div>
+          <div class="bullet-item">
+            <span>Rekognisi Wajah</span>
+            Tingkat kesalahan tinggi pada kelompok minoritas.
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>DISKRIMINASI SISTEMIS</span>
+        <span>ETIKA TEKNOLOGI</span>
+      </div>
+    </section>
+
+    <!-- Slide 8: Pilar 3 - Otonomi & Manipulasi -->
+    <section class="slide theme-moss" id="slide-8">
+      <div class="slide-header">
+        <span class="category-tag accent-tag">PILAR III</span>
+        <span class="num-badge">08</span>
+      </div>
+      <div class="slide-content">
+        <h2 class="editorial-title">Otonomi Manusia & Manipulasi</h2>
+        <p class="body-text">
+          Sistem rekomendasi dirancang untuk <span class="highlight">merampas kehendak bebas</span>, menggiring opini, dan merekayasa perilaku massa demi keterikatan digital.
+        </p>
+      </div>
+      <div class="slide-footer">
+        <span>KEHENDAK BEBAS</span>
+        <span>ETIKA TEKNOLOGI</span>
+      </div>
+    </section>
+
+    <!-- Slide 9: Dark Patterns -->
+    <section class="slide theme-cream" id="slide-9">
+      <div class="slide-header">
+        <span class="category-tag accent-tag">DESAIN EKSTRAKTIF</span>
+        <span class="num-badge">09</span>
+      </div>
+      <div class="slide-content">
+        <h2 class="editorial-title">Desain Adiktif & Dark Patterns</h2>
+        <p class="body-text">
+          Mengeksploitasi kerentanan psikologis manusia. Memprioritaskan <span class="highlight">metrik engagement</span> di atas kesehatan mental dan kebahagiaan pengguna.
+        </p>
+      </div>
+      <div class="slide-footer">
+        <span>KESEHATAN MENTAL</span>
+        <span>ETIKA TEKNOLOGI</span>
+      </div>
+    </section>
+
+    <!-- Slide 10: Pilar 4 - Akuntabilitas -->
+    <section class="slide theme-dark" id="slide-10">
+      <div class="slide-header">
+        <span class="category-tag accent-tag">PILAR IV</span>
+        <span class="num-badge">10</span>
+      </div>
+      <div class="slide-content">
+        <h2 class="editorial-title">Akuntabilitas & Tanggung Jawab</h2>
+        <p class="body-text">
+          Ketika mesin mengambil keputusan fatal, <span class="highlight">siapa yang bertanggung jawab?</span> Programmer, perusahaan, atau sistem itu sendiri?
+        </p>
+      </div>
+      <div class="slide-footer">
+        <span>TANGGUNG JAWAB HUKUM</span>
+        <span>ETIKA TEKNOLOGI</span>
+      </div>
+    </section>
+
+    <!-- Slide 11: Black Box AI -->
+    <section class="slide theme-moss" id="slide-11">
+      <div class="slide-header">
+        <span class="category-tag accent-tag">TRANSPARANSI</span>
+        <span class="num-badge">11</span>
+      </div>
+      <div class="slide-content">
+        <h2 class="editorial-title">Bahaya "Black Box" AI</h2>
+        <p class="body-text">
+          Keputusan penting dalam hukum, medis, dan keuangan kini diambil oleh model cerdas yang <span class="highlight">proses penalarnya tidak dapat dijelaskan</span> oleh manusia.
+        </p>
+      </div>
+      <div class="slide-footer">
+        <span>EXPLAINABLE AI</span>
+        <span>ETIKA TEKNOLOGI</span>
+      </div>
+    </section>
+
+    <!-- Slide 12: Pilar 5 - Lingkungan -->
+    <section class="slide theme-cream" id="slide-12">
+      <div class="slide-header">
+        <span class="category-tag accent-tag">PILAR V</span>
+        <span class="num-badge">12</span>
+      </div>
+      <div class="slide-content">
+        <h2 class="editorial-title">Jejak Ekologis Teknologi</h2>
+        <p class="body-text">
+          Dunia awan (*cloud*) memiliki akar fisik di bumi. Kemajuan digital membayar <span class="highlight">harga ekologis yang sangat mahal</span>.
+        </p>
+      </div>
+      <div class="slide-footer">
+        <span>KEBERLANJUTAN LINGKUNGAN</span>
+        <span>ETIKA TEKNOLOGI</span>
+      </div>
+    </section>
+
+    <!-- Slide 13: Dampak Ekologis AI -->
+    <section class="slide theme-dark" id="slide-13">
+      <div class="slide-header">
+        <span class="category-tag accent-tag">KRISIS ENERGI</span>
+        <span class="num-badge">13</span>
+      </div>
+      <div class="slide-content">
+        <h2 class="editorial-title">Haus Energi & Air</h2>
+        <div class="quote-box">
+          Pelatihan satu model bahasa besar dapat mengonsumsi energi dan jutaan liter air setara kebutuhan ribuan rumah tangga.
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>JEJAK KARBON DATA CENTER</span>
+        <span>ETIKA TEKNOLOGI</span>
+      </div>
+    </section>
+
+    <!-- Slide 14: Pilar 6 - Otomasi Masa Depan Kerja -->
+    <section class="slide theme-moss" id="slide-14">
+      <div class="slide-header">
+        <span class="category-tag accent-tag">PILAR VI</span>
+        <span class="num-badge">14</span>
+      </div>
+      <div class="slide-content">
+        <h2 class="editorial-title">Otomasi & Masa Depan Kerja</h2>
+        <p class="body-text">
+          Disrupsi tenaga kerja yang masif tanpa jaring pengaman sosial berisiko memperlebar <span class="highlight">jurang ketimpangan ekonomi</span> global.
+        </p>
+      </div>
+      <div class="slide-footer">
+        <span>DISRUPSI TENAGA KERJA</span>
+        <span>ETIKA TEKNOLOGI</span>
+      </div>
+    </section>
+
+    <!-- Slide 15: Hak Cipta & Generative AI -->
+    <section class="slide theme-cream" id="slide-15">
+      <div class="slide-header">
+        <span class="category-tag accent-tag">HAK CIPTA</span>
+        <span class="num-badge">15</span>
+      </div>
+      <div class="slide-content">
+        <h2 class="editorial-title">Kepemilikan di Era Generatif</h2>
+        <p class="body-text">
+          Siapa pemilik sah dari karya AI? Model dilatih atas jutaan karya seniman dan penulis <span class="highlight">tanpa kompensasi maupun konsen</span>.
+        </p>
+      </div>
+      <div class="slide-footer">
+        <span>HAK MILIK INTELEKTUAL</span>
+        <span>ETIKA TEKNOLOGI</span>
+      </div>
+    </section>
+
+    <!-- Slide 16: Deepfake & Disinformasi -->
+    <section class="slide theme-dark" id="slide-16">
+      <div class="slide-header">
+        <span class="category-tag accent-tag">DEMOKRASI</span>
+        <span class="num-badge">16</span>
+      </div>
+      <div class="slide-content">
+        <h2 class="editorial-title">Deepfake & Erosi Kepercayaan</h2>
+        <p class="body-text">
+          Ketika kebohongan sintetis diproduksi secara massal dan sempurna, kita kehilangan <span class="highlight">konsensus atas kebenaran faktual</span> dalam masyarakat.
+        </p>
+      </div>
+      <div class="slide-footer">
+        <span>DISINFORMASI SINTETIS</span>
+        <span>ETIKA TEKNOLOGI</span>
+      </div>
+    </section>
+
+    <!-- Slide 17: Etika Militer -->
+    <section class="slide theme-moss" id="slide-17">
+      <div class="slide-header">
+        <span class="category-tag accent-tag">SENJATA OTONOM</span>
+        <span class="num-badge">17</span>
+      </div>
+      <div class="slide-content">
+        <h2 class="editorial-title">Mesin Pembunuh Otonom</h2>
+        <p class="body-text">
+          Menyerahkan keputusan hidup dan mati di medan perang kepada algoritma adalah <span class="highlight">pelanggaran batas paling mendasar</span> terhadap martabat kemanusiaan.
+        </p>
+      </div>
+      <div class="slide-footer">
+        <span>LETHAL AUTONOMOUS WEAPONS</span>
+        <span>ETIKA TEKNOLOGI</span>
+      </div>
+    </section>
+
+    <!-- Slide 18: Value-Sensitive Design -->
+    <section class="slide theme-cream" id="slide-18">
+      <div class="slide-header">
+        <span class="category-tag accent-tag">SOLUSI DESAIN</span>
+        <span class="num-badge">18</span>
+      </div>
+      <div class="slide-content">
+        <h2 class="editorial-title">Value-Sensitive Design</h2>
+        <p class="body-text">
+          Etika tidak boleh menjadi pertimbangan belakangan (*afterthought*). Nilai kemanusiaan harus <span class="highlight">ditanam sejak arsitektur awal</span> sistem.
+        </p>
+      </div>
+      <div class="slide-footer">
+        <span>PRINSIP PERANCANGAN</span>
+        <span>ETIKA TEKNOLOGI</span>
+      </div>
+    </section>
+
+    <!-- Slide 19: Tata Kelola Global -->
+    <section class="slide theme-dark" id="slide-19">
+      <div class="slide-header">
+        <span class="category-tag accent-tag">REGULASI</span>
+        <span class="num-badge">19</span>
+      </div>
+      <div class="slide-content">
+        <h2 class="editorial-title">Tata Kelola & Hukum Global</h2>
+        <p class="body-text">
+          Dari <span class="highlight">EU AI Act</span> hingga rekomendasi UNESCO: kebutuhan mendesak akan regulasi yang mengikat secara internasional demi melindungi hak asasi.
+        </p>
+      </div>
+      <div class="slide-footer">
+        <span>KERANGKA HUKUM GLOBAL</span>
+        <span>ETIKA TEKNOLOGI</span>
+      </div>
+    </section>
+
+    <!-- Slide 20: Tanggung Jawab Kolektif -->
+    <section class="slide theme-moss" id="slide-20">
+      <div class="slide-header">
+        <span class="category-tag accent-tag">AKTOR UTAMA</span>
+        <span class="num-badge">20</span>
+      </div>
+      <div class="slide-content">
+        <h2 class="editorial-title" style="margin-bottom: 12px;">Tanggung Jawab Kolektif</h2>
+        <div class="bullet-list">
+          <div class="bullet-item"><span>Developer</span> Menulis kode yang transparan & adil.</div>
+          <div class="bullet-item"><span>Industri</span> Mengutamakan etika di atas profit jangka pendek.</div>
+          <div class="bullet-item"><span>Pemerintah</span> Menegakkan regulasi berbasis HAM.</div>
+          <div class="bullet-item"><span>Pengguna</span> Membangun kesadaran kritis.</div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>EKOSISTEM ETIKA</span>
+        <span>ETIKA TEKNOLOGI</span>
+      </div>
+    </section>
+
+    <!-- Slide 21: Rangkuman -->
+    <section class="slide theme-cream" id="slide-21">
+      <div class="slide-header">
+        <span class="category-tag accent-tag">RANGKUMAN</span>
+        <span class="num-badge">21</span>
+      </div>
+      <div class="slide-content">
+        <h2 class="editorial-title">Mengabdi Pada Manusia</h2>
+        <p class="body-text">
+          Ukuran keberhasilan teknologi bukanlah seberapa canggih ia diciptakan, melainkan <span class="highlight">seberapa adil dan manusiawi</span> dampak yang dihasilkannya.
+        </p>
+      </div>
+      <div class="slide-footer">
+        <span>PRINSIP UTAMA</span>
+        <span>ETIKA TEKNOLOGI</span>
+      </div>
+    </section>
+
+    <!-- Slide 22: Outro / Quote -->
+    <section class="slide theme-dark" id="slide-22">
+      <div class="slide-header">
+        <span class="category-tag accent-tag">PENUTUP</span>
+        <span class="num-badge">22</span>
+      </div>
+      <div class="slide-content">
+        <h2 class="editorial-title" style="font-size: clamp(2rem, 7.5vw, 3.6rem);">Masa Depan Yang Kita Pilih</h2>
+        <div class="quote-box" style="margin-top: 20px;">
+          "Pertanyaan terpenting hari ini bukanlah apa yang BISA dibuat oleh teknologi, melainkan apa yang SEHARUSNYA kita bangun."
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>HERMES AGENT</span>
+        <span>ETIKA TEKNOLOGI</span>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const container = document.getElementById('deckContainer');
+      const slides = document.querySelectorAll('.slide');
+      const progressBar = document.getElementById('progressBar');
+      const slideCounter = document.getElementById('slideCounter');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      const totalSlides = slides.length;
+
+      let currentIndex = 0;
+
+      // Update HUD and Progress
+      function updateHUD(index) {
+        currentIndex = index;
+        const progress = ((index + 1) / totalSlides) * 100;
+        progressBar.style.width = `${progress}%`;
+        
+        const formattedCurrent = String(index + 1).padStart(2, '0');
+        const formattedTotal = String(totalSlides).padStart(2, '0');
+        slideCounter.textContent = `${formattedCurrent} / ${formattedTotal}`;
+      }
+
+      // Intersection Observer for Snap Scroll Tracking
+      const observerOptions = {
+        root: container,
+        threshold: 0.6
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const index = Array.from(slides).indexOf(entry.target);
+            updateHUD(index);
+          }
+        });
+      }, observerOptions);
+
+      slides.forEach(slide => observer.observe(slide));
+
+      // Button Controls
+      prevBtn.addEventListener('click', () => {
+        if (currentIndex > 0) {
+          slides[currentIndex - 1].scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+
+      nextBtn.addEventListener('click', () => {
+        if (currentIndex < totalSlides - 1) {
+          slides[currentIndex + 1].scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+
+      // Keyboard Controls
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ') {
+          if (currentIndex < totalSlides - 1) {
+            e.preventDefault();
+            slides[currentIndex + 1].scrollIntoView({ behavior: 'smooth' });
+          }
+        } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+          if (currentIndex > 0) {
+            e.preventDefault();
+            slides[currentIndex - 1].scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
