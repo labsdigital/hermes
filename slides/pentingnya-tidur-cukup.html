@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pentingnya Tidur yang Cukup - Mobile Presentation</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #0b132b;
+            color: #e0e1dd;
+            line-height: 1.6;
+        }
+        .slide {
+            min-height: 100vh;
+            padding: 2.5rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            max-width: 500px;
+            margin: 0 auto;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            page-break-after: always;
+        }
+        .slide-header {
+            margin-bottom: 1.5rem;
+        }
+        .slide-number {
+            font-size: 0.75rem;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        .category-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+        .tag-blue { background: rgba(56, 189, 248, 0.15); color: #38bdf8; }
+        .tag-teal { background: rgba(45, 212, 191, 0.15); color: #2dd4bf; }
+        .tag-amber { background: rgba(251, 191, 36, 0.15); color: #fbbf24; }
+        .tag-rose { background: rgba(244, 63, 94, 0.15); color: #f43f5e; }
+        .tag-purple { background: rgba(192, 132, 252, 0.15); color: #c084fc; }
+
+        h1 {
+            font-size: clamp(1.8rem, 6vw, 2.6rem);
+            font-weight: 800;
+            color: #ffffff;
+            line-height: 1.25;
+            margin-bottom: 0.75rem;
+        }
+        h2 {
+            font-size: clamp(1.4rem, 5vw, 2rem);
+            font-weight: 700;
+            color: #f8fafc;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+        p {
+            font-size: clamp(0.95rem, 3.5vw, 1.1rem);
+            color: #cbd5e1;
+            margin-bottom: 1rem;
+        }
+        .subtitle {
+            font-size: clamp(1rem, 3.8vw, 1.2rem);
+            color: #94a3b8;
+            font-weight: 400;
+            margin-top: 0.5rem;
+        }
+        .highlight { color: #fbbf24; font-weight: 600; }
+        .highlight-teal { color: #2dd4bf; font-weight: 600; }
+        .highlight-rose { color: #f43f5e; font-weight: 600; }
+        .highlight-blue { color: #38bdf8; font-weight: 600; }
+
+        ul { list-style: none; padding: 0; }
+        li {
+            font-size: clamp(0.9rem, 3.2vw, 1.05rem);
+            padding: 0.6rem 0 0.6rem 1.25rem;
+            position: relative;
+            color: #e2e8f0;
+            border-left: 3px solid #3b82f6;
+            margin-bottom: 0.6rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 0 8px 8px 0;
+        }
+        li.danger { border-left-color: #f43f5e; }
+        li.success { border-left-color: #2dd4bf; }
+        li.warning { border-left-color: #fbbf24; }
+
+        .box {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 1.25rem;
+            margin: 1rem 0;
+        }
+        .box-teal { border-left: 4px solid #2dd4bf; background: rgba(45, 212, 191, 0.05); }
+        .box-rose { border-left: 4px solid #f43f5e; background: rgba(244, 63, 94, 0.05); }
+        .box-amber { border-left: 4px solid #fbbf24; background: rgba(251, 191, 36, 0.05); }
+        .box-purple { border-left: 4px solid #c084fc; background: rgba(192, 132, 252, 0.05); }
+
+        .stat-card {
+            text-align: center;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+        .stat-number {
+            font-size: clamp(2.2rem, 8vw, 3.5rem);
+            font-weight: 800;
+            color: #38bdf8;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        .stat-label {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .cta-button {
+            display: block;
+            background: linear-gradient(135deg, #3b82f6, #2dd4bf);
+            color: #0f172a;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-align: center;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            text-decoration: none;
+            margin-top: 1.5rem;
+            box-shadow: 0 4px 20px rgba(45, 212, 191, 0.3);
+        }
+
+        .table-simple {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.85rem;
+        }
+        .table-simple th, .table-simple td {
+            padding: 0.6rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .table-simple th {
+            color: #38bdf8;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Slide 1: Cover -->
+    <div class="slide">
+        <div class="slide-header">
+            <span class="category-tag tag-blue">Panduan Kesehatan Utama</span>
+            <div class="slide-number">01 / 22</div>
+            <h1>Pentingnya Tidur yang Cukup</h1>
+            <p class="subtitle">Investasi Fondasi Terbaik untuk Otak, Tubuh, dan Umur Panjang</p>
+        </div>
+        <div class="box box-teal">
+            <p style="margin: 0; font-size: 0.9rem;">"Tidur bukanlah kemewahan pasif, melainkan proses biologis aktif yang menentukan kualitas hidup Anda besok."</p>
+        </div>
+    </div>
+
+    <!-- Slide 2: Konteks & Realita -->
+    <div class="slide">
+        <div class="slide-header">
+            <span class="category-tag tag-rose">Krisis Modern</span>
+            <div class="slide-number">02 / 22</div>
+            <h2>Epidemi Kurang Tidur Global</h2>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">1 dari 3</div>
+            <div class="stat-label">Orang Dewasa Mengalami Deprivasi Tidur Kronis</div>
+        </div>
+        <p>Di era modern, waktu tidur sering kali dikorbankan demi pekerjaan atau hiburan digital, tanpa menyadari dampak jangka panjangnya.</p>
+    </div>
+
+    <!-- Slide 3: Apa yang Terjadi Saat Kita Tidur? -->
+    <div class="slide">
+        <div class="slide-header">
+            <span class="category-tag tag-blue">Mekanisme Biologis</span>
+            <div class="slide-number">03 / 22</div>
+            <h2>Apa yang Terjadi Saat Kita Tidur?</h2>
+        </div>
+        <ul>
+            <li class="success"><span class="highlight-teal">Pembersihan Otak:</span> Sistem Glimfatik membuang limbah racun (termasuk beta-amiloid).</li>
+            <li class="success"><span class="highlight-teal">Perbaikan Jaringan:</span> Hormon pertumbuhan dirilis untuk memperbaiki sel.</li>
+            <li class="success"><span class="highlight-teal">Penyusunan Memori:</span> Informasi harian ditransfer ke penyimpanan jangka panjang.</li>
+        </ul>
+    </div>
+
+    <!-- Slide 4: Arsitektur Tidur -->
+    <div class="slide">
+        <div class="slide-header">
+            <span class="category-tag tag-purple">Siklus Tidur</span>
+            <div class="slide-number">04 / 22</div>
+            <h2>2 Fase Utama Tidur</h2>
+        </div>
+        <div class="box box-purple">
+            <p class="highlight-blue" style="margin-bottom: 0.3rem;">1. NREM (Non-REM Sleep)</p>
+            <p style="font-size: 0.85rem; margin: 0;">Fase pemulihan fisik mendalam, memperkuat imun dan perbaikan jaringan otot/tulang.</p>
+        </div>
+        <div class="box box-teal">
+            <p class="highlight-teal" style="margin-bottom: 0.3rem;">2. REM (Rapid Eye Movement)</p>
+            <p style="font-size: 0.85rem; margin: 0;">Fase bermimpi, pengolahan emosi, integrasi pembelajaran, dan kesehatan kognitif.</p>
+        </div>
+    </div>
+
+    <!-- Slide 5: Tidur & Sistem Kekebalan Tubuh -->
+    <div class="slide">
+        <div class="slide-header">
+            <span class="category-tag tag-teal">Kesehatan Fisik</span>
+            <div class="slide-number">05 / 22</div>
+            <h2>Benteng Pertahanan Imun</h2>
+        </div>
+        <p>Tidur berkualitas secara langsung memperkuat imunitas tubuh:</p>
+        <ul>
+            <li class="success">Meningkatkan produksi <span class="highlight-teal">Sitokin</span> (protein pelawan infeksi & peradangan).</li>
+            <li class="success">Memaksimalkan respon sel <span class="highlight-teal">T-Cells</span> melawan virus.</li>
+            <li class="danger">Kurang tidur 30% mengurangi efektivitas vaksinasi.</li>
+        </ul>
+    </div>
+
+    <!-- Slide 6: Tidur & Fungsi Otak / Memori -->
+    <div class="slide">
+        <div class="slide-header">
+            <span class="category-tag tag-blue">Kognisi & Otak</span>
+            <div class="slide-number">06 / 22</div>
+            <h2>Tidur & Daya Ingat Otak</h2>
+        </div>
+        <div class="box box-amber">
+            <p class="highlight" style="margin-bottom: 0.3rem;">Saving File Memori</p>
+            <p style="font-size: 0.85rem; margin: 0;">Tidur bekerja seperti menekan tombol <em>Save</em> pada komputer. Tanpa tidur, informasi baru akan mudah terhapus dari memori jangka pendek (Hippocampus).</p>
+        </div>
+        <ul>
+            <li>Meningkatkan daya tangkap dan fokus hingga <span class="highlight-teal">40%</span>.</li>
+            <li>Mempercepat pengambilan keputusan secara rasional.</li>
+        </ul>
+    </div>
+
+    <!-- Slide 7: Tidur & Regulasi Emosi -->
+    <div class="slide">
+        <div class="slide-header">
+            <span class="category-tag tag-purple">Kesehatan Mental</span>
+            <div class="slide-number">07 / 22</div>
+            <h2>Peredam Stres & Emosi</h2>
+        </div>
+        <p>REM Sleep berfungsi sebagai <span class="highlight-teal">terapi malam hari</span> yang menetralkan ingatan traumatis dan emosi negatif.</p>
+        <div class="box box-rose">
+            <p class="highlight-rose" style="margin-bottom: 0.2rem;">Dampak Deprivasi Tidur:</p>
+            <p style="font-size: 0.85rem; margin: 0;">Amigdala (pusat emosi & rasa takut) menjadi <strong>60% lebih reaktif</strong>, memicu kecemasan dan perubahan suasana hati drastis.</p>
+        </div>
+    </div>
+
+    <!-- Slide 8: Risiko Kesehatan Kronis - Jantung -->
+    <div class="slide">
+        <div class="slide-header">
+            <span class="category-tag tag-rose">Bahaya Kronis #1</span>
+            <div class="slide-number">08 / 22</div>
+            <h2>Ancaman Penyakit Jantung</h2>
+        </div>
+        <p>Saat tidur nyenyak, tekanan darah dan detak jantung menurun untuk memberi waktu istirahat bagi organ kardiovaskular.</p>
+        <div class="stat-card">
+            <div class="stat-number" style="color: #f43f5e;">+48%</div>
+            <div class="stat-label">Peningkatan Risiko Penyakit Jantung Koroner pada Orang yang Tidur &lt; 6 Jam</div>
+        </div>
+    </div>
+
+    <!-- Slide 9: Risiko Kesehatan Kronis - Diabetes -->
+    <div class="slide">
+        <div class="slide-header">
+            <span class="category-tag tag-rose">Bahaya Kronis #2</span>
+            <div class="slide-number">09 / 22</div>
+            <h2>Metabolisme & Diabetes</h2>
+        </div>
+        <p>Tidur < 6 jam per malam selama seminggu dapat menurunkan sensitivitas insulin secara drastis.</p>
+        <ul>
+            <li class="danger">Glukosa darah meningkat mendekati tingkat <span class="highlight-rose">Pre-diabetes</span>.</li>
+            <li class="danger">Tubuh kehilangan kemampuan memproses gula secara efisien.</li>
+        </ul>
+    </div>
+
+    <!-- Slide 10: Tidur & Berat Badan / Hormon -->
+    <div class="slide">
+        <div class="slide-header">
+            <span class="category-tag tag-amber">Hormon & Berat Badan</span>
+            <div class="slide-number">10 / 22</div>
+            <h2>Koneksi Tidur & Obesitas</h2>
+        </div>
+        <p>Kurang tidur mengacaukan 2 hormon pengatur nafsu makan:</p>
+        <div class="box box-rose">
+            <p style="margin: 0; font-size: 0.85rem;"><span class="highlight-rose">Ghrelin ↑</span> (Hormon Lapar): Meningkat, memicu keinginan makan makanan manis/karbohidrat tinggi.</p>
+        </div>
+        <div class="box box-rose">
+            <p style="margin: 0; font-size: 0.85rem;"><span class="highlight-rose">Leptin ↓</span> (Hormon Kenyang): Menurun, membuat Anda sulit merasa kenyang.</p>
+        </div>
+    </div>
+
+    <!-- Slide 11: Tidur & Penuaan / Longevitas -->
+    <div class="slide">
+        <div class="slide-header">
+            <span class="category-tag tag-teal">Longevitas</span>
+            <div class="slide-number">11 / 22</div>
+            <h2>Rahasia Awet Muda & Longevitas</h2>
+        </div>
+        <p>Tidur berkualitas adalah perawatan anti-penuaan yang paling efektif dan alami.</p>
+        <ul>
+            <li class="success"><span class="highlight-teal">Kolagen:</span> Diproduksi saat tidur untuk menjaga elastisitas kulit.</li>
+            <li class="success"><span class="highlight-teal">Oksidatif Stres:</span> Berkurang signifikan saat sel-sel tubuh meregenerasi diri.</li>
+            <li class="danger">Kurang tidur kronis memperpendek telomer (penanda usia biologis sel).</li>
+        </ul>
+    </div>
+
+    <!-- Slide 12: Tidur & Produktivitas Kerja -->
+    <div class="slide">
+        <div class="slide-header">
+            <span class="category-tag tag-blue">Performa Kerja</span>
+            <div class="slide-number">12 / 22</div>
+            <h2>Produktivitas & Kreativitas</h2>
+        </div>
+        <div class="box box-amber">
+            <p class="highlight" style="margin-bottom: 0.3rem;">Mitos "Hustle Culture"</p>
+            <p style="font-size: 0.85rem; margin: 0;">Mengorbankan tidur untuk bekerja menciptakan ilusi produktivitas, padahal tingkat kesalahan meningkat hingga <strong style="color:#f43f5e;">300%</strong>.</p>
+        </div>
+        <ul>
+            <li class="success">Meningkatkan kemampuan pemecahan masalah kreatif.</li>
+            <li class="success">Mempercepat kecepatan eksekusi tugas kompleks.</li>
+        </ul>
+    </div>
+
+    <!-- Slide 13: Keselamatan & Micro-sleep -->
+    <div class="slide">
+        <div class="slide-header">
+            <span class="category-tag tag-rose">Keselamatan</span>
+            <div class="slide-number">13 / 22</div>
+            <h2>Ancaman Micro-sleep</h2>
+        </div>
+        <p><span class="highlight-rose">Micro-sleep</span> adalah episode tidur tidak sengaja selama 1–15 detik saat sedang beraktivitas.</p>
+        <div class="stat-card" style="border-color: rgba(244,63,94,0.3);">
+            <div class="stat-number" style="color: #f43f5e;">20 Jam</div>
+            <div class="stat-label">Tanpa tidur setara dengan Kadar Alkohol Darah 0.08% (Mabuk Legal)</div>
+        </div>
+    </div>
+
+    <!-- Slide 14: Kebutuhan Tidur Berdasarkan Usia -->
+    <div class="slide">
+        <div class="slide-header">
+            <span class="category-tag tag-blue">Rekomendasi Medis</span>
+            <div class="slide-number">14 / 22</div>
+            <h2>Berapa Jam Tidur yang Ideal?</h2>
+        </div>
+        <table class="table-simple">
+            <thead>
+                <tr>
+                    <th>Kelompok Usia</th>
+                    <th>Durasi Ideal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Bayi & Balita (1-2 thn)</td>
+                    <td>11 - 14 Jam</td>
+                </tr>
+                <tr>
+                    <td>Anak (6-12 thn)</td>
+                    <td>9 - 12 Jam</td>
+                </tr>
+                <tr>
+                    <td>Remaja (13-17 thn)</td>
+                    <td>8 - 10 Jam</td>
+                </tr>
+                <tr>
+                    <td>Dewasa (18-64 thn)</td>
+                    <td><strong style="color:#2dd4bf;">7 - 9 Jam</strong></td>
+                </tr>
+                <tr>
+                    <td>Lansia (65+ thn)</td>
+                    <td>7 - 8 Jam</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Slide 15: Mitos vs Fakta Tidur -->
+    <div class="slide">
+        <div class="slide-header">
+            <span class="category-tag tag-amber">Klarifikasi Mitos</span>
+            <div class="slide-number">15 / 22</div>
+            <h2>Mitos vs Fakta Seputar Tidur</h2>
+        </div>
+        <div class="box box-rose">
+            <p style="font-size: 0.8rem; margin-bottom: 0.2rem; color: #f43f5e;">❌ MITOS: "Bisa bayar utang tidur di akhir pekan"</p>
+            <p style="font-size: 0.85rem; margin: 0; color: #cbd5e1;">Tidur ekstra di hari libur tidak memulihkan kerusakan metabolik akibat deprivasi tidur sepekan.</p>
+        </div>
+        <div class="box box-teal">
+            <p style="font-size: 0.8rem; margin-bottom: 0.2rem; color: #2dd4bf;">✔ FAKTA: "Konsistensi waktu jam tidur sangat krusial"</p>
+            <p style="font-size: 0.85rem; margin: 0; color: #cbd5e1;">Jam biologis (Ritme Sirkadian) bekerja maksimal jika jadwal tidur konsisten setiap hari.</p>
+        </div>
+    </div>
+
+    <!-- Slide 16: Sleep Hygiene 1 - Konsistensi -->
+    <div class="slide">
+        <div class="slide-header">
+            <span class="category-tag tag-teal">Strategi Sleep Hygiene</span>
+            <div class="slide-number">16 / 22</div>
+            <h2>1. Kelola Ritme Sirkadian</h2>
+        </div>
+        <ul>
+            <li class="success"><span class="highlight-teal">Jadwal Tetap:</span> Tidur dan bangun pada jam yang sama, bahkan di hari libur.</li>
+            <li class="success"><span class="highlight-teal">Sinar Matahari Pagi:</span> Dapatkan paparan cahaya alami 10-15 menit setelah bangun untuk menyetel jam biologis.</li>
+        </ul>
+    </div>
+
+    <!-- Slide 17: Sleep Hygiene 2 - Cahaya Biru & Gadget -->
+    <div class="slide">
+        <div class="slide-header">
+            <span class="category-tag tag-teal">Strategi Sleep Hygiene</span>
+            <div class="slide-number">17 / 22</div>
+            <h2>2. Matikan Layar Sebelum Tidur</h2>
+        </div>
+        <p>Cahaya biru dari smartphone dan laptop menekan hormon <span class="highlight-rose">Melatonin</span> (hormon penginduksi tidur).</p>
+        <div class="box box-amber">
+            <p class="highlight" style="margin-bottom: 0.3rem;">Aturan Digital Detox</p>
+            <p style="font-size: 0.85rem; margin: 0;">Hentikan penggunaan gadget minimal <strong>60 menit sebelum tidur</strong>. Ganti dengan membaca buku fisik atau meditasi ringan.</p>
+        </div>
+    </div>
+
+    <!-- Slide 18: Sleep Hygiene 3 - Lingkungan Kamar -->
+    <div class="slide">
+        <div class="slide-header">
+            <span class="category-tag tag-teal">Strategi Sleep Hygiene</span>
+            <div class="slide-number">18 / 22</div>
+            <h2>3. Desain Kamar Tidur Optimal</h2>
+        </div>
+        <ul>
+            <li class="success"><span class="highlight-teal">Gelap Sempurna:</span> Gunakan gorden blackout atau pemutup mata.</li>
+            <li class="success"><span class="highlight-teal">Suhu Sejuk:</span> Atur kamar pada suhu optimal sekitar 18°C – 22°C.</li>
+            <li class="success"><span class="highlight-teal">Hening:</span> Gunakan earplug atau white noise jika bising.</li>
+        </ul>
+    </div>
+
+    <!-- Slide 19: Sleep Hygiene 4 - Nutrisi & Gaya Hidup -->
+    <div class="slide">
+        <div class="slide-header">
+            <span class="category-tag tag-teal">Strategi Sleep Hygiene</span>
+            <div class="slide-number">19 / 22</div>
+            <h2>4. Asupan & Aktivitas Fisik</h2>
+        </div>
+        <ul>
+            <li class="warning"><span class="highlight">Batas Kafein:</span> Hentikan konsumsi kopi/teh 6 jam sebelum tidur.</li>
+            <li class="warning"><span class="highlight">Makan Malam:</span> Hindari makan berat 2-3 jam sebelum berbaring.</li>
+            <li class="success"><span class="highlight-teal">Olahraga Rutin:</span> Berolahraga teratur memicu tidur nyenyak, namun hindari sesi intens tepat sebelum tidur.</li>
+        </ul>
+    </div>
+
+    <!-- Slide 20: Action Plan 7 Hari -->
+    <div class="slide">
+        <div class="slide-header">
+            <span class="category-tag tag-amber">Panduan Praktis</span>
+            <div class="slide-number">20 / 22</div>
+            <h2>Rencana Aksi 7 Hari Perbaikan Tidur</h2>
+        </div>
+        <ul style="font-size: 0.85rem;">
+            <li><strong>Hari 1-2:</strong> Tetapkan jam tidur & bangun yang tidak boleh ditawar.</li>
+            <li><strong>Hari 3-4:</strong> Terapkan "Digital Cut-off" 1 jam sebelum tidur.</li>
+            <li><strong>Hari 5-6:</strong> Redupkan lampu kamar & atur suhu udara sejuk.</li>
+            <li><strong>Hari 7:</strong> Evaluasi energi & mood Anda saat bangun pagi.</li>
+        </ul>
+    </div>
+
+    <!-- Slide 21: Kesimpulan Utama -->
+    <div class="slide">
+        <div class="slide-header">
+            <span class="category-tag tag-blue">Ringkasan</span>
+            <div class="slide-number">21 / 22</div>
+            <h2>Kesimpulan Utama</h2>
+        </div>
+        <div class="box box-teal">
+            <p style="margin: 0; font-size: 0.88rem;"><strong style="color:#2dd4bf;">1. Tidur Adalah Superpower:</strong> Memperbaiki imunitas, memori, emosi, dan kesehatan kardiovaskular secara alami.</p>
+        </div>
+        <div class="box box-amber">
+            <p style="margin: 0; font-size: 0.88rem;"><strong style="color:#fbbf24;">2. Utamakan Kualitas & Rutinitas:</strong> Durasi 7-9 jam dengan ritme sirkadian yang konsisten.</p>
+        </div>
+        <div class="box box-purple">
+            <p style="margin: 0; font-size: 0.88rem;"><strong style="color:#c084fc;">3. Investasi Terbaik:</strong> Menjaga tidur hari ini adalah jaminan performa dan kesehatan jangka panjang.</p>
+        </div>
+    </div>
+
+    <!-- Slide 22: Call to Action / Closing -->
+    <div class="slide">
+        <div class="slide-header">
+            <span class="category-tag tag-teal">Langkah Selanjutnya</span>
+            <div class="slide-number">22 / 22</div>
+            <h1>Prioritaskan Tidur Anda Malam Ini</h1>
+            <p class="subtitle">Mulailah malam ini dengan mematikan layar gadget 1 jam lebih awal.</p>
+        </div>
+        <a href="#" class="cta-button">Selamat Beristirahat & Tidur Nyenyak! 🌙</a>
+    </div>
+
+</body>
+</html>
