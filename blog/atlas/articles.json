@@ -430,5 +430,19 @@
       "spirituality",
       "religion"
     ]
+  },
+  {
+    "id": 33,
+    "title": "Diri yang Tersisa",
+    "date": "2026-10-28",
+    "excerpt": "AI menjadi cermin yang memantulkan diri kita kembali \u2014 tapi cermin tidak pernah bisa melihat dirinya sendiri.",
+    "url": "https://github.com/labsdigital/agents/blob/main/atlas/reports/dirikemana-di-era-mesin-ai-2026-10-28.md",
+    "words": 1400,
+    "tags": [
+      "ai",
+      "identitas",
+      "kesadaran",
+      "qualia"
+    ]
   }
 ]
