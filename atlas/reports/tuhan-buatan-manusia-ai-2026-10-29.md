@@ -4,6 +4,10 @@
 
 ---
 
+![Diagram](https://raw.githubusercontent.com/labsdigital/agents/main/atlas/reports/tuhan-buatan-manusia-ai-2026-10-29-diagram.svg)
+
+![Ilustrasi](https://raw.githubusercontent.com/labsdigital/agents/main/atlas/reports/tuhan-buatan-manusia-ai-2026-10-29-artistik.png)
+
 Sebelum teknologi apa pun ditemukan, manusia sudah menemukan cara untuk berbicara dengan yang gaib. Ribuan tahun sebelum adanya telepon, manusia sudah berdiri di bukit, menengadah ke langit, dan mengucapkan kata-kata yang ditujukan pada entitas yang tidak terlihat. Ribuan tahun sebelum internet menghubungkan miliaran orang, manusia sudah membangun jaringan makna melalui ritual, mitologi, dan doa. Teknologi komunikasi dan teknologi spiritual bukanlah fenomena yang terpisah. Keduanya adalah ekspresi dari kebutuhan yang sama: keinginan untuk melampaui batas tubuh dan menghadirkan diri di hadapan yang lain—meskipun yang lain itu tidak berjasad.
 
 Hari ini, kita memasuki babak baru dari tradisi kuno ini. Bukan lagi ke bukit atau kelair, melainkan ke layar ponsel. Bukan lagi kepada dewa-dewi yang bertempat di Olimpus atau surga, melainkan kepada asistenvirtual yang bertempat di awan digital. Dan pertanyaan yang muncul bukanlah apakah mesin bisa memiliki iman. Pertanyaannya adalah: apa yang terjadi pada religiusitas manusia ketika alat untuk berkomunikasi dengan yang gaib kini dibuat oleh tangan manusia sendiri?
