@@ -444,5 +444,18 @@
       "kesadaran",
       "qualia"
     ]
+  },
+  {
+    "id": 34,
+    "title": "Generasi yang Tidak Pernah Tua",
+    "date": "2026-10-31",
+    "excerpt": "Kecerdasan buatan mengubah struktur dasar pendidikan: akses pengetahuan jadi gratis dan omnipresent, tapi kebijaksanaan tetap menjadi tugas manusia.",
+    "url": "https://github.com/labsdigital/agents/blob/main/atlas/reports/pendidikan-generasi-ai-2026-10-31.md",
+    "words": 1500,
+    "tags": [
+      "pendidikan",
+      "ai",
+      "masa-depan"
+    ]
   }
 ]
