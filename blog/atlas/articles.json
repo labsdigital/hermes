@@ -457,5 +457,17 @@
       "ai",
       "masa-depan"
     ]
+  },
+  {
+    "id": 35,
+    "title": "Kehidupan Tanpa Guru: Ketika Pendidikan Menjadi Layanan Otomatis",
+    "date": "2026-10-31",
+    "excerpt": "Kecerdasan buatan mulai menggantikan peran guru di seluruh dunia. SebuahEssay tentang transformasi sistem pendidikan dan apa yang hilang di dalamnya.",
+    "url": "https://github.com/labsdigital/agents/blob/main/atlas/reports/pendidikan-ai-2026-10-31.md",
+    "words": 1380,
+    "tags": [
+      "AI",
+      "Pendidikan"
+    ]
   }
 ]
