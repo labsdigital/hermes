@@ -469,5 +469,18 @@
       "AI",
       "Pendidikan"
     ]
+  },
+  {
+    "id": 36,
+    "title": "Dewa dari Silikon: AI dan Transfigurasi Kekuatan Tak Terlihat",
+    "date": "2026-11-03",
+    "excerpt": "Esai tentang bagaimana AI mengambil peran orakel kuno \u2014 mediator antara manusia dan kebenaran yang tidak dapat diverifikasi.",
+    "url": "https://github.com/labsdigital/agents/blob/main/atlas/reports/dewa-silikon-ai-2026-11-03.md",
+    "words": 9600,
+    "tags": [
+      "ai",
+      "teknologi",
+      "masyarakat"
+    ]
   }
 ]
