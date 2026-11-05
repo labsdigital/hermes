@@ -52,27 +52,27 @@ Audit 7 hari terhadap 30 akun TikTok (8.727 video) mengungkap "help-seeking para
 
 ---
 
-### 3. Generative Propaganda: AI as Industrialized Deception Infrastructure
+### 3. AI Coding Assistance Reduces Developer Skill Mastery by 17%
 
 **Sumber:**
-- [Generative Propaganda: Evidence of AI's Impact from a State-Backed Disinformation Campaign (PNAS Nexus, 2026)](https://academic.oup.com/pnasnexus/article/4/4/pgaf083/8097936)
-- [Industrialized Deception: Collateral Effects of LLM-Generated Misinformation (arXiv, 2026)](https://arxiv.org/pdf/2601.21963v3)
-- [Credibility Attacks Do Not Enhance Deepfake Warnings (Scientific Reports, Nature, 2026)](https://doi.org/10.1038/s41598-026-64243-y)
+- [Anthropic: How AI Assistance Impacts the Formation of Coding Skills (2026)](https://www.anthropic.com/research/AI-assistance-coding-skills)
+- [InfoQ: Anthropic Study — AI Coding Reduces Developer Skill Mastery (2026)](https://www.infoq.com/news/2026/02/ai-coding-skill-formation/)
 
 **Ringkasan Fakta:**
-Studi PNAS Nexus menganalisis situs propaganda berafiliasi negara yang mengadopsi generative AI: produksi artikel meningkat 2,4×, cakupan topik melebar, dan persuasifitas *tidak menurun* pasca-adopsi AI. Studi Nature Scientific Reports (N=2.500) menemukan bahwa *warning label* "ini deepfake" hanya mengurangi dampak video palsu secara parsial — bahkan ketika orang *tahu* videonya palsu, stigma terhadap terdakwa tetap meningkat. Deteksi deepfake generatif kini mencapai akurasi 98,76% pada benchmark, namun detektor single-modality tradisional (visual artifacts, audio robotic) sudah usang; frontier saat ini adalah cross-modal consistency checking.
+RCT Anthropic (2026) menguji developer yang mempelajari Python library baru: kelompok yang menggunakan AI coding assistance (Claude Code/Cursor) skor comprehension test-nya **17% lebih rendah** dibanding kelompok yang coding manual — setara penurunan hampir dua huruf nilai. Studi independen lain (arXiv:2601.20245) menemukan divisi tajam: developer yang pakai AI untuk *konsep* skor ≥65%, tapi yang delegasikan *code generation* ke AI skor <40%. AI memang mempercepat output (80% faster pada task yang sudah dikuasai), tapi menggerus acquired skill jangka panjang.
 
 **Wilayah Terdampak:**
-- **Truth & Power** — Demokrasi informasi terkikis bukan karena deepfake tidak terdeteksi, tapi karena *efeknya tetap ada meski sudah diketahui palsu*. Ini adalah jenis baru totalitarianisme epistemik: kekuasaan bukan lagi pada kemampuan memalsukan, tapi pada kemampuan membuat keraguan menjadi murah.
-- **Meaning** — Ketika semua konten bisa jadi fake dan semua warning bisa diabaikan, konsep "kebenaran" kehilangan maknanya sebagai landasan aksi kolektif.
+- **Mind** — Outsourcing kognitif: developer tidak lagi "merasakan" struktur kode; mereka belajar *memvalidasi* output AI, bukan *menghasilkan* dari nol. Ini adalah atrofi kognitif dalam bentuk paling murni: otot mental yang tidak dipakai berubah lemah.
+- **Work & Creation** — Ilusi augmentasi: produktivitas instan tampak meningkat, tapi biaya tersembunyi adalah degradasi kompetensi fundamental. Ketika AI down, developer "AI-assisted" tidak bisa bekerja tanpa alat tersebut — ketergantungan yang tidak ada pada developer "hands-on".
 
 **Lensa Pedagogis & Organik:**
-- Pendidikan media literacy saat ini masih fokus pada "cara mengenali deepfake" — tapi riset terbaru menunjukkan pendekatan itu kurang tepat. Yang perlu diajarkan adalah *resilience epistemik*: kemampuan tetap bertindak secara etis dan demokratis meskipun tidak dapat memverifikasi setiap klaim yang dihadapi.
-- Dalam konteks kelas, siswa perlu dilatih bertanya bukan "apakah ini asli?", tapi "apa yang terjadi pada diskursus publik jika semua orang percaya ini palsu — apakah atau tidak ini nyata?"
+- Kurikulum coding modern terlalu cepat mengadopsi AI tools tanpa mengajarkan foundational mastery dulu. Analogi: mengajar anak kalkulus sebelum mereka menguasai aljabar, lalu menyalahkan mereka karena "tidak bisa tanpa Wolfram Alpha".
+- Yang hilang dari "keringat manusia"? Proses debugging itu sendiri — friksi yang memaksa pemahaman mendalam. AI menghilangkan friksi, tetapi friksi itulah yang membangun sirkuit kognitif. Tanpa struggle, tidak ada neural pathway yang terbentuk.
+- Solusi pedagogis: AI harus diajarkan sebagai *verification tool*, bukan *generation tool*. Siswa harus bisa menulis kode manual dulu, baru потом menggunakan AI untuk review dan optimasi — urutan yang terbalik dari praktik industri saat ini.
 
 **Ide Artikel/Esai (Actionable):**
-- Judul Provokatif: *"Deepfake Tidak Merusak Demokrasi — Skepsis Massal Yang Merusak Demokrasi"*
-- Premis Argumen: Ancaman terbesar deepfake bukan pada kemampuannya menipu, melainkan pada efek sekundernya: normalisasi skepticisme total yang membuat masyarakat kehilangan kemampuan untuk mempercayai *sesuatu apa pun*, termasuk kebenaran yang terverifikasi — dan kekacauan epistemik inilah yang secara efektif melucuti demokrasi dari fondasinya.
+- Judul Provokatif: *"Developer AI-Assisted Adalah Developer Yang Lebih Lemah — Bukti From Anthropic"*
+- Premis Argumen: Industri teknologi sedang mengalami paradox productivity: semakin cepat developer menyelesaikan task dengan AI, semakin rapuh fondasi kompetensi mereka — dan ketika AI gagal atauUnavailable, mereka tidak punya fallback berupa kemampuan fundamental yang seharusnya sudah mereka kuasai.
 
 ---
 
@@ -88,10 +88,20 @@ Guru dapat membuat NotebookLM dan "Gems" (versi kustom Gemini) langsung dari Goo
 
 Gemini sekarang memiliki Study Notebooks — ruang belajar interaktif yang beradaptasi dengan materi kelas. Plus, practice test gratis untuk ACT dan GRE. **Tips:** Guru dapat mengarahkan siswa menggunakan Guided Learning yang menampilkan "di mana kelas/siswa perlu bantuan tambahan" sebelum ujian — semacam formative assessment berbasis AI.
 
-### 3. Zoom AI Companion 3.0 + Agentic AI untuk Meeting
-**Link:** [Mashable — AI Product Releases 2025](https://mashable.com/article/upcoming-ai-productivity-tools-models)
+### 3. Study Notebooks di Gemini App + Practice Test Gratis ACT/GRE
+**Link:** [Google for Education — ISTE 2026](https://blog.google/products-and-platforms/products/education/iste-students-2026/)
 
-Zoom AI Companion 3.0 kini memiliki fitur note-taking otomatis, summary generation, dan retrieval search across workplace conversations. Integrasi dengan Google Workspace & Microsoft 365. **Tips:** Gunakan untuk dokumentasi meeting yang sebelumnya sering luput — tapi ingat: AI summarizer tetap bisa omit nuansa penting. Selalu review manual.
+Study Notebooks di Gemini App sekarang tersedia untuk semua usia (termasuk school-issued accounts). Fitur: diagnostic quiz → personalized bite-sized lessons → progress dashboard. Ditambah partnership dengan The Princeton Review untuk practice test ACT & GRE gratis. **Tips:** Gunakan untuk self-assessment siswa sebelum ujian — Dashboard "Strengths vs Focus Areas" memberi insight akurat tentang celah pemahaman.
+
+### 4. NotebookLM Short Video Overviews & Interactive Learning
+**Link:** [Google Blog — 3 New Study Features (Oct 2026)](https://blog.google/innovation-and-ai/products/gemini-notebook/three-tips-study-gemini-notebook/)
+
+NotebookLM kini bisa generate 60-second Short Video Overview, Interactive Learning Overview (gabungan summary + slides + quizzes), dan quiz formats baru (short-answer, multi-select, fill-in-the-blank). **Tips:** Untuk materi yang padat, gunakan Video Overview sebagai "hook" sebelum diskusi kelas — siswa lebih engaged dengan konten visual dibanding teks panjang.
+
+### 5. Claude Code v2.1.302 — Subagents & Dynamic Workflows
+**Link:** [Claude Code Documentation](https://code.claude.com/docs/en/how-claude-code-works)
+
+Claude Code kini support subagents yang berjalan di context terpisah, dynamic workflows (script yang spawn banyak subagent), dan cross-session messaging. Auto mode (permission classifier) juga aktif secara default untuk blocking scope escalation. **Tips:** Gunakan subagent untuk tugas research besar yang tidak perlu membanjiri context utama — subagent return hanya summary.
 
 ---
 
